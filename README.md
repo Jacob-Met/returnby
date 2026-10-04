@@ -17,7 +17,7 @@ Click **Try a sample** to load fictional demo emails.
 - `src/store.ts` — localStorage persistence
 - `src/ics.ts` — RFC 5545 calendar file with a reminder 3 days before
 
-Planning docs (`devpost/scope.md`, `prd.md`, `spec.md`, `checklist.md`) were produced with the Devpost Learn skill pack (`challengepost/learn-ai-basics`) before code was written.
+Planning docs (`devpost/scope.md`, `prd.md`, `spec.md`, `checklist.md`) originated as AI-assisted scope/PRD/spec drafts and were copied and edited before implementation. The Devpost Learn skill pack was installed, but its learner interview was not completed. These documents must not be represented as completed Skill Pack interview output; that required workflow remains outstanding before hackathon submission.
 
 ## AI disclosure
 Built with an AI coding agent following the Devpost Learn AI Basics skills. No AI runs inside the app.
