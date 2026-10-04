@@ -1,0 +1,5 @@
+node_modules/
+dist/
+/devpost/learner-profile.md
+.env
+.env.*

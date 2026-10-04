@@ -1,0 +1,7 @@
+{
+  "northwind": { "name": "Northwind Outfitters", "days": 30, "aliases": ["northwind"] },
+  "contoso": { "name": "Contoso Electronics", "days": 15, "aliases": ["contoso"] },
+  "fabrikam": { "name": "Fabrikam Home", "days": 60, "aliases": ["fabrikam"] },
+  "tailspin": { "name": "Tailspin Toys", "days": 90, "aliases": ["tailspin"] },
+  "adventureworks": { "name": "Adventure Works", "days": 45, "aliases": ["adventure works", "adventureworks"] }
+}

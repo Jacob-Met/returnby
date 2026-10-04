@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReturnBy — never miss a return window</title>
+</head>
+<body>
+  <main>
+    <h1>ReturnBy</h1>
+    <p class="sub">Paste an order confirmation. Get your return deadline and a calendar reminder.</p>
+    <textarea id="paste" rows="7" placeholder="Paste your order confirmation"></textarea>
+    <div class="row"><button id="find">Find deadline</button> <a href="#" id="sample">Try a sample</a></div>
+    <form id="preview" hidden></form>
+    <h2>Your returns</h2>
+    <ul id="list"></ul>
+  </main>
+  <footer>Nothing leaves this browser. Clearing site data removes everything. <button id="clear" class="link">Clear all</button></footer>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
