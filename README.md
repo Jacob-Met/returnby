@@ -1,26 +1,28 @@
 # ReturnBy
 
-Paste an order-confirmation email → get your return deadline and a one-click calendar reminder. Runs entirely in your browser: no account, no inbox access, nothing sent anywhere.
+ReturnBy turns an order-confirmation email into a reviewable return deadline and a calendar reminder. The visitor supplies the email text; the browser runs the repository's real rule-based parser, merchant-policy lookup, date calculation, status logic and RFC 5545 export. It is a multi-order tracker, not a canned result: correct extracted fields, override a return window, save several deadlines, filter the list and export a three-day alarm for any order.
 
-## Try it
+## Privacy
+
+The original pasted email is not sent or persisted. The user must review and save fields; only merchant, order number, total, order date, return-window days and timestamps are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
+
+## Run and verify
+
+```bash
+npm ci
+npm test
+npm run build
+npm run dev
 ```
-npm install
-npm run dev     # http://localhost:5173
-npm test        # unit tests
-```
-Click **Try a sample** to load fictional demo emails.
 
-## How it works
-- `src/parse.ts` — rule-based extraction of store, order date, order number, total
-- `src/policy.ts` + `data/policies.json` — return window per store (fallback 30 days)
-- `src/deadline.ts` — due date, days left, color status
-- `src/store.ts` — localStorage persistence
-- `src/ics.ts` — RFC 5545 calendar file with a reminder 3 days before
+The optional Raider browser acceptance and desktop/phone captures run through `py -3 tools/capture_returnby.py` (requires Playwright and Chromium/Chrome). The sample orders use fictional merchants; the parser's policy table is a convenience, not a guarantee from any retailer. Users should confirm a deadline with the store's current terms.
 
-Planning docs (`devpost/scope.md`, `prd.md`, `spec.md`, `checklist.md`) originated as AI-assisted scope/PRD/spec drafts and were copied and edited before implementation. The Devpost Learn skill pack was installed, but its learner interview was not completed. These documents must not be represented as completed Skill Pack interview output; that required workflow remains outstanding before hackathon submission.
+## Implementation
 
-## AI disclosure
-Built with an AI coding agent following the Devpost Learn AI Basics skills. No AI runs inside the app.
+- `src/parse.ts`: order-date, merchant, order-number and total extraction.
+- `src/policy.ts` / `data/policies.json`: merchant lookup with an editable 30-day fallback.
+- `src/deadline.ts`: date arithmetic and urgency states.
+- `src/store.ts`: local-only persistence of approved fields.
+- `src/ics.ts`: calendar reminder generation.
 
-## License
-MIT
+The app is browser-only; no AI runs in the page. The Devpost Learn planning documents are not completed interview output and are not represented as such.
