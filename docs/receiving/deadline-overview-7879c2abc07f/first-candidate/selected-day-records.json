@@ -1,0 +1,436 @@
+[
+  {
+    "id": "cluster-000",
+    "fields": {
+      "id": "cluster-000",
+      "merchant": "海 <img src=x onerror=window.monthInjected=true> Café 😀\nSecond line",
+      "orderNo": "﻿#箱,\"A\"",
+      "total": "JPY 1234\nnot converted",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T05:45:00+05:45",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-001",
+    "fields": {
+      "id": "cluster-001",
+      "merchant": "  leading and trailing  ",
+      "orderNo": "Not recorded",
+      "total": "Not recorded",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "default",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-002",
+    "fields": {
+      "id": "cluster-002",
+      "merchant": "Return stop 02",
+      "orderNo": "#cluster-002",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-003",
+    "fields": {
+      "id": "cluster-003",
+      "merchant": "Return stop 03",
+      "orderNo": "#cluster-003",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-004",
+    "fields": {
+      "id": "cluster-004",
+      "merchant": "Return stop 04",
+      "orderNo": "#cluster-004",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-005",
+    "fields": {
+      "id": "cluster-005",
+      "merchant": "Return stop 05",
+      "orderNo": "#cluster-005",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-006",
+    "fields": {
+      "id": "cluster-006",
+      "merchant": "Return stop 06",
+      "orderNo": "#cluster-006",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-007",
+    "fields": {
+      "id": "cluster-007",
+      "merchant": "Return stop 07",
+      "orderNo": "#cluster-007",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-008",
+    "fields": {
+      "id": "cluster-008",
+      "merchant": "Return stop 08",
+      "orderNo": "#cluster-008",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-009",
+    "fields": {
+      "id": "cluster-009",
+      "merchant": "Return stop 09",
+      "orderNo": "#cluster-009",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-010",
+    "fields": {
+      "id": "cluster-010",
+      "merchant": "Return stop 10",
+      "orderNo": "#cluster-010",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-011",
+    "fields": {
+      "id": "cluster-011",
+      "merchant": "Return stop 11",
+      "orderNo": "#cluster-011",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-012",
+    "fields": {
+      "id": "cluster-012",
+      "merchant": "Return stop 12",
+      "orderNo": "#cluster-012",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-013",
+    "fields": {
+      "id": "cluster-013",
+      "merchant": "Return stop 13",
+      "orderNo": "#cluster-013",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-014",
+    "fields": {
+      "id": "cluster-014",
+      "merchant": "Return stop 14",
+      "orderNo": "#cluster-014",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-015",
+    "fields": {
+      "id": "cluster-015",
+      "merchant": "Return stop 15",
+      "orderNo": "#cluster-015",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-016",
+    "fields": {
+      "id": "cluster-016",
+      "merchant": "Return stop 16",
+      "orderNo": "#cluster-016",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-017",
+    "fields": {
+      "id": "cluster-017",
+      "merchant": "Return stop 17",
+      "orderNo": "#cluster-017",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-018",
+    "fields": {
+      "id": "cluster-018",
+      "merchant": "Return stop 18",
+      "orderNo": "#cluster-018",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-019",
+    "fields": {
+      "id": "cluster-019",
+      "merchant": "Return stop 19",
+      "orderNo": "#cluster-019",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-020",
+    "fields": {
+      "id": "cluster-020",
+      "merchant": "Return stop 20",
+      "orderNo": "#cluster-020",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-021",
+    "fields": {
+      "id": "cluster-021",
+      "merchant": "Return stop 21",
+      "orderNo": "#cluster-021",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-022",
+    "fields": {
+      "id": "cluster-022",
+      "merchant": "Return stop 22",
+      "orderNo": "#cluster-022",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-023",
+    "fields": {
+      "id": "cluster-023",
+      "merchant": "Return stop 23",
+      "orderNo": "#cluster-023",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-024",
+    "fields": {
+      "id": "cluster-024",
+      "merchant": "Return stop 24",
+      "orderNo": "#cluster-024",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-025",
+    "fields": {
+      "id": "cluster-025",
+      "merchant": "Return stop 25",
+      "orderNo": "#cluster-025",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-026",
+    "fields": {
+      "id": "cluster-026",
+      "merchant": "Return stop 26",
+      "orderNo": "#cluster-026",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-027",
+    "fields": {
+      "id": "cluster-027",
+      "merchant": "Return stop 27",
+      "orderNo": "#cluster-027",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-028",
+    "fields": {
+      "id": "cluster-028",
+      "merchant": "Return stop 28",
+      "orderNo": "#cluster-028",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-029",
+    "fields": {
+      "id": "cluster-029",
+      "merchant": "Return stop 29",
+      "orderNo": "#cluster-029",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  },
+  {
+    "id": "cluster-030",
+    "fields": {
+      "id": "cluster-030",
+      "merchant": "Return stop 30",
+      "orderNo": "#cluster-030",
+      "total": "USD 19.95",
+      "orderDate": "2026-11-01",
+      "windowDays": "14",
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00Z",
+      "due": "2026-11-15"
+    }
+  }
+]

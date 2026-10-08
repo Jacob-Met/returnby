@@ -1,0 +1,534 @@
+{
+  "schema": "returnby.deadline-overview-browser.v1",
+  "status": "passed",
+  "project": "/home/runner/work/returnby/returnby",
+  "build": "/home/runner/work/returnby/returnby/dist",
+  "executable": "/usr/bin/google-chrome",
+  "node": "v22.23.3",
+  "checkout": "858df955341ce2ba210440c5553e0611ddb73a22",
+  "claim": "https://github.com/Jacob-Met/returnby/issues/26",
+  "checks": [
+    "actual existing review/save produces three exact independent orders with native IDs and creation times",
+    "the native unsaved intake remains available before opening the separate planning view",
+    "monthly counts, exact chosen-day records, empty days and keyboard selection preserve storage and intake state",
+    "native backup file admission feeds exact month, leap, century, year and date-range boundaries in three real browser timezones",
+    "all 31 same-day records remain reachable in bounded pages with exact Unicode, markup, multiline values and keyboard focus",
+    "a real other-tab edit stays separate until explicit refresh, then moves the same saved identity without committing pending drafts",
+    "saved-read and late-record failures refuse the entire overview, retain drafts and allow explicit unchanged-data retry",
+    "the 390px month/day view keeps usable date targets and literal wrapped fields while the original calendar download stays intact",
+    "an explicitly cleared tracker becomes an honest empty month with no additional write or application/network error"
+  ],
+  "artifacts": [
+    {
+      "name": "native-saved-records.json",
+      "bytes": 818,
+      "sha256": "300754164842d202013a37af33a31f0405c3f633e5e56c48219b6ba3513bd37c",
+      "kind": "actual native Review/Save results"
+    },
+    {
+      "name": "overview-desktop.png",
+      "bytes": 130591,
+      "sha256": "97edb7e084a16852cc592f5f109a4ba46c108f4e17571953ac5e4d5ffbe3b419",
+      "kind": "actual Chrome screenshot"
+    },
+    {
+      "name": "authored-return-backup.json",
+      "bytes": 11612,
+      "sha256": "b42afdfa15e0d5edad04d153086738c5699079d7c3fa1f643a4f15c3e4ce2e1c",
+      "kind": "frozen fictional backup consumed by native file picker"
+    },
+    {
+      "name": "selected-day-records.json",
+      "bytes": 10576,
+      "sha256": "30592cbdc20196f74e22c162921caa9a3d55e09ca59e46fd663537a3ff1608fb",
+      "kind": "all 31 actual visible record projections across native pages"
+    },
+    {
+      "name": "pending-backup.json",
+      "bytes": 398,
+      "sha256": "d64922a94ad4c008842937fade2521764a36aa229902f9b5eb592f96d75cefc2",
+      "kind": "authored pending native backup preview, never applied"
+    },
+    {
+      "name": "edited-native-saved-records.json",
+      "bytes": 11467,
+      "sha256": "727a3fd81967e69dcdff1ca677f7c5a070b666625f3b4aca98cd8602baa3e1e0",
+      "kind": "actual second-tab Edit/Save result"
+    },
+    {
+      "name": "refusal-phone.png",
+      "bytes": 60770,
+      "sha256": "6f6761904e5f5cdd6a12f2c3c338c839b23d06ecc4caa39bdd679f699ac03628",
+      "kind": "actual Chrome screenshot"
+    },
+    {
+      "name": "overview-phone.png",
+      "bytes": 61536,
+      "sha256": "255ffbb3ed8b9a920ed6c564b14be06dca1c7aeee793f4abe3de0f1bd389ee7c",
+      "kind": "actual Chrome screenshot"
+    },
+    {
+      "name": "selected-day-phone.png",
+      "bytes": 55492,
+      "sha256": "670f324745bae47ab255a56649e2cfdaee1c52f198e35cb88a0270d88333e887",
+      "kind": "actual Chrome screenshot"
+    },
+    {
+      "name": "unchanged-calendar.ics",
+      "bytes": 404,
+      "sha256": "d9b9e5b7c2a789f05e3d9217e7e512b81f6840835d9fb78b137ba9aa3c71c204",
+      "kind": "actual browser download",
+      "suggestedFilename": "return-Return-trip-B.ics"
+    }
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:42125/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:42125/assets/index-D8MZjC5o.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:42125/assets/index-CW_D8HE8.css",
+      "method": "GET"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:42125/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:42125/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:42125/assets/index-D8MZjC5o.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:42125/assets/index-CW_D8HE8.css",
+      "method": "GET"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "method": "GET"
+    }
+  ],
+  "externalRequests": [],
+  "serverRequests": [
+    {
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-D8MZjC5o.js"
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CW_D8HE8.css"
+    },
+    {
+      "method": "GET",
+      "path": "/favicon.svg"
+    },
+    {
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-D8MZjC5o.js"
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CW_D8HE8.css"
+    }
+  ],
+  "sourceSha256": {
+    "src/backup-ui.ts": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+    "src/backup.css": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+    "src/backup.ts": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+    "src/calendar-batch-ui.ts": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+    "src/calendar-batch.css": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+    "src/calendar-batch.ts": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/edit-ui.ts": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+    "src/edit.css": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+    "src/edit.ts": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+    "src/ics.ts": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+    "src/main.ts": "7d2d2b1ff1c783e50230b5c8bc149d9ec4dcf80bae25689e38d3527ad7899dd3",
+    "src/parse.ts": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243",
+    "src/policy.ts": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+    "src/samples.ts": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+    "src/store.ts": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+    "src/style.css": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+    "src/deadline-overview.ts": "1db274a72577c675f68e03a2569e7a33f6dc326864445c5e8eba42368d54e4c9",
+    "src/deadline-overview-ui.ts": "5053254223728e30e7ab858a717fb6e9c691be3e812f40f5ea99a422409f4691",
+    "src/deadline-overview-entry.ts": "4e9f4f29cc1d19dfdecbd41c56c0200b2ad6252e3316e730f56f4df3ecd550f0",
+    "src/deadline-overview.css": "43eb355f2dbe0bd70231aa733cb47fa5cc3280b0e7ff08510533c345cafac5c3",
+    "tests/deadline-overview.test.ts": "8b9fa6ec3d40a3fb8878cc6c39321bd996b344ca9f1b3434877450a4bceb9dc4",
+    "data/policies.json": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26",
+    "index.html": "25783fbf719d9f2c537f36cd1189819cf3af57e619e0a5e30fb62b186d461fea",
+    "package.json": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+    "package-lock.json": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+    "tsconfig.json": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc",
+    "tools/fixtures/deadline-overview-cases.json": "52cd12f78f91a8a3b74df8a726b14277fbc13792ced95209f764fee366ae588d",
+    "tools/check_deadline_overview_browser.mjs": "b4d1296d97e8a3a8b1b56d5c516c43409227bdee33ab81a09366551b9f4741ac",
+    ".github/workflows/deadline-overview-browser.yml": "0f838fa5b6ee0a580a3f85c3e5c8a012d3cf2c6cd092ff80618811292eed419a"
+  },
+  "buildSha256": {
+    "assets/index-CW_D8HE8.css": "abb3a0cfddf06ac233bab7ddfe932e7731f3f2287d09fd2c53ceada787852e68",
+    "assets/index-D8MZjC5o.js": "4bfb305868ab7ad14cd79ea1927a935b61bce3504683b8d93ca745fecda2a0da",
+    "captures/returnby-desktop.png": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+    "captures/returnby-mobile.png": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+    "favicon.svg": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+    "index.html": "58d67ddd1483f12fb6e48b5fabfe91e8127b43d414c72670ca00e07941613548"
+  },
+  "sourceUnchanged": true,
+  "observer": "Real native Review/Save, backup-file chooser/import, other-tab Edit/Save and calendar download. Instrumented Storage records writes; explicit confined read/corruption faults are labeled.",
+  "visualBoundary": "Actual browser screenshots are preserved. Direct pixel inspection is a separate receiving claim.",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/154.0.8037.57",
+    "revision": "@73c14f6228d7cd537c855007e8f88678969cc0eb",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.11"
+  },
+  "originalBoundary": {
+    "nativeRecords": [
+      {
+        "id": "ef10f4ca-7da1-4340-baeb-f74465e535aa",
+        "merchant": "Café <pack> 海 😀",
+        "orderNo": "TRIP-\"A\",1",
+        "total": "JPY 1200",
+        "orderDate": "2026-09-25",
+        "windowDays": 13,
+        "windowSource": "user",
+        "createdAt": "2026-10-08T15:31:01.959Z"
+      },
+      {
+        "id": "a174a372-3ecd-4257-a57e-81d2de4c9829",
+        "merchant": "Return trip B",
+        "orderNo": "TRIP-B",
+        "total": "USD 19.95",
+        "orderDate": "2026-09-26",
+        "windowDays": 13,
+        "windowSource": "user",
+        "createdAt": "2026-10-08T15:31:02.012Z"
+      },
+      {
+        "id": "a29b44ae-12a2-4ea3-b387-b6fc7d25eb87",
+        "merchant": "Return trip C",
+        "orderNo": "TRIP-C",
+        "total": "£ 0.00",
+        "orderDate": "2026-09-25",
+        "windowDays": 13,
+        "windowSource": "user",
+        "createdAt": "2026-10-08T15:31:02.029Z"
+      }
+    ],
+    "expectedDue": {
+      "ef10f4ca-7da1-4340-baeb-f74465e535aa": "2026-10-08",
+      "a174a372-3ecd-4257-a57e-81d2de4c9829": "2026-10-09",
+      "a29b44ae-12a2-4ea3-b387-b6fc7d25eb87": "2026-10-08"
+    },
+    "overviewControls": [
+      {
+        "id": "deadline-overview-open",
+        "text": "Plan around saved return deadlines"
+      }
+    ],
+    "meaning": "Native Review/Save succeeded before the independently frozen monthly-overview action is required."
+  },
+  "monthCases": [
+    {
+      "timezone": "UTC",
+      "month": "1000-01",
+      "days": 31,
+      "firstWeekday": 2
+    },
+    {
+      "timezone": "UTC",
+      "month": "9999-12",
+      "days": 31,
+      "firstWeekday": 2
+    },
+    {
+      "timezone": "UTC",
+      "month": "2024-02",
+      "days": 29,
+      "firstWeekday": 3
+    },
+    {
+      "timezone": "UTC",
+      "month": "2024-03",
+      "days": 31,
+      "firstWeekday": 4
+    },
+    {
+      "timezone": "UTC",
+      "month": "2025-02",
+      "days": 28,
+      "firstWeekday": 5
+    },
+    {
+      "timezone": "UTC",
+      "month": "2025-03",
+      "days": 31,
+      "firstWeekday": 5
+    },
+    {
+      "timezone": "UTC",
+      "month": "1900-02",
+      "days": 28,
+      "firstWeekday": 3
+    },
+    {
+      "timezone": "UTC",
+      "month": "1900-03",
+      "days": 31,
+      "firstWeekday": 3
+    },
+    {
+      "timezone": "UTC",
+      "month": "2000-02",
+      "days": 29,
+      "firstWeekday": 1
+    },
+    {
+      "timezone": "UTC",
+      "month": "2026-03",
+      "days": 31,
+      "firstWeekday": 6
+    },
+    {
+      "timezone": "UTC",
+      "month": "2026-09",
+      "days": 30,
+      "firstWeekday": 1
+    },
+    {
+      "timezone": "UTC",
+      "month": "2026-11",
+      "days": 30,
+      "firstWeekday": 6
+    },
+    {
+      "timezone": "UTC",
+      "month": "2026-12",
+      "days": 31,
+      "firstWeekday": 1
+    },
+    {
+      "timezone": "UTC",
+      "month": "2027-01",
+      "days": 31,
+      "firstWeekday": 4
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "1000-01",
+      "days": 31,
+      "firstWeekday": 2
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "9999-12",
+      "days": 31,
+      "firstWeekday": 2
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "2024-02",
+      "days": 29,
+      "firstWeekday": 3
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "2024-03",
+      "days": 31,
+      "firstWeekday": 4
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "2025-02",
+      "days": 28,
+      "firstWeekday": 5
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "2025-03",
+      "days": 31,
+      "firstWeekday": 5
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "1900-02",
+      "days": 28,
+      "firstWeekday": 3
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "1900-03",
+      "days": 31,
+      "firstWeekday": 3
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "2000-02",
+      "days": 29,
+      "firstWeekday": 1
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "2026-03",
+      "days": 31,
+      "firstWeekday": 6
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "2026-09",
+      "days": 30,
+      "firstWeekday": 1
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "2026-11",
+      "days": 30,
+      "firstWeekday": 6
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "2026-12",
+      "days": 31,
+      "firstWeekday": 1
+    },
+    {
+      "timezone": "America/New_York",
+      "month": "2027-01",
+      "days": 31,
+      "firstWeekday": 4
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "1000-01",
+      "days": 31,
+      "firstWeekday": 2
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "9999-12",
+      "days": 31,
+      "firstWeekday": 2
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "2024-02",
+      "days": 29,
+      "firstWeekday": 3
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "2024-03",
+      "days": 31,
+      "firstWeekday": 4
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "2025-02",
+      "days": 28,
+      "firstWeekday": 5
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "2025-03",
+      "days": 31,
+      "firstWeekday": 5
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "1900-02",
+      "days": 28,
+      "firstWeekday": 3
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "1900-03",
+      "days": 31,
+      "firstWeekday": 3
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "2000-02",
+      "days": 29,
+      "firstWeekday": 1
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "2026-03",
+      "days": 31,
+      "firstWeekday": 6
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "2026-09",
+      "days": 30,
+      "firstWeekday": 1
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "2026-11",
+      "days": 30,
+      "firstWeekday": 6
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "2026-12",
+      "days": 31,
+      "firstWeekday": 1
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "month": "2027-01",
+      "days": 31,
+      "firstWeekday": 4
+    }
+  ],
+  "refusals": {
+    "read": "Authored Storage.getItem failure in this fresh profile only.",
+    "malformed": "Authored last-row windowDays=0; original native stored bytes restored after refusal.",
+    "noOverviewWrite": true,
+    "fullCollectionRefused": true
+  },
+  "finalNativeSavedRecords": [],
+  "storageWrites": [
+    {
+      "method": "setItem",
+      "bytes": 223
+    },
+    {
+      "method": "setItem",
+      "bytes": 437
+    },
+    {
+      "method": "setItem",
+      "bytes": 648
+    },
+    {
+      "method": "setItem",
+      "bytes": 8957
+    },
+    {
+      "method": "setItem",
+      "bytes": 2
+    }
+  ],
+  "pageErrors": [],
+  "totalArtifactBytes": 343664
+}

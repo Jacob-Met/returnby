@@ -1,0 +1,1940 @@
+{
+  "schema": "returnby.deadline-overview.source-proof.v1",
+  "repository": "Jacob-Met/returnby",
+  "claim": "https://github.com/Jacob-Met/returnby/issues/26",
+  "pullRequest": "https://github.com/Jacob-Met/returnby/pull/28",
+  "target": "integrate/calendar-backup-actions-receiving-20261008-b55367d787c4",
+  "targetHead": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "adoption": "#8/#10 retain adoption and main integration; existing owner branches and main were not moved.",
+  "baseTree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+  "qualifiedTree": "fa1eb6dbd90a3423422a20cb4b12282fe87b8e6f",
+  "baseLeaves": 191,
+  "qualifiedLeaves": 199,
+  "unchangedOriginalCount": 189,
+  "changedOriginal": [
+    {
+      "path": "README.md",
+      "before": {
+        "path": "README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b44321c4757c528cf8bf421ae6497790395c7c14",
+        "size": 11100,
+        "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/b44321c4757c528cf8bf421ae6497790395c7c14"
+      },
+      "after": {
+        "path": "README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "fc2d893bfb0391c9523b01b4a862add59973b6b6",
+        "size": 14089,
+        "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/fc2d893bfb0391c9523b01b4a862add59973b6b6"
+      }
+    },
+    {
+      "path": "index.html",
+      "before": {
+        "path": "index.html",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d8b6074d2602fc8417e0e8ba5da1f064e64a5925",
+        "size": 9893,
+        "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/d8b6074d2602fc8417e0e8ba5da1f064e64a5925"
+      },
+      "after": {
+        "path": "index.html",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7b67820feae950c02a0c4cbc921488d45903d250",
+        "size": 12679,
+        "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/7b67820feae950c02a0c4cbc921488d45903d250"
+      }
+    }
+  ],
+  "added": [
+    {
+      "path": ".github/workflows/deadline-overview-browser.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0bee4230b7d9515a9a84d8a3c97b869db454f51e",
+      "size": 3794,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/0bee4230b7d9515a9a84d8a3c97b869db454f51e"
+    },
+    {
+      "path": "src/deadline-overview-entry.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "747529623a6306596c1a64b6b2d0b5433997a8db",
+      "size": 162,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/747529623a6306596c1a64b6b2d0b5433997a8db"
+    },
+    {
+      "path": "src/deadline-overview-ui.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "895aa0b25a1c1bde6e0ab9c2d5101e644db07072",
+      "size": 10419,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/895aa0b25a1c1bde6e0ab9c2d5101e644db07072"
+    },
+    {
+      "path": "src/deadline-overview.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70df06076463bc604cf10f0259b57d17b82adc14",
+      "size": 5095,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/70df06076463bc604cf10f0259b57d17b82adc14"
+    },
+    {
+      "path": "src/deadline-overview.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ccec55196aaaef117edb87d9f33930865c9b54b3",
+      "size": 4416,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ccec55196aaaef117edb87d9f33930865c9b54b3"
+    },
+    {
+      "path": "tests/deadline-overview.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e512efbd39e7f9ec20d99dc5dce81b58327f091d",
+      "size": 8723,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/e512efbd39e7f9ec20d99dc5dce81b58327f091d"
+    },
+    {
+      "path": "tools/check_deadline_overview_browser.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0d6a1634c13bafbe7b4ff6dadf362c881d06098",
+      "size": 41653,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/b0d6a1634c13bafbe7b4ff6dadf362c881d06098"
+    },
+    {
+      "path": "tools/fixtures/deadline-overview-cases.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "061cbc8a6096b4faffe1506dc4997c0723d94e9a",
+      "size": 17465,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/061cbc8a6096b4faffe1506dc4997c0723d94e9a"
+    }
+  ],
+  "fullQualifiedLeaves": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b5688812f36338630c21eb5643318a55496ae09b",
+      "size": 409,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/b5688812f36338630c21eb5643318a55496ae09b"
+    },
+    {
+      "path": ".github/workflows/deadline-overview-browser.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0bee4230b7d9515a9a84d8a3c97b869db454f51e",
+      "size": 3794,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/0bee4230b7d9515a9a84d8a3c97b869db454f51e"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+      "size": 572,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/a0b5ed32f62e4f9691180a01f579c95619bb290a"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b56df07f248fdfb406a35c411fafc91db47c9c95",
+      "size": 60,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/b56df07f248fdfb406a35c411fafc91db47c9c95"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "edb188254288b40f2895833e3647b7e0be34c962",
+      "size": 1070,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/edb188254288b40f2895833e3647b7e0be34c962"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc2d893bfb0391c9523b01b4a862add59973b6b6",
+      "size": 14089,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/fc2d893bfb0391c9523b01b4a862add59973b6b6"
+    },
+    {
+      "path": "data/policies.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "size": 449,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/8492b1e041d03723b1eac74220afd3d4fe3d2834"
+    },
+    {
+      "path": "devpost/checklist.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "318fc1035ad4314ae25fa829e152f5c03e883db5",
+      "size": 1551,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/318fc1035ad4314ae25fa829e152f5c03e883db5"
+    },
+    {
+      "path": "devpost/prd.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "60614d01a9e955c5911b3283d01bc5329397a6a9",
+      "size": 2676,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/60614d01a9e955c5911b3283d01bc5329397a6a9"
+    },
+    {
+      "path": "devpost/scope.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec",
+      "size": 2248,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec"
+    },
+    {
+      "path": "devpost/spec.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72",
+      "size": 2424,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a41e7d66a803f470f8c6506074fd0af2195e6e69",
+      "size": 9525,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/a41e7d66a803f470f8c6506074fd0af2195e6e69"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/baseline-build.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b36298e53cc33688bd4dd8de17c307e9c1349a1b",
+      "size": 494,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/b36298e53cc33688bd4dd8de17c307e9c1349a1b"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/baseline-execution.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4817776a108b39a286ecb9b67f07a6a24d488eda",
+      "size": 662,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/4817776a108b39a286ecb9b67f07a6a24d488eda"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/baseline-tests.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "21f623ab7c54ee5236830fb522928492353bf9f0",
+      "size": 374,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/21f623ab7c54ee5236830fb522928492353bf9f0"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser-first.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5bfd9af628230a5d91808a528f117bfb7dd274b8",
+      "size": 6092,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/5bfd9af628230a5d91808a528f117bfb7dd274b8"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/browser-receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5bfd9af628230a5d91808a528f117bfb7dd274b8",
+      "size": 6092,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/5bfd9af628230a5d91808a528f117bfb7dd274b8"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/calendar-during-backup-write-refusal.ics",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3ad955918b22711e392047e3a481a06b80f22126",
+      "size": 489,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/3ad955918b22711e392047e3a481a06b80f22126"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/combined-approved-backup.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f97d63a8f24f319fa78c6af2ae8193aaa7360628",
+      "size": 724,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/f97d63a8f24f319fa78c6af2ae8193aaa7360628"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/desktop-replacement-review.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3ca313bca0c096d79e511068ca5f57f21b79c7c5",
+      "size": 183815,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/3ca313bca0c096d79e511068ca5f57f21b79c7c5"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/phone-restored-calendar.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "74598a046f793733c205d55f22274703270f2000",
+      "size": 73001,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/74598a046f793733c205d55f22274703270f2000"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/replacement-reviewed-reminder.ics",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eec35db7be40fdc083640062f35151f3c8247052",
+      "size": 429,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/eec35db7be40fdc083640062f35151f3c8247052"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/restored-selected-reminders.ics",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6038acc57928c343a6234824cabf0d659aaa29ed",
+      "size": 820,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/6038acc57928c343a6234824cabf0d659aaa29ed"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/valid-subset-after-boundary-backup.ics",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2799f67c69a34d3389dc37e5593c1027a7b66d42",
+      "size": 409,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/2799f67c69a34d3389dc37e5593c1027a7b66d42"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/composed-build.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76b374ffd8660b401b8c0bec068ecc1b8068ca64",
+      "size": 497,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/76b374ffd8660b401b8c0bec068ecc1b8068ca64"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/composed-execution.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7efe0a3ca6440b6f1f5d242a144b673af664ee98",
+      "size": 459,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/7efe0a3ca6440b6f1f5d242a144b673af664ee98"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/composed-tests.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25abe12d9f9678fd69736657c3e3f26900226cd8",
+      "size": 376,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/25abe12d9f9678fd69736657c3e3f26900226cd8"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/independent-review/REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebd7dacf06cf062daf0e139af7a826f29c209260",
+      "size": 2980,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ebd7dacf06cf062daf0e139af7a826f29c209260"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/independent-review/artifact-hashes.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8358e07fb807e3fcbc645d97eabb0670f3f6ed40",
+      "size": 242,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/8358e07fb807e3fcbc645d97eabb0670f3f6ed40"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/independent-review/source-review.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28eaabfc18e2d9cb2b0f39cf10a167628678d5ad",
+      "size": 1417,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/28eaabfc18e2d9cb2b0f39cf10a167628678d5ad"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/composition-source.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f45d192a2fa2916456d131adf7cbc4f8b11c3a5",
+      "size": 23529,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/3f45d192a2fa2916456d131adf7cbc4f8b11c3a5"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/dependency-reuse.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2083f663915888d2ff94f6c7fe080153508a2b6",
+      "size": 2044,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/f2083f663915888d2ff94f6c7fe080153508a2b6"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/final-source-readback.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "65e8651fb016027ecc7bd33b6deb01a1e129a25a",
+      "size": 13894,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/65e8651fb016027ecc7bd33b6deb01a1e129a25a"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/integration-seams.patch",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b2957d70d1a8073d72e2541180911f6e407f7c3",
+      "size": 25304,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/4b2957d70d1a8073d72e2541180911f6e407f7c3"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/integrator-tree.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce148857184476fbb52537621282d198f5cad311",
+      "size": 16525,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ce148857184476fbb52537621282d198f5cad311"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/materialization.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e2473b1e3322e0c6cc20ed75b144aa59183edaac",
+      "size": 15440,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/e2473b1e3322e0c6cc20ed75b144aa59183edaac"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/ownership-source.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0e2d160c4f0ead2663f0d8eb51e2ca9110b193db",
+      "size": 11992,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/0e2d160c4f0ead2663f0d8eb51e2ca9110b193db"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/owner-receiving-note.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7832fd9c9961436d17f81ffacd263f9b2be2398b",
+      "size": 2749,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/7832fd9c9961436d17f81ffacd263f9b2be2398b"
+    },
+    {
+      "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/provenance.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d3bb5b4f2192c31ef19b59fa4d777f749874324b",
+      "size": 7655,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/d3bb5b4f2192c31ef19b59fa4d777f749874324b"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "40c7c562d6299a40a1dc7cb13bbd5adc2b8f0c64",
+      "size": 9276,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/40c7c562d6299a40a1dc7cb13bbd5adc2b8f0c64"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/baseline-build.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e8db3c39f9fe997ecd24969b6837c94d5adc5c8",
+      "size": 495,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/9e8db3c39f9fe997ecd24969b6837c94d5adc5c8"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/baseline-tests.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d6243c2e0fbcc622478dcac507e1a40000b65918",
+      "size": 350,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/d6243c2e0fbcc622478dcac507e1a40000b65918"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/browser-receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71581c5e61b2480d620a283ae747088bd079de8f",
+      "size": 1119,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/71581c5e61b2480d620a283ae747088bd079de8f"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/desktop-calendar.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e31d3dab03e94289e5462aeaa3ca239062521f55",
+      "size": 206271,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/e31d3dab03e94289e5462aeaa3ca239062521f55"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/phone-calendar.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "84653b8daf5d54db9bb7daa42f1e1e23d736fc94",
+      "size": 64302,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/84653b8daf5d54db9bb7daa42f1e1e23d736fc94"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/selected-reminders.ics",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "77de9f0a6ed6cb6a4f809967965e9b9e8a8dc64b",
+      "size": 1371,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/77de9f0a6ed6cb6a4f809967965e9b9e8a8dc64b"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/final-browser-run.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71581c5e61b2480d620a283ae747088bd079de8f",
+      "size": 1119,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/71581c5e61b2480d620a283ae747088bd079de8f"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/final-build.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "612f0cf518cff1633b19ee6e8b29bffa998a65e6",
+      "size": 494,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/612f0cf518cff1633b19ee6e8b29bffa998a65e6"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/final-native-tests.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "59507439725205ee46739f52558bb72841303c79",
+      "size": 352,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/59507439725205ee46739f52558bb72841303c79"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7aad85a59d6f2feec27752eedbda9c3a3a310bf7",
+      "size": 5503,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/7aad85a59d6f2feec27752eedbda9c3a3a310bf7"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/artifact-hashes.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "98ab9a9a211a88826a69c0382ac3e9274f0766f0",
+      "size": 1284,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/98ab9a9a211a88826a69c0382ac3e9274f0766f0"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-recovered-reminder.ics",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67300277c185de9f207d041e3aa113ccd1aa351b",
+      "size": 371,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/67300277c185de9f207d041e3aa113ccd1aa351b"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-review.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9d1f11b7dfa3c652c95cbfb4fe06904b3a3ccfb6",
+      "size": 1640,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/9d1f11b7dfa3c652c95cbfb4fe06904b3a3ccfb6"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-review.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba9249bdd60c6443b05c47cbc1a2d5a6643a93f0",
+      "size": 204,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ba9249bdd60c6443b05c47cbc1a2d5a6643a93f0"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-review.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ea5576ea78b1cbb237a32a6e7c19586b6a5ebab",
+      "size": 11181,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/6ea5576ea78b1cbb237a32a6e7c19586b6a5ebab"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/model-review.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92473cdc451c8ae9ad50f321326e105b7a419832",
+      "size": 1520,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/92473cdc451c8ae9ad50f321326e105b7a419832"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/model-review.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a10e29e737f008ecb4dc5c1eceb1048b14454209",
+      "size": 396,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/a10e29e737f008ecb4dc5c1eceb1048b14454209"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/model-review.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "581e0468d9c28a9c7558010311b80b8652793251",
+      "size": 8311,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/581e0468d9c28a9c7558010311b80b8652793251"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/provenance.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85614fda37227bdb87338cc0292fba705363b19d",
+      "size": 2688,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/85614fda37227bdb87338cc0292fba705363b19d"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/pr14-source-tree.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be379fb534dd6a720bcd28a4b74e2b882f42d21d",
+      "size": 23811,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/be379fb534dd6a720bcd28a4b74e2b882f42d21d"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/receiving-route.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3382a7c1d3137f77544caf58b91428ff0fcee2db",
+      "size": 14009,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/3382a7c1d3137f77544caf58b91428ff0fcee2db"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/empty-selection-harness/browser-smoke.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1829583d6f8e4b3eb29e0efb1bdde5f1a11f96b",
+      "size": 15772,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/b1829583d6f8e4b3eb29e0efb1bdde5f1a11f96b"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/empty-selection-harness/receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "407169c58b030f510655a6426d554b50686a6bb9",
+      "size": 1794,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/407169c58b030f510655a6426d554b50686a6bb9"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/empty-selection-harness/run.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "23577eb720fe46fae56101dab27041d8842dfa66",
+      "size": 3728,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/23577eb720fe46fae56101dab27041d8842dfa66"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/initial-dialog-focus/calendar-batch-ui.ts.source",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6827724fb06ee98b8a08746e685aa0813f32ac8b",
+      "size": 7179,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/6827724fb06ee98b8a08746e685aa0813f32ac8b"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/initial-dialog-focus/phone-before.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d739dc729d955d0a8ae371d431c1ad0b06c4e7c",
+      "size": 243852,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/7d739dc729d955d0a8ae371d431c1ad0b06c4e7c"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/initial-dialog-focus/receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b7440dbafafb4bca3d40d79d84e217b95773c06",
+      "size": 1119,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/4b7440dbafafb4bca3d40d79d84e217b95773c06"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/build.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "910ae5cbd181959d116b837256e2379f9387a9cd",
+      "size": 303,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/910ae5cbd181959d116b837256e2379f9387a9cd"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/calendar-batch-ui.ts.source",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "448cc8e7328cabb756aab39b96e303c67829d44a",
+      "size": 7178,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/448cc8e7328cabb756aab39b96e303c67829d44a"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/stale-build-browser-receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "631acc76e186361ba4da768a13ac2d3ecbd3ad4a",
+      "size": 918,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/631acc76e186361ba4da768a13ac2d3ecbd3ad4a"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/stale-build-browser-run.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "51d4390493b6a96b22cbb3ae9367fcfaf373c685",
+      "size": 1335,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/51d4390493b6a96b22cbb3ae9367fcfaf373c685"
+    },
+    {
+      "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/source-and-verification.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "921f48188388ade61070a65bf04068caa2086ac0",
+      "size": 5338,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/921f48188388ade61070a65bf04068caa2086ac0"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3006f103fa996da48ed379a74f487b5470f36e36",
+      "size": 8238,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/3006f103fa996da48ed379a74f487b5470f36e36"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/artifact-hashes.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6adef7ba3be280cfcb4e585ca5b08c6742f5f0f3",
+      "size": 6674,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/6adef7ba3be280cfcb4e585ca5b08c6742f5f0f3"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-ordinary-and-import-retry-backup.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ddd6b2baaaec63536d685f14bb8435d73e3443fa",
+      "size": 1532,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ddd6b2baaaec63536d685f14bb8435d73e3443fa"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-ordinary-and-import-retry-reminders.ics",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "526a80b7d1f65bd3f808648f914f4d645f99a82e",
+      "size": 1765,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/526a80b7d1f65bd3f808648f914f4d645f99a82e"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-reviewed-remove-backup.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0c678e25eb8e080a503b9866e5f88c031c62dead",
+      "size": 393,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/0c678e25eb8e080a503b9866e5f88c031c62dead"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-stale-save-backup.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5fec9f0eaa5bd129c5574dbc6815b1b7d57c9b60",
+      "size": 966,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/5fec9f0eaa5bd129c5574dbc6815b1b7d57c9b60"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-stale-save-reminders.ics",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad11921c655e7a019247186120e6cc823401907e",
+      "size": 741,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ad11921c655e7a019247186120e6cc823401907e"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/browser-receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f068b9406fdf71dd7bd6c86e3f4bb8db7787fa40",
+      "size": 11440,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/f068b9406fdf71dd7bd6c86e3f4bb8db7787fa40"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/phone-calendar-after-stale-save.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "931c2ea68b0eb73f053b347f00a77e4f830a807d",
+      "size": 72219,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/931c2ea68b0eb73f053b347f00a77e4f830a807d"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/phone-refused-stale-remove.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4fd276ba3c9213f8c333f9f50a4d695e3b26de1c",
+      "size": 221985,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/4fd276ba3c9213f8c333f9f50a4d695e3b26de1c"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/reviewed-replacement-before-remove.ics",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "08f37891533752713fd204bc8d2f93c2714f8a25",
+      "size": 410,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/08f37891533752713fd204bc8d2f93c2714f8a25"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/saved-reminder-during-action-write-refusal.ics",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05c4a65cde81d4a21aa9a87cfd2f0215750c458a",
+      "size": 408,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/05c4a65cde81d4a21aa9a87cfd2f0215750c458a"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/baseline-owner-browser.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af94886e20ca4ce985df540df93878d65ccf6825",
+      "size": 7281,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/af94886e20ca4ce985df540df93878d65ccf6825"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/baseline-owner-browser/results.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0339b4ee66d124d4f97f228bb8f23d50c2ec209",
+      "size": 144,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/d0339b4ee66d124d4f97f228bb8f23d50c2ec209"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/combined-build.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "789e4ac69f3d85d9209093b992d16d957e2494bb",
+      "size": 497,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/789e4ac69f3d85d9209093b992d16d957e2494bb"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/combined-native.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1251da5d72f6d3fe905625229b7d7cf8b4640f9a",
+      "size": 372,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/1251da5d72f6d3fe905625229b7d7cf8b4640f9a"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/composed-owner-browser.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8bed3d06f13a11af6d189ad209a762a46d810677",
+      "size": 664,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/8bed3d06f13a11af6d189ad209a762a46d810677"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/composed-owner-browser/changed-return-phone.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "15eaa823c06d0be93146d6713776a5b8a67be5e7",
+      "size": 202073,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/15eaa823c06d0be93146d6713776a5b8a67be5e7"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/composed-owner-browser/results.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "17b684ea2b9176b72a804aab8cd6c043d9eed1d2",
+      "size": 7136,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/17b684ea2b9176b72a804aab8cd6c043d9eed1d2"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/native-execution.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d7bc4839cef123e033ae65334056ab8f8d82689",
+      "size": 394,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/3d7bc4839cef123e033ae65334056ab8f8d82689"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/owner-browser-execution.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6fe6f57019b18a0c1403b43924556ef35970b63",
+      "size": 938,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/b6fe6f57019b18a0c1403b43924556ef35970b63"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/independent-review/REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62297f871546f27e141a77c91e7fe5652cd55751",
+      "size": 2394,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/62297f871546f27e141a77c91e7fe5652cd55751"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/independent-review/artifact-hashes.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e26f178a1db7cc49beb83be8d3142ed7c313fbd",
+      "size": 256,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/1e26f178a1db7cc49beb83be8d3142ed7c313fbd"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/independent-review/source-review.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5293395fa0ab466d8c73e77fb0debb616fe425a5",
+      "size": 3855,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/5293395fa0ab466d8c73e77fb0debb616fe425a5"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/final-source-readback.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "416e14440482475546cd022157701d7a32e99b5a",
+      "size": 12320,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/416e14440482475546cd022157701d7a32e99b5a"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/ordinary-actions-on-composition.patch",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ada73705ecdefac86f6291ccc19906ebb8c81737",
+      "size": 2472,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ada73705ecdefac86f6291ccc19906ebb8c81737"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/pr16-remote-tree.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "777cae8dae95761b207190f6c000e6d4715dfcc5",
+      "size": 29535,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/777cae8dae95761b207190f6c000e6d4715dfcc5"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/pr16-source-verification.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1aa9f71a7b2580bba7b07daaeabb67cc0c6a0d25",
+      "size": 34427,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/1aa9f71a7b2580bba7b07daaeabb67cc0c6a0d25"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/source.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ca1b77ca6c5f797e76358fcccb699756959e6f3",
+      "size": 3868,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/7ca1b77ca6c5f797e76358fcccb699756959e6f3"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/owner-receiving-note.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c002a7ff000ff2c1788a4e5529b227891bee431",
+      "size": 2529,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/7c002a7ff000ff2c1788a4e5529b227891bee431"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/provenance.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ccc727dc8fb30f84b4e2c658824d5d25d77b21e2",
+      "size": 26396,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ccc727dc8fb30f84b4e2c658824d5d25d77b21e2"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/rejected/first-receiver.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a0052675e2f38bfe4b8d204b9ff8eb6a181196a",
+      "size": 668,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/2a0052675e2f38bfe4b8d204b9ff8eb6a181196a"
+    },
+    {
+      "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/rejected/first-receiver.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce5f854fc0b973eac82a96ea3c7ca2b1fae231de",
+      "size": 20690,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ce5f854fc0b973eac82a96ea3c7ca2b1fae231de"
+    },
+    {
+      "path": "docs/receipts/portable-backup-20261008.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "79da05c458df0f3250d8b457ebb9f6e1fadba5cc",
+      "size": 5207,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/79da05c458df0f3250d8b457ebb9f6e1fadba5cc"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "633c2f04637f28d37d9b1e3a30a6c57842ee0643",
+      "size": 7479,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/633c2f04637f28d37d9b1e3a30a6c57842ee0643"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc2a3193f8c6494e1bc969cd276d6750ca7fab6b",
+      "size": 4888,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/cc2a3193f8c6494e1bc969cd276d6750ca7fab6b"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/backup-composition-overlap.patch",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f9a5d7fa8c84eb58474122237475d5063858ac89",
+      "size": 15456,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/f9a5d7fa8c84eb58474122237475d5063858ac89"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/browser-initial-download-failure.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "df02d7eaf83855dad74e3d9e059bf4bfda29137f",
+      "size": 669,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/df02d7eaf83855dad74e3d9e059bf4bfda29137f"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/browser-runner.mjs.source",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cea9f0a8c955ea50cf7450060459f263f1118f5b",
+      "size": 2660,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/cea9f0a8c955ea50cf7450060459f263f1118f5b"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/browser-transfer-manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff63bffbba8f67e4b2c8f70c884023085c9e26bb",
+      "size": 2936,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ff63bffbba8f67e4b2c8f70c884023085c9e26bb"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/build.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be3b3219d3eec3c986d0780f72920f484272e0be",
+      "size": 494,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/be3b3219d3eec3c986d0780f72920f484272e0be"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/composition-build.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7228217c16a1de842b4ef8b860b91d3f3c36c51e",
+      "size": 494,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/7228217c16a1de842b4ef8b860b91d3f3c36c51e"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/composition-inputs.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fd1e851a8d385b34f12bd1b6f49d1c0413c94c8",
+      "size": 1629,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/8fd1e851a8d385b34f12bd1b6f49d1c0413c94c8"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/composition-native-tests.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2f875781dd36deb630466c008f5d4fd62fd4f363",
+      "size": 362,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/2f875781dd36deb630466c008f5d4fd62fd4f363"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/final-browser-results.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28e3ed43f076e4276cfebd4c16b2f185bfc913a1",
+      "size": 2483,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/28e3ed43f076e4276cfebd4c16b2f185bfc913a1"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/final-browser-run.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ecfd83914966a2c3a6d88ff13c919981c3a81e57",
+      "size": 2523,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ecfd83914966a2c3a6d88ff13c919981c3a81e57"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5c18952754e6aee1ef78919b0b1129bdd3137f88",
+      "size": 4173,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/5c18952754e6aee1ef78919b0b1129bdd3137f88"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/VERIFICATION.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92278920ad246c65b33e09cb1e1defaa117247da",
+      "size": 1770,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/92278920ad246c65b33e09cb1e1defaa117247da"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/edit-peer.test.ts.source",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa82d16ca84abb376d0069faacfd0d7a604c6770",
+      "size": 5654,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/fa82d16ca84abb376d0069faacfd0d7a604c6770"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/files.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76e13ef136e5b4fec32461dfa6879033583fc0ca",
+      "size": 1002,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/76e13ef136e5b4fec32461dfa6879033583fc0ca"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/fixed-source-custody.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "811bd021f1815175489c1a5bc816278278742491",
+      "size": 8145,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/811bd021f1815175489c1a5bc816278278742491"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/peer-fixed.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dea308f0ffa2b7dd0825b22723532eca5fa39b2c",
+      "size": 243,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/dea308f0ffa2b7dd0825b22723532eca5fa39b2c"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/peer-original.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc5354c8d35b74c08689f0ed74d10f58b5d0f19c",
+      "size": 1646,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/cc5354c8d35b74c08689f0ed74d10f58b5d0f19c"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/source-custody.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "86793962d019184a1611592f5c0e67cf647b61f8",
+      "size": 1625,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/86793962d019184a1611592f5c0e67cf647b61f8"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/initial-build-failure.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf918e7e75e612c9880fe16d29758b50e5309948",
+      "size": 396,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/bf918e7e75e612c9880fe16d29758b50e5309948"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/native-tests.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd14afcc59d38180b310b4c0e41e9f843b241579",
+      "size": 355,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/bd14afcc59d38180b310b4c0e41e9f843b241579"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e41608f1f51e1c14d231c443afb3c5a04148ed2c",
+      "size": 6706,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/e41608f1f51e1c14d231c443afb3c5a04148ed2c"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after-browser.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "55ed64e0d81655cae7d3b3c49d70c45c8cf23f02",
+      "size": 663,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/55ed64e0d81655cae7d3b3c49d70c45c8cf23f02"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/changed-return-phone.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5237725102b1074a922b626a80fea61ca0048736",
+      "size": 194402,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/5237725102b1074a922b626a80fea61ca0048736"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/results.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c2f42ca85916b2346d6486d6a7f48690a4f5b0a",
+      "size": 7132,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/8c2f42ca85916b2346d6486d6a7f48690a4f5b0a"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/baseline-build.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07c51b5984d13ad8527769690252a78d631dc1a1",
+      "size": 494,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/07c51b5984d13ad8527769690252a78d631dc1a1"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before-browser.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c149da0b7db00079f9d3539ce42142bb51dbbda8",
+      "size": 7303,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/c149da0b7db00079f9d3539ce42142bb51dbbda8"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd622b9fd0307f869a6a1f215d948df84dc231e6",
+      "size": 1348,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/dd622b9fd0307f869a6a1f215d948df84dc231e6"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before/results.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "22d70b50998c9fdece6e50c310ce04ddbc7d3987",
+      "size": 136,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/22d70b50998c9fdece6e50c310ce04ddbc7d3987"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/files.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1b0565bbcb7f6cda5ded82ce210f687c6f7f9b8c",
+      "size": 1867,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/1b0565bbcb7f6cda5ded82ce210f687c6f7f9b8c"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/final-native-tests.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62b1ffe469f564315124c80a6af3dc7ae2744177",
+      "size": 266,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/62b1ffe469f564315124c80a6af3dc7ae2744177"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/qualified-build.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b9fc430d849a89827ad00ca5a429c162f5b7c64",
+      "size": 395,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/4b9fc430d849a89827ad00ca5a429c162f5b7c64"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/source-and-runtime.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "17a7737b1b230a962a1fbc0e70b856cfe86b2d89",
+      "size": 5927,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/17a7737b1b230a962a1fbc0e70b856cfe86b2d89"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/unchanged-editor-browser.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7878c2f1eaecc1fc0133f2ab6e07bb74b1156ef",
+      "size": 611,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/e7878c2f1eaecc1fc0133f2ab6e07bb74b1156ef"
+    },
+    {
+      "path": "index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b67820feae950c02a0c4cbc921488d45903d250",
+      "size": 12679,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/7b67820feae950c02a0c4cbc921488d45903d250"
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "size": 35404,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/91bf5cbb9c68fe99ed4fd1bd475864573116e3f0"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "size": 313,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/329b4b71fbb631662eec0405ced477134520c9a5"
+    },
+    {
+      "path": "public/captures/returnby-desktop.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d",
+      "size": 131379,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/f454495fa31f3ef5ae0f7c3fbf724aa1764b243d"
+    },
+    {
+      "path": "public/captures/returnby-mobile.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c2ed83d29698fb5a47818c87d8f82944997c2bc4",
+      "size": 107642,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/c2ed83d29698fb5a47818c87d8f82944997c2bc4"
+    },
+    {
+      "path": "public/favicon.svg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+      "size": 238,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/2805d210d2571bbfe5468ac5b5743a703c6bb74b"
+    },
+    {
+      "path": "skills-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf",
+      "size": 1457,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf"
+    },
+    {
+      "path": "src/backup-ui.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "366341e5d5215809bca6d8f32f130336b0ea3be4",
+      "size": 6235,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/366341e5d5215809bca6d8f32f130336b0ea3be4"
+    },
+    {
+      "path": "src/backup.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc60d09bf8af57ec56a3b3766559c8829d8a859b",
+      "size": 978,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/bc60d09bf8af57ec56a3b3766559c8829d8a859b"
+    },
+    {
+      "path": "src/backup.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bdd86ce50c723abf8f1d305d4fdf63353510eba8",
+      "size": 7059,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/bdd86ce50c723abf8f1d305d4fdf63353510eba8"
+    },
+    {
+      "path": "src/calendar-batch-ui.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f14427126feb325861ceb08783877c97cfc92e4d",
+      "size": 7180,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/f14427126feb325861ceb08783877c97cfc92e4d"
+    },
+    {
+      "path": "src/calendar-batch.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a9849585c528bd82d8d40d66d2816e7f25bc327",
+      "size": 1833,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/6a9849585c528bd82d8d40d66d2816e7f25bc327"
+    },
+    {
+      "path": "src/calendar-batch.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "520469648c1177f010edf04fa5f779d900e2431f",
+      "size": 6017,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/520469648c1177f010edf04fa5f779d900e2431f"
+    },
+    {
+      "path": "src/deadline-overview-entry.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "747529623a6306596c1a64b6b2d0b5433997a8db",
+      "size": 162,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/747529623a6306596c1a64b6b2d0b5433997a8db"
+    },
+    {
+      "path": "src/deadline-overview-ui.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "895aa0b25a1c1bde6e0ab9c2d5101e644db07072",
+      "size": 10419,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/895aa0b25a1c1bde6e0ab9c2d5101e644db07072"
+    },
+    {
+      "path": "src/deadline-overview.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70df06076463bc604cf10f0259b57d17b82adc14",
+      "size": 5095,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/70df06076463bc604cf10f0259b57d17b82adc14"
+    },
+    {
+      "path": "src/deadline-overview.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ccec55196aaaef117edb87d9f33930865c9b54b3",
+      "size": 4416,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ccec55196aaaef117edb87d9f33930865c9b54b3"
+    },
+    {
+      "path": "src/deadline.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "size": 837,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/bcef920c0f9846b789b1a0aa01b833c7d99ba5d4"
+    },
+    {
+      "path": "src/edit-ui.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab",
+      "size": 4534,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab"
+    },
+    {
+      "path": "src/edit.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68691310feaf885d68876d77e25821f44683c4ae",
+      "size": 1782,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/68691310feaf885d68876d77e25821f44683c4ae"
+    },
+    {
+      "path": "src/edit.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "15ffab3eb7cb4ea365474c2aa50706264e888645",
+      "size": 4075,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/15ffab3eb7cb4ea365474c2aa50706264e888645"
+    },
+    {
+      "path": "src/ics.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "58c873a116ed6b265864cb3e7d5b0dd27fd81544",
+      "size": 2263,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/58c873a116ed6b265864cb3e7d5b0dd27fd81544"
+    },
+    {
+      "path": "src/main.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9eaa6c1f66d93c8ab7b9c9614ce5940b5aa11b13",
+      "size": 9935,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/9eaa6c1f66d93c8ab7b9c9614ce5940b5aa11b13"
+    },
+    {
+      "path": "src/parse.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd15787cbbb4373a1e594c781f3a6d2d5cec15db",
+      "size": 3057,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/dd15787cbbb4373a1e594c781f3a6d2d5cec15db"
+    },
+    {
+      "path": "src/policy.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+      "size": 595,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/38d8d03e30d1054b7447618afa7e49d5b4655c5d"
+    },
+    {
+      "path": "src/samples.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "size": 513,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/cb510076e14da5b3a75edfc472466b93f19bfe94"
+    },
+    {
+      "path": "src/store.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3",
+      "size": 1387,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/c7333d076f851c4dbad6199eaebd6ca34f4abdb3"
+    },
+    {
+      "path": "src/style.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+      "size": 8842,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/d4e76b0ae4264b2ee426472ad2926690029ba3fb"
+    },
+    {
+      "path": "tests/backup-ui.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb5862290d369067cf6eb3500b062d2222c1317b",
+      "size": 11943,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/cb5862290d369067cf6eb3500b062d2222c1317b"
+    },
+    {
+      "path": "tests/backup.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16f2e34707efb6edc86c322c01d3a050e7430c64",
+      "size": 8551,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/16f2e34707efb6edc86c322c01d3a050e7430c64"
+    },
+    {
+      "path": "tests/calendar-batch.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9fc37a60e9021117038aa4c32044f2b2ee51b621",
+      "size": 8427,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/9fc37a60e9021117038aa4c32044f2b2ee51b621"
+    },
+    {
+      "path": "tests/combined-receiving.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ac4fba9052a937c4f4289816a796f035b337084",
+      "size": 6226,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/7ac4fba9052a937c4f4289816a796f035b337084"
+    },
+    {
+      "path": "tests/core.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71035c9da7171237d023a529daf718777d238249",
+      "size": 3054,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/71035c9da7171237d023a529daf718777d238249"
+    },
+    {
+      "path": "tests/deadline-overview.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e512efbd39e7f9ec20d99dc5dce81b58327f091d",
+      "size": 8723,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/e512efbd39e7f9ec20d99dc5dce81b58327f091d"
+    },
+    {
+      "path": "tests/edit-ui.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "02ade0a572291bb54d01e9fa6444a61f342575b0",
+      "size": 6085,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/02ade0a572291bb54d01e9fa6444a61f342575b0"
+    },
+    {
+      "path": "tests/edit.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92508d1715f6c437a6c7b0f654193fed32c7f285",
+      "size": 5923,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/92508d1715f6c437a6c7b0f654193fed32c7f285"
+    },
+    {
+      "path": "tests/helpers/loading-cases.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "27be19826740cd1a2efdff90c9f3cd3c57c48099",
+      "size": 5956,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/27be19826740cd1a2efdff90c9f3cd3c57c48099"
+    },
+    {
+      "path": "tests/helpers/loading-fixture.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0efc199de4f8595c9ea601179709030decb81ab",
+      "size": 1267,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/e0efc199de4f8595c9ea601179709030decb81ab"
+    },
+    {
+      "path": "tests/helpers/storage-cases.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac797cdc364cdae4b7af1e78a0d04ca968f2a6e0",
+      "size": 3236,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/ac797cdc364cdae4b7af1e78a0d04ca968f2a6e0"
+    },
+    {
+      "path": "tests/helpers/storage-fixture.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b808f12d34896ed4f30742a629b46163b123882f",
+      "size": 3025,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/b808f12d34896ed4f30742a629b46163b123882f"
+    },
+    {
+      "path": "tests/helpers/submitted-policy-cases.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "636e4c81cc10647b28f729d1a1389ee38f7b1dfa",
+      "size": 4193,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/636e4c81cc10647b28f729d1a1389ee38f7b1dfa"
+    },
+    {
+      "path": "tests/ics.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+      "size": 4526,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4"
+    },
+    {
+      "path": "tests/loading.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "333cd255c4b9b29ec5363813436720b284d08770",
+      "size": 680,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/333cd255c4b9b29ec5363813436720b284d08770"
+    },
+    {
+      "path": "tests/stale-actions.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf036f3b3f99be16fb480f0584850861f4678903",
+      "size": 4485,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/bf036f3b3f99be16fb480f0584850861f4678903"
+    },
+    {
+      "path": "tests/storage.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88e594569829f41bc12895c2a86396949a569abf",
+      "size": 664,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/88e594569829f41bc12895c2a86396949a569abf"
+    },
+    {
+      "path": "tests/submitted-policy.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0bcf51272b0042d9e1436ddb54eecfdb1f48a51",
+      "size": 689,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/f0bcf51272b0042d9e1436ddb54eecfdb1f48a51"
+    },
+    {
+      "path": "tools/capture_returnby.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "367403bf3c393731cee650912789add1f3b46297",
+      "size": 4475,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/367403bf3c393731cee650912789add1f3b46297"
+    },
+    {
+      "path": "tools/check_actions_backup_calendar_receiving.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a21e1044ad24a14a3f4459fff49e571efb4d817c",
+      "size": 20805,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/a21e1044ad24a14a3f4459fff49e571efb4d817c"
+    },
+    {
+      "path": "tools/check_backup_browser.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "53426d86f005e3d5b9853c5909d7f3d5bbe2f703",
+      "size": 11046,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/53426d86f005e3d5b9853c5909d7f3d5bbe2f703"
+    },
+    {
+      "path": "tools/check_calendar_backup_receiving.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3429c8da623484399699a31dfb9127c1a28746c3",
+      "size": 21276,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/3429c8da623484399699a31dfb9127c1a28746c3"
+    },
+    {
+      "path": "tools/check_calendar_batch_browser.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9d017d186e574ec2b6c04a5dc3c5e46c14af1c4",
+      "size": 16173,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/a9d017d186e574ec2b6c04a5dc3c5e46c14af1c4"
+    },
+    {
+      "path": "tools/check_deadline_overview_browser.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0d6a1634c13bafbe7b4ff6dadf362c881d06098",
+      "size": 41653,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/b0d6a1634c13bafbe7b4ff6dadf362c881d06098"
+    },
+    {
+      "path": "tools/check_edit_backup_browser.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f4b0529172621ae51bb20f86a36a27b408974551",
+      "size": 5288,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/f4b0529172621ae51bb20f86a36a27b408974551"
+    },
+    {
+      "path": "tools/check_edit_browser.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3a2b901cb584292c7a103233842e3edafc57e7b5",
+      "size": 11846,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/3a2b901cb584292c7a103233842e3edafc57e7b5"
+    },
+    {
+      "path": "tools/check_stale_browser.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c3a8bf8434777052910ec63c9f30b52b43d21981",
+      "size": 9903,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/c3a8bf8434777052910ec63c9f30b52b43d21981"
+    },
+    {
+      "path": "tools/fixtures/deadline-overview-cases.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "061cbc8a6096b4faffe1506dc4997c0723d94e9a",
+      "size": 17465,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/061cbc8a6096b4faffe1506dc4997c0723d94e9a"
+    },
+    {
+      "path": "tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "size": 273,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a"
+    },
+    {
+      "path": "vite.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "041854f74501ecbb719e93f24f73e471596ab572",
+      "size": 82,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/041854f74501ecbb719e93f24f73e471596ab572"
+    }
+  ],
+  "observedNativeSource": [
+    {
+      "path": ".github/workflows/deadline-overview-browser.yml",
+      "gitBlob": "0bee4230b7d9515a9a84d8a3c97b869db454f51e",
+      "sha256": "0f838fa5b6ee0a580a3f85c3e5c8a012d3cf2c6cd092ff80618811292eed419a",
+      "bytes": 3794,
+      "exact": true
+    },
+    {
+      "path": "data/policies.json",
+      "gitBlob": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26",
+      "bytes": 449,
+      "exact": true
+    },
+    {
+      "path": "index.html",
+      "gitBlob": "7b67820feae950c02a0c4cbc921488d45903d250",
+      "sha256": "25783fbf719d9f2c537f36cd1189819cf3af57e619e0a5e30fb62b186d461fea",
+      "bytes": 12679,
+      "exact": true
+    },
+    {
+      "path": "package-lock.json",
+      "gitBlob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+      "bytes": 35404,
+      "exact": true
+    },
+    {
+      "path": "package.json",
+      "gitBlob": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+      "bytes": 313,
+      "exact": true
+    },
+    {
+      "path": "src/backup-ui.ts",
+      "gitBlob": "366341e5d5215809bca6d8f32f130336b0ea3be4",
+      "sha256": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+      "bytes": 6235,
+      "exact": true
+    },
+    {
+      "path": "src/backup.css",
+      "gitBlob": "bc60d09bf8af57ec56a3b3766559c8829d8a859b",
+      "sha256": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+      "bytes": 978,
+      "exact": true
+    },
+    {
+      "path": "src/backup.ts",
+      "gitBlob": "bdd86ce50c723abf8f1d305d4fdf63353510eba8",
+      "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+      "bytes": 7059,
+      "exact": true
+    },
+    {
+      "path": "src/calendar-batch-ui.ts",
+      "gitBlob": "f14427126feb325861ceb08783877c97cfc92e4d",
+      "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+      "bytes": 7180,
+      "exact": true
+    },
+    {
+      "path": "src/calendar-batch.css",
+      "gitBlob": "6a9849585c528bd82d8d40d66d2816e7f25bc327",
+      "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+      "bytes": 1833,
+      "exact": true
+    },
+    {
+      "path": "src/calendar-batch.ts",
+      "gitBlob": "520469648c1177f010edf04fa5f779d900e2431f",
+      "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+      "bytes": 6017,
+      "exact": true
+    },
+    {
+      "path": "src/deadline-overview-entry.ts",
+      "gitBlob": "747529623a6306596c1a64b6b2d0b5433997a8db",
+      "sha256": "4e9f4f29cc1d19dfdecbd41c56c0200b2ad6252e3316e730f56f4df3ecd550f0",
+      "bytes": 162,
+      "exact": true
+    },
+    {
+      "path": "src/deadline-overview-ui.ts",
+      "gitBlob": "895aa0b25a1c1bde6e0ab9c2d5101e644db07072",
+      "sha256": "5053254223728e30e7ab858a717fb6e9c691be3e812f40f5ea99a422409f4691",
+      "bytes": 10419,
+      "exact": true
+    },
+    {
+      "path": "src/deadline-overview.css",
+      "gitBlob": "70df06076463bc604cf10f0259b57d17b82adc14",
+      "sha256": "43eb355f2dbe0bd70231aa733cb47fa5cc3280b0e7ff08510533c345cafac5c3",
+      "bytes": 5095,
+      "exact": true
+    },
+    {
+      "path": "src/deadline-overview.ts",
+      "gitBlob": "ccec55196aaaef117edb87d9f33930865c9b54b3",
+      "sha256": "1db274a72577c675f68e03a2569e7a33f6dc326864445c5e8eba42368d54e4c9",
+      "bytes": 4416,
+      "exact": true
+    },
+    {
+      "path": "src/deadline.ts",
+      "gitBlob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+      "bytes": 837,
+      "exact": true
+    },
+    {
+      "path": "src/edit-ui.ts",
+      "gitBlob": "d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab",
+      "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+      "bytes": 4534,
+      "exact": true
+    },
+    {
+      "path": "src/edit.css",
+      "gitBlob": "68691310feaf885d68876d77e25821f44683c4ae",
+      "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+      "bytes": 1782,
+      "exact": true
+    },
+    {
+      "path": "src/edit.ts",
+      "gitBlob": "15ffab3eb7cb4ea365474c2aa50706264e888645",
+      "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+      "bytes": 4075,
+      "exact": true
+    },
+    {
+      "path": "src/ics.ts",
+      "gitBlob": "58c873a116ed6b265864cb3e7d5b0dd27fd81544",
+      "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+      "bytes": 2263,
+      "exact": true
+    },
+    {
+      "path": "src/main.ts",
+      "gitBlob": "9eaa6c1f66d93c8ab7b9c9614ce5940b5aa11b13",
+      "sha256": "7d2d2b1ff1c783e50230b5c8bc149d9ec4dcf80bae25689e38d3527ad7899dd3",
+      "bytes": 9935,
+      "exact": true
+    },
+    {
+      "path": "src/parse.ts",
+      "gitBlob": "dd15787cbbb4373a1e594c781f3a6d2d5cec15db",
+      "sha256": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243",
+      "bytes": 3057,
+      "exact": true
+    },
+    {
+      "path": "src/policy.ts",
+      "gitBlob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+      "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+      "bytes": 595,
+      "exact": true
+    },
+    {
+      "path": "src/samples.ts",
+      "gitBlob": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+      "bytes": 513,
+      "exact": true
+    },
+    {
+      "path": "src/store.ts",
+      "gitBlob": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3",
+      "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+      "bytes": 1387,
+      "exact": true
+    },
+    {
+      "path": "src/style.css",
+      "gitBlob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+      "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+      "bytes": 8842,
+      "exact": true
+    },
+    {
+      "path": "tests/deadline-overview.test.ts",
+      "gitBlob": "e512efbd39e7f9ec20d99dc5dce81b58327f091d",
+      "sha256": "8b9fa6ec3d40a3fb8878cc6c39321bd996b344ca9f1b3434877450a4bceb9dc4",
+      "bytes": 8723,
+      "exact": true
+    },
+    {
+      "path": "tools/check_deadline_overview_browser.mjs",
+      "gitBlob": "b0d6a1634c13bafbe7b4ff6dadf362c881d06098",
+      "sha256": "b4d1296d97e8a3a8b1b56d5c516c43409227bdee33ab81a09366551b9f4741ac",
+      "bytes": 41653,
+      "exact": true
+    },
+    {
+      "path": "tools/fixtures/deadline-overview-cases.json",
+      "gitBlob": "061cbc8a6096b4faffe1506dc4997c0723d94e9a",
+      "sha256": "52cd12f78f91a8a3b74df8a726b14277fbc13792ced95209f764fee366ae588d",
+      "bytes": 17465,
+      "exact": true
+    },
+    {
+      "path": "tsconfig.json",
+      "gitBlob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc",
+      "bytes": 273,
+      "exact": true
+    }
+  ],
+  "buildHashes": {
+    "assets/index-CW_D8HE8.css": "abb3a0cfddf06ac233bab7ddfe932e7731f3f2287d09fd2c53ceada787852e68",
+    "assets/index-D8MZjC5o.js": "4bfb305868ab7ad14cd79ea1927a935b61bce3504683b8d93ca745fecda2a0da",
+    "captures/returnby-desktop.png": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+    "captures/returnby-mobile.png": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+    "favicon.svg": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+    "index.html": "58d67ddd1483f12fb6e48b5fabfe91e8127b43d414c72670ca00e07941613548"
+  },
+  "inverses": {
+    "mainExactOriginal": true,
+    "html": true,
+    "readmeAppendOnly": true,
+    "receiver": true
+  }
+}

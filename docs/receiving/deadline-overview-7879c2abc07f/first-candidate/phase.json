@@ -1,0 +1,97 @@
+{
+  "schema": "returnby.deadline-overview.phase.v1",
+  "phase": "candidate-entry-and-capture-failure",
+  "head": "b7473da4c03cb51a94d4db354e89f1030d76709a",
+  "tree": "3bcf198ef1ec1606f519ddce3f929e13138ecd87",
+  "checkout": "d13a3082e02172d32cfe5fccdd7508c7dfc2530a",
+  "parents": [
+    "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+    "b7473da4c03cb51a94d4db354e89f1030d76709a"
+  ],
+  "maintained": {
+    "run": 37800755478,
+    "job": 113392002764,
+    "passed": 192,
+    "failed": 54,
+    "overviewModelPassed": 45,
+    "reason": "All54 owner fixture failures import main and encounter their inert Element.querySelector placeholder in the newly included overview entry: month.addEventListener is not a function. Production browser strict build succeeded.",
+    "rawSha256": "321bc3805a663e470f65776d7c78eba368bcc419dae53eaa31ef6a1a7f7101a3"
+  },
+  "browser": {
+    "run": 37800755351,
+    "job": 113392004010,
+    "status": "failed",
+    "checks": [
+      "actual existing review/save produces three exact independent orders with native IDs and creation times",
+      "the native unsaved intake remains available before opening the separate planning view",
+      "monthly counts, exact chosen-day records, empty days and keyboard selection preserve storage and intake state",
+      "native backup file admission feeds exact month, leap, century, year and date-range boundaries in three real browser timezones",
+      "all 31 same-day records remain reachable in bounded pages with exact Unicode, markup, multiline values and keyboard focus",
+      "a real other-tab edit stays separate until explicit refresh, then moves the same saved identity without committing pending drafts",
+      "saved-read and late-record failures refuse the entire overview, retain drafts and allow explicit unchanged-data retry"
+    ],
+    "artifactCount": 8,
+    "sourceUnchanged": true,
+    "pageErrors": [],
+    "error": "Error: CDP timeout: Page.captureScreenshot\n    at Timeout._onTimeout (file:///home/runner/work/returnby/returnby/tools/check_deadline_overview_browser.mjs:115:34)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)",
+    "bundle": {
+      "bytes": 437848,
+      "sha256": "5bf2eef7d6044c7a24505c1f4af6d6d7ff96920dee94776c73c05c2570bfe86a",
+      "chunks": 143
+    },
+    "rawSha256": "de9b1cee2d5a4ed615211bcd76516a452429ec0f6b9e418519764d068cfb84f2"
+  },
+  "decision": {
+    "production": "Restore original main and load unchanged independent overview entry from its own HTML module script. Existing owner tests, model,UI,CSS and45newmodel cases stay exact.",
+    "receiving": "Before screenshot, foreground the current CDP target and await two paint frames. Missing foreground after other-tab session switch is a source-based hypothesis; no proven unique root cause is claimed. All nine frozen group inputs/assertions stay unchanged.",
+    "scope": "#8/#10 keep adoption; PR28 stays stacked on #20."
+  },
+  "visual": [
+    {
+      "name": "overview-desktop.png",
+      "sha256": "0efc84faf3892e849b684cb96a2f845ed7c48d240e67c8a50b5caa28aaebdf23",
+      "receivers": [
+        "echo_opening_receiving",
+        "github_execution"
+      ],
+      "finding": "Directly displayed actual PNG. Literal text and available layout are readable; no clipping/overlap or demonstrated product rendering defect. Failed-state phone frame captures only the top of the overview; lower selected-record content remains a later receiving boundary."
+    },
+    {
+      "name": "refusal-phone.png",
+      "sha256": "6f6761904e5f5cdd6a12f2c3c338c839b23d06ecc4caa39bdd679f699ac03628",
+      "receivers": [
+        "echo_opening_receiving",
+        "github_execution"
+      ],
+      "finding": "Directly displayed actual PNG. Literal text and available layout are readable; no clipping/overlap or demonstrated product rendering defect. Failed-state phone frame captures only the top of the overview; lower selected-record content remains a later receiving boundary."
+    },
+    {
+      "name": "failed-state.png",
+      "sha256": "da040a763e61a684819169d6b0ef411bce70bf6f5c4cfc8576d0ff9b4feccbfb",
+      "receivers": [
+        "echo_opening_receiving",
+        "github_execution"
+      ],
+      "finding": "Directly displayed actual PNG. Literal text and available layout are readable; no clipping/overlap or demonstrated product rendering defect. Failed-state phone frame captures only the top of the overview; lower selected-record content remains a later receiving boundary."
+    }
+  ],
+  "artifact": {
+    "id": 11560064034,
+    "name": "deadline-overview-receiving-37800755351",
+    "size_in_bytes": 255025,
+    "url": "https://api.github.com/repos/Jacob-Met/returnby/actions/artifacts/11560064034",
+    "archive_download_url": "https://api.github.com/repos/Jacob-Met/returnby/actions/artifacts/11560064034/zip",
+    "expired": false,
+    "created_at": "2026-10-08T15:27:13Z",
+    "expires_at": "2026-10-22T15:27:11Z",
+    "updated_at": "2026-10-08T15:27:13Z",
+    "digest": "sha256:557687e0d449918c50cbbe296c2a2a14314120da81f5e7bef753eadad86a5a26",
+    "workflow_run": {
+      "id": 37800755351,
+      "repository_id": 1404772061,
+      "head_repository_id": 1404772061,
+      "head_branch": "work/monthly-deadline-overview-7879c2abc07f-20261008",
+      "head_sha": "b7473da4c03cb51a94d4db354e89f1030d76709a"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "returnby.deadline-overview.phase.v1",
+  "repository": "Jacob-Met/returnby",
+  "claim": "https://github.com/Jacob-Met/returnby/issues/26",
+  "pullRequest": "https://github.com/Jacob-Met/returnby/pull/28",
+  "target": "integrate/calendar-backup-actions-receiving-20261008-b55367d787c4",
+  "targetHead": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "adoption": "#8/#10 retain adoption and main integration; existing owner branches and main were not moved.",
+  "phase": "original-missing-capability",
+  "head": "8414d3d97b126d913935679665e6c2017b98d26e",
+  "tree": "261ff38e32559986108f139d75c75c5ac153a154",
+  "checkout": "3bac025d6836cbbd715c98ec3974992b14fa5496",
+  "parents": [
+    "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+    "8414d3d97b126d913935679665e6c2017b98d26e"
+  ],
+  "maintained": {
+    "run": 37799407699,
+    "job": 113387300165,
+    "status": "success",
+    "tests": 201,
+    "testFiles": 12
+  },
+  "browser": {
+    "run": 37799407832,
+    "job": 113387300931,
+    "status": "failure",
+    "checks": [
+      "actual existing review/save produces three exact independent orders with native IDs and creation times",
+      "the native unsaved intake remains available before opening the separate planning view"
+    ],
+    "error": "AssertionError [ERR_ASSERTION]: Missing monthly saved-deadline overview entrypoint\n\n0 !== 1\n\n    at file:///home/runner/work/returnby/returnby/tools/check_deadline_overview_browser.mjs:452:10",
+    "sourceUnchanged": true,
+    "bundle": {
+      "bytes": 217638,
+      "sha256": "48d555d05ccc80609d5bf54adb5505dfef31e51df0362d4ce389ec1ce2b95a7b",
+      "chunks": 71
+    },
+    "members": 3,
+    "memberBytes": 162904,
+    "artifact": {
+      "id": 11559489173,
+      "name": "deadline-overview-receiving-37799407832",
+      "size_in_bytes": 147272,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/actions/artifacts/11559489173",
+      "archive_download_url": "https://api.github.com/repos/Jacob-Met/returnby/actions/artifacts/11559489173/zip",
+      "expired": false,
+      "created_at": "2026-10-08T15:17:07Z",
+      "expires_at": "2026-10-22T15:17:06Z",
+      "updated_at": "2026-10-08T15:17:07Z",
+      "digest": "sha256:a7e240390f7048643a4ab827d1a9c04fa10789133139f99a9dfde291c84a3a05",
+      "workflow_run": {
+        "id": 37799407832,
+        "repository_id": 1404772061,
+        "head_repository_id": 1404772061,
+        "head_branch": "work/monthly-deadline-overview-7879c2abc07f-20261008",
+        "head_sha": "8414d3d97b126d913935679665e6c2017b98d26e"
+      }
+    }
+  },
+  "boundary": "Three real native Review/Save records and an unchanged unsubmitted draft were demonstrated before the authored missing monthly-overview entrypoint assertion. This is an actual absence negative, not a source-only inference. No downstream overview behavior was claimed."
+}

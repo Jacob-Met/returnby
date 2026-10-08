@@ -1,0 +1,721 @@
+﻿2026-10-08T15:26:20.1876632Z Current runner version: '2.337.0'
+2026-10-08T15:26:20.1903909Z ##[group]Runner Image Provisioner
+2026-10-08T15:26:20.1904973Z Hosted Compute Agent
+2026-10-08T15:26:20.1905611Z Version: 20261002.596
+2026-10-08T15:26:20.1906268Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-08T15:26:20.1907293Z Build Date: 2026-10-02T22:28:27Z
+2026-10-08T15:26:20.1908025Z Worker ID: {395fdc75-2620-4046-8c74-33ec1a440cc2}
+2026-10-08T15:26:20.1908819Z Region: westus2
+2026-10-08T15:26:20.1909516Z Cloud: Azure
+2026-10-08T15:26:20.1910088Z ##[endgroup]
+2026-10-08T15:26:20.1911630Z ##[group]Operating System
+2026-10-08T15:26:20.1912292Z Ubuntu
+2026-10-08T15:26:20.1912921Z 24.04.5
+2026-10-08T15:26:20.1913546Z LTS
+2026-10-08T15:26:20.1914122Z ##[endgroup]
+2026-10-08T15:26:20.1914768Z ##[group]Runner Image
+2026-10-08T15:26:20.1915408Z Image: ubuntu-24.04
+2026-10-08T15:26:20.1916012Z Version: 20261004.327.1
+2026-10-08T15:26:20.1917612Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-08T15:26:20.1919286Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-08T15:26:20.1920368Z ##[endgroup]
+2026-10-08T15:26:20.1921716Z ##[group]GITHUB_TOKEN Permissions
+2026-10-08T15:26:20.1924020Z Contents: read
+2026-10-08T15:26:20.1924773Z Metadata: read
+2026-10-08T15:26:20.1925411Z ##[endgroup]
+2026-10-08T15:26:20.1927932Z Secret source: Actions
+2026-10-08T15:26:20.1929053Z Cache mode: write
+2026-10-08T15:26:20.1929812Z Prepare workflow directory
+2026-10-08T15:26:20.2334582Z Prepare all required actions
+2026-10-08T15:26:20.2387819Z Getting action download info
+2026-10-08T15:26:20.5817055Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-08T15:26:20.6895881Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-08T15:26:20.9206982Z Complete job name: test-and-build
+2026-10-08T15:26:21.0020091Z ##[group]Run actions/checkout@v4
+2026-10-08T15:26:21.0020950Z with:
+2026-10-08T15:26:21.0021418Z   repository: Jacob-Met/returnby
+2026-10-08T15:26:21.0025422Z   token: ***
+2026-10-08T15:26:21.0025873Z   ssh-strict: true
+2026-10-08T15:26:21.0026328Z   ssh-user: git
+2026-10-08T15:26:21.0026790Z   persist-credentials: true
+2026-10-08T15:26:21.0027548Z   clean: true
+2026-10-08T15:26:21.0028007Z   sparse-checkout-cone-mode: true
+2026-10-08T15:26:21.0028537Z   fetch-depth: 1
+2026-10-08T15:26:21.0028977Z   fetch-tags: false
+2026-10-08T15:26:21.0029431Z   show-progress: true
+2026-10-08T15:26:21.0029885Z   lfs: false
+2026-10-08T15:26:21.0030303Z   submodules: false
+2026-10-08T15:26:21.0030760Z   set-safe-directory: true
+2026-10-08T15:26:21.0031270Z   allow-unsafe-pr-checkout: false
+2026-10-08T15:26:21.0032038Z ##[endgroup]
+2026-10-08T15:26:21.1094956Z Syncing repository: Jacob-Met/returnby
+2026-10-08T15:26:21.1097636Z ##[group]Getting Git version info
+2026-10-08T15:26:21.1098747Z Working directory is '/home/runner/work/returnby/returnby'
+2026-10-08T15:26:21.1099819Z [command]/usr/bin/git version
+2026-10-08T15:26:21.1140117Z git version 2.55.0
+2026-10-08T15:26:21.1163090Z ##[endgroup]
+2026-10-08T15:26:21.1181043Z Temporarily overriding HOME='/home/runner/work/_temp/0b8b38bb-521e-4363-96cd-b0b6fe4ade57' before making global git config changes
+2026-10-08T15:26:21.1183310Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T15:26:21.1186766Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/returnby/returnby
+2026-10-08T15:26:21.1259608Z Deleting the contents of '/home/runner/work/returnby/returnby'
+2026-10-08T15:26:21.1264870Z ##[group]Initializing the repository
+2026-10-08T15:26:21.1270230Z [command]/usr/bin/git init /home/runner/work/returnby/returnby
+2026-10-08T15:26:21.1365204Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-08T15:26:21.1367070Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-08T15:26:21.1369878Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-08T15:26:21.1371134Z hint: call:
+2026-10-08T15:26:21.1371704Z hint:
+2026-10-08T15:26:21.1372380Z hint: 	git config --global init.defaultBranch <name>
+2026-10-08T15:26:21.1373300Z hint:
+2026-10-08T15:26:21.1374217Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-08T15:26:21.1375513Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-08T15:26:21.1376641Z hint:
+2026-10-08T15:26:21.1377496Z hint: 	git branch -m <name>
+2026-10-08T15:26:21.1378240Z hint:
+2026-10-08T15:26:21.1379413Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-08T15:26:21.1380923Z Initialized empty Git repository in /home/runner/work/returnby/returnby/.git/
+2026-10-08T15:26:21.1383483Z [command]/usr/bin/git remote add origin https://github.com/Jacob-Met/returnby
+2026-10-08T15:26:21.1437862Z ##[endgroup]
+2026-10-08T15:26:21.1438736Z ##[group]Disabling automatic garbage collection
+2026-10-08T15:26:21.1443043Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-08T15:26:21.1481185Z ##[endgroup]
+2026-10-08T15:26:21.1481951Z ##[group]Setting up auth
+2026-10-08T15:26:21.1489887Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T15:26:21.1536602Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-08T15:26:21.1921955Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T15:26:21.1972552Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-08T15:26:21.2244560Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T15:26:21.2291287Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-08T15:26:21.2560173Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-08T15:26:21.2612571Z ##[endgroup]
+2026-10-08T15:26:21.2614067Z ##[group]Fetching the repository
+2026-10-08T15:26:21.2624028Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d13a3082e02172d32cfe5fccdd7508c7dfc2530a:refs/remotes/pull/28/merge
+2026-10-08T15:26:21.8393416Z From https://github.com/Jacob-Met/returnby
+2026-10-08T15:26:21.8394478Z  * [new ref]         d13a3082e02172d32cfe5fccdd7508c7dfc2530a -> pull/28/merge
+2026-10-08T15:26:21.8398542Z ##[endgroup]
+2026-10-08T15:26:21.8399284Z ##[group]Determining the checkout info
+2026-10-08T15:26:21.8400903Z ##[endgroup]
+2026-10-08T15:26:21.8407969Z [command]/usr/bin/git sparse-checkout disable
+2026-10-08T15:26:21.8466956Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-08T15:26:21.8529907Z ##[group]Checking out the ref
+2026-10-08T15:26:21.8535528Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/28/merge
+2026-10-08T15:26:21.8793841Z Note: switching to 'refs/remotes/pull/28/merge'.
+2026-10-08T15:26:21.8794714Z 
+2026-10-08T15:26:21.8795302Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-08T15:26:21.8796616Z changes and commit them, and you can discard any commits you make in this
+2026-10-08T15:26:21.8798237Z state without impacting any branches by switching back to a branch.
+2026-10-08T15:26:21.8799022Z 
+2026-10-08T15:26:21.8799567Z If you want to create a new branch to retain commits you create, you may
+2026-10-08T15:26:21.8800834Z do so (now or later) by using -c with the switch command. Example:
+2026-10-08T15:26:21.8801328Z 
+2026-10-08T15:26:21.8801620Z   git switch -c <new-branch-name>
+2026-10-08T15:26:21.8801967Z 
+2026-10-08T15:26:21.8802479Z Or undo this operation with:
+2026-10-08T15:26:21.8802803Z 
+2026-10-08T15:26:21.8802996Z   git switch -
+2026-10-08T15:26:21.8803247Z 
+2026-10-08T15:26:21.8803643Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-08T15:26:21.8804517Z 
+2026-10-08T15:26:21.8805498Z HEAD is now at d13a308 Merge b7473da4c03cb51a94d4db354e89f1030d76709a into 7829e56e57ef91dfe8edd5853fd68d6c7890fac0
+2026-10-08T15:26:21.8807897Z ##[endgroup]
+2026-10-08T15:26:21.8910215Z [command]/usr/bin/git log -1 --format=%H
+2026-10-08T15:26:21.8911751Z d13a3082e02172d32cfe5fccdd7508c7dfc2530a
+2026-10-08T15:26:21.9238634Z ##[group]Run actions/setup-node@v4
+2026-10-08T15:26:21.9239333Z with:
+2026-10-08T15:26:21.9324089Z   node-version: 22
+2026-10-08T15:26:21.9324781Z   cache: npm
+2026-10-08T15:26:21.9325354Z   always-auth: false
+2026-10-08T15:26:21.9325908Z   check-latest: false
+2026-10-08T15:26:21.9330470Z   token: ***
+2026-10-08T15:26:21.9330967Z ##[endgroup]
+2026-10-08T15:26:22.1110073Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+2026-10-08T15:26:22.1114165Z (node:2292) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T15:26:22.1115519Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T15:26:22.1117321Z ##[group]Environment details
+2026-10-08T15:26:24.5536324Z node: v22.23.3
+2026-10-08T15:26:24.5536931Z npm: 10.9.9
+2026-10-08T15:26:24.5537523Z yarn: 1.22.22
+2026-10-08T15:26:24.5538556Z ##[endgroup]
+2026-10-08T15:26:24.5559931Z [command]/opt/hostedtoolcache/node/22.23.3/x64/bin/npm config get cache
+2026-10-08T15:26:24.8447426Z /home/runner/.npm
+2026-10-08T15:26:25.1285875Z Cache hit for: node-cache-Linux-x64-npm-df462277ac00377fab2913d56331cbd61a668f929cf335a250b95d1eb23d49df
+2026-10-08T15:26:25.1389050Z (node:2292) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-08T15:26:26.4250582Z Received 957335 of 30317463 (3.2%), 0.9 MBs/sec
+2026-10-08T15:26:26.7670222Z Received 30317463 of 30317463 (100.0%), 21.5 MBs/sec
+2026-10-08T15:26:26.7671261Z Cache Size: ~29 MB (30317463 B)
+2026-10-08T15:26:26.7701184Z [command]/usr/bin/tar -xf /home/runner/work/_temp/512e4fb3-078f-463f-9c83-1e63d3af93e2/cache.tzst -P -C /home/runner/work/returnby/returnby --use-compress-program unzstd
+2026-10-08T15:26:26.8494264Z Cache restored successfully
+2026-10-08T15:26:26.8519588Z Cache restored from key: node-cache-Linux-x64-npm-df462277ac00377fab2913d56331cbd61a668f929cf335a250b95d1eb23d49df
+2026-10-08T15:26:26.8738662Z ##[group]Run npm ci
+2026-10-08T15:26:26.8739027Z [36;1mnpm ci[0m
+2026-10-08T15:26:26.9028140Z shell: /usr/bin/bash -e {0}
+2026-10-08T15:26:26.9028665Z ##[endgroup]
+2026-10-08T15:26:29.0856063Z 
+2026-10-08T15:26:29.0865018Z added 38 packages, and audited 39 packages in 2s
+2026-10-08T15:26:29.0865562Z 
+2026-10-08T15:26:29.0865936Z 13 packages are looking for funding
+2026-10-08T15:26:29.0866463Z   run `npm fund` for details
+2026-10-08T15:26:29.0867943Z 
+2026-10-08T15:26:29.0868226Z found 0 vulnerabilities
+2026-10-08T15:26:29.1384650Z ##[group]Run npm audit --audit-level=moderate
+2026-10-08T15:26:29.1385076Z [36;1mnpm audit --audit-level=moderate[0m
+2026-10-08T15:26:29.1459148Z shell: /usr/bin/bash -e {0}
+2026-10-08T15:26:29.1459490Z ##[endgroup]
+2026-10-08T15:26:29.5325167Z found 0 vulnerabilities
+2026-10-08T15:26:29.5441752Z ##[group]Run npm test
+2026-10-08T15:26:29.5442037Z [36;1mnpm test[0m
+2026-10-08T15:26:29.5513313Z shell: /usr/bin/bash -e {0}
+2026-10-08T15:26:29.5513667Z ##[endgroup]
+2026-10-08T15:26:29.6840592Z 
+2026-10-08T15:26:29.6841397Z > returnby@0.1.0 test
+2026-10-08T15:26:29.6841767Z > vitest run
+2026-10-08T15:26:29.6841908Z 
+2026-10-08T15:26:30.3709388Z 
+2026-10-08T15:26:30.3713510Z [1m[30m[46m RUN [49m[39m[22m [36mv5.0.3 [39m[90m/home/runner/work/returnby/returnby[39m
+2026-10-08T15:26:30.3714405Z 
+2026-10-08T15:26:31.1180226Z  [31m❯[39m tests/backup-ui.test.mjs [2m([22m[2m19 tests[22m[2m | [22m[31m19 failed[39m[2m)[22m[32m 244[2mms[22m[39m
+2026-10-08T15:26:31.1182670Z [31m   [31m×[31m preview and cancel preserve storage, native tracker, and an unsaved email draft[39m[32m 145[2mms[22m[39m
+2026-10-08T15:26:31.1226529Z [31m   [31m×[31m confirmed import updates the real tracker once, preserves source/draft and skips repeats[39m[32m 5[2mms[22m[39m
+2026-10-08T15:26:31.1254363Z [31m   [31m×[31m a restored historical fallback displays its saved days without applying the current fallback[39m[32m 12[2mms[22m[39m
+2026-10-08T15:26:31.1269974Z [31m   [31m×[31m conflict in one row blocks every addition and exposes the changed attribution[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:31.1272131Z [31m   [31m×[31m a byte-limit overflow in the combined tracker is refused before any import write[39m[32m 6[2mms[22m[39m
+2026-10-08T15:26:31.1273870Z [31m   [31m×[31m unsupported version does not commit any rows[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:31.1275319Z [31m   [31m×[31m foreign window source does not commit any rows[39m[32m 13[2mms[22m[39m
+2026-10-08T15:26:31.1276653Z [31m   [31m×[31m malformed JSON does not commit any rows[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:31.1278646Z [31m   [31m×[31m late bad row does not commit any rows[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:31.1279955Z [31m   [31m×[31m oversized file does not commit any rows[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:31.1281642Z [31m   [31m×[31m quota refusal keeps prior bytes, native memory, both previews, and supports a single retry[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:31.1283635Z [31m   [31m×[31m serialization failure at the native save boundary cannot change bytes or native memory[39m[32m 5[2mms[22m[39m
+2026-10-08T15:26:31.1285521Z [31m   [31m×[31m a changed persisted baseline refreshes the review before a subsequent confirmation[39m[32m 5[2mms[22m[39m
+2026-10-08T15:26:31.1287515Z [31m   [31m×[31m existing unreadable storage prevents import and export[39m[32m 6[2mms[22m[39m
+2026-10-08T15:26:31.1289064Z [31m   [31m×[31m existing broken JSON storage prevents import and export[39m[32m 7[2mms[22m[39m
+2026-10-08T15:26:31.1290799Z [31m   [31m×[31m existing unexpected shape storage prevents import and export[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:31.1292928Z [31m   [31m×[31m cancel or a newer file selection invalidates a pending asynchronous read[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:31.1295102Z [31m   [31m×[31m large previews page through every order and render imported text without HTML[39m[32m 11[2mms[22m[39m
+2026-10-08T15:26:31.1297592Z [31m   [31m×[31m the download contains saved reviewed details, preserves attribution, and excludes the current raw email draft[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:31.3829732Z  [32m✓[39m tests/calendar-batch.test.ts [2m([22m[2m32 tests[22m[2m)[22m[32m 85[2mms[22m[39m
+2026-10-08T15:26:31.6013991Z  [31m❯[39m tests/combined-receiving.test.mjs [2m([22m[2m3 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[32m 51[2mms[22m[39m
+2026-10-08T15:26:31.6033148Z [31m   [31m×[31m corrected subtotal and reviewed attribution survive refused save, download, and fresh restore[39m[32m 41[2mms[22m[39m
+2026-10-08T15:26:31.6056038Z [31m   [31m×[31m initial read refusal blocks backup and ordinary writes until explicit recovery retains saved rows[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:31.6063287Z [31m   [31m×[31m empty stored bytes refuse backup export and import until an explicit confirmed reset[39m[32m 5[2mms[22m[39m
+2026-10-08T15:26:31.8065622Z  [32m✓[39m tests/edit-ui.test.mjs [2m([22m[2m7 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+2026-10-08T15:26:31.9624064Z  [32m✓[39m tests/edit.test.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-10-08T15:26:32.1291643Z  [32m✓[39m tests/ics.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 38[2mms[22m[39m
+2026-10-08T15:26:32.2729479Z  [32m✓[39m tests/deadline-overview.test.ts [2m([22m[2m45 tests[22m[2m)[22m[33m 1424[2mms[22m[39m
+2026-10-08T15:26:32.2738499Z    [32m✓[39m read-only saved-deadline month projection [2m(45)[22m
+2026-10-08T15:26:32.2769085Z      [33m[2m✓[22m[39m accepts the native 10,000-record collection and refuses the next record as a whole[33m 1235[2mms[22m[39m
+2026-10-08T15:26:32.3626157Z  [32m✓[39m tests/backup.test.ts [2m([22m[2m53 tests[22m[2m)[22m[33m 1520[2mms[22m[39m
+2026-10-08T15:26:32.3670094Z    [33m[2m✓[22m[39m an accepted near-limit backup can be exported again using compact JSON[33m 551[2mms[22m[39m
+2026-10-08T15:26:32.3694149Z    [32m✓[39m untrusted files are rejected completely [2m(36)[22m
+2026-10-08T15:26:32.3719196Z      [33m[2m✓[22m[39m non-array orders[33m 418[2mms[22m[39m
+2026-10-08T15:26:32.3746252Z  [31m❯[39m tests/stale-actions.test.mjs [2m([22m[2m6 tests[22m[2m | [22m[31m6 failed[39m[2m)[22m[32m 60[2mms[22m[39m
+2026-10-08T15:26:32.3774417Z [31m   [31m×[31m new-order Save retains the freshly saved corrections, additions and extra fields[39m[32m 44[2mms[22m[39m
+2026-10-08T15:26:32.3799643Z [31m   [31m×[31m Remove preserves unseen additions without reviving an unrelated deleted return[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.3829233Z [31m   [31m×[31m a changed selected return is refreshed and retained until another Remove attempt[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.3838366Z [31m   [31m×[31m a latest-read refusal protects storage and the draft through explicit loading retry[39m[32m 5[2mms[22m[39m
+2026-10-08T15:26:32.3861640Z [31m   [31m×[31m write retry rereads subsequent remote orders and saves the draft exactly once[39m[32m 2[2mms[22m[39m
+2026-10-08T15:26:32.3883604Z [31m   [31m×[31m missing or duplicated selected identities are never removed by an obsolete card[39m[32m 2[2mms[22m[39m
+2026-10-08T15:26:32.4907060Z  [32m✓[39m tests/core.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+2026-10-08T15:26:32.6719735Z  [31m❯[39m tests/submitted-policy.test.mjs [2m([22m[2m9 tests[22m[2m | [22m[31m9 failed[39m[2m)[22m[32m 91[2mms[22m[39m
+2026-10-08T15:26:32.6740054Z [31m   [31m×[31m an unlisted merchant cannot inherit another store's 15-day policy[39m[32m 50[2mms[22m[39m
+2026-10-08T15:26:32.6742144Z [31m   [31m×[31m an edited unlisted merchant with 30 days uses the current fallback attribution[39m[32m 4[2mms[22m[39m
+2026-10-08T15:26:32.6744291Z [31m   [31m×[31m an edited known merchant with its matching days receives current policy attribution[39m[32m 10[2mms[22m[39m
+2026-10-08T15:26:32.6746244Z [31m   [31m×[31m switching known stores preserves chosen days and calls a mismatch a user rule[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.6748302Z [31m   [31m×[31m switching known stores and matching the submitted policy uses that policy[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.6750272Z [31m   [31m×[31m unchanged policy, case and existing alias matching retain their behavior[39m[32m 7[2mms[22m[39m
+2026-10-08T15:26:32.6752036Z [31m   [31m×[31m unchanged unknown merchant keeps default and custom attribution[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.6753939Z [31m   [31m×[31m blank edited merchants use the same current lookup fallback without changing the field[39m[32m 5[2mms[22m[39m
+2026-10-08T15:26:32.6756299Z [31m   [31m×[31m retry after a refused save attributes the final merchant and does not duplicate[39m[32m 4[2mms[22m[39m
+2026-10-08T15:26:32.6853319Z  [31m❯[39m tests/loading.test.mjs [2m([22m[2m11 tests[22m[2m | [22m[31m11 failed[39m[2m)[22m[32m 84[2mms[22m[39m
+2026-10-08T15:26:32.6855772Z [31m   [31m×[31m a failed initial read cannot erase an existing return through a later save[39m[32m 47[2mms[22m[39m
+2026-10-08T15:26:32.6872573Z [31m   [31m×[31m retry loading restores saved rows and preserves the unsaved draft before append[39m[32m 4[2mms[22m[39m
+2026-10-08T15:26:32.6883505Z [31m   [31m×[31m repeated loading failures leave bytes and the blocked state intact[39m[32m 6[2mms[22m[39m
+2026-10-08T15:26:32.6885587Z [31m   [31m×[31m invalid JSON and non-array roots are preserved without a startup crash or write[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.6887777Z [31m   [31m×[31m a malformed record blocks the whole list instead of silently discarding valid rows[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.6889725Z [31m   [31m×[31m corrected stored bytes can be retried without clearing or replacing the draft[39m[32m 2[2mms[22m[39m
+2026-10-08T15:26:32.6891590Z [31m   [31m×[31m canceling an explicit reset preserves blocked bytes and permits later retry[39m[32m 6[2mms[22m[39m
+2026-10-08T15:26:32.6893474Z [31m   [31m×[31m confirmed reset is the explicit recovery path for unreadable stored data[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.6895591Z [31m   [31m×[31m a refused reset leaves the original data protected until successful retry[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.6898016Z [31m   [31m×[31m valid stored records including unknown extra fields survive the normal save path[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.6899751Z [31m   [31m×[31m an absent key starts empty without showing a loading error[39m[32m 2[2mms[22m[39m
+2026-10-08T15:26:32.7639640Z  [31m❯[39m tests/storage.test.mjs [2m([22m[2m6 tests[22m[2m | [22m[31m6 failed[39m[2m)[22m[32m 47[2mms[22m[39m
+2026-10-08T15:26:32.7641133Z [31m   [31m×[31m failed add preserves the draft and retry stores exactly one order[39m[32m 34[2mms[22m[39m
+2026-10-08T15:26:32.7642427Z [31m   [31m×[31m repeated refused adds cannot accumulate hidden orders[39m[32m 3[2mms[22m[39m
+2026-10-08T15:26:32.7643699Z [31m   [31m×[31m failed remove cannot erase a saved row from the next successful add[39m[32m 2[2mms[22m[39m
+2026-10-08T15:26:32.7645151Z [31m   [31m×[31m failed clear cannot erase saved rows from the next successful add[39m[32m 4[2mms[22m[39m
+2026-10-08T15:26:32.7646679Z [31m   [31m×[31m canceled clear and successful remove/clear keep their prior behavior[39m[32m 2[2mms[22m[39m
+2026-10-08T15:26:32.7648529Z [31m   [31m×[31m the error region is hidden initially and exposes its accessible focus target[39m[32m 2[2mms[22m[39m
+2026-10-08T15:26:32.7698793Z 
+2026-10-08T15:26:32.7699914Z [31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 54 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+2026-10-08T15:26:32.7700389Z 
+2026-10-08T15:26:32.7719041Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mpreview and cancel preserve storage, native tracker, and an unsaved email draft
+2026-10-08T15:26:32.7720577Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mconfirmed import updates the real tracker once, preserves source/draft and skips repeats
+2026-10-08T15:26:32.7722085Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22ma restored historical fallback displays its saved days without applying the current fallback
+2026-10-08T15:26:32.7723559Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mconflict in one row blocks every addition and exposes the changed attribution
+2026-10-08T15:26:32.7724920Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22ma byte-limit overflow in the combined tracker is refused before any import write
+2026-10-08T15:26:32.7726523Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22munsupported version does not commit any rows
+2026-10-08T15:26:32.7727835Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mforeign window source does not commit any rows
+2026-10-08T15:26:32.7728925Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mmalformed JSON does not commit any rows
+2026-10-08T15:26:32.7729955Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mlate bad row does not commit any rows
+2026-10-08T15:26:32.7730964Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22moversized file does not commit any rows
+2026-10-08T15:26:32.7732502Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mquota refusal keeps prior bytes, native memory, both previews, and supports a single retry
+2026-10-08T15:26:32.7733929Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mserialization failure at the native save boundary cannot change bytes or native memory
+2026-10-08T15:26:32.7735333Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22ma changed persisted baseline refreshes the review before a subsequent confirmation
+2026-10-08T15:26:32.7736584Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mexisting unreadable storage prevents import and export
+2026-10-08T15:26:32.7737973Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mexisting broken JSON storage prevents import and export
+2026-10-08T15:26:32.7739220Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mexisting unexpected shape storage prevents import and export
+2026-10-08T15:26:32.7740510Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mcancel or a newer file selection invalidates a pending asynchronous read
+2026-10-08T15:26:32.7742001Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mlarge previews page through every order and render imported text without HTML
+2026-10-08T15:26:32.7743954Z [41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22mthe download contains saved reviewed details, preserves attribution, and excludes the current raw email draft
+2026-10-08T15:26:32.7748989Z [41m[1m FAIL [22m[49m tests/combined-receiving.test.mjs[2m > [22mcorrected subtotal and reviewed attribution survive refused save, download, and fresh restore
+2026-10-08T15:26:32.7751290Z [41m[1m FAIL [22m[49m tests/combined-receiving.test.mjs[2m > [22minitial read refusal blocks backup and ordinary writes until explicit recovery retains saved rows
+2026-10-08T15:26:32.7753726Z [41m[1m FAIL [22m[49m tests/combined-receiving.test.mjs[2m > [22mempty stored bytes refuse backup export and import until an explicit confirmed reset
+2026-10-08T15:26:32.7755672Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22ma failed initial read cannot erase an existing return through a later save
+2026-10-08T15:26:32.7757727Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22mretry loading restores saved rows and preserves the unsaved draft before append
+2026-10-08T15:26:32.7759611Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22mrepeated loading failures leave bytes and the blocked state intact
+2026-10-08T15:26:32.7761474Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22minvalid JSON and non-array roots are preserved without a startup crash or write
+2026-10-08T15:26:32.7763519Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22ma malformed record blocks the whole list instead of silently discarding valid rows
+2026-10-08T15:26:32.7765524Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22mcorrected stored bytes can be retried without clearing or replacing the draft
+2026-10-08T15:26:32.7767616Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22mcanceling an explicit reset preserves blocked bytes and permits later retry
+2026-10-08T15:26:32.7769555Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22mconfirmed reset is the explicit recovery path for unreadable stored data
+2026-10-08T15:26:32.7771934Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22ma refused reset leaves the original data protected until successful retry
+2026-10-08T15:26:32.7774090Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22mvalid stored records including unknown extra fields survive the normal save path
+2026-10-08T15:26:32.7775988Z [41m[1m FAIL [22m[49m tests/loading.test.mjs[2m > [22man absent key starts empty without showing a loading error
+2026-10-08T15:26:32.7777956Z [41m[1m FAIL [22m[49m tests/stale-actions.test.mjs[2m > [22mnew-order Save retains the freshly saved corrections, additions and extra fields
+2026-10-08T15:26:32.7780257Z [41m[1m FAIL [22m[49m tests/stale-actions.test.mjs[2m > [22mRemove preserves unseen additions without reviving an unrelated deleted return
+2026-10-08T15:26:32.7782323Z [41m[1m FAIL [22m[49m tests/stale-actions.test.mjs[2m > [22ma changed selected return is refreshed and retained until another Remove attempt
+2026-10-08T15:26:32.7784241Z [41m[1m FAIL [22m[49m tests/stale-actions.test.mjs[2m > [22ma latest-read refusal protects storage and the draft through explicit loading retry
+2026-10-08T15:26:32.7786110Z [41m[1m FAIL [22m[49m tests/stale-actions.test.mjs[2m > [22mwrite retry rereads subsequent remote orders and saves the draft exactly once
+2026-10-08T15:26:32.7788201Z [41m[1m FAIL [22m[49m tests/stale-actions.test.mjs[2m > [22mmissing or duplicated selected identities are never removed by an obsolete card
+2026-10-08T15:26:32.7789626Z [41m[1m FAIL [22m[49m tests/storage.test.mjs[2m > [22mfailed add preserves the draft and retry stores exactly one order
+2026-10-08T15:26:32.7790527Z [41m[1m FAIL [22m[49m tests/storage.test.mjs[2m > [22mrepeated refused adds cannot accumulate hidden orders
+2026-10-08T15:26:32.7791794Z [41m[1m FAIL [22m[49m tests/storage.test.mjs[2m > [22mfailed remove cannot erase a saved row from the next successful add
+2026-10-08T15:26:32.7793299Z [41m[1m FAIL [22m[49m tests/storage.test.mjs[2m > [22mfailed clear cannot erase saved rows from the next successful add
+2026-10-08T15:26:32.7794899Z [41m[1m FAIL [22m[49m tests/storage.test.mjs[2m > [22mcanceled clear and successful remove/clear keep their prior behavior
+2026-10-08T15:26:32.7796600Z [41m[1m FAIL [22m[49m tests/storage.test.mjs[2m > [22mthe error region is hidden initially and exposes its accessible focus target
+2026-10-08T15:26:32.7798571Z [41m[1m FAIL [22m[49m tests/submitted-policy.test.mjs[2m > [22man unlisted merchant cannot inherit another store's 15-day policy
+2026-10-08T15:26:32.7800472Z [41m[1m FAIL [22m[49m tests/submitted-policy.test.mjs[2m > [22man edited unlisted merchant with 30 days uses the current fallback attribution
+2026-10-08T15:26:32.7802507Z [41m[1m FAIL [22m[49m tests/submitted-policy.test.mjs[2m > [22man edited known merchant with its matching days receives current policy attribution
+2026-10-08T15:26:32.7804480Z [41m[1m FAIL [22m[49m tests/submitted-policy.test.mjs[2m > [22mswitching known stores preserves chosen days and calls a mismatch a user rule
+2026-10-08T15:26:32.7806387Z [41m[1m FAIL [22m[49m tests/submitted-policy.test.mjs[2m > [22mswitching known stores and matching the submitted policy uses that policy
+2026-10-08T15:26:32.7808934Z [41m[1m FAIL [22m[49m tests/submitted-policy.test.mjs[2m > [22munchanged policy, case and existing alias matching retain their behavior
+2026-10-08T15:26:32.7810759Z [41m[1m FAIL [22m[49m tests/submitted-policy.test.mjs[2m > [22munchanged unknown merchant keeps default and custom attribution
+2026-10-08T15:26:32.7812761Z [41m[1m FAIL [22m[49m tests/submitted-policy.test.mjs[2m > [22mblank edited merchants use the same current lookup fallback without changing the field
+2026-10-08T15:26:32.7814815Z [41m[1m FAIL [22m[49m tests/submitted-policy.test.mjs[2m > [22mretry after a refused save attributes the final merchant and does not duplicate
+2026-10-08T15:26:32.7816270Z [31m[1mTypeError[22m: month.addEventListener is not a function[39m
+2026-10-08T15:26:32.7818060Z [36m [2m❯[22m bindDeadlineOverview src/deadline-overview-ui.ts:[2m218:9[22m[39m
+2026-10-08T15:26:32.7833769Z     [90m216|[39m   month.value = today().slice(0, 7);
+2026-10-08T15:26:32.7839541Z 
+2026-10-08T15:26:32.7844919Z     [90m217|[39m   panel.addEventListener('toggle', () => { if (panel.open) refresh(); …
+2026-10-08T15:26:32.7846144Z     [90m218|[39m   month.addEventListener('change', refresh);
+2026-10-08T15:26:32.7847083Z     [90m   |[39m         [31m^[39m
+2026-10-08T15:26:32.7848355Z [2m Test Files [22m [1m[31m6 failed[39m[22m[2m | [22m[1m[32m7 passed[39m[22m[90m (13)[39m
+2026-10-08T15:26:32.7850208Z     [90m219|[39m   previousMonth.addEventListener('click', () => moveMonth(-1));
+2026-10-08T15:26:32.7851488Z     [90m220|[39m   nextMonth.addEventListener('click', () => moveMonth(1));
+2026-10-08T15:26:32.7852695Z [90m [2m❯[22m src/deadline-overview-entry.ts:[2m5:1[22m[39m
+2026-10-08T15:26:32.7853654Z [90m [2m❯[22m src/main.ts:[2m1:1[22m[39m
+2026-10-08T15:26:32.7854141Z 
+2026-10-08T15:26:32.7854713Z [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/54]⎯[22m[39m
+2026-10-08T15:26:32.7855228Z 
+2026-10-08T15:26:32.7869173Z [2m      Tests [22m [1m[31m54 failed[39m[22m[2m | [22m[1m[32m192 passed[39m[22m[90m (246)[39m
+2026-10-08T15:26:32.7881167Z [2m   Start at [22m 15:26:30
+2026-10-08T15:26:32.7882131Z [2m   Duration [22m 2.39s[2m (tests 74%, transform 18%, import 7%, worker 1%)[22m
+2026-10-08T15:26:32.7908180Z 
+2026-10-08T15:26:32.7910998Z [2m    Isolate [22m [33m13 workers spawned[39m[2m · ~127ms startup each (spawn + environment, per file)[22m
+2026-10-08T15:26:32.7912847Z [2m            [22m [2mat least ~424ms faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+2026-10-08T15:26:32.7913654Z 
+2026-10-08T15:26:32.7913874Z 
+2026-10-08T15:26:32.7945576Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.7956933Z 
+2026-10-08T15:26:32.7960530Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.7962475Z 
+2026-10-08T15:26:32.7965090Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.7966709Z 
+2026-10-08T15:26:32.7969300Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.7970939Z 
+2026-10-08T15:26:32.7973353Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.7974978Z 
+2026-10-08T15:26:32.7977533Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.7979171Z 
+2026-10-08T15:26:32.7981569Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.7983232Z 
+2026-10-08T15:26:32.7985656Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8023540Z 
+2026-10-08T15:26:32.8026102Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8027621Z 
+2026-10-08T15:26:32.8030368Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8032172Z 
+2026-10-08T15:26:32.8034422Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8036085Z 
+2026-10-08T15:26:32.8038795Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8041003Z 
+2026-10-08T15:26:32.8043626Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8045513Z 
+2026-10-08T15:26:32.8048453Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8050392Z 
+2026-10-08T15:26:32.8053004Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8054814Z 
+2026-10-08T15:26:32.8057549Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8058803Z 
+2026-10-08T15:26:32.8060280Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8061323Z 
+2026-10-08T15:26:32.8062918Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8064076Z 
+2026-10-08T15:26:32.8065597Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8066605Z 
+2026-10-08T15:26:32.8068296Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8069449Z 
+2026-10-08T15:26:32.8071093Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8072223Z 
+2026-10-08T15:26:32.8073918Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8075190Z 
+2026-10-08T15:26:32.8076987Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8078660Z 
+2026-10-08T15:26:32.8080925Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8082265Z 
+2026-10-08T15:26:32.8084868Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8086484Z 
+2026-10-08T15:26:32.8088244Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8089277Z 
+2026-10-08T15:26:32.8121793Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8123549Z 
+2026-10-08T15:26:32.8125760Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8126900Z 
+2026-10-08T15:26:32.8128838Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8129988Z 
+2026-10-08T15:26:32.8131812Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8133002Z 
+2026-10-08T15:26:32.8134568Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8135909Z 
+2026-10-08T15:26:32.8137717Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8138986Z 
+2026-10-08T15:26:32.8140876Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8142262Z 
+2026-10-08T15:26:32.8144108Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8145480Z 
+2026-10-08T15:26:32.8147829Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8149014Z 
+2026-10-08T15:26:32.8150620Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8151634Z 
+2026-10-08T15:26:32.8153152Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8154230Z 
+2026-10-08T15:26:32.8155781Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8156840Z 
+2026-10-08T15:26:32.8158548Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8159623Z 
+2026-10-08T15:26:32.8161088Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8162164Z 
+2026-10-08T15:26:32.8163675Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8164723Z 
+2026-10-08T15:26:32.8166245Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8167478Z 
+2026-10-08T15:26:32.8169006Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8170148Z 
+2026-10-08T15:26:32.8171725Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8172834Z 
+2026-10-08T15:26:32.8174699Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8175806Z 
+2026-10-08T15:26:32.8177530Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8178757Z 
+2026-10-08T15:26:32.8180322Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8181617Z 
+2026-10-08T15:26:32.8183128Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8184179Z 
+2026-10-08T15:26:32.8185700Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8186741Z 
+2026-10-08T15:26:32.8188537Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8189634Z 
+2026-10-08T15:26:32.8191172Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8192268Z 
+2026-10-08T15:26:32.8193804Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8194873Z 
+2026-10-08T15:26:32.8196392Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8197675Z 
+2026-10-08T15:26:32.8199115Z ##[error]TypeError: month.addEventListener is not a function
+ ❯ bindDeadlineOverview src/deadline-overview-ui.ts:218:9
+ ❯ src/deadline-overview-entry.ts:5:1
+ ❯ src/main.ts:1:1
+
+
+2026-10-08T15:26:32.8360438Z ##[error]Process completed with exit code 1.
+2026-10-08T15:26:32.8526251Z Post job cleanup.
+2026-10-08T15:26:32.9427638Z [command]/usr/bin/git version
+2026-10-08T15:26:32.9476354Z git version 2.55.0
+2026-10-08T15:26:32.9516548Z Temporarily overriding HOME='/home/runner/work/_temp/ab915b5f-1330-4272-acb1-313eb3bcda95' before making global git config changes
+2026-10-08T15:26:32.9518339Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T15:26:32.9523201Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/returnby/returnby
+2026-10-08T15:26:32.9579137Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T15:26:32.9628562Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-08T15:26:32.9921682Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T15:26:32.9955523Z http.https://github.com/.extraheader
+2026-10-08T15:26:32.9969014Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-08T15:26:33.0024463Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-08T15:26:33.0344361Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T15:26:33.0390969Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-08T15:26:33.0824462Z Cleaning up orphan processes
+2026-10-08T15:26:33.1133928Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

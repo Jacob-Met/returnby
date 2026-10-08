@@ -1,0 +1,32 @@
+[
+  {
+    "id": "36761ec3-c1ed-4506-b561-e00f0c606453",
+    "merchant": "Café <pack> 海 😀",
+    "orderNo": "TRIP-\"A\",1",
+    "total": "JPY 1200",
+    "orderDate": "2026-09-25",
+    "windowDays": 13,
+    "windowSource": "user",
+    "createdAt": "2026-10-08T15:26:49.954Z"
+  },
+  {
+    "id": "a1f2eacc-79f0-4d1d-b2bd-e7d480d483e8",
+    "merchant": "Return trip B",
+    "orderNo": "TRIP-B",
+    "total": "USD 19.95",
+    "orderDate": "2026-09-26",
+    "windowDays": 13,
+    "windowSource": "user",
+    "createdAt": "2026-10-08T15:26:50.022Z"
+  },
+  {
+    "id": "a057a50d-a57b-4d74-b27b-857d7abbb807",
+    "merchant": "Return trip C",
+    "orderNo": "TRIP-C",
+    "total": "£ 0.00",
+    "orderDate": "2026-09-25",
+    "windowDays": 13,
+    "windowSource": "user",
+    "createdAt": "2026-10-08T15:26:50.052Z"
+  }
+]

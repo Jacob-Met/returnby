@@ -1,0 +1,847 @@
+{
+  "schema": "returnby.deadline-overview.independent-receiving.v1",
+  "receiver": "7879c2abc07f / github_execution, separate from source author echo_opening_receiving",
+  "issue": "https://github.com/Jacob-Met/returnby/issues/26",
+  "pullRequest": "https://github.com/Jacob-Met/returnby/pull/28",
+  "outcome": "Accept the scoped read-only saved-deadline month/day overview at the exact qualified stacked source. Native main adoption remains with the existing #8/#10 owner.",
+  "base": {
+    "pr": 20,
+    "commit": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+    "tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+    "branch": "integrate/calendar-backup-actions-receiving-20261008-b55367d787c4"
+  },
+  "qualified": {
+    "head": "4ca4edf2741851b9bfa46c0fb651131463dd17c2",
+    "tree": "fa1eb6dbd90a3423422a20cb4b12282fe87b8e6f",
+    "actualCheckout": "858df955341ce2ba210440c5553e0611ddb73a22",
+    "actualParents": [
+      "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+      "4ca4edf2741851b9bfa46c0fb651131463dd17c2"
+    ],
+    "nativeTests": 246,
+    "existingOwnerTests": 201,
+    "newModelCases": 45,
+    "nativeTestFiles": 13,
+    "browserGroups": 9,
+    "actualArtifacts": 10,
+    "bundledMembers": 11,
+    "browser": {
+      "protocolVersion": "1.3",
+      "product": "Chrome/154.0.8037.57",
+      "revision": "@73c14f6228d7cd537c855007e8f88678969cc0eb",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "jsVersion": "15.4.80.11"
+    },
+    "node": "v22.23.3"
+  },
+  "productionReview": {
+    "sourceProven": true,
+    "noBlockingSourceFindings": true,
+    "nativeContract": "Whole-collection parseBackup(exportBackup) uses already-shipped validation/approved shape; detached records and native deadline/urgency functions; no read model write or persistence route.",
+    "interactionContract": "Explicit snapshot read on open/month change/refresh; day/pagination render accepted snapshot; full content hidden and label cleared on whole-read refusal; textContent and scoped CSS; keyboard selection and page focus recovery.",
+    "limits": [
+      "Stacked #20 composition only; #8/#10 retain main adoption.",
+      "Native backup's existing supported date/record/byte limits remain; explicit refresh is required after cross-tab or same-tab saved changes."
+    ]
+  },
+  "originalSourceAdditionProof": {
+    "baseLeaves": 194,
+    "candidateLeaves": 199,
+    "unchanged": 191,
+    "changed": [
+      {
+        "path": "README.md",
+        "before": "b44321c4757c528cf8bf421ae6497790395c7c14",
+        "after": "22c4e19886e89795434aa6f59654ec3a3ac22d92"
+      },
+      {
+        "path": "index.html",
+        "before": "d8b6074d2602fc8417e0e8ba5da1f064e64a5925",
+        "after": "e22f7b432a842a39c31de36d3939401946cd0911"
+      },
+      {
+        "path": "src/main.ts",
+        "before": "9eaa6c1f66d93c8ab7b9c9614ce5940b5aa11b13",
+        "after": "74fd0d4f67ac6dac970c5aa5cf56e3d6193877e4"
+      }
+    ],
+    "removed": [],
+    "added": [
+      {
+        "path": "src/deadline-overview-entry.ts",
+        "sha": "747529623a6306596c1a64b6b2d0b5433997a8db",
+        "mode": "100644"
+      },
+      {
+        "path": "src/deadline-overview-ui.ts",
+        "sha": "895aa0b25a1c1bde6e0ab9c2d5101e644db07072",
+        "mode": "100644"
+      },
+      {
+        "path": "src/deadline-overview.css",
+        "sha": "70df06076463bc604cf10f0259b57d17b82adc14",
+        "mode": "100644"
+      },
+      {
+        "path": "src/deadline-overview.ts",
+        "sha": "ccec55196aaaef117edb87d9f33930865c9b54b3",
+        "mode": "100644"
+      },
+      {
+        "path": "tests/deadline-overview.test.ts",
+        "sha": "e512efbd39e7f9ec20d99dc5dce81b58327f091d",
+        "mode": "100644"
+      }
+    ]
+  },
+  "originalSourceInverses": {
+    "mainSingleAddedImport": true,
+    "importBytes": 36,
+    "indexSinglePanel": true,
+    "panelBytes": 2717,
+    "readmeAppendOnly": true,
+    "readmeAddedBytes": 2880,
+    "noDuplicateId": true
+  },
+  "finalIntegrationProof": {
+    "mainRestoredExact": true,
+    "addedHtmlScript": "<script type=\"module\" src=\"/src/deadline-overview-entry.ts\"></script>",
+    "scriptBytes": 69,
+    "onlyScriptRelativeToFirstIndex": true,
+    "originalPanelInverseStillApplies": true,
+    "readmeStillAppendOnly": true,
+    "note": "Inverse uses the exact observed inline script span; no whitespace normalization."
+  },
+  "finalTreeDeltaFromFirstCandidate": {
+    "baseLeaves": 199,
+    "candidateLeaves": 199,
+    "unchanged": 195,
+    "changed": [
+      {
+        "path": "README.md",
+        "before": "22c4e19886e89795434aa6f59654ec3a3ac22d92",
+        "after": "fc2d893bfb0391c9523b01b4a862add59973b6b6"
+      },
+      {
+        "path": "index.html",
+        "before": "e22f7b432a842a39c31de36d3939401946cd0911",
+        "after": "7b67820feae950c02a0c4cbc921488d45903d250"
+      },
+      {
+        "path": "src/main.ts",
+        "before": "74fd0d4f67ac6dac970c5aa5cf56e3d6193877e4",
+        "after": "9eaa6c1f66d93c8ab7b9c9614ce5940b5aa11b13"
+      },
+      {
+        "path": "tools/check_deadline_overview_browser.mjs",
+        "before": "cceae6236ed3c0ef2bc916186a6c3d008c302292",
+        "after": "b0d6a1634c13bafbe7b4ff6dadf362c881d06098"
+      }
+    ],
+    "removed": []
+  },
+  "frozenConsumerCorrection": {
+    "exact": true,
+    "addedLines": [
+      "  await command('Page.bringToFront');\n",
+      "  await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve(true))))');\n"
+    ],
+    "allOriginalConsumerCasesAndAssertionsRetained": true,
+    "hash": "b4d1296d97e8a3a8b1b56d5c516c43409227bdee33ab81a09366551b9f4741ac",
+    "bytes": 41653
+  },
+  "independentlyReadBackNativeSourceHashes": [
+    {
+      "path": ".github/workflows/deadline-overview-browser.yml",
+      "gitBlob": "0bee4230b7d9515a9a84d8a3c97b869db454f51e",
+      "sha256": "0f838fa5b6ee0a580a3f85c3e5c8a012d3cf2c6cd092ff80618811292eed419a",
+      "bytes": 3794,
+      "exact": true
+    },
+    {
+      "path": "data/policies.json",
+      "gitBlob": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26",
+      "bytes": 449,
+      "exact": true
+    },
+    {
+      "path": "index.html",
+      "gitBlob": "7b67820feae950c02a0c4cbc921488d45903d250",
+      "sha256": "25783fbf719d9f2c537f36cd1189819cf3af57e619e0a5e30fb62b186d461fea",
+      "bytes": 12679,
+      "exact": true
+    },
+    {
+      "path": "package-lock.json",
+      "gitBlob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+      "bytes": 35404,
+      "exact": true
+    },
+    {
+      "path": "package.json",
+      "gitBlob": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+      "bytes": 313,
+      "exact": true
+    },
+    {
+      "path": "src/backup-ui.ts",
+      "gitBlob": "366341e5d5215809bca6d8f32f130336b0ea3be4",
+      "sha256": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+      "bytes": 6235,
+      "exact": true
+    },
+    {
+      "path": "src/backup.css",
+      "gitBlob": "bc60d09bf8af57ec56a3b3766559c8829d8a859b",
+      "sha256": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+      "bytes": 978,
+      "exact": true
+    },
+    {
+      "path": "src/backup.ts",
+      "gitBlob": "bdd86ce50c723abf8f1d305d4fdf63353510eba8",
+      "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+      "bytes": 7059,
+      "exact": true
+    },
+    {
+      "path": "src/calendar-batch-ui.ts",
+      "gitBlob": "f14427126feb325861ceb08783877c97cfc92e4d",
+      "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+      "bytes": 7180,
+      "exact": true
+    },
+    {
+      "path": "src/calendar-batch.css",
+      "gitBlob": "6a9849585c528bd82d8d40d66d2816e7f25bc327",
+      "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+      "bytes": 1833,
+      "exact": true
+    },
+    {
+      "path": "src/calendar-batch.ts",
+      "gitBlob": "520469648c1177f010edf04fa5f779d900e2431f",
+      "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+      "bytes": 6017,
+      "exact": true
+    },
+    {
+      "path": "src/deadline-overview-entry.ts",
+      "gitBlob": "747529623a6306596c1a64b6b2d0b5433997a8db",
+      "sha256": "4e9f4f29cc1d19dfdecbd41c56c0200b2ad6252e3316e730f56f4df3ecd550f0",
+      "bytes": 162,
+      "exact": true
+    },
+    {
+      "path": "src/deadline-overview-ui.ts",
+      "gitBlob": "895aa0b25a1c1bde6e0ab9c2d5101e644db07072",
+      "sha256": "5053254223728e30e7ab858a717fb6e9c691be3e812f40f5ea99a422409f4691",
+      "bytes": 10419,
+      "exact": true
+    },
+    {
+      "path": "src/deadline-overview.css",
+      "gitBlob": "70df06076463bc604cf10f0259b57d17b82adc14",
+      "sha256": "43eb355f2dbe0bd70231aa733cb47fa5cc3280b0e7ff08510533c345cafac5c3",
+      "bytes": 5095,
+      "exact": true
+    },
+    {
+      "path": "src/deadline-overview.ts",
+      "gitBlob": "ccec55196aaaef117edb87d9f33930865c9b54b3",
+      "sha256": "1db274a72577c675f68e03a2569e7a33f6dc326864445c5e8eba42368d54e4c9",
+      "bytes": 4416,
+      "exact": true
+    },
+    {
+      "path": "src/deadline.ts",
+      "gitBlob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+      "bytes": 837,
+      "exact": true
+    },
+    {
+      "path": "src/edit-ui.ts",
+      "gitBlob": "d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab",
+      "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+      "bytes": 4534,
+      "exact": true
+    },
+    {
+      "path": "src/edit.css",
+      "gitBlob": "68691310feaf885d68876d77e25821f44683c4ae",
+      "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+      "bytes": 1782,
+      "exact": true
+    },
+    {
+      "path": "src/edit.ts",
+      "gitBlob": "15ffab3eb7cb4ea365474c2aa50706264e888645",
+      "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+      "bytes": 4075,
+      "exact": true
+    },
+    {
+      "path": "src/ics.ts",
+      "gitBlob": "58c873a116ed6b265864cb3e7d5b0dd27fd81544",
+      "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+      "bytes": 2263,
+      "exact": true
+    },
+    {
+      "path": "src/main.ts",
+      "gitBlob": "9eaa6c1f66d93c8ab7b9c9614ce5940b5aa11b13",
+      "sha256": "7d2d2b1ff1c783e50230b5c8bc149d9ec4dcf80bae25689e38d3527ad7899dd3",
+      "bytes": 9935,
+      "exact": true
+    },
+    {
+      "path": "src/parse.ts",
+      "gitBlob": "dd15787cbbb4373a1e594c781f3a6d2d5cec15db",
+      "sha256": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243",
+      "bytes": 3057,
+      "exact": true
+    },
+    {
+      "path": "src/policy.ts",
+      "gitBlob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+      "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+      "bytes": 595,
+      "exact": true
+    },
+    {
+      "path": "src/samples.ts",
+      "gitBlob": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+      "bytes": 513,
+      "exact": true
+    },
+    {
+      "path": "src/store.ts",
+      "gitBlob": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3",
+      "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+      "bytes": 1387,
+      "exact": true
+    },
+    {
+      "path": "src/style.css",
+      "gitBlob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+      "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+      "bytes": 8842,
+      "exact": true
+    },
+    {
+      "path": "tests/deadline-overview.test.ts",
+      "gitBlob": "e512efbd39e7f9ec20d99dc5dce81b58327f091d",
+      "sha256": "8b9fa6ec3d40a3fb8878cc6c39321bd996b344ca9f1b3434877450a4bceb9dc4",
+      "bytes": 8723,
+      "exact": true
+    },
+    {
+      "path": "tools/check_deadline_overview_browser.mjs",
+      "gitBlob": "b0d6a1634c13bafbe7b4ff6dadf362c881d06098",
+      "sha256": "b4d1296d97e8a3a8b1b56d5c516c43409227bdee33ab81a09366551b9f4741ac",
+      "bytes": 41653,
+      "exact": true
+    },
+    {
+      "path": "tools/fixtures/deadline-overview-cases.json",
+      "gitBlob": "061cbc8a6096b4faffe1506dc4997c0723d94e9a",
+      "sha256": "52cd12f78f91a8a3b74df8a726b14277fbc13792ced95209f764fee366ae588d",
+      "bytes": 17465,
+      "exact": true
+    },
+    {
+      "path": "tsconfig.json",
+      "gitBlob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc",
+      "bytes": 273,
+      "exact": true
+    }
+  ],
+  "nativeBuildHashes": {
+    "assets/index-CW_D8HE8.css": "abb3a0cfddf06ac233bab7ddfe932e7731f3f2287d09fd2c53ceada787852e68",
+    "assets/index-D8MZjC5o.js": "4bfb305868ab7ad14cd79ea1927a935b61bce3504683b8d93ca745fecda2a0da",
+    "captures/returnby-desktop.png": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+    "captures/returnby-mobile.png": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+    "favicon.svg": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+    "index.html": "58d67ddd1483f12fb6e48b5fabfe91e8127b43d414c72670ca00e07941613548"
+  },
+  "independentCalendarOracle": {
+    "oracle": "Python standard-library datetime.date + timedelta and calendar.monthrange, without product code execution",
+    "savedDueDates": 43,
+    "monthCases": [
+      {
+        "month": "1000-01",
+        "firstWeekdayMondayZero": 2,
+        "days": 31,
+        "counts": {
+          "1000-01-02": 1
+        },
+        "match": true
+      },
+      {
+        "month": "9999-12",
+        "firstWeekdayMondayZero": 2,
+        "days": 31,
+        "counts": {
+          "9999-12-31": 1
+        },
+        "match": true
+      },
+      {
+        "month": "2024-02",
+        "firstWeekdayMondayZero": 3,
+        "days": 29,
+        "counts": {
+          "2024-02-29": 1
+        },
+        "match": true
+      },
+      {
+        "month": "2024-03",
+        "firstWeekdayMondayZero": 4,
+        "days": 31,
+        "counts": {
+          "2024-03-01": 1
+        },
+        "match": true
+      },
+      {
+        "month": "2025-02",
+        "firstWeekdayMondayZero": 5,
+        "days": 28,
+        "counts": {},
+        "match": true
+      },
+      {
+        "month": "2025-03",
+        "firstWeekdayMondayZero": 5,
+        "days": 31,
+        "counts": {
+          "2025-03-01": 1
+        },
+        "match": true
+      },
+      {
+        "month": "1900-02",
+        "firstWeekdayMondayZero": 3,
+        "days": 28,
+        "counts": {},
+        "match": true
+      },
+      {
+        "month": "1900-03",
+        "firstWeekdayMondayZero": 3,
+        "days": 31,
+        "counts": {
+          "1900-03-01": 1
+        },
+        "match": true
+      },
+      {
+        "month": "2000-02",
+        "firstWeekdayMondayZero": 1,
+        "days": 29,
+        "counts": {
+          "2000-02-29": 1
+        },
+        "match": true
+      },
+      {
+        "month": "2026-03",
+        "firstWeekdayMondayZero": 6,
+        "days": 31,
+        "counts": {
+          "2026-03-09": 1
+        },
+        "match": true
+      },
+      {
+        "month": "2026-09",
+        "firstWeekdayMondayZero": 1,
+        "days": 30,
+        "counts": {
+          "2026-09-28": 1
+        },
+        "match": true
+      },
+      {
+        "month": "2026-11",
+        "firstWeekdayMondayZero": 6,
+        "days": 30,
+        "counts": {
+          "2026-11-02": 1,
+          "2026-11-15": 31
+        },
+        "match": true
+      },
+      {
+        "month": "2026-12",
+        "firstWeekdayMondayZero": 1,
+        "days": 31,
+        "counts": {
+          "2026-12-31": 1
+        },
+        "match": true
+      },
+      {
+        "month": "2027-01",
+        "firstWeekdayMondayZero": 4,
+        "days": 31,
+        "counts": {
+          "2027-01-01": 1
+        },
+        "match": true
+      }
+    ],
+    "primaryInputs": [
+      {
+        "expected": "2026-10-08",
+        "computed": "2026-10-08",
+        "match": true
+      },
+      {
+        "expected": "2026-10-09",
+        "computed": "2026-10-09",
+        "match": true
+      },
+      {
+        "expected": "2026-10-08",
+        "computed": "2026-10-08",
+        "match": true
+      }
+    ],
+    "failures": []
+  },
+  "causalPhases": [
+    {
+      "label": "Original native capability boundary",
+      "authoredHead": "8414d3d97b126d913935679665e6c2017b98d26e",
+      "tree": "261ff38e32559986108f139d75c75c5ac153a154",
+      "actualCheckout": "3bac025d6836cbbd715c98ec3974992b14fa5496",
+      "nativeResult": {
+        "pass": 201,
+        "fail": 0
+      },
+      "browserResult": {
+        "passedGroups": 2,
+        "status": "failed",
+        "reason": "Missing monthly saved-deadline overview entrypoint",
+        "sourceUnchanged": true
+      },
+      "nativeLog": {
+        "job": 113387300165,
+        "run": 37799407699,
+        "bytes": 18731,
+        "sha256": "47b3bce6d180ac7e21fd5cb3fadb992985c581ad418a8d3554c0d28619518d05"
+      },
+      "browserLog": {
+        "job": 113387300931,
+        "run": 37799407832,
+        "bytes": 336899,
+        "sha256": "a8b9124b9beb0659062f74b6fe8e594c6c36ea9b96fa40cf777bf3ebd5ff5002"
+      },
+      "bundle": {
+        "bytes": 217638,
+        "sha256": "48d555d05ccc80609d5bf54adb5505dfef31e51df0362d4ce389ec1ce2b95a7b",
+        "chunks": 71
+      },
+      "bundleMembers": [
+        {
+          "path": "failed-state.png",
+          "bytes": 147655,
+          "sha256": "b9067c5116e58b5c0c970216a998d83cd18c5c39d0b4ed9c9f827443da6fe186"
+        },
+        {
+          "path": "native-saved-records.json",
+          "bytes": 818,
+          "sha256": "c9eaeff1feacd7364ea5b17acecc9a54dd71bb9bfede027f98e89b83912bda7b"
+        },
+        {
+          "path": "receiving-report.json",
+          "bytes": 14431,
+          "sha256": "b790c10cf624cd98107d59bded14433385228e0b3a34775f34c59c1702e10b90"
+        }
+      ]
+    },
+    {
+      "label": "First product candidate with two honest receiving/integration failures",
+      "authoredHead": "b7473da4c03cb51a94d4db354e89f1030d76709a",
+      "tree": "3bcf198ef1ec1606f519ddce3f929e13138ecd87",
+      "actualCheckout": "d13a3082e02172d32cfe5fccdd7508c7dfc2530a",
+      "nativeResult": {
+        "pass": 192,
+        "fail": 54,
+        "newModelPass": 45,
+        "reason": "Main side-effect entry executed against existing synthetic DOM fixtures: month.addEventListener is not a function."
+      },
+      "browserResult": {
+        "passedGroups": 7,
+        "status": "failed",
+        "reason": "CDP timeout: Page.captureScreenshot",
+        "sourceUnchanged": true,
+        "pageErrors": 0
+      },
+      "nativeLog": {
+        "job": 113392002764,
+        "run": 37800755478,
+        "bytes": 49511,
+        "sha256": "321bc3805a663e470f65776d7c78eba368bcc419dae53eaa31ef6a1a7f7101a3"
+      },
+      "browserLog": {
+        "job": 113392004010,
+        "run": 37800755351,
+        "bytes": 658404,
+        "sha256": "de9b1cee2d5a4ed615211bcd76516a452429ec0f6b9e418519764d068cfb84f2"
+      },
+      "bundle": {
+        "bytes": 437848,
+        "sha256": "5bf2eef7d6044c7a24505c1f4af6d6d7ff96920dee94776c73c05c2570bfe86a",
+        "chunks": 143
+      },
+      "bundleMembers": [
+        {
+          "path": "authored-return-backup.json",
+          "bytes": 11612,
+          "sha256": "b42afdfa15e0d5edad04d153086738c5699079d7c3fa1f643a4f15c3e4ce2e1c"
+        },
+        {
+          "path": "edited-native-saved-records.json",
+          "bytes": 11467,
+          "sha256": "941b15d01fefb30af0753a8356a5a00a52a4febf3d289abf2f3b2b4e97e1bcfe"
+        },
+        {
+          "path": "failed-state.png",
+          "bytes": 61439,
+          "sha256": "da040a763e61a684819169d6b0ef411bce70bf6f5c4cfc8576d0ff9b4feccbfb"
+        },
+        {
+          "path": "native-saved-records.json",
+          "bytes": 818,
+          "sha256": "272919cd6894924fb3d68f0fe8e7f4567078d099936b69e1d28226d1ddfce27e"
+        },
+        {
+          "path": "overview-desktop.png",
+          "bytes": 131945,
+          "sha256": "0efc84faf3892e849b684cb96a2f845ed7c48d240e67c8a50b5caa28aaebdf23"
+        },
+        {
+          "path": "pending-backup.json",
+          "bytes": 398,
+          "sha256": "d64922a94ad4c008842937fade2521764a36aa229902f9b5eb592f96d75cefc2"
+        },
+        {
+          "path": "receiving-report.json",
+          "bytes": 38413,
+          "sha256": "8077ce2322c506b2549176b571bc997ba31193ce0033dc4bc9938c8bbf22e200"
+        },
+        {
+          "path": "refusal-phone.png",
+          "bytes": 60770,
+          "sha256": "6f6761904e5f5cdd6a12f2c3c338c839b23d06ecc4caa39bdd679f699ac03628"
+        },
+        {
+          "path": "selected-day-records.json",
+          "bytes": 10576,
+          "sha256": "30592cbdc20196f74e22c162921caa9a3d55e09ca59e46fd663537a3ff1608fb"
+        }
+      ],
+      "assessment": "The native failure was fixed by restoring original main exactly and adding a separate HTML module entry. The browser timeout was retained; only foreground/two-frame capture handling changed, with every original consumer assertion unchanged."
+    },
+    {
+      "label": "Exact final qualified successor",
+      "authoredHead": "4ca4edf2741851b9bfa46c0fb651131463dd17c2",
+      "tree": "fa1eb6dbd90a3423422a20cb4b12282fe87b8e6f",
+      "actualCheckout": "858df955341ce2ba210440c5553e0611ddb73a22",
+      "nativeResult": {
+        "pass": 246,
+        "fail": 0,
+        "existingOwnerPass": 201,
+        "newModelPass": 45,
+        "auditVulnerabilities": 0,
+        "strictBuild": "passed"
+      },
+      "browserResult": {
+        "passedGroups": 9,
+        "status": "passed",
+        "sourceUnchanged": true,
+        "pageErrors": 0,
+        "externalRequests": 0
+      },
+      "nativeLog": {
+        "job": 113393994818,
+        "run": 37801322989,
+        "bytes": 19059,
+        "sha256": "30c6fce35bc4a558415c584b5630cd811e7c208bec294cd0c773a4dc4de5cf7d"
+      },
+      "browserLog": {
+        "job": 113393996444,
+        "run": 37801323129,
+        "bytes": 697942,
+        "sha256": "3fb5bde4255dec2d9616860b4235b0543971976d3c3968da84b4eba36d7b8b8b"
+      },
+      "bundle": {
+        "bytes": 482236,
+        "sha256": "7fcc26b21bf13bca8ac43eada6824832d8dfc83b1084ca975e76c111057e0f8f",
+        "chunks": 157
+      },
+      "bundleMembers": [
+        {
+          "path": "authored-return-backup.json",
+          "bytes": 11612,
+          "sha256": "b42afdfa15e0d5edad04d153086738c5699079d7c3fa1f643a4f15c3e4ce2e1c"
+        },
+        {
+          "path": "edited-native-saved-records.json",
+          "bytes": 11467,
+          "sha256": "727a3fd81967e69dcdff1ca677f7c5a070b666625f3b4aca98cd8602baa3e1e0"
+        },
+        {
+          "path": "native-saved-records.json",
+          "bytes": 818,
+          "sha256": "300754164842d202013a37af33a31f0405c3f633e5e56c48219b6ba3513bd37c"
+        },
+        {
+          "path": "overview-desktop.png",
+          "bytes": 130591,
+          "sha256": "97edb7e084a16852cc592f5f109a4ba46c108f4e17571953ac5e4d5ffbe3b419"
+        },
+        {
+          "path": "overview-phone.png",
+          "bytes": 61536,
+          "sha256": "255ffbb3ed8b9a920ed6c564b14be06dca1c7aeee793f4abe3de0f1bd389ee7c"
+        },
+        {
+          "path": "pending-backup.json",
+          "bytes": 398,
+          "sha256": "d64922a94ad4c008842937fade2521764a36aa229902f9b5eb592f96d75cefc2"
+        },
+        {
+          "path": "receiving-report.json",
+          "bytes": 16859,
+          "sha256": "5bc693ec09f12b95810fac98053dbbda09588dc860878f8f368694daa712a3c4"
+        },
+        {
+          "path": "refusal-phone.png",
+          "bytes": 60770,
+          "sha256": "6f6761904e5f5cdd6a12f2c3c338c839b23d06ecc4caa39bdd679f699ac03628"
+        },
+        {
+          "path": "selected-day-phone.png",
+          "bytes": 55492,
+          "sha256": "670f324745bae47ab255a56649e2cfdaee1c52f198e35cb88a0270d88333e887"
+        },
+        {
+          "path": "selected-day-records.json",
+          "bytes": 10576,
+          "sha256": "30592cbdc20196f74e22c162921caa9a3d55e09ca59e46fd663537a3ff1608fb"
+        },
+        {
+          "path": "unchanged-calendar.ics",
+          "bytes": 404,
+          "sha256": "d9b9e5b7c2a789f05e3d9217e7e512b81f6840835d9fb78b137ba9aa3c71c204"
+        }
+      ]
+    }
+  ],
+  "actualConsumerCases": [
+    "actual existing review/save produces three exact independent orders with native IDs and creation times",
+    "the native unsaved intake remains available before opening the separate planning view",
+    "monthly counts, exact chosen-day records, empty days and keyboard selection preserve storage and intake state",
+    "native backup file admission feeds exact month, leap, century, year and date-range boundaries in three real browser timezones",
+    "all 31 same-day records remain reachable in bounded pages with exact Unicode, markup, multiline values and keyboard focus",
+    "a real other-tab edit stays separate until explicit refresh, then moves the same saved identity without committing pending drafts",
+    "saved-read and late-record failures refuse the entire overview, retain drafts and allow explicit unchanged-data retry",
+    "the 390px month/day view keeps usable date targets and literal wrapped fields while the original calendar download stays intact",
+    "an explicitly cleared tracker becomes an honest empty month with no additional write or application/network error"
+  ],
+  "actualStorageWrites": [
+    {
+      "method": "setItem",
+      "bytes": 223
+    },
+    {
+      "method": "setItem",
+      "bytes": 437
+    },
+    {
+      "method": "setItem",
+      "bytes": 648
+    },
+    {
+      "method": "setItem",
+      "bytes": 8957
+    },
+    {
+      "method": "setItem",
+      "bytes": 2
+    }
+  ],
+  "actualCalendarHandoff": {
+    "bytes": 404,
+    "sha256": "d9b9e5b7c2a789f05e3d9217e7e512b81f6840835d9fb78b137ba9aa3c71c204",
+    "rawText": "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//ReturnBy//EN\r\nCALSCALE:GREGORIAN\r\nBEGIN:VEVENT\r\nUID:a174a372-3ecd-4257-a57e-81d2de4c9829@returnby\r\nDTSTAMP:20261008T153103Z\r\nDTSTART;VALUE=DATE:20261009\r\nDTEND;VALUE=DATE:20261010\r\nSUMMARY:Return deadline: Return trip B #TRIP-B\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:Return deadline: Return trip B #TRIP-B\r\nTRIGGER:-P3D\r\nEND:VALARM\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n",
+    "secondNativeRecord": {
+      "id": "a174a372-3ecd-4257-a57e-81d2de4c9829",
+      "merchant": "Return trip B",
+      "orderNo": "TRIP-B",
+      "total": "USD 19.95",
+      "orderDate": "2026-09-26",
+      "windowDays": 13,
+      "windowSource": "user",
+      "createdAt": "2026-10-08T15:31:02.012Z"
+    },
+    "uidExact": true,
+    "startExact": true,
+    "endExact": true,
+    "reminderExact": true
+  },
+  "directVisualReceiving": {
+    "method": "Direct independent viewing of the four exact PNG members decoded and rehashed from actual native job113393996444.",
+    "images": [
+      {
+        "name": "overview-desktop.png",
+        "sha256": "97edb7e084a16852cc592f5f109a4ba46c108f4e17571953ac5e4d5ffbe3b419",
+        "observation": "Readable October calendar, two-record selected day, complete visible saved-field labels, clear snapshot/refresh controls; later records continue by ordinary scroll."
+      },
+      {
+        "name": "overview-phone.png",
+        "sha256": "255ffbb3ed8b9a920ed6c564b14be06dca1c7aeee793f4abe3de0f1bd389ee7c",
+        "observation": "390px layout keeps month navigation, explicit refresh, snapshot wording and aligned November grid inside the viewport; remaining calendar rows continue below capture."
+      },
+      {
+        "name": "selected-day-phone.png",
+        "sha256": "670f324745bae47ab255a56649e2cfdaee1c52f198e35cb88a0270d88333e887",
+        "observation": "Actual cluster record renders 海, literal markup text, accent/emoji, multiline amount and exact offset creation timestamp within the record column; no clipping or overlap observed."
+      },
+      {
+        "name": "refusal-phone.png",
+        "sha256": "6f6761904e5f5cdd6a12f2c3c338c839b23d06ecc4caa39bdd679f699ac03628",
+        "observation": "Whole overview content and snapshot label disappear on explicit read refusal, while readable error and Refresh control remain; separate existing backup panel stays available."
+      }
+    ],
+    "limits": [
+      "Only these actual captured viewports were visually inspected; no physical-device or screen-reader claim.",
+      "The original first-candidate capture timeout remains in its native failure packet; later foreground/rAF correction does not establish a broader browser-root-cause claim."
+    ]
+  },
+  "finalAssessment": {
+    "blockingScopedSourceFindings": [],
+    "newProductionModelUiCssTestsUnchangedAcrossSuccessor": true,
+    "originalMainOwnerModulesAndOwnerTestsExact": true,
+    "all30ObservedNativeSourcePathsIndependentlyFetchedAndHashed": true,
+    "allOriginalConsumerCasesAndAssertionsRetained": true,
+    "baselineAndFirstCandidateFailuresPreserved": true,
+    "noFurtherOptionalRuntimeNeeded": true,
+    "nativeAdoptionBoundary": "#8/#10 retain final main adoption of #20 and later lookup/Undo/CSV/day-refresh/parser compositions; this receipt qualifies the specific #20-based overview source and does not claim those later combinations.",
+    "limits": [
+      "Explicit refresh remains required after saved records change in the same or another tab; the view intentionally displays its accepted timestamped snapshot.",
+      "The native backup's complete-collection admission, supported1000–9999 civil dates,10,000-record and5MiB limits remain authoritative; no retailer policy or current currency verification is inferred.",
+      "The actual loopback browser actions, captured viewports and authored refusal cases are received. No physical-device, screen-reader, live-site deployment or automatic synchronization claim is made."
+    ]
+  }
+}

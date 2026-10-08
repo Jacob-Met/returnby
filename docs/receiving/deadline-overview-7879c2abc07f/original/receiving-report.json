@@ -1,0 +1,169 @@
+{
+  "schema": "returnby.deadline-overview-browser.v1",
+  "status": "failed",
+  "project": "/home/runner/work/returnby/returnby",
+  "build": "/home/runner/work/returnby/returnby/dist",
+  "executable": "/usr/bin/google-chrome",
+  "node": "v22.23.3",
+  "checkout": "3bac025d6836cbbd715c98ec3974992b14fa5496",
+  "claim": "https://github.com/Jacob-Met/returnby/issues/26",
+  "checks": [
+    "actual existing review/save produces three exact independent orders with native IDs and creation times",
+    "the native unsaved intake remains available before opening the separate planning view"
+  ],
+  "artifacts": [
+    {
+      "name": "native-saved-records.json",
+      "bytes": 818,
+      "sha256": "c9eaeff1feacd7364ea5b17acecc9a54dd71bb9bfede027f98e89b83912bda7b",
+      "kind": "actual native Review/Save results"
+    },
+    {
+      "name": "failed-state.png",
+      "bytes": 147655,
+      "sha256": "b9067c5116e58b5c0c970216a998d83cd18c5c39d0b4ed9c9f827443da6fe186",
+      "kind": "actual Chrome screenshot"
+    }
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:37239/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:37239/assets/index-B_BGqvdA.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:37239/assets/index-41FLtvzD.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:37239/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "method": "GET"
+    }
+  ],
+  "externalRequests": [],
+  "serverRequests": [
+    {
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-41FLtvzD.css"
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B_BGqvdA.js"
+    },
+    {
+      "method": "GET",
+      "path": "/favicon.svg"
+    }
+  ],
+  "sourceSha256": {
+    "src/backup-ui.ts": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+    "src/backup.css": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+    "src/backup.ts": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+    "src/calendar-batch-ui.ts": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+    "src/calendar-batch.css": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+    "src/calendar-batch.ts": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/edit-ui.ts": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+    "src/edit.css": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+    "src/edit.ts": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+    "src/ics.ts": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+    "src/main.ts": "7d2d2b1ff1c783e50230b5c8bc149d9ec4dcf80bae25689e38d3527ad7899dd3",
+    "src/parse.ts": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243",
+    "src/policy.ts": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+    "src/samples.ts": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+    "src/store.ts": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+    "src/style.css": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+    "src/deadline-overview.ts": null,
+    "src/deadline-overview-ui.ts": null,
+    "src/deadline-overview-entry.ts": null,
+    "src/deadline-overview.css": null,
+    "tests/deadline-overview.test.ts": null,
+    "data/policies.json": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26",
+    "index.html": "7f78e7be40a59f572a7e4f1614b85231e48e25bdc725239531a4ff09d4257f9a",
+    "package.json": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+    "package-lock.json": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+    "tsconfig.json": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc",
+    "tools/fixtures/deadline-overview-cases.json": "52cd12f78f91a8a3b74df8a726b14277fbc13792ced95209f764fee366ae588d",
+    "tools/check_deadline_overview_browser.mjs": "1560316fb4f3cb44ab0594914639519c3620052029ea55c95d2411ce6e1c0ee0",
+    ".github/workflows/deadline-overview-browser.yml": "0f838fa5b6ee0a580a3f85c3e5c8a012d3cf2c6cd092ff80618811292eed419a"
+  },
+  "buildSha256": {
+    "assets/index-41FLtvzD.css": "a3053cd7be8fec4c15594b2931b3b9c5fb9988f413c6f7f76eac43638bbbf3a0",
+    "assets/index-B_BGqvdA.js": "654a1a34dd6fc37f143457f1dc79d87c6454826e63a4290bdb2bf12c330528fd",
+    "captures/returnby-desktop.png": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+    "captures/returnby-mobile.png": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+    "favicon.svg": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+    "index.html": "d1500263e0d5d9d765d7d9b7a06d536db3bbac29ed663d75c4ce8eb304b3ad7c"
+  },
+  "sourceUnchanged": true,
+  "observer": "Real native Review/Save, backup-file chooser/import, other-tab Edit/Save and calendar download. Instrumented Storage records writes; explicit confined read/corruption faults are labeled.",
+  "visualBoundary": "Actual browser screenshots are preserved. Direct pixel inspection is a separate receiving claim.",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/154.0.8037.97",
+    "revision": "@b510e9d7cd3a2fbd78d0ddc42234103206c5f78d",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.20"
+  },
+  "originalBoundary": {
+    "nativeRecords": [
+      {
+        "id": "15a459f3-324a-4add-8811-5275ca15481a",
+        "merchant": "Café <pack> 海 😀",
+        "orderNo": "TRIP-\"A\",1",
+        "total": "JPY 1200",
+        "orderDate": "2026-09-25",
+        "windowDays": 13,
+        "windowSource": "user",
+        "createdAt": "2026-10-08T15:17:03.704Z"
+      },
+      {
+        "id": "98e06686-fff5-4ede-b7a2-1df7f7ccc47c",
+        "merchant": "Return trip B",
+        "orderNo": "TRIP-B",
+        "total": "USD 19.95",
+        "orderDate": "2026-09-26",
+        "windowDays": 13,
+        "windowSource": "user",
+        "createdAt": "2026-10-08T15:17:03.742Z"
+      },
+      {
+        "id": "b41602ba-beab-4fef-adb4-b341b1cf4076",
+        "merchant": "Return trip C",
+        "orderNo": "TRIP-C",
+        "total": "£ 0.00",
+        "orderDate": "2026-09-25",
+        "windowDays": 13,
+        "windowSource": "user",
+        "createdAt": "2026-10-08T15:17:03.769Z"
+      }
+    ],
+    "expectedDue": {
+      "15a459f3-324a-4add-8811-5275ca15481a": "2026-10-08",
+      "98e06686-fff5-4ede-b7a2-1df7f7ccc47c": "2026-10-09",
+      "b41602ba-beab-4fef-adb4-b341b1cf4076": "2026-10-08"
+    },
+    "overviewControls": [],
+    "meaning": "Native Review/Save succeeded before the independently frozen monthly-overview action is required."
+  },
+  "error": "AssertionError [ERR_ASSERTION]: Missing monthly saved-deadline overview entrypoint\n\n0 !== 1\n\n    at file:///home/runner/work/returnby/returnby/tools/check_deadline_overview_browser.mjs:452:10",
+  "browserLog": "[2859:2886:1008/151702.534675:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2859:2886:1008/151702.536617:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2859:2886:1008/151702.683986:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2859:2886:1008/151702.732477:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n\nDevTools listening on ws://127.0.0.1:43915/devtools/browser/bb33d87c-59b0-44dd-a8aa-9736a8da0c4c\n[2859:2859:1008/151703.006942:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2859:2859:1008/151703.007000:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2859:2886:1008/151703.007022:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2859:2886:1008/151703.007128:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2859:2859:1008/151703.008963:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2859:2859:1008/151703.013379:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2859:2886:1008/151703.014007:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2859:2859:1008/151703.083027:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2859:2859:1008/151703.085488:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2859:2886:1008/151703.085543:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2859:2859:1008/151703.092785:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2859:2859:1008/151703.121060:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.UPower was not provided by any .service files\n[2859:2859:1008/151703.121252:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2859:2886:1008/151703.121325:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2859:2859:1008/151703.156474:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2859:2886:1008/151703.156636:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2859:2859:1008/151703.186746:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n",
+  "lastPage": {
+    "url": "http://127.0.0.1:37239/",
+    "focus": "<textarea id=\"paste\" rows=\"9\" placeholder=\"Paste the order confirmation text here...\"></textarea>",
+    "text": "R/\nRETURNBY\nTHE RETURN DESK\nLOCAL ONLY / NO INBOX CONNECTION\n\nORDER IN / DEADLINE OUT\n\nKeep the window\non your side.\n\nPaste a real confirmation. ReturnBy extracts order details, checks merchant policy and gives you a date to act on. Review every field, save multiple deadlines and export a real calendar reminder - no AI or account required.\n\n01 / PASTE\n02 / REVIEW\n03 / REMEMBER\nRETURN WINDOW\n30 DAYS\nDEFAULT WHEN A STORE IS UNKNOWN\nRULE-BASED / EDITABLE / LOCAL\n\n01 / START WITH THE ORDER\n\nPaste a confirmation.\n\nOnly details you approve are saved. The original email stays in this text box until you clear it.\n\nORDER EMAIL / CONFIRMATION\nFind the deadline\nLoad a fictional example\nLOCAL\n\nNo inbox access. No upload. Parsing and calendar export run in this browser.\n\nRULE ENGINE / REVIEW\n4 OF 4 FIELDS RECOGNIZED\nSTORE MATCH\n\nAmber fields need attention. Confirm or correct the details before saving.\n\nStore\nOrder date\nOrder #\nTotal\nReturn window (days)\n\nStore rule from the local policy table; confirm with the retailer.\n\nSave deadline to tracker\n\n02 / YOUR ACTIVE TRACKER\n\nReturn windows.\n\nDeadlines are recalculated each day and sorted by what needs attention first.\n\nTRACKED\n3\nDUE IN 7 DAYS\n3\nOVERDUE\n0\nAll\nDue soon\nExpired\nExport several reminders\nCafé <pack> 海 😀 #TRIP-\"A\",1\nURGENT\nORDER 2026-09-25\nYOUR RULE / 13 DAYS\nRETURN BY 2026-10-08\n0 DAYS LEFT\nAdd calendar reminder\nEdit details\nRemove\nReturn trip C #TRIP-C\nURGENT\nORDER 2026-09-25\nYOUR RULE / 13 DAYS\nRETURN BY 2026-10-08\n0 DAYS LEFT\nAdd calendar reminder\nEdit details\nRemove\nReturn trip B #TRIP-B\nURGENT\nORDER 2026-09-26\nYOUR RULE / 13 DAYS\nRETURN BY 2026-10-09\n1 DAYS LEFT\nAdd calendar reminder\nEdit details\nRemove\n\nSaved items stay in this browser's local storage. Use the calendar button for an .ics reminder.\n\nBack up or restore saved returns\n01\nRules, not guesses.\n\nA parser extracts four fields. Missing values are highlighted so you can correct them before saving.\n\n02\nPolicy with a fallback.\n\nKnown stores use the local policy table. Unknown stores are clearly marked with an editable 30-day default.\n\n03\nKeep control.\n\nEach saved deadline can be exported as a calendar event with a three-day reminder or removed from the tracker.\n\nPRIVATE BY DESIGN. The pasted email is not stored or sent. Only reviewed order fields you save persist on this device.\n\nClear saved returns"
+  },
+  "pageErrors": [],
+  "totalArtifactBytes": 148473
+}
