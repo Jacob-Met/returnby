@@ -1,0 +1,31 @@
+{
+  "schema": "hamon.returnby.checklist.independent-production-review.v1",
+  "at": "2026-10-08T16:42:19.129344+00:00",
+  "reviewer": "estate-81ba1ed0179c/estate_production",
+  "verdict": "accepted_bounded_source_review",
+  "native_commit": "3b863ad63c998f65fc8db686185dd8450aa9a6b5",
+  "native_tree": "a6e2f455d22971a240cd8334350247bed678a842",
+  "source_freeze_sha256": "b2410ccacd1c599129319ddd0e2d3448bed7482bc1181f1f99a01896aeb4ed2a",
+  "all_nine_frozen_source_hashes_match": true,
+  "inspected": [
+    "src/trip-checklist.ts complete admission/selection/render/export logic",
+    "src/trip-checklist-view.ts complete state and freshness flow",
+    "unchanged src/deadline.ts calendar arithmetic",
+    "tests/trip-checklist.test.ts focused controls",
+    "docs/TRIP_CHECKLIST.md contract"
+  ],
+  "findings": [
+    "Complete saved-list admission is read-only, byte-bounded and rejects duplicate identifiers, malformed record types, unsupported date round trips, nonfinite/fractional/oversized windows and invalid source labels before rendering.",
+    "Selection resolves exact current IDs to frozen scalar facts, rejects empty/duplicate/unknown choices and sorts a new array by the existing calculated deadline. Original snapshot/order data remains unchanged.",
+    "Merchant, order number and saved amount use escaped literal text with preserved whitespace. The result excludes unselected orders, source-storage payload and creation timestamps; it calculates neither a combined amount nor a refund.",
+    "Planned/prepared dates are distinct; each saved policy/default/user source label is retained. The sheet correctly identifies computed deadlines and explicitly asks the user to confirm current store instructions.",
+    "Editing the date or selection retires the prepared result. Preview and download synchronously reread the exact storage string; change/removal/read failure disables export until explicit refresh and reselection. Storage, focus and visibility handlers provide additional detection.",
+    "Standalone HTML embeds its own print styles, contains no scripts or remote assets and uses the same sheet renderer as the reviewed preview. The file name depends only on the validated trip date."
+  ],
+  "blockers": [],
+  "limits": [
+    "No production source changes, build, native test repetition or browser rerun performed by this reviewer.",
+    "The owner separately received 68 tests and 17 actual Chrome groups; those reported results are not counted as independent executions here.",
+    "Freshness checks follow the documented read-before-action contract; no cross-tab atomic transaction or persistence of trip marks is claimed."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-08T16:29:59.382626+00:00",
+  "native_commit": "3b863ad63c998f65fc8db686185dd8450aa9a6b5",
+  "native_tree": "a6e2f455d22971a240cd8334350247bed678a842",
+  "canonical_base_commit": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "canonical_base_tree": "ab4534a2e1afdace5d27a6079012c776c0e66f70",
+  "native_history_note": "The baseline commit materializes the exact canonical tree; this isolated repository does not claim upstream Git history.",
+  "files": [
+    {
+      "path": "trip-checklist.html",
+      "bytes": 4558,
+      "sha256": "a1f8fd94b38acea81efe6f6f410ca2a2808ac88914694b4c660a559dc0d35681",
+      "git_blob": "f0286c5e6817c1656297c67489d4b796ddec4510"
+    },
+    {
+      "path": "src/trip-checklist.ts",
+      "bytes": 13299,
+      "sha256": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c",
+      "git_blob": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf"
+    },
+    {
+      "path": "src/trip-checklist-view.ts",
+      "bytes": 7349,
+      "sha256": "cdb7e3e0111086e2826849f0a21e1594998b48e6e656efc9a7c0d6b83ba21f32",
+      "git_blob": "b3f047bef90affc42774fcd1f6f04e5963a45fa7"
+    },
+    {
+      "path": "src/trip-checklist.css",
+      "bytes": 8367,
+      "sha256": "1a5167a9a0b46bbcf600c986266f5a7fdcc97222e6a0ad46a8896bccbc8fe1bc",
+      "git_blob": "be540de5163c0b66cda28296311b2ce02204e087"
+    },
+    {
+      "path": "tests/trip-checklist.test.ts",
+      "bytes": 8753,
+      "sha256": "44afbdf66731650384cec49d9dec7398e8e747b77e1f9ad347a79f5fbf6bf88d",
+      "git_blob": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe"
+    },
+    {
+      "path": "docs/TRIP_CHECKLIST.md",
+      "bytes": 2840,
+      "sha256": "034b5bacbce3c65b4bfb0c99918105cbcf446001536c0d46da32d8cc620103a1",
+      "git_blob": "47f27eca777fbc84f5488236275d3850e09dff30"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4455,
+      "sha256": "7ab7e2a77337b9ca92534a5270a46ee36c606e551b598b20205b0bbb079a8ab1",
+      "git_blob": "4743147d7bae94b597cc5d578d33ef56b65dc793"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 355,
+      "sha256": "78d228170cb7b113fdde43ca738f1f4e73827656c42cce2440bd2239bcd35e5e",
+      "git_blob": "dea38f9d09ffdc5a246436b4a974917419c5a675"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2244,
+      "sha256": "b039218c657f3116d34f59dca3d1d3ae52a216051c324a882ef8a8bfac9df360",
+      "git_blob": "2edffc7b6672d119b4ed2e5d7f9956893c1820c7"
+    }
+  ],
+  "status": ""
+}

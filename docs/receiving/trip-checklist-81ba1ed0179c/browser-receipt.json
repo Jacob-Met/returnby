@@ -1,0 +1,296 @@
+{
+  "schema": "returnby.trip-checklist-browser-receiving.v1",
+  "started_at": "2026-10-08T16:37:03.254Z",
+  "source_head": "3b863ad63c998f65fc8db686185dd8450aa9a6b5",
+  "source_tree": "a6e2f455d22971a240cd8334350247bed678a842",
+  "receiver_sha256": "de2c098b4f65bcd9bf5d432706a07343fea76da1bfc1b0a6b02eeaf1515e11a6",
+  "viewport": {
+    "desktop": [
+      1440,
+      1000
+    ],
+    "phone": [
+      390,
+      844
+    ]
+  },
+  "fixture_kind": "authored fictional saved orders only",
+  "groups": [
+    "The built original tracker saves a real authored order and its new link opens that unchanged saved order in the separate checklist.",
+    "Three fictional saved orders render literal text and all stored source labels; no checklist is selected or exportable by default.",
+    "Keyboard selection and preview show only two chosen orders in deadline order, preserving mixed-currency strings and before/after timing.",
+    "A real browser download completes with exact selected literal facts, six blank checks, self-contained styles and no unselected order or creation metadata.",
+    "The actually downloaded file reopens through file:// with networking offline and matches the reviewed sheet exactly.",
+    "The downloaded file has a real print-media layout and produces a native Chrome PDF while retaining source labels and limitations.",
+    "An actual removal in the original tracker makes the other tab’s preview stale and disables export without silently replacing the sheet.",
+    "Explicit refresh loads current records and clears the prior selection and preview.",
+    "Changing the planned date or clearing the selected orders retires the old preview before a new download.",
+    "The final download guard catches a same-tab raw change even without a storage event, preserving the changed saved bytes.",
+    "A read-access failure at download time is actionable and prevents export without any attempted storage write.",
+    "Malformed saved JSON remains intact, with no empty-list disguise, row dropping or reset.",
+    "Duplicate identities are refused and a genuinely empty store offers the tracker/refresh path, without altering either value.",
+    "A blocked localStorage property getter also reaches the actionable read-error state.",
+    "At 390px the selected user-adjusted order stays within the viewport and actually downloads its own one-order checklist.",
+    "The one-order download reopens offline on a narrow screen with the same amount, source and usable page width.",
+    "Every tracked source byte remains unchanged; the receiver used no external request and observed no product script error."
+  ],
+  "downloads": [
+    {
+      "path": "desktop-returnby-trip-2026-10-10.html",
+      "suggested_filename": "returnby-trip-2026-10-10.html",
+      "bytes": 6831,
+      "sha256": "5dc977d0726a1f7b3170cf62c6026852c93ac6b687d9d23614fbcb538699f49f",
+      "failure": null
+    },
+    {
+      "path": "phone-returnby-trip-2026-10-10.html",
+      "suggested_filename": "returnby-trip-2026-10-10.html",
+      "bytes": 5782,
+      "sha256": "3d3ea68a73d184ef31dae1d8a8811fdfe5013d11f7928c82328cc78386764efe",
+      "failure": null
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "desktop-preview.png",
+      "bytes": 247265,
+      "sha256": "6feeee6aa836dca8aaf63fab53f98eaf69346f62b02356eb858ccbb4e4dbdf92"
+    },
+    {
+      "path": "offline-print-layout.png",
+      "bytes": 104843,
+      "sha256": "3bbf5d0af846194a0927c1963c672190268c59d3e9dfb6569959ba1e5fd276bc"
+    },
+    {
+      "path": "offline-print.pdf",
+      "bytes": 137149,
+      "sha256": "115d1c245243938055fbfcfc4c1b37037c8da05f0061eedacd5ca53bd6ea3e33"
+    },
+    {
+      "path": "phone-preview.png",
+      "bytes": 171381,
+      "sha256": "b078ecbe20e753ec564a19d9bb1d89e8ff2cbe5625a4ded0d5aaa4c72e3a70a3"
+    },
+    {
+      "path": "phone-offline-file.png",
+      "bytes": 66311,
+      "sha256": "558bfa24b071e0e47b2cdc5b98d0c05bd0e2d5f62f08db9e4f0ce8463a0211b4"
+    }
+  ],
+  "page_errors": [],
+  "console_errors": [],
+  "external_requests": [],
+  "source_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "90cd15347c9e7c2249b81664f24c35fc49a22577a623f4b5c09aaae42c9103bc"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "sha256": "9d137c6ee9c4bd842b74506f7d3e6abcd9e4db93068140dee37411a14b5d50cb"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "9510dfb20fc42c00d67c03eff9c2ffb9708f8c28ea78992797fba72b301461b5"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "f6a3d0f7d08a7590f907c08d6127545ab44eff0d23b6074714ad3fb935b998bb"
+    },
+    {
+      "path": "README.md",
+      "sha256": "b039218c657f3116d34f59dca3d1d3ae52a216051c324a882ef8a8bfac9df360"
+    },
+    {
+      "path": "data/policies.json",
+      "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+    },
+    {
+      "path": "devpost/checklist.md",
+      "sha256": "22ede6c801e66219d56049a858901ff7b0785ae5c344f6296bd592d041e6d9d4"
+    },
+    {
+      "path": "devpost/prd.md",
+      "sha256": "e018872f936e97d2c46283fb789829db674d92cfbc1c6f6665db1958a54234fd"
+    },
+    {
+      "path": "devpost/scope.md",
+      "sha256": "74bf96df71c3a02ebcde2de7d657eb4391e909b3ea01cd4be43b6fc0c5326abf"
+    },
+    {
+      "path": "devpost/spec.md",
+      "sha256": "08fa071abde2b502e104a7313576d341c890f64ac48b0c8e0e6bf8f16c376ab9"
+    },
+    {
+      "path": "docs/TRIP_CHECKLIST.md",
+      "sha256": "034b5bacbce3c65b4bfb0c99918105cbcf446001536c0d46da32d8cc620103a1"
+    },
+    {
+      "path": "index.html",
+      "sha256": "7ab7e2a77337b9ca92534a5270a46ee36c606e551b598b20205b0bbb079a8ab1"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+    },
+    {
+      "path": "package.json",
+      "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c"
+    },
+    {
+      "path": "public/captures/returnby-desktop.png",
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+    },
+    {
+      "path": "public/captures/returnby-mobile.png",
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "path": "skills-lock.json",
+      "sha256": "d694bf01b540bc48630898dc535fb9ecdbeced78d7d94bc56ee53a488490b4c6"
+    },
+    {
+      "path": "src/day-refresh.ts",
+      "sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430"
+    },
+    {
+      "path": "src/deadline.ts",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "path": "src/ics.ts",
+      "sha256": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f"
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "a67c4878d70502eb5f2ff5bfa286bf932c66cb73fecb1fd6184d7f80426fa26b"
+    },
+    {
+      "path": "src/parse.ts",
+      "sha256": "591eea8a9a73009d3870b61df591ad2bb5d62144d931841b063180da588cc439"
+    },
+    {
+      "path": "src/policy.ts",
+      "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231"
+    },
+    {
+      "path": "src/samples.ts",
+      "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080"
+    },
+    {
+      "path": "src/style.css",
+      "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892"
+    },
+    {
+      "path": "src/trip-checklist-view.ts",
+      "sha256": "cdb7e3e0111086e2826849f0a21e1594998b48e6e656efc9a7c0d6b83ba21f32"
+    },
+    {
+      "path": "src/trip-checklist.css",
+      "sha256": "1a5167a9a0b46bbcf600c986266f5a7fdcc97222e6a0ad46a8896bccbc8fe1bc"
+    },
+    {
+      "path": "src/trip-checklist.ts",
+      "sha256": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c"
+    },
+    {
+      "path": "tests/core.test.ts",
+      "sha256": "b7f392c5dac6507b07a7e69016e81a793a1aa8264b6cec9b9f3262481f3b883f"
+    },
+    {
+      "path": "tests/day-refresh.test.ts",
+      "sha256": "1f6ba366278a67d92c6aa219586158a3d8ecab9394395f79cb5c91545627aa6d"
+    },
+    {
+      "path": "tests/ics.test.ts",
+      "sha256": "1c945625f9988963760e3804142a7292603409bd0d95846109997ebcd6ed08fa"
+    },
+    {
+      "path": "tests/trip-checklist.test.ts",
+      "sha256": "44afbdf66731650384cec49d9dec7398e8e747b77e1f9ad347a79f5fbf6bf88d"
+    },
+    {
+      "path": "tools/capture_returnby.py",
+      "sha256": "16de192dd6c76b4eeaefb54d8f3c409f9b594b192759ff0bf3bf40460b0440f1"
+    },
+    {
+      "path": "tools/verify_day_refresh.py",
+      "sha256": "595379459e99222b0c47f9832f00914d4499d402ee9bd046e13eab80944366ba"
+    },
+    {
+      "path": "trip-checklist.html",
+      "sha256": "a1f8fd94b38acea81efe6f6f410ca2a2808ac88914694b4c660a559dc0d35681"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "78d228170cb7b113fdde43ca738f1f4e73827656c42cce2440bd2239bcd35e5e"
+    }
+  ],
+  "runtime_files": [
+    {
+      "path": "assets/deadline-DzH3L3IB.js",
+      "bytes": 1111,
+      "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+    },
+    {
+      "path": "assets/main-6De5wGcc.js",
+      "bytes": 9742,
+      "sha256": "5ce0bf61aad5aa49b18a6033a48d611d42ce93860f8f69c13ead7b76c708c4b6"
+    },
+    {
+      "path": "assets/main-Bp_ZSQx5.css",
+      "bytes": 8801,
+      "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+    },
+    {
+      "path": "assets/tripChecklist-CmK7SEMW.css",
+      "bytes": 8320,
+      "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8"
+    },
+    {
+      "path": "assets/tripChecklist-DwME05Y-.js",
+      "bytes": 16658,
+      "sha256": "55ad0aae6831073a049290eab3fdd771291ce83b5881cb8eb6ac4ca91218a11a"
+    },
+    {
+      "path": "captures/returnby-desktop.png",
+      "bytes": 131379,
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+    },
+    {
+      "path": "captures/returnby-mobile.png",
+      "bytes": 107642,
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+    },
+    {
+      "path": "favicon.svg",
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4633,
+      "sha256": "d682fc8df6ac84594558efe91fcbaa473b362b196339fbaadd38a52b5268283b"
+    },
+    {
+      "path": "trip-checklist.html",
+      "bytes": 4738,
+      "sha256": "94049e67756e797f02888a1d9311cd5fb17d026fc4dd923c531d235d3ee6ed85"
+    }
+  ],
+  "status": "passed",
+  "finished_at": "2026-10-08T16:37:06.781Z",
+  "native_browser_closed": true
+}

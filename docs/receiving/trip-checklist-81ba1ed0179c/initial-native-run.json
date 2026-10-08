@@ -1,0 +1,210 @@
+{
+  "schema": "returnby.checklist-candidate.v1",
+  "at": "2026-10-08T16:27:48.117308+00:00",
+  "base_commit": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "base_tree": "ab4534a2e1afdace5d27a6079012c776c0e66f70",
+  "before": [
+    {
+      "path": "README.md",
+      "git_blob": "40912b7928f64da0937e56ea5f9062d4a660b6d0"
+    },
+    {
+      "path": "index.html",
+      "git_blob": "9a6c44071f47dfac5bf7bc82204c9b1b19c3b568"
+    },
+    {
+      "path": "package.json",
+      "git_blob": "329b4b71fbb631662eec0405ced477134520c9a5"
+    },
+    {
+      "path": "src/deadline.ts",
+      "git_blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4"
+    },
+    {
+      "path": "src/ics.ts",
+      "git_blob": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4"
+    },
+    {
+      "path": "src/main.ts",
+      "git_blob": "798e5329fe9983e67b5832595605a49294f0a529"
+    },
+    {
+      "path": "src/store.ts",
+      "git_blob": "23cf906e26187ff28c94718111e69d9603c97fa8"
+    },
+    {
+      "path": "vite.config.ts",
+      "git_blob": "041854f74501ecbb719e93f24f73e471596ab572"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "git_blob": "b5688812f36338630c21eb5643318a55496ae09b"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "git_blob": "a0b5ed32f62e4f9691180a01f579c95619bb290a"
+    },
+    {
+      "path": ".gitignore",
+      "git_blob": "b56df07f248fdfb406a35c411fafc91db47c9c95"
+    },
+    {
+      "path": "LICENSE",
+      "git_blob": "edb188254288b40f2895833e3647b7e0be34c962"
+    },
+    {
+      "path": "data/policies.json",
+      "git_blob": "8492b1e041d03723b1eac74220afd3d4fe3d2834"
+    },
+    {
+      "path": "devpost/checklist.md",
+      "git_blob": "318fc1035ad4314ae25fa829e152f5c03e883db5"
+    },
+    {
+      "path": "devpost/prd.md",
+      "git_blob": "60614d01a9e955c5911b3283d01bc5329397a6a9"
+    },
+    {
+      "path": "devpost/scope.md",
+      "git_blob": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec"
+    },
+    {
+      "path": "devpost/spec.md",
+      "git_blob": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72"
+    },
+    {
+      "path": "package-lock.json",
+      "git_blob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0"
+    },
+    {
+      "path": "public/captures/returnby-desktop.png",
+      "git_blob": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d"
+    },
+    {
+      "path": "public/captures/returnby-mobile.png",
+      "git_blob": "c2ed83d29698fb5a47818c87d8f82944997c2bc4"
+    },
+    {
+      "path": "public/favicon.svg",
+      "git_blob": "2805d210d2571bbfe5468ac5b5743a703c6bb74b"
+    },
+    {
+      "path": "skills-lock.json",
+      "git_blob": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf"
+    },
+    {
+      "path": "src/day-refresh.ts",
+      "git_blob": "362aae5b5be7bf399174483327a2b15018edeca4"
+    },
+    {
+      "path": "src/parse.ts",
+      "git_blob": "45dd377540c6ec9046604927a6e8803d19fe3b5b"
+    },
+    {
+      "path": "src/policy.ts",
+      "git_blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d"
+    },
+    {
+      "path": "src/samples.ts",
+      "git_blob": "cb510076e14da5b3a75edfc472466b93f19bfe94"
+    },
+    {
+      "path": "src/style.css",
+      "git_blob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb"
+    },
+    {
+      "path": "tests/core.test.ts",
+      "git_blob": "57e122956a04824da82185263ac460243de3548c"
+    },
+    {
+      "path": "tests/day-refresh.test.ts",
+      "git_blob": "1d76fd6ef7364ae84f4775666768815211981ff6"
+    },
+    {
+      "path": "tests/ics.test.ts",
+      "git_blob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4"
+    },
+    {
+      "path": "tools/capture_returnby.py",
+      "git_blob": "367403bf3c393731cee650912789add1f3b46297"
+    },
+    {
+      "path": "tools/verify_day_refresh.py",
+      "git_blob": "94caac1360142a886c138b1ebf2e5698024121d0"
+    },
+    {
+      "path": "tsconfig.json",
+      "git_blob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a"
+    }
+  ],
+  "changed": [
+    {
+      "path": "trip-checklist.html",
+      "bytes": 4558,
+      "git_blob": "aadd167b02e88db5de36359396d94c71b128a9a5",
+      "sha256": "049ceade071bffa18b90476803c7e092940df982bc4f1658da429dd8080b6b64"
+    },
+    {
+      "path": "src/trip-checklist.ts",
+      "bytes": 13299,
+      "git_blob": "587daa961589456b49a69d3bf64692ada23a1e60",
+      "sha256": "8243d7ef90315b778bbc21318e50cfa84ae53d046b35e1bfd9e5ce8bb9c10bce"
+    },
+    {
+      "path": "src/trip-checklist-view.ts",
+      "bytes": 7349,
+      "git_blob": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+      "sha256": "cdb7e3e0111086e2826849f0a21e1594998b48e6e656efc9a7c0d6b83ba21f32"
+    },
+    {
+      "path": "src/trip-checklist.css",
+      "bytes": 8367,
+      "git_blob": "be540de5163c0b66cda28296311b2ce02204e087",
+      "sha256": "1a5167a9a0b46bbcf600c986266f5a7fdcc97222e6a0ad46a8896bccbc8fe1bc"
+    },
+    {
+      "path": "tests/trip-checklist.test.ts",
+      "bytes": 8663,
+      "git_blob": "fa1fd5332d5c8910b9b8564a46c5c2e6fdccb756",
+      "sha256": "09e5be47a20e6f6b2e102c90fce2a0c3560dfcc055d584a2f7d1b711ae35b935"
+    },
+    {
+      "path": "docs/TRIP_CHECKLIST.md",
+      "bytes": 2840,
+      "git_blob": "47f27eca777fbc84f5488236275d3850e09dff30",
+      "sha256": "034b5bacbce3c65b4bfb0c99918105cbcf446001536c0d46da32d8cc620103a1"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4455,
+      "git_blob": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+      "sha256": "7ab7e2a77337b9ca92534a5270a46ee36c606e551b598b20205b0bbb079a8ab1"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 355,
+      "git_blob": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+      "sha256": "78d228170cb7b113fdde43ca738f1f4e73827656c42cce2440bd2239bcd35e5e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2244,
+      "git_blob": "2edffc7b6672d119b4ed2e5d7f9956893c1820c7",
+      "sha256": "b039218c657f3116d34f59dca3d1d3ae52a216051c324a882ef8a8bfac9df360"
+    }
+  ],
+  "commands": [
+    {
+      "name": "test",
+      "command": [
+        "/opt/homebrew/bin/npm",
+        "test"
+      ],
+      "exit_code": 1,
+      "seconds": 0.8483021249994636,
+      "log": "/Users/me/hamon-mcp-lab/returnby-checklist-81ba1ed0179c/candidate-r1/test.log",
+      "sha256": "5d96afe6bb11d624d6862a6963609d8d287caadfb3d9cc41d39fde6b910d2dd0"
+    }
+  ],
+  "status": "failed"
+}

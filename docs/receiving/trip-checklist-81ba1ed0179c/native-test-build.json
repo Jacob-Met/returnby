@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-08T16:28:54.487586+00:00",
+  "reason": "The first native run exposed a test-table argument expansion error and the unchanged core formatter's unpadded sub-1000 years. Correct the test table and state the actual supported 1000\u20139999 range; preserve original failed receipt.",
+  "commands": [
+    {
+      "name": "test",
+      "exit_code": 0,
+      "seconds": 0.9376100420486182,
+      "sha256": "7433590e1af7c8f53256a558491c1bd1b2532a33b85d05485382ebbe623111ed"
+    },
+    {
+      "name": "build",
+      "exit_code": 0,
+      "seconds": 1.2279104170156643,
+      "sha256": "dcf5bc4e41ce7ea7f128ea3950fbfe78f1fc67e7bbcd503ff1b67dcd38794e62"
+    }
+  ],
+  "status": "passed"
+}

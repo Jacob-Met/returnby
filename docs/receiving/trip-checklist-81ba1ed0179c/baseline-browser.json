@@ -1,0 +1,34 @@
+{
+  "groups": [
+    "Fresh isolated origin has no saved orders.",
+    "Original review form saves the authored fictional order through its existing submit action.",
+    "Original calendar button downloads a real .ics for the unchanged computed 2026-11-02 deadline.",
+    "Baseline has no checklist entry and its requested /trip-checklist.html route returns 404.",
+    "The calendar/read-only witness preserves the saved order bytes; no external requests or script errors."
+  ],
+  "page_errors": [],
+  "console_errors": [],
+  "external_requests": [],
+  "downloads": [
+    {
+      "name": "return-Fictional-Trail-Shop.ics",
+      "bytes": 422,
+      "sha256": "9cc77601e59c4d33555aac724051aa18e96ab327126d6cbab88a22310b7d59b4",
+      "failure": null
+    }
+  ],
+  "source_commit": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "source_tree": "ab4534a2e1afdace5d27a6079012c776c0e66f70",
+  "observed_at": "2026-10-08T16:15:46.616Z",
+  "status": "baseline_verified_missing_feature",
+  "saved_fictional_order": {
+    "id": "e4f704e2-e1e2-42ec-8aff-af1309f20541",
+    "merchant": "Fictional Trail Shop",
+    "orderNo": "DEMO-104",
+    "total": "$64.00",
+    "orderDate": "2026-10-03",
+    "windowDays": 30,
+    "windowSource": "policy",
+    "createdAt": "2026-10-08T16:15:46.488Z"
+  }
+}
