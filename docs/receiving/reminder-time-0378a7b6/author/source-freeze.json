@@ -1,0 +1,404 @@
+{
+  "at": "2026-10-08T22:26:22.097Z",
+  "parent": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "head": "9585fc2d39de8b4af70abc9eada341220111159d",
+  "tree": "34f33daed238a7f9088a779c7edf861469a55e46",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2705,
+      "sha256": "ae6f9572199a2e3aaa63749ab70d442a7b1cd27f6bf69c810df3b9a8ee91a5a8",
+      "blob": "00ad3151437c389dfa5ddd739eed626eb203f80c"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4474,
+      "sha256": "a526fa14c42c969b651047477f0b1b420a21aa7f3105cffe5d7aeceb50563ce2",
+      "blob": "7eb2b8f8f6049c06d34300211c4a76d4ad14f235"
+    },
+    {
+      "path": "src/ics.ts",
+      "bytes": 2414,
+      "sha256": "ab36f775e10eb8fbe23528d9af1aabbb128bffbee8b0669a6ee1c8c748e10e06",
+      "blob": "60fa97742b0b77afabdbf9b7faef5433238221f1"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 7666,
+      "sha256": "c61ab2ca27bc9c78cb318195b4053a893cd1e4c984a58c09ad90f013984e3a5b",
+      "blob": "4ffb35ea45d19e220c8a2b4c30a0daa5fc61375a"
+    },
+    {
+      "path": "src/reminder-plan.ts",
+      "bytes": 2681,
+      "sha256": "61c2cb4adef0ed801a05b319b9c6ca357c495b5899818ca1ccc859fcfd64c051",
+      "blob": "26260735025067a78c541974275b404680fe580f"
+    },
+    {
+      "path": "src/reminder-time.ts",
+      "bytes": 7275,
+      "sha256": "3a1d4c1b232116a03a4527195eda95a421d4860eda925f84afdeab6f09483aa6",
+      "blob": "72bf303e1f20188b37234967e9624d3e5bcf0353"
+    },
+    {
+      "path": "src/reminder-time.css",
+      "bytes": 1259,
+      "sha256": "8b3ddef6daf5fa3b4925077b0eb2ffe981159df7407415d54c6ee2949c6e87c6",
+      "blob": "08ffb49447918f5f4cf0433184527913dae10041"
+    },
+    {
+      "path": "src/calendar-download.ts",
+      "bytes": 810,
+      "sha256": "e6c96af045b2eb8505a4980ec9c7af4b8f3dd37f87c04c2e12e30db8042f8150",
+      "blob": "f859238ac42bcab5b96b8cd4ffda85ffa07d88d5"
+    },
+    {
+      "path": "tests/reminder-plan.test.mjs",
+      "bytes": 4358,
+      "sha256": "277a9dd55a00f0448284e8109c2d1398160bd5d0cd0532b90780898241e15fed",
+      "blob": "fb900bee160444f80a2ba114d149071282f8f256"
+    },
+    {
+      "path": "tests/ics-alarm.test.ts",
+      "bytes": 1343,
+      "sha256": "cd06235bf30aadc9b2b21b64593ab154245e47593359203e4ef30e97c6cfdff1",
+      "blob": "3ebffda38bff77f393d03185e77d4f151ca29724"
+    },
+    {
+      "path": "docs/REMINDER_TIME.md",
+      "bytes": 3178,
+      "sha256": "ac2d15b22e2fbceb1a37b5bcbb4fe2386391aefff67678d3d97dfd0c0c7b29fa",
+      "blob": "8b3c2b5f3af3df37b74c95ea877bf6b7342786e3"
+    }
+  ],
+  "unownedPreserved": 50,
+  "unowned": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b5688812f36338630c21eb5643318a55496ae09b"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b56df07f248fdfb406a35c411fafc91db47c9c95"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "edb188254288b40f2895833e3647b7e0be34c962"
+    },
+    {
+      "path": "data/policies.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8492b1e041d03723b1eac74220afd3d4fe3d2834"
+    },
+    {
+      "path": "devpost/checklist.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "318fc1035ad4314ae25fa829e152f5c03e883db5"
+    },
+    {
+      "path": "devpost/prd.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "60614d01a9e955c5911b3283d01bc5329397a6a9"
+    },
+    {
+      "path": "devpost/scope.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec"
+    },
+    {
+      "path": "devpost/spec.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72"
+    },
+    {
+      "path": "docs/TRIP_CHECKLIST.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "47f27eca777fbc84f5488236275d3850e09dff30"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f55e0f280faff3f0f73d1a1f065486bb089187f"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-browser.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "703266c5bf084e195afc6995351cc15522e77faf"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-commands.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7a9e0f1890c73a1620bdb0abfea88b63b0d1863"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/browser-receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30b984b1aa918ebb81e7e91f00873553e326ff81"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-preview.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "932f0596216a56b30c1ae17e32c7db820c78ca4a"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-returnby-trip-2026-10-10.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a02abb0c781b3fa5c114a1eb011c44ac54b88b75"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/independent-production-review.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6c69ef12d1758d9344eaf0a80a1949ffadeecde"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/initial-native-run.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3df835c6ebe0d6f2dc7f74661f99cfd9d609d9d0"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/native-test-build.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3321dbf2194d05e4710fc6754c04f58639b966e6"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-build.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "10e68ca17dee1825a95a394a1706123c778c8df9"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-test.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2e0da6e62f220f543095f43b6d1958cb9f806c6"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-offline-file.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ffa8767b85ed992a0650fed4e329da2fdd3e72e3"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-returnby-trip-2026-10-10.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec2d49ff8f22cb1d6cc6c68ac9bc6c32971aa7c3"
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/source-freeze.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "419543fdce703062516a3d58ee210e7914fcbb44"
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "329b4b71fbb631662eec0405ced477134520c9a5"
+    },
+    {
+      "path": "public/captures/returnby-desktop.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d"
+    },
+    {
+      "path": "public/captures/returnby-mobile.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c2ed83d29698fb5a47818c87d8f82944997c2bc4"
+    },
+    {
+      "path": "public/favicon.svg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2805d210d2571bbfe5468ac5b5743a703c6bb74b"
+    },
+    {
+      "path": "skills-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf"
+    },
+    {
+      "path": "src/day-refresh.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "362aae5b5be7bf399174483327a2b15018edeca4"
+    },
+    {
+      "path": "src/deadline.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4"
+    },
+    {
+      "path": "src/parse.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45dd377540c6ec9046604927a6e8803d19fe3b5b"
+    },
+    {
+      "path": "src/policy.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "38d8d03e30d1054b7447618afa7e49d5b4655c5d"
+    },
+    {
+      "path": "src/samples.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb510076e14da5b3a75edfc472466b93f19bfe94"
+    },
+    {
+      "path": "src/store.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "23cf906e26187ff28c94718111e69d9603c97fa8"
+    },
+    {
+      "path": "src/style.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d4e76b0ae4264b2ee426472ad2926690029ba3fb"
+    },
+    {
+      "path": "src/trip-checklist-view.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b3f047bef90affc42774fcd1f6f04e5963a45fa7"
+    },
+    {
+      "path": "src/trip-checklist.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be540de5163c0b66cda28296311b2ce02204e087"
+    },
+    {
+      "path": "src/trip-checklist.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf"
+    },
+    {
+      "path": "tests/core.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "57e122956a04824da82185263ac460243de3548c"
+    },
+    {
+      "path": "tests/day-refresh.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1d76fd6ef7364ae84f4775666768815211981ff6"
+    },
+    {
+      "path": "tests/ics.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4"
+    },
+    {
+      "path": "tests/trip-checklist.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe"
+    },
+    {
+      "path": "tools/capture_returnby.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "367403bf3c393731cee650912789add1f3b46297"
+    },
+    {
+      "path": "tools/verify_day_refresh.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "94caac1360142a886c138b1ebf2e5698024121d0"
+    },
+    {
+      "path": "tools/verify_trip_checklist.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d222dcbb86b7958469ce3d8a6b3accdb500924d"
+    },
+    {
+      "path": "trip-checklist.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0286c5e6817c1656297c67489d4b796ddec4510"
+    },
+    {
+      "path": "tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a"
+    },
+    {
+      "path": "vite.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dea38f9d09ffdc5a246436b4a974917419c5a675"
+    }
+  ],
+  "clean": true,
+  "nativeGates": {
+    "started": "2026-10-08T22:25:10.037Z",
+    "node": "v24.19.0",
+    "commands": [
+      {
+        "name": "final-native-tests",
+        "args": [
+          "test"
+        ],
+        "status": 0,
+        "signal": null
+      },
+      {
+        "name": "final-native-build",
+        "args": [
+          "run",
+          "build"
+        ],
+        "status": 0,
+        "signal": null
+      }
+    ],
+    "completed": "2026-10-08T22:25:14.281Z"
+  },
+  "browserReceipt": "D:/Hamon/worktrees/returnby-reminder-timing-0378a7b6-proof/candidate-browser-final/receipt.json",
+  "actionsHeld": true
+}

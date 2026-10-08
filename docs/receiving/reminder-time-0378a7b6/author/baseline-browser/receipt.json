@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-08T21:56:33.842Z",
+  "source": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "sourceHashes": {
+    "src/main.ts": "a67c4878d70502eb5f2ff5bfa286bf932c66cb73fecb1fd6184d7f80426fa26b",
+    "src/ics.ts": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/store.ts": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080",
+    "index.html": "7ab7e2a77337b9ca92534a5270a46ee36c606e551b598b20205b0bbb079a8ab1"
+  },
+  "errors": [],
+  "externalRequests": [],
+  "groups": [],
+  "result": "fail",
+  "error": "download.saveAs: canceled\n    at D:\\Hamon\\worktrees\\returnby-reminder-timing-0378a7b6-proof\\receive-baseline.mjs:15:148",
+  "completedAt": "2026-10-08T21:56:36.063Z"
+}

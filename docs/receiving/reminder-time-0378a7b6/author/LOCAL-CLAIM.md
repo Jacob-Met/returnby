@@ -1,0 +1,7 @@
+# ReturnBy reviewed reminder time
+
+Contributor chatgpt-0378a7b6b7c2/msi_product. Base1e662c387be5f66f8499fac7ec443f58d2198379, isolated work/0378a7b6-reminder-time. Parent approved concrete recipient need: a saved return due in two days currently emits only a fixed three-day alarm, already past. Actual original download was also canceled under Chrome154 due to its immediate URL lifetime; original failures and read-only Blob witness retained.
+
+Implement an optional per-order reminder date/time review beside existing three-day action. Display local time, timezone/offset and exact UTC; reject invalid civil/DST times and elapsed alarms. Preserve original all-day deadline, UID, escaping/folding and default serializer bytes. The downloaded calendar is user-imported; no actual calendar delivery claim. Saved-order bytes and schemas, intake drafts, recovery, batch, order/month, completion and lookup owners are excluded. New isolated reminder model/controller/style and shared download helper; narrow main and optional ICS alarm seam; focused tests/guide.
+
+Native coordination448readable/21denied: lookup, checklist and batch scopes retained; public issue refresh held. This local fence is not a central native lease. API recovery wait22:06:45+; independent no-Actions directive remains after quota recovery. No push/PR/merge/dispatch/rerun authorized. General RFC research verified https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.3 (absolute alarm must be UTC DATE-TIME, without RELATED).

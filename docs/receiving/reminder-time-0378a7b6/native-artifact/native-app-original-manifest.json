@@ -1,0 +1,67 @@
+{
+  "at": "2026-10-08T22:33:00.469Z",
+  "source": "9585fc2d39de8b4af70abc9eada341220111159d",
+  "tree": "34f33daed238a7f9088a779c7edf861469a55e46",
+  "files": [
+    {
+      "path": "README.txt",
+      "bytes": 1148,
+      "sha256": "d2c35ecc7b36311daa74b1fb7d8d647b5a15be75c92afdbbd83912409126d69c"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 1421,
+      "sha256": "762565e6a3447396a767fd9acd140e5318cae40b7cb5e82acf8573de83c3d35d"
+    },
+    {
+      "path": "site/assets/main-Bb3jmDBH.js",
+      "bytes": 16793,
+      "sha256": "6de0ba2ce7589edf57dec2020ceb87a3e7563345677b6b883ab37d92f6e4a946"
+    },
+    {
+      "path": "site/assets/main-DVuRGk9O.css",
+      "bytes": 10048,
+      "sha256": "7f3d8110b27b400a4533fc6b9b369364aa9922a9a38eb7acb0562fd6545f2241"
+    },
+    {
+      "path": "site/assets/trip-checklist-Dn5GVYbX.js",
+      "bytes": 13882,
+      "sha256": "08c5504dda85b751a9a1606624cdb4a9043cb1bf19fb02fba1f00731ec7e1ec5"
+    },
+    {
+      "path": "site/assets/tripChecklist-CB-EsyoG.js",
+      "bytes": 3994,
+      "sha256": "576a5ae804da41d07ff8cc355aa69f65781c67d1e98b36aa2df09e620028c2cf"
+    },
+    {
+      "path": "site/assets/tripChecklist-CmK7SEMW.css",
+      "bytes": 8320,
+      "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8"
+    },
+    {
+      "path": "site/captures/returnby-desktop.png",
+      "bytes": 131379,
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+    },
+    {
+      "path": "site/captures/returnby-mobile.png",
+      "bytes": 107642,
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+    },
+    {
+      "path": "site/favicon.svg",
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "path": "site/index.html",
+      "bytes": 4658,
+      "sha256": "ef1c0c711633b972cde9b45c519e42f4339fcc95dde0d49d8ba40a5c7845c17d"
+    },
+    {
+      "path": "site/trip-checklist.html",
+      "bytes": 4744,
+      "sha256": "293e24f1beff0f41f3f252b3a015ecb232317c65e431b928e1a9dfe386def18c"
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+diff --git a/index.html b/index.html
+index 4743147..7eb2b8f 100644
+--- a/index.html
++++ b/index.html
+@@ -3,5 +3,5 @@
+ <header class="topbar"><a class="brand" href="#top" aria-label="ReturnBy home"><span class="brand-mark">R/</span><span><strong>RETURNBY</strong><small>THE RETURN DESK</small></span></a><div class="local-chip"><i></i><span>LOCAL ONLY / NO INBOX CONNECTION</span></div></header>
+ <main id="top"><section class="hero"><div class="hero-copy"><p class="eyebrow">ORDER IN / DEADLINE OUT</p><h1>Keep the window<br /><em>on your side.</em></h1><p class="sub">Paste a real confirmation. ReturnBy extracts order details, checks merchant policy and gives you a date to act on. Review every field, save multiple deadlines and export a real calendar reminder - no AI or account required.</p><div class="hero-notes"><span>01 / PASTE</span><span>02 / REVIEW</span><span>03 / REMEMBER</span></div></div><aside class="hero-ticket"><span class="ticket-kicker">RETURN WINDOW</span><strong>30 <i>DAYS</i></strong><span>DEFAULT WHEN A STORE IS UNKNOWN</span><div class="ticket-line"></div><span>RULE-BASED / EDITABLE / LOCAL</span></aside></section>
+ <section class="desk-grid" aria-label="Return deadline workspace"><article class="intake-panel"><header class="panel-heading"><p class="eyebrow">01 / START WITH THE ORDER</p><h2>Paste a confirmation.</h2><p>Only details you approve are saved. The original email stays in this text box until you clear it.</p></header><label class="input-label" for="paste">ORDER EMAIL / CONFIRMATION</label><textarea id="paste" rows="9" placeholder="Paste the order confirmation text here..."></textarea><div class="action-row"><button id="find" class="button button-primary">Find the deadline</button><a href="#" id="sample" class="button button-link">Load a fictional example</a></div><div class="privacy-note"><span class="privacy-icon">LOCAL</span><p>No inbox access. No upload. Parsing and calendar export run in this browser.</p></div><form id="preview" class="preview-card" hidden aria-live="polite"></form></article><aside class="ledger-panel"><header class="panel-heading"><p class="eyebrow">02 / YOUR ACTIVE TRACKER</p><h2>Return windows.</h2><p>Deadlines are recalculated each day and sorted by what needs attention first.</p></header><div class="summary-grid"><div><span>TRACKED</span><strong id="tracked-count">0</strong></div><div><span>DUE IN 7 DAYS</span><strong id="soon-count">0</strong></div><div><span>OVERDUE</span><strong id="expired-count">0</strong></div></div><div class="filter-row" role="group" aria-label="Filter return dates"><button id="filter-all" class="filter active" type="button" aria-pressed="true">All</button><button id="filter-due" class="filter" type="button" aria-pressed="false">Due soon</button><button id="filter-expired" class="filter" type="button" aria-pressed="false">Expired</button></div><ul id="list" aria-live="polite"></ul><p class="list-note">Saved items stay in this browser's local storage. Use the calendar button for an .ics reminder.</p><p class="list-note"><a href="./trip-checklist.html">Prepare a return-trip checklist →</a></p></aside></section>
+-<section class="method-strip" aria-label="How ReturnBy works"><article><span>01</span><h3>Rules, not guesses.</h3><p>A parser extracts four fields. Missing values are highlighted so you can correct them before saving.</p></article><article><span>02</span><h3>Policy with a fallback.</h3><p>Known stores use the local policy table. Unknown stores are clearly marked with an editable 30-day default.</p></article><article><span>03</span><h3>Keep control.</h3><p>Each saved deadline can be exported as a calendar event with a three-day reminder or removed from the tracker.</p></article></section></main>
++<section class="method-strip" aria-label="How ReturnBy works"><article><span>01</span><h3>Rules, not guesses.</h3><p>A parser extracts four fields. Missing values are highlighted so you can correct them before saving.</p></article><article><span>02</span><h3>Policy with a fallback.</h3><p>Known stores use the local policy table. Unknown stores are clearly marked with an editable 30-day default.</p></article><article><span>03</span><h3>Keep control.</h3><p>Use a three-day reminder or choose and review an exact reminder time for each saved deadline. Import the file into your calendar.</p></article></section></main>
+ <footer class="footer"><p><strong>PRIVATE BY DESIGN.</strong> The pasted email is not stored or sent. Only reviewed order fields you save persist on this device.</p><button id="clear" class="button button-link">Clear saved returns</button></footer></div><script type="module" src="/src/main.ts"></script></body></html>
+\ No newline at end of file
+diff --git a/src/calendar-download.ts b/src/calendar-download.ts
+new file mode 100644
+index 0000000..f859238
+--- /dev/null
++++ b/src/calendar-download.ts
+@@ -0,0 +1,17 @@
++const urls = new Set<string>();
++let listening = false;
++
++/** Keep Blob URLs alive through native browser download admission. */
++export function downloadCalendar(calendar: string, filename: string): void {
++  if (!listening) {
++    window.addEventListener('pagehide', () => { for (const url of urls) URL.revokeObjectURL(url); urls.clear(); });
++    listening = true;
++  }
++  const url = URL.createObjectURL(new Blob([calendar], { type: 'text/calendar' }));
++  urls.add(url);
++  const anchor = document.createElement('a'); anchor.href = url; anchor.download = filename;
++  document.body.append(anchor);
++  try { anchor.click(); } catch (error) { URL.revokeObjectURL(url); urls.delete(url); throw error; }
++  finally { anchor.remove(); }
++  window.setTimeout(() => { URL.revokeObjectURL(url); urls.delete(url); }, 30_000);
++}
+diff --git a/src/ics.ts b/src/ics.ts
+index 2b2b540..60fa977 100644
+--- a/src/ics.ts
++++ b/src/ics.ts
+@@ -24,17 +24,27 @@ function fold(line: string): string {
+   return output;
+ }
+ 
+-export function buildIcs(o: { id: string; merchant: string; orderNo?: string; due: string }, stamp = new Date()): string {
++export function buildIcs(o: { id: string; merchant: string; orderNo?: string; due: string }, stamp = new Date(), alarmAt?: Date): string {
+   const d = o.due.replace(/-/g, '');
+   const end = new Date(+o.due.slice(0, 4), +o.due.slice(5, 7) - 1, +o.due.slice(8, 10) + 1);
+   const e = `${end.getFullYear()}${String(end.getMonth() + 1).padStart(2, '0')}${String(end.getDate()).padStart(2, '0')}`;
+   const ts = stamp.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
++  let trigger = 'TRIGGER:-P3D';
++  if (alarmAt !== undefined) {
++    if (!Number.isFinite(alarmAt.getTime())) throw new Error('Invalid absolute alarm time.');
++    const iso = alarmAt.toISOString();
++    if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.000Z$/.test(iso) || iso.startsWith('0000')) {
++      throw new Error('Absolute alarms require a supported UTC time with whole seconds.');
++    }
++    // RFC 5545 §3.8.6.3: absolute DATE-TIME triggers are UTC, without RELATED.
++    trigger = 'TRIGGER;VALUE=DATE-TIME:' + iso.replace(/[-:]/g, '').replace('.000', '');
++  }
+   const title = esc(`Return deadline: ${o.merchant || 'order'}${o.orderNo ? ' #' + o.orderNo : ''}`);
+   return [
+     'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
+     'BEGIN:VEVENT', `UID:${esc(o.id)}@returnby`, `DTSTAMP:${ts}`,
+     `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${e}`, `SUMMARY:${title}`,
+-    'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`, 'TRIGGER:-P3D', 'END:VALARM',
++    'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`, trigger, 'END:VALARM',
+     'END:VEVENT', 'END:VCALENDAR', '',
+   ].map(fold).join('\r\n');
+ }
+diff --git a/src/main.ts b/src/main.ts
+index 798e532..4ffb35e 100644
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -4,6 +4,7 @@ import { lookup, knownMerchants } from './policy';
+ import { dueDate, daysLeft, status, todayISO } from './deadline';
+ import { startDayRefresh } from './day-refresh';
+ import { buildIcs } from './ics';
++import { connectReminderTime } from './reminder-time';
+ import { load, save, type Order } from './store';
+ import { samples } from './samples';
+ 
+@@ -12,6 +13,7 @@ const paste = $<HTMLTextAreaElement>('#paste');
+ const preview = $<HTMLFormElement>('#preview');
+ const list = $<HTMLUListElement>('#list');
+ let orders = load();
++const reminderTime = connectReminderTime();
+ let sampleIdx = 0;
+ let filterMode: 'all' | 'due' | 'expired' = 'all';
+ 
+@@ -60,10 +62,11 @@ function render() {
+   for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
+   const rows=all.filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
+   if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
+-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
++  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-reminder="${h(o.id)}">Choose reminder time</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+ }
+ list.addEventListener('click', (e) => {
+   const t = e.target as HTMLElement;
++  if (t.dataset.reminder) reminderTime.open(t.dataset.reminder, t);
+   if (t.dataset.del) { orders = orders.filter((o) => o.id !== t.dataset.del); save(orders); render(); }
+   if (t.dataset.ics) {
+     const o = orders.find((x) => x.id === t.dataset.ics)!;
+@@ -82,7 +85,7 @@ render();
+ startDayRefresh(() => {
+   const active = document.activeElement;
+   const focused = active instanceof HTMLButtonElement && list.contains(active) ? active : undefined;
+-  const action = focused?.hasAttribute('data-ics') ? 'ics' : focused?.hasAttribute('data-del') ? 'del' : undefined;
++  const action = focused?.hasAttribute('data-ics') ? 'ics' : focused?.hasAttribute('data-del') ? 'del' : focused?.hasAttribute('data-reminder') ? 'reminder' : undefined;
+   const id = action ? focused?.dataset[action] : undefined;
+   render();
+   if (!action || id === undefined) return;
+diff --git a/src/reminder-plan.ts b/src/reminder-plan.ts
+new file mode 100644
+index 0000000..2626073
+--- /dev/null
++++ b/src/reminder-plan.ts
+@@ -0,0 +1,56 @@
++export interface ReminderPlan {
++  due: string;
++  local: string;
++  utc: string;
++  zone: string;
++  offset: string;
++  afterDeadline: boolean;
++}
++const pad = (value: number) => String(value).padStart(2, '0');
++export const localMinute = (date: Date): string =>
++  `${String(date.getFullYear()).padStart(4, '0')}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
++
++export function nextReminderHour(now = new Date()): string {
++  if (!Number.isFinite(now.getTime())) throw new Error('The current clock is unavailable.');
++  const next = new Date(now); next.setHours(next.getHours() + 1, 0, 0, 0);
++  return localMinute(next);
++}
++
++export function planReminder(local: string, due: string, now = new Date()): ReminderPlan {
++  if (!/^\d{4}-\d{2}-\d{2}$/.test(due) || due.startsWith('0000') ||
++      !Number.isFinite(Date.parse(due + 'T00:00:00Z')) ||
++      new Date(due + 'T00:00:00Z').toISOString().slice(0, 10) !== due) {
++    throw new Error('The stored deadline is not a valid calendar date.');
++  }
++  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(local) || local.startsWith('0000')) {
++    throw new Error('Choose a complete local date and time.');
++  }
++  const time = new Date(local + ':00');
++  // Round-trip the entered wall clock: Date otherwise silently moves invalid dates
++  // and times inside a daylight-saving gap to a different local clock reading.
++  if (!Number.isFinite(time.getTime()) || localMinute(time) !== local) {
++    throw new Error('That local date or time does not exist. Choose another time.');
++  }
++  const utc = time.toISOString();
++  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:00\.000Z$/.test(utc)) {
++    throw new Error('Choose a reminder within the supported calendar years.');
++  }
++  if (!Number.isFinite(now.getTime()) || time.getTime() <= now.getTime()) {
++    throw new Error('Choose a reminder time later than the current time.');
++  }
++  const minutes = -time.getTimezoneOffset(), magnitude = Math.abs(minutes);
++  const offset = `UTC${minutes < 0 ? '−' : '+'}${pad(Math.floor(magnitude / 60))}:${pad(magnitude % 60)}`;
++  return {
++    due, local, utc, zone: Intl.DateTimeFormat().resolvedOptions().timeZone, offset,
++    afterDeadline: local.slice(0, 10) > due,
++  };
++}
++
++export function confirmReminder(reviewed: ReminderPlan, local: string, due: string, now = new Date()): ReminderPlan {
++  const current = planReminder(local, due, now);
++  if (current.local !== reviewed.local || current.due !== reviewed.due ||
++      current.utc !== reviewed.utc || current.zone !== reviewed.zone || current.offset !== reviewed.offset) {
++    throw new Error('The reminder changed after review. Review its time again.');
++  }
++  return current;
++}
+diff --git a/src/reminder-time.css b/src/reminder-time.css
+new file mode 100644
+index 0000000..08ffb49
+--- /dev/null
++++ b/src/reminder-time.css
+@@ -0,0 +1,6 @@
++.reminder-time{width:min(38rem,calc(100vw - 2rem));max-height:calc(100dvh - 2rem);overflow:auto;padding:1.5rem;border:1px solid #34382d;border-radius:4px;background:#f8f6ee;color:#252b23;box-shadow:0 18px 70px #0005}
++.reminder-time::backdrop{background:#162518a8}
++.reminder-time h2{margin-top:0}.reminder-time p{line-height:1.5}.reminder-order{font-weight:700;overflow-wrap:anywhere}.reminder-facts{font-size:.9rem}
++.reminder-form{display:grid;gap:.65rem}.reminder-form label{font-weight:700}.reminder-form input{box-sizing:border-box;width:100%;padding:.75rem;font:inherit;background:#fff;border:1px solid #73796b;border-radius:3px}.reminder-form p{margin:.1rem 0;font-size:.85rem}
++.reminder-review{margin:1.1rem 0;padding:1rem;background:#e9eddf;border-left:3px solid #526448}.reminder-review h3{margin:0 0 .7rem}.reminder-review dt{font-size:.82rem;margin-top:.6rem}.reminder-review dd{margin:.2rem 0;overflow-wrap:anywhere;font-weight:600}.reminder-late{padding:.7rem;background:#ffe8bb}
++.reminder-message{min-height:1.5em;font-weight:600;overflow-wrap:anywhere}.reminder-actions{display:flex;flex-wrap:wrap;gap:.6rem}.reminder-time button:disabled{opacity:.5;cursor:not-allowed}.reminder-time :focus-visible{outline:3px solid #a95714;outline-offset:3px}
+diff --git a/src/reminder-time.ts b/src/reminder-time.ts
+new file mode 100644
+index 0000000..72bf303
+--- /dev/null
++++ b/src/reminder-time.ts
+@@ -0,0 +1,107 @@
++import './reminder-time.css';
++import { buildIcs } from './ics';
++import { dueDate } from './deadline';
++import { downloadCalendar } from './calendar-download';
++import { confirmReminder, nextReminderHour, planReminder, type ReminderPlan } from './reminder-plan';
++import { parseSavedOrders, SAVED_ORDERS_KEY, sourceLabel, type SavedSnapshot } from './trip-checklist';
++import type { Order } from './store';
++
++export function connectReminderTime(): { open: (id: string, opener: HTMLElement) => void } {
++  const dialog = document.createElement('dialog');
++  dialog.className = 'reminder-time';
++  dialog.setAttribute('aria-labelledby', 'reminder-time-title');
++  dialog.innerHTML = '<h2 id="reminder-time-title">Choose reminder time</h2>'
++    + '<p class="reminder-order"></p><p class="reminder-facts"></p>'
++    + '<p>The return deadline stays an all-day event. Choose when its calendar alarm should occur.</p>'
++    + '<form class="reminder-form"><label for="reminder-local">Local date and time</label>'
++    + '<input id="reminder-local" name="local" type="datetime-local" step="60" required aria-describedby="reminder-clock">'
++    + '<p id="reminder-clock">Uses this device’s timezone. A repeated clock time uses its first occurrence; the review shows the exact offset and UTC time.</p>'
++    + '<button class="button button-primary" type="submit">Review reminder</button></form>'
++    + '<section class="reminder-review" hidden aria-label="Reviewed calendar alarm"><h3>Review before downloading</h3>'
++    + '<dl><dt>Local alarm</dt><dd class="reminder-local-review"></dd><dt>Exact UTC alarm</dt><dd class="reminder-utc"></dd>'
++    + '<dt>All-day return deadline</dt><dd class="reminder-deadline"></dd></dl>'
++    + '<p class="reminder-late" hidden>This alarm is after the stored deadline. It does not extend the return window.</p>'
++    + '<p>Import the downloaded .ics file into your calendar. Your calendar controls whether and how alarms are delivered.</p></section>'
++    + '<p class="reminder-message" role="status"></p><div class="reminder-actions">'
++    + '<button class="button button-primary reminder-download" type="button" disabled>Download reviewed calendar</button>'
++    + '<button class="button button-link reminder-cancel" type="button" autofocus>Cancel</button></div>';
++  document.body.append(dialog);
++  const find = <T extends HTMLElement>(selector: string) => dialog.querySelector(selector) as T;
++  const form = find<HTMLFormElement>('form');
++  const input = find<HTMLInputElement>('input');
++  const review = find<HTMLElement>('.reminder-review');
++  const download = find<HTMLButtonElement>('.reminder-download');
++  const message = find<HTMLElement>('.reminder-message');
++  let snapshot: SavedSnapshot | undefined, order: Readonly<Order> | undefined;
++  let reviewed: ReminderPlan | undefined, opener: HTMLElement | undefined;
++
++  function invalidate(): void { reviewed = undefined; review.hidden = true; download.disabled = true; }
++  function say(error: unknown): void { message.textContent = error instanceof Error ? error.message : 'The reminder could not be prepared. Try again.'; }
++  function readRaw(): string | null {
++    try { return localStorage.getItem(SAVED_ORDERS_KEY); }
++    catch { throw new Error('Saved orders cannot be read. Close this review and allow browser storage before trying again. Nothing was changed.'); }
++  }
++  function assertCurrent(): void {
++    if (!snapshot || readRaw() !== snapshot.raw) {
++      throw new Error('Saved orders changed after this review opened. Close it and choose the reminder again. Nothing was changed.');
++    }
++  }
++  function retire(): void {
++    invalidate(); input.disabled = true; find<HTMLButtonElement>('form button').disabled = true;
++    message.textContent = 'Saved orders changed. Close this review and choose the reminder again.';
++  }
++  function close(): void { dialog.close(); }
++  dialog.addEventListener('close', () => {
++    invalidate(); snapshot = undefined; order = undefined;
++    (opener?.isConnected ? opener : document.getElementById('filter-all'))?.focus({ preventScroll: true });
++  });
++  find<HTMLButtonElement>('.reminder-cancel').addEventListener('click', close);
++  input.addEventListener('input', () => { invalidate(); message.textContent = ''; });
++  window.addEventListener('storage', event => {
++    if (dialog.open && (event.key === null || event.key === SAVED_ORDERS_KEY)) retire();
++  });
++  form.addEventListener('submit', event => {
++    event.preventDefault(); invalidate(); message.textContent = '';
++    try {
++      assertCurrent();
++      if (!order) throw new Error('Choose a saved order again.');
++      reviewed = planReminder(input.value, dueDate(order.orderDate, order.windowDays));
++      find<HTMLElement>('.reminder-local-review').textContent = reviewed.local.replace('T', ' ') + ' · ' + reviewed.zone + ' · ' + reviewed.offset;
++      find<HTMLElement>('.reminder-utc').textContent = reviewed.utc.replace('.000Z', ' UTC');
++      find<HTMLElement>('.reminder-deadline').textContent = reviewed.due;
++      find<HTMLElement>('.reminder-late').hidden = !reviewed.afterDeadline;
++      review.hidden = false; download.disabled = false;
++      download.focus();
++    } catch (error) { say(error); }
++  });
++  download.addEventListener('click', () => {
++    try {
++      assertCurrent();
++      if (!reviewed || !order) throw new Error('Review the reminder time before downloading.');
++      const now = new Date();
++      const current = confirmReminder(reviewed, input.value, dueDate(order.orderDate, order.windowDays), now);
++      const calendar = buildIcs({ ...order, due: current.due }, now, new Date(current.utc));
++      downloadCalendar(calendar, 'return-' + (order.merchant || 'order').replace(/\W+/g, '-') + '.ics');
++      message.textContent = 'Calendar file prepared. Import it into your calendar to use the reviewed alarm.';
++    } catch (error) { invalidate(); say(error); }
++  });
++  return { open(id, trigger) {
++    if (dialog.open) return;
++    opener = trigger; invalidate(); message.textContent = '';
++    input.disabled = false; find<HTMLButtonElement>('form button').disabled = false;
++    find<HTMLElement>('.reminder-order').textContent = '';
++    find<HTMLElement>('.reminder-facts').textContent = '';
++    snapshot = undefined; order = undefined;
++    try {
++      const raw = readRaw();
++      try { snapshot = parseSavedOrders(raw); }
++      catch { throw new Error('Saved orders cannot be safely reviewed. The saved list may be invalid, ambiguous or too large. Nothing was changed.'); }
++      order = snapshot.orders.find(value => value.id === id);
++      if (!order) throw new Error('This saved order is no longer available. Close the review and reload the tracker.');
++      find<HTMLElement>('.reminder-order').textContent = (order.merchant || 'Unknown store') + (order.orderNo ? ' · Order #' + order.orderNo : '');
++      find<HTMLElement>('.reminder-facts').textContent = 'Order date ' + order.orderDate + ' · ' + sourceLabel(order.windowSource) + ': ' + order.windowDays + ' days · Return by ' + dueDate(order.orderDate, order.windowDays);
++      input.value = nextReminderHour();
++    } catch (error) { input.disabled = true; find<HTMLButtonElement>('form button').disabled = true; say(error); }
++    dialog.showModal(); find<HTMLButtonElement>('.reminder-cancel').focus();
++  } };
++}

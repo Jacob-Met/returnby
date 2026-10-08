@@ -1,0 +1,50 @@
+{
+  "schema": "returnby.independent-reminder-contract/1",
+  "frozenBefore": "candidate source and author browser driver",
+  "fixedNow": "2027-02-12T12:00:00.000Z",
+  "primary": {
+    "timezone": "Asia/Kathmandu",
+    "merchant": "Atelier Élan, West; #7",
+    "order": "WB\\77;A,β",
+    "dueDate": "2027-02-14",
+    "reminderLocal": "2027-02-13T21:20",
+    "expectedZoneOffset": "+05:45",
+    "expectedUtc": "2027-02-13T15:35:00.000Z",
+    "expectedIcsAbsoluteAlarm": "TRIGGER;VALUE=DATE-TIME:20270213T153500Z",
+    "expectedAllDayStart": "DTSTART;VALUE=DATE:20270214",
+    "afterDeadline": {
+      "local": "2027-02-15T08:10",
+      "utc": "2027-02-15T02:25:00.000Z",
+      "expected": "Warning visible, deadline remains February14; deliberate alarm remains allowed"
+    }
+  },
+  "dst": {
+    "timezone": "America/New_York",
+    "gapLocal": "2027-03-14T02:30",
+    "expectedGap": "refusal and no approval/download",
+    "repeatLocal": "2027-11-07T01:30",
+    "expectedFirstOffset": "-04:00",
+    "expectedFirstUtc": "2027-11-07T05:30:00.000Z",
+    "expectedRepeat": "Explicit local zone and first occurrence offset; exact UTC absolute alarm"
+  },
+  "recordControls": [
+    "Opening uses admitted saved state and does not write it",
+    "Editing local clock retires reviewed approval until a fresh review",
+    "Byte changes including record order or otherwise equivalent whitespace stale the already-open review; no export",
+    "Real storage event from another same-origin page immediately retires review",
+    "Invalid, duplicate or denied saved records cannot become reminder authority",
+    "Cancel/Escape preserve exact raw saved bytes and a differently edited intake draft, restore opener focus",
+    "Final download rechecks future time and reviewed UTC/zone/offset"
+  ],
+  "icsControls": [
+    "Receive an actual downloaded file; Blob construction alone is not downloaded-file acceptance",
+    "Unfold iCalendar lines before comparing semantic fields; preserve legal CRLF and escaping",
+    "Compare existing one-click three-day calendar with unchanged original serializer bytes at the same frozen clock/record",
+    "The chosen-time output differs only at the VALARM trigger content required by the explicit selected absolute instant; unchanged deadline, UID, merchant/order escapes and other fields"
+  ],
+  "boundaries": [
+    "Synthetic records in isolated browser context only",
+    "No storage source changes, no network service/provider",
+    "No runtime source edit, test weakening, dependencies or Actions"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "started": "2026-10-08T22:21:46.196Z",
+  "pins": {
+    "src/reminder-plan.ts": "61c2cb4adef0ed801a05b319b9c6ca357c495b5899818ca1ccc859fcfd64c051",
+    "src/reminder-time.ts": "3a1d4c1b232116a03a4527195eda95a421d4860eda925f84afdeab6f09483aa6",
+    "src/reminder-time.css": "8b3ddef6daf5fa3b4925077b0eb2ffe981159df7407415d54c6ee2949c6e87c6",
+    "src/calendar-download.ts": "e6c96af045b2eb8505a4980ec9c7af4b8f3dd37f87c04c2e12e30db8042f8150",
+    "src/ics.ts": "ab36f775e10eb8fbe23528d9af1aabbb128bffbee8b0669a6ee1c8c748e10e06",
+    "src/main.ts": "3b121b7a4c9711d56a073bf373cae2e0458d20c388ad4415eff9db67432ec577",
+    "src/trip-checklist.ts": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/store.ts": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080",
+    "index.html": "a526fa14c42c969b651047477f0b1b420a21aa7f3105cffe5d7aeceb50563ce2"
+  },
+  "baselineIcsSha": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f",
+  "groups": [],
+  "errors": [],
+  "external": [],
+  "downloads": [
+    {
+      "name": "default-three-day.ics",
+      "filename": "return--img-src-x-onerror-alert-1-BEGIN-VALARM.ics",
+      "bytes": 481,
+      "sha256": "8798cc84c75e15055e8015c352c1587dfac5b2d755fac2e728746f177d4ff23f"
+    }
+  ],
+  "requests": {
+    "index.html": "451a0e68ec37f6d88bd4dd467482a38c4daa5adb99e836fd5d73465d0f583f22",
+    "assets/main-Dw77KE9a.js": "9b9aba8ba3907e969121d6744cb92b1a24a04677d9908fa728dd61feb2949fda",
+    "assets/trip-checklist-Dn5GVYbX.js": "08c5504dda85b751a9a1606624cdb4a9043cb1bf19fb02fba1f00731ec7e1ec5",
+    "assets/main-DVuRGk9O.css": "7f3d8110b27b400a4533fc6b9b369364aa9922a9a38eb7acb0562fd6545f2241",
+    "favicon.svg": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+  },
+  "browser": "154.0.8037.97",
+  "result": "fail",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n  'BEGIN:VCALENDAR\\r\\n' +\n    'VERSION:2.0\\r\\n' +\n    'PRODID:-//ReturnBy//EN\\r\\n' +\n    'CALSCALE:GREGORIAN\\r\\n' +\n    'BEGIN:VEVENT\\r\\n' +\n    'UID:near-literal\\\\;4@returnby\\r\\n' +\n+   'DTSTAMP:20261008T120001Z\\r\\n' +\n-   'DTSTAMP:20261008T120000Z\\r\\n' +\n    'DTSTART;VALUE=DATE:20261010\\r\\n' +\n    'DTEND;VALUE=DATE:20261011\\r\\n' +\n    'SUMMARY:Return deadline: <img src=x onerror=alert(1)> & 日用品\\\\,\\\\nBEGIN:\\r\\n' +\n    ' VALARM #R-18\\\\;雪\\r\\n' +\n    'BEGIN:VALARM\\r\\n' +\n\n    at file:///D:/Hamon/worktrees/returnby-reminder-timing-0378a7b6-proof/receive-candidate-v2.mjs:34:9",
+  "completed": "2026-10-08T22:21:48.375Z"
+}

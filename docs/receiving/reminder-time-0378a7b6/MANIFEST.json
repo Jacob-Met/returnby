@@ -1,0 +1,466 @@
+{
+  "at": "2026-10-08T22:36:56.274Z",
+  "production": "9585fc2d39de8b4af70abc9eada341220111159d",
+  "files": [
+    {
+      "path": "author/adapt-download-path.mjs",
+      "bytes": 351,
+      "sha256": "177cf8176bd1ce7c1c88d53b9dee0fbbb7df433041a788f52c5de2909df14b50"
+    },
+    {
+      "path": "author/adapt-receivers-v3.mjs",
+      "bytes": 1189,
+      "sha256": "1a43058bd00b57603e0df0add8958c64011d986ef72a17251372b939ef633494"
+    },
+    {
+      "path": "author/baseline-browser/receipt.json",
+      "bytes": 819,
+      "sha256": "cf3d0b7d3954008734fd820877d99801645d398cf82895c4f773904c9a945acf"
+    },
+    {
+      "path": "author/baseline-browser-v2/observed-original-calendar.ics",
+      "bytes": 375,
+      "sha256": "3300dbc69683d350fb7b42259c73fa2ac49c2c7de833c1ade5e3618143fc40c6"
+    },
+    {
+      "path": "author/baseline-browser-v2/receipt.json",
+      "bytes": 1419,
+      "sha256": "1d86106dd61e5d00ea8ddad457975cd2b910f8352d64b6a0d929d91bb76b5655"
+    },
+    {
+      "path": "author/baseline-browser-v3/observed-original-calendar.ics",
+      "bytes": 375,
+      "sha256": "271416b7f428775ecef1bb54b55f5b3a176aca5b1a859939a829e4662e336bad"
+    },
+    {
+      "path": "author/baseline-browser-v3/original-near-deadline-download.ics",
+      "bytes": 375,
+      "sha256": "271416b7f428775ecef1bb54b55f5b3a176aca5b1a859939a829e4662e336bad"
+    },
+    {
+      "path": "author/baseline-browser-v3/original-near-deadline.png",
+      "bytes": 122096,
+      "sha256": "ddf669c00118a7566ddcb59da65cd5b87b1bedae1478e5e68f9c6a9e0c125c43"
+    },
+    {
+      "path": "author/baseline-browser-v3/receipt.json",
+      "bytes": 1364,
+      "sha256": "ab8f91e2b4e32181aadb58a3d4d6590afeccbbc33540aef344fd8d096fd82a34"
+    },
+    {
+      "path": "author/baseline-build.log",
+      "bytes": 717,
+      "sha256": "e096ab401b1dfb1b2298d66a5645dcc659f91e5fb1c93c9477a8c85093ee4da6"
+    },
+    {
+      "path": "author/baseline-gates.json",
+      "bytes": 425,
+      "sha256": "af9685725bda9856a1aad5f532efe3ed301ef99d60a003ff44bd110f0e0d5c17"
+    },
+    {
+      "path": "author/baseline-install.log",
+      "bytes": 351,
+      "sha256": "cb7e582c2689d91b81764854e1d0e48a45d0d81093299de94c8ead3d359bd59f"
+    },
+    {
+      "path": "author/baseline-tests.log",
+      "bytes": 797,
+      "sha256": "656e4c7829a747fca31ec3977b5dc2a6d6a6548dc250dfcb521a896405bec86d"
+    },
+    {
+      "path": "author/candidate-browser/receipt.json",
+      "bytes": 1994,
+      "sha256": "124062f5ed08f1632411f133315e115b528bb1e26c916774d4dfecf7dce3456b"
+    },
+    {
+      "path": "author/candidate-browser-final/chosen-kathmandu.ics",
+      "bytes": 509,
+      "sha256": "4dcfb3e9e4c34ffbd1e6df373019d50c74d3b325535fa998588a8c5c59097ad4"
+    },
+    {
+      "path": "author/candidate-browser-final/default-three-day.ics",
+      "bytes": 481,
+      "sha256": "26d4aaa41d1766c32b935b3ee4d3a104f39f9c8e175cf47cefe1db55095847d3"
+    },
+    {
+      "path": "author/candidate-browser-final/mobile-repeated-hour.png",
+      "bytes": 115982,
+      "sha256": "2c963a8ddcbafa26e7578986f614730be329f93abb00b75c7ca9fa0cb5855c1b"
+    },
+    {
+      "path": "author/candidate-browser-final/receipt.json",
+      "bytes": 3317,
+      "sha256": "bf7b75aa6e630a1eae34e8071f0f17884fc49b167b5b14ddd906d642ec5f00fe"
+    },
+    {
+      "path": "author/candidate-browser-final/repeated-hour-new-york.ics",
+      "bytes": 509,
+      "sha256": "15f47f27c7109f35dcfe86f8894bfab72e6b597815cff6e70724c212eea06a2d"
+    },
+    {
+      "path": "author/candidate-browser-final/review-kathmandu.png",
+      "bytes": 157467,
+      "sha256": "682e892a3a0649b40a7db540dbb097a1222c2a6dc575c3f39c358b7eb3d5e130"
+    },
+    {
+      "path": "author/candidate-browser-final-exit.txt",
+      "bytes": 6,
+      "sha256": "9585fbece5c402088f2d6a2def7e60d1c7ffecc24b16d32d5823a064b008935b"
+    },
+    {
+      "path": "author/candidate-browser-final-process.log",
+      "bytes": 6004,
+      "sha256": "7e879882cb4fabce5515f2c8cf85adecfd70a2fca4045521348398e2b66c752b"
+    },
+    {
+      "path": "author/candidate-browser-v2/default-three-day.ics",
+      "bytes": 481,
+      "sha256": "8798cc84c75e15055e8015c352c1587dfac5b2d755fac2e728746f177d4ff23f"
+    },
+    {
+      "path": "author/candidate-browser-v2/receipt.json",
+      "bytes": 2707,
+      "sha256": "3c7a5bf8433da79733d225f1d99163dc2685ef613d845a3a81c6d133889ca214"
+    },
+    {
+      "path": "author/candidate-browser-v3/chosen-kathmandu.ics",
+      "bytes": 509,
+      "sha256": "4dcfb3e9e4c34ffbd1e6df373019d50c74d3b325535fa998588a8c5c59097ad4"
+    },
+    {
+      "path": "author/candidate-browser-v3/default-three-day.ics",
+      "bytes": 481,
+      "sha256": "26d4aaa41d1766c32b935b3ee4d3a104f39f9c8e175cf47cefe1db55095847d3"
+    },
+    {
+      "path": "author/candidate-browser-v3/receipt.json",
+      "bytes": 3317,
+      "sha256": "25a28d8d37d5fe21260dac01cc51ecabc4121ede1f0168c841654ae69e675014"
+    },
+    {
+      "path": "author/candidate-browser-v3/repeated-hour-new-york.ics",
+      "bytes": 509,
+      "sha256": "15f47f27c7109f35dcfe86f8894bfab72e6b597815cff6e70724c212eea06a2d"
+    },
+    {
+      "path": "author/candidate-gates-original-runner-path-failure.json",
+      "bytes": 211,
+      "sha256": "83155054fc037e59e7d06fa404bd3de2083eb25a097f475fe68f4c62cd937c3f"
+    },
+    {
+      "path": "author/candidate-tests-original-runner-path-failure.log",
+      "bytes": 102,
+      "sha256": "9820309bf5626d46247bf5283cd87f285ab418361e43eb06bdc194997df8ad41"
+    },
+    {
+      "path": "author/final-native-build.log",
+      "bytes": 718,
+      "sha256": "7bac22913ed97d26de1f3d4d1ae7acef710e5664f61f2e7071c6593f4ff25be5"
+    },
+    {
+      "path": "author/final-native-gates.json",
+      "bytes": 402,
+      "sha256": "2ef69e3ef62c070cfbb32c0d6513b0ee5fe1c8c0b76c40b3ad1d9f5241c7d7e8"
+    },
+    {
+      "path": "author/final-native-tests.log",
+      "bytes": 1193,
+      "sha256": "b8a430e02fb02602eab6ab1bc31a270a552862734fc6b8fb2f0addb6d9a53dc4"
+    },
+    {
+      "path": "author/LOCAL-CLAIM.md",
+      "bytes": 1504,
+      "sha256": "9c3c8a2666800f55a61b98d16d07299635b690a1e954ea60dc1b9a55608ddcc8"
+    },
+    {
+      "path": "author/native-audit.json",
+      "bytes": 94,
+      "sha256": "b8249736004c4a3fb9b75d1e8617a25af44edddadade56d030b6e84a457f96d0"
+    },
+    {
+      "path": "author/native-audit.log",
+      "bytes": 25,
+      "sha256": "dc1a4bd9a3ce8b642ccf8bc1045f62643fb99dd06069afda88dde2ba906724fb"
+    },
+    {
+      "path": "author/native-coordination.json",
+      "bytes": 3090,
+      "sha256": "ab2915133a89ec05d489ad09485dd131960a31c9f5c5016b3070c1cc4ba01d04"
+    },
+    {
+      "path": "author/receive-baseline-v2.mjs",
+      "bytes": 4357,
+      "sha256": "500bbb2e4fc6c7b1b527442b6ee8a1183eafe2158f54f29266b8d99656e00ba7"
+    },
+    {
+      "path": "author/receive-baseline-v3.mjs",
+      "bytes": 4475,
+      "sha256": "6674cab3c9c82aab285b07991491ba8d3325d4b1aa5aba446a4ce37a428a5768"
+    },
+    {
+      "path": "author/receive-baseline.mjs",
+      "bytes": 3762,
+      "sha256": "9e5bc18dbb64fa3768bdecb3ce83583ea3690d6c355ff2a6c25f414aca7e3a50"
+    },
+    {
+      "path": "author/receive-candidate-final.mjs",
+      "bytes": 10814,
+      "sha256": "bd6ded27b1331d682b91ffe59502788d37ff03bd38fcaf70801afe9d03128a88"
+    },
+    {
+      "path": "author/receive-candidate-v2.mjs",
+      "bytes": 10746,
+      "sha256": "bc67092301ac0662716ce8eedbcc0acafb9f9faf206609600b96cbc98b8937f7"
+    },
+    {
+      "path": "author/receive-candidate-v3.mjs",
+      "bytes": 10811,
+      "sha256": "833759f2a5593acbf25631d3b330659dc5a02dedad949110d2517109aebde03b"
+    },
+    {
+      "path": "author/receive-candidate.mjs",
+      "bytes": 10729,
+      "sha256": "1edda047059203955b38d892829b9a2a17319a14c891fb347db4de3ed2841403"
+    },
+    {
+      "path": "author/restore-default-download.mjs",
+      "bytes": 887,
+      "sha256": "cebb47a370f8dd3085b9d35e23329500c0a1b39e54292fefb1882941813a261a"
+    },
+    {
+      "path": "author/run-baseline.mjs",
+      "bytes": 1183,
+      "sha256": "3b87e513456e84255c7ffbf6a013987e5dabd20c5dcccb97fe92d784ada5174c"
+    },
+    {
+      "path": "author/run-final-native.mjs",
+      "bytes": 1090,
+      "sha256": "0546745136b0dec70dfe3a19aed751ffdfdce90fca5ba3b146f5bfe79d1b4984"
+    },
+    {
+      "path": "author/run-native-audit.mjs",
+      "bytes": 755,
+      "sha256": "8a16146b0ad1662667a3396d49acf24c5974184f18dfaa10eaeb237f04d35a0f"
+    },
+    {
+      "path": "author/source-freeze.json",
+      "bytes": 11459,
+      "sha256": "9bf239803ac8715b1afa699920b35db9d4800badc7c205076f66951cdfa67e1d"
+    },
+    {
+      "path": "governing-actions-comment.json",
+      "bytes": 4154,
+      "sha256": "81f92d10eec6511e72e503c69bea5a9f81fa6611518fda337b40a5f0b78b9ca4"
+    },
+    {
+      "path": "independent/actual-after-deadline.ics",
+      "bytes": 455,
+      "sha256": "45f1127fed7a910cd88ac0c974f6d2f4bb324c9a1f9073646ec9ac7851bc6679"
+    },
+    {
+      "path": "independent/actual-first-fold.ics",
+      "bytes": 455,
+      "sha256": "1f9a176569472825d97a968e2f0a4b83764e2073c41e0b3f3b9bc8a05b5ebe4f"
+    },
+    {
+      "path": "independent/actual-kathmandu.ics",
+      "bytes": 455,
+      "sha256": "062647011110564537acfc565741be140206379a0f0b95b57b69217bd920a948"
+    },
+    {
+      "path": "independent/actual-original-three-day.ics",
+      "bytes": 427,
+      "sha256": "4722fb3ed71474922a1ad038ba43bfba2eb4789d3e77a7f4c7241d512db8e0c9"
+    },
+    {
+      "path": "independent/contract-before-candidate.json",
+      "bytes": 2531,
+      "sha256": "dfd31afc0f7b47d9a7f5d787975117d8e83ac47246a877862f03ac69fd8e4f63"
+    },
+    {
+      "path": "independent/expected-original.ics",
+      "bytes": 427,
+      "sha256": "4722fb3ed71474922a1ad038ba43bfba2eb4789d3e77a7f4c7241d512db8e0c9"
+    },
+    {
+      "path": "independent/MANIFEST.json",
+      "bytes": 4485,
+      "sha256": "b1278409c32be519970645df7e40cd997620b00090800b810ad73526b5dad2c4"
+    },
+    {
+      "path": "independent/new-york-first-occurrence-phone.png",
+      "bytes": 122439,
+      "sha256": "6968d9caa123dd0bae21fea38f60b01b483ea69505fd3f919d47ce0509f57960"
+    },
+    {
+      "path": "independent/original-ics.mjs",
+      "bytes": 1824,
+      "sha256": "db7245f2fabc70d86810c45443d05401a3442ac3439283df0c235e36e31cb65f"
+    },
+    {
+      "path": "independent/original-ics.ts",
+      "bytes": 1844,
+      "sha256": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f"
+    },
+    {
+      "path": "independent/receipt.json",
+      "bytes": 17527,
+      "sha256": "72b25d8a2d3ee91cabbef42ca6bf4ca9724786e2ed2af3f171e5b3b36f95aea3"
+    },
+    {
+      "path": "independent/receive.log",
+      "bytes": 174,
+      "sha256": "487fcf0188ea02e417b13f11e515ebf7fe803427630c60d224af9fbb551acf79"
+    },
+    {
+      "path": "independent/receive.mjs",
+      "bytes": 13841,
+      "sha256": "c460f7d5d0c535b15af3bd31a49fe431324ee61fbf052fc6af5edae8245735ff"
+    },
+    {
+      "path": "independent/received-records.json",
+      "bytes": 375,
+      "sha256": "96c41650c1c86056cc2c234606733fe59289de440fa00c613b2d154b576d816c"
+    },
+    {
+      "path": "independent/REVIEW.md",
+      "bytes": 4209,
+      "sha256": "72e829f2c0b999a25c6642abbf2ad999bc37ec46f3e7c10f3555644f31191b1b"
+    },
+    {
+      "path": "independent/seal.mjs",
+      "bytes": 6504,
+      "sha256": "a753090dfd2db622ab4a78c43fe404eab8cabd9218a7694d55fd7c33f66bd724"
+    },
+    {
+      "path": "independent/source-reviewed/index.html",
+      "bytes": 4474,
+      "sha256": "a526fa14c42c969b651047477f0b1b420a21aa7f3105cffe5d7aeceb50563ce2"
+    },
+    {
+      "path": "independent/source-reviewed/src/calendar-download.ts",
+      "bytes": 810,
+      "sha256": "e6c96af045b2eb8505a4980ec9c7af4b8f3dd37f87c04c2e12e30db8042f8150"
+    },
+    {
+      "path": "independent/source-reviewed/src/deadline.ts",
+      "bytes": 837,
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "path": "independent/source-reviewed/src/ics.ts",
+      "bytes": 2414,
+      "sha256": "ab36f775e10eb8fbe23528d9af1aabbb128bffbee8b0669a6ee1c8c748e10e06"
+    },
+    {
+      "path": "independent/source-reviewed/src/main.ts",
+      "bytes": 7666,
+      "sha256": "c61ab2ca27bc9c78cb318195b4053a893cd1e4c984a58c09ad90f013984e3a5b"
+    },
+    {
+      "path": "independent/source-reviewed/src/reminder-plan.ts",
+      "bytes": 2681,
+      "sha256": "61c2cb4adef0ed801a05b319b9c6ca357c495b5899818ca1ccc859fcfd64c051"
+    },
+    {
+      "path": "independent/source-reviewed/src/reminder-time.css",
+      "bytes": 1259,
+      "sha256": "8b3ddef6daf5fa3b4925077b0eb2ffe981159df7407415d54c6ee2949c6e87c6"
+    },
+    {
+      "path": "independent/source-reviewed/src/reminder-time.ts",
+      "bytes": 7275,
+      "sha256": "3a1d4c1b232116a03a4527195eda95a421d4860eda925f84afdeab6f09483aa6"
+    },
+    {
+      "path": "independent/source-reviewed/src/store.ts",
+      "bytes": 430,
+      "sha256": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080"
+    },
+    {
+      "path": "independent/source-reviewed/src/trip-checklist.ts",
+      "bytes": 13299,
+      "sha256": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c"
+    },
+    {
+      "path": "independent/source-reviewed.patch",
+      "bytes": 24381,
+      "sha256": "107941aaa8b9c7d00d3fb02954336b4606406f5ee646bfbf5ee2e4881626a2cb"
+    },
+    {
+      "path": "native-artifact/correct-native-app-wrapper.mjs",
+      "bytes": 1934,
+      "sha256": "c2303685f7593d4f6f927bcb01c2c7217158554fa29d36233c1bfe65fb030f70"
+    },
+    {
+      "path": "native-artifact/final-manifest.json",
+      "bytes": 2103,
+      "sha256": "380a55cbe5c5ec2aef1e07737f47eef3176d59842fca97685064dca3dda5bb57"
+    },
+    {
+      "path": "native-artifact/final-serve.mjs",
+      "bytes": 1412,
+      "sha256": "aa12543d6f5eaab3fd4fce3a0e539ce7b028f0d982a8b1c95d899af80f9acec8"
+    },
+    {
+      "path": "native-artifact/native-app-final-receipt.json",
+      "bytes": 1730,
+      "sha256": "715bd2ef16766e8272bdcf2047ad867f8f8c39be0f430b0d188a40d652bec74e"
+    },
+    {
+      "path": "native-artifact/native-app-original-manifest.json",
+      "bytes": 2103,
+      "sha256": "8fb1879899947a89f8e626e051a04bf52c43b98b60b6dc1c94f99e34dadd6706"
+    },
+    {
+      "path": "native-artifact/native-app-original-serve.mjs",
+      "bytes": 1421,
+      "sha256": "762565e6a3447396a767fd9acd140e5318cae40b7cb5e82acf8573de83c3d35d"
+    },
+    {
+      "path": "native-artifact/native-app-receipt.json",
+      "bytes": 501,
+      "sha256": "605cd850bf1e45c5403467ba819110673f8ca74c25d55e9aed5993b165f12759"
+    },
+    {
+      "path": "native-artifact/native-app-setup-disposition.json",
+      "bytes": 482,
+      "sha256": "9e2510c21fd14a74292f03b7073fa08568ea77359dcad0533f83791983936eee"
+    },
+    {
+      "path": "native-artifact/native-artifact-seal.json",
+      "bytes": 529,
+      "sha256": "eef68732de10f070389ef100413fe0c4a6f7d6a08a3affff960a9b0a44c5a1f3"
+    },
+    {
+      "path": "native-artifact/package-native-app.py",
+      "bytes": 1429,
+      "sha256": "c972b45af0b9fc15f8f285a7514f0796e44296d916402cb317c8e891b95b68ab"
+    },
+    {
+      "path": "native-artifact/prepare-native-app.mjs",
+      "bytes": 3736,
+      "sha256": "fb16214c6a5c507a004928f715954f5327d7594cb519edb7bc047d70ea694564"
+    },
+    {
+      "path": "native-artifact/receive-native-app-v2.mjs",
+      "bytes": 2127,
+      "sha256": "211e4a658dcdf1bbaae552e9de980e0e875b5cd823e33e082455e520de796de4"
+    },
+    {
+      "path": "native-artifact/receive-native-app.mjs",
+      "bytes": 1973,
+      "sha256": "69f98df19d2c7ab7bf1ba75e52781f352dbc6fe4251b6f88c44e87e5092d154d"
+    },
+    {
+      "path": "packet-adoption.json",
+      "bytes": 311,
+      "sha256": "e4b9561963dcd94ba2c0e353b5954916a6d881d662954964070a7dcc025a2fdb"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5332,
+      "sha256": "a21aa11568decdff885dc7371c68ad3f0eb92d7c6806eae67dc0de420651d98d"
+    }
+  ]
+}

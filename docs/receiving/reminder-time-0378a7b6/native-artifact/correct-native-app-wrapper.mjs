@@ -1,0 +1,12 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const p='D:/Hamon/worktrees/returnby-reminder-timing-0378a7b6-proof',app=p+'/native-app';
+fs.copyFileSync(app+'/serve.mjs',p+'/native-app-original-serve.mjs');fs.copyFileSync(app+'/manifest.json',p+'/native-app-original-manifest.json');
+let s=fs.readFileSync(app+'/serve.mjs','utf8');assert.ok(s.includes(".replace(/^/+/,'')"));s=s.replace(".replace(/^/+/,'')",'.slice(1)');fs.writeFileSync(app+'/serve.mjs',s);
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex'),manifest=JSON.parse(fs.readFileSync(app+'/manifest.json','utf8'));
+for(const row of manifest.files){const b=fs.readFileSync(app+'/'+row.path);row.bytes=b.length;row.sha256=sha(b);}manifest.at=new Date().toISOString();
+fs.writeFileSync(app+'/manifest.json',JSON.stringify(manifest,null,2)+'\n');
+let driver=fs.readFileSync(p+'/receive-native-app.mjs','utf8').replace("proof+'/native-app-receipt.json'","proof+'/native-app-final-receipt.json'");
+driver=driver.replace("const url=await new Promise((resolve,reject)=>{","let stderr='';child.stderr.on('data',b=>stderr+=b);const url=await new Promise((resolve,reject)=>{");
+driver=driver.replace("child.once('error',e=>","child.once('exit',code=>{clearTimeout(timer);reject(Error('Server exited '+code+': '+stderr));});child.once('error',e=>");
+fs.writeFileSync(p+'/receive-native-app-v2.mjs',driver);
+fs.writeFileSync(p+'/native-app-setup-disposition.json',JSON.stringify({at:new Date().toISOString(),original:'native-app-receipt.json',reason:'Artifact wrapper generator lost a regex escape; Node rejected startup before serving. Original wrapper, manifest and failed receipt retained.',correction:'Replace unnecessary leading-slash regex with pathname.slice(1). Product assets unchanged. Receiver now captures early server exit/stderr.',manifestSha256:sha(fs.readFileSync(app+'/manifest.json'))},null,2)+'\n');

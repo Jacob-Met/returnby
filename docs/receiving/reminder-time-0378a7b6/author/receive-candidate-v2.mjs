@@ -1,0 +1,86 @@
+import fs from 'node:fs';import path from 'node:path';import http from 'node:http';import assert from 'node:assert/strict';import crypto from 'node:crypto';import {execFileSync} from 'node:child_process';
+import ts from 'file:///D:/Hamon/worktrees/returnby-discovery-0378a7b6/node_modules/typescript/lib/typescript.js';
+import {chromium} from 'file:///D:/Hamon/worktrees/surgeon-trails-0378a7b6-proof/browser-tools/node_modules/playwright-core/index.mjs';
+const root='D:/Hamon/worktrees/returnby-discovery-0378a7b6',proof='D:/Hamon/worktrees/returnby-reminder-timing-0378a7b6-proof',out=proof+'/candidate-browser-v2';
+fs.mkdirSync(out);
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex'),files=['src/reminder-plan.ts','src/reminder-time.ts','src/reminder-time.css','src/calendar-download.ts','src/ics.ts','src/main.ts','src/trip-checklist.ts','src/deadline.ts','src/store.ts','index.html'],hashes=()=>Object.fromEntries(files.map(p=>[p,sha(fs.readFileSync(root+'/'+p))])),pins=hashes();
+const baseline=execFileSync('git',['-C',root,'show','1e662c387be5f66f8499fac7ec443f58d2198379:src/ics.ts'],{encoding:'utf8'});
+const originalIcs=await import('data:text/javascript;base64,'+Buffer.from(ts.transpileModule(baseline,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText).toString('base64'));
+const report={started:new Date().toISOString(),pins,baselineIcsSha:sha(baseline),groups:[],errors:[],external:[],downloads:[],requests:{}};
+const server=http.createServer((req,res)=>{try{const rel=decodeURIComponent(new URL(req.url,'http://127.0.0.1').pathname).replace(/^\/+/,'')||'index.html',p=path.resolve(root+'/dist',rel);if(!p.startsWith(path.resolve(root+'/dist')+path.sep))throw Error('outside');const b=fs.readFileSync(p);report.requests[rel]=sha(b);res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml'})[path.extname(p)]||'application/octet-stream');res.end(b);}catch{res.statusCode=404;res.end('Not found');}});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;let browser;
+const stamp=new Date('2026-10-08T12:00:00Z'),order={id:'near-literal;4',merchant:'<img src=x onerror=alert(1)> & 日用品,\r\nBEGIN:VALARM',orderNo:'R-18;雪',total:'$40.00',orderDate:'2026-09-10',windowDays:30,windowSource:'user',createdAt:'2026-10-08T11:00:00Z'},raw=JSON.stringify([order]);
+async function setup(zone='Asia/Kathmandu',viewport={width:1440,height:1000},clock=stamp){
+ const context=await browser.newContext({acceptDownloads:true,timezoneId:zone,viewport}),page=await context.newPage();
+ await page.clock.install({time:clock});
+ page.on('pageerror',e=>report.errors.push(String(e)));
+ await page.route('**/*',route=>{if(new URL(route.request().url()).origin===base)return route.continue();report.external.push(route.request().url());return route.abort();});
+ await page.addInitScript(raw=>localStorage.setItem('returnby.v1',raw),raw);
+ await page.goto(base,{waitUntil:'networkidle'});return{context,page};
+}
+const readRaw=page=>page.evaluate(()=>localStorage.getItem('returnby.v1'));
+const open=async page=>{await page.getByRole('button',{name:'Choose reminder time',exact:true}).click();assert.equal(await page.locator('.reminder-cancel').evaluate(n=>document.activeElement===n),true);};
+const review=async(page,value)=>{await page.locator('#reminder-local').fill(value);await page.getByRole('button',{name:'Review reminder',exact:true}).click();};
+async function receive(page,button,name){
+ const event=page.waitForEvent('download');await button.click();const download=await event,p=out+'/'+name;await download.saveAs(p);assert.equal(await download.failure(),null);
+ const bytes=fs.readFileSync(p,'utf8');report.downloads.push({name,filename:download.suggestedFilename(),bytes:Buffer.byteLength(bytes),sha256:sha(bytes)});return bytes;
+}
+try{
+ browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',headless:true,downloadsPath:path.resolve(out),env:{...process.env,TEMP:proof+'/temp',TMP:proof+'/temp'}});
+ report.browser=browser.version();
+ let {context,page}=await setup();
+ await page.locator('#paste').fill('Unsubmitted confirmation draft — preserve exactly.');
+ const original=await receive(page,page.getByRole('button',{name:'Add calendar reminder',exact:true}),'default-three-day.ics');
+ assert.equal(original,originalIcs.buildIcs({...order,due:'2026-10-10'},stamp));assert.equal(await readRaw(page),raw);
+ report.groups.push('Actual default .ics downloaded successfully and equals original serializer bytes; storage exact');
+ await open(page);assert.equal(await page.locator('.reminder-order img').count(),0);assert.match(await page.locator('.reminder-order').textContent(),/BEGIN:VALARM/);
+ await review(page,'2026-10-09T00:25');
+ assert.equal(await page.locator('.reminder-utc').textContent(),'2026-10-08T18:40:00 UTC');
+ assert.match(await page.locator('.reminder-local-review').textContent(),/Asia\/Katmandu|Asia\/Kathmandu/);
+ assert.match(await page.locator('.reminder-local-review').textContent(),/UTC\+05:45/);
+ await page.screenshot({path:out+'/review-kathmandu.png',fullPage:true});
+ await page.keyboard.press('Escape');assert.equal(await page.locator('dialog').evaluate(n=>n.open),false);
+ assert.equal(await readRaw(page),raw);assert.equal(await page.locator('#paste').inputValue(),'Unsubmitted confirmation draft — preserve exactly.');
+ assert.equal(await page.getByRole('button',{name:'Choose reminder time',exact:true}).evaluate(n=>document.activeElement===n),true);
+ report.groups.push('Keyboard Escape/cancel preserves raw saved bytes and intake draft; safe initial and restored focus; literal fields');
+ await open(page);await review(page,'2026-10-09T00:25');
+ const chosen=await receive(page,page.getByRole('button',{name:'Download reviewed calendar',exact:true}),'chosen-kathmandu.ics');
+ assert.equal(chosen,original.replace('TRIGGER:-P3D','TRIGGER;VALUE=DATE-TIME:20261008T184000Z'));assert.equal(await readRaw(page),raw);
+ report.groups.push('Changed-input actual file has exact reviewed UTC across local/UTC day boundary; every other calendar byte retained');
+ await page.locator('#reminder-local').fill('2026-10-11T00:05');assert.equal(await page.locator('.reminder-download').isDisabled(),true);
+ await page.getByRole('button',{name:'Review reminder',exact:true}).click();assert.equal(await page.locator('.reminder-late').isVisible(),true);
+ assert.equal(await page.locator('.reminder-utc').textContent(),'2026-10-10T18:20:00 UTC');
+ report.groups.push('Editing retires approval; later local date produces explicit after-deadline warning and exact UTC');
+ const sibling=await context.newPage();await sibling.goto(base);
+ const changed=JSON.stringify([{...order,total:'$41.00',merchant:'Edited in second tab'}]);
+ await sibling.evaluate(value=>localStorage.setItem('returnby.v1',value),changed);
+ await page.waitForFunction(()=>document.querySelector('.reminder-download').disabled&&document.querySelector('#reminder-local').disabled);
+ assert.equal(await readRaw(page),changed);
+ await page.locator('.reminder-cancel').click();await open(page);assert.match(await page.locator('.reminder-order').textContent(),/Edited in second tab/);
+ await review(page,'2026-10-09T00:25');
+ await page.evaluate(()=>{const data=JSON.parse(localStorage.getItem('returnby.v1'));data[0].total='$42.00';localStorage.setItem('returnby.v1',JSON.stringify(data));});
+ await page.locator('.reminder-download').click();assert.match(await page.locator('.reminder-message').textContent(),/changed after/);assert.equal(await page.locator('.reminder-download').isDisabled(),true);
+ report.groups.push('Real second-tab mutation retires review; reopened review reads fresh order; unobserved same-tab mutation refuses at download');
+ await page.locator('.reminder-cancel').click();
+ await page.evaluate(value=>localStorage.setItem('returnby.v1',JSON.stringify([value,value])),order);
+ await open(page);assert.equal(await page.locator('#reminder-local').isDisabled(),true);assert.match(await page.locator('.reminder-message').textContent(),/ambiguous/);
+ assert.equal(JSON.parse(await readRaw(page)).length,2);await page.locator('.reminder-cancel').click();
+ await page.evaluate(()=>{Storage.prototype.getItem=function(){throw new DOMException('denied','SecurityError');};});
+ await open(page);assert.match(await page.locator('.reminder-message').textContent(),/cannot be read/);assert.equal(await page.locator('.reminder-download').isDisabled(),true);
+ report.groups.push('Duplicate identities and denied storage refuse read-only review; no repair or overwrite');
+ await context.close();
+ ({context,page}=await setup('America/New_York',{width:390,height:844},new Date('2026-03-01T12:00:00Z')));
+ await open(page);await review(page,'2026-03-08T02:30');assert.match(await page.locator('.reminder-message').textContent(),/does not exist/);assert.equal(await page.locator('.reminder-download').isDisabled(),true);
+ await review(page,'2026-11-01T01:30');assert.equal(await page.locator('.reminder-utc').textContent(),'2026-11-01T05:30:00 UTC');assert.match(await page.locator('.reminder-local-review').textContent(),/UTC−04:00/);
+ const fold=await receive(page,page.locator('.reminder-download'),'repeated-hour-new-york.ics');assert.match(fold,/TRIGGER;VALUE=DATE-TIME:20261101T053000Z/);
+ const box=await page.locator('dialog').boundingBox();assert.ok(box.x>=0&&box.x+box.width<=390);
+ await page.screenshot({path:out+'/mobile-repeated-hour.png',fullPage:true});
+ report.groups.push('Real New York browser refuses DST gap and downloads first repeated hour with explicit offset; 390px layout fits');
+ await page.locator('.reminder-cancel').click();await open(page);await review(page,'2026-03-01T07:01');assert.equal(await page.locator('.reminder-download').isEnabled(),true);
+ await page.clock.fastForward(61_000);await page.locator('.reminder-download').click();assert.match(await page.locator('.reminder-message').textContent(),/later than/);
+ report.groups.push('An alarm that elapses after review refuses at final download');
+ assert.deepEqual(report.errors,[]);assert.deepEqual(report.external,[]);assert.deepEqual(hashes(),pins);
+ for(const [file,hash]of Object.entries(report.requests))assert.equal(sha(fs.readFileSync(root+'/dist/'+file)),hash);
+ report.sourceUnchanged=true;report.result='pass';
+}catch(error){report.result='fail';report.error=String(error.stack??error);process.exitCode=1;}
+finally{await browser?.close();await new Promise(r=>server.close(r));report.completed=new Date().toISOString();fs.writeFileSync(out+'/receipt.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));}

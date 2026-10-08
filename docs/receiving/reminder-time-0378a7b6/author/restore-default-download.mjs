@@ -1,0 +1,12 @@
+import fs from 'node:fs';import {execFileSync} from 'node:child_process';
+const root='D:/Hamon/worktrees/returnby-discovery-0378a7b6';
+const original=execFileSync('git',['-C',root,'show','HEAD:src/main.ts'],{encoding:'utf8'});
+const start=original.indexOf('    const blob = new Blob('), end=original.indexOf('\n  }\n});',start);
+if(start<0||end<0)throw Error('original seam unavailable');
+let current=fs.readFileSync(root+'/src/main.ts','utf8');
+current=current.replace("import { downloadCalendar } from './calendar-download';\n",'');
+const a=current.indexOf('    downloadCalendar('),b=current.indexOf('\n',a);
+if(a<0||b<0)throw Error('candidate seam unavailable');
+current=current.slice(0,a)+original.slice(start,end)+current.slice(b);
+fs.writeFileSync(root+'/src/main.ts',current);
+console.log('Preserved original single-click download path; helper only supports new reviewed flow.');

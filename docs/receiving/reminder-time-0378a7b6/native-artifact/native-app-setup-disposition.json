@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-08T22:35:19.097Z",
+  "original": "native-app-receipt.json",
+  "reason": "Artifact wrapper generator lost a regex escape; Node rejected startup before serving. Original wrapper, manifest and failed receipt retained.",
+  "correction": "Replace unnecessary leading-slash regex with pathname.slice(1). Product assets unchanged. Receiver now captures early server exit/stderr.",
+  "manifestSha256": "380a55cbe5c5ec2aef1e07737f47eef3176d59842fca97685064dca3dda5bb57"
+}

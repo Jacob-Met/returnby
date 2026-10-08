@@ -1,0 +1,22 @@
+
+> returnby@0.1.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.3 [39m[90mD:/Hamon/worktrees/returnby-discovery-0378a7b6[39m
+
+ [32m✓[39m tests/ics-alarm.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m tests/ics.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 49[2mms[22m[39m
+ [32m✓[39m tests/day-refresh.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m tests/core.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m tests/trip-checklist.test.ts [2m([22m[2m40 tests[22m[2m)[22m[32m 40[2mms[22m[39m
+ [32m✓[39m tests/reminder-plan.test.mjs [2m([22m[2m14 tests[22m[2m)[22m[33m 1335[2mms[22m[39m
+   [32m✓[39m reviewed local reminder time [2m(14)[22m
+     [33m[2m✓[22m[39m requires the exact reviewed local time, deadline, zone, offset and instant[33m 453[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m6 passed[39m[22m[90m (6)[39m
+[2m      Tests [22m [1m[32m88 passed[39m[22m[90m (88)[39m
+[2m   Start at [22m 15:25:10
+[2m   Duration [22m 1.96s[2m (tests 58%, transform 22%, import 18%, worker 2%)[22m
+
+

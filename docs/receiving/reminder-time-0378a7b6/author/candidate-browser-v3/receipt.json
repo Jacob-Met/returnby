@@ -1,0 +1,59 @@
+{
+  "started": "2026-10-08T22:22:56.733Z",
+  "pins": {
+    "src/reminder-plan.ts": "61c2cb4adef0ed801a05b319b9c6ca357c495b5899818ca1ccc859fcfd64c051",
+    "src/reminder-time.ts": "3a1d4c1b232116a03a4527195eda95a421d4860eda925f84afdeab6f09483aa6",
+    "src/reminder-time.css": "8b3ddef6daf5fa3b4925077b0eb2ffe981159df7407415d54c6ee2949c6e87c6",
+    "src/calendar-download.ts": "e6c96af045b2eb8505a4980ec9c7af4b8f3dd37f87c04c2e12e30db8042f8150",
+    "src/ics.ts": "ab36f775e10eb8fbe23528d9af1aabbb128bffbee8b0669a6ee1c8c748e10e06",
+    "src/main.ts": "3b121b7a4c9711d56a073bf373cae2e0458d20c388ad4415eff9db67432ec577",
+    "src/trip-checklist.ts": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/store.ts": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080",
+    "index.html": "a526fa14c42c969b651047477f0b1b420a21aa7f3105cffe5d7aeceb50563ce2"
+  },
+  "baselineIcsSha": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f",
+  "groups": [
+    "Actual default .ics downloaded successfully and equals original serializer bytes; storage exact",
+    "Keyboard Escape/cancel preserves raw saved bytes and intake draft; safe initial and restored focus; literal fields",
+    "Changed-input actual file has exact reviewed UTC across local/UTC day boundary; every other calendar byte retained",
+    "Editing retires approval; later local date produces explicit after-deadline warning and exact UTC",
+    "Real second-tab mutation retires review; reopened review reads fresh order; unobserved same-tab mutation refuses at download",
+    "Duplicate identities and denied storage refuse read-only review; no repair or overwrite",
+    "Real New York browser refuses DST gap and downloads first repeated hour with explicit offset; 390px layout fits",
+    "An alarm that elapses after review refuses at final download"
+  ],
+  "errors": [],
+  "external": [],
+  "downloads": [
+    {
+      "name": "default-three-day.ics",
+      "filename": "return--img-src-x-onerror-alert-1-BEGIN-VALARM.ics",
+      "bytes": 481,
+      "sha256": "26d4aaa41d1766c32b935b3ee4d3a104f39f9c8e175cf47cefe1db55095847d3"
+    },
+    {
+      "name": "chosen-kathmandu.ics",
+      "filename": "return--img-src-x-onerror-alert-1-BEGIN-VALARM.ics",
+      "bytes": 509,
+      "sha256": "4dcfb3e9e4c34ffbd1e6df373019d50c74d3b325535fa998588a8c5c59097ad4"
+    },
+    {
+      "name": "repeated-hour-new-york.ics",
+      "filename": "return--img-src-x-onerror-alert-1-BEGIN-VALARM.ics",
+      "bytes": 509,
+      "sha256": "15f47f27c7109f35dcfe86f8894bfab72e6b597815cff6e70724c212eea06a2d"
+    }
+  ],
+  "requests": {
+    "index.html": "451a0e68ec37f6d88bd4dd467482a38c4daa5adb99e836fd5d73465d0f583f22",
+    "assets/main-Dw77KE9a.js": "9b9aba8ba3907e969121d6744cb92b1a24a04677d9908fa728dd61feb2949fda",
+    "assets/trip-checklist-Dn5GVYbX.js": "08c5504dda85b751a9a1606624cdb4a9043cb1bf19fb02fba1f00731ec7e1ec5",
+    "assets/main-DVuRGk9O.css": "7f3d8110b27b400a4533fc6b9b369364aa9922a9a38eb7acb0562fd6545f2241",
+    "favicon.svg": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+  },
+  "browser": "154.0.8037.97",
+  "sourceUnchanged": true,
+  "result": "pass",
+  "completed": "2026-10-08T22:23:16.011Z"
+}

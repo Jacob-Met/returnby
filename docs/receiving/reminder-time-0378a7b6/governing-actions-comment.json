@@ -1,0 +1,26 @@
+{
+  "recoveredAt": "2026-10-08 21:33:39 UTC",
+  "comment": {
+    "url": "https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6067592767",
+    "body": "Jacob's direct update, 2026-10-08 19:32 UTC: “i guess no more github actions since they are charging for those i guess relay that but they can keep working just no more github actions”.\n\nThis supersedes the earlier request to use GitHub Actions runners. No new GitHub Actions execution until Jacob clarifies otherwise: no dispatches, reruns, scheduled execution, or implicit push/PR/merge triggers, including self-hosted Actions. Before a repository write, check whether it would start Actions and hold that triggering step.\n\nExisting CI/runner/repository owners should safely stop queued or running Actions and prevent new triggers within their existing permissions and ownership. Preserve logs, artifacts, recovery state and required merge gates; an unrun gate is not a pass or permission to bypass it. Report the actual stopped/remaining runs and any exact authority blocker. This relay does not itself establish that runs have been stopped or that billing was independently verified.\n\nKeep advancing useful, lane-matched local/native work across the estate, including HAMON game development. Preserve blocked-step checkpoints and existing owners. No paid replacement, credential/access change, artifact purge or unrelated system shutdown is authorized by this update.\n\nJacob also asks that the workers keep doing useful work on GPT-6 Astra Ultra, with extra-high when Ultra is unavailable. Leads should verify and report actual configured model/effort, use supported in-place adjustment where available, and preserve existing identities and work. Do not claim a setting changed or continuous uptime without evidence.",
+    "user": {
+      "login": "Jacob-Met",
+      "name": "Jacob-Met",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/150724801?v=4",
+      "id": 150724801
+    },
+    "id": 6067592767,
+    "pull_request_review_id": null,
+    "in_reply_to_id": null,
+    "created_at": null,
+    "updated_at": null,
+    "review": null,
+    "side": null,
+    "line": null,
+    "start_line": null,
+    "path": null,
+    "body_html": "<p dir=\"auto\">Jacob's direct update, 2026-10-08 19:32 UTC: “i guess no more github actions since they are charging for those i guess relay that but they can keep working just no more github actions”.</p>\n<p dir=\"auto\">This supersedes the earlier request to use GitHub Actions runners. No new GitHub Actions execution until Jacob clarifies otherwise: no dispatches, reruns, scheduled execution, or implicit push/PR/merge triggers, including self-hosted Actions. Before a repository write, check whether it would start Actions and hold that triggering step.</p>\n<p dir=\"auto\">Existing CI/runner/repository owners should safely stop queued or running Actions and prevent new triggers within their existing permissions and ownership. Preserve logs, artifacts, recovery state and required merge gates; an unrun gate is not a pass or permission to bypass it. Report the actual stopped/remaining runs and any exact authority blocker. This relay does not itself establish that runs have been stopped or that billing was independently verified.</p>\n<p dir=\"auto\">Keep advancing useful, lane-matched local/native work across the estate, including HAMON game development. Preserve blocked-step checkpoints and existing owners. No paid replacement, credential/access change, artifact purge or unrelated system shutdown is authorized by this update.</p>\n<p dir=\"auto\">Jacob also asks that the workers keep doing useful work on GPT-6 Astra Ultra, with extra-high when Ultra is unavailable. Leads should verify and report actual configured model/effort, use supported in-place adjustment where available, and preserve existing identities and work. Do not claim a setting changed or continuous uptime without evidence.</p>"
+  },
+  "disposition": "No new triggering GitHub writes. Native source/review continues; PR80 remains draft. Earlier source triggers are not retroactively authorized by discovery timing."
+}

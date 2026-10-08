@@ -1,0 +1,142 @@
+{
+  "schema": "returnby.independent-reminder-receiving/1",
+  "head": "9585fc2d39de8b4af70abc9eada341220111159d",
+  "tree": "34f33daed238a7f9088a779c7edf861469a55e46",
+  "files": [
+    {
+      "path": "actual-after-deadline.ics",
+      "bytes": 455,
+      "sha256": "45f1127fed7a910cd88ac0c974f6d2f4bb324c9a1f9073646ec9ac7851bc6679"
+    },
+    {
+      "path": "actual-first-fold.ics",
+      "bytes": 455,
+      "sha256": "1f9a176569472825d97a968e2f0a4b83764e2073c41e0b3f3b9bc8a05b5ebe4f"
+    },
+    {
+      "path": "actual-kathmandu.ics",
+      "bytes": 455,
+      "sha256": "062647011110564537acfc565741be140206379a0f0b95b57b69217bd920a948"
+    },
+    {
+      "path": "actual-original-three-day.ics",
+      "bytes": 427,
+      "sha256": "4722fb3ed71474922a1ad038ba43bfba2eb4789d3e77a7f4c7241d512db8e0c9"
+    },
+    {
+      "path": "contract-before-candidate.json",
+      "bytes": 2531,
+      "sha256": "dfd31afc0f7b47d9a7f5d787975117d8e83ac47246a877862f03ac69fd8e4f63"
+    },
+    {
+      "path": "expected-original.ics",
+      "bytes": 427,
+      "sha256": "4722fb3ed71474922a1ad038ba43bfba2eb4789d3e77a7f4c7241d512db8e0c9"
+    },
+    {
+      "path": "new-york-first-occurrence-phone.png",
+      "bytes": 122439,
+      "sha256": "6968d9caa123dd0bae21fea38f60b01b483ea69505fd3f919d47ce0509f57960"
+    },
+    {
+      "path": "original-ics.mjs",
+      "bytes": 1824,
+      "sha256": "db7245f2fabc70d86810c45443d05401a3442ac3439283df0c235e36e31cb65f"
+    },
+    {
+      "path": "original-ics.ts",
+      "bytes": 1844,
+      "sha256": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 17527,
+      "sha256": "72b25d8a2d3ee91cabbef42ca6bf4ca9724786e2ed2af3f171e5b3b36f95aea3"
+    },
+    {
+      "path": "receive.log",
+      "bytes": 174,
+      "sha256": "487fcf0188ea02e417b13f11e515ebf7fe803427630c60d224af9fbb551acf79"
+    },
+    {
+      "path": "receive.mjs",
+      "bytes": 13841,
+      "sha256": "c460f7d5d0c535b15af3bd31a49fe431324ee61fbf052fc6af5edae8245735ff"
+    },
+    {
+      "path": "received-records.json",
+      "bytes": 375,
+      "sha256": "96c41650c1c86056cc2c234606733fe59289de440fa00c613b2d154b576d816c"
+    },
+    {
+      "path": "REVIEW.md",
+      "bytes": 4209,
+      "sha256": "72e829f2c0b999a25c6642abbf2ad999bc37ec46f3e7c10f3555644f31191b1b"
+    },
+    {
+      "path": "seal.mjs",
+      "bytes": 6504,
+      "sha256": "a753090dfd2db622ab4a78c43fe404eab8cabd9218a7694d55fd7c33f66bd724"
+    },
+    {
+      "path": "source-reviewed.patch",
+      "bytes": 24381,
+      "sha256": "107941aaa8b9c7d00d3fb02954336b4606406f5ee646bfbf5ee2e4881626a2cb"
+    },
+    {
+      "path": "source-reviewed/index.html",
+      "bytes": 4474,
+      "sha256": "a526fa14c42c969b651047477f0b1b420a21aa7f3105cffe5d7aeceb50563ce2"
+    },
+    {
+      "path": "source-reviewed/src/calendar-download.ts",
+      "bytes": 810,
+      "sha256": "e6c96af045b2eb8505a4980ec9c7af4b8f3dd37f87c04c2e12e30db8042f8150"
+    },
+    {
+      "path": "source-reviewed/src/deadline.ts",
+      "bytes": 837,
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "path": "source-reviewed/src/ics.ts",
+      "bytes": 2414,
+      "sha256": "ab36f775e10eb8fbe23528d9af1aabbb128bffbee8b0669a6ee1c8c748e10e06"
+    },
+    {
+      "path": "source-reviewed/src/main.ts",
+      "bytes": 7666,
+      "sha256": "c61ab2ca27bc9c78cb318195b4053a893cd1e4c984a58c09ad90f013984e3a5b"
+    },
+    {
+      "path": "source-reviewed/src/reminder-plan.ts",
+      "bytes": 2681,
+      "sha256": "61c2cb4adef0ed801a05b319b9c6ca357c495b5899818ca1ccc859fcfd64c051"
+    },
+    {
+      "path": "source-reviewed/src/reminder-time.css",
+      "bytes": 1259,
+      "sha256": "8b3ddef6daf5fa3b4925077b0eb2ffe981159df7407415d54c6ee2949c6e87c6"
+    },
+    {
+      "path": "source-reviewed/src/reminder-time.ts",
+      "bytes": 7275,
+      "sha256": "3a1d4c1b232116a03a4527195eda95a421d4860eda925f84afdeab6f09483aa6"
+    },
+    {
+      "path": "source-reviewed/src/store.ts",
+      "bytes": 430,
+      "sha256": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080"
+    },
+    {
+      "path": "source-reviewed/src/trip-checklist.ts",
+      "bytes": 13299,
+      "sha256": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c"
+    }
+  ],
+  "excluded": [
+    "Chrome temporary folders",
+    "native-downloads: transient GUID duplicates of exact named received ICS files",
+    "MANIFEST.json itself"
+  ]
+}

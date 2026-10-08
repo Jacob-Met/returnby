@@ -1,0 +1,14 @@
+{
+  "started": "2026-10-08T22:16:48.738Z",
+  "node": "v24.19.0",
+  "commands": [
+    {
+      "name": "candidate-tests",
+      "args": [
+        "test"
+      ],
+      "status": 1,
+      "signal": null
+    }
+  ]
+}
