@@ -2,6 +2,7 @@ import './style.css';
 import { parse } from './parse';
 import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
+import { startDayRefresh } from './day-refresh';
 import { buildIcs } from './ics';
 import { load, save, type Order } from './store';
 import { samples } from './samples';
@@ -78,3 +79,14 @@ paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey |
 $('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
 $('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?')) { orders = []; save(orders); render(); } });
 render();
+startDayRefresh(() => {
+  const active = document.activeElement;
+  const focused = active instanceof HTMLButtonElement && list.contains(active) ? active : undefined;
+  const action = focused?.hasAttribute('data-ics') ? 'ics' : focused?.hasAttribute('data-del') ? 'del' : undefined;
+  const id = action ? focused?.dataset[action] : undefined;
+  render();
+  if (!action || id === undefined) return;
+  const next = Array.from(list.querySelectorAll<HTMLButtonElement>(`button[data-${action}]`))
+    .find(button => button.dataset[action] === id);
+  (next ?? $<HTMLButtonElement>(`#filter-${filterMode}`)).focus({ preventScroll: true });
+});
