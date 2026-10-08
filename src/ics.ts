@@ -26,8 +26,9 @@ function fold(line: string): string {
 
 export function buildIcs(o: { id: string; merchant: string; orderNo?: string; due: string }, stamp = new Date()): string {
   const d = o.due.replace(/-/g, '');
-  const end = new Date(+o.due.slice(0, 4), +o.due.slice(5, 7) - 1, +o.due.slice(8, 10) + 1);
-  const e = `${end.getFullYear()}${String(end.getMonth() + 1).padStart(2, '0')}${String(end.getDate()).padStart(2, '0')}`;
+  // DATE values have no timezone. A local Date can skip a civil day.
+  const end = new Date(Date.UTC(+o.due.slice(0, 4), +o.due.slice(5, 7) - 1, +o.due.slice(8, 10) + 1));
+  const e = `${end.getUTCFullYear()}${String(end.getUTCMonth() + 1).padStart(2, '0')}${String(end.getUTCDate()).padStart(2, '0')}`;
   const ts = stamp.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
   const title = esc(`Return deadline: ${o.merchant || 'order'}${o.orderNo ? ' #' + o.orderNo : ''}`);
   return [
