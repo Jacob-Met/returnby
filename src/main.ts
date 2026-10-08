@@ -1,3 +1,4 @@
+import './deadline-overview-entry';
 import './style.css';
 import './backup.css';
 import './edit.css';
