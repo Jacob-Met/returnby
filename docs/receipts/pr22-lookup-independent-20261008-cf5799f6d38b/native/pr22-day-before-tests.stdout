@@ -1,0 +1,33 @@
+
+> returnby@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22-day-before
+
+ ✓ tests/ics.test.ts (12 tests) 50ms
+ ✓ tests/edit.test.ts (34 tests) 19ms
+ ✓ tests/day-refresh.test.ts (10 tests) 28ms
+ ✓ tests/calendar-batch.test.ts (32 tests) 73ms
+ ✓ tests/edit-ui.test.mjs (7 tests) 104ms
+ ✓ tests/core.test.ts (9 tests) 13ms
+ ✓ tests/stale-actions.test.mjs (6 tests) 475ms
+   ✓ new-order Save retains the freshly saved corrections, additions and extra fields 455ms
+ ✓ tests/combined-receiving.test.mjs (3 tests) 420ms
+   ✓ corrected subtotal and reviewed attribution survive refused save, download, and fresh restore 411ms
+ ✓ tests/order-search-ui.test.mjs (8 tests) 443ms
+   ✓ existing urgency controls keep deadline order and global counts without changing saved bytes 394ms
+ ✓ tests/order-search.test.ts (22 tests) 54ms
+ ✓ tests/submitted-policy.test.mjs (9 tests) 115ms
+ ✓ tests/storage.test.mjs (6 tests) 114ms
+ ✓ tests/loading.test.mjs (11 tests) 165ms
+ ✓ tests/backup-ui.test.mjs (19 tests) 824ms
+   ✓ preview and cancel preserve storage, native tracker, and an unsaved email draft 452ms
+ ✓ tests/backup.test.ts (53 tests) 1066ms
+   ✓ an accepted near-limit backup can be exported again using compact JSON 564ms
+
+ Test Files  15 passed (15)
+      Tests  241 passed (241)
+   Start at  06:27:14
+   Duration  1.76s (tests 64%, transform 25%, import 8%, worker 3%)
+

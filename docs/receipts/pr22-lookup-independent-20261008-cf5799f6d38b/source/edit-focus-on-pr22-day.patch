@@ -1,0 +1,11 @@
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -200,7 +200,7 @@
+ startDayRefresh(() => {
+   const active = document.activeElement;
+   const focused = active instanceof HTMLButtonElement && list.contains(active) ? active : undefined;
+-  const action = focused?.hasAttribute('data-ics') ? 'ics' : focused?.hasAttribute('data-del') ? 'del' : undefined;
++  const action = focused?.hasAttribute('data-ics') ? 'ics' : focused?.hasAttribute('data-del') ? 'del' : focused?.hasAttribute('data-edit') ? 'edit' : undefined;
+   const id = action ? focused?.dataset[action] : undefined;
+   render();
+   if (!action || id === undefined) return;

@@ -1,0 +1,255 @@
+{
+  "schema": "returnby.pr22-final-native-readback.v1",
+  "completed_utc": "2026-10-08T13:57:40.575548+00:00",
+  "source_checks": [
+    {
+      "label": "pr20",
+      "checked_source_files": 61,
+      "native_capture_tree": "96e0128979e92b6a5966236becd595d976a96873",
+      "source_drift": [],
+      "build_drift": [],
+      "native_runs": [
+        {
+          "command": [
+            "npm",
+            "test"
+          ],
+          "cwd": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr20",
+          "exit_code": 0,
+          "started_at": "2026-10-08T13:15:15.381010+00:00",
+          "completed_at": "2026-10-08T13:15:17.266070+00:00",
+          "stdout_sha256": "086f976d15025e9ea67585db9dbe456678fe6f687b981276a5d70d97ccdecc55",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_drift": []
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "cwd": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr20",
+          "exit_code": 0,
+          "started_at": "2026-10-08T13:15:17.268733+00:00",
+          "completed_at": "2026-10-08T13:15:18.224426+00:00",
+          "stdout_sha256": "87277d6d25060615ca48dd1cff6eba8374aca654e7e74a58b763683782f21eb9",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_drift": []
+        }
+      ]
+    },
+    {
+      "label": "pr22",
+      "checked_source_files": 66,
+      "native_capture_tree": "504129727145d535a53ca8dccbde1d98238868a2",
+      "source_drift": [],
+      "build_drift": [],
+      "native_runs": [
+        {
+          "command": [
+            "npm",
+            "test"
+          ],
+          "cwd": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22",
+          "exit_code": 0,
+          "started_at": "2026-10-08T13:15:20.223784+00:00",
+          "completed_at": "2026-10-08T13:15:21.974040+00:00",
+          "stdout_sha256": "734e711a3cf81ee558e2e7899125f63593b52bcebb25cea15bfab95bb516cef2",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_drift": []
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "cwd": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22",
+          "exit_code": 0,
+          "started_at": "2026-10-08T13:15:21.976867+00:00",
+          "completed_at": "2026-10-08T13:15:22.862117+00:00",
+          "stdout_sha256": "81cbb5515a6fc75ec4144175b84a59099bd5fcd53b082775dbf8dcba7e2fb5cf",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_drift": []
+        }
+      ]
+    },
+    {
+      "label": "pr22-day-before",
+      "checked_source_files": 69,
+      "native_capture_tree": "31bc7c940e216d4126eeff15a4cadf803d5d2d15",
+      "source_drift": [],
+      "build_drift": [],
+      "native_runs": [
+        {
+          "command": [
+            "npm",
+            "test"
+          ],
+          "cwd": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22-day-before",
+          "exit_code": 0,
+          "started_at": "2026-10-08T13:27:14.297158+00:00",
+          "completed_at": "2026-10-08T13:27:16.780030+00:00",
+          "stdout_sha256": "79fb3a8fc62fe63c7572174c6b62d6bf6f20ec798e04b4811128eda35a3fd90f",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_drift": []
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "cwd": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22-day-before",
+          "exit_code": 0,
+          "started_at": "2026-10-08T13:27:16.786116+00:00",
+          "completed_at": "2026-10-08T13:27:19.879791+00:00",
+          "stdout_sha256": "e3059e4c3ea3c8f1a080f616ff6f1dafa8ea59c5c8e185a397a7cca0cea157b7",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_drift": []
+        }
+      ]
+    },
+    {
+      "label": "pr22-day-focus",
+      "checked_source_files": 69,
+      "native_capture_tree": "a138b825f828a912c5501e3f909529be4bfc48f0",
+      "source_drift": [],
+      "build_drift": [],
+      "native_runs": [
+        {
+          "command": [
+            "npm",
+            "test"
+          ],
+          "cwd": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22-day-focus",
+          "exit_code": 0,
+          "started_at": "2026-10-08T13:27:20.419464+00:00",
+          "completed_at": "2026-10-08T13:27:22.822464+00:00",
+          "stdout_sha256": "f3abb241bb4d6c6cd369d9fa7193a45a4090fb57db6c2a3bb7e58fbeb6bba4d9",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_drift": []
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "cwd": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22-day-focus",
+          "exit_code": 0,
+          "started_at": "2026-10-08T13:27:22.830243+00:00",
+          "completed_at": "2026-10-08T13:27:24.945725+00:00",
+          "stdout_sha256": "78e1425d3c2eafac5319014efe05b4b979030ff9e4d889d88faa126f4cca841f",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_drift": []
+        }
+      ]
+    }
+  ],
+  "browser_checks": [
+    {
+      "name": "browser-pr22-actions",
+      "label": "pr22",
+      "passed": 4,
+      "failed": 0,
+      "receiver_sha256": "788d7f1d62bc47604f923df2b4f185c093446c50b39167181344f34303ce19f9",
+      "runtime": {
+        "node": "v26.3.0",
+        "chrome": "Chrome/154.0.8037.98",
+        "platform": "darwin",
+        "arch": "arm64",
+        "puppeteer": "25.12.0"
+      },
+      "served_build_matches": true,
+      "receipt": {
+        "bytes": 4336,
+        "sha256": "072ec3edd6356c77763a9cfb1f286d34486fcb09282140398a92674fa9bad113",
+        "git_blob": "10ede7781c50b63affa969dc5fa836a95dbee505"
+      }
+    },
+    {
+      "name": "browser-pr22-day-before-focus",
+      "label": "pr22-day-before",
+      "passed": 0,
+      "failed": 2,
+      "receiver_sha256": "0ceed3763257d418ddeacefa7088de8c46ab13de6c16b1305d55014b87f378e1",
+      "runtime": {
+        "node": "v26.3.0",
+        "chrome": "Chrome/154.0.8037.98",
+        "platform": "darwin",
+        "arch": "arm64",
+        "puppeteer": "25.12.0"
+      },
+      "served_build_matches": true,
+      "receipt": {
+        "bytes": 3946,
+        "sha256": "437f9dfc2a70a5f7a724f330192d0d3e41f9be509aeb243829adda7bdce85270",
+        "git_blob": "e83a4d661cd87a7c8ea4eec6ce5be88b61e4a592"
+      }
+    },
+    {
+      "name": "browser-pr22-day-focus-focus",
+      "label": "pr22-day-focus",
+      "passed": 2,
+      "failed": 0,
+      "receiver_sha256": "0ceed3763257d418ddeacefa7088de8c46ab13de6c16b1305d55014b87f378e1",
+      "runtime": {
+        "node": "v26.3.0",
+        "chrome": "Chrome/154.0.8037.98",
+        "platform": "darwin",
+        "arch": "arm64",
+        "puppeteer": "25.12.0"
+      },
+      "served_build_matches": true,
+      "receipt": {
+        "bytes": 3019,
+        "sha256": "c19af8a7b12d7d676ec932caa1072ed9419bf9161b9a5601459bf3c077dead9d",
+        "git_blob": "65cb72ab288f156923841ccfb2e8db7ef33b9cc3"
+      }
+    },
+    {
+      "name": "browser-pr22-day-focus-actions",
+      "label": "pr22-day-focus",
+      "passed": 4,
+      "failed": 0,
+      "receiver_sha256": "788d7f1d62bc47604f923df2b4f185c093446c50b39167181344f34303ce19f9",
+      "runtime": {
+        "node": "v26.3.0",
+        "chrome": "Chrome/154.0.8037.98",
+        "platform": "darwin",
+        "arch": "arm64",
+        "puppeteer": "25.12.0"
+      },
+      "served_build_matches": true,
+      "receipt": {
+        "bytes": 4425,
+        "sha256": "e608a7ef317ea79302b6cfc157a02d07bfd243fea9a77cc614b2a8cfd86511bd",
+        "git_blob": "c0a8fd191d55139eeee41d8dd6c6c9394ebdaf55"
+      }
+    }
+  ],
+  "package_versions": {
+    "typescript": {
+      "version": "5.9.3",
+      "realpath": "/private/tmp/returnby-search-review-cf5799f6d38b-helqt1t2/node_modules/typescript/package.json",
+      "sha256": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6"
+    },
+    "vite": {
+      "version": "8.3.3",
+      "realpath": "/private/tmp/returnby-search-review-cf5799f6d38b-helqt1t2/node_modules/vite/package.json",
+      "sha256": "334c8847b7f71cebb8a9c7e0fa56163941305ef13a970a15d4a43c7cdfef915b"
+    },
+    "vitest": {
+      "version": "5.0.3",
+      "realpath": "/private/tmp/returnby-search-review-cf5799f6d38b-helqt1t2/node_modules/vitest/package.json",
+      "sha256": "df72ec137c86d8454d129967ed88c640012fa8db7950d58f79cee8a94df437f1"
+    }
+  },
+  "correction_only_path": "src/main.ts",
+  "correction_bytes": 46,
+  "other_corrected_capture_files_unchanged": 68,
+  "selector_transport_only": true,
+  "owner_implementation_modified": false,
+  "github_writes": false
+}

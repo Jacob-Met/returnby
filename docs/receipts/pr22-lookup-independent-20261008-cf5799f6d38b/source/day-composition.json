@@ -1,0 +1,78 @@
+{
+  "compositions": [
+    {
+      "label": "pr22-day-before",
+      "native_capture_tree": "31bc7c940e216d4126eeff15a4cadf803d5d2d15",
+      "calculated_full_receiving_tree": "947e9a920b969e729ddf6723f6ad11100644ae6a",
+      "changes_from_pr22": [
+        {
+          "path": "src/main.ts",
+          "preimage": "11d44fab103e1f6a1955299ed9180a61c9598190",
+          "postimage": "1a06381d5fd7cc29e098bb56db4697296eddf618"
+        },
+        {
+          "path": "tests/helpers/storage-fixture.mjs",
+          "preimage": "b808f12d34896ed4f30742a629b46163b123882f",
+          "postimage": "7c7a426fc97a6c857abd5a04f31009259ee7669a"
+        },
+        {
+          "path": "src/day-refresh.ts",
+          "preimage": null,
+          "postimage": "362aae5b5be7bf399174483327a2b15018edeca4"
+        },
+        {
+          "path": "tests/day-refresh.test.ts",
+          "preimage": null,
+          "postimage": "1d76fd6ef7364ae84f4775666768815211981ff6"
+        },
+        {
+          "path": "tools/verify_day_refresh.py",
+          "preimage": null,
+          "postimage": "94caac1360142a886c138b1ebf2e5698024121d0"
+        }
+      ],
+      "unchanged_published_leaves": 245
+    },
+    {
+      "label": "pr22-day-focus",
+      "native_capture_tree": "a138b825f828a912c5501e3f909529be4bfc48f0",
+      "calculated_full_receiving_tree": "fc6226c82d31695dab180363916b9138598f249b",
+      "changes_from_pr22": [
+        {
+          "path": "src/main.ts",
+          "preimage": "11d44fab103e1f6a1955299ed9180a61c9598190",
+          "postimage": "bc31b8d93968c79216ade7ebe111c54127d65355"
+        },
+        {
+          "path": "tests/helpers/storage-fixture.mjs",
+          "preimage": "b808f12d34896ed4f30742a629b46163b123882f",
+          "postimage": "7c7a426fc97a6c857abd5a04f31009259ee7669a"
+        },
+        {
+          "path": "src/day-refresh.ts",
+          "preimage": null,
+          "postimage": "362aae5b5be7bf399174483327a2b15018edeca4"
+        },
+        {
+          "path": "tests/day-refresh.test.ts",
+          "preimage": null,
+          "postimage": "1d76fd6ef7364ae84f4775666768815211981ff6"
+        },
+        {
+          "path": "tools/verify_day_refresh.py",
+          "preimage": null,
+          "postimage": "94caac1360142a886c138b1ebf2e5698024121d0"
+        }
+      ],
+      "unchanged_published_leaves": 245
+    }
+  ],
+  "original_main_day_sha256": "a67c4878d70502eb5f2ff5bfa286bf932c66cb73fecb1fd6184d7f80426fa26b",
+  "same_original_callback_received": true,
+  "fixed_existing_source_paths": [
+    "src/main.ts"
+  ],
+  "focus_added_bytes": 46,
+  "patch_sha256": "5a5454c12a7ab8823a4f24a7167c3fb03287532666a197815b3ea88e8092bd39",
+  "fixture_scope": "Unchanged historical lifecycle-only inert test fixture; no live browser or application substitute."
+}

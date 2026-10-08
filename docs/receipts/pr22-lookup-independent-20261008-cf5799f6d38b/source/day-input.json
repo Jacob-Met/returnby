@@ -1,0 +1,47 @@
+{
+  "schema": "returnby.pr22-day-receiving-input.v1",
+  "main_commit": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "main_tree": "ab4534a2e1afdace5d27a6079012c776c0e66f70",
+  "main_source": {
+    "content": "import './style.css';\nimport { parse } from './parse';\nimport { lookup, knownMerchants } from './policy';\nimport { dueDate, daysLeft, status, todayISO } from './deadline';\nimport { startDayRefresh } from './day-refresh';\nimport { buildIcs } from './ics';\nimport { load, save, type Order } from './store';\nimport { samples } from './samples';\n\nconst $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;\nconst paste = $<HTMLTextAreaElement>('#paste');\nconst preview = $<HTMLFormElement>('#preview');\nconst list = $<HTMLUListElement>('#list');\nlet orders = load();\nlet sampleIdx = 0;\nlet filterMode: 'all' | 'due' | 'expired' = 'all';\n\nconst h = (s: string) => s.replace(/[&<>\"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' })[c]!);\n\nfunction showPreview() {\n  const p = parse(paste.value, knownMerchants);\n  const pol = lookup(p.merchant);\n  const field = (name: string, label: string, val: string, ok: boolean, type = 'text') =>\n    `<label class=\"${ok ? '' : 'missing'}\">${label}<input name=\"${name}\" type=\"${type}\" value=\"${h(val)}\"></label>`;\n  const nothing = !p.found.merchant && !p.found.orderDate;\n  const foundCount = Object.values(p.found).filter(Boolean).length;\n  preview.innerHTML = `\n    <div class=\"review-head\"><div><span>RULE ENGINE / REVIEW</span><strong>${foundCount} OF 4 FIELDS RECOGNIZED</strong></div><span class=\"policy-chip\">${pol.source === 'policy' ? 'STORE MATCH' : '30-DAY FALLBACK'}</span></div>\n    <p class=\"review-note\">Amber fields need attention. Confirm or correct the details before saving.</p>\n    ${nothing ? '<p class=\"warn\">Could not read this one. Fill in the highlighted fields.</p>' : ''}\n    ${field('merchant', 'Store', p.merchant, p.found.merchant)}\n    ${field('orderDate', 'Order date', p.orderDate, p.found.orderDate, 'date')}\n    ${field('orderNo', 'Order #', p.orderNo, p.found.orderNo)}\n    ${field('total', 'Total', p.total, p.found.total)}\n    <label>Return window (days)<input name=\"windowDays\" type=\"number\" min=\"1\" value=\"${pol.days}\"></label>\n    <p class=\"src\" id=\"src\">${pol.source === 'policy' ? 'Store rule from the local policy table; confirm with the retailer.' : 'No store match: editable 30-day fallback.'}</p>\n    <button type=\"submit\" class=\"button button-primary\">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;\n  preview.dataset.days = String(pol.days);\n  preview.hidden = false;\n}\n\npreview.addEventListener('submit', (e) => {\n  e.preventDefault();\n  const f = new FormData(preview);\n  const orderDate = String(f.get('orderDate') || '');\n  if (!orderDate) { (preview.querySelector('[name=orderDate]') as HTMLInputElement).focus(); return; }\n  const days = Number(f.get('windowDays')) || 30;\n  orders.push({\n    id: crypto.randomUUID(), merchant: String(f.get('merchant') || ''), orderNo: String(f.get('orderNo') || ''),\n    total: String(f.get('total') || ''), orderDate, windowDays: days,\n    windowSource: String(days) === preview.dataset.days ? (preview.dataset.source as Order['windowSource']) : 'user',\n    createdAt: new Date().toISOString(),\n  });\n  save(orders); preview.hidden = true; paste.value = ''; render();\n});\n\nfunction render() {\n  const all=orders.map(o=>{const due=dueDate(o.orderDate,o.windowDays),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);\n  $('#tracked-count').textContent=String(all.length);$('#soon-count').textContent=String(all.filter(r=>r.left>=0&&r.left<=7).length);$('#expired-count').textContent=String(all.filter(r=>r.left<0).length);\n  for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}\n  const rows=all.filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));\n  if(!rows.length){list.innerHTML=`<li class=\"empty\">${all.length?'No saved deadlines match this filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}\n  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class=\"card ${status(left)}\"><div class=\"order-head\"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class=\"mono\">#${h(o.orderNo)}</span>`:''}</div><span class=\"status-tag\">${label}</span></div><div class=\"window-meta\"><span>ORDER ${h(o.orderDate)}</span><span class=\"source-tag\">${policy}</span></div><div class=\"window-track\" role=\"progressbar\" aria-label=\"Return window elapsed\" aria-valuenow=\"${progress}\" aria-valuemin=\"0\" aria-valuemax=\"100\"><i style=\"width:${progress}%\"></i></div><div class=\"order-foot\"><span class=\"return-by\">RETURN BY ${h(due)}</span><strong class=\"days-left\">${count}</strong></div><div class=\"order-actions\"><button class=\"button button-primary\" data-ics=\"${h(o.id)}\">Add calendar reminder</button><button class=\"button button-link\" data-del=\"${h(o.id)}\">Remove</button></div></li>`;}).join('');\n}\nlist.addEventListener('click', (e) => {\n  const t = e.target as HTMLElement;\n  if (t.dataset.del) { orders = orders.filter((o) => o.id !== t.dataset.del); save(orders); render(); }\n  if (t.dataset.ics) {\n    const o = orders.find((x) => x.id === t.dataset.ics)!;\n    const blob = new Blob([buildIcs({ ...o, due: dueDate(o.orderDate, o.windowDays) })], { type: 'text/calendar' });\n    const a = document.createElement('a');\n    a.href = URL.createObjectURL(blob); a.download = `return-${(o.merchant || 'order').replace(/\\W+/g, '-')}.ics`; a.click();\n    URL.revokeObjectURL(a.href);\n  }\n});\n\n$('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);\npaste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });\n$('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });\n$('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?')) { orders = []; save(orders); render(); } });\nrender();\nstartDayRefresh(() => {\n  const active = document.activeElement;\n  const focused = active instanceof HTMLButtonElement && list.contains(active) ? active : undefined;\n  const action = focused?.hasAttribute('data-ics') ? 'ics' : focused?.hasAttribute('data-del') ? 'del' : undefined;\n  const id = action ? focused?.dataset[action] : undefined;\n  render();\n  if (!action || id === undefined) return;\n  const next = Array.from(list.querySelectorAll<HTMLButtonElement>(`button[data-${action}]`))\n    .find(button => button.dataset[action] === id);\n  (next ?? $<HTMLButtonElement>(`#filter-${filterMode}`)).focus({ preventScroll: true });\n});\n",
+    "encoding": "utf-8",
+    "sha": "798e5329fe9983e67b5832595605a49294f0a529",
+    "display_url": "https://github.com/Jacob-Met/returnby/blob/3913697f70a31d73e8fe7d02b686b306830c24db/src/main.ts",
+    "display_title": "main.ts"
+  },
+  "additional_files": [
+    {
+      "path": "src/day-refresh.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "362aae5b5be7bf399174483327a2b15018edeca4",
+      "size": 1320,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/362aae5b5be7bf399174483327a2b15018edeca4"
+    },
+    {
+      "path": "tests/day-refresh.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1d76fd6ef7364ae84f4775666768815211981ff6",
+      "size": 4830,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/1d76fd6ef7364ae84f4775666768815211981ff6"
+    },
+    {
+      "path": "tools/verify_day_refresh.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "94caac1360142a886c138b1ebf2e5698024121d0",
+      "size": 9996,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/94caac1360142a886c138b1ebf2e5698024121d0"
+    }
+  ],
+  "source": "/tmp/returnby-search-review-cf5799f6d38b-helqt1t2/main-before",
+  "prior_fixture": {
+    "preimage": "b808f12d34896ed4f30742a629b46163b123882f",
+    "candidate": "7c7a426",
+    "path": "tests/helpers/storage-fixture.mjs",
+    "source": "/tmp/returnby-search-review-cf5799f6d38b-helqt1t2/composed-search/tests/helpers/storage-fixture.mjs"
+  },
+  "receiving_only": true,
+  "publication_scope": "Only the +46-byte edit-action recognition after the exact day callback is received; no search replacement or owner integration."
+}

@@ -1,0 +1,112 @@
+{
+  "source": "/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22-day-before",
+  "tree": "31bc7c940e216d4126eeff15a4cadf803d5d2d15",
+  "fixture": "fictional saved records, fixed UTC clock; real production build and browser",
+  "checks": [
+    {
+      "name": "focused-editor-action-survives-real-day-refresh",
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'later'\n\n    at file:///private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/independent_edit_focus_original.mjs:27:734\n    at async check (file:///private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/independent_edit_focus_original.mjs:25:50)\n    at async file:///private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/independent_edit_focus_original.mjs:27:2",
+      "evidence": {
+        "before": {
+          "tag": "BUTTON",
+          "id": "later"
+        },
+        "after": {
+          "tag": "BODY",
+          "rows": [
+            "earlier",
+            "later"
+          ],
+          "query": "basket",
+          "writes": 0
+        }
+      }
+    },
+    {
+      "name": "disappearing-editor-action-restores-active-date-filter",
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'' !== 'filter-due'\n\n    at file:///private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/independent_edit_focus_original.mjs:28:537\n    at async check (file:///private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/independent_edit_focus_original.mjs:25:50)\n    at async file:///private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/independent_edit_focus_original.mjs:28:2",
+      "evidence": {
+        "tag": "BODY",
+        "id": "",
+        "rows": [],
+        "query": "basket",
+        "writes": 0
+      }
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "server": [
+    {
+      "path": "/",
+      "sha256": "db3a9388e3aa77dba6b7fada9162f55f8b1cf1f50aded16004711ca4f3f1cab1",
+      "bytes": 10717
+    },
+    {
+      "path": "/assets/index-DBj441Ck.css",
+      "sha256": "5da0122a817b627264bff110d4591c80969dcc3bfeb71c59f787959566e7c99d",
+      "bytes": 13464
+    },
+    {
+      "path": "/assets/index-Dm_NY_RP.js",
+      "sha256": "66242486098ba762b1ad9ef023eb1a1ac8e7f7b52795358c8b4c2fe14b1bc341",
+      "bytes": 32300
+    },
+    {
+      "path": "/favicon.svg",
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+      "bytes": 238
+    },
+    {
+      "path": "/",
+      "sha256": "db3a9388e3aa77dba6b7fada9162f55f8b1cf1f50aded16004711ca4f3f1cab1",
+      "bytes": 10717
+    },
+    {
+      "path": "/assets/index-Dm_NY_RP.js",
+      "sha256": "66242486098ba762b1ad9ef023eb1a1ac8e7f7b52795358c8b4c2fe14b1bc341",
+      "bytes": 32300
+    },
+    {
+      "path": "/assets/index-DBj441Ck.css",
+      "sha256": "5da0122a817b627264bff110d4591c80969dcc3bfeb71c59f787959566e7c99d",
+      "bytes": 13464
+    }
+  ],
+  "proxyRefusals": [
+    "http://clients2.google.com",
+    "www.gstatic.com:443",
+    "www.google.com:443",
+    "accounts.google.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "update.googleapis.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "content-autofill.googleapis.com:443",
+    "content-autofill.googleapis.com:443",
+    "accounts.google.com:443",
+    "content-autofill.googleapis.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "content-autofill.googleapis.com:443",
+    "content-autofill.googleapis.com:443",
+    "www.google.com:443",
+    "www.google.com:443"
+  ],
+  "runtime": {
+    "node": "v26.3.0",
+    "chrome": "Chrome/154.0.8037.98",
+    "platform": "darwin",
+    "arch": "arm64",
+    "puppeteer": "25.12.0"
+  },
+  "passed": 0,
+  "failed": 2,
+  "receiver_sha256": "0ceed3763257d418ddeacefa7088de8c46ab13de6c16b1305d55014b87f378e1"
+}

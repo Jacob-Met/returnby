@@ -1,0 +1,28 @@
+
+> returnby@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22
+
+ ✓ tests/ics.test.ts (12 tests) 30ms
+ ✓ tests/calendar-batch.test.ts (32 tests) 59ms
+ ✓ tests/edit.test.ts (34 tests) 16ms
+ ✓ tests/core.test.ts (9 tests) 17ms
+ ✓ tests/edit-ui.test.mjs (7 tests) 69ms
+ ✓ tests/combined-receiving.test.mjs (3 tests) 221ms
+ ✓ tests/stale-actions.test.mjs (6 tests) 223ms
+ ✓ tests/order-search-ui.test.mjs (8 tests) 228ms
+ ✓ tests/order-search.test.ts (22 tests) 41ms
+ ✓ tests/submitted-policy.test.mjs (9 tests) 101ms
+ ✓ tests/loading.test.mjs (11 tests) 111ms
+ ✓ tests/storage.test.mjs (6 tests) 70ms
+ ✓ tests/backup-ui.test.mjs (19 tests) 467ms
+ ✓ tests/backup.test.ts (53 tests) 713ms
+   ✓ an accepted near-limit backup can be exported again using compact JSON 404ms
+
+ Test Files  14 passed (14)
+      Tests  231 passed (231)
+   Start at  06:15:20
+   Duration  1.15s (tests 56%, transform 31%, import 10%, worker 2%)
+
