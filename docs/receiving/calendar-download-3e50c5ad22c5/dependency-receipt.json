@@ -1,0 +1,14 @@
+{
+  "createdAt": "2026-10-08T19:58:13.613Z",
+  "node": "v22.22.1",
+  "commit": "7cf2f6d6e1cd71143569f972ab6ca0bbc0c46772",
+  "tree": "20a738c38691d102d2f3c50cb74de1e8cc37f534",
+  "versions": {
+    "typescript": "5.9.3",
+    "vite": "8.3.3",
+    "vitest": "5.0.3"
+  },
+  "mounts": "Filesystem     1024-blocks    Used Available Capacity Mounted on\ntmpfs              7771132 7118288    652844      92% /tmp\ntmpfs              7771128 2632392   5138736      34% /dev/shm\n",
+  "package.json": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+  "package-lock.json": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+}
