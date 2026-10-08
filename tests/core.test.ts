@@ -21,6 +21,25 @@ describe('parse', () => {
     const p = parse(samples[2], knownMerchants);
     expect(p.found).toEqual({ merchant: false, orderDate: false, orderNo: false, total: false });
   });
+  it('does not mistake a subtotal for the order total', () => {
+    const p = parse('From: Northwind Outfitters <orders@example.test>\nOrder #NW-48213\nOrder placed October 3, 2026\nSubtotal: $50.00\nShipping: $5.00\nTotal: $55.00');
+    expect(p).toMatchObject({ merchant: 'Northwind Outfitters', orderDate: '2026-10-03', orderNo: 'NW-48213', total: '$55.00' });
+    expect(p.found).toEqual({ merchant: true, orderDate: true, orderNo: true, total: true });
+  });
+  it('leaves total unknown when only embedded total labels exist', () => {
+    for (const text of ['Subtotal: $50.00', 'Order subtotal: $50.00', 'SUBTOTAL: €9.00', 'runningtotal: £12.00']) {
+      expect(parse(text).total).toBe('');
+      expect(parse(text).found.total).toBe(false);
+    }
+  });
+  it('preserves standalone labels, currency syntax and first-match behavior', () => {
+    for (const [text, expected] of [
+      ['Order Total: $1,234.50', '$1,234.50'],
+      ['total € 9.00', '€9.00'],
+      ['TOTAL:£12', '£12'],
+      ['Total: $10.00\nOrder total: $12.00', '$10.00'],
+    ]) expect(parse(text).total).toBe(expected);
+  });
 });
 
 describe('deadline + policy', () => {
