@@ -1,0 +1,13 @@
+vite v5.4.21 building for production...
+
+(!) outDir /dev/returnby-csv-unicode-zn4rdxtf/built is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+
+transforming...
+✓ 22 modules transformed.
+rendering chunks...
+computing gzip size...
+../built/index.html                 10.81 kB │ gzip:  3.71 kB
+../built/assets/index-B7eATKnU.css  12.89 kB │ gzip:  3.48 kB
+../built/assets/index-DNxS9btP.js   33.53 kB │ gzip: 12.37 kB
+✓ built in 338ms

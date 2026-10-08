@@ -1,0 +1,11 @@
+file:///dev/shm/ae0a1ea0b247-returnby-csv/src/saved-returns-csv.ts:40
+      throw new SavedCsvError('Some saved text cannot be represented safely in CSV. Keep the JSON backup and correct that text before exporting.');
+            ^
+
+SavedCsvError: Some saved text cannot be represented safely in CSV. Keep the JSON backup and correct that text before exporting.
+    at cell (file:///dev/shm/ae0a1ea0b247-returnby-csv/src/saved-returns-csv.ts:40:13)
+    at Array.map (<anonymous>)
+    at createSavedReturnsCsv (file:///dev/shm/ae0a1ea0b247-returnby-csv/src/saved-returns-csv.ts:55:7)
+    at file:///dev/shm/ae0a1ea0b247-returnby-csv-review/produce-native.mjs:44:16
+
+Node.js v24.19.0

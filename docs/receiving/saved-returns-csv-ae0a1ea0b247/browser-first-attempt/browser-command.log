@@ -1,0 +1,21 @@
+{
+  "result": "FAIL",
+  "groups": [
+    {
+      "name": "Keyboard download exports the complete saved tracker and preserves the active unsaved form/filter",
+      "status": "PASS"
+    },
+    {
+      "name": "A second tab native Save is included by a fresh export without changing the first tab view",
+      "status": "PASS"
+    },
+    {
+      "name": "An actual admitted backup preview remains pending while CSV contains only currently saved records",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:134:18\n    at async run (/dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:35:26)\n    at async /dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:129:5"
+    }
+  ],
+  "downloads": 2,
+  "sourceUnchanged": true,
+  "error": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:134:18\n    at async run (/dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:35:26)\n    at async /dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:129:5"
+}

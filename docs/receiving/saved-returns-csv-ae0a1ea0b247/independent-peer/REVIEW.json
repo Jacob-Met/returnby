@@ -1,0 +1,75 @@
+{
+  "decision": "ACCEPT",
+  "reviewer": "estate-ae0a1ea0b247/coordination_review",
+  "sourceCommit": "da8e814adbc0f087e2920d3129f998be56234044",
+  "originalModuleBlob": "448d7441efd9637a763d2674a44353cd7db155b8",
+  "acceptedModuleBlob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+  "sourcePins": [
+    {
+      "path": "src/saved-returns-csv.ts",
+      "blob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+      "sha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+      "bytes": 3109
+    },
+    {
+      "path": "src/saved-returns-csv-ui.ts",
+      "blob": "8321f2b207364bbd8eecc2b64c49ad67e19c0d05",
+      "sha256": "e8f1a3fbb0cb94f1591257c607b4086fe8e673350efd44dd2d7e19bee5ce80c3",
+      "bytes": 1790
+    },
+    {
+      "path": "src/main.ts",
+      "blob": "1bca9a5d3d57bd796b43c81606eed5a1c83e66db",
+      "sha256": "837e06ef017764d60ed8f1feefbc69107db8ccb910999a62fc9e799653f8902e",
+      "bytes": 10024
+    },
+    {
+      "path": "index.html",
+      "blob": "ab039d13a53369a5528c9947f5323b8101b7b3b9",
+      "sha256": "ea997f3afe93ac3544aa94992b60410e0220017a0706144afae5f213f7108ce9",
+      "bytes": 10712
+    },
+    {
+      "path": "src/backup.ts",
+      "blob": "bdd86ce50c723abf8f1d305d4fdf63353510eba8",
+      "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+      "bytes": 7059
+    },
+    {
+      "path": "src/deadline.ts",
+      "blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+      "bytes": 837
+    },
+    {
+      "path": "src/store.ts",
+      "blob": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3",
+      "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+      "bytes": 1387
+    }
+  ],
+  "executed": {
+    "independentConsumerDimensions": 4,
+    "timezones": [
+      "UTC",
+      "America/New_York",
+      "Pacific/Auckland"
+    ],
+    "recordsPerExport": 12,
+    "protectedCellsPerExport": 11,
+    "minimalBomSurrogateControls": 4,
+    "strictTypeScriptConsumer": "5.9.3 / pass"
+  },
+  "sourceOnlyReview": [
+    "33-line CSV initializer",
+    "two main import/binding lines",
+    "separate HTML panel"
+  ],
+  "browserExecutionClaimed": false,
+  "originalFailure": "original-448d7441/minimal-refusal.json",
+  "consumerReceipt": "independent-consumer-receipt.json",
+  "correctedWitness": "corrected-minimal-receipt.json",
+  "typeConsumerReceipt": "typescript-consumer-receipt.json",
+  "harnessChange": "Only expected source commit/blob became parameters after preserving original receiver. Corpus and all consumer assertions are unchanged.",
+  "scope": "Exact source acceptance. Complete native parent preservation and normal CI remain publication/integration gates."
+}

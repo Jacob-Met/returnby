@@ -1,0 +1,42 @@
+[
+  {
+    "path": "utc.log",
+    "bytes": 682,
+    "sha256": "2ad1caf431e6fde2a4186a46cf8bf496ee74878b406b01bb3a9e8d13d9947310"
+  },
+  {
+    "path": "authored-input.json",
+    "bytes": 4005,
+    "sha256": "b38ba3143a3cab9bf66312b83caf928664330bc6adaed30bcb291bf9682aaa82"
+  },
+  {
+    "path": "receive-with-python.py",
+    "bytes": 8212,
+    "sha256": "e01bfb1c6e1c9c737e691ab21f8767a0b14f9c9b086b688646b63e2763141f75"
+  },
+  {
+    "path": "produce-native.mjs",
+    "bytes": 3937,
+    "sha256": "7a566d65bea16bcf750a150302a8ac22f2ab4d223d757eb46bbe0b72f5f0f5a8"
+  },
+  {
+    "path": "source/src/store.ts",
+    "bytes": 1387,
+    "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf"
+  },
+  {
+    "path": "source/src/deadline.ts",
+    "bytes": 837,
+    "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+  },
+  {
+    "path": "source/src/backup.ts",
+    "bytes": 7059,
+    "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a"
+  },
+  {
+    "path": "source/src/saved-returns-csv.ts",
+    "bytes": 3000,
+    "sha256": "d143e39e8f63e4b8c1e93dffb728a3aafce5358718ce19d430738c2e35194ec1"
+  }
+]

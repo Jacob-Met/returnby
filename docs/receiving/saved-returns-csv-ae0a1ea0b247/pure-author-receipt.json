@@ -1,0 +1,67 @@
+{
+  "recordedAt": "2026-10-08T13:04:39.603480+00:00",
+  "sourceBase": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "sourceTree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+  "localExactClosure": "291244539d1a15748bcc059068bafa3db9a043b6",
+  "result": "PURE_MODULE_READY_FOR_INDEPENDENT_REVIEW",
+  "nativeTests": {
+    "runtime": "Node v24.19.0, native TypeScript stripping with extensionless resolution only",
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "rawLog": "native-author.tap"
+  },
+  "typecheck": {
+    "result": "PASS",
+    "version": "TypeScript 5.9.3, existing read-only compiler",
+    "command": "node /dev/shm/artifact-acd057031fb2-pr65-build/node_modules/typescript/bin/tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution bundler --lib ES2022,DOM src/saved-returns-csv.ts"
+  },
+  "unchangedDependencies": [
+    "src/backup.ts",
+    "src/deadline.ts",
+    "src/store.ts"
+  ],
+  "limitations": [
+    "No browser run yet",
+    "Full Vitest/Vite lockfile suite not run locally; installed available Vite5.4.21 differs from repository lockfile, so it is not substituted for that gate",
+    "Spreadsheet rendering/import semantics are consumer-dependent; CSV exact bytes and documented protective apostrophes are tested, not universal spreadsheet execution",
+    "Source-only qualified contribution; #8/#10 retain receiving and target integration"
+  ],
+  "pins": {
+    "src/saved-returns-csv.ts": {
+      "bytes": 3000,
+      "sha256": "d143e39e8f63e4b8c1e93dffb728a3aafce5358718ce19d430738c2e35194ec1",
+      "gitBlob": "448d7441efd9637a763d2674a44353cd7db155b8"
+    },
+    "src/backup.ts": {
+      "bytes": 7059,
+      "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+      "gitBlob": "bdd86ce50c723abf8f1d305d4fdf63353510eba8"
+    },
+    "src/deadline.ts": {
+      "bytes": 837,
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+      "gitBlob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4"
+    },
+    "src/store.ts": {
+      "bytes": 1387,
+      "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+      "gitBlob": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3"
+    },
+    "tests/helpers/saved-csv-cases.mjs": {
+      "bytes": 8411,
+      "sha256": "061ffe1a02569014763f77e605e045e172039b4e5eefb59f3f4828550bce5801",
+      "gitBlob": "4bb17ef092b85892080e698d9c892bc544e9d56c"
+    },
+    "tools/register-source-ts.mjs": {
+      "bytes": 617,
+      "sha256": "bcfd0262e2a3291dfae1ff8e926ce03b34db7e7768284da64f120f61641d22d9",
+      "gitBlob": "91f8d08345ce130eb704744bec366b04760bbf91"
+    },
+    "docs/receiving/saved-returns-csv-ae0a1ea0b247/native-author.tap": {
+      "bytes": 2383,
+      "sha256": "628c88c8e138c3c252f7e8846cae117c73c7f021f39a54ab65a2d21140ce5461",
+      "gitBlob": "bfbc64cb501a23c9dbfa01521f305e2a1eed52c5"
+    }
+  }
+}

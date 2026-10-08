@@ -1,0 +1,35 @@
+{
+  "result": "PASS",
+  "groups": [
+    {
+      "name": "Keyboard download exports the complete saved tracker and preserves the active unsaved form/filter",
+      "status": "PASS"
+    },
+    {
+      "name": "A second tab native Save is included by a fresh export without changing the first tab view",
+      "status": "PASS"
+    },
+    {
+      "name": "An actual admitted backup preview remains pending while CSV contains only currently saved records",
+      "status": "PASS"
+    },
+    {
+      "name": "Controlled read refusal preserves work; retry rereads a subsequent native second-tab Save",
+      "status": "PASS"
+    },
+    {
+      "name": "Controlled object-URL refusal preserves work and recovers with normal URL cleanup",
+      "status": "PASS"
+    },
+    {
+      "name": "Phone control and actual download fit the viewport and preserve saved records",
+      "status": "PASS"
+    },
+    {
+      "name": "Empty saved tracker refuses without creating a file or changing storage",
+      "status": "PASS"
+    }
+  ],
+  "downloads": 6,
+  "sourceUnchanged": true
+}

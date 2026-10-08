@@ -20,6 +20,13 @@
     </div>
   </details>
 </section>
+<section class="backup-panel" aria-labelledby="saved-csv-title">
+  <h2 id="saved-csv-title">Review saved returns in a spreadsheet</h2>
+  <p>Download all currently saved returns, including their recorded details and calculated deadlines. Search and date filters do not limit this CSV. The pasted email is excluded.</p>
+  <div class="action-row"><button id="saved-returns-csv" type="button" class="button button-primary" aria-describedby="saved-csv-help">Download saved returns CSV</button></div>
+  <p id="saved-csv-help" class="list-note">CSV is for review. Formula-like text receives a leading apostrophe; import store and order-number columns as text to retain their formatting. Keep a JSON backup to restore or edit the tracker.</p>
+  <p id="saved-csv-message" role="status" aria-live="polite" hidden></p>
+</section>
 <section class="method-strip" aria-label="How ReturnBy works"><article><span>01</span><h3>Rules, not guesses.</h3><p>A parser extracts four fields. Missing values are highlighted so you can correct them before saving.</p></article><article><span>02</span><h3>Policy with a fallback.</h3><p>Known stores use the local policy table. Unknown stores are clearly marked with an editable 30-day default.</p></article><article><span>03</span><h3>Keep control.</h3><p>Each saved deadline can be exported as a calendar event with a three-day reminder or removed from the tracker.</p></article></section></main>
 <footer class="footer"><p><strong>PRIVATE BY DESIGN.</strong> The pasted email is not stored or sent. Only reviewed order fields you save persist on this device.</p><button id="clear" class="button button-link">Clear saved returns</button></footer></div><dialog id="edit-dialog" class="edit-dialog" aria-labelledby="edit-title" aria-describedby="edit-intro">
   <h2 id="edit-title">Edit saved return</h2>

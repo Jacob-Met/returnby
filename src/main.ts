@@ -11,6 +11,7 @@ import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
 import { bindCalendarBatch } from './calendar-batch-ui';
+import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
@@ -183,4 +184,5 @@ const orderEditor = bindOrderEditor({
   refresh: reloadOrders,
 });
 bindCalendarBatch({ read: load, filter: () => filterMode });
+bindSavedReturnsCsv(read);
 reloadOrders();

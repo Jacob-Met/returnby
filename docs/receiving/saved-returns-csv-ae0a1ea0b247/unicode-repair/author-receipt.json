@@ -1,0 +1,50 @@
+{
+  "reason": "Independent receiving found false refusal of backup-admitted leading U+FEFF. Only the decoder now preserves that literal character during the unchanged losslessness check.",
+  "moduleBlob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+  "moduleSha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+  "results": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tools/receive-saved-csv.mjs"
+      ],
+      "exitCode": 0,
+      "log": "native-author.tap",
+      "logSha256": "d71e29c7de879db1b6e11d4dbcb93b047a8b3f78423bc686336d0df1e834502b"
+    },
+    {
+      "command": [
+        "node",
+        "/dev/shm/artifact-acd057031fb2-pr65-build/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--strict",
+        "--target",
+        "ES2022",
+        "--module",
+        "ESNext",
+        "--moduleResolution",
+        "bundler",
+        "--lib",
+        "ES2022,DOM",
+        "src/saved-returns-csv.ts",
+        "src/saved-returns-csv-ui.ts"
+      ],
+      "exitCode": 0,
+      "log": "strict-typescript.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "tools/check-saved-csv-browser.cjs"
+      ],
+      "exitCode": 0,
+      "log": "browser-driver-parse.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "lockedRepositoryCi": "Not run locally; native Vitest/Vite dependency gate remains pending."
+}

@@ -1,0 +1,136 @@
+{
+  "status": "pass",
+  "reviewer": "estate-ae0a1ea0b247/coordination_review",
+  "moduleBlob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+  "sourceCommit": "da8e814adbc0f087e2920d3129f998be56234044",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "inputSha256": "b38ba3143a3cab9bf66312b83caf928664330bc6adaed30bcb291bf9682aaa82",
+  "groups": 4,
+  "runs": [
+    {
+      "timezone": "UTC",
+      "sourceCommit": "da8e814adbc0f087e2920d3129f998be56234044",
+      "rows": 12,
+      "decodedCells": 117,
+      "protectedCells": 11,
+      "csvSha256": "82c3d603ae7c5b5950302021f56a6edb19075808a53f7bed2b3fc2e1af11264b",
+      "source": [
+        {
+          "path": "src/saved-returns-csv.ts",
+          "blob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+          "sha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+          "bytes": 3109
+        },
+        {
+          "path": "src/backup.ts",
+          "blob": "bdd86ce50c723abf8f1d305d4fdf63353510eba8",
+          "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+          "bytes": 7059
+        },
+        {
+          "path": "src/deadline.ts",
+          "blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+          "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+          "bytes": 837
+        },
+        {
+          "path": "src/store.ts",
+          "blob": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3",
+          "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+          "bytes": 1387
+        }
+      ],
+      "groups": [
+        "independent-python-csv-complete-cell-and-byte-round-trip",
+        "literal-prefixes-with-real-multiline-and-unicode-cells",
+        "native-backup-approved-projection-and-read-only-input",
+        "independent-gregorian-deadline-boundaries-and-recorded-source-truth"
+      ]
+    },
+    {
+      "timezone": "America/New_York",
+      "sourceCommit": "da8e814adbc0f087e2920d3129f998be56234044",
+      "rows": 12,
+      "decodedCells": 117,
+      "protectedCells": 11,
+      "csvSha256": "82c3d603ae7c5b5950302021f56a6edb19075808a53f7bed2b3fc2e1af11264b",
+      "source": [
+        {
+          "path": "src/saved-returns-csv.ts",
+          "blob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+          "sha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+          "bytes": 3109
+        },
+        {
+          "path": "src/backup.ts",
+          "blob": "bdd86ce50c723abf8f1d305d4fdf63353510eba8",
+          "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+          "bytes": 7059
+        },
+        {
+          "path": "src/deadline.ts",
+          "blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+          "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+          "bytes": 837
+        },
+        {
+          "path": "src/store.ts",
+          "blob": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3",
+          "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+          "bytes": 1387
+        }
+      ],
+      "groups": [
+        "independent-python-csv-complete-cell-and-byte-round-trip",
+        "literal-prefixes-with-real-multiline-and-unicode-cells",
+        "native-backup-approved-projection-and-read-only-input",
+        "independent-gregorian-deadline-boundaries-and-recorded-source-truth"
+      ]
+    },
+    {
+      "timezone": "Pacific/Auckland",
+      "sourceCommit": "da8e814adbc0f087e2920d3129f998be56234044",
+      "rows": 12,
+      "decodedCells": 117,
+      "protectedCells": 11,
+      "csvSha256": "82c3d603ae7c5b5950302021f56a6edb19075808a53f7bed2b3fc2e1af11264b",
+      "source": [
+        {
+          "path": "src/saved-returns-csv.ts",
+          "blob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+          "sha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+          "bytes": 3109
+        },
+        {
+          "path": "src/backup.ts",
+          "blob": "bdd86ce50c723abf8f1d305d4fdf63353510eba8",
+          "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+          "bytes": 7059
+        },
+        {
+          "path": "src/deadline.ts",
+          "blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+          "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+          "bytes": 837
+        },
+        {
+          "path": "src/store.ts",
+          "blob": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3",
+          "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+          "bytes": 1387
+        }
+      ],
+      "groups": [
+        "independent-python-csv-complete-cell-and-byte-round-trip",
+        "literal-prefixes-with-real-multiline-and-unicode-cells",
+        "native-backup-approved-projection-and-read-only-input",
+        "independent-gregorian-deadline-boundaries-and-recorded-source-truth"
+      ]
+    }
+  ],
+  "limits": [
+    "No Excel or LibreOffice execution; literal prefixes and exact decoded cell values are established by an independent CSV reader.",
+    "Three explicit IANA time zones and authored civil-date boundaries; no universal historical-timezone claim.",
+    "This is module/consumer receiving, separate from the author browser and nine native groups."
+  ]
+}

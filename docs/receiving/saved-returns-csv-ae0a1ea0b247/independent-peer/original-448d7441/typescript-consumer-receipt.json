@@ -1,0 +1,25 @@
+{
+  "command": [
+    "node",
+    "/dev/shm/artifact-acd057031fb2-pr65-build/node_modules/typescript/bin/tsc",
+    "--noEmit",
+    "--strict",
+    "--target",
+    "ES2022",
+    "--module",
+    "ESNext",
+    "--moduleResolution",
+    "bundler",
+    "--lib",
+    "ES2022,DOM",
+    "/dev/shm/ae0a1ea0b247-returnby-csv-review/consumer-contract.ts"
+  ],
+  "compiler": "Version 5.9.3",
+  "exitCode": 0,
+  "consumerSha256": "5196581c4a8c7ee52365932452eba399043e5438061a53254848c909b70d9164",
+  "expectedTypeErrorsChecked": [
+    "count remains numeric",
+    "column tuple remains immutable"
+  ],
+  "log": "typescript-consumer.log"
+}

@@ -1,0 +1,76 @@
+{
+  "startedAt": "2026-10-08T13:17:45.891Z",
+  "source": "/dev/shm/ae0a1ea0b247-returnby-csv",
+  "built": "/dev/returnby-csv-4bnuagdw/built",
+  "sourcePins": {
+    "src/saved-returns-csv.ts": "d143e39e8f63e4b8c1e93dffb728a3aafce5358718ce19d430738c2e35194ec1",
+    "src/saved-returns-csv-ui.ts": "e8f1a3fbb0cb94f1591257c607b4086fe8e673350efd44dd2d7e19bee5ce80c3",
+    "src/main.ts": "837e06ef017764d60ed8f1feefbc69107db8ccb910999a62fc9e799653f8902e",
+    "index.html": "ea997f3afe93ac3544aa94992b60410e0220017a0706144afae5f213f7108ce9",
+    "src/backup.ts": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/store.ts": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf"
+  },
+  "driverSha256": "61065b0d8a1b8e1e169328dd86581c28649e64e207ebff021dc4d09ac1c6ed4e",
+  "receiving": "Actual compiled app and native downloads. Supplementary local Vite5.4.21 build; not a substitute for native locked Vitest/Vite8 CI.",
+  "controlledFaults": "Explicitly instrumented one-call storage-read and object-URL failures; no claim of naturally occurring browser faults.",
+  "groups": [
+    {
+      "name": "Keyboard download exports the complete saved tracker and preserves the active unsaved form/filter",
+      "evidence": {
+        "actualNativeDownload": true,
+        "csvRows": 3,
+        "visibleDateFilterDidNotLimitExport": true,
+        "protectedCells": 1,
+        "stateUnchanged": true
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "A second tab native Save is included by a fresh export without changing the first tab view",
+      "evidence": {
+        "csvRows": 4,
+        "secondTabUsedActualSave": true,
+        "firstTabViewAndDraftPreserved": true
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "An actual admitted backup preview remains pending while CSV contains only currently saved records",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:134:18\n    at async run (/dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:35:26)\n    at async /dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:129:5"
+    }
+  ],
+  "downloads": [
+    {
+      "file": "01-all-saved.csv",
+      "filename": "returnby-returns-2026-10-08.csv",
+      "bytes": 502,
+      "sha256": "275483af0e4d014091798c1b705b077a1623281440363a58937fd073dab9d8ea",
+      "dataRows": 3
+    },
+    {
+      "file": "02-current-storage.csv",
+      "filename": "returnby-returns-2026-10-08.csv",
+      "bytes": 647,
+      "sha256": "ccbe543474ad94dd2381ae43d9eff20bf5541fd39c338baf2d85f0a709709e4d",
+      "dataRows": 4
+    }
+  ],
+  "pageErrors": [],
+  "externalRequestsAborted": [],
+  "chromium": "153.0.8010.0",
+  "result": "FAIL",
+  "error": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:134:18\n    at async run (/dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:35:26)\n    at async /dev/shm/ae0a1ea0b247-returnby-csv/tools/check-saved-csv-browser.cjs:129:5",
+  "sourcePinsAfter": {
+    "src/saved-returns-csv.ts": "d143e39e8f63e4b8c1e93dffb728a3aafce5358718ce19d430738c2e35194ec1",
+    "src/saved-returns-csv-ui.ts": "e8f1a3fbb0cb94f1591257c607b4086fe8e673350efd44dd2d7e19bee5ce80c3",
+    "src/main.ts": "837e06ef017764d60ed8f1feefbc69107db8ccb910999a62fc9e799653f8902e",
+    "index.html": "ea997f3afe93ac3544aa94992b60410e0220017a0706144afae5f213f7108ce9",
+    "src/backup.ts": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/store.ts": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf"
+  },
+  "sourceUnchanged": true,
+  "finishedAt": "2026-10-08T13:18:16.941Z"
+}

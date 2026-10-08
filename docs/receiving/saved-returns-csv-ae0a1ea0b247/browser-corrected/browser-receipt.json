@@ -1,0 +1,159 @@
+{
+  "startedAt": "2026-10-08T13:19:56.815Z",
+  "source": "/dev/shm/ae0a1ea0b247-returnby-csv",
+  "built": "/dev/returnby-csv-3ern2gum/built",
+  "sourcePins": {
+    "src/saved-returns-csv.ts": "d143e39e8f63e4b8c1e93dffb728a3aafce5358718ce19d430738c2e35194ec1",
+    "src/saved-returns-csv-ui.ts": "e8f1a3fbb0cb94f1591257c607b4086fe8e673350efd44dd2d7e19bee5ce80c3",
+    "src/main.ts": "837e06ef017764d60ed8f1feefbc69107db8ccb910999a62fc9e799653f8902e",
+    "index.html": "ea997f3afe93ac3544aa94992b60410e0220017a0706144afae5f213f7108ce9",
+    "src/backup.ts": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/store.ts": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf"
+  },
+  "driverSha256": "392f70cb391ceddc7c20f19738e696f35c50d6b3e689bca482fc48fc791cd19f",
+  "receiving": "Actual compiled app and native downloads. Supplementary local Vite5.4.21 build; not a substitute for native locked Vitest/Vite8 CI.",
+  "controlledFaults": "Explicitly instrumented one-call storage-read and object-URL failures; no claim of naturally occurring browser faults.",
+  "groups": [
+    {
+      "name": "Keyboard download exports the complete saved tracker and preserves the active unsaved form/filter",
+      "evidence": {
+        "actualNativeDownload": true,
+        "csvRows": 3,
+        "visibleDateFilterDidNotLimitExport": true,
+        "protectedCells": 1,
+        "stateUnchanged": true
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "A second tab native Save is included by a fresh export without changing the first tab view",
+      "evidence": {
+        "csvRows": 4,
+        "secondTabUsedActualSave": true,
+        "firstTabViewAndDraftPreserved": true
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "An actual admitted backup preview remains pending while CSV contains only currently saved records",
+      "evidence": {
+        "realFilePreview": true,
+        "nativeApprovedCurrentFields": true,
+        "currentlySavedRows": 3,
+        "pendingImportNotExported": true,
+        "previewAndActiveStateUnchanged": true
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "Controlled read refusal preserves work; retry rereads a subsequent native second-tab Save",
+      "evidence": {
+        "controlledFault": "one storage getItem refusal",
+        "refusalDownloads": 0,
+        "retryCsvRows": 5,
+        "currentStateUnchanged": true
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "Controlled object-URL refusal preserves work and recovers with normal URL cleanup",
+      "evidence": {
+        "controlledFault": "one object-URL refusal",
+        "refusalDownloads": 0,
+        "createdAndRevoked": 4,
+        "noAnchorLeft": true,
+        "stateUnchanged": true
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "Phone control and actual download fit the viewport and preserve saved records",
+      "evidence": {
+        "viewport": "390x844",
+        "noHorizontalOverflow": true,
+        "controlBounds": {
+          "x": 29,
+          "y": 405.734375,
+          "width": 200.140625,
+          "height": 33
+        },
+        "actualDownloadRows": 3,
+        "stateUnchanged": true
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "Empty saved tracker refuses without creating a file or changing storage",
+      "evidence": {
+        "downloads": 0,
+        "explicitEmptyMessage": true,
+        "stateUnchanged": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "downloads": [
+    {
+      "file": "01-all-saved.csv",
+      "filename": "returnby-returns-2026-10-08.csv",
+      "bytes": 502,
+      "sha256": "275483af0e4d014091798c1b705b077a1623281440363a58937fd073dab9d8ea",
+      "dataRows": 3
+    },
+    {
+      "file": "02-current-storage.csv",
+      "filename": "returnby-returns-2026-10-08.csv",
+      "bytes": 647,
+      "sha256": "83a9182855cd3814e69c428fb0422e7d738bca3cd08a3888b4512da08a0929ba",
+      "dataRows": 4
+    },
+    {
+      "file": "03-pending-import.csv",
+      "filename": "returnby-returns-2026-10-08.csv",
+      "bytes": 502,
+      "sha256": "275483af0e4d014091798c1b705b077a1623281440363a58937fd073dab9d8ea",
+      "dataRows": 3
+    },
+    {
+      "file": "04-read-retry.csv",
+      "filename": "returnby-returns-2026-10-08.csv",
+      "bytes": 801,
+      "sha256": "090a3c7dc10f7efaa878099b4165849e29fb5e2fd640b9dcfd02ee40818b2ac6",
+      "dataRows": 5
+    },
+    {
+      "file": "05-url-retry.csv",
+      "filename": "returnby-returns-2026-10-08.csv",
+      "bytes": 801,
+      "sha256": "090a3c7dc10f7efaa878099b4165849e29fb5e2fd640b9dcfd02ee40818b2ac6",
+      "dataRows": 5
+    },
+    {
+      "file": "06-phone.csv",
+      "filename": "returnby-returns-2026-10-08.csv",
+      "bytes": 502,
+      "sha256": "275483af0e4d014091798c1b705b077a1623281440363a58937fd073dab9d8ea",
+      "dataRows": 3
+    }
+  ],
+  "pageErrors": [],
+  "externalRequestsAborted": [],
+  "chromium": "153.0.8010.0",
+  "result": "PASS",
+  "sourcePinsAfter": {
+    "src/saved-returns-csv.ts": "d143e39e8f63e4b8c1e93dffb728a3aafce5358718ce19d430738c2e35194ec1",
+    "src/saved-returns-csv-ui.ts": "e8f1a3fbb0cb94f1591257c607b4086fe8e673350efd44dd2d7e19bee5ce80c3",
+    "src/main.ts": "837e06ef017764d60ed8f1feefbc69107db8ccb910999a62fc9e799653f8902e",
+    "index.html": "ea997f3afe93ac3544aa94992b60410e0220017a0706144afae5f213f7108ce9",
+    "src/backup.ts": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/store.ts": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf"
+  },
+  "sourceUnchanged": true,
+  "finishedAt": "2026-10-08T13:20:00.209Z",
+  "screenshot": {
+    "file": "phone-csv-control.jpg",
+    "sha256": "43e6ffb2f02747298516bef3875562a2f1114fb913630aa9d558d992428864b9"
+  }
+}

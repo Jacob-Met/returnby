@@ -1,0 +1,17 @@
+{
+  "recordedAt": "2026-10-08T13:01:30.912Z",
+  "source": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+  "verifiedRuntimeLeaves": 25,
+  "result": "EXPECTED_FEATURE_ABSENCE",
+  "nativeControl": {
+    "backupProjection": "PASS",
+    "nativeLeapDeadline": "2024-03-01",
+    "callerUnchanged": true
+  },
+  "missing": {
+    "csvModule": true,
+    "csvControl": true
+  },
+  "qualification": "Source-level feature absence plus actual native admission/date control; not an actual browser receiving run."
+}
