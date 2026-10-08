@@ -109,3 +109,50 @@ The saved-order browser acceptance runs with `node tools/check_edit_browser.mjs`
 - `src/ics.ts`: calendar reminder generation.
 
 The app is browser-only; no AI runs in the page. The Devpost Learn planning documents are not completed interview output and are not represented as such.
+
+## Plan a month of saved deadlines
+
+Open **Plan around saved return deadlines** to see a Monday-first month view.
+Each day shows the number of saved returns due that day. Select a date to read
+its exact saved identities, stores, order numbers, totals, order dates, return
+windows, historical window-source labels and creation times. Empty optional
+fields say **Not recorded**. Larger days use 20-record pages, with every saved
+record reachable. The view includes the whole tracker, independent of its
+current filter.
+
+Use **Previous month**, **Next month**, the month input or **Today** to navigate.
+The day buttons support arrow keys and Home/End within the displayed month.
+Month navigation, reopening the panel and **Refresh saved deadlines** read a
+new complete snapshot. The snapshot label gives its load time, local timezone
+and the civil date used for urgency. After saving, editing, importing or
+removing a return in this or another tab, refresh before relying on the view.
+A day selection or record-page change reads the already accepted snapshot.
+
+This view is read-only: it does not save, import, remove, export or modify a
+draft, and it adds no automatic cross-tab synchronization. It admits the
+complete saved collection through the existing portable-backup contract before
+showing any counts. Unreadable storage or any invalid saved record refuses the
+whole view until a successful refresh; the requested month/day remain available
+for retry. The supported range and limits are the backup's January 1000 through
+December 9999, 10,000 records and 5 MiB. A deadline on 9999-12-31 can be viewed
+even though the separate calendar exporter needs a following end date.
+Displayed amounts and historical source labels are saved text, not current
+retailer-policy verification.
+
+The focused model tests run with the existing `npm test`. The independent
+`deadline-overview-browser` workflow builds the actual app and runs
+`node tools/check_deadline_overview_browser.mjs --browser /path/to/installed/chrome --output /new/owned/output`
+with Node 22, the installed system Chrome and standard CJK fonts. It uses a new
+browser profile and fictional native Review/Save, backup import, other-tab
+Edit/Save and calendar-download controls. It freezes month/leap/year/range
+oracles, literal field rendering, paged records, explicit refresh and whole-read
+refusal, while observing exact saved bytes, write attempts and unrelated drafts.
+The bounded receipt contains actual records, one unchanged calendar download,
+screenshots and source/build hashes. Generated captures and direct visual
+receiving are reported separately. No project dependency or existing workflow
+was changed. The separate HTML module entry keeps the existing tracker entry
+and its native receiving fixtures unchanged.
+
+This contribution is stacked on the reviewed backup/editor/calendar composition
+in PR #20. PR #8/#10 retain main adoption; this feature branch does not independently
+adopt their unfinished stack into main.
