@@ -1,0 +1,29 @@
+[
+  {
+    "name": "baseline-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "source_head": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+    "new_fixture_only": "tests/completion-receiving.test.mjs",
+    "exit_code": 0,
+    "seconds": 3.53387188911438,
+    "log_sha256": "e7315dca83a4c168fb79e52a22f70cba2ca8e8f1205fff799d9fcb449ed001f1"
+  },
+  {
+    "name": "baseline-completion-negative",
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "tests/completion-receiving.test.mjs"
+    ],
+    "source_head": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+    "new_fixture_only": "tests/completion-receiving.test.mjs",
+    "exit_code": 1,
+    "seconds": 1.8191657066345215,
+    "log_sha256": "c223ba68115764d2426a09818649829e6110be78a9d72cd15db5b86af5f9d908"
+  }
+]

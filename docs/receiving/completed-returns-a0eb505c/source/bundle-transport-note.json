@@ -1,0 +1,7 @@
+{
+  "initial_bundle_command_exit": 128,
+  "initial_path": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/source-packet/returnby-completion-ca27fec6.bundle",
+  "initial_stderr": "not retained by the first wrapper; no reason inferred",
+  "corrected_route": "Run the ordinary named-branch bundle into own /home/jacob path, verify, then root-copy exact bytes into custody",
+  "corrected_exit": 0
+}

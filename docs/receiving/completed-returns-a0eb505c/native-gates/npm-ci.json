@@ -1,0 +1,13 @@
+{
+  "command": [
+    "npm",
+    "ci",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "exit_code": 0,
+  "seconds": 5.327587127685547,
+  "log": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/npm-ci.log",
+  "log_sha256": "3de8b18ee1c39ab0db9bc44ffc916e2cfeb02772da51bb64a1aee1ad0e65359a"
+}

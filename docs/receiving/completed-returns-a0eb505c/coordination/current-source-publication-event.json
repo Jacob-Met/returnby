@@ -1,0 +1,36 @@
+{
+  "event": {
+    "seq": 4598,
+    "event_id": "cev_9b74cd3254f04b4b9654dddf",
+    "event_type": "conscience.decision",
+    "actor": "chatgpt:a0eb505c4971:coordination",
+    "payload": {
+      "key": "scope:chatgpt-a0eb505c4971:returnby-completion",
+      "worker_id": "chatgpt-a0eb505c4971/integration_review",
+      "status": "published_draft_independent_receiving",
+      "text": "ReturnBy completion issue30 is published as dependent draft PR32 on the unchanged PR20 receiving branch. Current canonical9f73bf729b59012ceda564d022a5de664c2b39e5 and native842a320b4b226da25bdab93a1f5076f394df3432 share exact196-leaf treee5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5. Hosted226 tests, audit0 and strict build passed on the same tested merge tree. The first ca27/507 generation accidentally used a weaker-main README; a separate README-only successor restores every PR20 README byte as a prefix and preserves all195 other leaves. Original negative diff and prior runs remain immutable. Independent candidate browser receiving claim4583 is pending. #8/#10 retain final stack adoption; month/CSV remain a separately tested proposed two-file handoff and Undo is unchanged. No deployment, user data, provider call, native lease or owner-ref mutation.",
+      "repository": "Jacob-Met/returnby",
+      "issue": 30,
+      "pr": 32,
+      "pr_url": "https://github.com/Jacob-Met/returnby/pull/32",
+      "base": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+      "base_branch": "integrate/calendar-backup-actions-receiving-20261008-b55367d787c4",
+      "canonical_head": "9f73bf729b59012ceda564d022a5de664c2b39e5",
+      "native_head": "842a320b4b226da25bdab93a1f5076f394df3432",
+      "tree": "e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5",
+      "source_receiving": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/source-packet-842a320b/source-receive.json",
+      "source_receiving_sha256": "960321e04978dc203f318e3925d5d1e53b61eae0437676d5f8c1e96784641c02",
+      "hosted_receipt": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/hosted-ci-9f73bf72/qualification.json",
+      "hosted_receipt_sha256": "33a8e0c0735b7c88fc119f51e16ff2ff9cafd4dcdb4c2b66c080a6e7779df737",
+      "prior_claim": 4573,
+      "supersedes_status_event": 4588
+    },
+    "payload_sha256": "b14797b84f11c5d852d2fb5280a5a7dea4e64f7f33ad4feec842366a79d9db92",
+    "branch": "main",
+    "prev_hash": "00bd7d7e3ded2e951a3d47bf0afe650ee439ddea9309b8fe9e6c1f45374046e5",
+    "event_hash": "22a9ee91910a1d75345a6fb8f2161042518f6b7dda1708080afd2e4490660c19",
+    "created_at": 1791478582.141155
+  },
+  "chain_verified": true,
+  "recorded_at": "2026-10-08T16:56:22.200662+00:00"
+}

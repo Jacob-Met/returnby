@@ -1,0 +1,19 @@
+{
+  "event_id": "cev_048074ffecee43849c623089",
+  "payload": {
+    "key": "claim:chatgpt-a0eb505c4971-returnby-completion-browser",
+    "text": "Complete independent ReturnBy lifecycle receiving: six actual-browser groups qualified on frozen ca27 runtime, with four original passes and only two focused completions after preserved receiver-assumption stops. Eight actual baseline/candidate downloads and all source/fixtures/logs/screenshots are sealed. No scoped product blocker. Direct native and GitHub tree readback binds the README-only successor 9f73 / tree e518 with all 195 other leaves and six build files unchanged. Producer retains issue 30 and final source/consumer integration. No Mac, live-data, provider or GitHub write was performed by this receiver.",
+    "value": {
+      "actual_downloads": 8,
+      "canonical_commit": "9f73bf729b59012ceda564d022a5de664c2b39e5",
+      "canonical_tree": "e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5",
+      "manifest_sha256": "402ee7ec77c9d72ddff404673631aeb846d32f20f2fe9a4366d7ea860e51f5fe",
+      "qualified_browser_groups": 6,
+      "review_path": "/var/lib/hamon/custody/returnby-completion-browser-independent-20261008-a0eb/independent-review.json",
+      "review_sha256": "cc62f7a48f0b898ecc2197e49868fa0b5d80ac5a02db1a6655689429d8647792",
+      "status": "completed"
+    },
+    "worker_id": "chatgpt-a0eb505c4971/mac_production"
+  },
+  "seq": 4617
+}

@@ -1,0 +1,241 @@
+﻿2026-10-08T16:48:35.1787212Z Current runner version: '2.337.0'
+2026-10-08T16:48:35.1812655Z ##[group]Runner Image Provisioner
+2026-10-08T16:48:35.1813555Z Hosted Compute Agent
+2026-10-08T16:48:35.1814281Z Version: 20261002.596
+2026-10-08T16:48:35.1814980Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-08T16:48:35.1815749Z Build Date: 2026-10-02T22:28:27Z
+2026-10-08T16:48:35.1816523Z Worker ID: {2a73b007-05aa-4c67-9a3b-38bdbd8e9570}
+2026-10-08T16:48:35.1817272Z Region: westus
+2026-10-08T16:48:35.1817839Z Cloud: Azure
+2026-10-08T16:48:35.1818506Z ##[endgroup]
+2026-10-08T16:48:35.1820270Z ##[group]Operating System
+2026-10-08T16:48:35.1821020Z Ubuntu
+2026-10-08T16:48:35.1822046Z 24.04.5
+2026-10-08T16:48:35.1822642Z LTS
+2026-10-08T16:48:35.1823300Z ##[endgroup]
+2026-10-08T16:48:35.1823892Z ##[group]Runner Image
+2026-10-08T16:48:35.1824584Z Image: ubuntu-24.04
+2026-10-08T16:48:35.1825215Z Version: 20261004.327.1
+2026-10-08T16:48:35.1826582Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-08T16:48:35.1828305Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-08T16:48:35.1829363Z ##[endgroup]
+2026-10-08T16:48:35.1830534Z ##[group]GITHUB_TOKEN Permissions
+2026-10-08T16:48:35.1833137Z Contents: read
+2026-10-08T16:48:35.1833842Z Metadata: read
+2026-10-08T16:48:35.1834442Z ##[endgroup]
+2026-10-08T16:48:35.1836614Z Secret source: Actions
+2026-10-08T16:48:35.1837634Z Cache mode: write
+2026-10-08T16:48:35.1838442Z Prepare workflow directory
+2026-10-08T16:48:35.2174405Z Prepare all required actions
+2026-10-08T16:48:35.2225307Z Getting action download info
+2026-10-08T16:48:35.5779324Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-08T16:48:35.6779902Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-08T16:48:35.8671084Z Complete job name: test-and-build
+2026-10-08T16:48:35.9464442Z ##[group]Run actions/checkout@v4
+2026-10-08T16:48:35.9465340Z with:
+2026-10-08T16:48:35.9465790Z   repository: Jacob-Met/returnby
+2026-10-08T16:48:35.9469531Z   token: ***
+2026-10-08T16:48:35.9469970Z   ssh-strict: true
+2026-10-08T16:48:35.9470413Z   ssh-user: git
+2026-10-08T16:48:35.9470872Z   persist-credentials: true
+2026-10-08T16:48:35.9471572Z   clean: true
+2026-10-08T16:48:35.9472016Z   sparse-checkout-cone-mode: true
+2026-10-08T16:48:35.9472544Z   fetch-depth: 1
+2026-10-08T16:48:35.9472971Z   fetch-tags: false
+2026-10-08T16:48:35.9473420Z   show-progress: true
+2026-10-08T16:48:35.9473877Z   lfs: false
+2026-10-08T16:48:35.9474292Z   submodules: false
+2026-10-08T16:48:35.9474746Z   set-safe-directory: true
+2026-10-08T16:48:35.9475255Z   allow-unsafe-pr-checkout: false
+2026-10-08T16:48:35.9476016Z ##[endgroup]
+2026-10-08T16:48:36.0468449Z Syncing repository: Jacob-Met/returnby
+2026-10-08T16:48:36.0471576Z ##[group]Getting Git version info
+2026-10-08T16:48:36.0472953Z Working directory is '/home/runner/work/returnby/returnby'
+2026-10-08T16:48:36.0474576Z [command]/usr/bin/git version
+2026-10-08T16:48:36.0635437Z git version 2.55.0
+2026-10-08T16:48:36.0657918Z ##[endgroup]
+2026-10-08T16:48:36.0674539Z Temporarily overriding HOME='/home/runner/work/_temp/cb7f1ddc-5f1e-4909-904c-3988de7a3245' before making global git config changes
+2026-10-08T16:48:36.0677007Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T16:48:36.0682307Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/returnby/returnby
+2026-10-08T16:48:36.0739486Z Deleting the contents of '/home/runner/work/returnby/returnby'
+2026-10-08T16:48:36.0744973Z ##[group]Initializing the repository
+2026-10-08T16:48:36.0750370Z [command]/usr/bin/git init /home/runner/work/returnby/returnby
+2026-10-08T16:48:36.0863315Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-08T16:48:36.0865464Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-08T16:48:36.0868279Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-08T16:48:36.0869864Z hint: call:
+2026-10-08T16:48:36.0871031Z hint:
+2026-10-08T16:48:36.0872292Z hint: 	git config --global init.defaultBranch <name>
+2026-10-08T16:48:36.0873129Z hint:
+2026-10-08T16:48:36.0873868Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-08T16:48:36.0874991Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-08T16:48:36.0875916Z hint:
+2026-10-08T16:48:36.0876478Z hint: 	git branch -m <name>
+2026-10-08T16:48:36.0877266Z hint:
+2026-10-08T16:48:36.0879053Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-08T16:48:36.0880413Z Initialized empty Git repository in /home/runner/work/returnby/returnby/.git/
+2026-10-08T16:48:36.0882983Z [command]/usr/bin/git remote add origin https://github.com/Jacob-Met/returnby
+2026-10-08T16:48:36.0929759Z ##[endgroup]
+2026-10-08T16:48:36.0930779Z ##[group]Disabling automatic garbage collection
+2026-10-08T16:48:36.0934438Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-08T16:48:36.0970798Z ##[endgroup]
+2026-10-08T16:48:36.0972235Z ##[group]Setting up auth
+2026-10-08T16:48:36.0977621Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T16:48:36.1015023Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-08T16:48:36.1389120Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T16:48:36.1427209Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-08T16:48:36.1673393Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T16:48:36.1709754Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-08T16:48:36.1940541Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-08T16:48:36.1981677Z ##[endgroup]
+2026-10-08T16:48:36.1983133Z ##[group]Fetching the repository
+2026-10-08T16:48:36.1993027Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8cf9151da4e86ffe0276dfb10a07b84413c6ca87:refs/remotes/pull/32/merge
+2026-10-08T16:48:37.1020057Z From https://github.com/Jacob-Met/returnby
+2026-10-08T16:48:37.1023236Z  * [new ref]         8cf9151da4e86ffe0276dfb10a07b84413c6ca87 -> pull/32/merge
+2026-10-08T16:48:37.1030437Z ##[endgroup]
+2026-10-08T16:48:37.1033410Z ##[group]Determining the checkout info
+2026-10-08T16:48:37.1036678Z ##[endgroup]
+2026-10-08T16:48:37.1038584Z [command]/usr/bin/git sparse-checkout disable
+2026-10-08T16:48:37.1089504Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-08T16:48:37.1124353Z ##[group]Checking out the ref
+2026-10-08T16:48:37.1126911Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/32/merge
+2026-10-08T16:48:37.1361695Z Note: switching to 'refs/remotes/pull/32/merge'.
+2026-10-08T16:48:37.1362843Z 
+2026-10-08T16:48:37.1363579Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-08T16:48:37.1365444Z changes and commit them, and you can discard any commits you make in this
+2026-10-08T16:48:37.1367331Z state without impacting any branches by switching back to a branch.
+2026-10-08T16:48:37.1368410Z 
+2026-10-08T16:48:37.1369142Z If you want to create a new branch to retain commits you create, you may
+2026-10-08T16:48:37.1371527Z do so (now or later) by using -c with the switch command. Example:
+2026-10-08T16:48:37.1373005Z 
+2026-10-08T16:48:37.1373672Z   git switch -c <new-branch-name>
+2026-10-08T16:48:37.1374738Z 
+2026-10-08T16:48:37.1375516Z Or undo this operation with:
+2026-10-08T16:48:37.1376375Z 
+2026-10-08T16:48:37.1376874Z   git switch -
+2026-10-08T16:48:37.1377606Z 
+2026-10-08T16:48:37.1378526Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-08T16:48:37.1379909Z 
+2026-10-08T16:48:37.1382045Z HEAD is now at 8cf9151 Merge 9f73bf729b59012ceda564d022a5de664c2b39e5 into 7829e56e57ef91dfe8edd5853fd68d6c7890fac0
+2026-10-08T16:48:37.1387682Z ##[endgroup]
+2026-10-08T16:48:37.1414153Z [command]/usr/bin/git log -1 --format=%H
+2026-10-08T16:48:37.1440395Z 8cf9151da4e86ffe0276dfb10a07b84413c6ca87
+2026-10-08T16:48:37.1909787Z ##[group]Run actions/setup-node@v4
+2026-10-08T16:48:37.1911479Z with:
+2026-10-08T16:48:37.1912623Z   node-version: 22
+2026-10-08T16:48:37.1913840Z   cache: npm
+2026-10-08T16:48:37.1979301Z   always-auth: false
+2026-10-08T16:48:37.1980831Z   check-latest: false
+2026-10-08T16:48:37.1991503Z   token: ***
+2026-10-08T16:48:37.1992710Z ##[endgroup]
+2026-10-08T16:48:37.3410556Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+2026-10-08T16:48:37.3415265Z (node:2328) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T16:48:37.3418807Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T16:48:37.3421777Z ##[group]Environment details
+2026-10-08T16:48:41.0362441Z node: v22.23.3
+2026-10-08T16:48:41.0362863Z npm: 10.9.9
+2026-10-08T16:48:41.0363118Z yarn: 1.22.22
+2026-10-08T16:48:41.0364080Z ##[endgroup]
+2026-10-08T16:48:41.0388694Z [command]/opt/hostedtoolcache/node/22.23.3/x64/bin/npm config get cache
+2026-10-08T16:48:41.3617406Z /home/runner/.npm
+2026-10-08T16:48:41.6368671Z Cache hit for: node-cache-Linux-x64-npm-df462277ac00377fab2913d56331cbd61a668f929cf335a250b95d1eb23d49df
+2026-10-08T16:48:41.6477860Z (node:2328) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-08T16:48:42.9041797Z Received 957335 of 30317463 (3.2%), 0.9 MBs/sec
+2026-10-08T16:48:43.7142393Z Received 30317463 of 30317463 (100.0%), 16.0 MBs/sec
+2026-10-08T16:48:43.7143176Z Cache Size: ~29 MB (30317463 B)
+2026-10-08T16:48:43.7255037Z [command]/usr/bin/tar -xf /home/runner/work/_temp/016c4ade-f839-48c8-8fc2-ea80b6c0411b/cache.tzst -P -C /home/runner/work/returnby/returnby --use-compress-program unzstd
+2026-10-08T16:48:43.7875804Z Cache restored successfully
+2026-10-08T16:48:43.7894282Z Cache restored from key: node-cache-Linux-x64-npm-df462277ac00377fab2913d56331cbd61a668f929cf335a250b95d1eb23d49df
+2026-10-08T16:48:43.8091366Z ##[group]Run npm ci
+2026-10-08T16:48:43.8091696Z [36;1mnpm ci[0m
+2026-10-08T16:48:43.8426693Z shell: /usr/bin/bash -e {0}
+2026-10-08T16:48:43.8427054Z ##[endgroup]
+2026-10-08T16:48:46.6952331Z 
+2026-10-08T16:48:46.6961488Z added 38 packages, and audited 39 packages in 3s
+2026-10-08T16:48:46.6962044Z 
+2026-10-08T16:48:46.6962447Z 13 packages are looking for funding
+2026-10-08T16:48:46.6963076Z   run `npm fund` for details
+2026-10-08T16:48:46.6964546Z 
+2026-10-08T16:48:46.6964852Z found 0 vulnerabilities
+2026-10-08T16:48:46.7450303Z ##[group]Run npm audit --audit-level=moderate
+2026-10-08T16:48:46.7450715Z [36;1mnpm audit --audit-level=moderate[0m
+2026-10-08T16:48:46.7519424Z shell: /usr/bin/bash -e {0}
+2026-10-08T16:48:46.7519709Z ##[endgroup]
+2026-10-08T16:48:47.1070596Z found 0 vulnerabilities
+2026-10-08T16:48:47.1185047Z ##[group]Run npm test
+2026-10-08T16:48:47.1185341Z [36;1mnpm test[0m
+2026-10-08T16:48:47.1249932Z shell: /usr/bin/bash -e {0}
+2026-10-08T16:48:47.1250219Z ##[endgroup]
+2026-10-08T16:48:47.2336174Z 
+2026-10-08T16:48:47.2336866Z > returnby@0.1.0 test
+2026-10-08T16:48:47.2337416Z > vitest run
+2026-10-08T16:48:47.2337655Z 
+2026-10-08T16:48:47.7638314Z 
+2026-10-08T16:48:47.7642778Z [1m[30m[46m RUN [49m[39m[22m [36mv5.0.3 [39m[90m/home/runner/work/returnby/returnby[39m
+2026-10-08T16:48:47.7643771Z 
+2026-10-08T16:48:48.2542498Z  [32m✓[39m tests/calendar-batch.test.ts [2m([22m[2m32 tests[22m[2m)[22m[32m 118[2mms[22m[39m
+2026-10-08T16:48:48.4963466Z  [32m✓[39m tests/completion.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+2026-10-08T16:48:48.8063476Z  [32m✓[39m tests/completion-ui.test.mjs [2m([22m[2m5 tests[22m[2m)[22m[32m 112[2mms[22m[39m
+2026-10-08T16:48:49.0430086Z  [32m✓[39m tests/combined-receiving.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[32m 62[2mms[22m[39m
+2026-10-08T16:48:49.2093549Z  [32m✓[39m tests/backup-ui.test.mjs [2m([22m[2m19 tests[22m[2m)[22m[33m 1091[2mms[22m[39m
+2026-10-08T16:48:49.2096141Z    [33m[2m✓[22m[39m a byte-limit overflow in the combined tracker is refused before any import write[33m 416[2mms[22m[39m
+2026-10-08T16:48:49.2098425Z    [33m[2m✓[22m[39m existing unexpected shape storage prevents import and export[33m 332[2mms[22m[39m
+2026-10-08T16:48:49.2711665Z  [32m✓[39m tests/edit-ui.test.mjs [2m([22m[2m7 tests[22m[2m)[22m[32m 49[2mms[22m[39m
+2026-10-08T16:48:49.3913446Z  [32m✓[39m tests/backup.test.ts [2m([22m[2m53 tests[22m[2m)[22m[33m 1287[2mms[22m[39m
+2026-10-08T16:48:49.3915332Z    [33m[2m✓[22m[39m an accepted near-limit backup can be exported again using compact JSON[33m 601[2mms[22m[39m
+2026-10-08T16:48:49.3917650Z    [33m[2m✓[22m[39m two individually portable trackers cannot merge beyond the backup byte limit[33m 304[2mms[22m[39m
+2026-10-08T16:48:49.4233643Z  [32m✓[39m tests/edit.test.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+2026-10-08T16:48:49.5231640Z  [32m✓[39m tests/ics.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+2026-10-08T16:48:49.6363478Z  [32m✓[39m tests/core.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-10-08T16:48:49.6472931Z  [32m✓[39m tests/stale-actions.test.mjs [2m([22m[2m6 tests[22m[2m)[22m[32m 75[2mms[22m[39m
+2026-10-08T16:48:49.7667924Z  [32m✓[39m tests/completion-receiving.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[32m 55[2mms[22m[39m
+2026-10-08T16:48:50.0000028Z  [32m✓[39m tests/submitted-policy.test.mjs [2m([22m[2m9 tests[22m[2m)[22m[32m 140[2mms[22m[39m
+2026-10-08T16:48:50.0067640Z  [32m✓[39m tests/loading.test.mjs [2m([22m[2m11 tests[22m[2m)[22m[32m 156[2mms[22m[39m
+2026-10-08T16:48:50.0257527Z  [32m✓[39m tests/storage.test.mjs [2m([22m[2m6 tests[22m[2m)[22m[32m 75[2mms[22m[39m
+2026-10-08T16:48:50.0306980Z 
+2026-10-08T16:48:50.0308265Z [2m Test Files [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+2026-10-08T16:48:50.0312212Z [2m      Tests [22m [1m[32m226 passed[39m[22m[90m (226)[39m
+2026-10-08T16:48:50.0313148Z [2m   Start at [22m 16:48:47
+2026-10-08T16:48:50.0317482Z [2m   Duration [22m 2.26s[2m (tests 76%, transform 15%, import 8%, worker 2%)[22m
+2026-10-08T16:48:50.0334542Z 
+2026-10-08T16:48:50.0336133Z [2m    Isolate [22m [33m15 workers spawned[39m[2m · ~137ms startup each (spawn + environment, per file)[22m
+2026-10-08T16:48:50.0337899Z [2m            [22m [2mat least ~550ms faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+2026-10-08T16:48:50.0338604Z 
+2026-10-08T16:48:50.0674627Z ##[group]Run npm run build
+2026-10-08T16:48:50.0674943Z [36;1mnpm run build[0m
+2026-10-08T16:48:50.0739300Z shell: /usr/bin/bash -e {0}
+2026-10-08T16:48:50.0739615Z ##[endgroup]
+2026-10-08T16:48:50.1778462Z 
+2026-10-08T16:48:50.1779047Z > returnby@0.1.0 build
+2026-10-08T16:48:50.1779615Z > tsc --noEmit && vite build
+2026-10-08T16:48:50.1779846Z 
+2026-10-08T16:48:51.8753046Z [36mvite v8.3.3 [32mbuilding client environment for production...[36m[39m
+2026-10-08T16:48:51.8848251Z transforming...
+2026-10-08T16:48:51.9236468Z ✓ 22 modules transformed.
+2026-10-08T16:48:51.9366747Z rendering chunks...
+2026-10-08T16:48:51.9451917Z computing gzip size...
+2026-10-08T16:48:51.9461790Z dist/index.html                 10.37 kB │ gzip:  3.56 kB
+2026-10-08T16:48:51.9462965Z dist/assets/index-DyfoWuUQ.css  13.26 kB │ gzip:  3.57 kB
+2026-10-08T16:48:51.9463567Z dist/assets/index-D7ovNcg3.js   35.13 kB │ gzip: 12.18 kB
+2026-10-08T16:48:51.9463858Z 
+2026-10-08T16:48:51.9470439Z [32m✓ built in 71ms[39m
+2026-10-08T16:48:51.9760475Z Post job cleanup.
+2026-10-08T16:48:52.1024210Z (node:2595) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T16:48:52.1025378Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T16:48:52.1029145Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-df462277ac00377fab2913d56331cbd61a668f929cf335a250b95d1eb23d49df, not saving cache.
+2026-10-08T16:48:52.1181850Z Post job cleanup.
+2026-10-08T16:48:52.2060942Z [command]/usr/bin/git version
+2026-10-08T16:48:52.2107921Z git version 2.55.0
+2026-10-08T16:48:52.2149619Z Temporarily overriding HOME='/home/runner/work/_temp/b080bf35-8cad-4425-ae6f-ea07cedd9123' before making global git config changes
+2026-10-08T16:48:52.2153830Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T16:48:52.2156129Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/returnby/returnby
+2026-10-08T16:48:52.2195268Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T16:48:52.2235303Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-08T16:48:52.2488701Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T16:48:52.2516891Z http.https://github.com/.extraheader
+2026-10-08T16:48:52.2535424Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-08T16:48:52.2570245Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-08T16:48:52.2824705Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T16:48:52.2876953Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-08T16:48:52.3317434Z Cleaning up orphan processes
+2026-10-08T16:48:52.3623506Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

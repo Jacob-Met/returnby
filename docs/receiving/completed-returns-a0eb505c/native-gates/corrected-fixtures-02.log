@@ -1,0 +1,17 @@
+
+> returnby@0.1.0 test
+> vitest run tests/completion-ui.test.mjs tests/backup-ui.test.mjs
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.3 [39m[90m/srv/hamon-estate/returnby-completion-a0eb505c[39m
+
+ [32m✓[39m tests/completion-ui.test.mjs [2m([22m[2m5 tests[22m[2m)[22m[33m 456[2mms[22m[39m
+   [33m[2m✓[22m[39m actual Complete and Reopen handlers retain history, quiet counts, draft and action focus[33m 391[2mms[22m[39m
+ [32m✓[39m tests/backup-ui.test.mjs [2m([22m[2m19 tests[22m[2m)[22m[33m 685[2mms[22m[39m
+   [33m[2m✓[22m[39m a byte-limit overflow in the combined tracker is refused before any import write[33m 447[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m24 passed[39m[22m[90m (24)[39m
+[2m   Start at [22m 16:34:57
+[2m   Duration [22m 1.59s[2m (tests 60%, transform 33%, import 5%, worker 1%)[22m
+

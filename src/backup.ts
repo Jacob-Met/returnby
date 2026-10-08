@@ -3,7 +3,8 @@ import type { Order } from './store';
 
 export const MAX_BACKUP_BYTES = 5 * 1024 * 1024;
 export const MAX_BACKUP_ORDERS = 10_000;
-const ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowDays', 'windowSource', 'createdAt'] as const;
+const LEGACY_ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowDays', 'windowSource', 'createdAt'] as const;
+const ORDER_KEYS = [...LEGACY_ORDER_KEYS, 'completedAt'] as const;
 const encoder = new TextEncoder();
 // Ordinary ISO export timestamps are always 24 bytes. Use the same envelope
 // when checking portability without changing any saved record timestamps.
@@ -41,10 +42,10 @@ function timestamp(value: unknown, label: string): string {
   return s;
 }
 
-function order(value: unknown, index: number, strict: boolean): Order {
+function order(value: unknown, index: number, strict: boolean, version: 1 | 2): Order {
   const label = `Order ${index + 1}`;
   const row = object(value, label);
-  if (strict) onlyKeys(row, ORDER_KEYS, label);
+  if (strict) onlyKeys(row, version === 1 ? LEGACY_ORDER_KEYS : ORDER_KEYS, label);
   const id = text(row.id, `${label} ID`, 128);
   if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(id)) throw new BackupError(`${label} has an invalid ID.`);
   if (!isDate(row.orderDate)) throw new BackupError(`${label} has an invalid order date.`);
@@ -62,14 +63,15 @@ function order(value: unknown, index: number, strict: boolean): Order {
     windowDays: row.windowDays as number,
     windowSource: row.windowSource as Order['windowSource'],
     createdAt: timestamp(row.createdAt, `${label} creation time`),
+    ...(row.completedAt === undefined ? {} : { completedAt: timestamp(row.completedAt, `${label} completion time`) }),
   };
 }
 
-function orders(value: unknown, strict = true): Order[] {
+function orders(value: unknown, strict = true, version: 1 | 2 = 2): Order[] {
   if (!Array.isArray(value) || value.length > MAX_BACKUP_ORDERS) throw new BackupError(`Expected at most ${MAX_BACKUP_ORDERS.toLocaleString('en-US')} saved orders.`);
   const seen = new Set<string>();
   return value.map((value, index) => {
-    const row = order(value, index, strict);
+    const row = order(value, index, strict, version);
     if (seen.has(row.id)) throw new BackupError(`Order ${index + 1} repeats an ID in this list.`);
     seen.add(row.id);
     return row;
@@ -77,7 +79,9 @@ function orders(value: unknown, strict = true): Order[] {
 }
 
 function document(rows: Order[], exportedAt: string) {
-  return { schema: 'returnby.backup', version: 1, exportedAt, orders: rows };
+  // Keep open-only backups readable by older versions. A completed record must
+  // never be imported by an older reader as an ordinary active deadline.
+  return { schema: 'returnby.backup', version: rows.some(row => row.completedAt !== undefined) ? 2 : 1, exportedAt, orders: rows };
 }
 
 function fits(output: string) { return encoder.encode(output).byteLength <= MAX_BACKUP_BYTES; }
@@ -101,10 +105,10 @@ export function parseBackup(input: string): Order[] {
   let parsed: unknown;
   try { parsed = JSON.parse(input); } catch { throw new BackupError('This file is not valid JSON. Choose a ReturnBy backup.'); }
   const doc = object(parsed, 'Backup');
-  if (doc.schema !== 'returnby.backup' || doc.version !== 1) throw new BackupError('This backup format or version is not supported.');
+  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2)) throw new BackupError('This backup format or version is not supported.');
   onlyKeys(doc, ['schema', 'version', 'exportedAt', 'orders'], 'Backup');
   timestamp(doc.exportedAt, 'Backup export time');
-  const rows = orders(doc.orders);
+  const rows = orders(doc.orders, true, doc.version);
   portable(rows, 'The normalized saved details would exceed the 5 MiB backup limit.');
   return rows;
 }

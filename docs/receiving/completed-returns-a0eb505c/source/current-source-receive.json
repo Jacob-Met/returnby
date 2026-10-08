@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "recorded_at": "2026-10-08T16:55:42.620334+00:00",
+  "worker": "chatgpt-a0eb505c4971/integration_review",
+  "repository": "Jacob-Met/returnby",
+  "base": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "native_head": "842a320b4b226da25bdab93a1f5076f394df3432",
+  "canonical_head": "9f73bf729b59012ceda564d022a5de664c2b39e5",
+  "tree": "e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5",
+  "native_branch": "astra/returnby-completion-20261008-a0eb505c",
+  "source_state": "clean",
+  "pr": 32,
+  "pr_route": "dependent draft to the unchanged PR20 integration branch; #8/#10 retain adoption",
+  "receiving": {
+    "bundle": "verified named source ref with two native commits",
+    "flat_patch": "applied to one private Git index initialized from exact PR20",
+    "actual_received_tree": "e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5",
+    "same_as_qualified_and_published_tree": true,
+    "README_exact_PR20_prefix": true,
+    "only_change_from_prior_native_functional_head": "README.md"
+  },
+  "limits": [
+    "No source/test run was repeated.",
+    "Prior ca27 source packet and original README preservation failure remain immutable.",
+    "Browser candidate review is pending; source transport is not final product qualification."
+  ],
+  "files": {
+    "bundle-verify.log": {
+      "bytes": 318,
+      "sha256": "f34d5a6581e3efa08735d6e8964297702825b8c5c055d2e156d5fbda35ef78c0"
+    },
+    "returnby-completion-842a320b.bundle": {
+      "bytes": 13706,
+      "sha256": "ecf5bd125f36fcef92846cb4b688b5309aab156d9acf44eee9e6944d8d320734"
+    },
+    "returnby-completion-842a320b.diff": {
+      "bytes": 75527,
+      "sha256": "62f066ce7b8a45abf295e9dd2f3519f75ebab85f9f5aa13ec3e6d59df8a0342d"
+    },
+    "returnby-completion-842a320b.mbox": {
+      "bytes": 102285,
+      "sha256": "2d48b3edf2fc972fcdbfd06ba40df999e6395551861afbe9921709774930c1ef"
+    }
+  }
+}

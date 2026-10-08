@@ -109,3 +109,23 @@ The saved-order browser acceptance runs with `node tools/check_edit_browser.mjs`
 - `src/ics.ts`: calendar reminder generation.
 
 The app is browser-only; no AI runs in the page. The Devpost Learn planning documents are not completed interview output and are not represented as such.
+
+## Finished returns
+
+Choose **Mark completed** when a return is finished. Its reviewed details stay in
+**Completed**, while **Open**, deadline counts and new calendar exports leave it
+out. **Reopen return** restores the ordinary deadline calculation for the same
+saved order. Completed details can still be edited or removed.
+
+Completion does not recall files already imported into a calendar; remove those
+reminders in that calendar. The tracker still uses the existing browser storage
+and requires a fresh review when a saved target changes elsewhere.
+
+Backups retain completion dates. Open-only exports keep version 1 compatibility;
+an export containing completed returns uses version 2, which older ReturnBy
+readers refuse. Legacy version 1 backups remain supported. A different
+completion state for an existing ID is an import conflict, so restoring a file
+cannot silently reopen or complete an already saved return.
+
+See [the completion contract](docs/COMPLETED_RETURNS.md) for the exact source and
+integration boundary.

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "npm",
+    "test",
+    "--",
+    "tests/completion-ui.test.mjs",
+    "tests/backup-ui.test.mjs"
+  ],
+  "exit_code": 0,
+  "seconds": 3.0312981605529785,
+  "log": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/candidate-fixtures-02.log",
+  "log_sha256": "b6a0fd9a2225130e441515232373201a356ca74cdc85344e3536817d90968a7f",
+  "source_delta": "Two fixture corrections plus docs; production bytes unchanged from candidate-build-01"
+}

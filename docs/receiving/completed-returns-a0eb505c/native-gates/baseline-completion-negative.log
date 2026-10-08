@@ -1,0 +1,76 @@
+
+> returnby@0.1.0 test
+> vitest run tests/completion-receiving.test.mjs
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.3 [39m[90m/srv/hamon-estate/returnby-completion-a0eb505c[39m
+
+ [31m❯[39m tests/completion-receiving.test.mjs [2m([22m[2m3 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[32m 242[2mms[22m[39m
+[31m   [31m×[31m approved backup round trip retains a completed return and its reviewed details[39m[32m 22[2mms[22m[39m
+[31m   [31m×[31m calendar eligibility excludes completed returns while retaining open returns[39m[32m 4[2mms[22m[39m
+[31m   [31m×[31m the actual tracker offers completion without removing the saved identity[39m[32m 213[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m tests/completion-receiving.test.mjs[2m > [22mapproved backup round trip retains a completed return and its reviewed details
+[31m[1mAssertionError[22m: expected 1 to be 2 // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 2[39m
+[31m+ 1[39m
+
+[36m [2m❯[22m tests/completion-receiving.test.mjs:[2m13:40[22m[39m
+    [90m 11|[39m   const original = { ...storedOrder('DONE'), completedAt };
+    [90m 12|[39m   const contents = exportBackup([original]);
+    [90m 13|[39m   expect(JSON.parse(contents).version).toBe(2);
+    [90m   |[39m                                        [31m^[39m
+    [90m 14|[39m   expect(parseBackup(contents)).toEqual([original]);
+    [90m 15|[39m });
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/completion-receiving.test.mjs[2m > [22mcalendar eligibility excludes completed returns while retaining open returns
+[31m[1mAssertionError[22m: expected [ 'DONE', 'OPEN' ] to deeply equal [ 'OPEN' ][39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  [[22m
+[31m+   "DONE",[39m
+[2m    "OPEN",[22m
+[2m  ][22m
+
+[36m [2m❯[22m tests/completion-receiving.test.mjs:[2m19:49[22m[39m
+    [90m 17|[39m test('calendar eligibility excludes completed returns while retaining …
+    [90m 18|[39m   const rows = calendarRows([storedOrder('OPEN'), { ...storedOrder('DO…
+    [90m 19|[39m   expect(initialCalendarSelection(rows, 'all')).toEqual(['OPEN']);
+    [90m   |[39m                                                 [31m^[39m
+    [90m 20|[39m });
+    [90m 21|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/completion-receiving.test.mjs[2m > [22mthe actual tracker offers completion without removing the saved identity
+[31m[1mAssertionError[22m: expected '<li class="card ok"><div class="order…' to contain 'data-complete="OPEN"'[39m
+
+Expected: [32m"data-complete="OPEN""[39m
+Received: [31m"<li class="card ok"><div class="order-head"><div><strong>Saved Store</strong> <span class="mono">#OPEN</span></div><span class="status-tag">ON TRACK</span></div><div class="window-meta"><span>ORDER 2026-10-01</span><span class="source-tag">30-DAY FALLBACK</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"><i style="width:23%"></i></div><div class="order-foot"><span class="return-by">RETURN BY 2026-10-31</span><strong class="days-left">23 DAYS LEFT</strong></div><div class="order-actions"><button class="button button-primary" data-ics="OPEN">Add calendar reminder</button><button class="button button-link" data-edit="OPEN">Edit details</button><button class="button button-link" data-del="OPEN">Remove</button></div></li>"[39m
+
+[36m [2m❯[22m tests/completion-receiving.test.mjs:[2m27:46[22m[39m
+    [90m 25|[39m   for (const [key, value] of Object.entries(app.globals)) vi.stubGloba…
+    [90m 26|[39m   await import('../src/main.ts');
+    [90m 27|[39m   expect(app.elements.get('list').innerHTML).toContain('data-complete=…
+    [90m   |[39m                                              [31m^[39m
+    [90m 28|[39m   app.elements.get('list').listeners.get('click')({ target: { dataset:…
+    [90m 29|[39m   const saved = app.persisted()[0];
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[90m (3)[39m
+[2m   Start at [22m 16:25:21
+[2m   Duration [22m 632ms[2m (tests 65%, transform 27%, import 7%, worker 2%)[22m
+

@@ -1,0 +1,40 @@
+{
+  "sha": "8cf9151da4e86ffe0276dfb10a07b84413c6ca87",
+  "node_id": "C_kwDOU7se3doAKDhjZjkxNTFkYTRlODZmZmUwMjc2ZGZiMTBhMDdiODQ0MTNjNmNhODc",
+  "url": "https://api.github.com/repos/Jacob-Met/returnby/git/commits/8cf9151da4e86ffe0276dfb10a07b84413c6ca87",
+  "html_url": "https://github.com/Jacob-Met/returnby/commit/8cf9151da4e86ffe0276dfb10a07b84413c6ca87",
+  "author": {
+    "name": "Jacob Metoyer",
+    "email": "150724801+Jacob-Met@users.noreply.github.com",
+    "date": "2026-10-08T16:48:29Z"
+  },
+  "committer": {
+    "name": "GitHub",
+    "email": "noreply@github.com",
+    "date": "2026-10-08T16:48:29Z"
+  },
+  "tree": {
+    "sha": "e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5",
+    "url": "https://api.github.com/repos/Jacob-Met/returnby/git/trees/e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5"
+  },
+  "message": "Merge 9f73bf729b59012ceda564d022a5de664c2b39e5 into 7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "parents": [
+    {
+      "sha": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/commits/7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+      "html_url": "https://github.com/Jacob-Met/returnby/commit/7829e56e57ef91dfe8edd5853fd68d6c7890fac0"
+    },
+    {
+      "sha": "9f73bf729b59012ceda564d022a5de664c2b39e5",
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/commits/9f73bf729b59012ceda564d022a5de664c2b39e5",
+      "html_url": "https://github.com/Jacob-Met/returnby/commit/9f73bf729b59012ceda564d022a5de664c2b39e5"
+    }
+  ],
+  "verification": {
+    "verified": true,
+    "reason": "valid",
+    "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqx8ldCRC1aQ7uu5UhlAAA77sQAIuLZoY/46TeU9aj/5euc1ST\nMNkEJYCvEaIMCGgWd2o4wiRIBeudCSP2BKvTt/zRln+tbQPMYZyRWzMHHvhBN1oH\nn1mhXhnQttZGgXiCDJiMvv+/EbTP8CH969DnBhPGZfygeGrvnHb5IFzqKYYXkdks\nRr/yPP8LKNYNEcYBMM6dVOgPkyu9KAEwgWwcvG6yS8xO5clxzuGoS5nDJCwOUpYg\nn9whx63ormQiewyadGb2j0Iauc/AZ/vUAerfN/dyrN6ZqLqhE9wgPMk9ykwW2W7t\npDJM2MwOrIKLv+/MJmFfrgFn1mC3AiQqOWlWu0jpekOd4rVeBWvgJie3Kbu13mm3\n9fYqPAQr2MdF913y5w+ZfMQjzGGNf+ITY19s8V+fETpp6+qJisJFo5ZSz7nvK/sp\n58ACADhC+qs8RKBGq++I9Qyy3Ed3QagamJdnluw3EgTeMxv/EOE9fqeaG51OkOFS\nnXuBjrF8o242+GtUcjqdHU8Qr0YjPSb+YGQViyXkdMbjEGCTFCwsmVVazBiOCZm+\nyr6CwRr66W7gYBLDX4yGRuFXUrYayUmJrIsktxoJ7hpt61le4u11P9QNLK7bZEfJ\ndE5caCVjedaGVcc0cCI3XnX3Gdtaj7qkhH/DKuWYWm1z73pYauOyGw0+HwXAQmlt\nvu2xv4qdcxdbyLQbgX4l\n=+WeL\n-----END PGP SIGNATURE-----\n",
+    "payload": "tree e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5\nparent 7829e56e57ef91dfe8edd5853fd68d6c7890fac0\nparent 9f73bf729b59012ceda564d022a5de664c2b39e5\nauthor Jacob Metoyer <150724801+Jacob-Met@users.noreply.github.com> 1791478109 +0000\ncommitter GitHub <noreply@github.com> 1791478109 +0000\n\nMerge 9f73bf729b59012ceda564d022a5de664c2b39e5 into 7829e56e57ef91dfe8edd5853fd68d6c7890fac0\n",
+    "verified_at": "2026-10-08T16:48:29Z"
+  }
+}

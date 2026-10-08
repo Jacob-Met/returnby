@@ -1,8 +1,9 @@
 import { daysLeft, dueDate, todayISO } from './deadline';
 import { buildIcsCalendar, type CalendarReminder } from './ics';
 import type { Order } from './store';
+import { isCompleted } from './completion';
 
-export type CalendarFilter = 'all' | 'due' | 'expired';
+export type CalendarFilter = 'all' | 'due' | 'expired' | 'completed';
 export type CalendarRow = {
   order: Order;
   due: string | null;
@@ -25,6 +26,7 @@ function isCalendarDate(value: string): boolean {
 }
 
 function reminder(order: Order): CalendarReminder {
+  if (isCompleted(order)) throw new CalendarBatchError('This return is completed. Reopen it before creating a new reminder.');
   if (typeof order.id !== 'string' || !order.id.length || order.id.length > 4096
       || /[\u0000-\u001f\u007f]/.test(order.id) || decoder.decode(encoder.encode(order.id)) !== order.id) {
     throw new CalendarBatchError('This return has an unsupported calendar identity.');
@@ -52,7 +54,7 @@ export function calendarRows(orders: readonly Order[], today = todayISO()): Cale
   if (!isCalendarDate(today)) throw new CalendarBatchError('The current calendar date could not be read.');
   const counts = new Map<string, number>();
   for (const order of orders) counts.set(order.id, (counts.get(order.id) ?? 0) + 1);
-  return orders.map(value => {
+  return orders.filter(value => !isCompleted(value)).map(value => {
     const order = { ...value };
     try {
       if (counts.get(order.id) !== 1) throw new CalendarBatchError('More than one saved return uses this calendar identity.');

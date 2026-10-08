@@ -1,0 +1,55 @@
+import { afterEach, expect, test, vi } from 'vitest';
+import { buildDeadlineOverview } from '../src/deadline-overview';
+import { createSavedReturnsCsv } from '../src/saved-returns-csv';
+import { captureRemoval, planUndoRemoval } from '../src/removal-undo';
+
+const stamp = new Date('2026-10-08T12:34:56.000Z');
+const completedAt = stamp.toISOString();
+const row = (id, extra = {}) => ({ id, merchant: 'Fictional completion receiving', orderNo: id,
+  total: '$42.00', orderDate: '2026-10-01', windowDays: 30, windowSource: 'user',
+  createdAt: '2026-10-01T00:00:00Z', ...extra });
+let storageCalls = 0, networkCalls = 0;
+vi.stubGlobal('localStorage', {
+  getItem() { storageCalls++; throw Error('Private projection must not read a browser profile'); },
+  setItem() { storageCalls++; throw Error('Private projection must not write browser data'); },
+});
+vi.stubGlobal('fetch', () => { networkCalls++; throw Error('Private projection must not use a provider'); });
+afterEach(() => { expect(storageCalls).toBe(0); expect(networkCalls).toBe(0); });
+
+test('month view admits the whole collection then omits completed deadline noise', () => {
+  const rows = [row('OPEN'), row('DONE', { completedAt })], before = JSON.stringify(rows);
+  const view = buildDeadlineOverview(rows, '2026-10', '2026-10-08');
+  expect(view.total).toBe(1);
+  expect(view.monthTotal).toBe(1);
+  expect(view.outsideMonth).toBe(0);
+  expect(view.days.flatMap(day => day.records).map(record => record.order.id)).toEqual(['OPEN']);
+  expect(JSON.stringify(rows)).toBe(before);
+  expect(() => buildDeadlineOverview([row('INVALID-DONE', { completedAt, windowDays: false })], '2026-10', '2026-10-08')).toThrow();
+});
+
+test('whole-tracker CSV retains explicit state and completion time without losing the original nine fields', () => {
+  const rows = [row('OPEN'), row('DONE', { completedAt })], before = JSON.stringify(rows);
+  const result = createSavedReturnsCsv(rows, stamp);
+  const lines = result.content.slice(1).trimEnd().split('\r\n');
+  expect(lines[0]).toBe('"Saved return ID","Store","Order number","Total (as entered)","Order date","Return window (days)","Recorded window source","Return deadline","Created at","Return status","Completed at"');
+  expect(lines.find(line => line.startsWith('"DONE",'))).toBe('"DONE","Fictional completion receiving","DONE","$42.00","2026-10-01","30","user","2026-10-31","2026-10-01T00:00:00Z","Completed","2026-10-08T12:34:56.000Z"');
+  expect(lines.find(line => line.startsWith('"OPEN",'))).toBe('"OPEN","Fictional completion receiving","OPEN","$42.00","2026-10-01","30","user","2026-10-31","2026-10-01T00:00:00Z","Open",""');
+  expect(result.count).toBe(2);
+  expect(JSON.stringify(rows)).toBe(before);
+  expect(() => createSavedReturnsCsv([row('INVALID-DONE', { completedAt: 'bad' })], stamp)).toThrow();
+});
+
+test('the unchanged Undo implementation restores the exact completed snapshot and rejects a same-ID open record', () => {
+  const done = row('DONE', { completedAt, extension: { retained: true } });
+  const snapshot = captureRemoval(done, 1);
+  const other = row('UNRELATED');
+  const restored = planUndoRemoval([other], snapshot);
+  expect(restored.kind).toBe('restore');
+  if (restored.kind === 'restore') {
+    expect(restored.orders).toEqual([other, done]);
+    expect(restored.orders[0]).toBe(other);
+    expect(restored.order.completedAt).toBe(completedAt);
+    expect(planUndoRemoval(restored.orders, snapshot).kind).toBe('present');
+  }
+  expect(planUndoRemoval([row('DONE')], snapshot).kind).toBe('conflict');
+});

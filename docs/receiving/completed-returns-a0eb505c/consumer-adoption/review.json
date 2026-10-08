@@ -1,0 +1,63 @@
+{
+  "kind": "private proposed consumer adoption; not owner branch integration",
+  "producer_head": "ca27fec63ff50256f1092c38453e05a527da8bce",
+  "peer_inputs": [
+    {
+      "path": "src/deadline-overview.ts",
+      "head": "4ca4edf2741851b9bfa46c0fb651131463dd17c2",
+      "blob": "ccec55196aaaef117edb87d9f33930865c9b54b3"
+    },
+    {
+      "path": "src/saved-returns-csv.ts",
+      "head": "88ad7e0fc390bb468450bde9a2d25181c7bbe52d",
+      "blob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a"
+    },
+    {
+      "path": "src/removal-undo.ts",
+      "head": "ad19cab029533820a4f6e2c576f5cb20a9e06816",
+      "blob": "b29e7493c7efb240dad2dfe73ec9274e1fd583f4"
+    }
+  ],
+  "fixture_sha256": "b593ad8535d6c7dde7b1a60c0ca56b49277d7fb58cdbee6228f83943a9b1a0d6",
+  "results": [
+    {
+      "label": "unadapted-composition-negative",
+      "exit_code": 1,
+      "seconds": 3.1015357971191406,
+      "log_sha256": "a1f86badc37b0fedb3219547e73f7d1301fc180f7980d6d749c312b13defb22c"
+    },
+    {
+      "label": "proposed-adoption-positive",
+      "exit_code": 0,
+      "seconds": 1.868210792541504,
+      "log_sha256": "9c8c7e57ff5aafe07a5d9a4d44cf5c805c6dad1e2df7cb648189112a655f96b6"
+    }
+  ],
+  "proposed": [
+    {
+      "path": "src/deadline-overview.ts",
+      "sha256": "b7bf982ec54cb7925e26e2a0eef6666fa722aea55e98b0138c2153a930b81168",
+      "source_head": "4ca4edf2741851b9bfa46c0fb651131463dd17c2",
+      "original_blob": "ccec55196aaaef117edb87d9f33930865c9b54b3",
+      "unchanged": false
+    },
+    {
+      "path": "src/saved-returns-csv.ts",
+      "sha256": "b01f4893187b6b95806fa2a62d8a6840fc0a5f09b44781d74eeec73b8622a983",
+      "source_head": "88ad7e0fc390bb468450bde9a2d25181c7bbe52d",
+      "original_blob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+      "unchanged": false
+    },
+    {
+      "path": "src/removal-undo.ts",
+      "sha256": "c5a885be25b70885e284d76635cb7e453ae1be2c04ce87ee38f22adfd69d9d75",
+      "source_head": "ad19cab029533820a4f6e2c576f5cb20a9e06816",
+      "original_blob": "b29e7493c7efb240dad2dfe73ec9274e1fd583f4",
+      "unchanged": true
+    }
+  ],
+  "scope": "Only completion eligibility in month projection and two appended CSV columns; Undo source unchanged",
+  "network_or_user_storage": "fixture guards reject reads/writes/fetch; all 0",
+  "runtime_symlink": "/home/jacob/returnby-completion-consumer-review-20261008-a0eb/node_modules -> /srv/hamon-estate/returnby-completion-a0eb505c/node_modules",
+  "owner_handoff": "pending"
+}

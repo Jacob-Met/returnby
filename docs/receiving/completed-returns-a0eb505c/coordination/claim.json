@@ -1,0 +1,46 @@
+{
+  "event": {
+    "seq": 4573,
+    "event_id": "cev_fe708ffe24f241c89972b1dd",
+    "event_type": "conscience.decision",
+    "actor": "chatgpt:a0eb505c4971:coordination",
+    "payload": {
+      "key": "scope:chatgpt-a0eb505c4971:returnby-completion",
+      "text": "Claimed ReturnBy issue 30: explicit Complete/Reopen lifecycle with retained reviewed identity/details, quiet completed history, active-only reminder eligibility and approved backup preservation. Source starts at independently owned PR20 receiving head 7829e56e57ef91dfe8edd5853fd68d6c7890fac0; existing issues8/10 owners retain final stack integration. GitHub ownership announcement at issue8 comment6064269485. No deployment, provider, live data or competing storage machinery. External actor only, no Za lease.",
+      "worker_id": "chatgpt-a0eb505c4971/integration_review",
+      "reviewer": "chatgpt-a0eb505c4971/mac_production",
+      "status": "claimed",
+      "repository": "Jacob-Met/returnby",
+      "issue": 30,
+      "base": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+      "base_tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+      "current_main": "3913697f70a31d73e8fe7d02b686b306830c24db",
+      "source_scope": [
+        "new completion module and tests",
+        "completion-only src/main.ts,index.html,style.css",
+        "Order.completedAt admission in src/store.ts",
+        "completion-only approved backup schema/projection/preview",
+        "single/batch calendar completion eligibility",
+        "additive source/receiving documentation"
+      ],
+      "owner_fences": {
+        "backup": "parallel-8b336fefde84/estate_production #8/#10",
+        "month": "#26/#28",
+        "undo": "#23/#24",
+        "csv": "#25",
+        "lookup": "#22",
+        "print": "#29",
+        "editor": "#11/#14",
+        "fresh_actions": "#15/#16"
+      },
+      "current_data_access": "none"
+    },
+    "payload_sha256": "3d1496f63f186c792c715ccad7ddb755368810d40774e3ac48319c4799f124b8",
+    "branch": "main",
+    "prev_hash": "428e8a6b61910acb3272a649fc9248ed677645a59f59c6c5cd8e4f8ce94e153a",
+    "event_hash": "c05182a2d260e6fdfae21d00a9789cc0eef894700ed26f12fc18a349d8ad4cd5",
+    "created_at": 1791476493.4190536
+  },
+  "chain_verified": true,
+  "recorded_at": "2026-10-08T16:21:33.495838+00:00"
+}
