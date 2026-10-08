@@ -30,3 +30,7 @@ The app is browser-only; no AI runs in the page. The Devpost Learn planning docu
 ## Return-trip checklist
 
 From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. The page keeps the existing tracker unchanged; selections, paper check marks and notes are not saved. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
+
+## Review several confirmations
+
+Open **Review several order confirmations together** from the intake panel. Add pasted confirmations or local UTF-8 text files, correct each order, select the fields you reviewed, and inspect one final preview before saving the selection beside your existing orders. Raw confirmation text and unsaved drafts stay only in page memory. The page checks possible matching store/order numbers and refuses a changed or unreadable saved snapshot. See [the batch intake guide](docs/BATCH_INTAKE.md) for supported input, retry and concurrency limits.
