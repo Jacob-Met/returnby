@@ -4,6 +4,7 @@ import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
 import { startDayRefresh } from './day-refresh';
 import { buildIcs } from './ics';
+import { connectReminderTime } from './reminder-time';
 import { load, save, type Order } from './store';
 import { samples } from './samples';
 
@@ -12,6 +13,7 @@ const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const list = $<HTMLUListElement>('#list');
 let orders = load();
+const reminderTime = connectReminderTime();
 let sampleIdx = 0;
 let filterMode: 'all' | 'due' | 'expired' = 'all';
 
@@ -60,10 +62,11 @@ function render() {
   for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
   const rows=all.filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
   if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-reminder="${h(o.id)}">Choose reminder time</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
 }
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
+  if (t.dataset.reminder) reminderTime.open(t.dataset.reminder, t);
   if (t.dataset.del) { orders = orders.filter((o) => o.id !== t.dataset.del); save(orders); render(); }
   if (t.dataset.ics) {
     const o = orders.find((x) => x.id === t.dataset.ics)!;
@@ -82,7 +85,7 @@ render();
 startDayRefresh(() => {
   const active = document.activeElement;
   const focused = active instanceof HTMLButtonElement && list.contains(active) ? active : undefined;
-  const action = focused?.hasAttribute('data-ics') ? 'ics' : focused?.hasAttribute('data-del') ? 'del' : undefined;
+  const action = focused?.hasAttribute('data-ics') ? 'ics' : focused?.hasAttribute('data-del') ? 'del' : focused?.hasAttribute('data-reminder') ? 'reminder' : undefined;
   const id = action ? focused?.dataset[action] : undefined;
   render();
   if (!action || id === undefined) return;

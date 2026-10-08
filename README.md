@@ -30,3 +30,7 @@ The app is browser-only; no AI runs in the page. The Devpost Learn planning docu
 ## Return-trip checklist
 
 From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. The page keeps the existing tracker unchanged; selections, paper check marks and notes are not saved. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
+
+## Choose a reminder time
+
+For a saved return, choose **Choose reminder time** to review a future local alarm with its timezone, offset and exact UTC time before downloading the calendar file. The original three-day action remains available. Invalid local clocks and stale saved data refuse review; nothing is written to the saved order. See [the reminder-time guide](docs/REMINDER_TIME.md) for repeated-hour behavior, cancellation and calendar-import limits.
