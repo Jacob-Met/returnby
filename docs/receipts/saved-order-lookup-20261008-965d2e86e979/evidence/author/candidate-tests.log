@@ -1,0 +1,14 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> returnby@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /dev/shm/965d2e86e979-returnby-lookup/source
+
+
+ Test Files  14 passed (14)
+      Tests  230 passed (230)
+   Start at  21:05:12
+   Duration  1.50s (tests 57%, transform 31%, import 10%, worker 1%)
+

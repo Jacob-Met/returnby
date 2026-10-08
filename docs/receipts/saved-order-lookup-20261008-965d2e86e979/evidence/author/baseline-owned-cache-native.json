@@ -1,0 +1,27 @@
+[
+  {
+    "name": "baseline-owned-cache-tests",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "rc": 0,
+    "elapsed_s": 2.368,
+    "log_sha256": "51465835313d80537721bfb13c2c9ddc3f2d0bb33b4679d3f80a1517d687c1cf",
+    "log_bytes": 346,
+    "tail": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> returnby@0.1.0 test\n> vitest run\n\n\n RUN  v5.0.3 /dev/shm/965d2e86e979-returnby-lookup/source\n\n\n Test Files  12 passed (12)\n      Tests  201 passed (201)\n   Start at  21:02:22\n   Duration  1.62s (tests 50%, transform 39%, import 9%, worker 1%)\n\n"
+  },
+  {
+    "name": "baseline-owned-cache-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "rc": 0,
+    "elapsed_s": 1.577,
+    "log_sha256": "cd65fa8c965b843b0fa89448a4315621d0eddd2a4dc1d25693ca0df5205eff77",
+    "log_bytes": 497,
+    "tail": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> returnby@0.1.0 build\n> tsc --noEmit && vite build\n\nvite v8.3.3 building client environment for production...\ntransforming...\n\u2713 21 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                  9.99 kB \u2502 gzip:  3.48 kB\ndist/assets/index-41FLtvzD.css  12.78 kB \u2502 gzip:  3.47 kB\ndist/assets/index-B_BGqvdA.js   30.62 kB \u2502 gzip: 11.16 kB\n\n\u2713 built in 78ms\n"
+  }
+]

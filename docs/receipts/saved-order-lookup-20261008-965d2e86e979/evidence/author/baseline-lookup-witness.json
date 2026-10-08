@@ -1,0 +1,17 @@
+{
+  "canonical_source": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+  "command": [
+    "npm",
+    "test",
+    "--",
+    "tests/order-search-ui.test.mjs",
+    "-t",
+    "existing urgency|store and order-number"
+  ],
+  "rc": 1,
+  "elapsed_s": 1.126,
+  "harness_sha256": "dc1944311ef0715a32cf01cb7303e6bed053d6b6f9f43f165b81aa9f16e02650",
+  "log_sha256": "762ee09bb83a521c9aa1f0098719167e0eb3e8ff39bab924f2df4690d6b8b9b0",
+  "classification": "Requested lookup capability absent; unchanged urgency/order/count/storage positive control retained."
+}

@@ -6,6 +6,25 @@ ReturnBy turns an order-confirmation email into a reviewable return deadline and
 
 The original pasted email is not sent or persisted. The user must review and save fields; only merchant, order number, total, order date, return-window days and timestamps are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
 
+## Find a saved return
+
+Use **Search store or order number** above the tracker to find part of a saved store name
+or order number. Matching ignores letter case and repeated whitespace; punctuation and
+accents stay literal. A copied order number may include the card's leading `#`. Empty
+merchant names can be found by their displayed **Unknown store** label.
+
+Search combines with **All**, **Due soon** or **Expired** and keeps the same deadline order.
+The summary counts still describe the whole saved tracker; the search status tells you
+how many returns are shown. **Clear search** restores the chosen date filter and returns
+focus to the input. Search is kept while you save, edit, remove or import an order, and is
+reset on page reload. It never changes a saved record or searches the unsaved pasted email.
+
+Backup downloads still contain the whole saved tracker. **Export several reminders**
+continues to open its independent review: the date filter sets the initial calendar
+selection, and you choose the exact reminders with the dialog's checkboxes. Tracker
+search does not change that selection. The native tests include a 10,000-order lookup;
+`tools/check_order_search_browser.mjs` exercises the production build with fictional data.
+
 ## Export several calendar reminders
 
 Choose **Export several reminders** above the tracker to review saved returns in a single

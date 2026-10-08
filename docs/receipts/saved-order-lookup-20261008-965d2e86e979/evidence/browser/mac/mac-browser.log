@@ -1,0 +1,38 @@
+{
+  "status": "pass",
+  "browser": "151.0.7922.34",
+  "checks": {
+    "baseline": {
+      "lookupControls": 0,
+      "existingUrgencyControl": "pass",
+      "savedBytesExact": true
+    },
+    "lookupFilterClearKeyboard": "pass",
+    "literalTextAndOptionalNumber": "pass",
+    "editMovesOutOfQueryWithDraftAndIdentityPreserved": "pass",
+    "wholeBackupRestoreAndIndependentCalendarSelection": "pass",
+    "searchedRemovalPreservesTrueSecondTabAddition": "pass",
+    "phoneReadRefusalRetryAndLayout": {
+      "viewport": 390,
+      "document": 390,
+      "input": 229.1875,
+      "clear": 94.8125
+    }
+  },
+  "downloads": [
+    {
+      "filename": "all-orders-backup.json",
+      "suggestedFilename": "returnby-backup-2026-10-08.json",
+      "bytes": 857,
+      "sha256": "3178bce99868649c261e71e9f25890695286de846bc2c6f5122c2a8a7930d95c"
+    },
+    {
+      "filename": "reviewed-all-reminders.ics",
+      "suggestedFilename": "returnby-reminders-2026-10-08.ics",
+      "bytes": 1218,
+      "sha256": "d57af7340893af4276914adba58afccf8ae4242dac3803cab547e9a079213deb"
+    }
+  ],
+  "browserErrors": [],
+  "externalRequests": []
+}

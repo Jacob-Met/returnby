@@ -1,0 +1,37 @@
+{
+  "schema": "returnby.backup",
+  "version": 1,
+  "exportedAt": "2026-10-08T12:00:00.000Z",
+  "orders": [
+    {
+      "id": "later",
+      "merchant": "North Star",
+      "orderNo": "NS-900",
+      "total": "$8.00",
+      "orderDate": "2026-10-01",
+      "windowDays": 30,
+      "windowSource": "default",
+      "createdAt": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "past",
+      "merchant": "South Shop",
+      "orderNo": "NS-100",
+      "total": "$8.00",
+      "orderDate": "2026-09-01",
+      "windowDays": 30,
+      "windowSource": "default",
+      "createdAt": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "soon",
+      "merchant": "North Star",
+      "orderNo": "AB-200",
+      "total": "$8.00",
+      "orderDate": "2026-09-11",
+      "windowDays": 30,
+      "windowSource": "default",
+      "createdAt": "2026-10-01T00:00:00Z"
+    }
+  ]
+}

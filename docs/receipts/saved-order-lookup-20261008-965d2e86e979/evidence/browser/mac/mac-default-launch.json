@@ -1,0 +1,24 @@
+{
+  "application_source": "1fbd1fc26f98f788826333494c5330e0c2f939d7",
+  "harness_source": "2657b9c7570891604dbfe2ff24cc6878cffcf6d7",
+  "manifest_sha256": "7c16ac04adc1c22764898c70a4c265b7cf9d8bf324a41f8253e0355559ae59b2",
+  "verified_files_before_after": 9,
+  "started_utc": "2026-10-08T12:18:46.483741+00:00",
+  "node": "v26.3.0",
+  "command": [
+    "node",
+    "/tmp/returnby-lookup-965d2e86e979/check_order_search_browser.mjs"
+  ],
+  "settings": {
+    "RETURNBY_PLAYWRIGHT": "/Users/me/hamon-work-longwater-delivery-c945953fdeb7/node_modules/playwright/index.mjs",
+    "RETURNBY_BUILD": "/tmp/returnby-lookup-965d2e86e979/candidate",
+    "RETURNBY_BASELINE_BUILD": "/tmp/returnby-lookup-965d2e86e979/baseline",
+    "RETURNBY_EVIDENCE": "/tmp/returnby-lookup-965d2e86e979/browser",
+    "RETURNBY_DOWNLOAD_DIR": "/tmp/returnby-lookup-965d2e86e979/downloads"
+  },
+  "exit_code": 1,
+  "elapsed_s": 0.424,
+  "log_sha256": "b78a854c2c9d5b271a959a775f14a872fa22da3058e8594e53c12a64d76bc5aa",
+  "log_bytes": 1176,
+  "free": 1101946880
+}

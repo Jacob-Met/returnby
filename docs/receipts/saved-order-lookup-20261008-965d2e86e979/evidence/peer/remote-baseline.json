@@ -1,0 +1,27 @@
+{
+  "repository": "Jacob-Met/returnby",
+  "pr20": {
+    "url": "https://github.com/Jacob-Met/returnby/pull/20",
+    "state": "open",
+    "head": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+    "tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+    "parents": [
+      "17e1a3286a5e8136d1d5dc09da37f33fd1baa100",
+      "e64fd96ffda52ec571779edfeec609f7b01c3c9f",
+      "480a99bd6de57ff04089975b34b43856da56fdf9"
+    ]
+  },
+  "current_main": {
+    "sha": "3913697f70a31d73e8fe7d02b686b306830c24db",
+    "tree": "ab4534a2e1afdace5d27a6079012c776c0e66f70",
+    "parents": [
+      "00bc85c68d37089ae91344369b35d14ae9e8cbc3",
+      "abf6166312577c1fc960023aa7fbec659c47844b"
+    ]
+  },
+  "local_pr20_surrogate": {
+    "sha": "f6f030a040e14ba16cf6dc683921ba0d8e80369e",
+    "tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+    "equals_remote_tree": true
+  }
+}

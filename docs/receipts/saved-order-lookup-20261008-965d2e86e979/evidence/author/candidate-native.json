@@ -1,0 +1,27 @@
+[
+  {
+    "name": "candidate-tests",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "rc": 0,
+    "elapsed_s": 2.182,
+    "log_sha256": "bf0efbf7f7e672e58b66e6a1f79894a4c598a8465d0f6fa0cd60e355e3051a15",
+    "log_bytes": 347,
+    "tail": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> returnby@0.1.0 test\n> vitest run\n\n\n RUN  v5.0.3 /dev/shm/965d2e86e979-returnby-lookup/source\n\n\n Test Files  14 passed (14)\n      Tests  230 passed (230)\n   Start at  21:05:12\n   Duration  1.50s (tests 57%, transform 31%, import 10%, worker 1%)\n\n"
+  },
+  {
+    "name": "candidate-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "rc": 2,
+    "elapsed_s": 1.283,
+    "log_sha256": "0fc1099bb52d5b1f97fdcce3010237f7e8f979bf0a9e4238c0511cd1bc8ac29e",
+    "log_bytes": 337,
+    "tail": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> returnby@0.1.0 build\n> tsc --noEmit && vite build\n\nsrc/order-search.ts(12,42): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'.\n"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "path": "mac-default-launch.json",
+    "bytes": 1033,
+    "sha256": "c1da050116936fe921a7528f50cc3af1d1e5bc6b4de098cc564ff9176dc0341e"
+  },
+  {
+    "path": "mac-default-launch.log",
+    "bytes": 1176,
+    "sha256": "b78a854c2c9d5b271a959a775f14a872fa22da3058e8594e53c12a64d76bc5aa"
+  },
+  {
+    "path": "mac-browser-qualification.json",
+    "bytes": 1190,
+    "sha256": "0df50d5bd737fec5973581776c5ab5b1a443fb91a48fc2d873e70501b3405528"
+  },
+  {
+    "path": "mac-browser.log",
+    "bytes": 1130,
+    "sha256": "a789523cfcb06ebbbb7a835ec13438ac8c4aac3f32ea989951f1112273a5c2d7"
+  },
+  {
+    "path": "mac-runtime-manifest.json",
+    "bytes": 2035,
+    "sha256": "7c16ac04adc1c22764898c70a4c265b7cf9d8bf324a41f8253e0355559ae59b2"
+  },
+  {
+    "path": "saved-order-lookup-mobile.png",
+    "bytes": 56843,
+    "sha256": "3f3692b125201116c8d712c4feac9d1f94d0388bd70b1e11c54ec53ec23d8d60"
+  },
+  {
+    "path": "browser-result.json",
+    "bytes": 1130,
+    "sha256": "a789523cfcb06ebbbb7a835ec13438ac8c4aac3f32ea989951f1112273a5c2d7"
+  },
+  {
+    "path": "all-orders-backup.json",
+    "bytes": 857,
+    "sha256": "3178bce99868649c261e71e9f25890695286de846bc2c6f5122c2a8a7930d95c"
+  },
+  {
+    "path": "reviewed-all-reminders.ics",
+    "bytes": 1218,
+    "sha256": "d57af7340893af4276914adba58afccf8ae4242dac3803cab547e9a079213deb"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "baseline-tests",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "rc": 228,
+    "elapsed_s": 0.164,
+    "log_sha256": "e3e01c111e5d87a5a1b2ec4cc4939e0bb5d9592f87e57cbbc2aa7ccf0571ef48",
+    "log_bytes": 465,
+    "tail": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\nnpm error code ENOSPC\nnpm error syscall write\nnpm error errno -28\nnpm error nospc ENOSPC: no space left on device, write\nnpm error nospc There appears to be insufficient space on your system to finish.\nnpm error nospc Clear up some disk space and try again.\nnpm error A complete log of this run can be found in: /root/.npm/_logs/2026-10-08T12_01_47_094Z-debug-0.log\n"
+  }
+]

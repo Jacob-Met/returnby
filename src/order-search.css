@@ -1,0 +1,9 @@
+.tracker-search{margin:0 0 12px}
+.tracker-search label{display:block;margin-bottom:7px;color:#d9e2d9;font:10px var(--mono)}
+.tracker-search-row{display:flex;align-items:stretch;gap:8px}
+.tracker-search input{min-width:0;flex:1;width:100%;padding:10px;border:1px solid #71857a;border-radius:0;background:var(--white);color:var(--ink);font:12px var(--mono)}
+.tracker-search .button{flex:none;border-color:#71857a;color:#f0b084;font-size:9px;letter-spacing:0}
+.tracker-search .button:disabled{opacity:.55;cursor:default}
+.tracker-search input:disabled{opacity:.7}
+.tracker-search-help,.search-status{color:#c3d0c8;font-size:10px;line-height:1.5;margin:7px 0 0}
+.search-status{color:#f4f0e7}

@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "browser": "153.0.8010.47",
+  "checks": {},
+  "downloads": [],
+  "browserErrors": [],
+  "externalRequests": [],
+  "error": "page.goto: net::ERR_INSUFFICIENT_RESOURCES at http://127.0.0.1:42435/baseline/\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:42435/baseline/\", waiting until \"networkidle\"\u001b[22m\n\n    at open (/tmp/returnby-lookup-965d2e86e979/check_order_search_browser_guarded.mjs:62:14)\n    at async file:///tmp/returnby-lookup-965d2e86e979/check_order_search_browser_guarded.mjs:88:22"
+}

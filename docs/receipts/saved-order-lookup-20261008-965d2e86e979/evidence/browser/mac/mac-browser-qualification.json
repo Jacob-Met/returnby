@@ -1,0 +1,25 @@
+{
+  "application_source": "1fbd1fc26f98f788826333494c5330e0c2f939d7",
+  "harness_source": "2657b9c7570891604dbfe2ff24cc6878cffcf6d7",
+  "manifest_sha256": "7c16ac04adc1c22764898c70a4c265b7cf9d8bf324a41f8253e0355559ae59b2",
+  "verified_files_before_after": 9,
+  "started_utc": "2026-10-08T12:19:19.334420+00:00",
+  "node": "v26.3.0",
+  "command": [
+    "node",
+    "/tmp/returnby-lookup-965d2e86e979/check_order_search_browser.mjs"
+  ],
+  "settings": {
+    "RETURNBY_PLAYWRIGHT": "/Users/me/hamon-work-longwater-delivery-c945953fdeb7/node_modules/playwright/index.mjs",
+    "RETURNBY_CHROME": "/Users/me/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+    "RETURNBY_BUILD": "/tmp/returnby-lookup-965d2e86e979/candidate",
+    "RETURNBY_BASELINE_BUILD": "/tmp/returnby-lookup-965d2e86e979/baseline",
+    "RETURNBY_EVIDENCE": "/tmp/returnby-lookup-965d2e86e979/browser-explicit",
+    "RETURNBY_DOWNLOAD_DIR": "/tmp/returnby-lookup-965d2e86e979/downloads"
+  },
+  "exit_code": 0,
+  "elapsed_s": 6.036,
+  "log_sha256": "a789523cfcb06ebbbb7a835ec13438ac8c4aac3f32ea989951f1112273a5c2d7",
+  "log_bytes": 1130,
+  "free": 1080815616
+}

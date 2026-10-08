@@ -1,0 +1,145 @@
+diff --git a/README.md b/README.md
+index b44321c..5136c38 100644
+--- a/README.md
++++ b/README.md
+@@ -6,6 +6,25 @@ ReturnBy turns an order-confirmation email into a reviewable return deadline and
+ 
+ The original pasted email is not sent or persisted. The user must review and save fields; only merchant, order number, total, order date, return-window days and timestamps are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
+ 
++## Find a saved return
++
++Use **Search store or order number** above the tracker to find part of a saved store name
++or order number. Matching ignores letter case and repeated whitespace; punctuation and
++accents stay literal. A copied order number may include the card's leading `#`. Empty
++merchant names can be found by their displayed **Unknown store** label.
++
++Search combines with **All**, **Due soon** or **Expired** and keeps the same deadline order.
++The summary counts still describe the whole saved tracker; the search status tells you
++how many returns are shown. **Clear search** restores the chosen date filter and returns
++focus to the input. Search is kept while you save, edit, remove or import an order, and is
++reset on page reload. It never changes a saved record or searches the unsaved pasted email.
++
++Backup downloads still contain the whole saved tracker. **Export several reminders**
++continues to open its independent review: the date filter sets the initial calendar
++selection, and you choose the exact reminders with the dialog's checkboxes. Tracker
++search does not change that selection. The native tests include a 10,000-order lookup;
++`tools/check_order_search_browser.mjs` exercises the production build with fictional data.
++
+ ## Export several calendar reminders
+ 
+ Choose **Export several reminders** above the tracker to review saved returns in a single
+diff --git a/index.html b/index.html
+index d8b6074..784afc6 100644
+--- a/index.html
++++ b/index.html
+@@ -2,7 +2,12 @@
+ <html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="theme-color" content="#f2efe5" /><meta name="description" content="Paste an order confirmation, review the rule-based return window, track multiple deadlines and export a calendar reminder. Everything stays in your browser." /><link rel="icon" type="image/svg+xml" href="./favicon.svg" /><title>ReturnBy - The Return Desk</title></head><body><div class="page-shell">
+ <header class="topbar"><a class="brand" href="#top" aria-label="ReturnBy home"><span class="brand-mark">R/</span><span><strong>RETURNBY</strong><small>THE RETURN DESK</small></span></a><div class="local-chip"><i></i><span>LOCAL ONLY / NO INBOX CONNECTION</span></div></header>
+ <main id="top"><section class="hero"><div class="hero-copy"><p class="eyebrow">ORDER IN / DEADLINE OUT</p><h1>Keep the window<br /><em>on your side.</em></h1><p class="sub">Paste a real confirmation. ReturnBy extracts order details, checks merchant policy and gives you a date to act on. Review every field, save multiple deadlines and export a real calendar reminder - no AI or account required.</p><div class="hero-notes"><span>01 / PASTE</span><span>02 / REVIEW</span><span>03 / REMEMBER</span></div></div><aside class="hero-ticket"><span class="ticket-kicker">RETURN WINDOW</span><strong>30 <i>DAYS</i></strong><span>DEFAULT WHEN A STORE IS UNKNOWN</span><div class="ticket-line"></div><span>RULE-BASED / EDITABLE / LOCAL</span></aside></section>
+-<section class="desk-grid" aria-label="Return deadline workspace"><article class="intake-panel"><header class="panel-heading"><p class="eyebrow">01 / START WITH THE ORDER</p><h2>Paste a confirmation.</h2><p>Only details you approve are saved. The original email stays in this text box until you clear it.</p></header><label class="input-label" for="paste">ORDER EMAIL / CONFIRMATION</label><textarea id="paste" rows="9" placeholder="Paste the order confirmation text here..."></textarea><div class="action-row"><button id="find" class="button button-primary">Find the deadline</button><a href="#" id="sample" class="button button-link">Load a fictional example</a></div><div class="privacy-note"><span class="privacy-icon">LOCAL</span><p>No inbox access. No upload. Parsing and calendar export run in this browser.</p></div><form id="preview" class="preview-card" hidden aria-live="polite"></form><p id="storage-error" class="warn" role="alert" tabindex="-1" hidden></p><button id="storage-retry" type="button" class="button button-link" hidden>Retry loading saved returns</button></article><aside class="ledger-panel"><header class="panel-heading"><p class="eyebrow">02 / YOUR ACTIVE TRACKER</p><h2>Return windows.</h2><p>Deadlines are recalculated each day and sorted by what needs attention first.</p></header><div class="summary-grid"><div><span>TRACKED</span><strong id="tracked-count">0</strong></div><div><span>DUE IN 7 DAYS</span><strong id="soon-count">0</strong></div><div><span>OVERDUE</span><strong id="expired-count">0</strong></div></div><div class="filter-row" role="group" aria-label="Filter return dates"><button id="filter-all" class="filter active" type="button" aria-pressed="true">All</button><button id="filter-due" class="filter" type="button" aria-pressed="false">Due soon</button><button id="filter-expired" class="filter" type="button" aria-pressed="false">Expired</button></div><p id="edit-feedback" class="edit-feedback" role="status" aria-live="polite"></p><div class="calendar-toolbar"><button id="calendar-open" class="button button-primary" type="button">Export several reminders</button><p id="calendar-feedback" role="status" aria-live="polite"></p></div><ul id="list" aria-live="polite"></ul><p class="list-note">Saved items stay in this browser's local storage. Use the calendar button for an .ics reminder.</p></aside></section>
++<section class="desk-grid" aria-label="Return deadline workspace"><article class="intake-panel"><header class="panel-heading"><p class="eyebrow">01 / START WITH THE ORDER</p><h2>Paste a confirmation.</h2><p>Only details you approve are saved. The original email stays in this text box until you clear it.</p></header><label class="input-label" for="paste">ORDER EMAIL / CONFIRMATION</label><textarea id="paste" rows="9" placeholder="Paste the order confirmation text here..."></textarea><div class="action-row"><button id="find" class="button button-primary">Find the deadline</button><a href="#" id="sample" class="button button-link">Load a fictional example</a></div><div class="privacy-note"><span class="privacy-icon">LOCAL</span><p>No inbox access. No upload. Parsing and calendar export run in this browser.</p></div><form id="preview" class="preview-card" hidden aria-live="polite"></form><p id="storage-error" class="warn" role="alert" tabindex="-1" hidden></p><button id="storage-retry" type="button" class="button button-link" hidden>Retry loading saved returns</button></article><aside class="ledger-panel"><header class="panel-heading"><p class="eyebrow">02 / YOUR ACTIVE TRACKER</p><h2>Return windows.</h2><p>Deadlines are recalculated each day and sorted by what needs attention first.</p></header><div class="summary-grid"><div><span>TRACKED</span><strong id="tracked-count">0</strong></div><div><span>DUE IN 7 DAYS</span><strong id="soon-count">0</strong></div><div><span>OVERDUE</span><strong id="expired-count">0</strong></div></div><div class="filter-row" role="group" aria-label="Filter return dates"><button id="filter-all" class="filter active" type="button" aria-pressed="true">All</button><button id="filter-due" class="filter" type="button" aria-pressed="false">Due soon</button><button id="filter-expired" class="filter" type="button" aria-pressed="false">Expired</button></div><div class="tracker-search" role="search" aria-label="Search saved returns">
++<label for="order-search">Search store or order number</label>
++<div class="tracker-search-row"><input id="order-search" type="search" placeholder="Store name or order number" autocomplete="off" spellcheck="false" aria-controls="list" aria-describedby="order-search-help" /><button id="clear-search" type="button" class="button button-link" disabled>Clear search</button></div>
++<p id="order-search-help" class="tracker-search-help">Matches part of a store name or order number. Search changes the tracker only; calendar selection follows the date filter.</p>
++<p id="search-status" class="search-status" role="status" aria-live="polite"></p>
++</div><p id="edit-feedback" class="edit-feedback" role="status" aria-live="polite"></p><div class="calendar-toolbar"><button id="calendar-open" class="button button-primary" type="button">Export several reminders</button><p id="calendar-feedback" role="status" aria-live="polite"></p></div><ul id="list" aria-live="polite"></ul><p class="list-note">Saved items stay in this browser's local storage. Use the calendar button for an .ics reminder.</p></aside></section>
+ <section class="backup-panel" aria-labelledby="backup-heading">
+   <details>
+     <summary id="backup-heading">Back up or restore saved returns</summary>
+diff --git a/src/main.ts b/src/main.ts
+index 9eaa6c1..11d44fa 100644
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -2,6 +2,7 @@ import './style.css';
+ import './backup.css';
+ import './edit.css';
+ import './calendar-batch.css';
++import './order-search.css';
+ import { parse } from './parse';
+ import { lookup, knownMerchants } from './policy';
+ import { dueDate, daysLeft, status, todayISO } from './deadline';
+@@ -11,6 +12,7 @@ import { samples } from './samples';
+ import { bindBackup } from './backup-ui';
+ import { bindOrderEditor } from './edit-ui';
+ import { bindCalendarBatch } from './calendar-batch-ui';
++import { createOrderMatcher } from './order-search';
+ 
+ const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
+ const paste = $<HTMLTextAreaElement>('#paste');
+@@ -18,6 +20,9 @@ const preview = $<HTMLFormElement>('#preview');
+ const list = $<HTMLUListElement>('#list');
+ const storageError = $<HTMLParagraphElement>('#storage-error');
+ const storageRetry = $<HTMLButtonElement>('#storage-retry');
++const orderSearch = $<HTMLInputElement>('#order-search');
++const clearSearch = $<HTMLButtonElement>('#clear-search');
++const searchStatus = $<HTMLParagraphElement>('#search-status');
+ let orders: Order[] = [];
+ let loadFailed = false;
+ let sampleIdx = 0;
+@@ -145,7 +150,10 @@ preview.addEventListener('submit', (e) => {
+ });
+ 
+ function render() {
++  orderSearch.disabled = loadFailed;
++  clearSearch.disabled = loadFailed || !orderSearch.value;
+   if (loadFailed) {
++    searchStatus.textContent = 'Search is unavailable until saved returns can be loaded.';
+     for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
+     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
+     return;
+@@ -153,8 +161,10 @@ function render() {
+   const all=orders.map(o=>{const due=dueDate(o.orderDate,o.windowDays),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);
+   $('#tracked-count').textContent=String(all.length);$('#soon-count').textContent=String(all.filter(r=>r.left>=0&&r.left<=7).length);$('#expired-count').textContent=String(all.filter(r=>r.left<0).length);
+   for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
+-  const rows=all.filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
+-  if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
++  const matches = createOrderMatcher(orderSearch.value);
++  const rows=all.filter(r=>(filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0))&&matches(r.o));
++  searchStatus.textContent = `Showing ${rows.length} of ${all.length} saved ${all.length === 1 ? 'return' : 'returns'}.`;
++  if(!rows.length){list.innerHTML=`<li class="empty">${!all.length?'No returns tracked yet. Paste an order email above, or try a fictional example.':orderSearch.value.trim()?'No saved returns match this search and date filter. Try another store or order number, or clear the search.':'No saved deadlines match this filter.'}</li>`;return;}
+   list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+ }
+ list.addEventListener('click', (e) => {
+@@ -170,6 +180,8 @@ list.addEventListener('click', (e) => {
+   }
+ });
+ 
++orderSearch.addEventListener('input', render);
++clearSearch.addEventListener('click', () => { orderSearch.value = ''; render(); orderSearch.focus(); });
+ $('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);
+ paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
+ $('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
+diff --git a/src/order-search.css b/src/order-search.css
+new file mode 100644
+index 0000000..7e643e2
+--- /dev/null
++++ b/src/order-search.css
+@@ -0,0 +1,9 @@
++.tracker-search{margin:0 0 12px}
++.tracker-search label{display:block;margin-bottom:7px;color:#d9e2d9;font:10px var(--mono)}
++.tracker-search-row{display:flex;align-items:stretch;gap:8px}
++.tracker-search input{min-width:0;flex:1;width:100%;padding:10px;border:1px solid #71857a;border-radius:0;background:var(--white);color:var(--ink);font:12px var(--mono)}
++.tracker-search .button{flex:none;border-color:#71857a;color:#f0b084;font-size:9px;letter-spacing:0}
++.tracker-search .button:disabled{opacity:.55;cursor:default}
++.tracker-search input:disabled{opacity:.7}
++.tracker-search-help,.search-status{color:#c3d0c8;font-size:10px;line-height:1.5;margin:7px 0 0}
++.search-status{color:#f4f0e7}
+diff --git a/src/order-search.ts b/src/order-search.ts
+new file mode 100644
+index 0000000..71a11b3
+--- /dev/null
++++ b/src/order-search.ts
+@@ -0,0 +1,13 @@
++import type { Order } from './store';
++
++const normalize = (value: string) => value.trim().replace(/\s+/g, ' ').toLowerCase();
++
++/** Match the displayed store or saved order number without changing either field. */
++export function createOrderMatcher(query: string): (order: Pick<Order, 'merchant' | 'orderNo'>) => boolean {
++  const text = normalize(query);
++  if (!text) return () => true;
++  // Cards display a leading # even when the saved number does not contain it.
++  const numberText = text.replace(/^#\s*/, '');
++  return order => normalize(order.merchant || 'Unknown store').includes(text)
++    || (Boolean(numberText) && normalize(order.orderNo ?? '').includes(numberText));
++}

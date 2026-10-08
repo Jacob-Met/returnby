@@ -1,0 +1,64 @@
+2026-10-08T12:15:41.039Z pw:browser <launching> /snap/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-uGk05L --remote-debugging-pipe --no-startup-window
+2026-10-08T12:15:41.185Z pw:browser <launched> pid=2402068
+2026-10-08T12:15:44.706Z pw:browser [pid=2402068][err] [2402068:2402564:1008/121544.699479:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+2026-10-08T12:15:44.708Z pw:browser [pid=2402068][err] [2402068:2402564:1008/121544.700723:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+2026-10-08T12:15:45.179Z pw:browser [pid=2402068][err] [2402068:2402564:1008/121545.179325:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+2026-10-08T12:15:45.449Z pw:browser [pid=2402068][err] [2402068:2402068:1008/121545.448750:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+2026-10-08T12:15:45.449Z pw:browser [pid=2402068][err] [2402068:2402068:1008/121545.448798:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+2026-10-08T12:15:45.450Z pw:browser [pid=2402068][err] [2402068:2402564:1008/121545.450525:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+2026-10-08T12:15:45.483Z pw:browser [pid=2402068][err] [2402068:2402068:1008/121545.483019:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+2026-10-08T12:15:45.510Z pw:browser [pid=2402068][err] [2402068:2402068:1008/121545.510135:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+2026-10-08T12:15:45.551Z pw:browser [pid=2402068][err] [2402068:2402564:1008/121545.551602:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+2026-10-08T12:15:45.554Z pw:browser [pid=2402068][err] [2402068:2402564:1008/121545.552813:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+2026-10-08T12:15:45.562Z pw:browser [pid=2402068][err] [2402068:2402068:1008/121545.560069:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+2026-10-08T12:15:45.562Z pw:browser [pid=2402068][err] [2402068:2402068:1008/121545.560177:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+2026-10-08T12:15:45.573Z pw:browser [pid=2402068][err] [2402068:2402564:1008/121545.563476:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+2026-10-08T12:15:45.573Z pw:browser [pid=2402068][err] [2402068:2402068:1008/121545.564987:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+2026-10-08T12:15:45.573Z pw:browser [pid=2402068][err] [2402068:2402564:1008/121545.565069:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+2026-10-08T12:15:45.573Z pw:browser [pid=2402068][err] [2402068:2402068:1008/121545.565631:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+2026-10-08T12:15:48.985Z pw:browser [pid=2402068][err] [1008/121548.973548:ERROR:third_party/crashpad/crashpad/util/linux/ptracer.cc:605] ptrace: Input/output error (5)
+2026-10-08T12:15:48.986Z pw:browser [pid=2402068][err] [1008/121548.976367:ERROR:third_party/crashpad/crashpad/util/linux/ptracer.cc:605] ptrace: Input/output error (5)
+2026-10-08T12:15:48.990Z pw:browser [pid=2402068][err] [1008/121548.976746:ERROR:third_party/crashpad/crashpad/util/linux/ptracer.cc:605] ptrace: Input/output error (5)
+2026-10-08T12:15:48.990Z pw:browser [pid=2402068][err] [1008/121548.976861:ERROR:third_party/crashpad/crashpad/util/linux/ptracer.cc:605] ptrace: Input/output error (5)
+2026-10-08T12:15:49.088Z pw:browser [pid=2402068][err] [1008/121549.083319:ERROR:third_party/crashpad/crashpad/snapshot/elf/elf_dynamic_array_reader.h:64] tag not found
+{
+  "status": "failed",
+  "browser": "153.0.8010.47",
+  "checks": {},
+  "downloads": [],
+  "browserErrors": [],
+  "externalRequests": [],
+  "error": "page.goto: net::ERR_INSUFFICIENT_RESOURCES at http://127.0.0.1:42435/baseline/\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:42435/baseline/\", waiting until \"networkidle\"\u001b[22m\n\n    at open (/tmp/returnby-lookup-965d2e86e979/check_order_search_browser_guarded.mjs:62:14)\n    at async file:///tmp/returnby-lookup-965d2e86e979/check_order_search_browser_guarded.mjs:88:22"
+}
+2026-10-08T12:15:49.216Z pw:browser [pid=2402068] <gracefully close start>
+2026-10-08T12:15:49.371Z pw:browser [pid=2402068][err] [1008/121549.370176:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:45] ptrace: No such process (3)
+2026-10-08T12:15:49.372Z pw:browser [pid=2402068][err] [1008/121549.370227:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:45] ptrace: No such process (3)
+2026-10-08T12:15:49.373Z pw:browser [pid=2402068][err] [1008/121549.370487:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:45] ptrace: No such process (3)
+2026-10-08T12:15:49.374Z pw:browser [pid=2402068][err] [1008/121549.370493:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:45] ptrace: No such process (3)
+2026-10-08T12:15:49.374Z pw:browser [pid=2402068][err] [1008/121549.370498:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:45] ptrace: No such process (3)
+2026-10-08T12:15:49.374Z pw:browser [pid=2402068][err] [1008/121549.370503:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:45] ptrace: No such process (3)
+2026-10-08T12:15:49.374Z pw:browser [pid=2402068][err] [1008/121549.370509:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:45] ptrace: No such process (3)
+2026-10-08T12:15:49.374Z pw:browser [pid=2402068][err] [1008/121549.370514:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:45] ptrace: No such process (3)
+2026-10-08T12:15:49.374Z pw:browser [pid=2402068][err] [1008/121549.370520:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:45] ptrace: No such process (3)
+2026-10-08T12:15:49.375Z pw:browser [pid=2402068][err] [1008/121549.370526:ERROR:third_party/crashpad/crashpad/handler/linux/exception_handler_server.cc:131] tgkill: No such process (3)
+2026-10-08T12:15:49.847Z pw:browser [pid=2402068] <process did exit: exitCode=0, signal=null>
+2026-10-08T12:15:49.850Z pw:browser [pid=2402068] starting temporary directories cleanup
+2026-10-08T12:15:49.867Z pw:browser [pid=2402068] finished temporary directories cleanup
+2026-10-08T12:15:49.867Z pw:browser [pid=2402068] <gracefully close end>
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.goto: net::ERR_INSUFFICIENT_RESOURCES at http://127.0.0.1:42435/baseline/
+Call log:
+[2m  - navigating to "http://127.0.0.1:42435/baseline/", waiting until "networkidle"[22m
+
+    at open (/tmp/returnby-lookup-965d2e86e979/check_order_search_browser_guarded.mjs:62:14)
+    at async file:///tmp/returnby-lookup-965d2e86e979/check_order_search_browser_guarded.mjs:88:22 {
+  log: [
+    '  - navigating to "http://127.0.0.1:42435/baseline/", waiting until "networkidle"'
+  ],
+  name: 'Error'
+}
+
+Node.js v22.22.1
