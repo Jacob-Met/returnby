@@ -1,0 +1,10 @@
+{
+  "archive_sha256": "41364430dc3cf49fd68015f97d713cd2ef8fb6b70203a9b9c9956b2198add194",
+  "manifest_sha256": "bb2c6d08ade8aeb49ae96b7b1ee13248907a3e829c191fa864b687186762b515",
+  "transferred_files": 31,
+  "source": "1fbd1fc26f98f788826333494c5330e0c2f939d7",
+  "tree": "abce32e4624ae5a24ef976a84a88955f3899b833",
+  "source_files_verified": 196,
+  "native_node": "v22.22.1",
+  "free": 800378880
+}

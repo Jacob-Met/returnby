@@ -1,0 +1,30 @@
+{
+  "observed_utc": "2026-10-08T12:26:15.100868+00:00",
+  "node": "v24.19.0",
+  "platform": "linux/x64",
+  "package_lock_sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+  "packages": {
+    "typescript": {
+      "version": "5.9.3",
+      "package_json_sha256": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6",
+      "existing_path": "/workspace/scratch/8b336fefde84/returnby-combined-review/candidate/node_modules/typescript/package.json"
+    },
+    "vite": {
+      "version": "8.3.3",
+      "package_json_sha256": "334c8847b7f71cebb8a9c7e0fa56163941305ef13a970a15d4a43c7cdfef915b",
+      "existing_path": "/workspace/scratch/b55367d787c4/production/returnby/node_modules/vite/package.json"
+    },
+    "vitest": {
+      "version": "5.0.3",
+      "package_json_sha256": "df72ec137c86d8454d129967ed88c640012fa8db7950d58f79cee8a94df437f1",
+      "existing_path": "/workspace/scratch/b55367d787c4/production/returnby/node_modules/vitest/package.json"
+    }
+  },
+  "execution_environment": {
+    "TMPDIR": "/dev/shm/965d2e86e979-returnby-lookup/tmp",
+    "npm_config_cache": "/dev/shm/965d2e86e979-returnby-lookup/npm-cache",
+    "CI": "1",
+    "vite_cache": "/dev/shm/965d2e86e979-returnby-lookup/source/node_modules/.vite",
+    "dependency_installation": false
+  }
+}

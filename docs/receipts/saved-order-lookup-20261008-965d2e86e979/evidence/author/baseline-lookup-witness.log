@@ -1,0 +1,32 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> returnby@0.1.0 test
+> vitest run tests/order-search-ui.test.mjs -t existing urgency|store and order-number
+
+
+ RUN  v5.0.3 /dev/shm/965d2e86e979-returnby-lookup/source
+
+ ❯ tests/order-search-ui.test.mjs (8 tests | 1 failed | 6 skipped) 238ms
+   × store and order-number lookup intersect the chosen urgency filter without losing its state 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/order-search-ui.test.mjs > store and order-number lookup intersect the chosen urgency filter without losing its state
+TypeError: Cannot set properties of undefined (setting 'value')
+ ❯ Object.query tests/order-search-ui.test.mjs:24:50
+     22|   const dispatch = (id, type = 'click') => element(id).listeners.get(t…
+     23|   return { ...app, element, dispatch,
+     24|     query(value) { element('order-search').value = value; dispatch('or…
+       |                                                  ^
+     25|     visible() { return [...element('list').innerHTML.matchAll(/data-ed…
+     26|     counts() { return ['tracked-count', 'soon-count', 'expired-count']…
+ ❯ tests/order-search-ui.test.mjs:45:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed | 6 skipped (8)
+   Start at  21:04:11
+   Duration  452ms (tests 79%, transform 13%, import 6%, worker 1%)
+

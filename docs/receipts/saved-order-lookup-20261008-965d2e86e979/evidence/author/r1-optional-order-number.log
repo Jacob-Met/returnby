@@ -1,0 +1,34 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> returnby@0.1.0 test
+> vitest run tests/order-search.test.ts -t omitted optional
+
+
+ RUN  v5.0.3 /dev/shm/965d2e86e979-returnby-lookup/source
+
+ ❯ tests/order-search.test.ts (22 tests | 1 failed | 21 skipped) 8ms
+   ❯ saved-order lookup (22)
+     × accepts saved records with an omitted optional order number 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/order-search.test.ts > saved-order lookup > accepts saved records with an omitted optional order number
+TypeError: Cannot read properties of undefined (reading 'trim')
+ ❯ normalize src/order-search.ts:3:44
+      1| import type { Order } from './store';
+      2|
+      3| const normalize = (value: string) => value.trim().replace(/\s+/g, ' ')…
+       |                                            ^
+      4|
+      5| /** Match the displayed store or saved order number without changing e…
+ ❯ src/order-search.ts:12:32
+ ❯ tests/order-search.test.ts:33:43
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 21 skipped (22)
+   Start at  21:06:13
+   Duration  237ms (transform 72%, import 14%, tests 10%, worker 5%)
+

@@ -1,0 +1,17 @@
+python3 - <<'PY'
+import hashlib,json,subprocess
+from pathlib import Path
+s=Path('/dev/shm/965d2e86e979-returnby-lookup/source');head='1fbd1fc26f98f788826333494c5330e0c2f939d7';base='f6f030a040e14ba16cf6dc683921ba0d8e80369e'
+def g(*a):return subprocess.check_output(['git','-C',str(s),*a])
+def leaves(ref):
+ out=[]
+ for row in g('ls-tree','-r','-z',ref).split(b'\0'):
+  if not row:continue
+  meta,path=row.split(b'\t',1);mode,kind,h=meta.decode().split();out.append({'path':path.decode(),'mode':mode,'type':kind,'sha':h})
+ return sorted(out,key=lambda x:x['path'])
+before=leaves(base);after=leaves(head);bm={f['path']:f for f in before};am={f['path']:f for f in after};changed=[f for f in after if bm.get(f['path'])!=f];originalchanged=[f['path'] for f in before if am.get(f['path'])!=f]
+assert originalchanged==['README.md','index.html','src/main.ts'] and len(before)==191 and len(after)==196
+for f in after:
+ b=g('cat-file','blob',f['sha']);f['bytes']=len(b);f['sha256']=hashlib.sha256(b).hexdigest()
+print(json.dumps({'head':head,'tree':g('rev-parse',head+'^{tree}').decode().strip(),'base':base,'base_tree':g('rev-parse',base+'^{tree}').decode().strip(),'base_leaves':len(before),'head_leaves':len(after),'original_changed':originalchanged,'preserved_original_leaves':188,'changed':changed,'full_manifest':after}))
+PY

@@ -1,0 +1,26 @@
+{
+  "application_source": "1fbd1fc26f98f788826333494c5330e0c2f939d7",
+  "application_tree": "abce32e4624ae5a24ef976a84a88955f3899b833",
+  "harness_commit": "2657b9c7570891604dbfe2ff24cc6878cffcf6d7",
+  "harness_sha256": "e049723cfad6a500d0b133c0bfc56766f553c7c203d89f1b4116fa81c8e3f8d6",
+  "started_utc": "2026-10-08T12:15:39.096014+00:00",
+  "command": [
+    "node",
+    "/tmp/returnby-lookup-965d2e86e979/check_order_search_browser_guarded.mjs"
+  ],
+  "settings": {
+    "RETURNBY_PLAYWRIGHT": "/home/jacob/.cache/returnby-backup-8b336fefde84/node_modules/playwright/index.mjs",
+    "RETURNBY_CHROME": "/snap/bin/chromium",
+    "RETURNBY_BUILD": "/tmp/returnby-lookup-965d2e86e979/candidate",
+    "RETURNBY_BASELINE_BUILD": "/tmp/returnby-lookup-965d2e86e979/baseline",
+    "RETURNBY_EVIDENCE": "/tmp/returnby-lookup-965d2e86e979/browser-guarded",
+    "RETURNBY_DOWNLOAD_DIR": "/home/jacob/snap/chromium/common/returnby-lookup-965d2e86e979",
+    "DEBUG": "pw:browser"
+  },
+  "exit_code": 1,
+  "elapsed_s": 10.971,
+  "log_sha256": "4319d626a9aa1f4e3627b2a3e0d383b46408f5bb31827f7fb8aac9a552c022a8",
+  "log_bytes": 9917,
+  "source_files_unchanged": 196,
+  "free": 795209728
+}

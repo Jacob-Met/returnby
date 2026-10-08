@@ -1,0 +1,41 @@
+{
+  "format": "returnby-lookup-independent-source-review/1",
+  "reviewer": "/root/production",
+  "reviewed_at": "2026-10-08T12:22:22.424Z",
+  "status": "ACCEPTED_SOURCE_ONLY",
+  "application_commit": "1fbd1fc26f98f788826333494c5330e0c2f939d7",
+  "application_tree": "abce32e4624ae5a24ef976a84a88955f3899b833",
+  "local_baseline": "f6f030a040e14ba16cf6dc683921ba0d8e80369e",
+  "baseline_tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+  "canonical_pr20_head": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "canonical_pr20_tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+  "pr20_state_at_read": "open",
+  "current_main_at_read": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "current_main_tree_at_read": "ab4534a2e1afdace5d27a6079012c776c0e66f70",
+  "boundary": "Accepts lookup source against the exact PR20 receiving tree. Does not qualify the distinct current-main composition, published integration, or browser results.",
+  "source_proofs": [
+    "196 candidate Git leaves received; 188 unchanged original leaves preserve exact blobs and modes.",
+    "Only README.md, index.html and src/main.ts change from the 191-leaf baseline; five lookup/test/harness leaves are additive.",
+    "All main.ts text outside render and seven declared search imports/bindings/listeners is byte-identical.",
+    "Deadline sort, global counters, date-filter state, card markup and identity attributes remain byte-identical.",
+    "HTML outside the search control and README outside the lookup section remain byte-identical.",
+    "Harness-only successor 2657b9c7 changes tools/check_order_search_browser.mjs only; application bytes remain this accepted freeze."
+  ],
+  "reviewed_behaviors": [
+    "Search is a literal case/whitespace-normalized merchant or optional order-number substring; missing orderNo is safe, leading # is optional for number lookup, and a bare # cannot qualify empty numbers.",
+    "Lookup intersects the date filter after global deadline sorting and counter calculation; hidden rows cannot change the tracker-wide counts.",
+    "Query text is never interpolated as HTML. New DOM IDs are unique; input, clear and status bindings match the rendered controls.",
+    "Save and Remove still fresh-read the full store. Removal validates the exact displayed target and preserves unrelated or hidden records.",
+    "The editor receives the full orders collection and rerenders after commit; a row can leave the current search without losing its stored record.",
+    "Backup and batch calendar retain their existing full-store/date-filter inputs. Lookup does not narrow exported backup or calendar records.",
+    "Storage failures disable lookup with an honest unavailable state; the retry path retains the query.",
+    "CSS additions are scoped. Existing loaded-tracker caching and cross-tab refresh semantics are unchanged."
+  ],
+  "must_fix_findings": [],
+  "product_tests_executed_by_reviewer": 0,
+  "browser_tests_executed_by_reviewer": 0,
+  "producer_results": "Producer-reported 231 tests/build and later Mac browser outcomes are separate receiving evidence and were not executed by this reviewer.",
+  "instrument_corrections": [
+    "An output-limited read of the full manifest was repeated with sufficient output budget; source and proof commands were not modified by that read correction."
+  ]
+}

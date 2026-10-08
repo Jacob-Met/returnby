@@ -1,0 +1,108 @@
+{
+  "format": "returnby-saved-order-lookup-receiving/1",
+  "scope_comment": "https://github.com/Jacob-Met/returnby/issues/8#issuecomment-6059410633",
+  "canonical_parent": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "canonical_parent_tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+  "local_surrogate_parent": "f6f030a040e14ba16cf6dc683921ba0d8e80369e",
+  "application_source": "1fbd1fc26f98f788826333494c5330e0c2f939d7",
+  "application_tree": "abce32e4624ae5a24ef976a84a88955f3899b833",
+  "browser_harness_source": "2657b9c7570891604dbfe2ff24cc6878cffcf6d7",
+  "browser_harness_tree": "0e4d1a8b9df8a6986057d2188fa9c704372d56ae",
+  "r1_source": "42c1d5c9e5fa98b71fe503105271f01e2a920c93",
+  "r1_tree": "1239068865ae1e7190f8514e53ad2b073c0cddb8",
+  "source_changes": [
+    "M\tREADME.md",
+    "M\tindex.html",
+    "M\tsrc/main.ts",
+    "A\tsrc/order-search.css",
+    "A\tsrc/order-search.ts",
+    "A\ttests/order-search-ui.test.mjs",
+    "A\ttests/order-search.test.ts",
+    "A\ttools/check_order_search_browser.mjs"
+  ],
+  "original_leaves": 191,
+  "unchanged_original_leaves": 188,
+  "application_freeze_leaves": 196,
+  "native": {
+    "baseline": {
+      "tests": 201,
+      "status": "pass",
+      "build": "pass"
+    },
+    "candidate": {
+      "tests": 231,
+      "original_tests": 201,
+      "matcher_tests": 22,
+      "main_handler_tests": 8,
+      "status": "pass",
+      "build": "pass"
+    },
+    "feature_absence_witness": {
+      "source": "canonical_parent",
+      "passed": 1,
+      "failed": 1,
+      "not_selected": 6,
+      "classification": "New lookup capability absent; original urgency/filter/count/storage control passes."
+    },
+    "r1_optional_number": {
+      "failed": 1,
+      "not_selected": 21,
+      "classification": "Temporary candidate omitted the existing optional Order.orderNo contract. Strict typecheck and actual native control refuse; repaired with an empty-string fallback."
+    }
+  },
+  "browser": {
+    "application_source": "1fbd1fc26f98f788826333494c5330e0c2f939d7",
+    "harness_source": "2657b9c7570891604dbfe2ff24cc6878cffcf6d7",
+    "runtime": "Mac Chromium 151.0.7922.34, Playwright 1.62.1, revision 1234",
+    "candidate_groups": 6,
+    "baseline_control": true,
+    "status": "pass",
+    "elapsed_seconds": 6.036,
+    "browser_errors": 0,
+    "external_requests": 0,
+    "viewport": {
+      "desktop": [
+        1440,
+        1000
+      ],
+      "phone": [
+        390,
+        844
+      ]
+    },
+    "phone_overflow": false,
+    "downloaded_artifacts": [
+      "evidence/browser/mac/all-orders-backup.json",
+      "evidence/browser/mac/reviewed-all-reminders.ics"
+    ],
+    "runtime_files_verified_before_after": 9,
+    "limitations": [
+      "The 10,000-record control executes the matcher in native tests; it is not a 10,000-card DOM performance benchmark.",
+      "The browser result qualifies exact local production builds, not a deployed site or a calendar application import."
+    ]
+  },
+  "peer": {
+    "status": "ACCEPTED_SOURCE_ONLY",
+    "accepted_source": "1fbd1fc26f98f788826333494c5330e0c2f939d7",
+    "manifest_sha256": "ca6702181b3ea42ebe1b256c82b5aba1cfa1178c5658e96e07ddf52c46dee717",
+    "disposition_sha256": "c93b6013f632fb50b902dadd5b032f435b54b26460522a47d95f06672b6d9a9b",
+    "product_tests_executed_by_peer": 0
+  },
+  "evidence": {
+    "files": 48,
+    "manifest_sha256": "cdb8c67bb49e590550132600e3152c3a0ee2362c0f13e7689f147abbdfb0ce3f",
+    "transfer_archive_sha256": "b798d05fe57dcddaaac3a94549bb53afd054f147bac6b2982ef15966227ae197",
+    "native_source_prefix": "ThinkPad /tmp/returnby-lookup-965d2e86e979",
+    "native_browser_prefix": "Mac /tmp/returnby-lookup-965d2e86e979"
+  },
+  "integration": {
+    "route": "Stacked on open PR #20 for the existing #8/#10 receiver.",
+    "later_inputs": [
+      "main #17 date refresh/focus",
+      "deliberately deferred parser #6"
+    ],
+    "main_at_last_read": "3913697f70a31d73e8fe7d02b686b306830c24db",
+    "deployment": false,
+    "owner_refs_modified": false
+  }
+}

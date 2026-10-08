@@ -1,0 +1,24 @@
+{
+  "source": "1fbd1fc26f98f788826333494c5330e0c2f939d7",
+  "tree": "abce32e4624ae5a24ef976a84a88955f3899b833",
+  "started_utc": "2026-10-08T12:14:10.509905+00:00",
+  "command": [
+    "node",
+    "/tmp/returnby-lookup-965d2e86e979/source/tools/check_order_search_browser.mjs"
+  ],
+  "settings": {
+    "RETURNBY_PLAYWRIGHT": "/home/jacob/.cache/returnby-backup-8b336fefde84/node_modules/playwright/index.mjs",
+    "RETURNBY_CHROME": "/snap/bin/chromium",
+    "RETURNBY_BUILD": "/tmp/returnby-lookup-965d2e86e979/candidate",
+    "RETURNBY_BASELINE_BUILD": "/tmp/returnby-lookup-965d2e86e979/baseline",
+    "RETURNBY_EVIDENCE": "/tmp/returnby-lookup-965d2e86e979/browser",
+    "RETURNBY_DOWNLOAD_DIR": "/home/jacob/snap/chromium/common/returnby-lookup-965d2e86e979"
+  },
+  "exit_code": 1,
+  "elapsed_s": 9.226,
+  "log_sha256": "ba59cbbca2f3887201c6859122a787c5e93a0064035d3549f4e8715774cece00",
+  "log_bytes": 1253,
+  "source_files_unchanged": 196,
+  "transferred_files_unchanged": 31,
+  "free": 796438528
+}

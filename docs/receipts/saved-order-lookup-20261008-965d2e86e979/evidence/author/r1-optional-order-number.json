@@ -1,0 +1,16 @@
+{
+  "source": "42c1d5c9e5fa98b71fe503105271f01e2a920c93",
+  "tree": "1239068865ae1e7190f8514e53ad2b073c0cddb8",
+  "command": [
+    "npm",
+    "test",
+    "--",
+    "tests/order-search.test.ts",
+    "-t",
+    "omitted optional"
+  ],
+  "rc": 1,
+  "log_sha256": "f92f3855f20115b183e649c1deede11382c9bdb68a5f47144701bf5e615fcbad",
+  "harness_sha256": "2a40761a5edb48b8e41afb5327fa45f972e53d44e778a378da1b0897e9d50004",
+  "classification": "New candidate missed the preexisting optional Order.orderNo contract; native typecheck and runtime refusal are retained before repair."
+}

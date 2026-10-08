@@ -1,0 +1,45 @@
+python3 - <<'PY'
+import datetime,hashlib,json,subprocess
+from pathlib import Path
+s=Path('/dev/shm/965d2e86e979-returnby-lookup/source');base='f6f030a040e14ba16cf6dc683921ba0d8e80369e';head='1fbd1fc26f98f788826333494c5330e0c2f939d7'
+def git(*a):return subprocess.check_output(['git','-C',str(s),*a])
+def read(ref,path):return git('show',ref+':'+path).decode()
+old=read(base,'src/main.ts');new=read(head,'src/main.ts')
+def no_render(text):
+ start=text.index('function render() {')
+ end=text.index("list.addEventListener('click',",start)
+ return text[:start]+text[end:]
+clean=no_render(new)
+additions=[
+ "import './order-search.css';\n",
+ "import { createOrderMatcher } from './order-search';\n",
+ "const orderSearch = $<HTMLInputElement>('#order-search');\n",
+ "const clearSearch = $<HTMLButtonElement>('#clear-search');\n",
+ "const searchStatus = $<HTMLParagraphElement>('#search-status');\n",
+ "orderSearch.addEventListener('input', render);\n",
+ "clearSearch.addEventListener('click', () => { orderSearch.value = ''; render(); orderSearch.focus(); });\n"]
+for span in additions:
+ assert clean.count(span)==1
+ clean=clean.replace(span,'')
+assert clean==no_render(old)
+before_counts=old[old.index('  const all=orders.map'):old.index('  const rows=')]
+after_counts=new[new.index('  const all=orders.map'):new.index('  const matches =')]
+assert before_counts==after_counts
+def cards(text):
+ start=text.index('  list.innerHTML=rows.map')
+ return text[start:text.index("list.addEventListener('click',",start)]
+assert cards(old)==cards(new)
+old_index=read(base,'index.html');new_index=read(head,'index.html')
+start=new_index.index('<div class="tracker-search"')
+end=new_index.index('<p id="edit-feedback"',start)
+assert new_index[:start]+new_index[end:]==old_index
+for name in ('order-search','clear-search','order-search-help','search-status'):
+ assert new_index.count('id="'+name+'"')==1
+old_readme=read(base,'README.md');new_readme=read(head,'README.md')
+start=new_readme.index('## Find a saved return\n');end=new_readme.index('## Export several calendar reminders\n',start)
+assert new_readme[:start]+new_readme[end:]==old_readme
+successor=git('rev-parse','2657b9c7').decode().strip()
+delta=git('diff','--name-only',head,successor).decode().splitlines()
+assert delta==['tools/check_order_search_browser.mjs']
+print(json.dumps({'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base':base,'candidate':head,'everythingOutsideRenderAndSevenDeclaredBindingsByteIdentical':True,'deadlineSortGlobalCountsAndDateFilterStateByteIdentical':True,'cardMarkupAndIdentityAttributesByteIdentical':True,'indexOutsideSearchBlockByteIdentical':True,'readmeOutsideLookupSectionByteIdentical':True,'uniqueSearchDomIds':4,'harnessOnlySuccessor':successor,'harnessOnlySuccessorTree':git('rev-parse',successor+'^{tree}').decode().strip(),'harnessOnlySuccessorChangedFiles':delta,'productTestsExecutedByThisReview':0}))
+PY

@@ -1,0 +1,13 @@
+import type { Order } from './store';
+
+const normalize = (value: string) => value.trim().replace(/\s+/g, ' ').toLowerCase();
+
+/** Match the displayed store or saved order number without changing either field. */
+export function createOrderMatcher(query: string): (order: Pick<Order, 'merchant' | 'orderNo'>) => boolean {
+  const text = normalize(query);
+  if (!text) return () => true;
+  // Cards display a leading # even when the saved number does not contain it.
+  const numberText = text.replace(/^#\s*/, '');
+  return order => normalize(order.merchant || 'Unknown store').includes(text)
+    || (Boolean(numberText) && normalize(order.orderNo).includes(numberText));
+}
