@@ -14,6 +14,21 @@ The editor accepts real dates from years 1000–9999 and positive whole-day wind
 
 An unsuccessful read or save keeps both the old saved data and your edit draft. If this order changed or was removed while the editor was open, saving is refused and the tracker refreshes; cancel and reopen the editor to review its latest saved version. New or changed unrelated orders are preserved by reading the saved tracker immediately before committing. This check does not create a transaction across simultaneous writes in different tabs. Your separate new-order draft and pasted text stay in place throughout editing.
 
+## Using more than one tab
+
+Saving a new reviewed order reads the latest saved tracker first, preserving
+orders that another tab added, corrected or removed. Removing a return also
+reads the latest tracker and checks that the selected saved return still matches
+the card you saw. If it changed or disappeared, nothing is removed; the refreshed
+tracker lets you review the current state before trying again. Your separate
+new-order draft stays in place.
+
+If the latest saved tracker cannot be read, use **Retry loading saved returns**
+before saving or removing. A failed write keeps the draft, and the next attempt
+reads the saved tracker again. These checks protect already observed changes;
+they do not make simultaneous writes in different tabs transactional. **Clear
+saved returns** retains its existing confirmation and reset behavior.
+
 ## Run and verify
 
 ```bash
@@ -22,6 +37,11 @@ npm test
 npm run build
 npm run dev
 ```
+
+`node --test tools/check_stale_browser.mjs` runs five real two-tab controls
+against the production build in `dist/`. It accepts the same optional
+`RETURNBY_PLAYWRIGHT` and `RETURNBY_CHROME` paths as the editor harness;
+`RETURNBY_BUILD` and `RETURNBY_STALE_OUTPUT` select the build and receipt folders.
 
 The optional Raider browser acceptance and desktop/phone captures run through `py -3 tools/capture_returnby.py` (requires Playwright and Chromium/Chrome). The sample orders use fictional merchants; the parser's policy table is a convenience, not a guarantee from any retailer. Users should confirm a deadline with the store's current terms.
 
