@@ -60,10 +60,12 @@ preview.addEventListener('submit', (e) => {
   const orderDate = String(f.get('orderDate') || '');
   if (!orderDate) { (preview.querySelector('[name=orderDate]') as HTMLInputElement).focus(); return; }
   const days = Number(f.get('windowDays')) || 30;
+  const merchant = String(f.get('merchant') || '');
+  const pol = lookup(merchant);
   const next: Order[] = [...orders, {
-    id: crypto.randomUUID(), merchant: String(f.get('merchant') || ''), orderNo: String(f.get('orderNo') || ''),
+    id: crypto.randomUUID(), merchant, orderNo: String(f.get('orderNo') || ''),
     total: String(f.get('total') || ''), orderDate, windowDays: days,
-    windowSource: String(days) === preview.dataset.days ? (preview.dataset.source as Order['windowSource']) : 'user',
+    windowSource: days === pol.days ? pol.source : 'user',
     createdAt: new Date().toISOString(),
   }];
   if (!persistOrders(next)) return;
