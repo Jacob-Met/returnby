@@ -1,0 +1,87 @@
+name: deadline-overview-browser
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'data/**'
+      - 'index.html'
+      - 'package*.json'
+      - 'tsconfig.json'
+      - 'tools/check_deadline_overview_browser.mjs'
+      - 'tools/fixtures/deadline-overview-cases.json'
+      - '.github/workflows/deadline-overview-browser.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'data/**'
+      - 'index.html'
+      - 'package*.json'
+      - 'tsconfig.json'
+      - 'tools/check_deadline_overview_browser.mjs'
+      - 'tools/fixtures/deadline-overview-cases.json'
+      - '.github/workflows/deadline-overview-browser.yml'
+permissions:
+  contents: read
+concurrency:
+  group: deadline-overview-browser-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  receive-overview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # Resolved maintained v4.
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # Resolved maintained v4.
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install the existing locked project dependencies
+        run: npm ci
+      - name: Build the actual strict TypeScript browser application
+        run: npm run build
+      - name: Require the installed system browser
+        id: browser
+        shell: bash
+        run: |
+          set -euo pipefail
+          RETURNBY_OVERVIEW_BROWSER=
+          for RETURNBY_OVERVIEW_BROWSER_NAME in google-chrome google-chrome-stable chromium chromium-browser; do
+            if command -v "${RETURNBY_OVERVIEW_BROWSER_NAME}" >/dev/null 2>&1; then
+              RETURNBY_OVERVIEW_BROWSER="$(command -v "${RETURNBY_OVERVIEW_BROWSER_NAME}")"
+              break
+            fi
+          done
+          [[ -n "${RETURNBY_OVERVIEW_BROWSER}" ]] || { echo "An installed Chrome/Chromium is required."; exit 1; }
+          node --version
+          "${RETURNBY_OVERVIEW_BROWSER}" --version
+          printf 'executable=%s\n' "${RETURNBY_OVERVIEW_BROWSER}" >> "${GITHUB_OUTPUT}"
+      - name: Qualify fonts for the literal multilingual receiving fixtures
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends fonts-noto-cjk
+          dpkg-query -W -f='${binary:Package} ${Version}\n' fonts-noto-cjk
+          command -v fc-match
+          RETURNBY_OVERVIEW_JP_FONT_FAMILY="$(fc-match --format='%{family}\n' 'sans-serif:lang=ja')"
+          RETURNBY_OVERVIEW_JP_FONT_FILE="$(fc-match --format='%{file}\n' 'sans-serif:lang=ja')"
+          printf 'Japanese font family: %s\nJapanese font file: %s\n' \
+            "${RETURNBY_OVERVIEW_JP_FONT_FAMILY}" "${RETURNBY_OVERVIEW_JP_FONT_FILE}"
+          [[ "${RETURNBY_OVERVIEW_JP_FONT_FAMILY}" == *"Noto Sans CJK JP"* ]]
+          [[ -f "${RETURNBY_OVERVIEW_JP_FONT_FILE}" ]]
+          dpkg-query -S -- "${RETURNBY_OVERVIEW_JP_FONT_FILE}"
+          sha256sum -- "${RETURNBY_OVERVIEW_JP_FONT_FILE}"
+      - name: Receive native saved orders, the monthly overview and unchanged owner flows
+        run: 'node tools/check_deadline_overview_browser.mjs --browser "${{ steps.browser.outputs.executable }}" --output "${RUNNER_TEMP}/deadline-overview-receiving"'
+      - name: Preserve bounded native records, calendar handoff, screenshots and report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # Previously received official v4.
+        with:
+          name: deadline-overview-receiving-${{ github.run_id }}
+          path: ${{ runner.temp }}/deadline-overview-receiving
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 6
