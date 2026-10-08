@@ -1,0 +1,60 @@
+{
+  "accepted": true,
+  "base_remote_commit": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "base_remote_tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+  "base_local_surrogate": "f6f030a040e14ba16cf6dc683921ba0d8e80369e",
+  "existing_leaves": 191,
+  "unchanged_leaves_and_modes": 188,
+  "changed_existing_paths": [
+    "README.md",
+    "index.html",
+    "src/main.ts"
+  ],
+  "new_product_test_and_receiver_paths": [
+    "src/removal-undo.ts",
+    "src/removal-undo-ui.ts",
+    "src/removal-undo.css",
+    "tests/removal-undo.test.ts",
+    "tests/removal-undo-actions.test.mjs",
+    "tools/check_removal_undo_browser.mjs"
+  ],
+  "files": {
+    "README.md": {
+      "sha256": "7bb7e42c517930b166171c168c75fdfa08492611ff5e42d248d76d97c4c4de33",
+      "bytes": 13070
+    },
+    "index.html": {
+      "sha256": "cd8fada79c79f889085fea6b3ebe807646dfb172bc28cbab4e1418505cb9eeba",
+      "bytes": 10473
+    },
+    "src/main.ts": {
+      "sha256": "4a4803599a99b1516560176cba1f9dbbda9f54fb189eaaeb8a62a354d250a6d2",
+      "bytes": 10487
+    },
+    "src/removal-undo.ts": {
+      "sha256": "c5a885be25b70885e284d76635cb7e453ae1be2c04ce87ee38f22adfd69d9d75",
+      "bytes": 2069
+    },
+    "src/removal-undo-ui.ts": {
+      "sha256": "5590981d5a7f4fb714abc09a86cd498606ae116f7956761d53b21cf6d47d3670",
+      "bytes": 3046
+    },
+    "src/removal-undo.css": {
+      "sha256": "4f8c64e51f0485488f5d1b69cd60a6f3d5782e600d7f30088361bd5c5e1a3dfe",
+      "bytes": 646
+    },
+    "tests/removal-undo.test.ts": {
+      "sha256": "75c0cd367a18ba612d6516df7b58e25f1d83cbf63ca92426c0365afbdace98d4",
+      "bytes": 3163
+    },
+    "tests/removal-undo-actions.test.mjs": {
+      "sha256": "dde99b7427b389e0cf8bd8bd33da1c181488a1a437fe785e7985431576eb39ea",
+      "bytes": 5338
+    },
+    "tools/check_removal_undo_browser.mjs": {
+      "sha256": "cfcf7af3eb62406e03491eaea7bd92b98581f10867c46b81155ff5f4e8c05cd5",
+      "bytes": 11922
+    }
+  },
+  "disposition": "Ready for the existing #8/#10 owner, stacked on #20. Lookup #22, CSV, main #17 day refresh and deferred #6 parser are separate composition inputs."
+}

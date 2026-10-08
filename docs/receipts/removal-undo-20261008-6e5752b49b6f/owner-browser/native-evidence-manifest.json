@@ -1,0 +1,42 @@
+{
+  "receiving-undo/browser-r1/desktop-undo.png": {
+    "sha256": "ecc0ea12dc5cc0d727c7bf7e7b6a6c433b0a9d6de098915ae6fec9405faef6ca",
+    "bytes": 101465
+  },
+  "receiving-undo/browser-r1/phone-long-label.png": {
+    "sha256": "76b0dc3fc9df007ac9983abd6cc9880249d80821c1c584ecde46957d629399df",
+    "bytes": 53265
+  },
+  "receiving-undo/browser-r1/phone-undo.png": {
+    "sha256": "aecff66118c2e333ee8f0ef01bb6633138547ad22f75e9081fd75e912ea2b037",
+    "bytes": 60165
+  },
+  "receiving-undo/browser-r1/receiving.json": {
+    "sha256": "fcc9c3a8ab4ba3e828cc586c74396affde946f3f3d1974e518e2484e1b96b895",
+    "bytes": 4683
+  },
+  "receiving-undo/browser-r1.log": {
+    "sha256": "0dc02969e290734cfa80e7f425b645a774153cea7ca94bdfeda8f91aba69cc5b",
+    "bytes": 151
+  },
+  "receiving-undo/mac-admission.json": {
+    "sha256": "72ce71fcd6e6089d63540c0bc9c76711661c3e6159abf0e5b0be52a7a60fa90f",
+    "bytes": 370
+  },
+  "receiving-undo/mac-browser-r1.json": {
+    "sha256": "c2b543d5895182d34b1d6b1cf29419de72cf363517033dc75f4259d911c08a1f",
+    "bytes": 1081
+  },
+  "receiving-undo/mac-transfer-manifest.json": {
+    "sha256": "037f4bc0a60a240acf5284f1432186d5549259a6361f8e4e7ef4f18ff6e6e198",
+    "bytes": 2118
+  },
+  "admit-transfer.py": {
+    "sha256": "6054c0d947355cd59b34dbe298e5a8988865dab7f061029af660536be3e7ddc5",
+    "bytes": 1634
+  },
+  "run-browser.py": {
+    "sha256": "82c52fe27c3bbf14355dae5eaeeb76fd73688e1c23529444e5cce3b5f9ade98a",
+    "bytes": 2337
+  }
+}

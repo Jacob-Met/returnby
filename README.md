@@ -62,6 +62,36 @@ The importer checks the entire versioned document before showing a plan. Unsuppo
 
 The preview is recalculated against readable browser storage before committing. If saved orders changed since review, the updated plan requires another Import click. Storage failures preserve the preview for retry. This does not add continuous cross-tab synchronization or a transaction spanning simultaneous writes from different tabs; avoid editing the tracker in another tab during import. The existing tracker controls and single-order calendar export keep their behavior.
 
+## Undo a removal
+
+After **Remove** succeeds, choose **Undo removal** in the tracker to restore that
+one return with its original reviewed details, saved ID and creation time. Your
+new-order draft stays in place. The current date filter remains selected, so a
+restored return may be outside the visible filter.
+
+The most recent successful removal is kept in this page's memory, with no short
+countdown. **Keep removed** discards that recovery; another successful removal,
+a successful confirmed **Clear saved returns**, or reloading/closing the page
+also ends it. A cancelled clear or a failed remove/save does not discard it.
+Undo does not change calendar files you already imported.
+
+Undo reads current saved returns and restores only the missing record, preserving
+newer unrelated changes. If an exact copy is already saved, it refreshes the
+tracker without writing a duplicate. A changed record with the same ID, or
+duplicate IDs, blocks Undo instead of overwriting saved data. The recovery stays
+available for retry or **Keep removed**. If browser storage fails, address the
+storage problem; use **Retry loading saved returns** when offered, then choose
+**Undo removal** again. Retrying a load does not discard the removed return.
+As with other tracker actions, this reread does not make simultaneous writes
+in separate tabs transactional.
+
+After building, `node tools/check_removal_undo_browser.mjs` checks the real
+controls with fictional returns and fresh browser profiles. Set
+`RETURNBY_PLAYWRIGHT` and `RETURNBY_CHROME` for an installed Playwright module
+and Chromium executable; `RETURNBY_BUILD` and `RETURNBY_UNDO_OUTPUT` select
+the build and receipt folders. The browser checks include keyboard recovery,
+draft retention, explicit storage retry, clear/reload lifetime and a 390px notice.
+
 ## Using more than one tab
 
 Saving a new reviewed order reads the latest saved tracker first, preserving
@@ -106,6 +136,7 @@ The saved-order browser acceptance runs with `node tools/check_edit_browser.mjs`
 - `src/backup.ts` / `src/backup-ui.ts`: versioned backup validation, duplicate/conflict planning and reviewed import/download controls.
 - `src/edit.ts` / `src/edit-ui.ts`: reviewed corrections with stable order identity and conflict/storage refusal.
 - `src/calendar-batch.ts` / `src/calendar-batch-ui.ts`: selected multi-return calendar review and fresh storage checks.
+- `src/removal-undo.ts` / `src/removal-undo-ui.ts`: last-removal recovery with current-storage planning, identity conflict refusal and explicit retry/dismiss controls.
 - `src/ics.ts`: calendar reminder generation.
 
 The app is browser-only; no AI runs in the page. The Devpost Learn planning documents are not completed interview output and are not represented as such.

@@ -1,0 +1,8 @@
+.removal-undo { min-width: 0; margin: 16px 0; padding: 16px; border: 1px solid #668b79; background: #203e35; color: #f2efe5; }
+.removal-undo h3 { margin: 0 0 8px; font: 21px/1.2 var(--serif); }
+.removal-undo p { margin: 8px 0; overflow-wrap: anywhere; font-size: 12px; line-height: 1.6; }
+.removal-undo .removal-description { font: 12px/1.6 var(--mono); }
+.removal-undo .action-row { flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; }
+.removal-undo .button { min-height: 44px; }
+.removal-undo .button-link { color: #f2efe5; }
+.removal-undo :focus-visible, .removal-undo #removal-status:focus { outline: 2px solid #f0b084; outline-offset: 4px; }

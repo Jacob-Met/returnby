@@ -2,6 +2,7 @@ import './style.css';
 import './backup.css';
 import './edit.css';
 import './calendar-batch.css';
+import './removal-undo.css';
 import { parse } from './parse';
 import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
@@ -11,6 +12,8 @@ import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
 import { bindCalendarBatch } from './calendar-batch-ui';
+import { captureRemoval } from './removal-undo';
+import { bindRemovalUndo } from './removal-undo-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
@@ -97,7 +100,11 @@ function removeOrder(id: string) {
     showStorageError('This saved return changed or could not be selected. Review the refreshed tracker before removing it.');
     return;
   }
-  if (persistOrders(current.filter(order => order.id !== id))) render();
+  const removal = captureRemoval(saved[0], current.indexOf(saved[0]));
+  if (persistOrders(current.filter(order => order.id !== id))) {
+    render();
+    removalUndo.remember(removal);
+  }
 }
 
 const h = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
@@ -173,7 +180,12 @@ list.addEventListener('click', (e) => {
 $('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);
 paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
 $('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
-$('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?') && persistOrders([], true)) render(); });
+$('#clear').addEventListener('click', () => {
+  if (confirm('Delete all saved returns?') && persistOrders([], true)) {
+    render();
+    removalUndo.clear();
+  }
+});
 storageRetry.addEventListener('click', reloadOrders);
 bindBackup({ read, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
 const orderEditor = bindOrderEditor({
@@ -183,4 +195,10 @@ const orderEditor = bindOrderEditor({
   refresh: reloadOrders,
 });
 bindCalendarBatch({ read: load, filter: () => filterMode });
+const removalUndo = bindRemovalUndo({
+  read: readCurrentOrders,
+  commit: next => { if (!persistOrders(next)) return false; render(); return true; },
+  refresh: current => { orders = current; render(); },
+  focusTracker: () => $(`#filter-${filterMode}`).focus(),
+});
 reloadOrders();

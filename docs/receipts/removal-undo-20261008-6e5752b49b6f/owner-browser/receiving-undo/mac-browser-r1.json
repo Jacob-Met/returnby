@@ -1,0 +1,22 @@
+{
+  "source_head": "28eecc07a6552a9d16da7feebd352db06ab7fcc8",
+  "application_head": "e6877263ae20b2eb8ecd27cc2014badb7d4206d3",
+  "command": [
+    "node",
+    "/tmp/returnby-undo-6e5752b49b6f-production/tools/check_removal_undo_browser.mjs"
+  ],
+  "node": "v26.3.0",
+  "exit_code": 0,
+  "elapsed_s": 2.1043651660438627,
+  "runtime_paths_and_hashes": {
+    "/Users/me/hamon-work-longwater-delivery-c945953fdeb7/node_modules/playwright/index.mjs": "a0f5715ea22354f922791a9c53dc012d5d5c067ff9cc4cd35ffb7cd272071a9f",
+    "/Users/me/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell": "7687bff7cb2db075f250e6d5848bbc8838cac3802ac3952a899c574f8eccab45",
+    "/opt/homebrew/Cellar/node/26.3.0/bin/node": "56694c81b093cc8da273fa017cf91765b3653e5f64f16727976ffaa87b2b6b31"
+  },
+  "runtime_unchanged": true,
+  "verified_source_and_build_files_before_after": 11,
+  "log_sha256": "0dc02969e290734cfa80e7f425b645a774153cea7ca94bdfeda8f91aba69cc5b",
+  "log_bytes": 151,
+  "free_after": 632803328,
+  "temporary_entries_after": []
+}

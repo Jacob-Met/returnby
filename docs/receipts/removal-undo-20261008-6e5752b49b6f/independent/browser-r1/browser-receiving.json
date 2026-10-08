@@ -1,0 +1,162 @@
+{
+  "reviewer": "estate-6e5752b49b6f/root",
+  "node": "v26.3.0",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "browser": "151.0.7922.34",
+  "browser_path": "/Users/me/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+  "browser_sha256": "7687bff7cb2db075f250e6d5848bbc8838cac3802ac3952a899c574f8eccab45",
+  "source_receiving": "e6877263ae20b2eb8ecd27cc2014badb7d4206d3",
+  "dist_path": "/tmp/returnby-undo-6e5752b49b6f-production/dist",
+  "runtime_sha256": {
+    "assets/index-C3kriZGw.js": "4a719e549bb9047c9b7ef18530e0ef4d54134ca030f2573a6f5e5e692633fa89",
+    "assets/index-WVSeeUEs.css": "ca16b1bd04d5862a085149baa2775897755c44333795cf936e736e516b3c3b3d",
+    "favicon.svg": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+    "index.html": "d2697abcb7a6accb3850b4a9c1e312cb240f7041ca545f09c98af5c82844bf44"
+  },
+  "cases": [
+    {
+      "name": "refused undo retries against real second-tab editing and new-order saving",
+      "passed": true,
+      "detail": {
+        "original": {
+          "id": "A",
+          "merchant": "Receiving <A> “shop”",
+          "orderNo": "REF-A",
+          "total": "12.50",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T00:00:00.000Z",
+          "extension": {
+            "original": [
+              "keep",
+              {
+                "value": 7
+              }
+            ],
+            "note": "界 🧭"
+          }
+        },
+        "fresh_before_retry": [
+          {
+            "id": "B",
+            "merchant": "Receiving <B> “shop”",
+            "orderNo": "REF-B",
+            "total": "12.50",
+            "orderDate": "2026-10-01",
+            "windowDays": 77,
+            "windowSource": "user",
+            "createdAt": "2026-10-01T00:00:00.000Z",
+            "extension": {
+              "original": [
+                "keep",
+                {
+                  "value": 7
+                }
+              ],
+              "note": "界 🧭"
+            }
+          },
+          {
+            "id": "8b96e2c6-493e-4839-8624-b58bfc5ee7bb",
+            "merchant": "Fresh authored store",
+            "orderNo": "ADDED-IN-SECOND-TAB",
+            "total": "13.00",
+            "orderDate": "2026-10-03",
+            "windowDays": 45,
+            "windowSource": "user",
+            "createdAt": "2026-10-08T13:20:56.987Z"
+          }
+        ],
+        "restored": [
+          {
+            "id": "A",
+            "merchant": "Receiving <A> “shop”",
+            "orderNo": "REF-A",
+            "total": "12.50",
+            "orderDate": "2026-10-01",
+            "windowDays": 30,
+            "windowSource": "user",
+            "createdAt": "2026-10-01T00:00:00.000Z",
+            "extension": {
+              "original": [
+                "keep",
+                {
+                  "value": 7
+                }
+              ],
+              "note": "界 🧭"
+            }
+          },
+          {
+            "id": "B",
+            "merchant": "Receiving <B> “shop”",
+            "orderNo": "REF-B",
+            "total": "12.50",
+            "orderDate": "2026-10-01",
+            "windowDays": 77,
+            "windowSource": "user",
+            "createdAt": "2026-10-01T00:00:00.000Z",
+            "extension": {
+              "original": [
+                "keep",
+                {
+                  "value": 7
+                }
+              ],
+              "note": "界 🧭"
+            }
+          },
+          {
+            "id": "8b96e2c6-493e-4839-8624-b58bfc5ee7bb",
+            "merchant": "Fresh authored store",
+            "orderNo": "ADDED-IN-SECOND-TAB",
+            "total": "13.00",
+            "orderDate": "2026-10-03",
+            "windowDays": 45,
+            "windowSource": "user",
+            "createdAt": "2026-10-08T13:20:56.987Z"
+          }
+        ],
+        "first_tab_write_attempts": 3,
+        "original_calendar_content_preserved_except_actual_generation_stamp": true,
+        "repeated_undo_does_not_write": true
+      }
+    },
+    {
+      "name": "equal same-ID content with reordered JSON keys finishes without a write",
+      "passed": true,
+      "detail": {
+        "saved_bytes_unchanged": true,
+        "write_attempts_including_original_remove": 1
+      }
+    },
+    {
+      "name": "conflicting current identity refuses without losing the pending recovery",
+      "passed": true,
+      "detail": {
+        "conflict_bytes_unchanged": true,
+        "later_explicit_retry_restores_original": true
+      }
+    }
+  ],
+  "downloads": [
+    {
+      "file": "calendar-before.ics",
+      "bytes": 389,
+      "sha256": "57b955c8cb800ffe3fb3e58c5d4af2ff861b1365c3af396276320d3e955018e5",
+      "suggested_filename": "return-Receiving-A-shop-.ics"
+    },
+    {
+      "file": "calendar-after.ics",
+      "bytes": 389,
+      "sha256": "fc507a2f81d23da02c071f4b899bfa9689645c1d7f1c3e5df3f96f70a55ace28",
+      "suggested_filename": "return-Receiving-A-shop-.ics"
+    }
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "passed": true,
+  "limits": "These scenarios preserve state observed at each fresh storage read; they do not establish atomic cross-tab transactions. Write refusal is an authored failure before the native setItem call."
+}
