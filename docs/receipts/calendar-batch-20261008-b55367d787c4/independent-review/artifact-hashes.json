@@ -1,0 +1,47 @@
+[
+  {
+    "path": "REVIEW.md",
+    "sha256": "d155a39383ace25eef9107c6417b087ae3727197298d7d98bf1f7d7ae94a26c1",
+    "bytes": 5503
+  },
+  {
+    "path": "browser-recovered-reminder.ics",
+    "sha256": "d93c8e8b91906001c138f0011716f07036c31461dfaeb9b2a7af6b370b9f33ac",
+    "bytes": 371
+  },
+  {
+    "path": "browser-review.json",
+    "sha256": "142d6fa8ba5cfcf6517bb268d39195f107675e236c253edcd3868a9f07d465b2",
+    "bytes": 1640
+  },
+  {
+    "path": "browser-review.log",
+    "sha256": "4ba2c5370f2d1d2ec3a4abe3adacb8e5bd8e5ff5988d630c54715a6ff0589ca3",
+    "bytes": 204
+  },
+  {
+    "path": "browser-review.mjs",
+    "sha256": "c8098e22423c66ecea35a45f29eac31c224b3489e2972249b745691fc6b69e74",
+    "bytes": 11181
+  },
+  {
+    "path": "model-review.json",
+    "sha256": "bd4bf643476514a163d1d5864ca255bac8373ef9a8e87f5d594402febfed3253",
+    "bytes": 1520
+  },
+  {
+    "path": "model-review.log",
+    "sha256": "0578e936fdceea66377e0af64ff6400bbd4bd83e474d171f0a53728180190fac",
+    "bytes": 396
+  },
+  {
+    "path": "model-review.mjs",
+    "sha256": "0ea57252dbffe58b734c9fdfcc4deda011021fc3051c8792d22721d8ab0ec479",
+    "bytes": 8311
+  },
+  {
+    "path": "provenance.json",
+    "sha256": "d04d4130c1453933a673a8437d53c272404f066fce5b4220e470e9671e3285e7",
+    "bytes": 2688
+  }
+]
