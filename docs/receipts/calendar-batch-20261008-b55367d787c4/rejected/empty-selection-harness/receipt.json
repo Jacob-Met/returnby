@@ -1,0 +1,18 @@
+{
+  "browser": "153.0.8010.0",
+  "checks": {
+    "baseline": {
+      "savedReturns": 2,
+      "individualExportControls": 2,
+      "batchExportControls": 0,
+      "downloadedEvents": 1
+    },
+    "filtered_selection_keyboard_unicode_single_event_identity_and_no_writes": true,
+    "empty_selection_select_all_cancel_escape_and_focus": true,
+    "real_second_tab_edit_refusal_reload_review_and_stable_uid": true
+  },
+  "errors": [],
+  "externalRequests": [],
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#calendar-select-none')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" id=\"calendar-select-none\" class=\"button button-link\">Clear selection</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at selectOnly (/workspace/scratch/b55367d787c4/production/returnby/tools/check_calendar_batch_browser.mjs:72:47)\n    at /workspace/scratch/b55367d787c4/production/returnby/tools/check_calendar_batch_browser.mjs:183:28",
+  "buildIndexSha256": "6450b757aa55b47d12705d92b0d19dbfcdd2d882260b802bcb1c31d2e2690691"
+}

@@ -1,0 +1,37 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ReturnBy//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:3c2b22d2-4066-4e54-b70f-6f98c04f70d8@returnby
+DTSTAMP:20261008T123456Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:Return deadline: Fictional Shop #SOON
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Return deadline: Fictional Shop #SOON
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2fd2866e-72c6-4088-ae74-4c7684997e92@returnby
+DTSTAMP:20261008T123456Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:Return deadline: Étoile 家具🛍️ Étoile 家具🛍️ Étoil
+ e 家具🛍️ Étoile 家具🛍️ Étoile 家具🛍️ Étoile 家具
+ 🛍️ Étoile 家具🛍️ Étoile 家具🛍️ Étoile 家具🛍️ 
+ Étoile 家具🛍️ Étoile 家具🛍️ Étoile 家具🛍️ <img src
+ ="https://not-requested.example/image"> SUMMARY:literal #UNICODE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Return deadline: Étoile 家具🛍️ Étoile 家具🛍️ É
+ toile 家具🛍️ Étoile 家具🛍️ Étoile 家具🛍️ Étoile 
+ 家具🛍️ Étoile 家具🛍️ Étoile 家具🛍️ Étoile 家具
+ 🛍️ Étoile 家具🛍️ Étoile 家具🛍️ Étoile 家具🛍️ 
+ <img src="https://not-requested.example/image"> SUMMARY:literal #UNICODE
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

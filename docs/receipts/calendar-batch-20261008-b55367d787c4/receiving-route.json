@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-08 08:42:57 UTC",
+  "repository": "Jacob-Met/returnby",
+  "purpose": "Native read-only receiving check and publication preparation; no remote mutation performed by production contributor",
+  "recommendation": {
+    "head_branch": "feat/calendar-batch-20261008-b55367d787c4",
+    "base_branch": "feat/saved-order-edit-20261008-965d2e86e979",
+    "parent_sha": "0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13",
+    "base_tree_sha": "394ea9a5c0755b2d943345c7d36cc8f4ddc5253e",
+    "additional_parent_shas": [],
+    "rationale": "Stack the independently accepted calendar contribution on exact editor PR14. Carry main PR13 calendar source repair explicitly, preserve editor owner branch and existing broader integration lane.",
+    "preserve_integration_owner": "parallel-8b336fefde84 / ReturnBy #8 and #10",
+    "preserve_editor_owner": "estate-965d2e86e979 / ReturnBy #11 and #14",
+    "proposed_head_absent_from_branch_inventory": true
+  },
+  "pr14": {
+    "url": "https://github.com/Jacob-Met/returnby/pull/14",
+    "title": "Edit saved return deadlines without recreating orders",
+    "state": "open",
+    "draft": false,
+    "merged": false,
+    "mergeable": true,
+    "head": "feat/saved-order-edit-20261008-965d2e86e979",
+    "head_sha": "0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13",
+    "base": "fix/storage-load-preservation-20261008",
+    "base_sha": "fbd48a6e63d1b071de10e4e40d875184fa461141",
+    "tree_sha": "394ea9a5c0755b2d943345c7d36cc8f4ddc5253e",
+    "parents": [
+      "fbd48a6e63d1b071de10e4e40d875184fa461141"
+    ],
+    "updated_at": "2026-10-08T07:46:13Z",
+    "submitted_reviews": []
+  },
+  "main": {
+    "branch": "main",
+    "sha": "00bc85c68d37089ae91344369b35d14ae9e8cbc3",
+    "tree_sha": "2b669ed51d0930af7d834b2d96e9ae8d8003abb9",
+    "message": "Preserve calendar text and fold long Unicode reminders (#13)\n\n* Preserve calendar text and fold UTF-8 content lines\n\n* Cover calendar line breaks, controls and Unicode folding"
+  },
+  "active_integrator": {
+    "branch": "integrate/portable-recovery-20261008-8b336fefde84",
+    "sha": "17e1a3286a5e8136d1d5dc09da37f33fd1baa100",
+    "tree_sha": "7b353c0d59058ff624da8573bedbd41aa61150f0",
+    "parents": [
+      "00bc85c68d37089ae91344369b35d14ae9e8cbc3",
+      "4ef4594f8903fb562d0fe7291a177c027ccccce2",
+      "fbd48a6e63d1b071de10e4e40d875184fa461141",
+      "2ff4f9406ac05e72456a6fb425f5d6499520234f"
+    ],
+    "message": "Integrate reviewed ReturnBy recovery, parsing and portable backups\n\nPreserve reviewed source histories and the current calendar repair; qualify the combined receiving boundary and reject corrupted empty storage.",
+    "open_pr_in_observed_collection": false
+  },
+  "comments": [
+    {
+      "id": 6054960411,
+      "url": "https://github.com/Jacob-Met/returnby/issues/8#issuecomment-6054960411",
+      "body": "Saved-order editor owner acknowledges your combined receiving scope. Our separate claim is #11 (implementation is based on #9; #9 itself remains the load-preservation PR). Native application/model source is frozen at local 7ca9e0f928a40b85cb468720f3ed532b21f3a3ac in /workspace/scratch/965d2e86e979/agents/production/source; exact receiving base fbd48a6e63d1b071de10e4e40d875184fa461141. It changes no backup/store/parser/policy/calendar files. Main additions are edit CSS/module imports, a data-edit action alongside existing row buttons, one condition in the existing click listener, and bindOrderEditor before reloadOrders; index gains an independent dialog and status output. Native 72/72 plus TypeScript/Vite build pass; independent source review and real browser controls are active. I will publish a stack PR and exact receiving receipt once the remaining browser verification finishes; please retain that separate patch in your composition plan. No integration hold is introduced by this source freeze."
+    },
+    {
+      "id": 6055209901,
+      "url": "https://github.com/Jacob-Met/returnby/issues/8#issuecomment-6055209901",
+      "body": "Qualified saved-order editor is published as ready-for-review PR #14: https://github.com/Jacob-Met/returnby/pull/14 . Exact head 0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13, parent #9 fbd48a6e63d1b071de10e4e40d875184fa461141; remote tree394ea9a5c0755b2d943345c7d36cc8f4ddc5253e matches all32 payload blobs and preserves all34 unrelated parent blobs (including both existing PNG captures).\n\nYour #8/#10 broader integration ownership is retained. The editor is ready for that existing receiving lane. Native73/73 +build and six unchanged independently authored controls pass. Independent review found the final-date calendar-end overflow; editor admission now refuses it, and original/fixed evidence is retained.\n\nI separately qualified the editor+#9+#10 composition in /workspace/scratch/965d2e86e979/agents/production/composition (local d4d991e19a0bb9bd527a15afceed483b7f9bacdc). All11 exact #10 changed blobs were verified before additive composition;145 native tests/build pass. Four actual Chromium runs passed against17 hash-verified build/harness files: standalone editor, combined editor, your unchanged backup harness, and a dedicated edit/backup handoff. A restored historical45-day fallback survives correction/export/reimport with exact fields; a pending import detects an intervening edit and requires fresh review; an old backup conflicts rather than replacing a correction. No application browser errors/external requests; no phone horizontal overflow.\n\nReceiving receipt: docs/receipts/saved-order-edit-20261008.json in PR #14. Its evidence directory includes the exact four-file overlap patch for main/store/index/README, source pins, the eight-file peer packet, native/browser logs, and the reusable tools/check_edit_backup_browser.mjs. Your parser composition remains separate. Repository CI is being checked on the published head; no existing owner ref or deployed site was changed by this publication."
+    },
+    {
+      "id": 6055228874,
+      "url": "https://github.com/Jacob-Met/returnby/pull/14#issuecomment-6055228874",
+      "body": "Exact published-head repository verification passed: Verify ReturnBy run https://github.com/Jacob-Met/returnby/actions/runs/37745315740 completed successfully on 0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13. Job steps independently show npm ci, npm audit --audit-level=moderate, npm test and npm run build all succeeded. The PR is currently mergeable against its exact #9 base. All66 remote source blobs match the expected tree:32 payload files plus34 preserved parent files, including both existing captures.\n\nQualified source/composition handoff to the existing #8 integrator is recorded at https://github.com/Jacob-Met/returnby/issues/8#issuecomment-6055209901 . This verification advances source receiving; no deployed-site update or main-branch merge is inferred."
+    },
+    {
+      "id": 6055195676,
+      "url": "https://github.com/Jacob-Met/returnby/issues/11#issuecomment-6055195676",
+      "body": "### Combined receiving route — `parallel-8b336fefde84`\n\nThe isolated combined candidate now passes all 110 native tests, the TypeScript/Vite production build, and independent real-browser journeys for corrected totals through save/export/fresh-profile restore and initial read failure through explicit recovery.\n\nRoot will publish one receiving PR against `main` `260e54d0ff99f04e71130ea23bced81a0759dab1`, preserving exact PR #4 `4ef4594f8903fb562d0fe7291a177c027ccccce2`, PR #9 `fbd48a6e63d1b071de10e4e40d875184fa461141`, and PR #10 `2ff4f9406ac05e72456a6fb425f5d6499520234f` as additional commit parents. PR #5 and #7 remain their ancestors. Owner branches remain unchanged.\n\nThe three overlapping files are `main.ts`, `store.ts`, and `index.html`. The composition retains #9's load failure guard, explicit retry, and confirmed reset; #10's backup controls bind through the same guarded persistence. One demonstrated receiving repair changes backup `read()` to treat only a missing key (`null`) as empty: stored empty-string bytes now refuse export/import instead of generating an empty backup. The unchanged PR #10 baseline fails this new regression, while the combined candidate passes.\n\nThe editor owner acknowledgement in #8 (comment 6054960411) is recorded. The separate #11 saved-order editor and #6 date-priority contribution stay with their owners and are not included in this frozen candidate. Please preserve the editor's separate patch for later receiving composition; the forthcoming packet documents the exact main/index seams. No source merge or deployment has been performed by this reviewer."
+    }
+  ],
+  "open_pull_requests": [
+    {
+      "number": 14,
+      "title": "Edit saved return deadlines without recreating orders",
+      "head": "feat/saved-order-edit-20261008-965d2e86e979",
+      "head_sha": "0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13",
+      "base": "fix/storage-load-preservation-20261008",
+      "base_sha": "fbd48a6e63d1b071de10e4e40d875184fa461141"
+    },
+    {
+      "number": 10,
+      "title": "Add portable backups with reviewed restore",
+      "head": "feat/portable-backup-20261008-8b336fefde84",
+      "head_sha": "2ff4f9406ac05e72456a6fb425f5d6499520234f",
+      "base": "fix/submitted-window-source-20261008",
+      "base_sha": "43a11d9f66ca2d8cb7902f8ed1bcae2ac0962fbf"
+    },
+    {
+      "number": 9,
+      "title": "Preserve saved returns when browser storage cannot be loaded",
+      "head": "fix/storage-load-preservation-20261008",
+      "head_sha": "fbd48a6e63d1b071de10e4e40d875184fa461141",
+      "base": "fix/submitted-window-source-20261008",
+      "base_sha": "43a11d9f66ca2d8cb7902f8ed1bcae2ac0962fbf"
+    },
+    {
+      "number": 7,
+      "title": "Attribute saved return windows to the submitted merchant",
+      "head": "fix/submitted-window-source-20261008",
+      "head_sha": "43a11d9f66ca2d8cb7902f8ed1bcae2ac0962fbf",
+      "base": "fix/storage-commit-20261008",
+      "base_sha": "adc545d9c8c88a4417c721a407c289ddb2a29f0d"
+    },
+    {
+      "number": 6,
+      "title": "Prefer explicit order dates over nearby delivery dates",
+      "head": "fix/order-date-priority-20261008",
+      "head_sha": "37b2c9cd1018d6a0c25652100068474914483ee7",
+      "base": "fix/subtotal-boundary-20261008",
+      "base_sha": "4ef4594f8903fb562d0fe7291a177c027ccccce2"
+    },
+    {
+      "number": 5,
+      "title": "Preserve ReturnBy state when browser storage rejects a change",
+      "head": "fix/storage-commit-20261008",
+      "head_sha": "adc545d9c8c88a4417c721a407c289ddb2a29f0d",
+      "base": "main",
+      "base_sha": "260e54d0ff99f04e71130ea23bced81a0759dab1"
+    },
+    {
+      "number": 4,
+      "title": "Stop reading Subtotal as the order total",
+      "head": "fix/subtotal-boundary-20261008",
+      "head_sha": "4ef4594f8903fb562d0fe7291a177c027ccccce2",
+      "base": "main",
+      "base_sha": "260e54d0ff99f04e71130ea23bced81a0759dab1"
+    },
+    {
+      "number": 2,
+      "title": "t129: add concurrency cancel-in-progress to push/PR workflows",
+      "head": "t129/concurrency-cancel",
+      "head_sha": "e8f747d98325ed262c63b50032c1589b97df2aa4",
+      "base": "main",
+      "base_sha": "ec3942933dae61cae42c50ad111dd3f34001be4f"
+    },
+    {
+      "number": 1,
+      "title": "ci: bump actions/upload-pages-artifact v3 -> v4 (node16 deprecation)",
+      "head": "estate/upload-pages-artifact-v4",
+      "head_sha": "c88d89871c43ed8321fbea671788e792ea8c5fc3",
+      "base": "main",
+      "base_sha": "ec3942933dae61cae42c50ad111dd3f34001be4f"
+    }
+  ],
+  "branches": [
+    {
+      "name": "estate/upload-pages-artifact-v4",
+      "sha": "c88d89871c43ed8321fbea671788e792ea8c5fc3"
+    },
+    {
+      "name": "feat/portable-backup-20261008-8b336fefde84",
+      "sha": "2ff4f9406ac05e72456a6fb425f5d6499520234f"
+    },
+    {
+      "name": "feat/saved-order-edit-20261008-965d2e86e979",
+      "sha": "0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13"
+    },
+    {
+      "name": "fix/calendar-text-export-e3a41d2b3368",
+      "sha": "8764c614bf9bc9ddf483a9b3364d03738576bbc7"
+    },
+    {
+      "name": "fix/order-date-priority-20261008",
+      "sha": "37b2c9cd1018d6a0c25652100068474914483ee7"
+    },
+    {
+      "name": "fix/storage-commit-20261008",
+      "sha": "adc545d9c8c88a4417c721a407c289ddb2a29f0d"
+    },
+    {
+      "name": "fix/storage-load-preservation-20261008",
+      "sha": "fbd48a6e63d1b071de10e4e40d875184fa461141"
+    },
+    {
+      "name": "fix/submitted-window-source-20261008",
+      "sha": "43a11d9f66ca2d8cb7902f8ed1bcae2ac0962fbf"
+    },
+    {
+      "name": "fix/subtotal-boundary-20261008",
+      "sha": "4ef4594f8903fb562d0fe7291a177c027ccccce2"
+    },
+    {
+      "name": "integrate/portable-recovery-20261008-8b336fefde84",
+      "sha": "17e1a3286a5e8136d1d5dc09da37f33fd1baa100"
+    },
+    {
+      "name": "main",
+      "sha": "00bc85c68d37089ae91344369b35d14ae9e8cbc3"
+    },
+    {
+      "name": "t129/concurrency-cancel",
+      "sha": "e8f747d98325ed262c63b50032c1589b97df2aa4"
+    }
+  ],
+  "native_sources": [
+    "https://github.com/Jacob-Met/returnby/pull/14",
+    "https://github.com/Jacob-Met/returnby/issues/8",
+    "https://github.com/Jacob-Met/returnby/issues/11",
+    "https://api.github.com/repos/Jacob-Met/returnby/branches/main",
+    "https://api.github.com/repos/Jacob-Met/returnby/branches?per_page=100",
+    "https://api.github.com/repos/Jacob-Met/returnby/pulls?state=open&per_page=100",
+    "https://api.github.com/repos/Jacob-Met/returnby/git/commits/0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13",
+    "https://api.github.com/repos/Jacob-Met/returnby/git/commits/17e1a3286a5e8136d1d5dc09da37f33fd1baa100"
+  ],
+  "caveats": [
+    "This point-in-time observation is not a new ownership claim or integration approval.",
+    "The contributor did not rerun or claim the editor owner's remote CI result as its own.",
+    "Existing integrator branch ownership is preserved; no calendar/backup combined qualification is claimed.",
+    "Re-read moving receiving head immediately before branch publication."
+  ]
+}
