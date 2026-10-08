@@ -22,7 +22,7 @@ const cases = [
   ['2000-02-29', '20000301'], ['2100-02-28', '21000301'],
   ['2026-12-31', '20270101'], ['1000-01-01', '10000102'],
   ['9998-12-31', '99990101'], ['9999-12-30', '99991231'],
-] as const;
+];
 const zones = ['UTC', 'Pacific/Apia', 'Pacific/Kwajalein', 'Pacific/Kiritimati',
   'America/Los_Angeles', 'America/New_York', 'Australia/Lord_Howe', 'Asia/Kathmandu'];
 const child = `${compiled}
@@ -32,14 +32,14 @@ process.stdout.write(JSON.stringify(input.map(due => exports.buildIcs({
   id: 'frozen-id', merchant: 'Fixture Shop', orderNo: '12345', due
 }, stamp))));`;
 
-function calendars(zone: string): string[] {
+function calendars(zone) {
   return JSON.parse(execFileSync(process.execPath, ['-e', child], {
     input: JSON.stringify(cases.map(([due]) => due)), encoding: 'utf8',
     env: { ...process.env, TZ: zone }, timeout: 10_000, maxBuffer: 1024 * 1024,
   }));
 }
 
-function expectedCalendar(due: string, end: string): string {
+function expectedCalendar(due, end) {
   return [
     'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
     'BEGIN:VEVENT', 'UID:frozen-id@returnby', 'DTSTAMP:20261008T123456Z',
