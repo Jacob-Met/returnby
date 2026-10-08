@@ -1,0 +1,51 @@
+{
+  "reviewer": "estate-965d2e86e979/receiving_verification",
+  "repository": "Jacob-Met/returnby",
+  "remote_baseline": "fbd48a6e63d1b071de10e4e40d875184fa461141",
+  "original_local_candidate": "7ca9e0f928a40b85cb468720f3ed532b21f3a3ac",
+  "fixed_local_candidate": "f912dbe26874172556824ace922c685af28b0e3a",
+  "review_script_sha256": "72c33b117c0b0bf40fe2bed2c34f4391408549a217ff31ca51df9a30b535ef87",
+  "source_files_checked": 41,
+  "source_changes_during_review": [],
+  "runtime": {
+    "node": "v24.19.0",
+    "vitest": "5.0.3"
+  },
+  "runs": [
+    {
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/edit-peer.test.ts"
+      ],
+      "cwd": "/workspace/scratch/965d2e86e979/agents/verification/returnby-review/snapshot",
+      "exit_code": 1,
+      "passed": 5,
+      "failed": 1,
+      "log": "peer-original.log"
+    },
+    {
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/edit-peer.test.ts"
+      ],
+      "cwd": "/workspace/scratch/965d2e86e979/agents/verification/returnby-review/fixed-snapshot",
+      "exit_code": 0,
+      "passed": 6,
+      "failed": 0,
+      "log": "peer-fixed.log"
+    }
+  ],
+  "reference": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.4",
+  "disposition": "accepted",
+  "limits": [
+    "source-only independent Vitest review; owner carries separate real-browser receipt",
+    "UI tests use project-native inert DOM/storage boundary, not a browser",
+    "No #10 backup import module composition was executed by this reviewer",
+    "Preserves the documented absence of a cross-tab read/write transaction",
+    "Historical generic parser/calendar/date behavior outside editor admission remains unchanged"
+  ]
+}

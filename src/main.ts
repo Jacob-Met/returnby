@@ -1,10 +1,12 @@
 import './style.css';
+import './edit.css';
 import { parse } from './parse';
 import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
 import { buildIcs } from './ics';
 import { load, save, type Order } from './store';
 import { samples } from './samples';
+import { bindOrderEditor } from './edit-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
@@ -116,10 +118,11 @@ function render() {
   for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
   const rows=all.filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
   if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
 }
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
+  if (t.dataset.edit !== undefined) orderEditor.open(t.dataset.edit);
   if (t.dataset.del) { if (persistOrders(orders.filter((o) => o.id !== t.dataset.del))) render(); }
   if (t.dataset.ics) {
     const o = orders.find((x) => x.id === t.dataset.ics)!;
@@ -135,4 +138,10 @@ paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey |
 $('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
 $('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?') && persistOrders([], true)) render(); });
 storageRetry.addEventListener('click', reloadOrders);
+const orderEditor = bindOrderEditor({
+  getOrders: () => orders,
+  read: load,
+  commit: next => { if (!persistOrders(next)) return false; render(); return true; },
+  refresh: reloadOrders,
+});
 reloadOrders();
