@@ -1,0 +1,36 @@
+--- a/src/trip-checklist.ts
++++ b/src/trip-checklist.ts
+@@ -1,5 +1,6 @@
+ import type { Order } from './store';
+ import { dueDate, daysLeft, todayISO } from './deadline';
++import { isCompleted, isCompletionTimestamp } from './completion';
+ 
+ export const SAVED_ORDERS_KEY = 'returnby.v1';
+ export const MAX_SAVED_BYTES = 2 * 1024 * 1024;
+@@ -87,9 +88,15 @@
+       badRow(index, 'has an unrecognized window source');
+     }
+     const createdAt = textField(row, 'createdAt', index)!;
+-    return Object.freeze({ id, merchant, orderNo, total, orderDate, windowDays, windowSource, createdAt });
++    const completedAt = row.completedAt;
++    if (completedAt !== undefined && !isCompletionTimestamp(completedAt)) {
++      badRow(index, 'has an unsupported completion date');
++    }
++    return Object.freeze({ id, merchant, orderNo, total, orderDate, windowDays, windowSource, createdAt,
++      ...(completedAt === undefined ? {} : { completedAt }) });
+   });
+-  return Object.freeze({ raw, orders: Object.freeze(orders) });
++  // Admit the complete saved collection before hiding completed returns.
++  return Object.freeze({ raw, orders: Object.freeze(orders.filter(order => !isCompleted(order))) });
+ }
+ 
+ export function readSavedOrders(reader: Reader): SavedSnapshot {
+@@ -125,7 +132,7 @@
+   const byId = new Map(snapshot.orders.map(order => [order.id, order]));
+   const orders = selectedIds.map(id => {
+     const order = byId.get(id);
+-    if (!order) throw new ChecklistError('A selected order is no longer in this loaded list. Refresh saved orders and choose again.', 'selection');
++    if (!order || isCompleted(order)) throw new ChecklistError('A selected order is no longer in this loaded list. Refresh saved orders and choose again.', 'selection');
+     const due = dueDate(order.orderDate, order.windowDays);
+     return Object.freeze({ order, due, tripTiming: tripTiming(due, tripDate) });
+   }).sort((a, b) => a.due.localeCompare(b.due));

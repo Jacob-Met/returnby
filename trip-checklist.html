@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2efe5">
+  <meta name="description" content="Choose saved ReturnBy orders and prepare a printable checklist for your next return trip.">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <title>ReturnBy · Return-trip checklist</title>
+</head>
+<body>
+<div class="checklist-shell">
+  <header class="checklist-topbar">
+    <a class="brand" href="./index.html" aria-label="Back to ReturnBy tracker"><span class="brand-mark">R/</span><span><strong>RETURNBY</strong><small>THE RETURN DESK</small></span></a>
+    <span class="local-chip"><i></i>LOCAL ORDERS / PRINTABLE PLAN</span>
+  </header>
+  <main>
+    <section class="checklist-hero">
+      <div>
+        <a class="back-link" href="./index.html">← Back to your tracker</a>
+        <p class="eyebrow">03 / TAKE THE NEXT STEP</p>
+        <h1>One trip.<br><em>Everything to hand.</em></h1>
+        <p class="hero-copy">Bring the details you already checked. Choose saved orders, plan a date and take a return-trip checklist with you.</p>
+      </div>
+      <ol class="flow-note" aria-label="Prepare your checklist">
+        <li><span>01</span>Choose your orders</li>
+        <li><span>02</span>Review the trip</li>
+        <li><span>03</span>Download, open &amp; print</li>
+      </ol>
+    </section>
+    <div class="workspace">
+      <section class="planner" aria-labelledby="planner-title">
+        <header class="section-heading"><p class="eyebrow">YOUR SAVED ORDERS</p><h2 id="planner-title">What’s coming with you?</h2><p>Only selected orders appear on the sheet. Refreshing reloads this list and clears your selection.</p></header>
+        <button id="refresh-orders" class="text-button" type="button">↻ Refresh saved orders</button>
+        <p id="read-message" class="read-message" role="status"></p>
+        <form id="trip-form" hidden>
+          <fieldset class="order-fieldset"><legend class="sr-only">Choose orders for this trip</legend><div id="order-options" class="order-options"></div></fieldset>
+          <div class="selection-row"><p id="selection-summary" aria-live="polite">0 orders selected</p><button id="clear-selection" class="text-button" type="button" disabled>Clear selection</button></div>
+          <label class="date-label" for="trip-date">PLANNED TRIP DATE</label>
+          <input id="trip-date" name="trip-date" type="date" min="1000-01-01" max="9999-12-31" required>
+          <p class="field-note">We’ll compare this date with each saved return window. Confirm current instructions with the store.</p>
+          <button id="preview-trip" class="primary-button" type="submit" disabled>Preview trip <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="privacy-note">This page reads your saved details. Trip choices, check marks and notes are never saved to the tracker.</p>
+      </section>
+      <section class="preview-panel" aria-labelledby="preview-title">
+        <header class="preview-top"><div><p class="eyebrow">YOUR TAKE-ALONG SHEET</p><h2 id="preview-title">Review before you go.</h2></div><span class="paper-tag">HTML / PRINT</span></header>
+        <div id="trip-notice" class="trip-notice" role="status" aria-live="polite" hidden></div>
+        <div id="empty-preview" class="empty-preview">
+          <div class="paper-symbol" aria-hidden="true"><span>R/</span><i></i><i></i><i></i></div>
+          <h3>A little preparation.<br>A lighter errand.</h3>
+          <p>Select the orders you’re taking, then choose <strong>Preview trip</strong>.</p>
+          <ul><li>Saved order details &amp; dates</li><li>Blank packing and receipt checks</li><li>Space for your own notes</li></ul>
+        </div>
+        <div id="checklist-preview" hidden></div>
+        <div class="download-panel">
+          <button id="download-checklist" class="primary-button download-button" type="button" disabled>Download printable HTML <span aria-hidden="true">↓</span></button>
+          <p>Open the downloaded file in a browser, then use Print. It works offline and contains your selected order details.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="checklist-footer"><strong>DETAILS YOU CONTROL.</strong><p>Amounts stay exactly as saved. Calculated dates are a planning aid; this sheet does not reserve a return or confirm a refund.</p></footer>
+</div>
+<script type="module" src="/src/trip-checklist-view.ts"></script>
+</body>
+</html>
