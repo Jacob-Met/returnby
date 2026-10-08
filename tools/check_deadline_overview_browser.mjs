@@ -174,8 +174,10 @@ async function saveArtifact(name, bytes, details = {}) {
   return value;
 }
 async function screenshot(name, selector = null) {
+  await command('Page.bringToFront');
   if (selector) await evaluate('document.querySelector(' + JSON.stringify(selector) +
     ').scrollIntoView({block:"start"})');
+  await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve(true))))');
   const {data} = await command('Page.captureScreenshot', {format: 'png', captureBeyondViewport: false});
   return saveArtifact(name, Buffer.from(data, 'base64'), {kind: 'actual Chrome screenshot'});
 }

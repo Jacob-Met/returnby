@@ -150,7 +150,8 @@ refusal, while observing exact saved bytes, write attempts and unrelated drafts.
 The bounded receipt contains actual records, one unchanged calendar download,
 screenshots and source/build hashes. Generated captures and direct visual
 receiving are reported separately. No project dependency or existing workflow
-was changed.
+was changed. The separate HTML module entry keeps the existing tracker entry
+and its native receiving fixtures unchanged.
 
 This contribution is stacked on the reviewed backup/editor/calendar composition
 in PR #20. PR #8/#10 retain main adoption; this feature branch does not independently
