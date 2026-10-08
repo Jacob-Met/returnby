@@ -1,0 +1,29 @@
+{
+  "worker": "estate-kestrel-2ff081f4",
+  "node": "v22.16.0",
+  "typescript": "5.8.3",
+  "receiver_sha256": "dfcf2556c82a7f7b2bdb91a5f5497e05ddb0b8e663780863487d8c396da7399e",
+  "baseline_model_blob": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+  "candidate_model_blob": "f1c7516b0a1d230756b77454b3edd0a403fd8de5",
+  "helper_blob": "579b8e2c7b4098a39824ba82cd43bc04b87e2a16",
+  "baseline": {"passed": 4, "failed": 8},
+  "candidate": {"passed": 12, "failed": 0},
+  "groups": [
+    {"name":"mixed collection offers only open returns without changing saved bytes","baseline_pass":false,"baseline_actual_ids":["DONE-B","OPEN-A"],"expected_ids":["OPEN-A"],"candidate_pass":true},
+    {"name":"completed-only list is empty for planning, not erased from storage","baseline_pass":false,"baseline_count":1,"expected_count":0,"candidate_pass":true},
+    {"name":"all supported completion timestamp forms remain excluded","baseline_pass":false,"baseline_count":1,"expected_count":0,"candidate_pass":true},
+    {"name":"malformed completion markers reject the entire list","baseline_pass":false,"baseline_error":"Missing expected exception.","candidate_pass":true},
+    {"name":"completed rows still undergo every existing admission control","baseline_pass":true,"candidate_pass":true},
+    {"name":"completed entries count toward the original count and byte limits","baseline_pass":true,"candidate_pass":true},
+    {"name":"direct selection cannot bypass completed admission","baseline_pass":false,"baseline_error":"Missing expected exception.","candidate_pass":true},
+    {"name":"late native completion retires the exact old download snapshot","baseline_pass":false,"baseline_count_after_refresh":1,"expected_count_after_refresh":0,"candidate_pass":true},
+    {"name":"read refusal preserves the snapshot and explicit retry receives completion","baseline_pass":false,"baseline_count_after_retry":1,"expected_count_after_retry":0,"candidate_pass":true},
+    {"name":"open selection keeps literal fields, deadline and downloadable document","baseline_pass":true,"candidate_pass":true},
+    {"name":"missing and undefined completion keep the exact legacy open projection","baseline_pass":true,"candidate_pass":true},
+    {"name":"unrelated changes still require review rather than weaken freshness","baseline_pass":false,"baseline_actual_ids":["OPEN-A","DONE-B","OTHER"],"expected_ids":["OPEN-A","OTHER"],"candidate_pass":true}
+  ],
+  "browser": {"version":"144.0.7559.96","state":"blocked_before_application_load","error":"net::ERR_BLOCKED_BY_ADMINISTRATOR","navigation_setup_attempts":12,"behavior_groups_executed":0,"accepted":false,"alternate_host_or_policy_bypass":false},
+  "hosted_ci_at_source_freeze":"pending",
+  "deployed":false,
+  "independent_acceptance":false
+}
