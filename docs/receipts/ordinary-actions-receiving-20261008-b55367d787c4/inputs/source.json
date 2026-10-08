@@ -1,0 +1,96 @@
+{
+  "repository": "Jacob-Met/returnby",
+  "pr": 16,
+  "head": "480a99bd6de57ff04089975b34b43856da56fdf9",
+  "tree": "e439842851966ad29f6fc2787c951967e23358b5",
+  "tree_verified_via": "native GitHub recursive tree",
+  "base_pr14": "0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13",
+  "pr14_tree": "394ea9a5c0755b2d943345c7d36cc8f4ddc5253e",
+  "receiving_baseline_local_commit": "49674969755b476aa05bc11d3d7d49892ae40779",
+  "receiving_baseline_tree": "b5a3438748a4e81a8db96c3224d5c21e0629165b",
+  "integrator_commit": "17e1a3286a5e8136d1d5dc09da37f33fd1baa100",
+  "integrator_tree": "7b353c0d59058ff624da8573bedbd41aa61150f0",
+  "main_observed": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "main_tree": "ab4534a2e1afdace5d27a6079012c776c0e66f70",
+  "main_change": "Merged PR17 daily refresh, not incorporated in this bounded PR16 receiver.",
+  "scope": "Exact PR16 ordinary actions on separately accepted integrator + editor + calendar composition; no remote writes or owner-branch edits.",
+  "open_prs": [
+    {
+      "number": 19,
+      "title": "Review and export several return reminders in one calendar",
+      "head": "e64fd96ffda52ec571779edfeec609f7b01c3c9f",
+      "branch": "feat/calendar-batch-20261008-b55367d787c4",
+      "base": "feat/saved-order-edit-20261008-965d2e86e979"
+    },
+    {
+      "number": 16,
+      "title": "Keep other tabs’ saved returns through Save and Remove",
+      "head": "480a99bd6de57ff04089975b34b43856da56fdf9",
+      "branch": "work/3e50c5ad22c5-stale-actions",
+      "base": "feat/saved-order-edit-20261008-965d2e86e979"
+    },
+    {
+      "number": 14,
+      "title": "Edit saved return deadlines without recreating orders",
+      "head": "0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13",
+      "branch": "feat/saved-order-edit-20261008-965d2e86e979",
+      "base": "fix/storage-load-preservation-20261008"
+    },
+    {
+      "number": 10,
+      "title": "Add portable backups with reviewed restore",
+      "head": "2ff4f9406ac05e72456a6fb425f5d6499520234f",
+      "branch": "feat/portable-backup-20261008-8b336fefde84",
+      "base": "fix/submitted-window-source-20261008"
+    },
+    {
+      "number": 9,
+      "title": "Preserve saved returns when browser storage cannot be loaded",
+      "head": "fbd48a6e63d1b071de10e4e40d875184fa461141",
+      "branch": "fix/storage-load-preservation-20261008",
+      "base": "fix/submitted-window-source-20261008"
+    },
+    {
+      "number": 7,
+      "title": "Attribute saved return windows to the submitted merchant",
+      "head": "43a11d9f66ca2d8cb7902f8ed1bcae2ac0962fbf",
+      "branch": "fix/submitted-window-source-20261008",
+      "base": "fix/storage-commit-20261008"
+    },
+    {
+      "number": 6,
+      "title": "Prefer explicit order dates over nearby delivery dates",
+      "head": "37b2c9cd1018d6a0c25652100068474914483ee7",
+      "branch": "fix/order-date-priority-20261008",
+      "base": "fix/subtotal-boundary-20261008"
+    },
+    {
+      "number": 5,
+      "title": "Preserve ReturnBy state when browser storage rejects a change",
+      "head": "adc545d9c8c88a4417c721a407c289ddb2a29f0d",
+      "branch": "fix/storage-commit-20261008",
+      "base": "main"
+    },
+    {
+      "number": 4,
+      "title": "Stop reading Subtotal as the order total",
+      "head": "4ef4594f8903fb562d0fe7291a177c027ccccce2",
+      "branch": "fix/subtotal-boundary-20261008",
+      "base": "main"
+    },
+    {
+      "number": 2,
+      "title": "t129: add concurrency cancel-in-progress to push/PR workflows",
+      "head": "e8f747d98325ed262c63b50032c1589b97df2aa4",
+      "branch": "t129/concurrency-cancel",
+      "base": "main"
+    },
+    {
+      "number": 1,
+      "title": "ci: bump actions/upload-pages-artifact v3 -> v4 (node16 deprecation)",
+      "head": "c88d89871c43ed8321fbea671788e792ea8c5fc3",
+      "branch": "estate/upload-pages-artifact-v4",
+      "base": "main"
+    }
+  ]
+}

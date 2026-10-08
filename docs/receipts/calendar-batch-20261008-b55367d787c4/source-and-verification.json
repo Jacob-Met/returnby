@@ -1,0 +1,147 @@
+{
+  "repository": "Jacob-Met/returnby",
+  "upstream": {
+    "editorHead": "0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13",
+    "editorTree": "394ea9a5c0755b2d943345c7d36cc8f4ddc5253e",
+    "editorBlobCount": 66,
+    "mainHead": "00bc85c68d37089ae91344369b35d14ae9e8cbc3",
+    "mainTree": "2b669ed51d0930af7d834b2d96e9ae8d8003abb9",
+    "mainCalendarBlob": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+    "mainCalendarTestBlob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4"
+  },
+  "local": {
+    "exactEditorSnapshot": "324099460987eca5bad18c97fc74685abb412375",
+    "composedBaseline": "0ee7edf58e958e00d21c70b3ef56e5dadcfdc15d",
+    "composedBaselineTree": "3e4a12fd6a6cad04ceafa9d892097aee834e889f",
+    "contribution": "1973a2230a8292fd487a87f9fdde02dba068649d",
+    "contributionTree": "cc2674728fff2781cd3d6c8e5902f38dc4197c64",
+    "changedFiles": [
+      {
+        "path": "README.md",
+        "gitBlob": "f40978fca44d2a673718a39936b34a7d3afd1a5a",
+        "sha256": "0b3de415e7e14178096ab13325c74a912f5c9d0fe73255d4e6775cd20b89ddef",
+        "bytes": 6900
+      },
+      {
+        "path": "index.html",
+        "gitBlob": "cded3f5f76089c8b90ab7f6d79831cb6b30efc2c",
+        "sha256": "164a1f31e37856d665b84bb175af379865e7da6fd88653571709ea6ea77d54e5",
+        "bytes": 8216
+      },
+      {
+        "path": "src/calendar-batch-ui.ts",
+        "gitBlob": "f14427126feb325861ceb08783877c97cfc92e4d",
+        "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+        "bytes": 7180
+      },
+      {
+        "path": "src/calendar-batch.css",
+        "gitBlob": "6a9849585c528bd82d8d40d66d2816e7f25bc327",
+        "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+        "bytes": 1833
+      },
+      {
+        "path": "src/calendar-batch.ts",
+        "gitBlob": "520469648c1177f010edf04fa5f779d900e2431f",
+        "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+        "bytes": 6017
+      },
+      {
+        "path": "src/ics.ts",
+        "gitBlob": "58c873a116ed6b265864cb3e7d5b0dd27fd81544",
+        "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+        "bytes": 2263
+      },
+      {
+        "path": "src/main.ts",
+        "gitBlob": "9ecc9c8e5645a5e0736d5f79fb5503d371adb8a0",
+        "sha256": "23ded8d3268bb4ba0387b46e8502a0123ae413e2d1fb9b4d680ce2dbeab379f2",
+        "bytes": 8748
+      },
+      {
+        "path": "tests/calendar-batch.test.ts",
+        "gitBlob": "9fc37a60e9021117038aa4c32044f2b2ee51b621",
+        "sha256": "2d56ce7116e265e0053a5c83cbd076cb44bab3dd658b779114b45eb211819af0",
+        "bytes": 8427
+      },
+      {
+        "path": "tools/check_calendar_batch_browser.mjs",
+        "gitBlob": "a9d017d186e574ec2b6c04a5dc3c5e46c14af1c4",
+        "sha256": "e02f1c1552eb9cc7890adb37072c1b89f23fa277986e4aa4e2bed9d85b32b24d",
+        "bytes": 16173
+      }
+    ],
+    "unchangedBaselineBlobs": 63,
+    "baselineBlobCount": 67
+  },
+  "verification": {
+    "baselineNative": 85,
+    "finalNative": 117,
+    "newNativeCases": 32,
+    "strictTypeScriptBuild": "pass",
+    "actualBrowserReceipt": "browser-final/browser-receipt.json",
+    "browser": "Chromium 153.0.8010.0",
+    "node": "v24.19.0",
+    "typescript": "5.9.3",
+    "vite": "8.3.3",
+    "vitest": "5.0.3",
+    "playwright": "1.62.1",
+    "chromiumSha256": "53a15d6c3a3d27dfb54c4ba60278b1683136f70cf1e67e989da7dfbd3d451ef0",
+    "buildFiles": [
+      {
+        "path": "dist/assets/index-BUdaVmKH.js",
+        "sha256": "2f0f1738b624afae71a353795693bc2703f218a980558ae4deeaffd46ba6488c",
+        "bytes": 22781
+      },
+      {
+        "path": "dist/assets/index-D1H1qp7z.js",
+        "sha256": "e7c9aa43e73fd4c65e8543d8c4c438c933547c1995f4c888fd6ff8d02b35ec09",
+        "bytes": 23060
+      },
+      {
+        "path": "dist/assets/index-DLpVnxDn.css",
+        "sha256": "92bc23cf88bd2d72177615e26a13b4a7491f09799eea50a25574f160650eadbe",
+        "bytes": 11935
+      },
+      {
+        "path": "dist/captures/returnby-desktop.png",
+        "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+        "bytes": 131379
+      },
+      {
+        "path": "dist/captures/returnby-mobile.png",
+        "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+        "bytes": 107642
+      },
+      {
+        "path": "dist/favicon.svg",
+        "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+        "bytes": 238
+      },
+      {
+        "path": "dist/index.html",
+        "sha256": "a97721384a355b9cf58ee805284846de92b32f90f550b579f637d417e252e2f2",
+        "bytes": 8317
+      }
+    ]
+  },
+  "ownership": {
+    "contributor": "estate-b55367d787c4/production",
+    "teamScopeAccepted": true,
+    "claimPublished": false,
+    "reason": "GitHub secondary content-creation rate limit 403; not retried or switched transport.",
+    "receivingOwner": "ReturnBy #8/#10 broader integration; #11/#14 editor ownership retained.",
+    "freshMainUnchanged": true,
+    "freshCalendarIssueSearch": [
+      "https://github.com/Jacob-Met/returnby/issues/8",
+      "https://github.com/Jacob-Met/returnby/issues/11"
+    ]
+  },
+  "status": {
+    "implemented": true,
+    "locallyVerified": true,
+    "independentlyReviewed": false,
+    "sourceIntegrated": false,
+    "deployed": false
+  }
+}

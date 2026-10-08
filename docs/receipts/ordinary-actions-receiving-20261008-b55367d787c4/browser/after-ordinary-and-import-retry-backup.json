@@ -1,0 +1,57 @@
+{
+  "schema": "returnby.backup",
+  "version": 1,
+  "exportedAt": "2026-10-08T12:34:56.000Z",
+  "orders": [
+    {
+      "id": "retry-base",
+      "merchant": "Fictional receiving shop",
+      "orderNo": "retry-base",
+      "total": "$18.00",
+      "orderDate": "2026-10-01",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-01T12:00:00Z"
+    },
+    {
+      "id": "retry-remote-one",
+      "merchant": "Fictional receiving shop",
+      "orderNo": "retry-remote-one",
+      "total": "$18.00",
+      "orderDate": "2026-10-01",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-01T12:00:00Z"
+    },
+    {
+      "id": "retry-remote-two",
+      "merchant": "Fictional receiving shop",
+      "orderNo": "retry-remote-two",
+      "total": "$18.00",
+      "orderDate": "2026-10-01",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-01T12:00:00Z"
+    },
+    {
+      "id": "7cec03b1-25a4-45e3-80aa-84d6d69ce15b",
+      "merchant": "Contoso Electronics",
+      "orderNo": "LOCAL-RETRY",
+      "total": "$55.00",
+      "orderDate": "2026-10-03",
+      "windowDays": 15,
+      "windowSource": "policy",
+      "createdAt": "2026-10-08T12:34:56.000Z"
+    },
+    {
+      "id": "retry-staged-import",
+      "merchant": "Fictional receiving shop",
+      "orderNo": "retry-staged-import",
+      "total": "$18.00",
+      "orderDate": "2026-10-01",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-01T12:00:00Z"
+    }
+  ]
+}

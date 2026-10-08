@@ -1,0 +1,606 @@
+{
+  "remote_commit": "480a99bd6de57ff04089975b34b43856da56fdf9",
+  "remote_tree": "e439842851966ad29f6fc2787c951967e23358b5",
+  "checked_remote_blobs": 81,
+  "matching": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/.github/workflows/ci.yml",
+      "git_blob": "b5688812f36338630c21eb5643318a55496ae09b",
+      "sha256": "90cd15347c9e7c2249b81664f24c35fc49a22577a623f4b5c09aaae42c9103bc"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/.github/workflows/pages.yml",
+      "git_blob": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+      "sha256": "9d137c6ee9c4bd842b74506f7d3e6abcd9e4db93068140dee37411a14b5d50cb"
+    },
+    {
+      "path": ".gitignore",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/.gitignore",
+      "git_blob": "b56df07f248fdfb406a35c411fafc91db47c9c95",
+      "sha256": "9510dfb20fc42c00d67c03eff9c2ffb9708f8c28ea78992797fba72b301461b5"
+    },
+    {
+      "path": "LICENSE",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/LICENSE",
+      "git_blob": "edb188254288b40f2895833e3647b7e0be34c962",
+      "sha256": "f6a3d0f7d08a7590f907c08d6127545ab44eff0d23b6074714ad3fb935b998bb"
+    },
+    {
+      "path": "README.md",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/README.md",
+      "git_blob": "30305d1b22118ebc59bfa6a0ab82934ba279f5ae",
+      "sha256": "f2709d22cb6ff5fa18b1c0ae77245ea5cead462f2d5389fd8b842bf94b3d2729"
+    },
+    {
+      "path": "data/policies.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/data/policies.json",
+      "git_blob": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+    },
+    {
+      "path": "devpost/checklist.md",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/devpost/checklist.md",
+      "git_blob": "318fc1035ad4314ae25fa829e152f5c03e883db5",
+      "sha256": "22ede6c801e66219d56049a858901ff7b0785ae5c344f6296bd592d041e6d9d4"
+    },
+    {
+      "path": "devpost/prd.md",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/devpost/prd.md",
+      "git_blob": "60614d01a9e955c5911b3283d01bc5329397a6a9",
+      "sha256": "e018872f936e97d2c46283fb789829db674d92cfbc1c6f6665db1958a54234fd"
+    },
+    {
+      "path": "devpost/scope.md",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/devpost/scope.md",
+      "git_blob": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec",
+      "sha256": "74bf96df71c3a02ebcde2de7d657eb4391e909b3ea01cd4be43b6fc0c5326abf"
+    },
+    {
+      "path": "devpost/spec.md",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/devpost/spec.md",
+      "git_blob": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72",
+      "sha256": "08fa071abde2b502e104a7313576d341c890f64ac48b0c8e0e6bf8f16c376ab9"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008.json",
+      "git_blob": "633c2f04637f28d37d9b1e3a30a6c57842ee0643",
+      "sha256": "612cbeb335bfe10474a0d28ce48a0bb22202af19ba7c36928e27fe86af2fcce7"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/README.md",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/README.md",
+      "git_blob": "cc2a3193f8c6494e1bc969cd276d6750ca7fab6b",
+      "sha256": "0cbde3f4981f482d536d54a694b729a017339ff98b0f75f8cad45f1da3d727e6"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/backup-composition-overlap.patch",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/backup-composition-overlap.patch",
+      "git_blob": "f9a5d7fa8c84eb58474122237475d5063858ac89",
+      "sha256": "8e5a4b775aac7217c5413cc259245e41a9c88093badd3835370e0b0ea1a07494"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/browser-initial-download-failure.txt",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/browser-initial-download-failure.txt",
+      "git_blob": "df02d7eaf83855dad74e3d9e059bf4bfda29137f",
+      "sha256": "dbcab59f6daf0c274ef294ca637000fe521123ff2dc72cb840130dfbb75f525b"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/browser-runner.mjs.source",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/browser-runner.mjs.source",
+      "git_blob": "cea9f0a8c955ea50cf7450060459f263f1118f5b",
+      "sha256": "fffff38b0e6f2c9d934d11d39dd9c4a3a1d1ec80c20a5733c4ea95710c690d7e"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/browser-transfer-manifest.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/browser-transfer-manifest.json",
+      "git_blob": "ff63bffbba8f67e4b2c8f70c884023085c9e26bb",
+      "sha256": "1f8d044d051a8d27c359d0e6d3bdc652df2802ffdf647fa7450cdcd40d9015eb"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/build.txt",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/build.txt",
+      "git_blob": "be3b3219d3eec3c986d0780f72920f484272e0be",
+      "sha256": "cc42a63e5033b2c4cd90175737b971320cbc94763b7581585d7d845b94791880"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/composition-build.txt",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/composition-build.txt",
+      "git_blob": "7228217c16a1de842b4ef8b860b91d3f3c36c51e",
+      "sha256": "c5a516cf05d4dffa5a27de1b057482fbec2877a392059b0face7265d998b0322"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/composition-inputs.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/composition-inputs.json",
+      "git_blob": "8fd1e851a8d385b34f12bd1b6f49d1c0413c94c8",
+      "sha256": "013bbfc7ec2e358bcd01d4754879b5849306b701365525f66d5593e88a13f67f"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/composition-native-tests.txt",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/composition-native-tests.txt",
+      "git_blob": "2f875781dd36deb630466c008f5d4fd62fd4f363",
+      "sha256": "c69a2d06260250f18973aa0bdeb54b2c450f4893d268223b2ea5f9d7c2a70bc4"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/final-browser-results.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/final-browser-results.json",
+      "git_blob": "28e3ed43f076e4276cfebd4c16b2f185bfc913a1",
+      "sha256": "58d3c78e225f7f4ff6ce7524a7134020342c7fff9748d3ba0e2c0c4d50e02ac2"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/final-browser-run.txt",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/final-browser-run.txt",
+      "git_blob": "ecfd83914966a2c3a6d88ff13c919981c3a81e57",
+      "sha256": "1b077739169253105d5eab80f92c0987aa165f22c97f2762d2840f19b5e09835"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/README.md",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/README.md",
+      "git_blob": "5c18952754e6aee1ef78919b0b1129bdd3137f88",
+      "sha256": "62cc05a521ca00d591c4d96d53d2d03ff718be5dd04baf3f245d35601d1de118"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/VERIFICATION.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/VERIFICATION.json",
+      "git_blob": "92278920ad246c65b33e09cb1e1defaa117247da",
+      "sha256": "3f5f5b756380ba1453116c329beb6cd7f18239923de2b7ff9e16ce4e2bc2778b"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/edit-peer.test.ts.source",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/edit-peer.test.ts.source",
+      "git_blob": "fa82d16ca84abb376d0069faacfd0d7a604c6770",
+      "sha256": "72c33b117c0b0bf40fe2bed2c34f4391408549a217ff31ca51df9a30b535ef87"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/files.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/files.json",
+      "git_blob": "76e13ef136e5b4fec32461dfa6879033583fc0ca",
+      "sha256": "fdb3d70eaaa694c5a4140b272245d7a80394ca676ad30015e34f4aefa54faa33"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/fixed-source-custody.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/fixed-source-custody.json",
+      "git_blob": "811bd021f1815175489c1a5bc816278278742491",
+      "sha256": "fa6ceb2f8dfccb98c900406f8b09d0ab349fcaeda4eb3cd883887cb5237aec80"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/peer-fixed.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/peer-fixed.log",
+      "git_blob": "dea308f0ffa2b7dd0825b22723532eca5fa39b2c",
+      "sha256": "d223234cd353b54366ca6d1e34c60201167d50ce5eaaab99ab5cb85ffcdad677"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/peer-original.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/peer-original.log",
+      "git_blob": "cc5354c8d35b74c08689f0ed74d10f58b5d0f19c",
+      "sha256": "3d3eda8fc50c8b79830315b8b2aa8e855a9310d966ec0947d619fe476ab9929f"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/source-custody.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/source-custody.json",
+      "git_blob": "86793962d019184a1611592f5c0e67cf647b61f8",
+      "sha256": "d828982b98abce812fe277aed09135d2e5f23cbb13a2a44e982b7eea41af46d8"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/initial-build-failure.txt",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/initial-build-failure.txt",
+      "git_blob": "bf918e7e75e612c9880fe16d29758b50e5309948",
+      "sha256": "63d99d8eb600b57079d329f83b8a11e4a111c4200949bb8b1c01c50f87525e38"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/native-tests.txt",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/native-tests.txt",
+      "git_blob": "bd14afcc59d38180b310b4c0e41e9f843b241579",
+      "sha256": "01f8a7577bb6f4731572c3600325f093a4d9b9b0365b1bcecff4af1d630be244"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/README.md",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/README.md",
+      "git_blob": "e41608f1f51e1c14d231c443afb3c5a04148ed2c",
+      "sha256": "9cc100e3b1c063e3b0d712fcc5dc93239a58fce302cc61d17128a05b4908cf9a"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after-browser.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/after-browser.log",
+      "git_blob": "55ed64e0d81655cae7d3b3c49d70c45c8cf23f02",
+      "sha256": "11cd8269e6b0575fb745126e8fe93d22726ba497b7b0cc6141a3c6abd0bbd605"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/changed-return-phone.png",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/after/changed-return-phone.png",
+      "git_blob": "5237725102b1074a922b626a80fea61ca0048736",
+      "sha256": "6ecb1d8f6e6db56d14e199c3694dab4588bd301e07bf54a1a54db0d5b9fbd9f8"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/results.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/after/results.json",
+      "git_blob": "8c2f42ca85916b2346d6486d6a7f48690a4f5b0a",
+      "sha256": "aecf34d4f986b759e5c2deb9d3a177001bdd39d01d145111a2b7673b00ebc43d"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/baseline-build.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/baseline-build.log",
+      "git_blob": "07c51b5984d13ad8527769690252a78d631dc1a1",
+      "sha256": "3fe3b1a9a8fad46efc65655ac2f5106f726be3e509999594fc89169bb3bf4364"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before-browser.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/before-browser.log",
+      "git_blob": "c149da0b7db00079f9d3539ce42142bb51dbbda8",
+      "sha256": "6a4cb57fcdd9cfba0f664025891930f092a6c1672aab8ab93222d3e6e0ac9678"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/before.log",
+      "git_blob": "dd622b9fd0307f869a6a1f215d948df84dc231e6",
+      "sha256": "731f0d728bed2003102756113d57d0acadc162c35f3aafc2bfa821a7e8f99b51"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before/results.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/before/results.json",
+      "git_blob": "22d70b50998c9fdece6e50c310ce04ddbc7d3987",
+      "sha256": "5d5cdac5c5282769dab6bc93a20074cebb3b8f7cef970f7b93e90aa25899fcd6"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/files.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/files.json",
+      "git_blob": "1b0565bbcb7f6cda5ded82ce210f687c6f7f9b8c",
+      "sha256": "2ec12cd3ba2e379b5e2155089c37668c86a2e53a5d469fa54e30786001a74503"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/final-native-tests.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/final-native-tests.log",
+      "git_blob": "62b1ffe469f564315124c80a6af3dc7ae2744177",
+      "sha256": "6c4da5df903092fd6a4ec330e506466247b1996688cf3ef978fb8f34df1405ad"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/qualified-build.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/qualified-build.log",
+      "git_blob": "4b9fc430d849a89827ad00ca5a429c162f5b7c64",
+      "sha256": "e03713a563f74c4b59af38bc94918128e504d3e1362618570f5c803b1a76d494"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/source-and-runtime.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/source-and-runtime.json",
+      "git_blob": "17a7737b1b230a962a1fbc0e70b856cfe86b2d89",
+      "sha256": "47582bb19b24f057569966859796c9b004841713cbb0625d4d8e591b7690de97"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/unchanged-editor-browser.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/unchanged-editor-browser.log",
+      "git_blob": "e7878c2f1eaecc1fc0133f2ab6e07bb74b1156ef",
+      "sha256": "4d9ed98f5db66f7c24f139a84df89478a1487c213b018f48a2d561f76c68f5e5"
+    },
+    {
+      "path": "index.html",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/index.html",
+      "git_blob": "e8f54ca670c784c99b37841e275d99b49f3e35c2",
+      "sha256": "e8e33734ba822c77c9efa8f98009c5cdd5429d8eda85b98159f30cd576fa3ffe"
+    },
+    {
+      "path": "package-lock.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/package-lock.json",
+      "git_blob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+    },
+    {
+      "path": "package.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/package.json",
+      "git_blob": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c"
+    },
+    {
+      "path": "public/captures/returnby-desktop.png",
+      "source": "/workspace/scratch/b55367d787c4/production/returnby/public/captures/returnby-desktop.png",
+      "git_blob": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d",
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+    },
+    {
+      "path": "public/captures/returnby-mobile.png",
+      "source": "/workspace/scratch/b55367d787c4/production/returnby/public/captures/returnby-mobile.png",
+      "git_blob": "c2ed83d29698fb5a47818c87d8f82944997c2bc4",
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+    },
+    {
+      "path": "public/favicon.svg",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/public/favicon.svg",
+      "git_blob": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "path": "skills-lock.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/skills-lock.json",
+      "git_blob": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf",
+      "sha256": "d694bf01b540bc48630898dc535fb9ecdbeced78d7d94bc56ee53a488490b4c6"
+    },
+    {
+      "path": "src/deadline.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/deadline.ts",
+      "git_blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "path": "src/edit-ui.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/edit-ui.ts",
+      "git_blob": "d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab",
+      "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6"
+    },
+    {
+      "path": "src/edit.css",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/edit.css",
+      "git_blob": "68691310feaf885d68876d77e25821f44683c4ae",
+      "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42"
+    },
+    {
+      "path": "src/edit.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/edit.ts",
+      "git_blob": "15ffab3eb7cb4ea365474c2aa50706264e888645",
+      "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482"
+    },
+    {
+      "path": "src/ics.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/ics.ts",
+      "git_blob": "bf4168e7ad798935875ff9115f1193315e33d423",
+      "sha256": "ccd1efc1ca1211f04a59c0b9e621fc3a2c0f2d1ed483cdc5dc506a707330be72"
+    },
+    {
+      "path": "src/main.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/main.ts",
+      "git_blob": "a4e44abc441b6700d4e12b6d20c879f3aab106cf",
+      "sha256": "e081b6c32e5119c4652f17fc174430b994ef86cfb3e558c3ed1c2784f8da65c4"
+    },
+    {
+      "path": "src/parse.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/parse.ts",
+      "git_blob": "45dd377540c6ec9046604927a6e8803d19fe3b5b",
+      "sha256": "591eea8a9a73009d3870b61df591ad2bb5d62144d931841b063180da588cc439"
+    },
+    {
+      "path": "src/policy.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/policy.ts",
+      "git_blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+      "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231"
+    },
+    {
+      "path": "src/samples.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/samples.ts",
+      "git_blob": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04"
+    },
+    {
+      "path": "src/store.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/store.ts",
+      "git_blob": "371d25a58a0e7ee34f495b18477d1d0ac6dedaa3",
+      "sha256": "d336aad076bf8f8b8e4daee12992092293ad84c70b8e36f84dec801f9ff05fdf"
+    },
+    {
+      "path": "src/style.css",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/style.css",
+      "git_blob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+      "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892"
+    },
+    {
+      "path": "tests/core.test.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/core.test.ts",
+      "git_blob": "57e122956a04824da82185263ac460243de3548c",
+      "sha256": "b7f392c5dac6507b07a7e69016e81a793a1aa8264b6cec9b9f3262481f3b883f"
+    },
+    {
+      "path": "tests/edit-ui.test.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/edit-ui.test.mjs",
+      "git_blob": "02ade0a572291bb54d01e9fa6444a61f342575b0",
+      "sha256": "09604be0f7a3c6845341f3f8145c3033c488326939616aa84b4f4cc90140e0af"
+    },
+    {
+      "path": "tests/edit.test.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/edit.test.ts",
+      "git_blob": "92508d1715f6c437a6c7b0f654193fed32c7f285",
+      "sha256": "0d9913a63ba1c3d5bae71f789be37deb82ab05bdf29dc7d569a959e173d54d93"
+    },
+    {
+      "path": "tests/helpers/loading-cases.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/helpers/loading-cases.mjs",
+      "git_blob": "27be19826740cd1a2efdff90c9f3cd3c57c48099",
+      "sha256": "d23b44a511e5bc9299d6eb41ef7ce1685ab454201a0b5850acbdf4e6009b3790"
+    },
+    {
+      "path": "tests/helpers/loading-fixture.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/helpers/loading-fixture.mjs",
+      "git_blob": "e0efc199de4f8595c9ea601179709030decb81ab",
+      "sha256": "0c0ddd352b66775a0850d1b4e617cb401b2659793511b35dffe2b7f072b24578"
+    },
+    {
+      "path": "tests/helpers/storage-cases.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/helpers/storage-cases.mjs",
+      "git_blob": "ac797cdc364cdae4b7af1e78a0d04ca968f2a6e0",
+      "sha256": "7720079ce24a92569f96b89db2aa67f1eaa650f6e21b0cd019774d04dc5fe130"
+    },
+    {
+      "path": "tests/helpers/storage-fixture.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/helpers/storage-fixture.mjs",
+      "git_blob": "b808f12d34896ed4f30742a629b46163b123882f",
+      "sha256": "01be65bd9bbe1bbd516ae4a9fca3cb6d810383738d8e6c081f5de83e9265eabc"
+    },
+    {
+      "path": "tests/helpers/submitted-policy-cases.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/helpers/submitted-policy-cases.mjs",
+      "git_blob": "636e4c81cc10647b28f729d1a1389ee38f7b1dfa",
+      "sha256": "36a8e37a0d03de68043711fcd75ab946b9c77a015f3e0dcc5f73cf1ca09e5413"
+    },
+    {
+      "path": "tests/loading.test.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/loading.test.mjs",
+      "git_blob": "333cd255c4b9b29ec5363813436720b284d08770",
+      "sha256": "c3cf0a24d3a8d0ca4d9e3d773b1cb60f2ebd16f5f214794d01d28ff8dac37250"
+    },
+    {
+      "path": "tests/stale-actions.test.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/stale-actions.test.mjs",
+      "git_blob": "bf036f3b3f99be16fb480f0584850861f4678903",
+      "sha256": "144033372f2a5170e4192b8a86ed794ea6f316f4544bdc95b5e35c626687160e"
+    },
+    {
+      "path": "tests/storage.test.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/storage.test.mjs",
+      "git_blob": "88e594569829f41bc12895c2a86396949a569abf",
+      "sha256": "786204bb548f659efc0967d0cc39000a89d40c09d04032706f3839e44f795c78"
+    },
+    {
+      "path": "tests/submitted-policy.test.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/submitted-policy.test.mjs",
+      "git_blob": "f0bcf51272b0042d9e1436ddb54eecfdb1f48a51",
+      "sha256": "9e757d76a8ee99d5a3c6606854b1a57905e052123fce4338329984b9f0312d7b"
+    },
+    {
+      "path": "tools/capture_returnby.py",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tools/capture_returnby.py",
+      "git_blob": "367403bf3c393731cee650912789add1f3b46297",
+      "sha256": "16de192dd6c76b4eeaefb54d8f3c409f9b594b192759ff0bf3bf40460b0440f1"
+    },
+    {
+      "path": "tools/check_edit_backup_browser.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tools/check_edit_backup_browser.mjs",
+      "git_blob": "f4b0529172621ae51bb20f86a36a27b408974551",
+      "sha256": "b6c2d98977d68dc1555e9ec53833edca7d5feb1bd07bb8d1e89866bcfcb985b0"
+    },
+    {
+      "path": "tools/check_edit_browser.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tools/check_edit_browser.mjs",
+      "git_blob": "3a2b901cb584292c7a103233842e3edafc57e7b5",
+      "sha256": "89abbf79dfe75678bd132c0ef7bafabef0e30663b57623f63b94a9320e7dfe82"
+    },
+    {
+      "path": "tools/check_stale_browser.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tools/check_stale_browser.mjs",
+      "git_blob": "c3a8bf8434777052910ec63c9f30b52b43d21981",
+      "sha256": "2065e6aa09a66ca339be827418f21823c24af037a780267b50eba1fcb88b0b54"
+    },
+    {
+      "path": "tsconfig.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tsconfig.json",
+      "git_blob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc"
+    },
+    {
+      "path": "vite.config.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/vite.config.ts",
+      "git_blob": "041854f74501ecbb719e93f24f73e471596ab572",
+      "sha256": "320350dced549cebe2ae248283028ee7ae0fdbb36576a694f70cfbd755f3a30d"
+    }
+  ],
+  "exact_pr16_delta": [
+    {
+      "path": "README.md",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/README.md",
+      "git_blob": "30305d1b22118ebc59bfa6a0ab82934ba279f5ae",
+      "sha256": "f2709d22cb6ff5fa18b1c0ae77245ea5cead462f2d5389fd8b842bf94b3d2729"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/README.md",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/README.md",
+      "git_blob": "e41608f1f51e1c14d231c443afb3c5a04148ed2c",
+      "sha256": "9cc100e3b1c063e3b0d712fcc5dc93239a58fce302cc61d17128a05b4908cf9a"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after-browser.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/after-browser.log",
+      "git_blob": "55ed64e0d81655cae7d3b3c49d70c45c8cf23f02",
+      "sha256": "11cd8269e6b0575fb745126e8fe93d22726ba497b7b0cc6141a3c6abd0bbd605"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/changed-return-phone.png",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/after/changed-return-phone.png",
+      "git_blob": "5237725102b1074a922b626a80fea61ca0048736",
+      "sha256": "6ecb1d8f6e6db56d14e199c3694dab4588bd301e07bf54a1a54db0d5b9fbd9f8"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/results.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/after/results.json",
+      "git_blob": "8c2f42ca85916b2346d6486d6a7f48690a4f5b0a",
+      "sha256": "aecf34d4f986b759e5c2deb9d3a177001bdd39d01d145111a2b7673b00ebc43d"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/baseline-build.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/baseline-build.log",
+      "git_blob": "07c51b5984d13ad8527769690252a78d631dc1a1",
+      "sha256": "3fe3b1a9a8fad46efc65655ac2f5106f726be3e509999594fc89169bb3bf4364"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before-browser.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/before-browser.log",
+      "git_blob": "c149da0b7db00079f9d3539ce42142bb51dbbda8",
+      "sha256": "6a4cb57fcdd9cfba0f664025891930f092a6c1672aab8ab93222d3e6e0ac9678"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/before.log",
+      "git_blob": "dd622b9fd0307f869a6a1f215d948df84dc231e6",
+      "sha256": "731f0d728bed2003102756113d57d0acadc162c35f3aafc2bfa821a7e8f99b51"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before/results.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/before/results.json",
+      "git_blob": "22d70b50998c9fdece6e50c310ce04ddbc7d3987",
+      "sha256": "5d5cdac5c5282769dab6bc93a20074cebb3b8f7cef970f7b93e90aa25899fcd6"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/files.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/files.json",
+      "git_blob": "1b0565bbcb7f6cda5ded82ce210f687c6f7f9b8c",
+      "sha256": "2ec12cd3ba2e379b5e2155089c37668c86a2e53a5d469fa54e30786001a74503"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/final-native-tests.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/final-native-tests.log",
+      "git_blob": "62b1ffe469f564315124c80a6af3dc7ae2744177",
+      "sha256": "6c4da5df903092fd6a4ec330e506466247b1996688cf3ef978fb8f34df1405ad"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/qualified-build.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/qualified-build.log",
+      "git_blob": "4b9fc430d849a89827ad00ca5a429c162f5b7c64",
+      "sha256": "e03713a563f74c4b59af38bc94918128e504d3e1362618570f5c803b1a76d494"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/source-and-runtime.json",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/source-and-runtime.json",
+      "git_blob": "17a7737b1b230a962a1fbc0e70b856cfe86b2d89",
+      "sha256": "47582bb19b24f057569966859796c9b004841713cbb0625d4d8e591b7690de97"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/unchanged-editor-browser.log",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/unchanged-editor-browser.log",
+      "git_blob": "e7878c2f1eaecc1fc0133f2ab6e07bb74b1156ef",
+      "sha256": "4d9ed98f5db66f7c24f139a84df89478a1487c213b018f48a2d561f76c68f5e5"
+    },
+    {
+      "path": "src/main.ts",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/main.ts",
+      "git_blob": "a4e44abc441b6700d4e12b6d20c879f3aab106cf",
+      "sha256": "e081b6c32e5119c4652f17fc174430b994ef86cfb3e558c3ed1c2784f8da65c4"
+    },
+    {
+      "path": "tests/stale-actions.test.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/stale-actions.test.mjs",
+      "git_blob": "bf036f3b3f99be16fb480f0584850861f4678903",
+      "sha256": "144033372f2a5170e4192b8a86ed794ea6f316f4544bdc95b5e35c626687160e"
+    },
+    {
+      "path": "tools/check_stale_browser.mjs",
+      "source": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tools/check_stale_browser.mjs",
+      "git_blob": "c3a8bf8434777052910ec63c9f30b52b43d21981",
+      "sha256": "2065e6aa09a66ca339be827418f21823c24af037a780267b50eba1fcb88b0b54"
+    }
+  ],
+  "receiving_before_main": {
+    "git_blob": "b1d85b0809796b6f0951dbb85f32248473177344",
+    "sha256": "f3f4cdf23b6b5bdf1f564ed2fedbfa67d24e49343fc7ef6a2ca24d1ffcaadd07"
+  },
+  "receiving_after_main": {
+    "git_blob": "9eaa6c1f66d93c8ab7b9c9614ce5940b5aa11b13",
+    "sha256": "7d2d2b1ff1c783e50230b5c8bc149d9ec4dcf80bae25689e38d3527ad7899dd3"
+  },
+  "integration": "Exactly the three owner transformations applied to combined main.ts; other receiving source preserved. Dependencies use a new cache-isolated thin symlink view of the already qualified local runtime."
+}

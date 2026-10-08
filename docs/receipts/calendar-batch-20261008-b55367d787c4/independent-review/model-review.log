@@ -1,0 +1,5 @@
+PASS Distinct delimiter and Unicode identities round-trip without content-line injection
+PASS Selected ambiguity refuses while an unrelated ambiguous identity cannot replace a selection
+PASS Gregorian leap, century, year limit and DST dates remain exact across four local time zones
+PASS Escape expansion crosses the exact byte cap even when its lower bound does not
+{"passed":4,"failure":false}
