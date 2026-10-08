@@ -17,6 +17,24 @@ describe('parse', () => {
   it('prefers date near "order"', () => {
     expect(parse('Ships Sep 1, 2026. Order placed on Aug 20, 2026.').orderDate).toBe('2026-08-20');
   });
+  it('prefers an explicit order date over delivery near an order number', () => {
+    for (const date of ['October 3, 2026', '3 Oct 2026', '2026-10-03', '10/03/2026']) {
+      const p = parse(`From: Northwind Outfitters\nOrder #AB1234\nDelivery: October 10, 2026\nOrder date: ${date}\nSubtotal: $50.00\nTotal: $55.00`);
+      expect(p).toMatchObject({ merchant: 'Northwind Outfitters', orderDate: '2026-10-03', orderNo: 'AB1234', total: '$55.00' });
+      expect(p.found).toEqual({ merchant: true, orderDate: true, orderNo: true, total: true });
+    }
+  });
+  it('matches explicit labels at original text offsets with case and whitespace variants', () => {
+    for (const label of ['ORDER DATE ', 'Order date:', 'order\tdate : ', 'Order\ndate:\n', `Order date${' '.repeat(100)}`])
+      expect(parse(`İİİ\nOrder #AB1234\nDelivery: October 10, 2026\n${label}October 3, 2026`).orderDate).toBe('2026-10-03');
+    expect(parse('Order date: October 5, 2026\nOrder date: October 3, 2026').orderDate).toBe('2026-10-05');
+  });
+  it('retains date fallbacks when no valid date directly follows an explicit label', () => {
+    for (const suffix of ['Preorder date: October 3, 2026', 'Order date revised to October 3, 2026', 'Order date - October 3, 2026', 'Order date: February 30, 2026\nReminder: October 3, 2026'])
+      expect(parse(`Order #AB1234\nDelivery: October 10, 2026\n${suffix}`).orderDate).toBe('2026-10-10');
+    expect(parse('Delivery October 10, 2026; reminder October 3, 2026').orderDate).toBe('2026-10-03');
+    expect(parse('Order date: unknown').found.orderDate).toBe(false);
+  });
   it('leaves unknowns blank', () => {
     const p = parse(samples[2], knownMerchants);
     expect(p.found).toEqual({ merchant: false, orderDate: false, orderNo: false, total: false });

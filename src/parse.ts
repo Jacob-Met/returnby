@@ -44,6 +44,11 @@ export function findDates(text: string): Hit[] {
 function pickOrderDate(text: string): string {
   const hits = findDates(text);
   if (!hits.length) return '';
+  const explicitDates = new Set(
+    [...text.matchAll(/\border\s+date\s*:?\s*/gi)].map((m) => m.index + m[0].length),
+  );
+  const explicit = hits.find((h) => explicitDates.has(h.index));
+  if (explicit) return explicit.date;
   const lower = text.toLowerCase();
   for (const h of hits) {
     const before = lower.slice(Math.max(0, h.index - 40), h.index);
