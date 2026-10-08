@@ -1,0 +1,79 @@
+{
+  "schema": "e3.returnby.native-browser-acceptance/1",
+  "status": "pass",
+  "utc": "2026-10-08T22:27:57.042Z",
+  "device": "42ad330c-bb9a-4d2f-bcb4-6efeb4c6583e",
+  "source_git": "57b2e8a1c68b674bc76e8d371356c6286f2a3073",
+  "source_parent": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "source_files": 55,
+  "built_assets": 16,
+  "source_and_build_bytes": 359048,
+  "source_unchanged": true,
+  "native": {
+    "node": "v24.21.0",
+    "chrome": "Chrome/154.0.8037.98",
+    "os": "Windows 10 Home 10.0.19045",
+    "entry_process_pid": 88288,
+    "observed_exit": 0
+  },
+  "receiving": {
+    "baseline_groups": 6,
+    "candidate_groups": 8,
+    "total_groups": 14,
+    "expected_baseline_absence": "No list-order selector",
+    "actual_downloads": 2,
+    "visual_review": "Desktop and 390px screenshots inspected; selector/focus/grouped cards contained and legible",
+    "actual_browser_keyboard": true,
+    "physical_os_keyboard": false
+  },
+  "cleanup": {
+    "owned_browser_children_exit": 0,
+    "private_servers_closed": true,
+    "created_profiles_removed": true,
+    "independent_post_run_owned_chrome": 0,
+    "old_http_listeners": []
+  },
+  "artifacts": {
+    "results": {
+      "path": "browser-v1/RESULTS.json",
+      "bytes": 20862,
+      "sha256": "96d60cd33d7342872fae88caf8040d8fdf60499d005e277f9e15ae0c26b14831"
+    },
+    "receiver": {
+      "path": "receive-browser.mjs",
+      "bytes": 17932,
+      "sha256": "dc84a4566c5acf8757295179b617af8fae5650021edd724865ceef29f127300d"
+    },
+    "expectations": {
+      "path": "EXPECTATIONS.json",
+      "bytes": 2000,
+      "sha256": "c25de383f7062f2cf4cd1fb024e2fcb53692b307863ec1f8d893d4d96c227f02"
+    },
+    "transfer": {
+      "path": "TRANSFER-RECEIPT.json",
+      "bytes": 18937,
+      "sha256": "6a1b98d58a9003f38eef331489c8bb66205d5a2f833472a1691d60751b3072d3"
+    },
+    "cleanup": {
+      "path": "POST-RUN-CLEANUP.json",
+      "bytes": 405,
+      "sha256": "a0cb294dbc1e19303a07186910f57cb9f74220c91017a0cee2261850deca86e3"
+    },
+    "readme": {
+      "path": "README.md",
+      "bytes": 6762,
+      "sha256": "ad8435e71f6523fa2d49eb1a7b0519831d1e1e71067f50348b4024f1910645cc"
+    },
+    "members": {
+      "path": "MEMBER-INDEX.json",
+      "bytes": 16553,
+      "sha256": "73247ef1203ec4d18e5b1683502a38b4106735a0375eed5ea03a1847cde2af57"
+    }
+  },
+  "limits": [
+    "Synthetic localStorage input; parser/save form not retested",
+    "Headless CDP software-rendered browser; no GPU or physical keyboard claim",
+    "No source rebuild, source tests, installs, live services, GitHub or Actions operation",
+    "Actual product browser receiving, not public site or production deployment"
+  ]
+}

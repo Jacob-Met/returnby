@@ -30,3 +30,9 @@ The app is browser-only; no AI runs in the page. The Devpost Learn planning docu
 ## Return-trip checklist
 
 From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. The page keeps the existing tracker unchanged; selections, paper check marks and notes are not saved. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
+
+## Review returns by store
+
+The tracker starts in **Deadline (soonest first)** order. Choose **Store A–Z, then deadline** to see each store's returns together, with its earliest deadline first. This uses an English alphabetical comparison, ignores case and repeated whitespace in store names, and places unnamed stores last. The original saved names and separate order identities stay unchanged.
+
+The choice applies to the visible cards alongside the existing date filter. Counts, calendar files, saved records and the separate trip checklist are unchanged. Returning to deadline order restores the usual list; reloading the page resets the choice.

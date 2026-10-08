@@ -1,0 +1,70 @@
+{
+  "base_commit": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "paths": [
+    "src/list-order.ts",
+    "src/list-order.css",
+    "src/main.ts",
+    "index.html",
+    "README.md",
+    "tests/list-order.test.ts"
+  ],
+  "unchanged_baseline_paths": [
+    ".gitignore",
+    "data/policies.json",
+    "package-lock.json",
+    "package.json",
+    "src/day-refresh.ts",
+    "src/deadline.ts",
+    "src/ics.ts",
+    "src/parse.ts",
+    "src/policy.ts",
+    "src/samples.ts",
+    "src/store.ts",
+    "src/style.css",
+    "src/trip-checklist-view.ts",
+    "src/trip-checklist.css",
+    "src/trip-checklist.ts",
+    "tests/core.test.ts",
+    "tests/day-refresh.test.ts",
+    "tests/ics.test.ts",
+    "tests/trip-checklist.test.ts",
+    "trip-checklist.html",
+    "tsconfig.json",
+    "vite.config.ts",
+    "public/favicon.svg"
+  ],
+  "main_inverse_recovers_original_bytes": true,
+  "readme_original_exact_prefix": true,
+  "candidate": {
+    "src/list-order.ts": {
+      "sha256": "fbbe3ebb507b6215cafa13ff2a35d50c4b36c7a4ccc50f45ca2b7a756e2b46f2",
+      "git_blob": "ddc6642eb16404f590d10fa9a93167df32287368",
+      "bytes": 985
+    },
+    "src/list-order.css": {
+      "sha256": "b44cb6fbfde3f0a1686f84c5b9904da26c649f87e7c799e1903fb6eb8393b693",
+      "git_blob": "bd1c20870b4e545065cac03a95da5a3c905ed6e9",
+      "bytes": 393
+    },
+    "src/main.ts": {
+      "sha256": "317fd177737c2f916b52a748985974bafafe6899662d4bd05b2e1e022d6ebdd8",
+      "git_blob": "8cd42ac6cf3df690af2e5b78d910231297960499",
+      "bytes": 7682
+    },
+    "index.html": {
+      "sha256": "03625865c81636e024baebbfddd2e6895bdaf49afe04110aaa5ce8f70225505f",
+      "git_blob": "f21c9d0ccb8de4ce896bd130990e23dc24ac7540",
+      "bytes": 4670
+    },
+    "README.md": {
+      "sha256": "a7f424568eafa96e8146c33c3384d4ceb390e06ee35bdb87495adc86d007db79",
+      "git_blob": "c0ab45a8805478720409ceaad315847b7c8ae7db",
+      "bytes": 2896
+    },
+    "tests/list-order.test.ts": {
+      "sha256": "0be53fca5c7f8b772ca7ba70524a5aa66ff2425bef0b880e54bbfdde6aa20cfa",
+      "git_blob": "65982f570e71bdfa6321cda24b218d247be13194",
+      "bytes": 2494
+    }
+  }
+}

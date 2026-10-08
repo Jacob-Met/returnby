@@ -1,0 +1,699 @@
+{
+  "schema": "e3.returnby.actual-browser-receiving/1",
+  "started": "2026-10-08T22:22:54.711Z",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "source_git": "57b2e8a1c68b674bc76e8d371356c6286f2a3073",
+  "transfer_sha256": "5a4832e0a6eff1f8e6b0bcbb5703ab8db2b4edc53226d48798b4f0e8f01a16db",
+  "scope": "Actual isolated Chrome static application receiving; synthetic local data; no production adoption",
+  "sides": [
+    {
+      "side": "baseline",
+      "groups": [
+        {
+          "name": "new-profile-empty-tracker",
+          "status": "pass",
+          "details": {
+            "storageAbsent": true
+          }
+        },
+        {
+          "name": "rendered-default-deadline-order",
+          "status": "pass",
+          "details": {
+            "ids": [
+              "receipt-zulu-expired",
+              "receipt-acme-early",
+              "receipt-acme-tie",
+              "receipt-zulu-early",
+              "receipt-unknown",
+              "receipt-beta",
+              "receipt-acme-late"
+            ],
+            "counts": [
+              "7",
+              "6",
+              "1"
+            ],
+            "recordAndActionIdsAgree": true,
+            "screenshot": "a24e0ce55140f73037684c26cd88c9abacaba463e43b80629971c1857260eec6"
+          }
+        },
+        {
+          "name": "rendered-filter-preserves-storage",
+          "status": "pass",
+          "details": {
+            "ids": [
+              "receipt-acme-early",
+              "receipt-acme-tie",
+              "receipt-zulu-early",
+              "receipt-unknown",
+              "receipt-beta",
+              "receipt-acme-late"
+            ]
+          }
+        },
+        {
+          "name": "real-calendar-download-after-ordering",
+          "status": "pass",
+          "details": {
+            "file": "return-ACME.ics",
+            "bytes": 367,
+            "sha256": "03acf4d79f89903fec724b3b5fed29fc7dea85390c1f7e6302334e7ec303eb03",
+            "record": "receipt-acme-late",
+            "due": "20261014"
+          }
+        },
+        {
+          "name": "real-remove-keeps-record-identity",
+          "status": "pass",
+          "details": {
+            "removed": "receipt-acme-early",
+            "storedIds": [
+              "receipt-zulu-early",
+              "receipt-acme-late",
+              "receipt-beta",
+              "receipt-unknown",
+              "receipt-acme-tie",
+              "receipt-zulu-expired"
+            ]
+          }
+        },
+        {
+          "name": "reload-retains-records-resets-display-choice",
+          "status": "pass",
+          "details": {
+            "ids": [
+              "receipt-zulu-expired",
+              "receipt-acme-tie",
+              "receipt-zulu-early",
+              "receipt-unknown",
+              "receipt-beta",
+              "receipt-acme-late"
+            ],
+            "counts": [
+              "6",
+              "5",
+              "1"
+            ],
+            "persistenceUnchanged": true
+          }
+        }
+      ],
+      "errors": [],
+      "server_requests": [
+        {
+          "method": "GET",
+          "path": "/"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-6De5wGcc.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/deadline-DzH3L3IB.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-Bp_ZSQx5.css"
+        },
+        {
+          "method": "GET",
+          "path": "/favicon.svg"
+        },
+        {
+          "method": "GET",
+          "path": "/"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-6De5wGcc.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-Bp_ZSQx5.css"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/deadline-DzH3L3IB.js"
+        },
+        {
+          "method": "GET",
+          "path": "/favicon.svg"
+        },
+        {
+          "method": "GET",
+          "path": "/"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-6De5wGcc.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-Bp_ZSQx5.css"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/deadline-DzH3L3IB.js"
+        },
+        {
+          "method": "GET",
+          "path": "/favicon.svg"
+        }
+      ],
+      "cleanup": {
+        "browser_exit": {
+          "code": 0,
+          "signal": null
+        },
+        "browser_exited": true,
+        "server_closed": true,
+        "profile_removed": true,
+        "profile_path": "C:\\Users\\minec\\Hamon\\receiving\\autonomous-e3a41d2b3368-returnby-store-order\\browser-v1\\baseline\\profile"
+      },
+      "source_unchanged": true,
+      "origin": "http://127.0.0.1:56215",
+      "browser_command": {
+        "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "args": [
+          "--headless=new",
+          "--disable-gpu",
+          "--no-first-run",
+          "--no-default-browser-check",
+          "--disable-background-networking",
+          "--disable-component-update",
+          "--disable-default-apps",
+          "--disable-sync",
+          "--remote-debugging-address=127.0.0.1",
+          "--remote-debugging-port=0",
+          "--user-data-dir=C:\\Users\\minec\\Hamon\\receiving\\autonomous-e3a41d2b3368-returnby-store-order\\browser-v1\\baseline\\profile",
+          "--window-size=1280,900",
+          "about:blank"
+        ]
+      },
+      "pid": 92676,
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Chrome/154.0.8037.98",
+        "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "jsVersion": "15.4.80.20"
+      },
+      "feature_negative": {
+        "expected": true,
+        "observed": "No list-order control; original rendered deadline order retained"
+      },
+      "actual_download_events": [
+        {
+          "method": "Browser.downloadWillBegin",
+          "params": {
+            "frameId": "6C2B1BEE67C06465C69AF9102ADB1461",
+            "guid": "3ab4ceeb-1848-45f9-b60f-c3b98d7cd25a",
+            "url": "blob:http://127.0.0.1:56215/9d8f2d4a-d860-48e3-a011-b23ed61d6984",
+            "suggestedFilename": "return-ACME.ics"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "3ab4ceeb-1848-45f9-b60f-c3b98d7cd25a",
+            "totalBytes": 367,
+            "receivedBytes": 0,
+            "state": "inProgress"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "3ab4ceeb-1848-45f9-b60f-c3b98d7cd25a",
+            "totalBytes": 367,
+            "receivedBytes": 367,
+            "state": "inProgress"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "3ab4ceeb-1848-45f9-b60f-c3b98d7cd25a",
+            "totalBytes": 367,
+            "receivedBytes": 367,
+            "state": "inProgress"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "3ab4ceeb-1848-45f9-b60f-c3b98d7cd25a",
+            "totalBytes": 367,
+            "receivedBytes": 367,
+            "state": "inProgress"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "3ab4ceeb-1848-45f9-b60f-c3b98d7cd25a",
+            "totalBytes": 367,
+            "receivedBytes": 367,
+            "state": "inProgress"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "3ab4ceeb-1848-45f9-b60f-c3b98d7cd25a",
+            "totalBytes": 367,
+            "receivedBytes": 367,
+            "state": "completed",
+            "filePath": "C:\\Users\\minec\\Hamon\\receiving\\autonomous-e3a41d2b3368-returnby-store-order\\browser-v1\\baseline\\downloads\\return-ACME.ics"
+          }
+        }
+      ],
+      "page_request_urls": [
+        "http://127.0.0.1:56215/",
+        "http://127.0.0.1:56215/assets/main-6De5wGcc.js",
+        "http://127.0.0.1:56215/assets/deadline-DzH3L3IB.js",
+        "http://127.0.0.1:56215/assets/main-Bp_ZSQx5.css",
+        "http://127.0.0.1:56215/favicon.svg",
+        "http://127.0.0.1:56215/",
+        "http://127.0.0.1:56215/assets/main-6De5wGcc.js",
+        "http://127.0.0.1:56215/assets/deadline-DzH3L3IB.js",
+        "http://127.0.0.1:56215/assets/main-Bp_ZSQx5.css",
+        "http://127.0.0.1:56215/favicon.svg",
+        "http://127.0.0.1:56215/",
+        "http://127.0.0.1:56215/assets/main-6De5wGcc.js",
+        "http://127.0.0.1:56215/assets/deadline-DzH3L3IB.js",
+        "http://127.0.0.1:56215/assets/main-Bp_ZSQx5.css",
+        "http://127.0.0.1:56215/favicon.svg"
+      ],
+      "status": "pass"
+    },
+    {
+      "side": "candidate",
+      "groups": [
+        {
+          "name": "new-profile-empty-tracker",
+          "status": "pass",
+          "details": {
+            "storageAbsent": true
+          }
+        },
+        {
+          "name": "rendered-default-deadline-order",
+          "status": "pass",
+          "details": {
+            "ids": [
+              "receipt-zulu-expired",
+              "receipt-acme-early",
+              "receipt-acme-tie",
+              "receipt-zulu-early",
+              "receipt-unknown",
+              "receipt-beta",
+              "receipt-acme-late"
+            ],
+            "counts": [
+              "7",
+              "6",
+              "1"
+            ],
+            "recordAndActionIdsAgree": true,
+            "screenshot": "564fa45459694c1c5eb56748781f4a77adcb4b38ed0d5aee616fab054b000249"
+          }
+        },
+        {
+          "name": "native-keyboard-store-order",
+          "status": "pass",
+          "details": {
+            "label": {
+              "value": "deadline",
+              "labels": [
+                "List orderDeadline (soonest first)Store A–Z, then deadline"
+              ],
+              "options": [
+                {
+                  "value": "deadline",
+                  "text": "Deadline (soonest first)"
+                },
+                {
+                  "value": "store",
+                  "text": "Store A–Z, then deadline"
+                }
+              ]
+            },
+            "focus": {
+              "style": "solid",
+              "width": "2px"
+            },
+            "ids": [
+              "receipt-acme-early",
+              "receipt-acme-tie",
+              "receipt-acme-late",
+              "receipt-beta",
+              "receipt-zulu-expired",
+              "receipt-zulu-early",
+              "receipt-unknown"
+            ],
+            "persistenceUnchanged": true,
+            "screenshot": "6bb59eaf185b75541b8736549893fcd1da036f09833131fd7614112789b247d6"
+          }
+        },
+        {
+          "name": "narrow-rendered-control",
+          "status": "pass",
+          "details": {
+            "left": 160,
+            "right": 346,
+            "width": 186,
+            "viewport": 390,
+            "documentWidth": 375,
+            "screenshot": "4fb07ffb05700381510c6127235da29fefc15d32560e6040c5b523f0ea8b3dc5"
+          }
+        },
+        {
+          "name": "rendered-filter-preserves-storage",
+          "status": "pass",
+          "details": {
+            "ids": [
+              "receipt-acme-early",
+              "receipt-acme-tie",
+              "receipt-acme-late",
+              "receipt-beta",
+              "receipt-zulu-early",
+              "receipt-unknown"
+            ]
+          }
+        },
+        {
+          "name": "real-calendar-download-after-ordering",
+          "status": "pass",
+          "details": {
+            "file": "return-ACME.ics",
+            "bytes": 367,
+            "sha256": "113f59e61ba636fe9f24e82de52f6e1089a530dc995dba4b18cfba11afc5fa24",
+            "record": "receipt-acme-late",
+            "due": "20261014"
+          }
+        },
+        {
+          "name": "real-remove-keeps-record-identity",
+          "status": "pass",
+          "details": {
+            "removed": "receipt-acme-early",
+            "storedIds": [
+              "receipt-zulu-early",
+              "receipt-acme-late",
+              "receipt-beta",
+              "receipt-unknown",
+              "receipt-acme-tie",
+              "receipt-zulu-expired"
+            ]
+          }
+        },
+        {
+          "name": "reload-retains-records-resets-display-choice",
+          "status": "pass",
+          "details": {
+            "ids": [
+              "receipt-zulu-expired",
+              "receipt-acme-tie",
+              "receipt-zulu-early",
+              "receipt-unknown",
+              "receipt-beta",
+              "receipt-acme-late"
+            ],
+            "counts": [
+              "6",
+              "5",
+              "1"
+            ],
+            "persistenceUnchanged": true
+          }
+        }
+      ],
+      "errors": [],
+      "server_requests": [
+        {
+          "method": "GET",
+          "path": "/"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-HBA-D94-.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/deadline-DzH3L3IB.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-CZc3z4o3.css"
+        },
+        {
+          "method": "GET",
+          "path": "/favicon.svg"
+        },
+        {
+          "method": "GET",
+          "path": "/"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-HBA-D94-.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-CZc3z4o3.css"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/deadline-DzH3L3IB.js"
+        },
+        {
+          "method": "GET",
+          "path": "/favicon.svg"
+        },
+        {
+          "method": "GET",
+          "path": "/"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-HBA-D94-.js"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/main-CZc3z4o3.css"
+        },
+        {
+          "method": "GET",
+          "path": "/assets/deadline-DzH3L3IB.js"
+        },
+        {
+          "method": "GET",
+          "path": "/favicon.svg"
+        }
+      ],
+      "cleanup": {
+        "browser_exit": {
+          "code": 0,
+          "signal": null
+        },
+        "browser_exited": true,
+        "server_closed": true,
+        "profile_removed": true,
+        "profile_path": "C:\\Users\\minec\\Hamon\\receiving\\autonomous-e3a41d2b3368-returnby-store-order\\browser-v1\\candidate\\profile"
+      },
+      "source_unchanged": true,
+      "origin": "http://127.0.0.1:56290",
+      "browser_command": {
+        "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "args": [
+          "--headless=new",
+          "--disable-gpu",
+          "--no-first-run",
+          "--no-default-browser-check",
+          "--disable-background-networking",
+          "--disable-component-update",
+          "--disable-default-apps",
+          "--disable-sync",
+          "--remote-debugging-address=127.0.0.1",
+          "--remote-debugging-port=0",
+          "--user-data-dir=C:\\Users\\minec\\Hamon\\receiving\\autonomous-e3a41d2b3368-returnby-store-order\\browser-v1\\candidate\\profile",
+          "--window-size=1280,900",
+          "about:blank"
+        ]
+      },
+      "pid": 81808,
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Chrome/154.0.8037.98",
+        "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "jsVersion": "15.4.80.20"
+      },
+      "actual_download_events": [
+        {
+          "method": "Browser.downloadWillBegin",
+          "params": {
+            "frameId": "6882BC5844DA5F0D5EE55B4C6D763014",
+            "guid": "2200ab05-39b7-43a2-9d84-7c71be67e207",
+            "url": "blob:http://127.0.0.1:56290/401f99bf-ea62-41ac-a4f7-9f87024e7da6",
+            "suggestedFilename": "return-ACME.ics"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "2200ab05-39b7-43a2-9d84-7c71be67e207",
+            "totalBytes": 367,
+            "receivedBytes": 0,
+            "state": "inProgress"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "2200ab05-39b7-43a2-9d84-7c71be67e207",
+            "totalBytes": 367,
+            "receivedBytes": 367,
+            "state": "inProgress"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "2200ab05-39b7-43a2-9d84-7c71be67e207",
+            "totalBytes": 367,
+            "receivedBytes": 367,
+            "state": "inProgress"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "2200ab05-39b7-43a2-9d84-7c71be67e207",
+            "totalBytes": 367,
+            "receivedBytes": 367,
+            "state": "inProgress"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "2200ab05-39b7-43a2-9d84-7c71be67e207",
+            "totalBytes": 367,
+            "receivedBytes": 367,
+            "state": "inProgress"
+          }
+        },
+        {
+          "method": "Browser.downloadProgress",
+          "params": {
+            "guid": "2200ab05-39b7-43a2-9d84-7c71be67e207",
+            "totalBytes": 367,
+            "receivedBytes": 367,
+            "state": "completed",
+            "filePath": "C:\\Users\\minec\\Hamon\\receiving\\autonomous-e3a41d2b3368-returnby-store-order\\browser-v1\\candidate\\downloads\\return-ACME.ics"
+          }
+        }
+      ],
+      "page_request_urls": [
+        "http://127.0.0.1:56290/",
+        "http://127.0.0.1:56290/assets/main-HBA-D94-.js",
+        "http://127.0.0.1:56290/assets/deadline-DzH3L3IB.js",
+        "http://127.0.0.1:56290/assets/main-CZc3z4o3.css",
+        "http://127.0.0.1:56290/favicon.svg",
+        "http://127.0.0.1:56290/",
+        "http://127.0.0.1:56290/assets/main-HBA-D94-.js",
+        "http://127.0.0.1:56290/assets/deadline-DzH3L3IB.js",
+        "http://127.0.0.1:56290/assets/main-CZc3z4o3.css",
+        "http://127.0.0.1:56290/favicon.svg",
+        "http://127.0.0.1:56290/",
+        "http://127.0.0.1:56290/assets/main-HBA-D94-.js",
+        "http://127.0.0.1:56290/assets/deadline-DzH3L3IB.js",
+        "http://127.0.0.1:56290/assets/main-CZc3z4o3.css",
+        "http://127.0.0.1:56290/favicon.svg"
+      ],
+      "status": "pass"
+    }
+  ],
+  "source_unchanged": true,
+  "status": "pass",
+  "finished": "2026-10-08T22:22:59.238Z",
+  "synthetic_records": [
+    {
+      "id": "receipt-zulu-early",
+      "merchant": "Zulu Goods",
+      "orderNo": "ITEM-1",
+      "total": "10.00",
+      "orderDate": "2026-09-10",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00.000Z"
+    },
+    {
+      "id": "receipt-acme-late",
+      "merchant": "ACME",
+      "orderNo": "ITEM-2",
+      "total": "10.00",
+      "orderDate": "2026-09-14",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00.000Z"
+    },
+    {
+      "id": "receipt-beta",
+      "merchant": "Beta Outlet",
+      "orderNo": "ITEM-3",
+      "total": "10.00",
+      "orderDate": "2026-09-12",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00.000Z"
+    },
+    {
+      "id": "receipt-acme-early",
+      "merchant": " acme ",
+      "orderNo": "ITEM-4",
+      "total": "10.00",
+      "orderDate": "2026-09-09",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00.000Z"
+    },
+    {
+      "id": "receipt-unknown",
+      "merchant": "",
+      "orderNo": "ITEM-5",
+      "total": "10.00",
+      "orderDate": "2026-09-11",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00.000Z"
+    },
+    {
+      "id": "receipt-acme-tie",
+      "merchant": "Acme",
+      "orderNo": "ITEM-6",
+      "total": "10.00",
+      "orderDate": "2026-09-09",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00.000Z"
+    },
+    {
+      "id": "receipt-zulu-expired",
+      "merchant": "Zulu Goods",
+      "orderNo": "ITEM-7",
+      "total": "10.00",
+      "orderDate": "2026-09-07",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-08T00:00:00.000Z"
+    }
+  ],
+  "groups": 14,
+  "cleanup_complete": true
+}

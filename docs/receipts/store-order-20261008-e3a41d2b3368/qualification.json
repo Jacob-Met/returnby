@@ -1,0 +1,31 @@
+{
+  "base_commit": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "claim": "https://github.com/Jacob-Met/returnby/issues/35",
+  "source_paths": [
+    "src/list-order.ts",
+    "src/list-order.css",
+    "src/main.ts",
+    "index.html",
+    "README.md",
+    "tests/list-order.test.ts"
+  ],
+  "project_tests": {
+    "baseline": 68,
+    "candidate": 73
+  },
+  "project_builds": {
+    "baseline": 0,
+    "candidate": 0
+  },
+  "main_receiving": {
+    "baseline_pass": 6,
+    "baseline_expected_fail": 5,
+    "candidate_pass": 11,
+    "candidate_fail": 0,
+    "sha256": "e4beac15a10ad45c7cb5550eeb9631fefcb33e66600839fa72c098416fb830ac"
+  },
+  "source_scope_sha256": "3420ac0244ec8843120ee68eeb018e7829b43a05f6cac6fccf3635fd5c99a8e8",
+  "runtime_source_unchanged_after_first_candidate": true,
+  "no_browser_claim": true,
+  "native_gate_sha256": "22eccfdee72c6baebc36144fd1d075a4b7995aee1b1e89d2a0d98a24c20c8ef2"
+}
