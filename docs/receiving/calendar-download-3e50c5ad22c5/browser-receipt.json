@@ -1,0 +1,1985 @@
+{
+  "format": "returnby-calendar-browser-receiving/1",
+  "createdAt": "2026-10-08T20:04:13.239Z",
+  "node": "v22.22.1",
+  "pageErrors": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:40525/original/",
+      "sessionId": "611ACA36B1382EDAD50817009458A68C"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-6De5wGcc.js",
+      "sessionId": "611ACA36B1382EDAD50817009458A68C"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/deadline-DzH3L3IB.js",
+      "sessionId": "611ACA36B1382EDAD50817009458A68C"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-Bp_ZSQx5.css",
+      "sessionId": "611ACA36B1382EDAD50817009458A68C"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/favicon.svg",
+      "sessionId": "611ACA36B1382EDAD50817009458A68C"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "611ACA36B1382EDAD50817009458A68C"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/",
+      "sessionId": "56250524A06CB0CA7ABD531BD575BB1B"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-6De5wGcc.js",
+      "sessionId": "56250524A06CB0CA7ABD531BD575BB1B"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/deadline-DzH3L3IB.js",
+      "sessionId": "56250524A06CB0CA7ABD531BD575BB1B"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-Bp_ZSQx5.css",
+      "sessionId": "56250524A06CB0CA7ABD531BD575BB1B"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/favicon.svg",
+      "sessionId": "56250524A06CB0CA7ABD531BD575BB1B"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "56250524A06CB0CA7ABD531BD575BB1B"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/",
+      "sessionId": "7D905A8C035FE295A75D70C8788E98B7"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-6De5wGcc.js",
+      "sessionId": "7D905A8C035FE295A75D70C8788E98B7"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/deadline-DzH3L3IB.js",
+      "sessionId": "7D905A8C035FE295A75D70C8788E98B7"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-Bp_ZSQx5.css",
+      "sessionId": "7D905A8C035FE295A75D70C8788E98B7"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/favicon.svg",
+      "sessionId": "7D905A8C035FE295A75D70C8788E98B7"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "7D905A8C035FE295A75D70C8788E98B7"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/",
+      "sessionId": "CD0AF69E8EC0B4550DBE77EEE915B7AD"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-6De5wGcc.js",
+      "sessionId": "CD0AF69E8EC0B4550DBE77EEE915B7AD"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/deadline-DzH3L3IB.js",
+      "sessionId": "CD0AF69E8EC0B4550DBE77EEE915B7AD"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-Bp_ZSQx5.css",
+      "sessionId": "CD0AF69E8EC0B4550DBE77EEE915B7AD"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/favicon.svg",
+      "sessionId": "CD0AF69E8EC0B4550DBE77EEE915B7AD"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "CD0AF69E8EC0B4550DBE77EEE915B7AD"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/",
+      "sessionId": "BEA0FAC40D74199B9D2F14BAFAE221C1"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-6De5wGcc.js",
+      "sessionId": "BEA0FAC40D74199B9D2F14BAFAE221C1"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/deadline-DzH3L3IB.js",
+      "sessionId": "BEA0FAC40D74199B9D2F14BAFAE221C1"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-Bp_ZSQx5.css",
+      "sessionId": "BEA0FAC40D74199B9D2F14BAFAE221C1"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/favicon.svg",
+      "sessionId": "BEA0FAC40D74199B9D2F14BAFAE221C1"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "BEA0FAC40D74199B9D2F14BAFAE221C1"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/",
+      "sessionId": "22F4F08B22835B005E5699A34012D11B"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-6De5wGcc.js",
+      "sessionId": "22F4F08B22835B005E5699A34012D11B"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/deadline-DzH3L3IB.js",
+      "sessionId": "22F4F08B22835B005E5699A34012D11B"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-Bp_ZSQx5.css",
+      "sessionId": "22F4F08B22835B005E5699A34012D11B"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/favicon.svg",
+      "sessionId": "22F4F08B22835B005E5699A34012D11B"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "22F4F08B22835B005E5699A34012D11B"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/",
+      "sessionId": "F334636A0793CF23F8337DDDF3628E8E"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-6De5wGcc.js",
+      "sessionId": "F334636A0793CF23F8337DDDF3628E8E"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/deadline-DzH3L3IB.js",
+      "sessionId": "F334636A0793CF23F8337DDDF3628E8E"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-Bp_ZSQx5.css",
+      "sessionId": "F334636A0793CF23F8337DDDF3628E8E"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/favicon.svg",
+      "sessionId": "F334636A0793CF23F8337DDDF3628E8E"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "F334636A0793CF23F8337DDDF3628E8E"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/",
+      "sessionId": "0C5910DA3BB3833818DA79801AE9614A"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-6De5wGcc.js",
+      "sessionId": "0C5910DA3BB3833818DA79801AE9614A"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/deadline-DzH3L3IB.js",
+      "sessionId": "0C5910DA3BB3833818DA79801AE9614A"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/assets/main-Bp_ZSQx5.css",
+      "sessionId": "0C5910DA3BB3833818DA79801AE9614A"
+    },
+    {
+      "url": "http://127.0.0.1:40525/original/favicon.svg",
+      "sessionId": "0C5910DA3BB3833818DA79801AE9614A"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "0C5910DA3BB3833818DA79801AE9614A"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/",
+      "sessionId": "558AEE2214463C4C295CEABFC12DEBA3"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-4JuXRClK.js",
+      "sessionId": "558AEE2214463C4C295CEABFC12DEBA3"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/deadline-DzH3L3IB.js",
+      "sessionId": "558AEE2214463C4C295CEABFC12DEBA3"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-Bp_ZSQx5.css",
+      "sessionId": "558AEE2214463C4C295CEABFC12DEBA3"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/favicon.svg",
+      "sessionId": "558AEE2214463C4C295CEABFC12DEBA3"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "558AEE2214463C4C295CEABFC12DEBA3"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/",
+      "sessionId": "C7026B45A25B5974CED99A9F274E2556"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-4JuXRClK.js",
+      "sessionId": "C7026B45A25B5974CED99A9F274E2556"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/deadline-DzH3L3IB.js",
+      "sessionId": "C7026B45A25B5974CED99A9F274E2556"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-Bp_ZSQx5.css",
+      "sessionId": "C7026B45A25B5974CED99A9F274E2556"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/favicon.svg",
+      "sessionId": "C7026B45A25B5974CED99A9F274E2556"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "C7026B45A25B5974CED99A9F274E2556"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/",
+      "sessionId": "2B671B754A17F2C2ECF51B6180FB6953"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-4JuXRClK.js",
+      "sessionId": "2B671B754A17F2C2ECF51B6180FB6953"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/deadline-DzH3L3IB.js",
+      "sessionId": "2B671B754A17F2C2ECF51B6180FB6953"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-Bp_ZSQx5.css",
+      "sessionId": "2B671B754A17F2C2ECF51B6180FB6953"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/favicon.svg",
+      "sessionId": "2B671B754A17F2C2ECF51B6180FB6953"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "2B671B754A17F2C2ECF51B6180FB6953"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/",
+      "sessionId": "014A5483C6EB19F37171FC2F2C9C04AE"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-4JuXRClK.js",
+      "sessionId": "014A5483C6EB19F37171FC2F2C9C04AE"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/deadline-DzH3L3IB.js",
+      "sessionId": "014A5483C6EB19F37171FC2F2C9C04AE"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-Bp_ZSQx5.css",
+      "sessionId": "014A5483C6EB19F37171FC2F2C9C04AE"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/favicon.svg",
+      "sessionId": "014A5483C6EB19F37171FC2F2C9C04AE"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "014A5483C6EB19F37171FC2F2C9C04AE"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/",
+      "sessionId": "4B9D0228C2F8B97A4111012F80232155"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-4JuXRClK.js",
+      "sessionId": "4B9D0228C2F8B97A4111012F80232155"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/deadline-DzH3L3IB.js",
+      "sessionId": "4B9D0228C2F8B97A4111012F80232155"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-Bp_ZSQx5.css",
+      "sessionId": "4B9D0228C2F8B97A4111012F80232155"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/favicon.svg",
+      "sessionId": "4B9D0228C2F8B97A4111012F80232155"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "4B9D0228C2F8B97A4111012F80232155"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/",
+      "sessionId": "97FFC0BF20465315E70AC42006973646"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-4JuXRClK.js",
+      "sessionId": "97FFC0BF20465315E70AC42006973646"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/deadline-DzH3L3IB.js",
+      "sessionId": "97FFC0BF20465315E70AC42006973646"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-Bp_ZSQx5.css",
+      "sessionId": "97FFC0BF20465315E70AC42006973646"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/favicon.svg",
+      "sessionId": "97FFC0BF20465315E70AC42006973646"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "97FFC0BF20465315E70AC42006973646"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/",
+      "sessionId": "D21328BE3C379BD01EDEC9303BA5691D"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-4JuXRClK.js",
+      "sessionId": "D21328BE3C379BD01EDEC9303BA5691D"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/deadline-DzH3L3IB.js",
+      "sessionId": "D21328BE3C379BD01EDEC9303BA5691D"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-Bp_ZSQx5.css",
+      "sessionId": "D21328BE3C379BD01EDEC9303BA5691D"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/favicon.svg",
+      "sessionId": "D21328BE3C379BD01EDEC9303BA5691D"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "D21328BE3C379BD01EDEC9303BA5691D"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/",
+      "sessionId": "663499E5E59420DB436BCDA02602060A"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-4JuXRClK.js",
+      "sessionId": "663499E5E59420DB436BCDA02602060A"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/deadline-DzH3L3IB.js",
+      "sessionId": "663499E5E59420DB436BCDA02602060A"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/assets/main-Bp_ZSQx5.css",
+      "sessionId": "663499E5E59420DB436BCDA02602060A"
+    },
+    {
+      "url": "http://127.0.0.1:40525/candidate/favicon.svg",
+      "sessionId": "663499E5E59420DB436BCDA02602060A"
+    },
+    {
+      "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJXaW5kb3dUZXh0IiBkPSJNMjAgM2gtMVYxaC0ydjJIN1YxSDV2Mkg0Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE2YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzeiIvPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L3N2Zz4=",
+      "sessionId": "663499E5E59420DB436BCDA02602060A"
+    }
+  ],
+  "serverErrors": [],
+  "cases": [
+    {
+      "variant": "original",
+      "name": "apia-skipped-date",
+      "zone": "Pacific/Apia",
+      "orderDate": "2011-12-28",
+      "due": "2011-12-29",
+      "end": "20111230",
+      "originalEnd": "20111231",
+      "index": 0,
+      "resolvedZone": "Pacific/Apia",
+      "success": true,
+      "expectedEnd": "20111230",
+      "actualEnd": "20111231",
+      "endCorrect": false,
+      "expectedOriginalFailure": true,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000001",
+      "download": {
+        "guid": "1763101c-47f8-40b7-8d63-042dcd536113",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "d98d3a6d9037006ed47fc3d1913bb1553f34a3e5c5b4a768a4aa19ce7e3f407c",
+        "file": "downloads/original-apia-skipped-date.ics",
+        "normalizedTimestampSha256": "399bcb1a8e158bab6781fe7313de9aa570696a6161b9a8c05157daf9a2247f01"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000001\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-1\",\"total\":\"$123.45\",\"orderDate\":\"2011-12-28\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:28.521Z\"}]"
+        },
+        "deadline": "RETURN BY 2011-12-29",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000001",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000001\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-1\",\"total\":\"$123.45\",\"orderDate\":\"2011-12-28\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:28.521Z\"}]"
+        },
+        "deadline": "RETURN BY 2011-12-29",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000001",
+        "tracked": "1"
+      },
+      "screenshot": {
+        "path": "original-apia.png",
+        "bytes": 138300,
+        "sha256": "650d6ef1608c1f8f4b3d51124489450fd2d6c2f017d42965e450e0b88eebcb96"
+      }
+    },
+    {
+      "variant": "original",
+      "name": "kwajalein-skipped-date",
+      "zone": "Pacific/Kwajalein",
+      "orderDate": "1993-08-19",
+      "due": "1993-08-20",
+      "end": "19930821",
+      "originalEnd": "19930822",
+      "index": 1,
+      "resolvedZone": "Pacific/Kwajalein",
+      "success": true,
+      "expectedEnd": "19930821",
+      "actualEnd": "19930822",
+      "endCorrect": false,
+      "expectedOriginalFailure": true,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000002",
+      "download": {
+        "guid": "d9daa689-e6b1-4b5f-9f32-ccd732da4809",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "922fd074ca073aedb8918608a188943abca2196bcefc5f740b83d5b84deab6c0",
+        "file": "downloads/original-kwajalein-skipped-date.ics",
+        "normalizedTimestampSha256": "66dee6af431f43052f80de97978cc76e2a4bce9e3a8144d72677a7f48deb7a5b"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000002\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-2\",\"total\":\"$123.45\",\"orderDate\":\"1993-08-19\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:32.469Z\"}]"
+        },
+        "deadline": "RETURN BY 1993-08-20",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000002",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000002\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-2\",\"total\":\"$123.45\",\"orderDate\":\"1993-08-19\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:32.469Z\"}]"
+        },
+        "deadline": "RETURN BY 1993-08-20",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000002",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "original",
+      "name": "kiritimati-skipped-date",
+      "zone": "Pacific/Kiritimati",
+      "orderDate": "1994-12-29",
+      "due": "1994-12-30",
+      "end": "19941231",
+      "originalEnd": "19950101",
+      "index": 2,
+      "resolvedZone": "Pacific/Kiritimati",
+      "success": true,
+      "expectedEnd": "19941231",
+      "actualEnd": "19950101",
+      "endCorrect": false,
+      "expectedOriginalFailure": true,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000003",
+      "download": {
+        "guid": "b99bc20d-d501-4471-9f42-d13eed830909",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "d1be9f828e96800145a4f149b46d942de8e4d26dfa4d4257dacf8456017bcdb9",
+        "file": "downloads/original-kiritimati-skipped-date.ics",
+        "normalizedTimestampSha256": "a0cb1ea73286e0b3bee490ba4af59f7ce13972551b7db4f65b4b6aae91fd4031"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000003\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-3\",\"total\":\"$123.45\",\"orderDate\":\"1994-12-29\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:35.497Z\"}]"
+        },
+        "deadline": "RETURN BY 1994-12-30",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000003",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000003\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-3\",\"total\":\"$123.45\",\"orderDate\":\"1994-12-29\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:35.497Z\"}]"
+        },
+        "deadline": "RETURN BY 1994-12-30",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000003",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "original",
+      "name": "utc-historical-control",
+      "zone": "UTC",
+      "orderDate": "2011-12-28",
+      "due": "2011-12-29",
+      "end": "20111230",
+      "originalEnd": "20111230",
+      "index": 3,
+      "resolvedZone": "UTC",
+      "success": true,
+      "expectedEnd": "20111230",
+      "actualEnd": "20111230",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000004",
+      "download": {
+        "guid": "456d0d12-cf89-49d5-a420-42d4ba984322",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "f3e9891daef5bd482da3cfca122d9dd6fc79c9b7b1c2cfc7f65236e52ab790b6",
+        "file": "downloads/original-utc-historical-control.ics",
+        "normalizedTimestampSha256": "93c43d508dd987e854eb873e02a99f37f719d8607ce3904dc13d7880e00a7e79"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000004\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-4\",\"total\":\"$123.45\",\"orderDate\":\"2011-12-28\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:41.638Z\"}]"
+        },
+        "deadline": "RETURN BY 2011-12-29",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000004",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000004\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-4\",\"total\":\"$123.45\",\"orderDate\":\"2011-12-28\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:41.638Z\"}]"
+        },
+        "deadline": "RETURN BY 2011-12-29",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000004",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "original",
+      "name": "modern-control-0",
+      "zone": "Pacific/Apia",
+      "orderDate": "2026-10-07",
+      "due": "2026-10-08",
+      "end": "20261009",
+      "originalEnd": "20261009",
+      "index": 4,
+      "resolvedZone": "Pacific/Apia",
+      "success": true,
+      "expectedEnd": "20261009",
+      "actualEnd": "20261009",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000005",
+      "download": {
+        "guid": "a9ac3855-45e6-4db5-b5e3-a1226debe616",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "db5660cdb4e1db88c4067c986874fd4bbe1a33d2154eac5d53546aa557e889e2",
+        "file": "downloads/original-modern-control-0.ics",
+        "normalizedTimestampSha256": "e9fd6a12dbab40656ca13447d9efafef17474620e52b66d9d9a4060e0ff98ce7"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000005\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-5\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:46.507Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000005",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000005\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-5\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:46.507Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000005",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "original",
+      "name": "modern-control-1",
+      "zone": "Pacific/Kwajalein",
+      "orderDate": "2026-10-07",
+      "due": "2026-10-08",
+      "end": "20261009",
+      "originalEnd": "20261009",
+      "index": 5,
+      "resolvedZone": "Pacific/Kwajalein",
+      "success": true,
+      "expectedEnd": "20261009",
+      "actualEnd": "20261009",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000006",
+      "download": {
+        "guid": "7a24b5c3-ab5c-4447-b719-b0117f5b16ea",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "3bd5ea65a993e0f496911300231d1e0401498a86be2f0f35eb079204cdf72e01",
+        "file": "downloads/original-modern-control-1.ics",
+        "normalizedTimestampSha256": "69eedf551d310b1a0f24aafa818b975b0eb195b8c005bfe407cba832c55280c9"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000006\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-6\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:51.320Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000006",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000006\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-6\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:04:51.320Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000006",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "original",
+      "name": "modern-control-2",
+      "zone": "Pacific/Kiritimati",
+      "orderDate": "2026-10-07",
+      "due": "2026-10-08",
+      "end": "20261009",
+      "originalEnd": "20261009",
+      "index": 6,
+      "resolvedZone": "Pacific/Kiritimati",
+      "success": true,
+      "expectedEnd": "20261009",
+      "actualEnd": "20261009",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000007",
+      "download": {
+        "guid": "db4104ed-e3ec-4680-8a9b-a98a160b8e5e",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "857f7313cfd4e23c904a0a80240c5fbf704250a97798dd413ffcf09d87a20455",
+        "file": "downloads/original-modern-control-2.ics",
+        "normalizedTimestampSha256": "05e144ae396a2b4e7ec6a0f425cfb9fbb7be2a472016453e7d5001963414da1e"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000007\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-7\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:01.353Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000007",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000007\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-7\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:01.353Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000007",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "original",
+      "name": "modern-control-3",
+      "zone": "UTC",
+      "orderDate": "2026-10-07",
+      "due": "2026-10-08",
+      "end": "20261009",
+      "originalEnd": "20261009",
+      "index": 7,
+      "resolvedZone": "UTC",
+      "success": true,
+      "expectedEnd": "20261009",
+      "actualEnd": "20261009",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000008",
+      "download": {
+        "guid": "7a738f54-36fa-411d-bf28-5699e019adfd",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "356482f041182acbd34b278a62ac1d48b3b4b586ce1b5b8766ceca25f8b38582",
+        "file": "downloads/original-modern-control-3.ics",
+        "normalizedTimestampSha256": "1784ac27bf04f31139101466079e045e3bcdabb121c83efdcaf25d853976838b"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000008\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-8\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:10.129Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000008",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000008\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-8\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:10.129Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000008",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "candidate",
+      "name": "apia-skipped-date",
+      "zone": "Pacific/Apia",
+      "orderDate": "2011-12-28",
+      "due": "2011-12-29",
+      "end": "20111230",
+      "originalEnd": "20111231",
+      "index": 0,
+      "resolvedZone": "Pacific/Apia",
+      "success": true,
+      "expectedEnd": "20111230",
+      "actualEnd": "20111230",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000001",
+      "download": {
+        "guid": "e741dae2-c520-4cf5-84c9-2dc14bb648bb",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "bab0efe458ede99e2e294b61fab4d02b3d701033c796ae3c1250159f7c337029",
+        "file": "downloads/candidate-apia-skipped-date.ics",
+        "normalizedTimestampSha256": "57cd6d32a06a977dd1479f865f7c0d11ab7b48ab00ac7937694d4257a9ac6652"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000001\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-1\",\"total\":\"$123.45\",\"orderDate\":\"2011-12-28\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:19.138Z\"}]"
+        },
+        "deadline": "RETURN BY 2011-12-29",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000001",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000001\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-1\",\"total\":\"$123.45\",\"orderDate\":\"2011-12-28\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:19.138Z\"}]"
+        },
+        "deadline": "RETURN BY 2011-12-29",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000001",
+        "tracked": "1"
+      },
+      "screenshot": {
+        "path": "candidate-apia.png",
+        "bytes": 138300,
+        "sha256": "650d6ef1608c1f8f4b3d51124489450fd2d6c2f017d42965e450e0b88eebcb96"
+      }
+    },
+    {
+      "variant": "candidate",
+      "name": "kwajalein-skipped-date",
+      "zone": "Pacific/Kwajalein",
+      "orderDate": "1993-08-19",
+      "due": "1993-08-20",
+      "end": "19930821",
+      "originalEnd": "19930822",
+      "index": 1,
+      "resolvedZone": "Pacific/Kwajalein",
+      "success": true,
+      "expectedEnd": "19930821",
+      "actualEnd": "19930821",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000002",
+      "download": {
+        "guid": "72dae47d-5c79-498a-a882-0be6dccb67a6",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "70a1a5d9210890460fc47378a2101765d3281af61baa68016e7e12913550226d",
+        "file": "downloads/candidate-kwajalein-skipped-date.ics",
+        "normalizedTimestampSha256": "ee4e66d6ad60a95551009ad3ef2b3b304ebe20c66bc90cd513133165957f22a8"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000002\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-2\",\"total\":\"$123.45\",\"orderDate\":\"1993-08-19\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:29.168Z\"}]"
+        },
+        "deadline": "RETURN BY 1993-08-20",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000002",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000002\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-2\",\"total\":\"$123.45\",\"orderDate\":\"1993-08-19\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:29.168Z\"}]"
+        },
+        "deadline": "RETURN BY 1993-08-20",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000002",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "candidate",
+      "name": "kiritimati-skipped-date",
+      "zone": "Pacific/Kiritimati",
+      "orderDate": "1994-12-29",
+      "due": "1994-12-30",
+      "end": "19941231",
+      "originalEnd": "19950101",
+      "index": 2,
+      "resolvedZone": "Pacific/Kiritimati",
+      "success": true,
+      "expectedEnd": "19941231",
+      "actualEnd": "19941231",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000003",
+      "download": {
+        "guid": "c238f5e3-d64c-4e80-baf5-54f8cd0d5994",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "9b905c3336a9ee4cef0cff99810db006f2bfe8e99821985e057d02560d9916b4",
+        "file": "downloads/candidate-kiritimati-skipped-date.ics",
+        "normalizedTimestampSha256": "12fbb463f920841cbaa600cc3bec84f162ef8cb9cea85686cd3f69a828e8bdc3"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000003\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-3\",\"total\":\"$123.45\",\"orderDate\":\"1994-12-29\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:35.435Z\"}]"
+        },
+        "deadline": "RETURN BY 1994-12-30",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000003",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000003\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-3\",\"total\":\"$123.45\",\"orderDate\":\"1994-12-29\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:35.435Z\"}]"
+        },
+        "deadline": "RETURN BY 1994-12-30",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000003",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "candidate",
+      "name": "utc-historical-control",
+      "zone": "UTC",
+      "orderDate": "2011-12-28",
+      "due": "2011-12-29",
+      "end": "20111230",
+      "originalEnd": "20111230",
+      "index": 3,
+      "resolvedZone": "UTC",
+      "success": true,
+      "expectedEnd": "20111230",
+      "actualEnd": "20111230",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000004",
+      "download": {
+        "guid": "3b33059c-312a-4886-8e8c-c0150fd1a870",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "5ff1faeb19cd52d00e38aadab42144f7d9a1c9a072752c32b91d59b98fef6ee5",
+        "file": "downloads/candidate-utc-historical-control.ics",
+        "normalizedTimestampSha256": "93c43d508dd987e854eb873e02a99f37f719d8607ce3904dc13d7880e00a7e79"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000004\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-4\",\"total\":\"$123.45\",\"orderDate\":\"2011-12-28\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:40.603Z\"}]"
+        },
+        "deadline": "RETURN BY 2011-12-29",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000004",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000004\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-4\",\"total\":\"$123.45\",\"orderDate\":\"2011-12-28\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:40.603Z\"}]"
+        },
+        "deadline": "RETURN BY 2011-12-29",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000004",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "candidate",
+      "name": "modern-control-0",
+      "zone": "Pacific/Apia",
+      "orderDate": "2026-10-07",
+      "due": "2026-10-08",
+      "end": "20261009",
+      "originalEnd": "20261009",
+      "index": 4,
+      "resolvedZone": "Pacific/Apia",
+      "success": true,
+      "expectedEnd": "20261009",
+      "actualEnd": "20261009",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000005",
+      "download": {
+        "guid": "61924d0f-a075-4c13-956d-bc0f21aa7cec",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "6d7659ef0001bf69ae62a89f617415f67f3f75b1441eaebdf928f8fe3bf59a32",
+        "file": "downloads/candidate-modern-control-0.ics",
+        "normalizedTimestampSha256": "e9fd6a12dbab40656ca13447d9efafef17474620e52b66d9d9a4060e0ff98ce7"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000005\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-5\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:46.096Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000005",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000005\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-5\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:46.096Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000005",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "candidate",
+      "name": "modern-control-1",
+      "zone": "Pacific/Kwajalein",
+      "orderDate": "2026-10-07",
+      "due": "2026-10-08",
+      "end": "20261009",
+      "originalEnd": "20261009",
+      "index": 5,
+      "resolvedZone": "Pacific/Kwajalein",
+      "success": true,
+      "expectedEnd": "20261009",
+      "actualEnd": "20261009",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000006",
+      "download": {
+        "guid": "4e02faab-6b03-46ec-be9e-0b905ab396d1",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "8e5f20d8d715ae3c755c562455173e3d1b9dd0e8b956fca0dcd945085a30e593",
+        "file": "downloads/candidate-modern-control-1.ics",
+        "normalizedTimestampSha256": "69eedf551d310b1a0f24aafa818b975b0eb195b8c005bfe407cba832c55280c9"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000006\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-6\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:52.149Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000006",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000006\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-6\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:52.149Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000006",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "candidate",
+      "name": "modern-control-2",
+      "zone": "Pacific/Kiritimati",
+      "orderDate": "2026-10-07",
+      "due": "2026-10-08",
+      "end": "20261009",
+      "originalEnd": "20261009",
+      "index": 6,
+      "resolvedZone": "Pacific/Kiritimati",
+      "success": true,
+      "expectedEnd": "20261009",
+      "actualEnd": "20261009",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000007",
+      "download": {
+        "guid": "023b6881-8153-4ed8-ad71-78e5e4075c94",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "e10a56506bc25f3d4f0b251dcd653f4fec9568d82921c7ffe00229a6a463e033",
+        "file": "downloads/candidate-modern-control-2.ics",
+        "normalizedTimestampSha256": "05e144ae396a2b4e7ec6a0f425cfb9fbb7be2a472016453e7d5001963414da1e"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000007\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-7\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:56.446Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000007",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000007\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-7\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:05:56.446Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000007",
+        "tracked": "1"
+      }
+    },
+    {
+      "variant": "candidate",
+      "name": "modern-control-3",
+      "zone": "UTC",
+      "orderDate": "2026-10-07",
+      "due": "2026-10-08",
+      "end": "20261009",
+      "originalEnd": "20261009",
+      "index": 7,
+      "resolvedZone": "UTC",
+      "success": true,
+      "expectedEnd": "20261009",
+      "actualEnd": "20261009",
+      "endCorrect": true,
+      "expectedOriginalFailure": false,
+      "uuidFixture": "3e50c5ad-22c5-4a11-aaaa-000000000008",
+      "download": {
+        "guid": "983e92b1-d740-4f27-b365-9420c60f721a",
+        "suggestedFilename": "return-Receiving-Fixture-Shop.ics",
+        "bytes": 420,
+        "sha256": "571827c941db6d0d8342f6aff145b35cb65d5d1bfdd04d88aa3fb34e41cda49f",
+        "file": "downloads/candidate-modern-control-3.ics",
+        "normalizedTimestampSha256": "1784ac27bf04f31139101466079e045e3bcdabb121c83efdcaf25d853976838b"
+      },
+      "savedBefore": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000008\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-8\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:06:01.442Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000008",
+        "tracked": "1"
+      },
+      "savedAfter": {
+        "storage": {
+          "returnby.v1": "[{\"id\":\"3e50c5ad-22c5-4a11-aaaa-000000000008\",\"merchant\":\"Receiving Fixture Shop\",\"orderNo\":\"CAL-8\",\"total\":\"$123.45\",\"orderDate\":\"2026-10-07\",\"windowDays\":1,\"windowSource\":\"user\",\"createdAt\":\"2026-10-08T20:06:01.442Z\"}]"
+        },
+        "deadline": "RETURN BY 2026-10-08",
+        "uid": "3e50c5ad-22c5-4a11-aaaa-000000000008",
+        "tracked": "1"
+      }
+    }
+  ],
+  "scope": "Independent saved-order Calendar download receiving on exact original/candidate builds. No application source changes or calendar-provider import.",
+  "receiverSha256": "b62bd3c33478e0fd43b37f062da36902c2e273938f2d43897792c620ff5e98bd",
+  "buildReceiptSha256": "3f86ce3d861d52242ef50e42ad9bf3e570a5b66e1be445ac8a7540b2b5475a4b",
+  "sources": {
+    "original": {
+      "commit": "1e662c387be5f66f8499fac7ec443f58d2198379",
+      "tree": "503ea217dc35f54aa7c9dbd1f92217544ad6dbc9",
+      "directory": "/tmp/hamon-returnby-calendar-original-3e50c5ad22c5",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "mode": "100644",
+          "blob": "b5688812f36338630c21eb5643318a55496ae09b",
+          "bytes": 409,
+          "sha256": "90cd15347c9e7c2249b81664f24c35fc49a22577a623f4b5c09aaae42c9103bc"
+        },
+        {
+          "path": ".github/workflows/pages.yml",
+          "mode": "100644",
+          "blob": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+          "bytes": 572,
+          "sha256": "9d137c6ee9c4bd842b74506f7d3e6abcd9e4db93068140dee37411a14b5d50cb"
+        },
+        {
+          "path": ".gitignore",
+          "mode": "100644",
+          "blob": "b56df07f248fdfb406a35c411fafc91db47c9c95",
+          "bytes": 60,
+          "sha256": "9510dfb20fc42c00d67c03eff9c2ffb9708f8c28ea78992797fba72b301461b5"
+        },
+        {
+          "path": "LICENSE",
+          "mode": "100644",
+          "blob": "edb188254288b40f2895833e3647b7e0be34c962",
+          "bytes": 1070,
+          "sha256": "f6a3d0f7d08a7590f907c08d6127545ab44eff0d23b6074714ad3fb935b998bb"
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "blob": "2edffc7b6672d119b4ed2e5d7f9956893c1820c7",
+          "bytes": 2244,
+          "sha256": "b039218c657f3116d34f59dca3d1d3ae52a216051c324a882ef8a8bfac9df360"
+        },
+        {
+          "path": "data/policies.json",
+          "mode": "100644",
+          "blob": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+          "bytes": 449,
+          "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+        },
+        {
+          "path": "devpost/checklist.md",
+          "mode": "100644",
+          "blob": "318fc1035ad4314ae25fa829e152f5c03e883db5",
+          "bytes": 1551,
+          "sha256": "22ede6c801e66219d56049a858901ff7b0785ae5c344f6296bd592d041e6d9d4"
+        },
+        {
+          "path": "devpost/prd.md",
+          "mode": "100644",
+          "blob": "60614d01a9e955c5911b3283d01bc5329397a6a9",
+          "bytes": 2676,
+          "sha256": "e018872f936e97d2c46283fb789829db674d92cfbc1c6f6665db1958a54234fd"
+        },
+        {
+          "path": "devpost/scope.md",
+          "mode": "100644",
+          "blob": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec",
+          "bytes": 2248,
+          "sha256": "74bf96df71c3a02ebcde2de7d657eb4391e909b3ea01cd4be43b6fc0c5326abf"
+        },
+        {
+          "path": "devpost/spec.md",
+          "mode": "100644",
+          "blob": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72",
+          "bytes": 2424,
+          "sha256": "08fa071abde2b502e104a7313576d341c890f64ac48b0c8e0e6bf8f16c376ab9"
+        },
+        {
+          "path": "docs/TRIP_CHECKLIST.md",
+          "mode": "100644",
+          "blob": "47f27eca777fbc84f5488236275d3850e09dff30",
+          "bytes": 2840,
+          "sha256": "034b5bacbce3c65b4bfb0c99918105cbcf446001536c0d46da32d8cc620103a1"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/README.md",
+          "mode": "100644",
+          "blob": "0f55e0f280faff3f0f73d1a1f065486bb089187f",
+          "bytes": 5483,
+          "sha256": "0a4b4373f6cf51141aaa3f6b2681050acf8c5e91d93bbe9c64b0aec00421c275"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-browser.json",
+          "mode": "100644",
+          "blob": "703266c5bf084e195afc6995351cc15522e77faf",
+          "bytes": 1279,
+          "sha256": "df7e5c4ebab85417a182a07028165969541f930f463c969aed888caceacfee9d"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-commands.json",
+          "mode": "100644",
+          "blob": "e7a9e0f1890c73a1620bdb0abfea88b63b0d1863",
+          "bytes": 1906,
+          "sha256": "2c2fdf1f61f35e910afcd6a9683ec65794e0a2cd2e668ccd49af0256dbe77a47"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/browser-receipt.json",
+          "mode": "100644",
+          "blob": "30b984b1aa918ebb81e7e91f00873553e326ff81",
+          "bytes": 10922,
+          "sha256": "e0ffbab54c91e5731aaff95cf9cb929a048c7e117c901e551b1b869543c52351"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-preview.png",
+          "mode": "100644",
+          "blob": "932f0596216a56b30c1ae17e32c7db820c78ca4a",
+          "bytes": 247265,
+          "sha256": "6feeee6aa836dca8aaf63fab53f98eaf69346f62b02356eb858ccbb4e4dbdf92"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-returnby-trip-2026-10-10.html",
+          "mode": "100644",
+          "blob": "a02abb0c781b3fa5c114a1eb011c44ac54b88b75",
+          "bytes": 6831,
+          "sha256": "5dc977d0726a1f7b3170cf62c6026852c93ac6b687d9d23614fbcb538699f49f"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/independent-production-review.json",
+          "mode": "100644",
+          "blob": "a6c69ef12d1758d9344eaf0a80a1949ffadeecde",
+          "bytes": 2660,
+          "sha256": "af56f861cae5e809aac10233a3a02b628d99bc686299fde5f5c6e2c5936e33f2"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/initial-native-run.json",
+          "mode": "100644",
+          "blob": "3df835c6ebe0d6f2dc7f74661f99cfd9d609d9d0",
+          "bytes": 6181,
+          "sha256": "b31f4f9c5e20666618bbbde46df2899fa70a9954ce34cc88b4d78334233365fa"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/native-test-build.json",
+          "mode": "100644",
+          "blob": "3321dbf2194d05e4710fc6754c04f58639b966e6",
+          "bytes": 696,
+          "sha256": "da76fa69ba8384c7c4cfe91ae42095ab639da9cf4354fb3714f83a4563e572c4"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-build.txt",
+          "mode": "100644",
+          "blob": "10e68ca17dee1825a95a394a1706123c778c8df9",
+          "bytes": 842,
+          "sha256": "f4ffeb8b6610396b612cb69e671883152ccd60288f0cab8be0976d4363ba6d0e"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-test.txt",
+          "mode": "100644",
+          "blob": "d2e0da6e62f220f543095f43b6d1958cb9f806c6",
+          "bytes": 591,
+          "sha256": "8c2064f6bc043f9dbe64abcc93d5e2320b66bb600e3a04be9bfe5172d640abda"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-offline-file.png",
+          "mode": "100644",
+          "blob": "ffa8767b85ed992a0650fed4e329da2fdd3e72e3",
+          "bytes": 66311,
+          "sha256": "558bfa24b071e0e47b2cdc5b98d0c05bd0e2d5f62f08db9e4f0ce8463a0211b4"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-returnby-trip-2026-10-10.html",
+          "mode": "100644",
+          "blob": "ec2d49ff8f22cb1d6cc6c68ac9bc6c32971aa7c3",
+          "bytes": 5782,
+          "sha256": "3d3ea68a73d184ef31dae1d8a8811fdfe5013d11f7928c82328cc78386764efe"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/source-freeze.json",
+          "mode": "100644",
+          "blob": "419543fdce703062516a3d58ee210e7914fcbb44",
+          "bytes": 2437,
+          "sha256": "b2410ccacd1c599129319ddd0e2d3448bed7482bc1181f1f99a01896aeb4ed2a"
+        },
+        {
+          "path": "index.html",
+          "mode": "100644",
+          "blob": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+          "bytes": 4455,
+          "sha256": "7ab7e2a77337b9ca92534a5270a46ee36c606e551b598b20205b0bbb079a8ab1"
+        },
+        {
+          "path": "package-lock.json",
+          "mode": "100644",
+          "blob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+          "bytes": 35404,
+          "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+        },
+        {
+          "path": "package.json",
+          "mode": "100644",
+          "blob": "329b4b71fbb631662eec0405ced477134520c9a5",
+          "bytes": 313,
+          "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c"
+        },
+        {
+          "path": "public/captures/returnby-desktop.png",
+          "mode": "100644",
+          "blob": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d",
+          "bytes": 131379,
+          "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+        },
+        {
+          "path": "public/captures/returnby-mobile.png",
+          "mode": "100644",
+          "blob": "c2ed83d29698fb5a47818c87d8f82944997c2bc4",
+          "bytes": 107642,
+          "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+        },
+        {
+          "path": "public/favicon.svg",
+          "mode": "100644",
+          "blob": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+          "bytes": 238,
+          "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+        },
+        {
+          "path": "skills-lock.json",
+          "mode": "100644",
+          "blob": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf",
+          "bytes": 1457,
+          "sha256": "d694bf01b540bc48630898dc535fb9ecdbeced78d7d94bc56ee53a488490b4c6"
+        },
+        {
+          "path": "src/day-refresh.ts",
+          "mode": "100644",
+          "blob": "362aae5b5be7bf399174483327a2b15018edeca4",
+          "bytes": 1320,
+          "sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430"
+        },
+        {
+          "path": "src/deadline.ts",
+          "mode": "100644",
+          "blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+          "bytes": 837,
+          "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+        },
+        {
+          "path": "src/ics.ts",
+          "mode": "100644",
+          "blob": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+          "bytes": 1844,
+          "sha256": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f"
+        },
+        {
+          "path": "src/main.ts",
+          "mode": "100644",
+          "blob": "798e5329fe9983e67b5832595605a49294f0a529",
+          "bytes": 7354,
+          "sha256": "a67c4878d70502eb5f2ff5bfa286bf932c66cb73fecb1fd6184d7f80426fa26b"
+        },
+        {
+          "path": "src/parse.ts",
+          "mode": "100644",
+          "blob": "45dd377540c6ec9046604927a6e8803d19fe3b5b",
+          "bytes": 3055,
+          "sha256": "591eea8a9a73009d3870b61df591ad2bb5d62144d931841b063180da588cc439"
+        },
+        {
+          "path": "src/policy.ts",
+          "mode": "100644",
+          "blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+          "bytes": 595,
+          "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231"
+        },
+        {
+          "path": "src/samples.ts",
+          "mode": "100644",
+          "blob": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+          "bytes": 513,
+          "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04"
+        },
+        {
+          "path": "src/store.ts",
+          "mode": "100644",
+          "blob": "23cf906e26187ff28c94718111e69d9603c97fa8",
+          "bytes": 430,
+          "sha256": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080"
+        },
+        {
+          "path": "src/style.css",
+          "mode": "100644",
+          "blob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+          "bytes": 8842,
+          "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892"
+        },
+        {
+          "path": "src/trip-checklist-view.ts",
+          "mode": "100644",
+          "blob": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+          "bytes": 7349,
+          "sha256": "cdb7e3e0111086e2826849f0a21e1594998b48e6e656efc9a7c0d6b83ba21f32"
+        },
+        {
+          "path": "src/trip-checklist.css",
+          "mode": "100644",
+          "blob": "be540de5163c0b66cda28296311b2ce02204e087",
+          "bytes": 8367,
+          "sha256": "1a5167a9a0b46bbcf600c986266f5a7fdcc97222e6a0ad46a8896bccbc8fe1bc"
+        },
+        {
+          "path": "src/trip-checklist.ts",
+          "mode": "100644",
+          "blob": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+          "bytes": 13299,
+          "sha256": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c"
+        },
+        {
+          "path": "tests/core.test.ts",
+          "mode": "100644",
+          "blob": "57e122956a04824da82185263ac460243de3548c",
+          "bytes": 1943,
+          "sha256": "b7f392c5dac6507b07a7e69016e81a793a1aa8264b6cec9b9f3262481f3b883f"
+        },
+        {
+          "path": "tests/day-refresh.test.ts",
+          "mode": "100644",
+          "blob": "1d76fd6ef7364ae84f4775666768815211981ff6",
+          "bytes": 4830,
+          "sha256": "1f6ba366278a67d92c6aa219586158a3d8ecab9394395f79cb5c91545627aa6d"
+        },
+        {
+          "path": "tests/ics.test.ts",
+          "mode": "100644",
+          "blob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+          "bytes": 4526,
+          "sha256": "1c945625f9988963760e3804142a7292603409bd0d95846109997ebcd6ed08fa"
+        },
+        {
+          "path": "tests/trip-checklist.test.ts",
+          "mode": "100644",
+          "blob": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe",
+          "bytes": 8753,
+          "sha256": "44afbdf66731650384cec49d9dec7398e8e747b77e1f9ad347a79f5fbf6bf88d"
+        },
+        {
+          "path": "tools/capture_returnby.py",
+          "mode": "100644",
+          "blob": "367403bf3c393731cee650912789add1f3b46297",
+          "bytes": 4475,
+          "sha256": "16de192dd6c76b4eeaefb54d8f3c409f9b594b192759ff0bf3bf40460b0440f1"
+        },
+        {
+          "path": "tools/verify_day_refresh.py",
+          "mode": "100644",
+          "blob": "94caac1360142a886c138b1ebf2e5698024121d0",
+          "bytes": 9996,
+          "sha256": "595379459e99222b0c47f9832f00914d4499d402ee9bd046e13eab80944366ba"
+        },
+        {
+          "path": "tools/verify_trip_checklist.mjs",
+          "mode": "100644",
+          "blob": "4d222dcbb86b7958469ce3d8a6b3accdb500924d",
+          "bytes": 21848,
+          "sha256": "de2c098b4f65bcd9bf5d432706a07343fea76da1bfc1b0a6b02eeaf1515e11a6"
+        },
+        {
+          "path": "trip-checklist.html",
+          "mode": "100644",
+          "blob": "f0286c5e6817c1656297c67489d4b796ddec4510",
+          "bytes": 4558,
+          "sha256": "a1f8fd94b38acea81efe6f6f410ca2a2808ac88914694b4c660a559dc0d35681"
+        },
+        {
+          "path": "tsconfig.json",
+          "mode": "100644",
+          "blob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+          "bytes": 273,
+          "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc"
+        },
+        {
+          "path": "vite.config.ts",
+          "mode": "100644",
+          "blob": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+          "bytes": 355,
+          "sha256": "78d228170cb7b113fdde43ca738f1f4e73827656c42cce2440bd2239bcd35e5e"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "assets/deadline-DzH3L3IB.js",
+          "bytes": 1111,
+          "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+        },
+        {
+          "path": "assets/main-6De5wGcc.js",
+          "bytes": 9742,
+          "sha256": "5ce0bf61aad5aa49b18a6033a48d611d42ce93860f8f69c13ead7b76c708c4b6"
+        },
+        {
+          "path": "assets/main-Bp_ZSQx5.css",
+          "bytes": 8801,
+          "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+        },
+        {
+          "path": "assets/tripChecklist-CmK7SEMW.css",
+          "bytes": 8320,
+          "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8"
+        },
+        {
+          "path": "assets/tripChecklist-DwME05Y-.js",
+          "bytes": 16658,
+          "sha256": "55ad0aae6831073a049290eab3fdd771291ce83b5881cb8eb6ac4ca91218a11a"
+        },
+        {
+          "path": "captures/returnby-desktop.png",
+          "bytes": 131379,
+          "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+        },
+        {
+          "path": "captures/returnby-mobile.png",
+          "bytes": 107642,
+          "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+        },
+        {
+          "path": "favicon.svg",
+          "bytes": 238,
+          "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+        },
+        {
+          "path": "index.html",
+          "bytes": 4633,
+          "sha256": "d682fc8df6ac84594558efe91fcbaa473b362b196339fbaadd38a52b5268283b"
+        },
+        {
+          "path": "trip-checklist.html",
+          "bytes": 4738,
+          "sha256": "94049e67756e797f02888a1d9311cd5fb17d026fc4dd923c531d235d3ee6ed85"
+        }
+      ]
+    },
+    "candidate": {
+      "commit": "7cf2f6d6e1cd71143569f972ab6ca0bbc0c46772",
+      "tree": "20a738c38691d102d2f3c50cb74de1e8cc37f534",
+      "directory": "/tmp/hamon-returnby-calendar-candidate-3e50c5ad22c5",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "mode": "100644",
+          "blob": "b5688812f36338630c21eb5643318a55496ae09b",
+          "bytes": 409,
+          "sha256": "90cd15347c9e7c2249b81664f24c35fc49a22577a623f4b5c09aaae42c9103bc"
+        },
+        {
+          "path": ".github/workflows/pages.yml",
+          "mode": "100644",
+          "blob": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+          "bytes": 572,
+          "sha256": "9d137c6ee9c4bd842b74506f7d3e6abcd9e4db93068140dee37411a14b5d50cb"
+        },
+        {
+          "path": ".gitignore",
+          "mode": "100644",
+          "blob": "b56df07f248fdfb406a35c411fafc91db47c9c95",
+          "bytes": 60,
+          "sha256": "9510dfb20fc42c00d67c03eff9c2ffb9708f8c28ea78992797fba72b301461b5"
+        },
+        {
+          "path": "LICENSE",
+          "mode": "100644",
+          "blob": "edb188254288b40f2895833e3647b7e0be34c962",
+          "bytes": 1070,
+          "sha256": "f6a3d0f7d08a7590f907c08d6127545ab44eff0d23b6074714ad3fb935b998bb"
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "blob": "2edffc7b6672d119b4ed2e5d7f9956893c1820c7",
+          "bytes": 2244,
+          "sha256": "b039218c657f3116d34f59dca3d1d3ae52a216051c324a882ef8a8bfac9df360"
+        },
+        {
+          "path": "data/policies.json",
+          "mode": "100644",
+          "blob": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+          "bytes": 449,
+          "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+        },
+        {
+          "path": "devpost/checklist.md",
+          "mode": "100644",
+          "blob": "318fc1035ad4314ae25fa829e152f5c03e883db5",
+          "bytes": 1551,
+          "sha256": "22ede6c801e66219d56049a858901ff7b0785ae5c344f6296bd592d041e6d9d4"
+        },
+        {
+          "path": "devpost/prd.md",
+          "mode": "100644",
+          "blob": "60614d01a9e955c5911b3283d01bc5329397a6a9",
+          "bytes": 2676,
+          "sha256": "e018872f936e97d2c46283fb789829db674d92cfbc1c6f6665db1958a54234fd"
+        },
+        {
+          "path": "devpost/scope.md",
+          "mode": "100644",
+          "blob": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec",
+          "bytes": 2248,
+          "sha256": "74bf96df71c3a02ebcde2de7d657eb4391e909b3ea01cd4be43b6fc0c5326abf"
+        },
+        {
+          "path": "devpost/spec.md",
+          "mode": "100644",
+          "blob": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72",
+          "bytes": 2424,
+          "sha256": "08fa071abde2b502e104a7313576d341c890f64ac48b0c8e0e6bf8f16c376ab9"
+        },
+        {
+          "path": "docs/TRIP_CHECKLIST.md",
+          "mode": "100644",
+          "blob": "47f27eca777fbc84f5488236275d3850e09dff30",
+          "bytes": 2840,
+          "sha256": "034b5bacbce3c65b4bfb0c99918105cbcf446001536c0d46da32d8cc620103a1"
+        },
+        {
+          "path": "docs/receipts/calendar-civil-end-kestrel.md",
+          "mode": "100644",
+          "blob": "5f1287435e46db04b75676b8dfa93e044b8d1cc2",
+          "bytes": 5135,
+          "sha256": "a47e7e28aef2e39a73b3dcc0c2641bcbf8056cf28f3d2dd6d47505891bd0578d"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/README.md",
+          "mode": "100644",
+          "blob": "0f55e0f280faff3f0f73d1a1f065486bb089187f",
+          "bytes": 5483,
+          "sha256": "0a4b4373f6cf51141aaa3f6b2681050acf8c5e91d93bbe9c64b0aec00421c275"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-browser.json",
+          "mode": "100644",
+          "blob": "703266c5bf084e195afc6995351cc15522e77faf",
+          "bytes": 1279,
+          "sha256": "df7e5c4ebab85417a182a07028165969541f930f463c969aed888caceacfee9d"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-commands.json",
+          "mode": "100644",
+          "blob": "e7a9e0f1890c73a1620bdb0abfea88b63b0d1863",
+          "bytes": 1906,
+          "sha256": "2c2fdf1f61f35e910afcd6a9683ec65794e0a2cd2e668ccd49af0256dbe77a47"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/browser-receipt.json",
+          "mode": "100644",
+          "blob": "30b984b1aa918ebb81e7e91f00873553e326ff81",
+          "bytes": 10922,
+          "sha256": "e0ffbab54c91e5731aaff95cf9cb929a048c7e117c901e551b1b869543c52351"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-preview.png",
+          "mode": "100644",
+          "blob": "932f0596216a56b30c1ae17e32c7db820c78ca4a",
+          "bytes": 247265,
+          "sha256": "6feeee6aa836dca8aaf63fab53f98eaf69346f62b02356eb858ccbb4e4dbdf92"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-returnby-trip-2026-10-10.html",
+          "mode": "100644",
+          "blob": "a02abb0c781b3fa5c114a1eb011c44ac54b88b75",
+          "bytes": 6831,
+          "sha256": "5dc977d0726a1f7b3170cf62c6026852c93ac6b687d9d23614fbcb538699f49f"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/independent-production-review.json",
+          "mode": "100644",
+          "blob": "a6c69ef12d1758d9344eaf0a80a1949ffadeecde",
+          "bytes": 2660,
+          "sha256": "af56f861cae5e809aac10233a3a02b628d99bc686299fde5f5c6e2c5936e33f2"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/initial-native-run.json",
+          "mode": "100644",
+          "blob": "3df835c6ebe0d6f2dc7f74661f99cfd9d609d9d0",
+          "bytes": 6181,
+          "sha256": "b31f4f9c5e20666618bbbde46df2899fa70a9954ce34cc88b4d78334233365fa"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/native-test-build.json",
+          "mode": "100644",
+          "blob": "3321dbf2194d05e4710fc6754c04f58639b966e6",
+          "bytes": 696,
+          "sha256": "da76fa69ba8384c7c4cfe91ae42095ab639da9cf4354fb3714f83a4563e572c4"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-build.txt",
+          "mode": "100644",
+          "blob": "10e68ca17dee1825a95a394a1706123c778c8df9",
+          "bytes": 842,
+          "sha256": "f4ffeb8b6610396b612cb69e671883152ccd60288f0cab8be0976d4363ba6d0e"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-test.txt",
+          "mode": "100644",
+          "blob": "d2e0da6e62f220f543095f43b6d1958cb9f806c6",
+          "bytes": 591,
+          "sha256": "8c2064f6bc043f9dbe64abcc93d5e2320b66bb600e3a04be9bfe5172d640abda"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-offline-file.png",
+          "mode": "100644",
+          "blob": "ffa8767b85ed992a0650fed4e329da2fdd3e72e3",
+          "bytes": 66311,
+          "sha256": "558bfa24b071e0e47b2cdc5b98d0c05bd0e2d5f62f08db9e4f0ce8463a0211b4"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-returnby-trip-2026-10-10.html",
+          "mode": "100644",
+          "blob": "ec2d49ff8f22cb1d6cc6c68ac9bc6c32971aa7c3",
+          "bytes": 5782,
+          "sha256": "3d3ea68a73d184ef31dae1d8a8811fdfe5013d11f7928c82328cc78386764efe"
+        },
+        {
+          "path": "docs/receiving/trip-checklist-81ba1ed0179c/source-freeze.json",
+          "mode": "100644",
+          "blob": "419543fdce703062516a3d58ee210e7914fcbb44",
+          "bytes": 2437,
+          "sha256": "b2410ccacd1c599129319ddd0e2d3448bed7482bc1181f1f99a01896aeb4ed2a"
+        },
+        {
+          "path": "index.html",
+          "mode": "100644",
+          "blob": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+          "bytes": 4455,
+          "sha256": "7ab7e2a77337b9ca92534a5270a46ee36c606e551b598b20205b0bbb079a8ab1"
+        },
+        {
+          "path": "package-lock.json",
+          "mode": "100644",
+          "blob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+          "bytes": 35404,
+          "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+        },
+        {
+          "path": "package.json",
+          "mode": "100644",
+          "blob": "329b4b71fbb631662eec0405ced477134520c9a5",
+          "bytes": 313,
+          "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c"
+        },
+        {
+          "path": "public/captures/returnby-desktop.png",
+          "mode": "100644",
+          "blob": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d",
+          "bytes": 131379,
+          "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+        },
+        {
+          "path": "public/captures/returnby-mobile.png",
+          "mode": "100644",
+          "blob": "c2ed83d29698fb5a47818c87d8f82944997c2bc4",
+          "bytes": 107642,
+          "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+        },
+        {
+          "path": "public/favicon.svg",
+          "mode": "100644",
+          "blob": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+          "bytes": 238,
+          "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+        },
+        {
+          "path": "skills-lock.json",
+          "mode": "100644",
+          "blob": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf",
+          "bytes": 1457,
+          "sha256": "d694bf01b540bc48630898dc535fb9ecdbeced78d7d94bc56ee53a488490b4c6"
+        },
+        {
+          "path": "src/day-refresh.ts",
+          "mode": "100644",
+          "blob": "362aae5b5be7bf399174483327a2b15018edeca4",
+          "bytes": 1320,
+          "sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430"
+        },
+        {
+          "path": "src/deadline.ts",
+          "mode": "100644",
+          "blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+          "bytes": 837,
+          "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+        },
+        {
+          "path": "src/ics.ts",
+          "mode": "100644",
+          "blob": "adad5866906baf91f85e4b5ed839ab68341ca2b5",
+          "bytes": 1933,
+          "sha256": "8419ccbc34ffd142e3ef518f33cc81a5e47baa50eaf7fbcc055218cf389e011c"
+        },
+        {
+          "path": "src/main.ts",
+          "mode": "100644",
+          "blob": "798e5329fe9983e67b5832595605a49294f0a529",
+          "bytes": 7354,
+          "sha256": "a67c4878d70502eb5f2ff5bfa286bf932c66cb73fecb1fd6184d7f80426fa26b"
+        },
+        {
+          "path": "src/parse.ts",
+          "mode": "100644",
+          "blob": "45dd377540c6ec9046604927a6e8803d19fe3b5b",
+          "bytes": 3055,
+          "sha256": "591eea8a9a73009d3870b61df591ad2bb5d62144d931841b063180da588cc439"
+        },
+        {
+          "path": "src/policy.ts",
+          "mode": "100644",
+          "blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+          "bytes": 595,
+          "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231"
+        },
+        {
+          "path": "src/samples.ts",
+          "mode": "100644",
+          "blob": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+          "bytes": 513,
+          "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04"
+        },
+        {
+          "path": "src/store.ts",
+          "mode": "100644",
+          "blob": "23cf906e26187ff28c94718111e69d9603c97fa8",
+          "bytes": 430,
+          "sha256": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080"
+        },
+        {
+          "path": "src/style.css",
+          "mode": "100644",
+          "blob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+          "bytes": 8842,
+          "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892"
+        },
+        {
+          "path": "src/trip-checklist-view.ts",
+          "mode": "100644",
+          "blob": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+          "bytes": 7349,
+          "sha256": "cdb7e3e0111086e2826849f0a21e1594998b48e6e656efc9a7c0d6b83ba21f32"
+        },
+        {
+          "path": "src/trip-checklist.css",
+          "mode": "100644",
+          "blob": "be540de5163c0b66cda28296311b2ce02204e087",
+          "bytes": 8367,
+          "sha256": "1a5167a9a0b46bbcf600c986266f5a7fdcc97222e6a0ad46a8896bccbc8fe1bc"
+        },
+        {
+          "path": "src/trip-checklist.ts",
+          "mode": "100644",
+          "blob": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+          "bytes": 13299,
+          "sha256": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c"
+        },
+        {
+          "path": "tests/core.test.ts",
+          "mode": "100644",
+          "blob": "57e122956a04824da82185263ac460243de3548c",
+          "bytes": 1943,
+          "sha256": "b7f392c5dac6507b07a7e69016e81a793a1aa8264b6cec9b9f3262481f3b883f"
+        },
+        {
+          "path": "tests/day-refresh.test.ts",
+          "mode": "100644",
+          "blob": "1d76fd6ef7364ae84f4775666768815211981ff6",
+          "bytes": 4830,
+          "sha256": "1f6ba366278a67d92c6aa219586158a3d8ecab9394395f79cb5c91545627aa6d"
+        },
+        {
+          "path": "tests/ics-civil-end.test.mjs",
+          "mode": "100644",
+          "blob": "55863c738a590782df9b50304d3067a5e31fcbad",
+          "bytes": 2922,
+          "sha256": "ec163d3631bb54b6f2c712e9653561a54aa1a4d26f458bfa65e0dd4ab969a1e7"
+        },
+        {
+          "path": "tests/ics.test.ts",
+          "mode": "100644",
+          "blob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+          "bytes": 4526,
+          "sha256": "1c945625f9988963760e3804142a7292603409bd0d95846109997ebcd6ed08fa"
+        },
+        {
+          "path": "tests/trip-checklist.test.ts",
+          "mode": "100644",
+          "blob": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe",
+          "bytes": 8753,
+          "sha256": "44afbdf66731650384cec49d9dec7398e8e747b77e1f9ad347a79f5fbf6bf88d"
+        },
+        {
+          "path": "tools/capture_returnby.py",
+          "mode": "100644",
+          "blob": "367403bf3c393731cee650912789add1f3b46297",
+          "bytes": 4475,
+          "sha256": "16de192dd6c76b4eeaefb54d8f3c409f9b594b192759ff0bf3bf40460b0440f1"
+        },
+        {
+          "path": "tools/check_calendar_civil_end.cjs",
+          "mode": "100644",
+          "blob": "3cbbf36f1a0f71a13b0755da714739b1eb0721e5",
+          "bytes": 4841,
+          "sha256": "1c7346449d46ce19ad9777a013f62c23ea7623313cc0f857ce64087637b7fc98"
+        },
+        {
+          "path": "tools/verify_day_refresh.py",
+          "mode": "100644",
+          "blob": "94caac1360142a886c138b1ebf2e5698024121d0",
+          "bytes": 9996,
+          "sha256": "595379459e99222b0c47f9832f00914d4499d402ee9bd046e13eab80944366ba"
+        },
+        {
+          "path": "tools/verify_trip_checklist.mjs",
+          "mode": "100644",
+          "blob": "4d222dcbb86b7958469ce3d8a6b3accdb500924d",
+          "bytes": 21848,
+          "sha256": "de2c098b4f65bcd9bf5d432706a07343fea76da1bfc1b0a6b02eeaf1515e11a6"
+        },
+        {
+          "path": "trip-checklist.html",
+          "mode": "100644",
+          "blob": "f0286c5e6817c1656297c67489d4b796ddec4510",
+          "bytes": 4558,
+          "sha256": "a1f8fd94b38acea81efe6f6f410ca2a2808ac88914694b4c660a559dc0d35681"
+        },
+        {
+          "path": "tsconfig.json",
+          "mode": "100644",
+          "blob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+          "bytes": 273,
+          "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc"
+        },
+        {
+          "path": "vite.config.ts",
+          "mode": "100644",
+          "blob": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+          "bytes": 355,
+          "sha256": "78d228170cb7b113fdde43ca738f1f4e73827656c42cce2440bd2239bcd35e5e"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "assets/deadline-DzH3L3IB.js",
+          "bytes": 1111,
+          "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+        },
+        {
+          "path": "assets/main-4JuXRClK.js",
+          "bytes": 9761,
+          "sha256": "87406025112c621ac5557f33617a540c12ab3addb4bb6cc57ca07c74fd0d0925"
+        },
+        {
+          "path": "assets/main-Bp_ZSQx5.css",
+          "bytes": 8801,
+          "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+        },
+        {
+          "path": "assets/tripChecklist-CmK7SEMW.css",
+          "bytes": 8320,
+          "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8"
+        },
+        {
+          "path": "assets/tripChecklist-DwME05Y-.js",
+          "bytes": 16658,
+          "sha256": "55ad0aae6831073a049290eab3fdd771291ce83b5881cb8eb6ac4ca91218a11a"
+        },
+        {
+          "path": "captures/returnby-desktop.png",
+          "bytes": 131379,
+          "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+        },
+        {
+          "path": "captures/returnby-mobile.png",
+          "bytes": 107642,
+          "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+        },
+        {
+          "path": "favicon.svg",
+          "bytes": 238,
+          "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+        },
+        {
+          "path": "index.html",
+          "bytes": 4633,
+          "sha256": "c77f8d19deb9e5a674d5d1010184419ea3e6205645d51f2c8b1bf5354190a03a"
+        },
+        {
+          "path": "trip-checklist.html",
+          "bytes": 4738,
+          "sha256": "94049e67756e797f02888a1d9311cd5fb17d026fc4dd923c531d235d3ee6ed85"
+        }
+      ]
+    }
+  },
+  "driver": {
+    "donor": "/dev/shm/hamon-normal-modes-receiving-3e50c5ad22c5/browser-driver.mjs",
+    "donorSha256": "a7b0976af432815781f5309e34f0f838874ed1f5b0b48d6155c463d5b5e25535",
+    "ownedSha256": "501a8e3fe5d3b5934457b5eb98d0532eadc8cdeeed6c12a174e306e891c406a6",
+    "change": "Only mkdtemp profile parent/prefix moves to owned /dev/shm namespace."
+  },
+  "origin": "http://127.0.0.1:40525",
+  "browserPid": 1129302,
+  "profile": "/dev/shm/hamon-returnby-calendar-3e50c5ad22c5/profiles/browser-j2bOZD",
+  "browserExecutable": "/snap/chromium/current/usr/lib/chromium-browser/chrome",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/153.0.8010.47",
+    "revision": "@73934a44f61e6b3878d1943064c141a5a820f5f7",
+    "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "jsVersion": "15.3.76.12"
+  },
+  "error": "AssertionError [ERR_ASSERTION]: No external application requests\n    at file:///dev/shm/hamon-returnby-calendar-3e50c5ad22c5/receiving/browser-receiver.mjs:119:2",
+  "cleanup": {
+    "profileRemoved": true,
+    "browserExit": 0,
+    "browserSignal": null
+  },
+  "browserLog": "[1129302:1130370:1008/200417.718785:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[1129302:1130370:1008/200417.723510:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[1129302:1130370:1008/200418.112959:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[1129302:1130370:1008/200419.636203:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n\nDevTools listening on ws://127.0.0.1:33811/devtools/browser/d2d700f5-f71e-467d-88b7-a1485a6a1772\n[1129302:1129302:1008/200422.694228:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[1129302:1130370:1008/200422.719635:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[1129302:1129302:1008/200422.720101:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[1129302:1130370:1008/200422.720320:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[1129302:1129302:1008/200422.722094:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[1129302:1129302:1008/200422.841868:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[1129302:1130370:1008/200422.849072:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[1129302:1129302:1008/200423.386463:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[1129302:1129302:1008/200423.387343:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[1129302:1129302:1008/200423.388238:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[1129302:1130370:1008/200423.391594:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[1129302:1129302:1008/200423.605360:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[1129302:1130370:1008/200423.607511:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[1129302:1129302:1008/200423.797518:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[1129302:1130370:1008/200423.797733:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[1129302:1129302:1008/200423.896190:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[1129302:1130390:1008/200426.652630:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT\n[1129302:1130390:1008/200456.534864:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT\n[1129302:1130390:1008/200550.823226:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT\n"
+}

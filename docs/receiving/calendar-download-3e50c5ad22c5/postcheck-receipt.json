@@ -1,0 +1,77 @@
+{
+  "format": "returnby-calendar-browser-postcheck/1",
+  "createdAt": "2026-10-08T20:08:21.872Z",
+  "node": "v22.22.1",
+  "originalReceiptSha256": "bdcf49e80355ddb7016563a2f615ca59719a4af28969955d57204ec98928fbff",
+  "originalExitCode": 1,
+  "originalError": "AssertionError [ERR_ASSERTION]: No external application requests\n    at file:///dev/shm/hamon-returnby-calendar-3e50c5ad22c5/receiving/browser-receiver.mjs:119:2",
+  "requestDisposition": {
+    "events": 96,
+    "loopbackAssets": 80,
+    "inlineSvgDataUrls": 16,
+    "externalNetworkRequests": 0,
+    "classificationControls": [
+      {
+        "url": "http://127.0.0.1:40525/candidate/",
+        "expected": true,
+        "pass": true
+      },
+      {
+        "url": "blob:http://127.0.0.1:40525/fixture",
+        "expected": true,
+        "pass": true
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2Zy8+",
+        "expected": true,
+        "pass": true
+      },
+      {
+        "url": "https://example.invalid/external.js",
+        "expected": false,
+        "pass": true
+      },
+      {
+        "url": "http://127.0.0.1:40525.example.invalid/asset",
+        "expected": false,
+        "pass": true
+      },
+      {
+        "url": "http://example.invalid/asset",
+        "expected": false,
+        "pass": true
+      },
+      {
+        "url": "blob:https://example.invalid/id",
+        "expected": false,
+        "pass": true
+      },
+      {
+        "url": "file:///tmp/neighbour.html",
+        "expected": false,
+        "pass": true
+      }
+    ]
+  },
+  "replay": {
+    "originalSha256": "b62bd3c33478e0fd43b37f062da36902c2e273938f2d43897792c620ff5e98bd",
+    "correctedSha256": "173ff94c20691934764fcbe22158804974739ce80dd852d5ba905b7a2a37e02e",
+    "change": "Only the final request predicate admits local data: URLs. Actual browser controls and all calendar assertions are identical.",
+    "rerun": false
+  },
+  "summary": {
+    "actualDownloads": 16,
+    "originalExpectedFailures": 3,
+    "originalOrdinaryPasses": 5,
+    "candidatePasses": 8,
+    "exactSavedBytesPreserved": true,
+    "calendarDifferencesOnlyCorrectedEndAndRuntimeStamp": true,
+    "sourceFilesPreserved": 111,
+    "buildArtifactsPreserved": 20,
+    "pageErrors": 0,
+    "externalNetworkRequests": 0,
+    "profileRemoved": true
+  },
+  "complete": true,
+  "postcheckerSha256": "140f21083b0c7ba1208a25fc4a698374590fa03b7df8b4370005c02e2dd9caf7"
+}

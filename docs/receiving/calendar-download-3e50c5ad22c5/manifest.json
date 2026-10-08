@@ -1,0 +1,247 @@
+{
+  "format": "returnby-calendar-download-publication/1",
+  "createdAt": "2026-10-08T20:12:20.120Z",
+  "baseCommit": "7cf2f6d6e1cd71143569f972ab6ca0bbc0c46772",
+  "baseTree": "20a738c38691d102d2f3c50cb74de1e8cc37f534",
+  "prefix": "docs/receiving/calendar-download-3e50c5ad22c5",
+  "files": [
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/README.md",
+      "bytes": 6807,
+      "sha256": "3d1a01edebbf0e5328faa8299a1c761c88bfd8d2d9fd532d36d1c0a5525d0ad2",
+      "blob": "18ef79032800b51da40dc0a8a84997303749a945",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/browser-driver.mjs",
+      "bytes": 6905,
+      "sha256": "501a8e3fe5d3b5934457b5eb98d0532eadc8cdeeed6c12a174e306e891c406a6",
+      "blob": "4779d76ab0458c294533a4cee2159919939c10bd",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/browser-receipt.json",
+      "bytes": 88947,
+      "sha256": "bdcf49e80355ddb7016563a2f615ca59719a4af28969955d57204ec98928fbff",
+      "blob": "166265771fb0b7bfa2eafe3bc869dc0363a6f258",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/browser-receiver-replay.mjs",
+      "bytes": 12158,
+      "sha256": "173ff94c20691934764fcbe22158804974739ce80dd852d5ba905b7a2a37e02e",
+      "blob": "4b2e7abbddac3d132b5757bac29531a6b9454e71",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/browser-receiver.mjs",
+      "bytes": 12128,
+      "sha256": "b62bd3c33478e0fd43b37f062da36902c2e273938f2d43897792c620ff5e98bd",
+      "blob": "449fc2ae3178e4e016250c9ffc7ef8cc816f368e",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/browser-run.log",
+      "bytes": 1625,
+      "sha256": "c27acc3f637e39df0310d79d8fd3ff8225f72b88c791b6d45c1d8cf445e52f27",
+      "blob": "494644d79453c26680c0dc85024bc92d17e57e49",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/build-receipt.json",
+      "bytes": 66208,
+      "sha256": "3f86ce3d861d52242ef50e42ad9bf3e570a5b66e1be445ac8a7540b2b5475a4b",
+      "blob": "86cadc4986b20b0e336e94e60c051177cbf05148",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/build.mjs",
+      "bytes": 3293,
+      "sha256": "e5ea711b4bf18dfda97b44cecd62623ce1d98c76b58efd28f58ae489103a6113",
+      "blob": "ff1e2a496fb733c63f65b5a87c1acabb23c26e33",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/candidate-apia.png",
+      "bytes": 138300,
+      "sha256": "650d6ef1608c1f8f4b3d51124489450fd2d6c2f017d42965e450e0b88eebcb96",
+      "blob": "2d629c19218d745e0670ab30d2966f211a91bce2",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/candidate-build.log",
+      "bytes": 689,
+      "sha256": "e7ef6e48c0fb6e33da58896fa80739ea74695587b6485ffc4980a59039850263",
+      "blob": "80d7addd6e0d29b6482ac08c82d3c71e4668f218",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/dependency-receipt.json",
+      "bytes": 652,
+      "sha256": "bcb32f3907ee0e7c198f232e5976bb433b17c570f535b0120e659876b521f00a",
+      "blob": "9badbcf067389b85cb13643108820c3ce97ad26b",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/candidate-apia-skipped-date.ics",
+      "bytes": 420,
+      "sha256": "bab0efe458ede99e2e294b61fab4d02b3d701033c796ae3c1250159f7c337029",
+      "blob": "2954924df5557f4be854ae6d8e18d59ef288ea81",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/candidate-kiritimati-skipped-date.ics",
+      "bytes": 420,
+      "sha256": "9b905c3336a9ee4cef0cff99810db006f2bfe8e99821985e057d02560d9916b4",
+      "blob": "5212988d437124e5361c0f756e39988d23927d0f",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/candidate-kwajalein-skipped-date.ics",
+      "bytes": 420,
+      "sha256": "70a1a5d9210890460fc47378a2101765d3281af61baa68016e7e12913550226d",
+      "blob": "c541eed88a4e3f08e6e96b66c0befc25e6ea1c24",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/candidate-modern-control-0.ics",
+      "bytes": 420,
+      "sha256": "6d7659ef0001bf69ae62a89f617415f67f3f75b1441eaebdf928f8fe3bf59a32",
+      "blob": "e7c404990fa13b0cf8b63a7af2163e1fe95ad29b",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/candidate-modern-control-1.ics",
+      "bytes": 420,
+      "sha256": "8e5f20d8d715ae3c755c562455173e3d1b9dd0e8b956fca0dcd945085a30e593",
+      "blob": "e039bbda7c0c9d4d0b4bbc00e33e6fc9c953dd8c",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/candidate-modern-control-2.ics",
+      "bytes": 420,
+      "sha256": "e10a56506bc25f3d4f0b251dcd653f4fec9568d82921c7ffe00229a6a463e033",
+      "blob": "948801386322cd5049f8b3fdaebe1c256d54920f",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/candidate-modern-control-3.ics",
+      "bytes": 420,
+      "sha256": "571827c941db6d0d8342f6aff145b35cb65d5d1bfdd04d88aa3fb34e41cda49f",
+      "blob": "fb3ca9ff2957d60ee0efd764ab10a0be45d0e7df",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/candidate-utc-historical-control.ics",
+      "bytes": 420,
+      "sha256": "5ff1faeb19cd52d00e38aadab42144f7d9a1c9a072752c32b91d59b98fef6ee5",
+      "blob": "7ea80c77a2369e85595e30b7499ab35e9d6a3bd3",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/original-apia-skipped-date.ics",
+      "bytes": 420,
+      "sha256": "d98d3a6d9037006ed47fc3d1913bb1553f34a3e5c5b4a768a4aa19ce7e3f407c",
+      "blob": "1d83b2b84d4437b3152a777fa6dcd1e25071b43b",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/original-kiritimati-skipped-date.ics",
+      "bytes": 420,
+      "sha256": "d1be9f828e96800145a4f149b46d942de8e4d26dfa4d4257dacf8456017bcdb9",
+      "blob": "b6550dd584c5c15195fa1a0b0abcc21efb9b963c",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/original-kwajalein-skipped-date.ics",
+      "bytes": 420,
+      "sha256": "922fd074ca073aedb8918608a188943abca2196bcefc5f740b83d5b84deab6c0",
+      "blob": "35babeb21800d039739c6af59fe188323c8386a6",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/original-modern-control-0.ics",
+      "bytes": 420,
+      "sha256": "db5660cdb4e1db88c4067c986874fd4bbe1a33d2154eac5d53546aa557e889e2",
+      "blob": "1888e60935d17965405095c4c63607d589ca80f4",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/original-modern-control-1.ics",
+      "bytes": 420,
+      "sha256": "3bd5ea65a993e0f496911300231d1e0401498a86be2f0f35eb079204cdf72e01",
+      "blob": "4b632b589b9163ccf8082b0154ba96aed0590598",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/original-modern-control-2.ics",
+      "bytes": 420,
+      "sha256": "857f7313cfd4e23c904a0a80240c5fbf704250a97798dd413ffcf09d87a20455",
+      "blob": "b09971a244d66a12bdc0d3d90e26152ad8809de4",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/original-modern-control-3.ics",
+      "bytes": 420,
+      "sha256": "356482f041182acbd34b278a62ac1d48b3b4b586ce1b5b8766ceca25f8b38582",
+      "blob": "c1294486434197772a69bcb08f574bea83cc8b7f",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/downloads/original-utc-historical-control.ics",
+      "bytes": 420,
+      "sha256": "f3e9891daef5bd482da3cfca122d9dd6fc79c9b7b1c2cfc7f65236e52ab790b6",
+      "blob": "7512eb7dad9eeb470c5d37bde56a86a21e2253dd",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/hosted-ci.json",
+      "bytes": 553,
+      "sha256": "e380d32829e63c7726f64a6196d45175062948a46613f3f072baa0b5eb6e4634",
+      "blob": "e35d77d240b701ad30aa2d5a262f28650b36982c",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/install.log",
+      "bytes": 26,
+      "sha256": "be8936a98dc2b41e926f21851eed92803b1bc85ef04de3e70fd8371df66c2853",
+      "blob": "e8da488e89bd444d061f0608d6475d7bb126285a",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/original-apia.png",
+      "bytes": 138300,
+      "sha256": "650d6ef1608c1f8f4b3d51124489450fd2d6c2f017d42965e450e0b88eebcb96",
+      "blob": "2d629c19218d745e0670ab30d2966f211a91bce2",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/original-build.log",
+      "bytes": 689,
+      "sha256": "21536ec0fa434d9f4f5d35c33ec0bfcf386bc56334c40cf87a548d1148584a87",
+      "blob": "7abad2d23ef78a3c37d5bf8be326de68937f5ee7",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/postcheck-receipt.json",
+      "bytes": 2401,
+      "sha256": "0a338e7d73e2029b90bd2f52a3bb2bee7b1b3f91ae37369406d923c4a5bc0c83",
+      "blob": "d933841f5ca42741451a37bfd121dc85f77d4c58",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/postcheck.log",
+      "bytes": 1870,
+      "sha256": "d9169b11c6e3f2e272dbb1b372e46c6359b11ee142d22098e29e602fed5e383e",
+      "blob": "599ed79f67c7b70fab70f2dc7921f992007a3f8f",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/receiving/calendar-download-3e50c5ad22c5/postcheck.mjs",
+      "bytes": 5129,
+      "sha256": "140f21083b0c7ba1208a25fc4a698374590fa03b7df8b4370005c02e2dd9caf7",
+      "blob": "c1339ab368fdad6ef785e5dd686de001966f0a8a",
+      "mode": "100644"
+    }
+  ]
+}
