@@ -1,0 +1,46 @@
+[
+  {
+    "path": "src/calendar-export.css",
+    "sha256": "949f6199db29f4ef48e609f307f761ae445cdef85af216f75e6a4c5aa157247b"
+  },
+  {
+    "path": "src/calendar-export.ts",
+    "sha256": "c952776448840c9246b53e9995c360c9c74d9d0dc0cfa8978ff1214bf3eda67f"
+  },
+  {
+    "path": "src/day-refresh.ts",
+    "sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430"
+  },
+  {
+    "path": "src/deadline.ts",
+    "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+  },
+  {
+    "path": "src/ics.ts",
+    "sha256": "b65f333fdf93069ec32c753bb5f3912fe124ce09c489e9904d4873c7357ee29a"
+  },
+  {
+    "path": "src/main.ts",
+    "sha256": "5e99f81a60fe7bf2a056f6f678d9145b8e1e74c725dca91e29db80b26dc22499"
+  },
+  {
+    "path": "src/parse.ts",
+    "sha256": "591eea8a9a73009d3870b61df591ad2bb5d62144d931841b063180da588cc439"
+  },
+  {
+    "path": "src/policy.ts",
+    "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231"
+  },
+  {
+    "path": "src/samples.ts",
+    "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04"
+  },
+  {
+    "path": "src/store.ts",
+    "sha256": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080"
+  },
+  {
+    "path": "src/style.css",
+    "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892"
+  }
+]

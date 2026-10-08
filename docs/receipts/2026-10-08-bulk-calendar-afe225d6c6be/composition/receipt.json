@@ -1,0 +1,79 @@
+{
+  "base": "480a99bd6de57ff04089975b34b43856da56fdf9",
+  "base_tree": "e439842851966ad29f6fc2787c951967e23358b5",
+  "current_main": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "bulk_freeze": "ec9b10f44a9dcb6529f8ab9b499af58abb00b41c3036a4420134ddcf44c9c14c",
+  "scope": "Isolated editor/storage/date-refresh/bulk-calendar composition; broader backup/parser integration remains with issue #8 owner.",
+  "patch_sha256": "b294a2b774990c1a04be65967c787ecbd17b0118c361893d6eda516d28f92987",
+  "changes": [
+    {
+      "path": "src/main.ts",
+      "before_sha256": "e081b6c32e5119c4652f17fc174430b994ef86cfb3e558c3ed1c2784f8da65c4",
+      "after_sha256": "e130c47b6dd306d1a2088b5600440bb036cb3f72b5a663219a97c7478cc24a76"
+    },
+    {
+      "path": "src/ics.ts",
+      "before_sha256": "ccd1efc1ca1211f04a59c0b9e621fc3a2c0f2d1ed483cdc5dc506a707330be72",
+      "after_sha256": "b65f333fdf93069ec32c753bb5f3912fe124ce09c489e9904d4873c7357ee29a"
+    },
+    {
+      "path": "src/calendar-export.ts",
+      "before_sha256": null,
+      "after_sha256": "c952776448840c9246b53e9995c360c9c74d9d0dc0cfa8978ff1214bf3eda67f"
+    },
+    {
+      "path": "src/calendar-export.css",
+      "before_sha256": null,
+      "after_sha256": "949f6199db29f4ef48e609f307f761ae445cdef85af216f75e6a4c5aa157247b"
+    },
+    {
+      "path": "src/day-refresh.ts",
+      "before_sha256": null,
+      "after_sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430"
+    },
+    {
+      "path": "tests/ics.test.ts",
+      "before_sha256": null,
+      "after_sha256": "1c945625f9988963760e3804142a7292603409bd0d95846109997ebcd6ed08fa"
+    },
+    {
+      "path": "tests/calendar-export.test.ts",
+      "before_sha256": null,
+      "after_sha256": "017beb54e0d875f8946a4e50358a5622917d35f8bf9bb3292e0149abb7067261"
+    },
+    {
+      "path": "tests/day-refresh.test.ts",
+      "before_sha256": null,
+      "after_sha256": "1f6ba366278a67d92c6aa219586158a3d8ecab9394395f79cb5c91545627aa6d"
+    },
+    {
+      "path": "tests/helpers/storage-fixture.mjs",
+      "before_sha256": "01be65bd9bbe1bbd516ae4a9fca3cb6d810383738d8e6c081f5de83e9265eabc",
+      "after_sha256": "8ed38012c7bd19388fd1cb2292bd831b0fd412439c66c16ecdf01f05a53508bf"
+    },
+    {
+      "path": "tools/verify_day_refresh.py",
+      "before_sha256": null,
+      "after_sha256": "595379459e99222b0c47f9832f00914d4499d402ee9bd046e13eab80944366ba"
+    }
+  ],
+  "native_tests_passed": 105,
+  "baseline_native_tests_passed": 79,
+  "build_passed": true,
+  "browser_groups_passed": 4,
+  "actual_downloads": 5,
+  "page_errors": 0,
+  "external_requests": 0,
+  "phone_visually_inspected": true,
+  "phone_width_px": 360,
+  "production_published_from_this_composition": false,
+  "environment_notes": [
+    "One npm build attempt could not begin when the shared filesystem was full; the exact TypeScript and Vite build commands later passed with unchanged dependencies.",
+    "Forced cleanup was rejected by automatic approval review and not retried. Browser profiles used an ordinary task-specific directory on the existing process-scoped /dev tmpfs; all retained evidence was written to /dev/shm.",
+    "An earlier successful browser run placed its full artifacts on process-scoped temporary storage; the same receiver was repeated once to retain all evidence. Only the retained run is counted."
+  ],
+  "recorded_at_tool_utc": "2026-10-08 09:54:00 UTC",
+  "browser_receipt_sha256": "703b2de3811d2ef2770ed58107e8021fd6e7dd018f0a6ece8ab02be9a8dd3491",
+  "receiver_sha256": "e965d39732f8c36e8a40294e0b9c458209e4e14245d20eea79c65e887002ca56",
+  "phone_capture_sha256": "5fd7026c7f2854d5faa1cabb139185d561390dfb2750078f85e6f5ebcce4b393"
+}

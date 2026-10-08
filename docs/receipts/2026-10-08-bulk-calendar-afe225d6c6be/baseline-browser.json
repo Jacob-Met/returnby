@@ -1,0 +1,14 @@
+{
+  "browser": "153.0.8010.0",
+  "build": "/dev/shm/returnby-calendar-afe225d6c6be/baseline-dist",
+  "receipts": [
+    {
+      "download": "return-Fictional-today.ics",
+      "bytes": 375,
+      "sha256": "fd47eb03e43e1d38755e8dbfa628cdb053c78e13ce98db05fd940b12dee1cb3e",
+      "ids": [
+        "today@returnby"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "base": "480a99bd6de57ff04089975b34b43856da56fdf9",
+  "retained_base_files": 81,
+  "current_main": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "current_main_imports": [
+    {
+      "path": "src/day-refresh.ts",
+      "git_blob": "362aae5b5be7bf399174483327a2b15018edeca4"
+    },
+    {
+      "path": "tests/day-refresh.test.ts",
+      "git_blob": "1d76fd6ef7364ae84f4775666768815211981ff6"
+    },
+    {
+      "path": "tests/ics.test.ts",
+      "git_blob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4"
+    },
+    {
+      "path": "tools/verify_day_refresh.py",
+      "git_blob": "94caac1360142a886c138b1ebf2e5698024121d0"
+    }
+  ],
+  "bulk_production_freeze": {
+    "base": "3913697f70a31d73e8fe7d02b686b306830c24db",
+    "files": [
+      {
+        "path": "src/ics.ts",
+        "sha256": "b65f333fdf93069ec32c753bb5f3912fe124ce09c489e9904d4873c7357ee29a"
+      },
+      {
+        "path": "src/main.ts",
+        "sha256": "5e99f81a60fe7bf2a056f6f678d9145b8e1e74c725dca91e29db80b26dc22499"
+      },
+      {
+        "path": "src/calendar-export.ts",
+        "sha256": "c952776448840c9246b53e9995c360c9c74d9d0dc0cfa8978ff1214bf3eda67f"
+      },
+      {
+        "path": "src/calendar-export.css",
+        "sha256": "949f6199db29f4ef48e609f307f761ae445cdef85af216f75e6a4c5aa157247b"
+      }
+    ],
+    "patch_sha256": "ec9b10f44a9dcb6529f8ab9b499af58abb00b41c3036a4420134ddcf44c9c14c",
+    "focus_correction_sha256": "ab2d84d9bcaf070c99837ee4bc21477e2a07a6785374d3a390e3164789947fba"
+  },
+  "bulk_native_tests": [
+    {
+      "path": "tests/calendar-export.test.ts",
+      "sha256": "017beb54e0d875f8946a4e50358a5622917d35f8bf9bb3292e0149abb7067261"
+    }
+  ],
+  "composition_changes": [
+    "main imports and mounting",
+    "visible rows update",
+    "load failure clears export",
+    "current-main date refresh recognizes existing editor controls",
+    "inert fixture mount/timer surfaces",
+    "bulk focused-to-empty callback retained from independently corrected successor"
+  ],
+  "source_pins": [
+    {
+      "path": "src/main.ts",
+      "sha256": "e130c47b6dd306d1a2088b5600440bb036cb3f72b5a663219a97c7478cc24a76"
+    },
+    {
+      "path": "src/ics.ts",
+      "sha256": "b65f333fdf93069ec32c753bb5f3912fe124ce09c489e9904d4873c7357ee29a"
+    },
+    {
+      "path": "src/calendar-export.ts",
+      "sha256": "c952776448840c9246b53e9995c360c9c74d9d0dc0cfa8978ff1214bf3eda67f"
+    },
+    {
+      "path": "src/calendar-export.css",
+      "sha256": "949f6199db29f4ef48e609f307f761ae445cdef85af216f75e6a4c5aa157247b"
+    },
+    {
+      "path": "src/day-refresh.ts",
+      "sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430"
+    },
+    {
+      "path": "tests/helpers/storage-fixture.mjs",
+      "sha256": "8ed38012c7bd19388fd1cb2292bd831b0fd412439c66c16ecdf01f05a53508bf"
+    }
+  ]
+}

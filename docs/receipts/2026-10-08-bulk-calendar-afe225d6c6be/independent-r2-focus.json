@@ -1,0 +1,52 @@
+{
+  "mode": "focus",
+  "groups": [
+    {
+      "name": "midnight exchanges same-count Due soon identities; pageshow also refreshes the export",
+      "pass": true
+    },
+    {
+      "name": "the focused export becoming empty at midnight restores focus to the selected filter",
+      "pass": true
+    },
+    {
+      "name": "an inactive export becoming empty does not steal focus or change an intake draft",
+      "pass": true
+    }
+  ],
+  "downloads": [
+    {
+      "name": "before-midnight",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r2-focus-retry/before-midnight.ics",
+      "bytes": 1190,
+      "ids": [
+        "today-id",
+        "near-id"
+      ]
+    },
+    {
+      "name": "after-midnight",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r2-focus-retry/after-midnight.ics",
+      "bytes": 1195,
+      "ids": [
+        "near-id",
+        "edge-id"
+      ]
+    },
+    {
+      "name": "after-pageshow-refresh",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r2-focus-retry/after-pageshow-refresh.ics",
+      "bytes": 379,
+      "ids": [
+        "edge-id"
+      ]
+    }
+  ],
+  "pageErrors": [],
+  "focusAfterEmpty": {
+    "id": "filter-due",
+    "tag": "BUTTON",
+    "selectedFilter": "true"
+  },
+  "passed": true
+}

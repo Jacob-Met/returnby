@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "reviewer": "/root/coordination_review",
+  "repository": "Jacob-Met/returnby",
+  "issue": 18,
+  "recorded_utc": "2026-10-08T10:03:00.561420+00:00",
+  "decision": "accept corrected standalone bulk-calendar contract",
+  "base_commit": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "base_tree": "ab4534a2e1afdace5d27a6079012c776c0e66f70",
+  "production_patch_sha256": "ec9b10f44a9dcb6529f8ab9b499af58abb00b41c3036a4420134ddcf44c9c14c",
+  "production_files": [
+    {
+      "path": "src/calendar-export.ts",
+      "sha256": "c952776448840c9246b53e9995c360c9c74d9d0dc0cfa8978ff1214bf3eda67f"
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "5e99f81a60fe7bf2a056f6f678d9145b8e1e74c725dca91e29db80b26dc22499"
+    },
+    {
+      "path": "src/ics.ts",
+      "sha256": "b65f333fdf93069ec32c753bb5f3912fe124ce09c489e9904d4873c7357ee29a"
+    },
+    {
+      "path": "src/calendar-export.css",
+      "sha256": "949f6199db29f4ef48e609f307f761ae445cdef85af216f75e6a4c5aa157247b"
+    }
+  ],
+  "independent_results": {
+    "first_candidate": {
+      "passed_groups": 5,
+      "downloaded_calendars": 9,
+      "overall_pass": false,
+      "finding": "focused newly-disabled export sent focus to BODY"
+    },
+    "corrected_focus_replay": {
+      "passed_groups": 3,
+      "downloaded_calendars": 3,
+      "overall_pass": true,
+      "active_element_after_empty": "filter-due",
+      "page_errors": []
+    },
+    "single_event_compatibility": {
+      "cases": 40,
+      "byte_equal": true
+    }
+  },
+  "runtime_attempt_retained": {
+    "path": "evidence/browser-r2-focus/browser-review.json",
+    "test_groups_executed": 0,
+    "finding": "Chromium navigation crash during exhausted storage; not an implementation verdict"
+  },
+  "limits": [
+    "Local Chromium with synthetic local storage and real production build/downloads",
+    "No calendar-client import, deployed behavior, physical mobile device or alternate browser engine",
+    "Separate parent editor/storage composition not claimed by this standalone receipt"
+  ],
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 5451,
+      "sha256": "5b27cf7886eb3978355c52a0188a26a35c67f79d593a3af11dfd0ef8763ed652"
+    },
+    {
+      "path": "REVIEW_CONTRACT.md",
+      "bytes": 2243,
+      "sha256": "69f49dfef3652df65df3edbcbadc48ece0dfa18a443da3a11c89adfc163e3a78"
+    },
+    {
+      "path": "review_browser.mjs",
+      "bytes": 14571,
+      "sha256": "9974a48c784907cc69ce9bfb9bc7413fe313f529822cec19e18532913fcbbb07"
+    },
+    {
+      "path": "review_single_compat.mjs",
+      "bytes": 2497,
+      "sha256": "d2bbdba2c8d2b8b88f26ad83b4971a4d038ab4ee9546c0cef96c33a581423949"
+    },
+    {
+      "path": "evidence/accepted-production.patch",
+      "bytes": 8321,
+      "sha256": "ec9b10f44a9dcb6529f8ab9b499af58abb00b41c3036a4420134ddcf44c9c14c"
+    },
+    {
+      "path": "evidence/accepted-source-manifest.json",
+      "bytes": 7288,
+      "sha256": "6449bc220eba28ae04e35fc74a02f100541d9cadeb47edd88fdc6981e92f58e7"
+    },
+    {
+      "path": "evidence/candidate-freeze.json",
+      "bytes": 7288,
+      "sha256": "74630375cb1aa646b6e9704921ea7a9131c6cd046e57c18cf6c9614ee90a43ac"
+    },
+    {
+      "path": "evidence/candidate-r2-source-pins.json",
+      "bytes": 1332,
+      "sha256": "91c847010dbd3b4b43e07ba0b7582005aba73e686fd8acd24cc582fb1a15435b"
+    },
+    {
+      "path": "evidence/focus-correction.patch",
+      "bytes": 2277,
+      "sha256": "ab2d84d9bcaf070c99837ee4bc21477e2a07a6785374d3a390e3164789947fba"
+    },
+    {
+      "path": "evidence/single-compatibility.json",
+      "bytes": 19812,
+      "sha256": "dfa0d84172c7b48625203ea399e0883258fb91957f874fa0a5acc436bd8031d9"
+    },
+    {
+      "path": "evidence/review_browser-pre-candidate.mjs.source",
+      "bytes": 12832,
+      "sha256": "7510355a4e401c31ed9c29b6c0032f72cb1c110dc261c1b140f06ad9fe62feb6"
+    },
+    {
+      "path": "evidence/review_browser-r1.mjs.source",
+      "bytes": 13736,
+      "sha256": "d7db9e069c4916ed353d6367b1416802ffb77ec36a78991331309deae101c901"
+    },
+    {
+      "path": "evidence/browser-r1/after-midnight.ics",
+      "bytes": 1195,
+      "sha256": "8f9f6bca241e2129f28b652ae27636d93a2e5b3056eb5afb500310de512b52f2"
+    },
+    {
+      "path": "evidence/browser-r1/after-pageshow-refresh.ics",
+      "bytes": 379,
+      "sha256": "bdbe6ac8ecdaca6607b5d06d4f6e73b4cac566a516c41d1a0e04dac9a33d437c"
+    },
+    {
+      "path": "evidence/browser-r1/after-remove.ics",
+      "bytes": 697,
+      "sha256": "ba31c4862fa5968939697b63c09fff8bf6c642ee84cbc2d1362e686354f62ceb"
+    },
+    {
+      "path": "evidence/browser-r1/after-save.ics",
+      "bytes": 1513,
+      "sha256": "6f48732757d5356b9e21fd0d6cd17d4f4dd47ad32e4478a7cbe47181acf50cfd"
+    },
+    {
+      "path": "evidence/browser-r1/all-with-literal-unicode.ics",
+      "bytes": 2040,
+      "sha256": "1ffb31f9f36ce6d970f5af62868cc87049b95a6dba5694362b6c5be66a2f859e"
+    },
+    {
+      "path": "evidence/browser-r1/before-midnight.ics",
+      "bytes": 1190,
+      "sha256": "30d3eeb22c6bea78b014c886770d74c95c084d4ead241405123d9770d03ee26c"
+    },
+    {
+      "path": "evidence/browser-r1/browser-review.json",
+      "bytes": 3548,
+      "sha256": "72e28a681dcdf607d4fc284dedd962d7e2d40e83a5198768c48d4f9c45ae655e"
+    },
+    {
+      "path": "evidence/browser-r1/due-keyboard-enter.ics",
+      "bytes": 1190,
+      "sha256": "b5e3b1d109da3eedd721c01bde6758477b73006ff44e05227e6a60e3a2a52286"
+    },
+    {
+      "path": "evidence/browser-r1/expired-keyboard-space.ics",
+      "bytes": 376,
+      "sha256": "add379075319bc3d44f38e1e7cb41e08d2efc9ff44724816d6a607341257f646"
+    },
+    {
+      "path": "evidence/browser-r1/mobile-calendar.png",
+      "bytes": 203664,
+      "sha256": "c04d800c0281d79593021455e25c2ef28f2a8db883e76d83e5f58bbd649a22c1"
+    },
+    {
+      "path": "evidence/browser-r1/mobile-keyboard.ics",
+      "bytes": 1504,
+      "sha256": "23255abc01af69130edf7606e6e55aaf929301b31df6b37087b70cf21bed0693"
+    },
+    {
+      "path": "evidence/browser-r2-focus/browser-review.json",
+      "bytes": 594,
+      "sha256": "9b81f165c58ef951b2ddfad6926574c9e55eb8fb1008fd8cab28923595c1661c"
+    },
+    {
+      "path": "evidence/browser-r2-focus-retry/after-midnight.ics",
+      "bytes": 1195,
+      "sha256": "8f9f6bca241e2129f28b652ae27636d93a2e5b3056eb5afb500310de512b52f2"
+    },
+    {
+      "path": "evidence/browser-r2-focus-retry/after-pageshow-refresh.ics",
+      "bytes": 379,
+      "sha256": "bdbe6ac8ecdaca6607b5d06d4f6e73b4cac566a516c41d1a0e04dac9a33d437c"
+    },
+    {
+      "path": "evidence/browser-r2-focus-retry/before-midnight.ics",
+      "bytes": 1190,
+      "sha256": "30d3eeb22c6bea78b014c886770d74c95c084d4ead241405123d9770d03ee26c"
+    },
+    {
+      "path": "evidence/browser-r2-focus-retry/browser-review.json",
+      "bytes": 1342,
+      "sha256": "7653cafcd6c63e04996d0ea4ce4f8684c0ab6cc566ea9cff506ce615c277b646"
+    },
+    {
+      "path": "evidence/browser-r1-stderr.log",
+      "bytes": 470,
+      "sha256": "e2fb69c0615567dcbb7697a5a7f765f656f8af9f41ce9caeec138ff81282d52c"
+    },
+    {
+      "path": "evidence/browser-r1-stdout.log",
+      "bytes": 3548,
+      "sha256": "72e28a681dcdf607d4fc284dedd962d7e2d40e83a5198768c48d4f9c45ae655e"
+    },
+    {
+      "path": "evidence/browser-r2-focus-retry-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/browser-r2-focus-retry-stdout.log",
+      "bytes": 1342,
+      "sha256": "7653cafcd6c63e04996d0ea4ce4f8684c0ab6cc566ea9cff506ce615c277b646"
+    },
+    {
+      "path": "evidence/browser-r2-focus-stderr.log",
+      "bytes": 478,
+      "sha256": "17c6966c52b364da7adc039be5ff20c799b39b7b6cfe4873e21391184162e7f7"
+    },
+    {
+      "path": "evidence/browser-r2-focus-stdout.log",
+      "bytes": 594,
+      "sha256": "9b81f165c58ef951b2ddfad6926574c9e55eb8fb1008fd8cab28923595c1661c"
+    }
+  ]
+}

@@ -1,0 +1,785 @@
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -3,7 +3,9 @@
+ import { parse } from './parse';
+ import { lookup, knownMerchants } from './policy';
+ import { dueDate, daysLeft, status, todayISO } from './deadline';
++import { startDayRefresh } from './day-refresh';
+ import { buildIcs } from './ics';
++import { mountCalendarExport } from './calendar-export';
+ import { load, save, type Order } from './store';
+ import { samples } from './samples';
+ import { bindOrderEditor } from './edit-ui';
+@@ -12,6 +14,7 @@
+ const paste = $<HTMLTextAreaElement>('#paste');
+ const preview = $<HTMLFormElement>('#preview');
+ const list = $<HTMLUListElement>('#list');
++const updateCalendarExport = mountCalendarExport(list, () => $<HTMLButtonElement>('.filter[aria-pressed="true"]'));
+ const storageError = $<HTMLParagraphElement>('#storage-error');
+ const storageRetry = $<HTMLButtonElement>('#storage-retry');
+ let orders: Order[] = [];
+@@ -142,6 +145,7 @@
+ 
+ function render() {
+   if (loadFailed) {
++    updateCalendarExport([]);
+     for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
+     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
+     return;
+@@ -150,6 +154,7 @@
+   $('#tracked-count').textContent=String(all.length);$('#soon-count').textContent=String(all.filter(r=>r.left>=0&&r.left<=7).length);$('#expired-count').textContent=String(all.filter(r=>r.left<0).length);
+   for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
+   const rows=all.filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
++  updateCalendarExport(rows.map(({o,due})=>({id:o.id,merchant:o.merchant,orderNo:o.orderNo,due})));
+   if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
+   list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+ }
+@@ -178,3 +183,14 @@
+   refresh: reloadOrders,
+ });
+ reloadOrders();
++startDayRefresh(() => {
++  const active = document.activeElement;
++  const focused = active instanceof HTMLButtonElement && list.contains(active) ? active : undefined;
++  const action = focused?.hasAttribute('data-ics') ? 'ics' : focused?.hasAttribute('data-edit') ? 'edit' : focused?.hasAttribute('data-del') ? 'del' : undefined;
++  const id = action ? focused?.dataset[action] : undefined;
++  render();
++  if (!action || id === undefined) return;
++  const next = Array.from(list.querySelectorAll<HTMLButtonElement>(`button[data-${action}]`))
++    .find(button => button.dataset[action] === id);
++  (next ?? $<HTMLButtonElement>(`#filter-${filterMode}`)).focus({ preventScroll: true });
++});
+--- a/src/ics.ts
++++ b/src/ics.ts
+@@ -1,16 +1,55 @@
+-const esc = (s: string) => s.replace(/\\/g, '\\\\').replace(/[,;]/g, (c) => '\\' + c).replace(/\n/g, '\\n');
++// RFC 5545 §3.3.11: newlines belong inside TEXT as an escaped value, never
++// as content-line delimiters. Replace unsupported controls visibly in the
++// exported reminder; the saved order itself is unchanged.
++const esc = (s: string) => s.replace(/\\/g, '\\\\')
++  .replace(/\r\n|\r|\n/g, '\\n')
++  .replace(/[,;]/g, (c) => '\\' + c)
++  .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, '\ufffd');
+ 
+-export function buildIcs(o: { id: string; merchant: string; orderNo?: string; due: string }, stamp = new Date()): string {
++const encoder = new TextEncoder();
++
++// RFC 5545 §3.1 counts UTF-8 octets, including the continuation space.
++// Iterate code points so a fold cannot divide a multibyte character.
++function fold(line: string): string {
++  let output = '', bytes = 0;
++  for (const character of line) {
++    const size = encoder.encode(character).byteLength;
++    if (bytes + size > 75) {
++      output += '\r\n ';
++      bytes = 1;
++    }
++    output += character;
++    bytes += size;
++  }
++  return output;
++}
++
++export type CalendarOrder = { id: string; merchant: string; orderNo?: string; due: string };
++
++function eventLines(o: CalendarOrder, ts: string): string[] {
+   const d = o.due.replace(/-/g, '');
+   const end = new Date(+o.due.slice(0, 4), +o.due.slice(5, 7) - 1, +o.due.slice(8, 10) + 1);
+   const e = `${end.getFullYear()}${String(end.getMonth() + 1).padStart(2, '0')}${String(end.getDate()).padStart(2, '0')}`;
+-  const ts = stamp.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+   const title = esc(`Return deadline: ${o.merchant || 'order'}${o.orderNo ? ' #' + o.orderNo : ''}`);
+   return [
+-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
+-    'BEGIN:VEVENT', `UID:${o.id}@returnby`, `DTSTAMP:${ts}`,
++    'BEGIN:VEVENT', `UID:${esc(o.id)}@returnby`, `DTSTAMP:${ts}`,
+     `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${e}`, `SUMMARY:${title}`,
+     'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`, 'TRIGGER:-P3D', 'END:VALARM',
+-    'END:VEVENT', 'END:VCALENDAR', '',
+-  ].join('\r\n');
++    'END:VEVENT',
++  ];
+ }
++
++// Keep each order's identity and reminder identical to its individual export.
++// Multiple events share one calendar envelope and one export timestamp.
++export function buildCalendarIcs(orders: readonly CalendarOrder[], stamp = new Date()): string {
++  const ts = stamp.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
++  return [
++    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
++    ...orders.flatMap(o => eventLines(o, ts)),
++    'END:VCALENDAR', '',
++  ].map(fold).join('\r\n');
++}
++
++export function buildIcs(o: CalendarOrder, stamp = new Date()): string {
++  return buildCalendarIcs([o], stamp);
++}
+--- /dev/null
++++ b/src/calendar-export.ts
+@@ -0,0 +1,48 @@
++import './calendar-export.css';
++import { buildCalendarIcs, type CalendarOrder } from './ics';
++
++// Mount once, outside the replaced list, so renders preserve keyboard focus.
++// The caller supplies exactly the rows it displays, including an empty set.
++export function mountCalendarExport(list: HTMLElement, emptyFocusTarget: () => HTMLElement): (rows: readonly CalendarOrder[]) => void {
++  const control = document.createElement('div');
++  control.className = 'calendar-export';
++  const button = document.createElement('button');
++  button.id = 'export-calendar';
++  button.type = 'button';
++  button.className = 'button calendar-export-button';
++  button.setAttribute('aria-describedby', 'calendar-export-help');
++  const help = document.createElement('p');
++  help.id = 'calendar-export-help';
++  help.setAttribute('aria-live', 'polite');
++  control.append(button, help);
++  list.before(control);
++
++  let shown: CalendarOrder[] = [];
++  button.addEventListener('click', () => {
++    if (!shown.length) return;
++    const blob = new Blob([buildCalendarIcs(shown)], { type: 'text/calendar;charset=utf-8' });
++    const url = URL.createObjectURL(blob);
++    const link = document.createElement('a');
++    link.href = url;
++    link.download = `returnby-${shown.length}-${shown.length === 1 ? 'deadline' : 'deadlines'}.ics`;
++    document.body.append(link);
++    link.click();
++    link.remove();
++    // Let the browser start the download before releasing its object URL.
++    setTimeout(() => URL.revokeObjectURL(url), 1000);
++  });
++
++  const update = (rows: readonly CalendarOrder[]) => {
++    const hadFocus = document.activeElement === button;
++    shown = rows.map(({ id, merchant, orderNo, due }) => ({ id, merchant, orderNo, due }));
++    const count = shown.length;
++    button.disabled = count === 0;
++    button.textContent = `Download ${count} shown ${count === 1 ? 'deadline' : 'deadlines'} (.ics)`;
++    help.textContent = count
++      ? `${count} calendar ${count === 1 ? 'event' : 'events'}, matching the list below. Import the file into your calendar for reminders 3 days before each deadline.`
++      : '0 calendar events. Save a deadline or change the filter to enable calendar download.';
++    if (!count && hadFocus) emptyFocusTarget().focus({ preventScroll: true });
++  };
++  update([]);
++  return update;
++}
+--- /dev/null
++++ b/src/calendar-export.css
+@@ -0,0 +1,22 @@
++.calendar-export {
++  display: grid;
++  gap: 8px;
++  margin: 0 0 14px;
++  padding: 12px;
++  border: 1px solid #58716b;
++}
++
++.calendar-export-button {
++  justify-self: start;
++  max-width: 100%;
++  min-height: 44px;
++  background: #efb07e;
++  color: #203636;
++  line-height: 1.5;
++  text-align: left;
++}
++
++.calendar-export-button:hover:enabled { background: #f5c7a3; }
++.calendar-export-button:disabled { background: #45615b; color: #d9e2d9; cursor: default; }
++.calendar-export-button:focus-visible { outline-color: #efb07e; }
++.calendar-export p { margin: 0; color: #d0dad1; font-size: 11px; line-height: 1.5; }
+--- /dev/null
++++ b/src/day-refresh.ts
+@@ -0,0 +1,48 @@
++import { todayISO } from './deadline';
++
++/** Keep date-derived tracker state current across midnight and suspended tabs. */
++export function startDayRefresh(refresh: () => void): () => void {
++  let day = todayISO();
++  let timer: number | undefined;
++  let active = true;
++
++  function schedule() {
++    window.clearTimeout(timer);
++    if (!active) return;
++    const now = new Date();
++    const midnight = new Date(now);
++    // Calendar arithmetic keeps this correct on 23-hour and 25-hour DST days.
++    midnight.setHours(24, 0, 0, 0);
++    timer = window.setTimeout(check, Math.max(1, midnight.getTime() - now.getTime()));
++  }
++
++  function check() {
++    if (!active) return;
++    try {
++      const current = todayISO();
++      if (current !== day) {
++        day = current;
++        refresh();
++      }
++    } finally {
++      schedule();
++    }
++  }
++
++  function visible() {
++    if (document.visibilityState === 'visible') check();
++  }
++
++  window.addEventListener('focus', check);
++  window.addEventListener('pageshow', check);
++  document.addEventListener('visibilitychange', visible);
++  schedule();
++
++  return () => {
++    active = false;
++    window.clearTimeout(timer);
++    window.removeEventListener('focus', check);
++    window.removeEventListener('pageshow', check);
++    document.removeEventListener('visibilitychange', visible);
++  };
++}
+--- /dev/null
++++ b/tests/ics.test.ts
+@@ -0,0 +1,85 @@
++import { describe, expect, it } from 'vitest';
++import { buildIcs } from '../src/ics';
++
++const stamp = new Date('2026-10-08T12:34:56.000Z');
++const encoder = new TextEncoder();
++const unfold = (value: string) => value.replace(/\r\n[ \t]/g, '');
++const textValue = (value: string, name: string) => {
++  const line = unfold(value).split('\r\n').find(line => line.startsWith(`${name}:`));
++  expect(line).toBeDefined();
++  return line!.slice(name.length + 1).replace(/\\([nN,;\\])/g, (_, character: string) =>
++    character === 'n' || character === 'N' ? '\n' : character);
++};
++
++function expectPortableLines(value: string) {
++  expect(value.endsWith('\r\n')).toBe(true);
++  for (const line of value.split('\r\n')) {
++    // The continuation's leading space counts toward the 75-octet budget.
++    expect(encoder.encode(line).byteLength).toBeLessThanOrEqual(75);
++    expect(line).not.toMatch(/[\u0000-\u0008\u000a-\u001f\u007f]/);
++    // A folded line must not split a surrogate pair / UTF-8 character.
++    expect(new TextDecoder('utf-8', { fatal: true }).decode(encoder.encode(line))).toBe(line);
++  }
++}
++
++describe('calendar text serialization', () => {
++  it('keeps a simple reminder byte-for-byte compatible', () => {
++    const calendar = buildIcs({ id: 'order-1', merchant: 'Fixture Store', due: '2026-11-02' }, stamp);
++    expect(calendar).toBe([
++      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
++      'BEGIN:VEVENT', 'UID:order-1@returnby', 'DTSTAMP:20261008T123456Z',
++      'DTSTART;VALUE=DATE:20261102', 'DTEND;VALUE=DATE:20261103',
++      'SUMMARY:Return deadline: Fixture Store',
++      'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Return deadline: Fixture Store',
++      'TRIGGER:-P3D', 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR', '',
++    ].join('\r\n'));
++  });
++
++  it('represents CRLF, CR and LF as text, never extra calendar properties', () => {
++    const calendar = buildIcs({
++      id: 'order-1', merchant: 'Store\r\nOutlet\rSUMMARY:other\nOnline',
++      orderNo: 'AB\r\n12', due: '2026-11-02',
++    }, stamp);
++    expectPortableLines(calendar);
++    const title = 'Return deadline: Store\nOutlet\nSUMMARY:other\nOnline #AB\n12';
++    expect(textValue(calendar, 'SUMMARY')).toBe(title);
++    expect(textValue(calendar, 'DESCRIPTION')).toBe(title);
++    expect(unfold(calendar).split('\r\n').filter(line => line.startsWith('SUMMARY:'))).toHaveLength(1);
++  });
++
++  it('escapes punctuation and literal backslashes without changing their meaning', () => {
++    const merchant = 'Fixture, Inc.; path\\north\\n';
++    const calendar = buildIcs({ id: 'order-1', merchant, orderNo: 'A;B,C\\D', due: '2026-11-02' }, stamp);
++    expectPortableLines(calendar);
++    expect(textValue(calendar, 'SUMMARY')).toBe(`Return deadline: ${merchant} #A;B,C\\D`);
++    expect(textValue(calendar, 'DESCRIPTION')).toBe(textValue(calendar, 'SUMMARY'));
++  });
++
++  it('folds long Unicode titles and long saved IDs without losing any text', () => {
++    const merchant = 'Étoile 家具🛍️ e\u0301 '.repeat(200);
++    const orderNo = '受注-🧾-12345'.repeat(200);
++    const id = 'x'.repeat(128);
++    const calendar = buildIcs({ id, merchant, orderNo, due: '2026-11-02' }, stamp);
++    expectPortableLines(calendar);
++    expect(calendar).toContain('\r\n ');
++    expect(textValue(calendar, 'SUMMARY')).toBe(`Return deadline: ${merchant} #${orderNo}`);
++    expect(textValue(calendar, 'DESCRIPTION')).toBe(textValue(calendar, 'SUMMARY'));
++    expect(textValue(calendar, 'UID')).toBe(`${id}@returnby`);
++    expect(unfold(calendar)).toContain('DTSTART;VALUE=DATE:20261102\r\nDTEND;VALUE=DATE:20261103\r\n');
++    expect(unfold(calendar)).toContain('TRIGGER:-P3D\r\n');
++  });
++
++  it.each([48, 49, 50, 51, 52, 53, 54])('preserves a multibyte character near the fold boundary (%i ASCII chars)', length => {
++    const merchant = 'a'.repeat(length) + '🛍家é,;\\'.repeat(12);
++    const calendar = buildIcs({ id: 'order-1', merchant, due: '2026-11-02' }, stamp);
++    expectPortableLines(calendar);
++    expect(textValue(calendar, 'SUMMARY')).toBe(`Return deadline: ${merchant}`);
++    expect(textValue(calendar, 'DESCRIPTION')).toBe(`Return deadline: ${merchant}`);
++  });
++
++  it('replaces unsupported control characters without erasing adjacent words', () => {
++    const calendar = buildIcs({ id: 'order-1', merchant: 'Unit\u0000Four\u001bBranch\u007f\tShop', due: '2026-11-02' }, stamp);
++    expectPortableLines(calendar);
++    expect(textValue(calendar, 'SUMMARY')).toBe('Return deadline: Unit\ufffdFour\ufffdBranch\ufffd\tShop');
++  });
++});
+--- /dev/null
++++ b/tests/calendar-export.test.ts
+@@ -0,0 +1,76 @@
++import { describe, expect, it } from 'vitest';
++import { buildCalendarIcs, type CalendarOrder } from '../src/ics';
++
++const stamp = new Date('2026-10-08T12:34:56.000Z');
++const unfold = (value: string) => value.replace(/\r\n[ \t]/g, '');
++const lines = (value: string) => unfold(value).split('\r\n');
++const values = (value: string, property: string) => lines(value)
++  .filter(line => line.startsWith(`${property}:`)).map(line => line.slice(property.length + 1));
++
++describe('one calendar for the displayed deadlines', () => {
++  it('contains two distinct all-day events and alarms in one calendar envelope', () => {
++    expect(buildCalendarIcs([
++      { id: 'leap', merchant: 'Fixture A', orderNo: 'A-1', due: '2028-02-29' },
++      { id: 'year', merchant: '', due: '2028-12-31' },
++    ], stamp)).toBe([
++      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
++      'BEGIN:VEVENT', 'UID:leap@returnby', 'DTSTAMP:20261008T123456Z',
++      'DTSTART;VALUE=DATE:20280229', 'DTEND;VALUE=DATE:20280301',
++      'SUMMARY:Return deadline: Fixture A #A-1',
++      'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Return deadline: Fixture A #A-1',
++      'TRIGGER:-P3D', 'END:VALARM', 'END:VEVENT',
++      'BEGIN:VEVENT', 'UID:year@returnby', 'DTSTAMP:20261008T123456Z',
++      'DTSTART;VALUE=DATE:20281231', 'DTEND;VALUE=DATE:20290101',
++      'SUMMARY:Return deadline: order',
++      'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Return deadline: order',
++      'TRIGGER:-P3D', 'END:VALARM', 'END:VEVENT',
++      'END:VCALENDAR', '',
++    ].join('\r\n'));
++  });
++
++  it('uses exactly the supplied rows in supplied order, with stable identities across exports', () => {
++    const rows: readonly CalendarOrder[] = [
++      { id: 'first', merchant: 'Fixture A', due: '2026-10-08' },
++      { id: 'second', merchant: 'Fixture B', due: '2026-10-09' },
++      { id: 'third', merchant: 'Fixture C', due: '2026-10-10' },
++    ];
++    const before = JSON.stringify(rows);
++    expect(values(buildCalendarIcs(rows, stamp), 'UID')).toEqual([
++      'first@returnby', 'second@returnby', 'third@returnby',
++    ]);
++    const changed = buildCalendarIcs([rows[2], rows[0]], new Date('2026-10-09T01:02:03Z'));
++    expect(values(changed, 'UID')).toEqual(['third@returnby', 'first@returnby']);
++    expect(values(changed, 'DTSTAMP')).toEqual(['20261009T010203Z', '20261009T010203Z']);
++    expect(values(changed, 'DTSTART;VALUE=DATE')).toEqual(['20261010', '20261008']);
++    expect(JSON.stringify(rows)).toBe(before);
++  });
++
++  it('keeps long Unicode and delimiter-like text inside its own event', () => {
++    const merchant = 'Étoile 家具🛍️ '.repeat(24) + '\r\nEND:VEVENT\r\nBEGIN:VEVENT,;\\branch';
++    const calendar = buildCalendarIcs([
++      { id: 'unicode', merchant, orderNo: 'AB\r12\n34', due: '2026-10-09' },
++      { id: 'ordinary', merchant: 'Next fixture', due: '2026-10-10' },
++    ], stamp);
++    const physical = calendar.split('\r\n');
++    for (const line of physical) {
++      expect(new TextEncoder().encode(line).byteLength).toBeLessThanOrEqual(75);
++      expect(line).not.toMatch(/[\u0000-\u0008\u000a-\u001f\u007f]/);
++      expect(new TextDecoder('utf-8', { fatal: true }).decode(new TextEncoder().encode(line))).toBe(line);
++    }
++    expect(lines(calendar).filter(line => line === 'BEGIN:VEVENT')).toHaveLength(2);
++    expect(lines(calendar).filter(line => line === 'END:VEVENT')).toHaveLength(2);
++    expect(values(calendar, 'TRIGGER')).toEqual(['-P3D', '-P3D']);
++    const decode = (value: string) => value.replace(/\\([n,;\\])/g, (_, c: string) => c === 'n' ? '\n' : c);
++    expect(values(calendar, 'SUMMARY').map(decode)).toEqual([
++      `Return deadline: ${merchant.replace(/\r\n|\r|\n/g, '\n')} #AB\n12\n34`,
++      'Return deadline: Next fixture',
++    ]);
++  });
++
++  it('has no leftover events when the supplied visible set is empty', () => {
++    expect(buildCalendarIcs([], stamp)).toBe([
++      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
++      'END:VCALENDAR', '',
++    ].join('\r\n'));
++  });
++});
+--- /dev/null
++++ b/tests/day-refresh.test.ts
+@@ -0,0 +1,133 @@
++import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
++import { startDayRefresh } from '../src/day-refresh';
++
++let windowEvents: EventTarget;
++let documentEvents: EventTarget & { visibilityState: string };
++let stop: (() => void) | undefined;
++
++beforeEach(() => {
++  vi.stubEnv('TZ', 'UTC');
++  vi.useFakeTimers();
++  vi.setSystemTime(new Date(2026, 9, 8, 23, 59, 50));
++  windowEvents = new EventTarget();
++  documentEvents = Object.assign(new EventTarget(), { visibilityState: 'visible' });
++  vi.stubGlobal('window', Object.assign(windowEvents, {
++    setTimeout: (callback: () => void, delay: number) => setTimeout(callback, delay),
++    clearTimeout: (timer: ReturnType<typeof setTimeout>) => clearTimeout(timer),
++  }));
++  vi.stubGlobal('document', documentEvents);
++});
++
++afterEach(() => {
++  stop?.();
++  stop = undefined;
++  vi.useRealTimers();
++  vi.unstubAllGlobals();
++  vi.unstubAllEnvs();
++});
++
++describe('daily tracker refresh', () => {
++  it('refreshes at local midnight and continues on the following day', () => {
++    const refresh = vi.fn();
++    stop = startDayRefresh(refresh);
++
++    vi.advanceTimersByTime(9_999);
++    expect(refresh).not.toHaveBeenCalled();
++    vi.advanceTimersByTime(1);
++    expect(refresh).toHaveBeenCalledTimes(1);
++    expect(vi.getTimerCount()).toBe(1);
++    vi.advanceTimersByTime(24 * 60 * 60 * 1_000);
++    expect(refresh).toHaveBeenCalledTimes(2);
++    expect(vi.getTimerCount()).toBe(1);
++  });
++
++  it.each(['focus', 'pageshow'])('catches up after a suspended tab resumes through %s', event => {
++    const refresh = vi.fn();
++    stop = startDayRefresh(refresh);
++    vi.setSystemTime(new Date(2026, 9, 17, 10));
++    windowEvents.dispatchEvent(new Event(event));
++
++    expect(refresh).toHaveBeenCalledTimes(1);
++    expect(vi.getTimerCount()).toBe(1);
++    windowEvents.dispatchEvent(new Event(event));
++    expect(refresh).toHaveBeenCalledTimes(1);
++    vi.advanceTimersByTime(14 * 60 * 60 * 1_000);
++    expect(refresh).toHaveBeenCalledTimes(2);
++  });
++
++  it('catches up on visibility restoration without rerendering on duplicate events', () => {
++    const refresh = vi.fn();
++    stop = startDayRefresh(refresh);
++    vi.setSystemTime(new Date(2026, 9, 9, 8));
++    documentEvents.visibilityState = 'hidden';
++    documentEvents.dispatchEvent(new Event('visibilitychange'));
++    expect(refresh).not.toHaveBeenCalled();
++    documentEvents.visibilityState = 'visible';
++    documentEvents.dispatchEvent(new Event('visibilitychange'));
++    windowEvents.dispatchEvent(new Event('focus'));
++    windowEvents.dispatchEvent(new Event('pageshow'));
++
++    expect(refresh).toHaveBeenCalledTimes(1);
++    expect(vi.getTimerCount()).toBe(1);
++  });
++
++  it('rearms the midnight timer after a clock correction within the same date', () => {
++    const refresh = vi.fn();
++    stop = startDayRefresh(refresh);
++    vi.setSystemTime(new Date(2026, 9, 8, 22));
++    windowEvents.dispatchEvent(new Event('focus'));
++    vi.advanceTimersByTime(10_000);
++    expect(refresh).not.toHaveBeenCalled();
++    vi.advanceTimersByTime(2 * 60 * 60 * 1_000 - 10_000);
++    expect(refresh).toHaveBeenCalledTimes(1);
++  });
++
++  it('also refreshes if the local date moves backward', () => {
++    const refresh = vi.fn();
++    stop = startDayRefresh(refresh);
++    vi.setSystemTime(new Date(2026, 9, 7, 12));
++    windowEvents.dispatchEvent(new Event('focus'));
++    expect(refresh).toHaveBeenCalledTimes(1);
++  });
++
++  it.each([
++    { month: 2, date: 8, hours: 23 },
++    { month: 10, date: 1, hours: 25 },
++  ])('uses the next local midnight on a $hours-hour DST day', ({ month, date, hours }) => {
++    vi.stubEnv('TZ', 'America/Los_Angeles');
++    vi.setSystemTime(new Date(2026, month, date));
++    const refresh = vi.fn();
++    stop = startDayRefresh(refresh);
++
++    vi.advanceTimersByTime(hours * 60 * 60 * 1_000 - 1);
++    expect(refresh).not.toHaveBeenCalled();
++    vi.advanceTimersByTime(1);
++    expect(refresh).toHaveBeenCalledTimes(1);
++    expect(new Date().getHours()).toBe(0);
++    expect(new Date().getDate()).toBe(date + 1);
++  });
++
++  it('removes the timer and every event listener when stopped', () => {
++    const refresh = vi.fn();
++    stop = startDayRefresh(refresh);
++    stop();
++    stop();
++    vi.setSystemTime(new Date(2026, 9, 17, 10));
++    windowEvents.dispatchEvent(new Event('focus'));
++    windowEvents.dispatchEvent(new Event('pageshow'));
++    documentEvents.dispatchEvent(new Event('visibilitychange'));
++    vi.advanceTimersByTime(24 * 60 * 60 * 1_000);
++
++    expect(refresh).not.toHaveBeenCalled();
++    expect(vi.getTimerCount()).toBe(0);
++  });
++
++  it('allows the refresh callback to stop future refreshes', () => {
++    const refresh = vi.fn(() => stop?.());
++    stop = startDayRefresh(refresh);
++    vi.advanceTimersByTime(24 * 60 * 60 * 1_000);
++
++    expect(refresh).toHaveBeenCalledTimes(1);
++    expect(vi.getTimerCount()).toBe(0);
++  });
++});
+--- a/tests/helpers/storage-fixture.mjs
++++ b/tests/helpers/storage-fixture.mjs
+@@ -8,12 +8,17 @@
+   class Element {
+     constructor(id, tag) {
+       this.id = id; this.value = ''; this.innerHTML = ''; this.textContent = '';
+-      this.hidden = /\bhidden\b/.test(tag); this.dataset = {}; this.fields = {};
++      this.hidden = /\bhidden\b/.test(tag); this.dataset = {}; this.fields = {}; this.children = [];
+       this.listeners = new Map(); this.attributes = {};
+       for (const match of tag.matchAll(/([\w-]+)="([^"]*)"/g)) this.attributes[match[1]] = match[2];
+       this.classList = { toggle() {} };
+     }
+     addEventListener(type, fn) { this.listeners.set(type, fn); }
++    append(...children) { this.children.push(...children); for (const child of children) { child.parentElement = this; if (child.id) elements.set(child.id, child); } }
++    before(node) { (this.parentElement ?? document.body).append(node); }
++    remove() { if (this.parentElement) this.parentElement.children = this.parentElement.children.filter(child => child !== this); }
++    contains(node) { return this === node || this.children.some(child => child.contains(node)); }
++    hasAttribute(key) { return key in this.attributes; }
+     setAttribute(key, value) { this.attributes[key] = value; }
+     focus() { document.activeElement = this; }
+     querySelector() { return { focus() {} }; }
+@@ -21,6 +26,13 @@
+   for (const match of html.matchAll(/<[^>]*\bid="([^"]+)"[^>]*>/g)) {
+     elements.set(match[1], new Element(match[1], match[0]));
+   }
++  // Inert mount and event/timer surfaces; real interaction stays in browser receiving.
++  document.body = new Element('body', '<body>');
++  document.createElement = tag => new Element('', `<${tag}>`);
++  document.visibilityState = 'visible';
++  document.addEventListener = () => {};
++  document.removeEventListener = () => {};
++  const window = { addEventListener() {}, removeEventListener() {}, setTimeout() { return 1; }, clearTimeout() {} };
+   const preview = elements.get('preview');
+   preview.dataset = { source: 'default', days: '30' };
+   const localStorage = {
+@@ -37,7 +49,7 @@
+     return elements.get(id).listeners.get(type)({ preventDefault() {}, target: { dataset } });
+   }
+   return {
+-    globals: { document, localStorage, FormData, crypto: { randomUUID: () => `order-${++serial}` },
++    globals: { document, window, HTMLButtonElement: Element, localStorage, FormData, crypto: { randomUUID: () => `order-${++serial}` },
+       confirm: () => allowClear, alert() { throw Error('Unexpected blocking alert'); } },
+     elements, attempts, persisted: () => clone(JSON.parse(value)),
+     failNext(n = 1) { failures = n; }, confirm(next) { allowClear = next; },
+--- /dev/null
++++ b/tools/verify_day_refresh.py
+@@ -0,0 +1,192 @@
++"""After npm run build: python tools/verify_day_refresh.py --browser /path/to/chromium."""
++from __future__ import annotations
++
++import argparse
++import functools
++import json
++import threading
++from datetime import datetime, timedelta, timezone
++from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
++from pathlib import Path
++
++from playwright.sync_api import sync_playwright
++
++START = datetime(2026, 10, 8, 23, 59, 50, tzinfo=timezone.utc)
++ROWS = [
++    {"id": "other", "merchant": "Fictional Other", "orderDate": "2026-09-07"},
++    {"id": "focused", "merchant": "Fictional Focused", "orderDate": "2026-09-08"},
++]
++
++
++class QuietHandler(SimpleHTTPRequestHandler):
++    def log_message(self, *args):
++        pass
++
++
++def verify(build: Path, executable: str | None) -> dict:
++    server = ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(QuietHandler, directory=str(build)))
++    thread = threading.Thread(target=server.serve_forever, kwargs={"poll_interval": 0.01}, daemon=True)
++    thread.start()
++    url = f"http://127.0.0.1:{server.server_address[1]}/"
++    checks, observations, errors, external = {}, {}, [], []
++    try:
++        with sync_playwright() as pw:
++            options = {"headless": True}
++            if executable:
++                options["executable_path"] = executable
++            browser = pw.chromium.launch(**options)
++
++            def open_page(rows):
++                saved = json.dumps([
++                    dict(row, windowDays=30, windowSource="user", createdAt="2026-10-01T10:00:00Z")
++                    for row in rows
++                ], separators=(",", ":"))
++                context = browser.new_context(timezone_id="UTC")
++                page = context.new_page()
++                page.on("pageerror", lambda error: errors.append(str(error)))
++
++                def route(request):
++                    if request.request.url.startswith(url):
++                        request.continue_()
++                    else:
++                        external.append(request.request.url)
++                        request.abort()
++
++                page.route("**/*", route)
++                page.add_init_script("localStorage.setItem('returnby.v1', " + json.dumps(saved) + ");")
++                page.clock.install(time=START - timedelta(minutes=1))
++                page.clock.pause_at(START)
++                page.goto(url)
++                page.locator("#list .card").first.wait_for()
++                return context, page, saved
++
++            def advance(page, trigger):
++                if trigger == "midnight":
++                    page.clock.run_for(11_000)
++                else:
++                    page.clock.set_system_time(datetime(2026, 10, 17, 10, tzinfo=timezone.utc))
++                    page.evaluate("window.dispatchEvent(new Event('focus'))")
++
++            def active(page):
++                return page.evaluate("""() => ({
++                    tag: document.activeElement.tagName,
++                    id: document.activeElement.id,
++                    ics: document.activeElement.dataset.ics || null,
++                    del: document.activeElement.dataset.del || null
++                })""")
++
++            for trigger in ("midnight", "focus_after_suspend"):
++                for action in ("ics", "del"):
++                    context, page, _ = open_page(ROWS)
++                    page.locator(f'[data-{action}="focused"]').focus()
++                    page.evaluate("""() => {
++                        window.exports = [];
++                        const create = URL.createObjectURL.bind(URL);
++                        URL.createObjectURL = blob => {
++                            window.exports.push({type: blob.type, size: blob.size});
++                            return create(blob);
++                        };
++                    }""")
++                    before = active(page)
++                    advance(page, trigger)
++                    after = active(page)
++                    page.keyboard.press("Enter")
++                    ids = page.evaluate("JSON.parse(localStorage.getItem('returnby.v1')).map(row => row.id)")
++                    exports = page.evaluate("window.exports")
++                    key = f"{trigger}_{action}"
++                    checks[key + "_same_row_and_action"] = before == after
++                    checks[key + "_enter_works"] = (
++                        len(exports) == 1 and exports[0]["type"] == "text/calendar" and ids == ["other", "focused"]
++                        if action == "ics" else ids == ["other"]
++                    )
++                    observations[key] = {"before": before, "after": after, "exports": exports, "ids_after_enter": ids}
++                    context.close()
++
++                # The first row expires out of Due soon. Another row may enter it
++                # during a long suspension; focus must not jump to that other row.
++                context, page, _ = open_page([ROWS[1], dict(ROWS[0], orderDate="2026-09-20")])
++                page.evaluate("document.querySelector('#filter-due').click()")
++                page.locator('[data-ics="focused"]').focus()
++                advance(page, trigger)
++                focused = active(page)
++                key = trigger + "_filter_fallback"
++                checks[key + "_expired_row_left"] = page.locator('[data-ics="focused"]').count() == 0
++                checks[key + "_selected_filter_focused"] = focused["id"] == "filter-due"
++                page.keyboard.press("Tab")
++                checks[key + "_keyboard_navigation_continues"] = active(page)["id"] == "filter-expired"
++                observations[key] = {"focus_after_refresh": focused, "focus_after_tab": active(page)}
++                context.close()
++
++            context, page, saved = open_page([ROWS[1]])
++            page.evaluate("""() => {
++                document.querySelector('#paste').value = 'Fictional draft; Order placed October 1, 2026';
++                document.querySelector('#find').click();
++                document.querySelector('#preview [name=orderDate]').value = '2026-10-01';
++                document.querySelector('#preview [name=windowDays]').value = '45';
++                const field = document.querySelector('#preview [name=merchant]');
++                field.value = 'Unsaved merchant edit';
++                field.focus();
++                field.setSelectionRange(2, 9, 'backward');
++                window.draftField = field;
++            }""")
++
++            def draft():
++                return page.evaluate("""() => {
++                    const field = document.querySelector('#preview [name=merchant]');
++                    return {
++                        fields: Object.fromEntries(new FormData(document.querySelector('#preview'))),
++                        paste: document.querySelector('#paste').value,
++                        sameField: field === window.draftField,
++                        focused: document.activeElement === field,
++                        selection: [field.selectionStart, field.selectionEnd, field.selectionDirection],
++                        stored: localStorage.getItem('returnby.v1'),
++                        remaining: document.querySelector('.days-left').textContent,
++                        expired: document.querySelector('#expired-count').textContent
++                    };
++                }""")
++
++            before = draft()
++            advance(page, "midnight")
++            midnight = draft()
++            advance(page, "focus_after_suspend")
++            page.evaluate("window.dispatchEvent(new Event('pageshow')); document.dispatchEvent(new Event('visibilitychange'))")
++            resume = draft()
++            checks.update({
++                "midnight_deadline_and_count": midnight["remaining"] == "EXPIRED 1D" and midnight["expired"] == "1",
++                "resume_deadline": resume["remaining"] == "EXPIRED 9D",
++                "unsaved_fields_preserved": before["fields"] == midnight["fields"] == resume["fields"],
++                "paste_preserved": before["paste"] == midnight["paste"] == resume["paste"],
++                "draft_node_and_focus_preserved": all(x["sameField"] and x["focused"] for x in (before, midnight, resume)),
++                "caret_selection_preserved": before["selection"] == midnight["selection"] == resume["selection"],
++                "no_storage_write_during_refresh": all(x["stored"] == saved for x in (before, midnight, resume)),
++            })
++            page.keyboard.insert_text("Replacement")
++            page.evaluate("document.querySelector('#preview').requestSubmit()")
++            added = page.evaluate("JSON.parse(localStorage.getItem('returnby.v1')).find(row => row.id !== 'focused')")
++            checks["continue_typing_and_save"] = added["merchant"] == "UnReplacementerchant edit" and added["windowDays"] == 45
++            for state in (before, midnight, resume):
++                state.pop("stored")
++            observations["draft"] = {"before": before, "midnight": midnight, "resume": resume}
++            context.close()
++            browser.close()
++        checks["no_page_errors"] = not errors
++        checks["no_external_requests"] = not external
++        return {"passed": all(checks.values()), "passed_checks": sum(checks.values()), "failed_checks": sum(not x for x in checks.values()), "checks": checks, "observations": observations, "errors": errors, "external_requests": external}
++    finally:
++        server.shutdown()
++        server.server_close()
++        thread.join()
++
++
++if __name__ == "__main__":
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("--build", type=Path, default=Path(__file__).resolve().parents[1] / "dist")
++    parser.add_argument("--browser", help="Chromium executable; otherwise use Playwright's installed Chromium")
++    parser.add_argument("--output", type=Path)
++    args = parser.parse_args()
++    result = verify(args.build.resolve(), args.browser)
++    payload = json.dumps(result, indent=2) + "\n"
++    if args.output:
++        args.output.write_text(payload)
++    print(payload, end="")
++    raise SystemExit(0 if result["passed"] else 1)

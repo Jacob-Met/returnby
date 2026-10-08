@@ -1,0 +1,13 @@
+✔ exports all currently displayed deadlines in one real browser download (553.458806ms)
+✔ filters, reviewed Save, Remove and Clear refresh the export set and empty state (916.310829ms)
+✔ midnight and resume replace equal-count filtered identities while keeping export focus and draft (324.989838ms)
+✔ Unicode calendar text stays intact and the control works by keyboard on a narrow screen (253.002127ms)
+✔ a focused export that becomes empty at midnight returns focus to the selected filter (316.263391ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2892.083389

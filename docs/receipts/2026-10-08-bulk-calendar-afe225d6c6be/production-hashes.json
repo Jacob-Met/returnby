@@ -1,0 +1,23 @@
+{
+  "base": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "files": [
+    {
+      "path": "src/ics.ts",
+      "sha256": "b65f333fdf93069ec32c753bb5f3912fe124ce09c489e9904d4873c7357ee29a"
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "5e99f81a60fe7bf2a056f6f678d9145b8e1e74c725dca91e29db80b26dc22499"
+    },
+    {
+      "path": "src/calendar-export.ts",
+      "sha256": "c952776448840c9246b53e9995c360c9c74d9d0dc0cfa8978ff1214bf3eda67f"
+    },
+    {
+      "path": "src/calendar-export.css",
+      "sha256": "949f6199db29f4ef48e609f307f761ae445cdef85af216f75e6a4c5aa157247b"
+    }
+  ],
+  "patch_sha256": "ec9b10f44a9dcb6529f8ab9b499af58abb00b41c3036a4420134ddcf44c9c14c",
+  "focus_correction_sha256": "ab2d84d9bcaf070c99837ee4bc21477e2a07a6785374d3a390e3164789947fba"
+}

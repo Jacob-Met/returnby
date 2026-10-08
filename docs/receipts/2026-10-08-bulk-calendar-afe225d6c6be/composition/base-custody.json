@@ -1,0 +1,412 @@
+{
+  "base": "480a99bd6de57ff04089975b34b43856da56fdf9",
+  "tree": "e439842851966ad29f6fc2787c951967e23358b5",
+  "verified_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha": "b5688812f36338630c21eb5643318a55496ae09b",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/.github/workflows/ci.yml"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/.github/workflows/pages.yml"
+    },
+    {
+      "path": ".gitignore",
+      "sha": "b56df07f248fdfb406a35c411fafc91db47c9c95",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/.gitignore"
+    },
+    {
+      "path": "LICENSE",
+      "sha": "edb188254288b40f2895833e3647b7e0be34c962",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/LICENSE"
+    },
+    {
+      "path": "README.md",
+      "sha": "30305d1b22118ebc59bfa6a0ab82934ba279f5ae",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/README.md"
+    },
+    {
+      "path": "data/policies.json",
+      "sha": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/data/policies.json"
+    },
+    {
+      "path": "devpost/checklist.md",
+      "sha": "318fc1035ad4314ae25fa829e152f5c03e883db5",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/devpost/checklist.md"
+    },
+    {
+      "path": "devpost/prd.md",
+      "sha": "60614d01a9e955c5911b3283d01bc5329397a6a9",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/devpost/prd.md"
+    },
+    {
+      "path": "devpost/scope.md",
+      "sha": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/devpost/scope.md"
+    },
+    {
+      "path": "devpost/spec.md",
+      "sha": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/devpost/spec.md"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008.json",
+      "sha": "633c2f04637f28d37d9b1e3a30a6c57842ee0643",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008.json"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/README.md",
+      "sha": "cc2a3193f8c6494e1bc969cd276d6750ca7fab6b",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/README.md"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/backup-composition-overlap.patch",
+      "sha": "f9a5d7fa8c84eb58474122237475d5063858ac89",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/backup-composition-overlap.patch"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/browser-initial-download-failure.txt",
+      "sha": "df02d7eaf83855dad74e3d9e059bf4bfda29137f",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/browser-initial-download-failure.txt"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/browser-runner.mjs.source",
+      "sha": "cea9f0a8c955ea50cf7450060459f263f1118f5b",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/browser-runner.mjs.source"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/browser-transfer-manifest.json",
+      "sha": "ff63bffbba8f67e4b2c8f70c884023085c9e26bb",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/browser-transfer-manifest.json"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/build.txt",
+      "sha": "be3b3219d3eec3c986d0780f72920f484272e0be",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/build.txt"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/composition-build.txt",
+      "sha": "7228217c16a1de842b4ef8b860b91d3f3c36c51e",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/composition-build.txt"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/composition-inputs.json",
+      "sha": "8fd1e851a8d385b34f12bd1b6f49d1c0413c94c8",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/composition-inputs.json"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/composition-native-tests.txt",
+      "sha": "2f875781dd36deb630466c008f5d4fd62fd4f363",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/composition-native-tests.txt"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/final-browser-results.json",
+      "sha": "28e3ed43f076e4276cfebd4c16b2f185bfc913a1",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/final-browser-results.json"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/final-browser-run.txt",
+      "sha": "ecfd83914966a2c3a6d88ff13c919981c3a81e57",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/final-browser-run.txt"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/README.md",
+      "sha": "5c18952754e6aee1ef78919b0b1129bdd3137f88",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/README.md"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/VERIFICATION.json",
+      "sha": "92278920ad246c65b33e09cb1e1defaa117247da",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/VERIFICATION.json"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/edit-peer.test.ts.source",
+      "sha": "fa82d16ca84abb376d0069faacfd0d7a604c6770",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/edit-peer.test.ts.source"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/files.json",
+      "sha": "76e13ef136e5b4fec32461dfa6879033583fc0ca",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/files.json"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/fixed-source-custody.json",
+      "sha": "811bd021f1815175489c1a5bc816278278742491",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/fixed-source-custody.json"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/peer-fixed.log",
+      "sha": "dea308f0ffa2b7dd0825b22723532eca5fa39b2c",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/peer-fixed.log"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/peer-original.log",
+      "sha": "cc5354c8d35b74c08689f0ed74d10f58b5d0f19c",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/peer-original.log"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/independent/source-custody.json",
+      "sha": "86793962d019184a1611592f5c0e67cf647b61f8",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/independent/source-custody.json"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/initial-build-failure.txt",
+      "sha": "bf918e7e75e612c9880fe16d29758b50e5309948",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/initial-build-failure.txt"
+    },
+    {
+      "path": "docs/receipts/saved-order-edit-20261008/native-tests.txt",
+      "sha": "bd14afcc59d38180b310b4c0e41e9f843b241579",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/saved-order-edit-20261008/native-tests.txt"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/README.md",
+      "sha": "e41608f1f51e1c14d231c443afb3c5a04148ed2c",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/README.md"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after-browser.log",
+      "sha": "55ed64e0d81655cae7d3b3c49d70c45c8cf23f02",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/after-browser.log"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/changed-return-phone.png",
+      "sha": "5237725102b1074a922b626a80fea61ca0048736",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/after/changed-return-phone.png"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/results.json",
+      "sha": "8c2f42ca85916b2346d6486d6a7f48690a4f5b0a",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/after/results.json"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/baseline-build.log",
+      "sha": "07c51b5984d13ad8527769690252a78d631dc1a1",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/baseline-build.log"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before-browser.log",
+      "sha": "c149da0b7db00079f9d3539ce42142bb51dbbda8",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/before-browser.log"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before.log",
+      "sha": "dd622b9fd0307f869a6a1f215d948df84dc231e6",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/before.log"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/before/results.json",
+      "sha": "22d70b50998c9fdece6e50c310ce04ddbc7d3987",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/before/results.json"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/files.json",
+      "sha": "1b0565bbcb7f6cda5ded82ce210f687c6f7f9b8c",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/files.json"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/final-native-tests.log",
+      "sha": "62b1ffe469f564315124c80a6af3dc7ae2744177",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/final-native-tests.log"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/qualified-build.log",
+      "sha": "4b9fc430d849a89827ad00ca5a429c162f5b7c64",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/qualified-build.log"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/source-and-runtime.json",
+      "sha": "17a7737b1b230a962a1fbc0e70b856cfe86b2d89",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/source-and-runtime.json"
+    },
+    {
+      "path": "docs/receipts/stale-actions-3e50c5ad22c5/unchanged-editor-browser.log",
+      "sha": "e7878c2f1eaecc1fc0133f2ab6e07bb74b1156ef",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/docs/receipts/stale-actions-3e50c5ad22c5/unchanged-editor-browser.log"
+    },
+    {
+      "path": "index.html",
+      "sha": "e8f54ca670c784c99b37841e275d99b49f3e35c2",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/index.html"
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/package-lock.json"
+    },
+    {
+      "path": "package.json",
+      "sha": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/package.json"
+    },
+    {
+      "path": "public/captures/returnby-desktop.png",
+      "sha": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d",
+      "donor": "/workspace/scratch/afe225d6c6be/product_execution/returnby/public/captures/returnby-desktop.png"
+    },
+    {
+      "path": "public/captures/returnby-mobile.png",
+      "sha": "c2ed83d29698fb5a47818c87d8f82944997c2bc4",
+      "donor": "/workspace/scratch/afe225d6c6be/product_execution/returnby/public/captures/returnby-mobile.png"
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/public/favicon.svg"
+    },
+    {
+      "path": "skills-lock.json",
+      "sha": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/skills-lock.json"
+    },
+    {
+      "path": "src/deadline.ts",
+      "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/deadline.ts"
+    },
+    {
+      "path": "src/edit-ui.ts",
+      "sha": "d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/edit-ui.ts"
+    },
+    {
+      "path": "src/edit.css",
+      "sha": "68691310feaf885d68876d77e25821f44683c4ae",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/edit.css"
+    },
+    {
+      "path": "src/edit.ts",
+      "sha": "15ffab3eb7cb4ea365474c2aa50706264e888645",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/edit.ts"
+    },
+    {
+      "path": "src/ics.ts",
+      "sha": "bf4168e7ad798935875ff9115f1193315e33d423",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/ics.ts"
+    },
+    {
+      "path": "src/main.ts",
+      "sha": "a4e44abc441b6700d4e12b6d20c879f3aab106cf",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/main.ts"
+    },
+    {
+      "path": "src/parse.ts",
+      "sha": "45dd377540c6ec9046604927a6e8803d19fe3b5b",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/parse.ts"
+    },
+    {
+      "path": "src/policy.ts",
+      "sha": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/policy.ts"
+    },
+    {
+      "path": "src/samples.ts",
+      "sha": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/samples.ts"
+    },
+    {
+      "path": "src/store.ts",
+      "sha": "371d25a58a0e7ee34f495b18477d1d0ac6dedaa3",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/store.ts"
+    },
+    {
+      "path": "src/style.css",
+      "sha": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/src/style.css"
+    },
+    {
+      "path": "tests/core.test.ts",
+      "sha": "57e122956a04824da82185263ac460243de3548c",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/core.test.ts"
+    },
+    {
+      "path": "tests/edit-ui.test.mjs",
+      "sha": "02ade0a572291bb54d01e9fa6444a61f342575b0",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/edit-ui.test.mjs"
+    },
+    {
+      "path": "tests/edit.test.ts",
+      "sha": "92508d1715f6c437a6c7b0f654193fed32c7f285",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/edit.test.ts"
+    },
+    {
+      "path": "tests/helpers/loading-cases.mjs",
+      "sha": "27be19826740cd1a2efdff90c9f3cd3c57c48099",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/helpers/loading-cases.mjs"
+    },
+    {
+      "path": "tests/helpers/loading-fixture.mjs",
+      "sha": "e0efc199de4f8595c9ea601179709030decb81ab",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/helpers/loading-fixture.mjs"
+    },
+    {
+      "path": "tests/helpers/storage-cases.mjs",
+      "sha": "ac797cdc364cdae4b7af1e78a0d04ca968f2a6e0",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/helpers/storage-cases.mjs"
+    },
+    {
+      "path": "tests/helpers/storage-fixture.mjs",
+      "sha": "b808f12d34896ed4f30742a629b46163b123882f",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/helpers/storage-fixture.mjs"
+    },
+    {
+      "path": "tests/helpers/submitted-policy-cases.mjs",
+      "sha": "636e4c81cc10647b28f729d1a1389ee38f7b1dfa",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/helpers/submitted-policy-cases.mjs"
+    },
+    {
+      "path": "tests/loading.test.mjs",
+      "sha": "333cd255c4b9b29ec5363813436720b284d08770",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/loading.test.mjs"
+    },
+    {
+      "path": "tests/stale-actions.test.mjs",
+      "sha": "bf036f3b3f99be16fb480f0584850861f4678903",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/stale-actions.test.mjs"
+    },
+    {
+      "path": "tests/storage.test.mjs",
+      "sha": "88e594569829f41bc12895c2a86396949a569abf",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/storage.test.mjs"
+    },
+    {
+      "path": "tests/submitted-policy.test.mjs",
+      "sha": "f0bcf51272b0042d9e1436ddb54eecfdb1f48a51",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tests/submitted-policy.test.mjs"
+    },
+    {
+      "path": "tools/capture_returnby.py",
+      "sha": "367403bf3c393731cee650912789add1f3b46297",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tools/capture_returnby.py"
+    },
+    {
+      "path": "tools/check_edit_backup_browser.mjs",
+      "sha": "f4b0529172621ae51bb20f86a36a27b408974551",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tools/check_edit_backup_browser.mjs"
+    },
+    {
+      "path": "tools/check_edit_browser.mjs",
+      "sha": "3a2b901cb584292c7a103233842e3edafc57e7b5",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tools/check_edit_browser.mjs"
+    },
+    {
+      "path": "tools/check_stale_browser.mjs",
+      "sha": "c3a8bf8434777052910ec63c9f30b52b43d21981",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tools/check_stale_browser.mjs"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/tsconfig.json"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha": "041854f74501ecbb719e93f24f73e471596ab572",
+      "donor": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/vite.config.ts"
+    }
+  ],
+  "missing": []
+}

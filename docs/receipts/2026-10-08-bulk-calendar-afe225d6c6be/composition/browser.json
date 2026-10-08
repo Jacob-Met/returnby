@@ -1,0 +1,240 @@
+{
+  "source": {
+    "base": "480a99bd6de57ff04089975b34b43856da56fdf9",
+    "retained_base_files": 81,
+    "current_main": "3913697f70a31d73e8fe7d02b686b306830c24db",
+    "current_main_imports": [
+      {
+        "path": "src/day-refresh.ts",
+        "git_blob": "362aae5b5be7bf399174483327a2b15018edeca4"
+      },
+      {
+        "path": "tests/day-refresh.test.ts",
+        "git_blob": "1d76fd6ef7364ae84f4775666768815211981ff6"
+      },
+      {
+        "path": "tests/ics.test.ts",
+        "git_blob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4"
+      },
+      {
+        "path": "tools/verify_day_refresh.py",
+        "git_blob": "94caac1360142a886c138b1ebf2e5698024121d0"
+      }
+    ],
+    "bulk_production_freeze": {
+      "base": "3913697f70a31d73e8fe7d02b686b306830c24db",
+      "files": [
+        {
+          "path": "src/ics.ts",
+          "sha256": "b65f333fdf93069ec32c753bb5f3912fe124ce09c489e9904d4873c7357ee29a"
+        },
+        {
+          "path": "src/main.ts",
+          "sha256": "5e99f81a60fe7bf2a056f6f678d9145b8e1e74c725dca91e29db80b26dc22499"
+        },
+        {
+          "path": "src/calendar-export.ts",
+          "sha256": "c952776448840c9246b53e9995c360c9c74d9d0dc0cfa8978ff1214bf3eda67f"
+        },
+        {
+          "path": "src/calendar-export.css",
+          "sha256": "949f6199db29f4ef48e609f307f761ae445cdef85af216f75e6a4c5aa157247b"
+        }
+      ],
+      "patch_sha256": "ec9b10f44a9dcb6529f8ab9b499af58abb00b41c3036a4420134ddcf44c9c14c",
+      "focus_correction_sha256": "ab2d84d9bcaf070c99837ee4bc21477e2a07a6785374d3a390e3164789947fba"
+    },
+    "bulk_native_tests": [
+      {
+        "path": "tests/calendar-export.test.ts",
+        "sha256": "017beb54e0d875f8946a4e50358a5622917d35f8bf9bb3292e0149abb7067261"
+      }
+    ],
+    "composition_changes": [
+      "main imports and mounting",
+      "visible rows update",
+      "load failure clears export",
+      "current-main date refresh recognizes existing editor controls",
+      "inert fixture mount/timer surfaces",
+      "bulk focused-to-empty callback retained from independently corrected successor"
+    ],
+    "source_pins": [
+      {
+        "path": "src/main.ts",
+        "sha256": "e130c47b6dd306d1a2088b5600440bb036cb3f72b5a663219a97c7478cc24a76"
+      },
+      {
+        "path": "src/ics.ts",
+        "sha256": "b65f333fdf93069ec32c753bb5f3912fe124ce09c489e9904d4873c7357ee29a"
+      },
+      {
+        "path": "src/calendar-export.ts",
+        "sha256": "c952776448840c9246b53e9995c360c9c74d9d0dc0cfa8978ff1214bf3eda67f"
+      },
+      {
+        "path": "src/calendar-export.css",
+        "sha256": "949f6199db29f4ef48e609f307f761ae445cdef85af216f75e6a4c5aa157247b"
+      },
+      {
+        "path": "src/day-refresh.ts",
+        "sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430"
+      },
+      {
+        "path": "tests/helpers/storage-fixture.mjs",
+        "sha256": "8ed38012c7bd19388fd1cb2292bd831b0fd412439c66c16ecdf01f05a53508bf"
+      }
+    ]
+  },
+  "bundles": [
+    {
+      "path": "assets/index-AcnjZz_a.js",
+      "sha256": "3e98da6dc5400adf9f0ac13984714d3aec3554032ccdeb160a9d5f0baf504100"
+    },
+    {
+      "path": "assets/index-DpkCLCjV.css",
+      "sha256": "8c83bfbc69865c39b94a02243df801a1f3e6771e0b04113fefbca14be09400a4"
+    },
+    {
+      "path": "captures/returnby-desktop.png",
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+    },
+    {
+      "path": "captures/returnby-mobile.png",
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+    },
+    {
+      "path": "favicon.svg",
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "path": "index.html",
+      "sha256": "deaf3b37f89a4c0e8113a477c017b17ec49bad1e91c02b218044b7a4006cb7c8"
+    }
+  ],
+  "started_at": "2026-10-08T09:51:15.574Z",
+  "groups": [
+    {
+      "name": "The existing editor updates the filtered export and retains event identity",
+      "passed": true,
+      "details": {
+        "editor_saved": true,
+        "due_count_before": 2,
+        "due_count_after": 1,
+        "stable_uid": "A@returnby",
+        "corrected_deadline": "2026-10-21"
+      }
+    },
+    {
+      "name": "A failed current-storage read disables the export; retry exports the latest saved rows",
+      "passed": true,
+      "details": {
+        "unreadable_count": 0,
+        "latest_retry_ids": [
+          "B",
+          "D"
+        ],
+        "intake_preserved": true
+      }
+    },
+    {
+      "name": "Initial storage refusal exposes no downloadable stale data",
+      "passed": true,
+      "details": {
+        "initial_disabled": true,
+        "retry_count": 3
+      }
+    },
+    {
+      "name": "Day refresh composes with existing edit focus and corrected empty-export focus",
+      "passed": true,
+      "details": {
+        "edit_focus_restored": true,
+        "empty_export_focus": "filter-due",
+        "editor_draft_preserved": true,
+        "phone_widths": {
+          "scroll": 360,
+          "viewport": 360
+        }
+      }
+    }
+  ],
+  "downloads": [
+    {
+      "label": "initial-all",
+      "filename": "returnby-3-deadlines.ics",
+      "bytes": 935,
+      "sha256": "d5fbbac8a411b741a732be6a325e5f265be5ae3ac11a37100354d6d36da12a25",
+      "ids": [
+        "A",
+        "B",
+        "C"
+      ],
+      "dates": [
+        "20261008",
+        "20261013",
+        "20261031"
+      ]
+    },
+    {
+      "label": "initial-due",
+      "filename": "returnby-2-deadlines.ics",
+      "bytes": 653,
+      "sha256": "a5fbfb7dc5e97b3e0fc64d5dd37a6d5dec9c4368aff80d566caf29e3d8b40710",
+      "ids": [
+        "A",
+        "B"
+      ],
+      "dates": [
+        "20261008",
+        "20261013"
+      ]
+    },
+    {
+      "label": "after-edit-due",
+      "filename": "returnby-1-deadline.ics",
+      "bytes": 369,
+      "sha256": "1a0a9035ebe98b2f69f649a97b416f5bfd42cdb9c384056887d7dda5f42a3a91",
+      "ids": [
+        "B"
+      ],
+      "dates": [
+        "20261013"
+      ]
+    },
+    {
+      "label": "after-edit-all",
+      "filename": "returnby-3-deadlines.ics",
+      "bytes": 935,
+      "sha256": "83063b3dc14c9154b436f259eb9dd5b08cc18f0a28e78e4248e2b5832b8bb31a",
+      "ids": [
+        "B",
+        "A",
+        "C"
+      ],
+      "dates": [
+        "20261013",
+        "20261021",
+        "20261031"
+      ]
+    },
+    {
+      "label": "after-storage-retry",
+      "filename": "returnby-2-deadlines.ics",
+      "bytes": 685,
+      "sha256": "3ab6f6156a20f219f000a8f7ee01d92cc2b671728240c0bbc112c825bf17f517",
+      "ids": [
+        "B",
+        "D"
+      ],
+      "dates": [
+        "20261013",
+        "20261019"
+      ]
+    }
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "browser": "153.0.8010.0",
+  "passed": true,
+  "finished_at": "2026-10-08T09:51:19.085Z"
+}

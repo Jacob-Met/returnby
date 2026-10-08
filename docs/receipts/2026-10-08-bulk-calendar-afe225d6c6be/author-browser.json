@@ -1,0 +1,120 @@
+{
+  "browser": "153.0.8010.0",
+  "build": "/dev/shm/returnby-calendar-afe225d6c6be/source/dist",
+  "receipts": [
+    {
+      "download": "return-Fictional-today.ics",
+      "bytes": 375,
+      "sha256": "fd47eb03e43e1d38755e8dbfa628cdb053c78e13ce98db05fd940b12dee1cb3e",
+      "ids": [
+        "today@returnby"
+      ]
+    },
+    {
+      "download": "returnby-4-deadlines.ics",
+      "bytes": 1223,
+      "sha256": "e3680941e170f720fa1c97147d9270168bc90c1a309938a7cbcd16e58ed8e3cb",
+      "ids": [
+        "past@returnby",
+        "today@returnby",
+        "soon@returnby",
+        "later@returnby"
+      ]
+    },
+    {
+      "download": "returnby-1-deadline.ics",
+      "bytes": 370,
+      "sha256": "8af279f30b73c8993a623a7365e9968b2f2683bf2d3c2f7fadd08312f92febdc",
+      "ids": [
+        "past@returnby"
+      ]
+    },
+    {
+      "download": "returnby-2-deadlines.ics",
+      "bytes": 656,
+      "sha256": "326488a82fa2fa5d8b42ce9db5d7a775df32799de725bbae5578da9f2ca288b7",
+      "ids": [
+        "today@returnby",
+        "soon@returnby"
+      ]
+    },
+    {
+      "download": "returnby-3-deadlines.ics",
+      "bytes": 995,
+      "sha256": "19c2baa48b13bba116ce718aa132cfe0ace1dac92a470808feb4cecc0a52f923",
+      "ids": [
+        "today@returnby",
+        "54261f00-17c9-40c0-9d22-b9a07bff874f@returnby",
+        "soon@returnby"
+      ]
+    },
+    {
+      "download": "returnby-2-deadlines.ics",
+      "bytes": 656,
+      "sha256": "326488a82fa2fa5d8b42ce9db5d7a775df32799de725bbae5578da9f2ca288b7",
+      "ids": [
+        "today@returnby",
+        "soon@returnby"
+      ]
+    },
+    {
+      "download": "returnby-2-deadlines.ics",
+      "bytes": 656,
+      "sha256": "62dbdd9e2f044a2a709a3d4611a9756dba2a42f593b5c5fb75e77a942036127a",
+      "ids": [
+        "past@returnby",
+        "later@returnby"
+      ]
+    },
+    {
+      "download": "returnby-2-deadlines.ics",
+      "bytes": 656,
+      "sha256": "c3d1f07ee675075587d64accc23a9183b7b93e3ea09cdc479fc79214ea167f24",
+      "ids": [
+        "today@returnby",
+        "soon@returnby"
+      ]
+    },
+    {
+      "download": "returnby-2-deadlines.ics",
+      "bytes": 656,
+      "sha256": "b1e4e8be11e9e967c33b3d1f7dcb2d91cd0223690b863cf81183eb5b5697d1b0",
+      "ids": [
+        "soon@returnby",
+        "later@returnby"
+      ]
+    },
+    {
+      "download": "returnby-1-deadline.ics",
+      "bytes": 375,
+      "sha256": "6fdaa24a795c44ef856802d6aedbf42733c130e9d57e3fb0964df7bf277d9f2e",
+      "ids": [
+        "later@returnby"
+      ]
+    },
+    {
+      "download": "returnby-1-deadline.ics",
+      "bytes": 1595,
+      "sha256": "c6aa48da395814917cf5b90632e8d7d9747973586e9d35b86e139a0f4b731d01",
+      "ids": [
+        "unicode@returnby"
+      ]
+    },
+    {
+      "download": "returnby-1-deadline.ics",
+      "bytes": 375,
+      "sha256": "5f553a484fac0ea962989af45f5448e42ecf3ce7b8f9533dd5e22aebe173daaa",
+      "ids": [
+        "today@returnby"
+      ]
+    },
+    {
+      "download": "returnby-1-deadline.ics",
+      "bytes": 375,
+      "sha256": "4b98c42d220dcda523f0c5577c7e532c45d0d7d72c7afaa211e919caf608d19b",
+      "ids": [
+        "today@returnby"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+import assert from 'node:assert/strict';
+import { createServer } from 'node:http';
+import { readFile, writeFile, mkdir, readdir, stat } from 'node:fs/promises';
+import { resolve, relative, extname } from 'node:path';
+import { createHash } from 'node:crypto';
+import { chromium } from '/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+
+const root = '/dev/shm/hamon-afe225d6c6be/returnby-stack';
+const source = resolve(root, 'receiving');
+const dist = resolve(source, 'dist');
+const evidence = resolve(process.env.RETURNBY_COMPOSITION_EVIDENCE || resolve(root, 'evidence/browser-composition-r2'));
+const temporary = resolve(process.env.RETURNBY_BROWSER_TMP || resolve(root, 'browser-tmp'));
+await mkdir(evidence, { recursive: true });
+await mkdir(temporary, { recursive: true });
+process.env.TMPDIR = temporary;
+const digest = bytes => createHash('sha256').update(bytes).digest('hex');
+const pins = JSON.parse(await readFile(resolve(root, 'evidence/composition-r2-source.json'), 'utf8'));
+for (const item of pins.source_pins) assert.equal(digest(await readFile(resolve(source, item.path))), item.sha256, item.path);
+const bundle = [];
+async function inventory(dir) {
+  for (const name of await readdir(dir)) {
+    const path = resolve(dir, name);
+    if ((await stat(path)).isDirectory()) await inventory(path);
+    else bundle.push({ path: relative(dist, path), sha256: digest(await readFile(path)) });
+  }
+}
+await inventory(dist);
+const report = { source: pins, bundles: bundle, started_at: new Date().toISOString(), groups: [], downloads: [], page_errors: [], external_requests: [] };
+const server = createServer(async (req, res) => {
+  try {
+    const url = new URL(req.url, 'http://localhost');
+    const path = resolve(dist, '.' + decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname));
+    if (!path.startsWith(dist + '/')) throw new Error('Outside static root');
+    const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png' };
+    res.writeHead(200, { 'Content-Type': types[extname(path)] || 'application/octet-stream' });
+    res.end(await readFile(path));
+  } catch { res.writeHead(404); res.end(); }
+});
+await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+const origin = `http://127.0.0.1:${server.address().port}`;
+let browser;
+const order = (id, days, merchant = id) => ({ id, merchant, orderNo: `fixture-${id}`, orderDate: '2026-10-01', windowDays: days, windowSource: 'user', createdAt: '2026-10-01T12:00:00.000Z' });
+const orders = [order('A', 7, 'Edited store'), order('B', 12, 'Next store'), order('C', 30, 'Later store')];
+async function open(seed = orders, failRead = false) {
+  const context = await browser.newContext({ acceptDownloads: true, timezoneId: 'UTC', viewport: { width: 1280, height: 900 } });
+  await context.route('**/*', async route => {
+    const url = route.request().url();
+    if (url.startsWith(origin + '/') || url.startsWith('blob:') || url.startsWith('data:')) await route.continue();
+    else { report.external_requests.push(url); await route.abort(); }
+  });
+  await context.addInitScript(({ seed, failRead }) => {
+    window.__fixtureClock = '2026-10-08T12:00:00.000Z';
+    const RealDate = Date;
+    window.Date = class extends RealDate {
+      constructor(...args) { super(...(args.length ? args : [window.__fixtureClock])); }
+      static now() { return new RealDate(window.__fixtureClock).getTime(); }
+    };
+    localStorage.setItem('returnby.v1', JSON.stringify(seed));
+    window.__fixtureReadFailure = failRead;
+    const get = Storage.prototype.getItem;
+    Storage.prototype.getItem = function (key) {
+      if (key === 'returnby.v1' && window.__fixtureReadFailure) throw new DOMException('Synthetic unavailable storage', 'SecurityError');
+      return get.call(this, key);
+    };
+  }, { seed, failRead });
+  const page = await context.newPage();
+  page.on('pageerror', error => report.page_errors.push(String(error)));
+  await page.goto(origin + '/', { waitUntil: 'networkidle' });
+  await page.locator('#export-calendar').waitFor();
+  return { page, context };
+}
+async function visibleIds(page) { return page.locator('#list [data-ics]').evaluateAll(nodes => nodes.map(node => node.dataset.ics)); }
+async function expectShown(page, ids) {
+  assert.deepEqual(await visibleIds(page), ids);
+  assert.equal(await page.locator('#export-calendar').isDisabled(), ids.length === 0);
+  assert.equal(await page.locator('#export-calendar').textContent(), `Download ${ids.length} shown ${ids.length === 1 ? 'deadline' : 'deadlines'} (.ics)`);
+}
+async function download(page, label, ids, dates) {
+  await expectShown(page, ids);
+  const waiting = page.waitForEvent('download');
+  await page.locator('#export-calendar').click();
+  const file = await waiting;
+  assert.equal(file.suggestedFilename(), `returnby-${ids.length}-${ids.length === 1 ? 'deadline' : 'deadlines'}.ics`);
+  const path = resolve(evidence, label + '.ics');
+  await file.saveAs(path);
+  const bytes = await readFile(path);
+  const text = bytes.toString('utf8');
+  assert.ok(!/(?<!\r)\n/.test(text), 'CRLF content lines');
+  const unfolded = text.replace(/\r\n[ \t]/g, '');
+  const events = [...unfolded.matchAll(/BEGIN:VEVENT\r\n([\s\S]*?)END:VEVENT\r\n/g)].map(match => match[1]);
+  assert.equal((unfolded.match(/BEGIN:VCALENDAR/g) || []).length, 1);
+  assert.equal((unfolded.match(/END:VCALENDAR/g) || []).length, 1);
+  assert.equal(events.length, ids.length);
+  assert.deepEqual(events.map(event => /^UID:(.*)\r$/m.exec(event)?.[1]), ids.map(id => id + '@returnby'));
+  assert.deepEqual(events.map(event => /^DTSTART;VALUE=DATE:(.*)\r$/m.exec(event)?.[1]), dates);
+  for (const event of events) assert.equal((event.match(/TRIGGER:-P3D\r\n/g) || []).length, 1);
+  for (const line of text.split('\r\n')) assert.ok(Buffer.byteLength(line, 'utf8') <= 75, 'folded physical line limit');
+  report.downloads.push({ label, filename: file.suggestedFilename(), bytes: bytes.length, sha256: digest(bytes), ids, dates });
+}
+async function advance(page, date) {
+  await page.evaluate(date => { window.__fixtureClock = date; window.dispatchEvent(new Event('focus')); }, date);
+}
+async function group(name, callback) {
+  try { const details = await callback(); report.groups.push({ name, passed: true, details }); }
+  catch (error) { report.groups.push({ name, passed: false, error: String(error), stack: error.stack }); throw error; }
+}
+try {
+  browser = await chromium.launch({ executablePath: '/tmp/hamon-project-browser-ce7eb129730f/portable-153/chromium', headless: true, args: ['--no-sandbox'], downloadsPath: temporary });
+  report.browser = await browser.version();
+  await group('The existing editor updates the filtered export and retains event identity', async () => {
+    const { page, context } = await open();
+    try {
+      await download(page, 'initial-all', ['A', 'B', 'C'], ['20261008', '20261013', '20261031']);
+      await page.locator('#filter-due').click();
+      await download(page, 'initial-due', ['A', 'B'], ['20261008', '20261013']);
+      await page.locator('[data-edit="A"]').click();
+      assert.equal(await page.locator('#edit-current-deadline').textContent(), '2026-10-08');
+      await page.locator('#edit-window-days').fill('20');
+      assert.equal(await page.locator('#edit-proposed-deadline').textContent(), '2026-10-21');
+      await page.locator('#edit-save').click();
+      await download(page, 'after-edit-due', ['B'], ['20261013']);
+      await page.locator('#filter-all').click();
+      await download(page, 'after-edit-all', ['B', 'A', 'C'], ['20261013', '20261021', '20261031']);
+      const saved = JSON.parse(await page.evaluate(() => localStorage.getItem('returnby.v1')));
+      assert.equal(saved.find(order => order.id === 'A').windowDays, 20);
+      return { editor_saved: true, due_count_before: 2, due_count_after: 1, stable_uid: 'A@returnby', corrected_deadline: '2026-10-21' };
+    } finally { await context.close(); }
+  });
+  await group('A failed current-storage read disables the export; retry exports the latest saved rows', async () => {
+    const { page, context } = await open();
+    try {
+      await expectShown(page, ['A', 'B', 'C']);
+      await page.locator('#paste').fill('Synthetic unsaved intake draft');
+      await page.evaluate(() => { window.__fixtureReadFailure = true; });
+      await page.locator('[data-del="A"]').click();
+      await expectShown(page, []);
+      assert.equal(await page.locator('#storage-error').isVisible(), true);
+      assert.equal(await page.locator('#storage-retry').isVisible(), true);
+      assert.match(await page.locator('#list').textContent(), /unavailable/);
+      const next = [order('B', 12, 'Next store'), order('D', 18, 'Saved by another fixture tab')];
+      await page.evaluate(next => { localStorage.setItem('returnby.v1', JSON.stringify(next)); window.__fixtureReadFailure = false; }, next);
+      await page.locator('#storage-retry').click();
+      await download(page, 'after-storage-retry', ['B', 'D'], ['20261013', '20261019']);
+      assert.equal(await page.locator('#storage-error').isVisible(), false);
+      assert.equal(await page.locator('#paste').inputValue(), 'Synthetic unsaved intake draft');
+      return { unreadable_count: 0, latest_retry_ids: ['B', 'D'], intake_preserved: true };
+    } finally { await context.close(); }
+  });
+  await group('Initial storage refusal exposes no downloadable stale data', async () => {
+    const { page, context } = await open(orders, true);
+    try {
+      await expectShown(page, []);
+      assert.equal(await page.locator('#storage-retry').isVisible(), true);
+      await page.evaluate(() => { window.__fixtureReadFailure = false; });
+      await page.locator('#storage-retry').click();
+      await expectShown(page, ['A', 'B', 'C']);
+      return { initial_disabled: true, retry_count: 3 };
+    } finally { await context.close(); }
+  });
+  await group('Day refresh composes with existing edit focus and corrected empty-export focus', async () => {
+    const { page, context } = await open([order('A', 7), order('B', 12)]);
+    try {
+      await page.locator('[data-edit="B"]').focus();
+      await advance(page, '2026-10-09T12:00:00.000Z');
+      assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('data-edit')), 'B');
+      await page.locator('#filter-due').click();
+      await expectShown(page, ['B']);
+      await page.locator('#export-calendar').focus();
+      await advance(page, '2026-10-14T12:00:00.000Z');
+      await expectShown(page, []);
+      assert.equal(await page.evaluate(() => document.activeElement?.id), 'filter-due');
+      assert.equal(await page.locator('#filter-due').getAttribute('aria-pressed'), 'true');
+      await page.locator('#filter-all').click();
+      await page.locator('[data-edit="B"]').click();
+      await page.locator('#edit-merchant').fill('Unsaved corrected store');
+      await page.locator('#edit-merchant').focus();
+      await advance(page, '2026-10-15T12:00:00.000Z');
+      assert.equal(await page.locator('#edit-dialog').evaluate(node => node.open), true);
+      assert.equal(await page.locator('#edit-merchant').inputValue(), 'Unsaved corrected store');
+      assert.equal(await page.evaluate(() => document.activeElement?.id), 'edit-merchant');
+      await page.locator('#edit-cancel').click();
+      await page.setViewportSize({ width: 360, height: 800 });
+      const widths = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, viewport: innerWidth }));
+      assert.ok(widths.scroll <= widths.viewport, JSON.stringify(widths));
+      await page.screenshot({ path: resolve(evidence, 'composition-phone.png'), fullPage: true });
+      return { edit_focus_restored: true, empty_export_focus: 'filter-due', editor_draft_preserved: true, phone_widths: widths };
+    } finally { await context.close(); }
+  });
+  assert.deepEqual(report.page_errors, []);
+  assert.deepEqual(report.external_requests, []);
+  for (const item of pins.source_pins) assert.equal(digest(await readFile(resolve(source, item.path))), item.sha256, item.path);
+  report.passed = true;
+} catch (error) { report.passed = false; report.error = String(error); process.exitCode = 1; }
+finally {
+  if (browser) await browser.close();
+  await new Promise(resolve => server.close(resolve));
+  report.finished_at = new Date().toISOString();
+  await writeFile(resolve(evidence, 'receipt.json'), JSON.stringify(report, null, 2) + '\n');
+  console.log(JSON.stringify({ passed: report.passed, groups: report.groups, downloads: report.downloads.length, page_errors: report.page_errors, external_requests: report.external_requests, error: report.error }));
+}

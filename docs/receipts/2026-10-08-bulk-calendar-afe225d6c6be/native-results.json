@@ -1,0 +1,53 @@
+{
+  "base": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "runtime": "v24.19.0",
+  "packages": [
+    {
+      "name": "typescript",
+      "version": "5.9.3"
+    },
+    {
+      "name": "vite",
+      "version": "8.3.3"
+    },
+    {
+      "name": "vitest",
+      "version": "5.0.3"
+    }
+  ],
+  "baseline": {
+    "test": {
+      "command": "npm test",
+      "exit_code": 0,
+      "files": 3,
+      "passed": 28
+    },
+    "build": {
+      "command": "npm run build",
+      "exit_code": 0
+    }
+  },
+  "final": {
+    "test": {
+      "command": "npm test",
+      "exit_code": 0,
+      "files": 4,
+      "passed": 32
+    },
+    "build": {
+      "command": "npm run build",
+      "exit_code": 0,
+      "transformed_modules": 15,
+      "assets": [
+        "dist/index.html",
+        "dist/assets/index-CdeMXkvS.css",
+        "dist/assets/index-qs9QEZ3t.js"
+      ]
+    },
+    "diff_check": {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  },
+  "provenance": "Recorded from the actual native commands executed in the isolated pinned checkout; first and final commands were run with read-only linked locked dependencies and owned Vite/Vitest cache directories."
+}

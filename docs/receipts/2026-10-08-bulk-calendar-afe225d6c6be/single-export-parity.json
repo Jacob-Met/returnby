@@ -1,0 +1,8 @@
+{
+  "base": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "original_ics_git_blob": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+  "cases": 39,
+  "bytes": 33924,
+  "sha256": "85c1bf85ba0bace8321a91b2a279db1dc9211cc6a425e7a0d6a694defe8b36f2",
+  "result": "candidate buildIcs output byte-identical to original for every case"
+}

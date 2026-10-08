@@ -1,0 +1,123 @@
+{
+  "groups": [
+    {
+      "name": "all three filters export visible identities with literal Unicode, alarms and stable UIDs",
+      "pass": true
+    },
+    {
+      "name": "Save and Remove refresh the exported rows and empty-filter action",
+      "pass": true
+    },
+    {
+      "name": "midnight exchanges same-count Due soon identities; pageshow also refreshes the export",
+      "pass": true
+    },
+    {
+      "name": "narrow viewport and keyboard export remain reachable without horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "empty tracker initializes one disabled export action",
+      "pass": true
+    }
+  ],
+  "downloads": [
+    {
+      "name": "all-with-literal-unicode",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r1/all-with-literal-unicode.ics",
+      "bytes": 2040,
+      "ids": [
+        "expired-id",
+        "today-id",
+        "near-id",
+        "edge-id",
+        "far-id"
+      ]
+    },
+    {
+      "name": "due-keyboard-enter",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r1/due-keyboard-enter.ics",
+      "bytes": 1190,
+      "ids": [
+        "today-id",
+        "near-id"
+      ]
+    },
+    {
+      "name": "expired-keyboard-space",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r1/expired-keyboard-space.ics",
+      "bytes": 376,
+      "ids": [
+        "expired-id"
+      ]
+    },
+    {
+      "name": "after-save",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r1/after-save.ics",
+      "bytes": 1513,
+      "ids": [
+        "today-id",
+        "near-id",
+        "46524c13-a9b7-4efe-a801-2c4633e28edd"
+      ]
+    },
+    {
+      "name": "after-remove",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r1/after-remove.ics",
+      "bytes": 697,
+      "ids": [
+        "today-id",
+        "46524c13-a9b7-4efe-a801-2c4633e28edd"
+      ]
+    },
+    {
+      "name": "before-midnight",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r1/before-midnight.ics",
+      "bytes": 1190,
+      "ids": [
+        "today-id",
+        "near-id"
+      ]
+    },
+    {
+      "name": "after-midnight",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r1/after-midnight.ics",
+      "bytes": 1195,
+      "ids": [
+        "near-id",
+        "edge-id"
+      ]
+    },
+    {
+      "name": "after-pageshow-refresh",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r1/after-pageshow-refresh.ics",
+      "bytes": 379,
+      "ids": [
+        "edge-id"
+      ]
+    },
+    {
+      "name": "mobile-keyboard",
+      "filename": "/dev/shm/hamon-afe225d6c6be-coordination-returnby/evidence/browser-r1/mobile-keyboard.ics",
+      "bytes": 1504,
+      "ids": [
+        "expired-id",
+        "today-id",
+        "near-id",
+        "edge-id",
+        "far-id"
+      ]
+    }
+  ],
+  "pageErrors": [],
+  "focusAfterEmpty": {
+    "id": "",
+    "tag": "BODY",
+    "selectedFilter": "true"
+  },
+  "passed": false,
+  "failure": {
+    "message": "A focused export that becomes unavailable should retain keyboard context at the selected filter\n\n'' !== 'filter-due'\n",
+    "stack": "AssertionError [ERR_ASSERTION]: A focused export that becomes unavailable should retain keyboard context at the selected filter\n\n'' !== 'filter-due'\n\n    at file:///dev/shm/hamon-afe225d6c6be-coordination-returnby/review_browser.mjs:248:12"
+  }
+}
