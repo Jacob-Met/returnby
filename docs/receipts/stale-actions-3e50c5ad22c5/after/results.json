@@ -1,0 +1,226 @@
+{
+  "browser": "153.0.8010.0",
+  "build": "/workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver/dist",
+  "receipts": [
+    {
+      "case": "stale-new-order",
+      "before": [
+        {
+          "id": "67f32a49-3012-49d9-961f-ceaedaee28d6",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "CORRECTED-ELSEWHERE",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 45,
+          "windowSource": "user",
+          "createdAt": "2026-10-08T08:44:47.431Z"
+        },
+        {
+          "id": "5d54bd8a-8a61-4afd-a4f8-4a8dd372de19",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "REMOTE-NEW",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:47.829Z"
+        }
+      ],
+      "after": [
+        {
+          "id": "67f32a49-3012-49d9-961f-ceaedaee28d6",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "CORRECTED-ELSEWHERE",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 45,
+          "windowSource": "user",
+          "createdAt": "2026-10-08T08:44:47.431Z"
+        },
+        {
+          "id": "5d54bd8a-8a61-4afd-a4f8-4a8dd372de19",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "REMOTE-NEW",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:47.829Z"
+        },
+        {
+          "id": "f37ff487-eb36-40d5-b83b-cd98c73b36f8",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "LOCAL-NEW",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:47.846Z"
+        }
+      ]
+    },
+    {
+      "case": "stale-remove-unrelated",
+      "expected": [
+        {
+          "id": "7717c5d7-11d7-4738-bb8c-8ec4599f2412",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "KEEP-REMOTE",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:48.480Z"
+        }
+      ]
+    },
+    {
+      "case": "changed-target-review",
+      "protected_order": {
+        "id": "e2d58795-39aa-40fb-8e41-25738187cae8",
+        "merchant": "Fictional Marsh Supplies",
+        "orderNo": "CORRECTED-ELSEWHERE",
+        "total": "$12.00",
+        "orderDate": "2026-10-01",
+        "windowDays": 45,
+        "windowSource": "user",
+        "createdAt": "2026-10-08T08:44:48.765Z"
+      },
+      "draft_preserved": true
+    },
+    {
+      "case": "read-refusal-retry",
+      "preserved": [
+        {
+          "id": "2c5e842b-5213-4ed3-85bb-0a4e60130f87",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "ORIGINAL",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:49.413Z"
+        },
+        {
+          "id": "c9187ce8-3f0a-411f-b4f3-1150f43e5ffb",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "REMOTE-KEEP",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:49.679Z"
+        }
+      ],
+      "after": [
+        {
+          "id": "2c5e842b-5213-4ed3-85bb-0a4e60130f87",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "ORIGINAL",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:49.413Z"
+        },
+        {
+          "id": "c9187ce8-3f0a-411f-b4f3-1150f43e5ffb",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "REMOTE-KEEP",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:49.679Z"
+        },
+        {
+          "id": "7dfef602-c76c-4d35-ba4a-fa2d288f343f",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "LOCAL-RETRY",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:49.764Z"
+        }
+      ]
+    },
+    {
+      "case": "write-refusal-reread",
+      "preserved": [
+        {
+          "id": "48dda892-f5fb-4a79-8a41-8d15f3d8b29f",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "ORIGINAL",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:50.050Z"
+        },
+        {
+          "id": "f62c6775-49dc-487c-b25a-e057196108de",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "REMOTE-ONE",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:50.429Z"
+        },
+        {
+          "id": "21608343-8b2d-446a-90d9-b81c44acbd3f",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "REMOTE-TWO",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:50.546Z"
+        }
+      ],
+      "after": [
+        {
+          "id": "48dda892-f5fb-4a79-8a41-8d15f3d8b29f",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "ORIGINAL",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:50.050Z"
+        },
+        {
+          "id": "f62c6775-49dc-487c-b25a-e057196108de",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "REMOTE-ONE",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:50.429Z"
+        },
+        {
+          "id": "21608343-8b2d-446a-90d9-b81c44acbd3f",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "REMOTE-TWO",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:50.546Z"
+        },
+        {
+          "id": "150650d9-9d79-4952-a520-532534669bd0",
+          "merchant": "Fictional Marsh Supplies",
+          "orderNo": "LOCAL-RETRY",
+          "total": "$12.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "default",
+          "createdAt": "2026-10-08T08:44:50.579Z"
+        }
+      ]
+    }
+  ]
+}
