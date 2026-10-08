@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "recorded_at": "2026-10-08T17:30:29.496063+00:00",
+  "worker": "chatgpt-a0eb505c4971/integration_review",
+  "kind": "Producer direct readback and archive receiving, not another independent test execution",
+  "source": {
+    "native_head": "842a320b4b226da25bdab93a1f5076f394df3432",
+    "canonical_head": "9f73bf729b59012ceda564d022a5de664c2b39e5",
+    "tree": "e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5"
+  },
+  "independent_review_sha256": "cc62f7a48f0b898ecc2197e49868fa0b5d80ac5a02db1a6655689429d8647792",
+  "independent_manifest_sha256": "402ee7ec77c9d72ddff404673631aeb846d32f20f2fe9a4366d7ea860e51f5fe",
+  "source_case_receipts": {
+    "baseline": "ef92d0564a7d5bcb11b36b17094f96b59f3ec63027ec10d42c9b349f92439be6",
+    "original_four_pass_two_assumption_stops": "91438128e2cac48244aaf7614e8dae5e737dd99bebbd59c89f2d02da29e6eb3e",
+    "focused_two_pass": "7acb2184dd61a539658ef4f0ce78feadb4ef7ba8a15334b48392cc9398fa3f6e"
+  },
+  "qualification_readback": {
+    "actual_groups_qualified": 6,
+    "actual_downloads": 8,
+    "native_or_browser_reruns_by_this_readback": 0,
+    "controller_delta_read": "Two receiver expectation corrections, successor output location, reuse of the exact already-downloaded completed backup, and selection of only unfinished groups. All original failure bytes remain.",
+    "narrative_label": "The old disabled milestone label remains in the raw focused result. The actual checked source excludes the completed row; final review correctly attests nonselectability."
+  },
+  "archive": {
+    "path": "browser/receiving-evidence.zip",
+    "bytes": 1359948,
+    "sha256": "483da4b605ff6fe7ad2653159e98c39a10a145a1bdac5e1e6e73418f13234b7b",
+    "members": 67,
+    "all_member_bytes_paths_modes_equal_independent_manifest": true
+  },
+  "captures_inspected": [
+    {
+      "path": "browser/completed-history-desktop.png",
+      "sha256": "5a7e573aa8fb66a10cee38e401481e1b3bdfba9490701b2cec9111d4e2f4f613",
+      "visual_review": "Producer directly inspected actual native capture using RDC image read; no browser rerun."
+    },
+    {
+      "path": "browser/completed-history-390.png",
+      "sha256": "d00293a0765f3850cfe63cc41408967ff62af85acb351470972987a20f407f30",
+      "visual_review": "Producer directly inspected actual native capture using RDC image read; no browser rerun."
+    }
+  ],
+  "publication_state": "Native packet sealed while GitHub mutations are held by root after a single403 secondary-limit refusal. Source9f73 and its hosted gate are already published."
+}

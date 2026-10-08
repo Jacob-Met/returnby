@@ -1,0 +1,91 @@
+
+> returnby@0.1.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.3 [39m[90m/srv/hamon-estate/returnby-completion-a0eb505c[39m
+
+ [31m❯[39m tests/completion-ui.test.mjs [2m([22m[2m5 tests[22m[2m | [22m[31m5 failed[39m[2m)[22m[32m 191[2mms[22m[39m
+[31m   [31m×[31m actual Complete and Reopen handlers retain history, quiet counts, draft and action focus[39m[32m 173[2mms[22m[39m
+[31m   [31m×[31m a refused completion write retains active UI and a retry preserves subsequent unrelated writes[39m[32m 3[2mms[22m[39m
+[31m   [31m×[31m stale status actions refresh and refuse before any write, then permit an explicit reviewed action[39m[32m 3[2mms[22m[39m
+[31m   [31m×[31m read refusal prevents completion until explicit reload; invalid saved markers also fail closed[39m[32m 2[2mms[22m[39m
+[31m   [31m×[31m the actual single-reminder handler refuses stale completion without allocating a file[39m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/completion.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 126[2mms[22m[39m
+ [32m✓[39m tests/edit-ui.test.mjs [2m([22m[2m7 tests[22m[2m)[22m[32m 269[2mms[22m[39m
+ [32m✓[39m tests/calendar-batch.test.ts [2m([22m[2m32 tests[22m[2m)[22m[33m 331[2mms[22m[39m
+ [32m✓[39m tests/combined-receiving.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[33m 472[2mms[22m[39m
+   [33m[2m✓[22m[39m corrected subtotal and reviewed attribution survive refused save, download, and fresh restore[33m 426[2mms[22m[39m
+ [32m✓[39m tests/edit.test.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 97[2mms[22m[39m
+ [32m✓[39m tests/core.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 73[2mms[22m[39m
+ [32m✓[39m tests/ics.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 169[2mms[22m[39m
+ [31m❯[39m tests/backup-ui.test.mjs [2m([22m[2m19 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 1530[2mms[22m[39m
+   [33m[2m✓[22m[39m preview and cancel preserve storage, native tracker, and an unsaved email draft[33m 404[2mms[22m[39m
+   [32m✓[39m confirmed import updates the real tracker once, preserves source/draft and skips repeats[32m 15[2mms[22m[39m
+   [32m✓[39m a restored historical fallback displays its saved days without applying the current fallback[32m 7[2mms[22m[39m
+   [32m✓[39m conflict in one row blocks every addition and exposes the changed attribution[32m 7[2mms[22m[39m
+   [33m[2m✓[22m[39m a byte-limit overflow in the combined tracker is refused before any import write[33m 931[2mms[22m[39m
+[31m   [31m×[31m unsupported version does not commit any rows[39m[32m 33[2mms[22m[39m
+   [32m✓[39m foreign window source does not commit any rows[32m 5[2mms[22m[39m
+   [32m✓[39m malformed JSON does not commit any rows[32m 5[2mms[22m[39m
+   [32m✓[39m late bad row does not commit any rows[32m 6[2mms[22m[39m
+   [32m✓[39m oversized file does not commit any rows[32m 6[2mms[22m[39m
+   [32m✓[39m quota refusal keeps prior bytes, native memory, both previews, and supports a single retry[32m 7[2mms[22m[39m
+   [32m✓[39m serialization failure at the native save boundary cannot change bytes or native memory[32m 7[2mms[22m[39m
+   [32m✓[39m a changed persisted baseline refreshes the review before a subsequent confirmation[32m 6[2mms[22m[39m
+   [32m✓[39m existing unreadable storage prevents import and export[32m 5[2mms[22m[39m
+   [32m✓[39m existing broken JSON storage prevents import and export[32m 5[2mms[22m[39m
+   [32m✓[39m existing unexpected shape storage prevents import and export[32m 44[2mms[22m[39m
+   [32m✓[39m cancel or a newer file selection invalidates a pending asynchronous read[32m 6[2mms[22m[39m
+   [32m✓[39m large previews page through every order and render imported text without HTML[32m 16[2mms[22m[39m
+   [32m✓[39m the download contains saved reviewed details, preserves attribution, and excludes the current raw email draft[32m 8[2mms[22m[39m
+ [32m✓[39m tests/stale-actions.test.mjs [2m([22m[2m6 tests[22m[2m)[22m[33m 419[2mms[22m[39m
+   [33m[2m✓[22m[39m new-order Save retains the freshly saved corrections, additions and extra fields[33m 348[2mms[22m[39m
+ [32m✓[39m tests/completion-receiving.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[33m 395[2mms[22m[39m
+   [33m[2m✓[22m[39m the actual tracker offers completion without removing the saved identity[33m 366[2mms[22m[39m
+ [32m✓[39m tests/loading.test.mjs [2m([22m[2m11 tests[22m[2m)[22m[32m 238[2mms[22m[39m
+ [32m✓[39m tests/storage.test.mjs [2m([22m[2m6 tests[22m[2m)[22m[32m 202[2mms[22m[39m
+ [32m✓[39m tests/submitted-policy.test.mjs [2m([22m[2m9 tests[22m[2m)[22m[32m 219[2mms[22m[39m
+ [32m✓[39m tests/backup.test.ts [2m([22m[2m53 tests[22m[2m)[22m[33m 2328[2mms[22m[39m
+   [33m[2m✓[22m[39m an accepted near-limit backup can be exported again using compact JSON[33m 1241[2mms[22m[39m
+   [33m[2m✓[22m[39m normalizing omitted fields cannot admit a file that will no longer fit in a backup[33m 321[2mms[22m[39m
+   [33m[2m✓[22m[39m two individually portable trackers cannot merge beyond the backup byte limit[33m 554[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 6 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m tests/backup-ui.test.mjs[2m > [22munsupported version does not commit any rows
+[31m[1mAssertionError[22m: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m tests/backup-ui.test.mjs:[2m108:48[22m[39m
+    [90m106|[39m   if (kind === 'late bad row') file.orders[1].windowDays = false;
+    [90m107|[39m   await app.choose(kind === 'malformed JSON' ? '{' : JSON.stringify(fi…
+    [90m108|[39m   expect(app.element('backup-preview').hidden).toBe(true);
+    [90m   |[39m                                                [31m^[39m
+    [90m109|[39m   expect(app.element('backup-message').attributes.role).toBe('alert');
+    [90m110|[39m   expect(app.attempts).toHaveLength(0);
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/completion-ui.test.mjs[2m > [22mactual Complete and Reopen handlers retain history, quiet counts, draft and action focus
+[41m[1m FAIL [22m[49m tests/completion-ui.test.mjs[2m > [22ma refused completion write retains active UI and a retry preserves subsequent unrelated writes
+[41m[1m FAIL [22m[49m tests/completion-ui.test.mjs[2m > [22mstale status actions refresh and refuse before any write, then permit an explicit reviewed action
+[41m[1m FAIL [22m[49m tests/completion-ui.test.mjs[2m > [22mread refusal prevents completion until explicit reload; invalid saved markers also fail closed
+[41m[1m FAIL [22m[49m tests/completion-ui.test.mjs[2m > [22mthe actual single-reminder handler refuses stale completion without allocating a file
+[31m[1mTypeError[22m: URL is not a constructor[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m13 passed[39m[22m[90m (15)[39m
+[2m      Tests [22m [1m[31m6 failed[39m[22m[2m | [22m[1m[32m220 passed[39m[22m[90m (226)[39m
+[2m   Start at [22m 16:31:41
+[2m   Duration [22m 3.49s[2m (tests 68%, transform 20%, import 9%, worker 2%)[22m
+
+[2m    Isolate [22m [33m15 workers spawned[39m[2m · ~683ms startup each (spawn + environment, per file)[22m
+[2m            [22m [2mat least ~780ms faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+

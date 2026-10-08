@@ -1,0 +1,25 @@
+[
+  {
+    "name": "candidate-tests-01",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 1,
+    "seconds": 5.047811031341553,
+    "log": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/candidate-tests-01.log",
+    "sha256": "a88f58836cd7e8d6780f99f233b887ca00471d2bd36a8d9fc8e873ec7f826233"
+  },
+  {
+    "name": "candidate-build-01",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exit_code": 0,
+    "seconds": 3.660771369934082,
+    "log": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/candidate-build-01.log",
+    "sha256": "bb7319eb11ad0c7e3f7f316b64c288476a5de616943f71026cc0da851a57c661"
+  }
+]

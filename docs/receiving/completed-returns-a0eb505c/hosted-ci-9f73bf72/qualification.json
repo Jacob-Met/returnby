@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "recorded_at": "2026-10-08T16:54:07.432524+00:00",
+  "worker": "chatgpt-a0eb505c4971/integration_review",
+  "repository": "Jacob-Met/returnby",
+  "pr": 32,
+  "head": "9f73bf729b59012ceda564d022a5de664c2b39e5",
+  "native_head": "842a320b4b226da25bdab93a1f5076f394df3432",
+  "tree": "e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5",
+  "run_id": 37811667579,
+  "run_url": "https://github.com/Jacob-Met/returnby/actions/runs/37811667579",
+  "job_id": 113429805038,
+  "tested_merge_commit": "8cf9151da4e86ffe0276dfb10a07b84413c6ca87",
+  "tested_merge_parents": [
+    "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+    "9f73bf729b59012ceda564d022a5de664c2b39e5"
+  ],
+  "tested_merge_tree_equals_native_and_published": true,
+  "result": {
+    "job": "success",
+    "test_files_passed": 15,
+    "tests_passed": 226,
+    "test_failures": 0,
+    "audit_vulnerabilities": 0,
+    "typescript_and_vite_build": "passed"
+  },
+  "scope": "Observed existing repository pull-request workflow; no rerun, override, deployment or user data access. Earlier native run failures remain separate evidence.",
+  "files": {
+    "job.json": {
+      "sha256": "f05a93c372412e7409437281bc2023ae619d934c2fef83dfe8ccd5d0ec985c63",
+      "bytes": 1463
+    },
+    "job.log": {
+      "sha256": "4c64531a01621fa2d3432411779d4fa5ecc4c947e309d1112385a3bc09c25756",
+      "bytes": 19278
+    },
+    "pr-readback.json": {
+      "sha256": "675ed23dca53e305efbbb29a036cd213f6d6bfe6c337e5ec88c5d36935d8a7f1",
+      "bytes": 23067
+    },
+    "run.json": {
+      "sha256": "b2e6a0fd243cc8d2ee1bd0b908414479f6f240d75eb9cb844a0d6786d0c8cd58",
+      "bytes": 14817
+    },
+    "tested-merge-commit.json": {
+      "sha256": "38e9f573aa9e33f99e50368ee803b88af73d83d86e90454d141cf31e89c4b377",
+      "bytes": 2866
+    }
+  }
+}

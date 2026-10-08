@@ -1,0 +1,38 @@
+--- a/src/deadline-overview.ts
++++ b/src/deadline-overview.ts
+@@ -1,6 +1,7 @@
+ import { exportBackup, parseBackup } from './backup';
+ import { daysLeft, dueDate, status, todayISO, type Status } from './deadline';
+ import type { Order } from './store';
++import { isCompleted } from './completion';
+ 
+ export const OVERVIEW_PAGE_SIZE = 20;
+ 
+@@ -77,7 +78,7 @@
+   // Reuse the shipped whole-collection field, identity, date, count and byte
+   // contract. The fixed admission timestamp is never displayed or saved; no
+   // file, storage write or new history format is created by this projection.
+-  const approved = parseBackup(exportBackup(current, admissionTime));
++  const approved = parseBackup(exportBackup(current, admissionTime)).filter(order => !isCompleted(order));
+   const rows = approved.map(order => {
+     const due = dueDate(order.orderDate, order.windowDays);
+     const left = daysLeft(due, today);
+--- a/src/saved-returns-csv.ts
++++ b/src/saved-returns-csv.ts
+@@ -5,7 +5,7 @@
+ export const SAVED_CSV_COLUMNS = Object.freeze([
+   'Saved return ID', 'Store', 'Order number', 'Total (as entered)',
+   'Order date', 'Return window (days)', 'Recorded window source',
+-  'Return deadline', 'Created at',
++  'Return deadline', 'Created at', 'Return status', 'Completed at',
+ ] as const);
+ 
+ export class SavedCsvError extends Error {}
+@@ -53,6 +53,7 @@
+     lines.push([
+       order.id, order.merchant, order.orderNo ?? '', order.total ?? '',
+       order.orderDate, order.windowDays, order.windowSource, due, order.createdAt,
++      order.completedAt === undefined ? 'Open' : 'Completed', order.completedAt ?? '',
+     ].map(cell).join(','));
+   }
+   const content = '\ufeff' + lines.join('\r\n') + '\r\n';

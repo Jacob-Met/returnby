@@ -1,0 +1,22 @@
+{
+  "attempt_before_time_read": "2026-10-08 17:03:21 UTC",
+  "operation": "Create one ReturnBy issue8 source-status comment",
+  "repository": "Jacob-Met/returnby",
+  "issue": 8,
+  "current_published_head": "9f73bf729b59012ceda564d022a5de664c2b39e5",
+  "no_retry": true,
+  "alternate_publication_route_used": false,
+  "recorded_at": "2026-10-08T17:04:16.825350+00:00",
+  "result": "GitHub HTTP403 secondary content-creation refusal; no successful comment result or comment ID returned",
+  "no_approval_failure": true,
+  "files": {
+    "attempted-owner-comment.md": {
+      "bytes": 2351,
+      "sha256": "b703c43447507f8f9e51d356941723db0feae1c531ac77a8441aacd4061807ac"
+    },
+    "tool-response.json": {
+      "bytes": 1661,
+      "sha256": "3d38fb21540f6c4b61a0f3c3ced5b90a7adf2afcab1569a3a8caf1ac7602dc94"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "seq": 4588,
+  "event_id": "cev_86f14216e684477ba14648e4",
+  "event_type": "conscience.decision",
+  "actor": "chatgpt:a0eb505c4971:coordination",
+  "payload": {
+    "key": "scope:chatgpt-a0eb505c4971:returnby-completion",
+    "worker_id": "chatgpt-a0eb505c4971/integration_review",
+    "status": "native_qualified_browser_receiving",
+    "text": "ReturnBy#30 frozen native source ca27fec63ff50256f1092c38453e05a527da8bce/tree8a27965e1b51946d9f49a1d5c1dfaabbf2f39037 preserves PR20 parent and180 unrelated leaves. Complete/Reopen, quiet history, v1/v2 backup preservation and active-only calendar eligibility implemented. Native production build passes; first226-case run220pass/6 fixture failures retained; corrected24-case run passes on unchanged production. Independent actual browser mac_production claim4583 pending. Two-file proposed month/CSV adoption passes3 private cases; unchanged Undo passes exact snapshot/conflict control. Existing #8/#10 owner retains integration. No live data, provider, native goal or deployment.",
+    "source": "/srv/hamon-estate/returnby-completion-a0eb505c",
+    "source_receipt": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/source-packet/source-qualification.json",
+    "source_receipt_sha256": "1fdeb5c7d6142c97b210ef3dadbc1b5a235377880ab43337bbccb0cf0c270793",
+    "consumer_review": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/review.json",
+    "consumer_review_sha256": "b566b6d774cb2526621135f603f9caae58003e543e85b5bdb2b6927f4400cf3b",
+    "prior_claim": 4573
+  },
+  "payload_sha256": "fd1d0134132c9961d3f6ea09809e3a8f1e9057954df304e477323e1d4fbd42da",
+  "branch": "main",
+  "prev_hash": "410e193082b633aaf7067ea401046186ab35a07569422e12141a1af35ca56936",
+  "event_hash": "d8b501493f3d124611bce2c8c49e25e066ae0db6ef32d14a9023a5bca31913b8",
+  "created_at": 1791477748.2301345
+}

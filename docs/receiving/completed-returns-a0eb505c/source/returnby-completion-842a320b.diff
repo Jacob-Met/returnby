@@ -1,0 +1,816 @@
+diff --git a/README.md b/README.md
+index b44321c4757c528cf8bf421ae6497790395c7c14..4ff9608a0900585f2cfd8d0580e55ef76261589a 100644
+--- a/README.md
++++ b/README.md
+@@ -109,3 +109,23 @@ The saved-order browser acceptance runs with `node tools/check_edit_browser.mjs`
+ - `src/ics.ts`: calendar reminder generation.
+ 
+ The app is browser-only; no AI runs in the page. The Devpost Learn planning documents are not completed interview output and are not represented as such.
++
++## Finished returns
++
++Choose **Mark completed** when a return is finished. Its reviewed details stay in
++**Completed**, while **Open**, deadline counts and new calendar exports leave it
++out. **Reopen return** restores the ordinary deadline calculation for the same
++saved order. Completed details can still be edited or removed.
++
++Completion does not recall files already imported into a calendar; remove those
++reminders in that calendar. The tracker still uses the existing browser storage
++and requires a fresh review when a saved target changes elsewhere.
++
++Backups retain completion dates. Open-only exports keep version 1 compatibility;
++an export containing completed returns uses version 2, which older ReturnBy
++readers refuse. Legacy version 1 backups remain supported. A different
++completion state for an existing ID is an import conflict, so restoring a file
++cannot silently reopen or complete an already saved return.
++
++See [the completion contract](docs/COMPLETED_RETURNS.md) for the exact source and
++integration boundary.
+diff --git a/docs/COMPLETED_RETURNS.md b/docs/COMPLETED_RETURNS.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..acda4265c3f504ed97b2a1e15440c69548a87957
+--- /dev/null
++++ b/docs/COMPLETED_RETURNS.md
+@@ -0,0 +1,82 @@
++# Completed-return lifecycle
++
++This additive contribution is issue #30, authored by external worker
++`chatgpt-a0eb505c4971/integration_review`. Its source parent is PR #20 at
++`7829e56e57ef91dfe8edd5853fd68d6c7890fac0`, tree
++`b28e7b706fe67fd4b34111badd581c6bdd2ed4a7`. The #8/#10 owners retain integration of
++the portable-recovery stack. This branch does not move their source refs or
++replace the weaker current main.
++
++## User behavior
++
++Mark completed retains the same ID, original creation time, merchant, order
++number, total, order date, reviewed window and saved attribution. Completed
++returns have a quiet, accessible history view with Edit details, Remove and
++Reopen return. They are excluded from active counts and future single/batch
++reminders. Reopen removes the current completion marker and resumes deadline
++calculation from the original reviewed order fields. It does not start a new
++return window or change the retailer's terms.
++
++There is no integration with an external calendar. An already imported reminder
++continues to belong to that calendar and must be removed there.
++
++## Saved-field and write contract
++
++`Order.completedAt?: string` is the only added stored field. An absent marker is
++an open legacy record. A present marker must be a supported four-digit ISO
++timestamp with a timezone. Invalid markers refuse storage loading and backup
++admission; they are never interpreted as open. The original storage key and
++load/read/save API remain in use.
++
++The lifecycle planner receives the current saved list and the exact displayed
++target. Missing, duplicate or changed identities refuse the action and refresh
++the tracker for another deliberate review. Its plan preserves every unrelated
++row and extra stored field. The existing persistence function writes before
++updating the displayed list. A failed read/write preserves saved bytes and the
++intake draft. An already matching Complete/Reopen action has no write plan and
++does not replace the original completion time.
++
++This is current-value review, not an atomic transaction across browser tabs.
++There is no new persistence service, cross-tab lease, event log or automatic
++retry. Reopening removes the current marker; this feature does not retain a
++separate audit trail of earlier completion/reopening cycles.
++
++## Backups and reminders
++
++Version 1 files admit the original approved order fields. Version 2 additionally
++admits optional `completedAt`; both formats reject unknown fields and malformed
++records as a complete file. Exports containing a completion marker use version
++2 so older readers reject the file instead of restoring completed records as
++active deadlines. Open-only and empty exports remain version 1. The approved
++projection still excludes raw email and arbitrary properties.
++
++The import preview shows Open or the saved completion date. Completion
++differences participate in the existing same-ID conflict test and saved-preview
++freshness comparison. A conflict blocks every proposed addition. Existing size,
++count, identity and date limits remain unchanged.
++
++Both reminder paths recheck the selected saved identity. A return completed
++after review cannot produce a new file. Batch selection contains only open
++returns; Completed view starts with no reminders selected. Reopened unchanged
++orders preserve the existing ICS bytes, stable UID and alarm semantics.
++
++## Other owners and receiving
++
++The new field was announced in #8 comment 6064269485. It has explicit consumer
++handoffs to month #26/#28 (comment 6064322324), CSV #25 (6064322818) and print #29
++(6064323405). Their branches are not included or rewritten here. The Undo
++#23/#24 contract captures the full JSON record, so its snapshot must continue to
++preserve completion and reject a conflicting same-ID restoration. The inherited
++editor already retains extra fields and compares the full saved target.
++
++At future composition, the month and return-trip planning projections must omit
++completed deadlines, while whole-tracker CSV must explicitly retain completion
++state/time. Exact consumer source and bounded adoption evidence are separate
++from this branch's PR20 runtime qualification. The previously deferred parser
++#6 and daily-refresh/Edit-focus inputs also remain separately owned; they are
++not newly claimed by this lifecycle contribution.
++
++Qualification records distinguish the baseline absence, native production build,
++test-fixture corrections and independent actual-browser receiving. No tests
++access user data, account services or providers. Publication is a draft source
++handoff, not a deployment claim.
+diff --git a/index.html b/index.html
+index d8b6074d2602fc8417e0e8ba5da1f064e64a5925..cd7cf23e6c4555b6ff0412e7e71eebf874b331b5 100644
+--- a/index.html
++++ b/index.html
+@@ -2,15 +2,15 @@
+ <html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="theme-color" content="#f2efe5" /><meta name="description" content="Paste an order confirmation, review the rule-based return window, track multiple deadlines and export a calendar reminder. Everything stays in your browser." /><link rel="icon" type="image/svg+xml" href="./favicon.svg" /><title>ReturnBy - The Return Desk</title></head><body><div class="page-shell">
+ <header class="topbar"><a class="brand" href="#top" aria-label="ReturnBy home"><span class="brand-mark">R/</span><span><strong>RETURNBY</strong><small>THE RETURN DESK</small></span></a><div class="local-chip"><i></i><span>LOCAL ONLY / NO INBOX CONNECTION</span></div></header>
+ <main id="top"><section class="hero"><div class="hero-copy"><p class="eyebrow">ORDER IN / DEADLINE OUT</p><h1>Keep the window<br /><em>on your side.</em></h1><p class="sub">Paste a real confirmation. ReturnBy extracts order details, checks merchant policy and gives you a date to act on. Review every field, save multiple deadlines and export a real calendar reminder - no AI or account required.</p><div class="hero-notes"><span>01 / PASTE</span><span>02 / REVIEW</span><span>03 / REMEMBER</span></div></div><aside class="hero-ticket"><span class="ticket-kicker">RETURN WINDOW</span><strong>30 <i>DAYS</i></strong><span>DEFAULT WHEN A STORE IS UNKNOWN</span><div class="ticket-line"></div><span>RULE-BASED / EDITABLE / LOCAL</span></aside></section>
+-<section class="desk-grid" aria-label="Return deadline workspace"><article class="intake-panel"><header class="panel-heading"><p class="eyebrow">01 / START WITH THE ORDER</p><h2>Paste a confirmation.</h2><p>Only details you approve are saved. The original email stays in this text box until you clear it.</p></header><label class="input-label" for="paste">ORDER EMAIL / CONFIRMATION</label><textarea id="paste" rows="9" placeholder="Paste the order confirmation text here..."></textarea><div class="action-row"><button id="find" class="button button-primary">Find the deadline</button><a href="#" id="sample" class="button button-link">Load a fictional example</a></div><div class="privacy-note"><span class="privacy-icon">LOCAL</span><p>No inbox access. No upload. Parsing and calendar export run in this browser.</p></div><form id="preview" class="preview-card" hidden aria-live="polite"></form><p id="storage-error" class="warn" role="alert" tabindex="-1" hidden></p><button id="storage-retry" type="button" class="button button-link" hidden>Retry loading saved returns</button></article><aside class="ledger-panel"><header class="panel-heading"><p class="eyebrow">02 / YOUR ACTIVE TRACKER</p><h2>Return windows.</h2><p>Deadlines are recalculated each day and sorted by what needs attention first.</p></header><div class="summary-grid"><div><span>TRACKED</span><strong id="tracked-count">0</strong></div><div><span>DUE IN 7 DAYS</span><strong id="soon-count">0</strong></div><div><span>OVERDUE</span><strong id="expired-count">0</strong></div></div><div class="filter-row" role="group" aria-label="Filter return dates"><button id="filter-all" class="filter active" type="button" aria-pressed="true">All</button><button id="filter-due" class="filter" type="button" aria-pressed="false">Due soon</button><button id="filter-expired" class="filter" type="button" aria-pressed="false">Expired</button></div><p id="edit-feedback" class="edit-feedback" role="status" aria-live="polite"></p><div class="calendar-toolbar"><button id="calendar-open" class="button button-primary" type="button">Export several reminders</button><p id="calendar-feedback" role="status" aria-live="polite"></p></div><ul id="list" aria-live="polite"></ul><p class="list-note">Saved items stay in this browser's local storage. Use the calendar button for an .ics reminder.</p></aside></section>
++<section class="desk-grid" aria-label="Return deadline workspace"><article class="intake-panel"><header class="panel-heading"><p class="eyebrow">01 / START WITH THE ORDER</p><h2>Paste a confirmation.</h2><p>Only details you approve are saved. The original email stays in this text box until you clear it.</p></header><label class="input-label" for="paste">ORDER EMAIL / CONFIRMATION</label><textarea id="paste" rows="9" placeholder="Paste the order confirmation text here..."></textarea><div class="action-row"><button id="find" class="button button-primary">Find the deadline</button><a href="#" id="sample" class="button button-link">Load a fictional example</a></div><div class="privacy-note"><span class="privacy-icon">LOCAL</span><p>No inbox access. No upload. Parsing and calendar export run in this browser.</p></div><form id="preview" class="preview-card" hidden aria-live="polite"></form><p id="storage-error" class="warn" role="alert" tabindex="-1" hidden></p><button id="storage-retry" type="button" class="button button-link" hidden>Retry loading saved returns</button></article><aside class="ledger-panel"><header class="panel-heading"><p class="eyebrow">02 / YOUR ACTIVE TRACKER</p><h2>Return windows.</h2><p>Deadlines are recalculated each day and sorted by what needs attention first.</p></header><div class="summary-grid"><div><span>OPEN</span><strong id="tracked-count">0</strong></div><div><span>DUE IN 7 DAYS</span><strong id="soon-count">0</strong></div><div><span>OVERDUE</span><strong id="expired-count">0</strong></div></div><div class="filter-row" role="group" aria-label="Filter saved returns"><button id="filter-all" class="filter active" type="button" aria-pressed="true">Open</button><button id="filter-due" class="filter" type="button" aria-pressed="false">Due soon</button><button id="filter-expired" class="filter" type="button" aria-pressed="false">Expired</button><button id="filter-completed" class="filter" type="button" aria-pressed="false">Completed (<span id="completed-count">0</span>)</button></div><p id="completion-feedback" class="completion-feedback" role="status" aria-live="polite" tabindex="-1"></p><p id="edit-feedback" class="edit-feedback" role="status" aria-live="polite"></p><div class="calendar-toolbar"><button id="calendar-open" class="button button-primary" type="button">Export several reminders</button><p id="calendar-feedback" role="status" aria-live="polite"></p></div><ul id="list" aria-live="polite"></ul><p class="list-note">Saved items stay in this browser's local storage. Completed returns keep their details without new deadline reminders. Reminders you already imported into a calendar must be removed in that calendar.</p></aside></section>
+ <section class="backup-panel" aria-labelledby="backup-heading">
+   <details>
+     <summary id="backup-heading">Back up or restore saved returns</summary>
+-    <p>Move your tracker to another browser, or keep a copy before clearing storage. A backup contains saved order details and return-window labels. Keep the file private; the original pasted email is excluded.</p>
++    <p>Move your tracker to another browser, or keep a copy before clearing storage. A backup contains saved order details, return-window labels and completion dates. Keep the file private; the original pasted email is excluded.</p>
+     <div class="action-row"><button id="backup-export" type="button" class="button button-primary">Download backup</button></div>
+     <label class="input-label" for="backup-file">Choose a ReturnBy backup to preview</label>
+     <input id="backup-file" type="file" accept=".json,application/json" aria-describedby="backup-limits" />
+-    <p id="backup-limits" class="list-note">Up to 5 MiB and 10,000 orders. Import adds new saved IDs, skips matching copies and refuses conflicting IDs. Return windows and policy labels are restored as saved; confirm current terms with the retailer.</p>
++    <p id="backup-limits" class="list-note">Up to 5 MiB and 10,000 orders. Import adds new saved IDs, skips matching copies and refuses conflicting IDs. Return windows, policy labels and completion state are restored as saved; confirm current terms with the retailer.</p>
+     <p id="backup-message" role="status" aria-live="polite" hidden></p>
+     <div id="backup-preview" hidden>
+       <h3 id="backup-summary" tabindex="-1"></h3>
+diff --git a/src/backup-ui.ts b/src/backup-ui.ts
+index 366341e5d5215809bca6d8f32f130336b0ea3be4..2800b4881442d06395dd78e405fa1e7d3f991a95 100644
+--- a/src/backup-ui.ts
++++ b/src/backup-ui.ts
+@@ -47,7 +47,9 @@ export function bindBackup(tracker: Tracker) {
+       const o = row.order;
+       const action = row.action === 'add' ? 'Add' : row.action === 'skip' ? 'Already saved' : 'Conflict';
+       const source = o.windowSource === 'policy' ? 'saved store policy' : o.windowSource === 'default' ? 'saved fallback' : 'your saved rule';
+-      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ordered ${o.orderDate}, return by ${dueDate(o.orderDate, o.windowDays)} (${o.windowDays} days; ${source})${row.changedFields.length ? `. Different fields: ${row.changedFields.join(', ')}.` : ''}`;
++      const lifecycle = o.completedAt === undefined ? 'Open' : `Completed ${o.completedAt.slice(0, 10)}`;
++      const changed = row.changedFields.map(field => field === 'completedAt' ? 'completion status/date' : field);
++      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ${lifecycle}; ordered ${o.orderDate}, ${o.completedAt === undefined ? 'return by' : 'original return-by'} ${dueDate(o.orderDate, o.windowDays)} (${o.windowDays} days; ${source})${changed.length ? `. Different fields: ${changed.join(', ')}.` : ''}`;
+       return li;
+     }));
+     get('backup-page').textContent = preview.rows.length ? `${start + 1}–${Math.min(start + PAGE_SIZE, preview.rows.length)} of ${preview.rows.length} orders` : 'No orders in this backup';
+diff --git a/src/backup.ts b/src/backup.ts
+index bdd86ce50c723abf8f1d305d4fdf63353510eba8..6ce5062a5ffbda315cae6559dddb41c6ec5a57f8 100644
+--- a/src/backup.ts
++++ b/src/backup.ts
+@@ -3,7 +3,8 @@ import type { Order } from './store';
+ 
+ export const MAX_BACKUP_BYTES = 5 * 1024 * 1024;
+ export const MAX_BACKUP_ORDERS = 10_000;
+-const ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowDays', 'windowSource', 'createdAt'] as const;
++const LEGACY_ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowDays', 'windowSource', 'createdAt'] as const;
++const ORDER_KEYS = [...LEGACY_ORDER_KEYS, 'completedAt'] as const;
+ const encoder = new TextEncoder();
+ // Ordinary ISO export timestamps are always 24 bytes. Use the same envelope
+ // when checking portability without changing any saved record timestamps.
+@@ -41,10 +42,10 @@ function timestamp(value: unknown, label: string): string {
+   return s;
+ }
+ 
+-function order(value: unknown, index: number, strict: boolean): Order {
++function order(value: unknown, index: number, strict: boolean, version: 1 | 2): Order {
+   const label = `Order ${index + 1}`;
+   const row = object(value, label);
+-  if (strict) onlyKeys(row, ORDER_KEYS, label);
++  if (strict) onlyKeys(row, version === 1 ? LEGACY_ORDER_KEYS : ORDER_KEYS, label);
+   const id = text(row.id, `${label} ID`, 128);
+   if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(id)) throw new BackupError(`${label} has an invalid ID.`);
+   if (!isDate(row.orderDate)) throw new BackupError(`${label} has an invalid order date.`);
+@@ -62,14 +63,15 @@ function order(value: unknown, index: number, strict: boolean): Order {
+     windowDays: row.windowDays as number,
+     windowSource: row.windowSource as Order['windowSource'],
+     createdAt: timestamp(row.createdAt, `${label} creation time`),
++    ...(row.completedAt === undefined ? {} : { completedAt: timestamp(row.completedAt, `${label} completion time`) }),
+   };
+ }
+ 
+-function orders(value: unknown, strict = true): Order[] {
++function orders(value: unknown, strict = true, version: 1 | 2 = 2): Order[] {
+   if (!Array.isArray(value) || value.length > MAX_BACKUP_ORDERS) throw new BackupError(`Expected at most ${MAX_BACKUP_ORDERS.toLocaleString('en-US')} saved orders.`);
+   const seen = new Set<string>();
+   return value.map((value, index) => {
+-    const row = order(value, index, strict);
++    const row = order(value, index, strict, version);
+     if (seen.has(row.id)) throw new BackupError(`Order ${index + 1} repeats an ID in this list.`);
+     seen.add(row.id);
+     return row;
+@@ -77,7 +79,9 @@ function orders(value: unknown, strict = true): Order[] {
+ }
+ 
+ function document(rows: Order[], exportedAt: string) {
+-  return { schema: 'returnby.backup', version: 1, exportedAt, orders: rows };
++  // Keep open-only backups readable by older versions. A completed record must
++  // never be imported by an older reader as an ordinary active deadline.
++  return { schema: 'returnby.backup', version: rows.some(row => row.completedAt !== undefined) ? 2 : 1, exportedAt, orders: rows };
+ }
+ 
+ function fits(output: string) { return encoder.encode(output).byteLength <= MAX_BACKUP_BYTES; }
+@@ -101,10 +105,10 @@ export function parseBackup(input: string): Order[] {
+   let parsed: unknown;
+   try { parsed = JSON.parse(input); } catch { throw new BackupError('This file is not valid JSON. Choose a ReturnBy backup.'); }
+   const doc = object(parsed, 'Backup');
+-  if (doc.schema !== 'returnby.backup' || doc.version !== 1) throw new BackupError('This backup format or version is not supported.');
++  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2)) throw new BackupError('This backup format or version is not supported.');
+   onlyKeys(doc, ['schema', 'version', 'exportedAt', 'orders'], 'Backup');
+   timestamp(doc.exportedAt, 'Backup export time');
+-  const rows = orders(doc.orders);
++  const rows = orders(doc.orders, true, doc.version);
+   portable(rows, 'The normalized saved details would exceed the 5 MiB backup limit.');
+   return rows;
+ }
+diff --git a/src/calendar-batch-ui.ts b/src/calendar-batch-ui.ts
+index f14427126feb325861ceb08783877c97cfc92e4d..bdcd1d8350663a0417998be56b640d25e517fc5f 100644
+--- a/src/calendar-batch-ui.ts
++++ b/src/calendar-batch-ui.ts
+@@ -55,7 +55,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
+     choices.replaceChildren();
+     if (!rows.length) {
+       const empty = document.createElement('p');
+-      empty.textContent = 'There are no saved returns to export.';
++      empty.textContent = 'There are no open saved returns to export. Completed returns stay in your tracker history.';
+       choices.append(empty);
+       return;
+     }
+@@ -90,7 +90,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
+       loaded = true;
+       renderChoices();
+       const invalid = rows.filter(row => row.problem).length;
+-      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates before downloading.' : `Initial selection follows the tracker's ${options.filter() === 'due' ? 'Due soon' : options.filter() === 'expired' ? 'Expired' : 'All'} filter. You can change any checkbox below.`}${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}`;
++      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates before downloading.' : `Initial selection follows the tracker's ${options.filter() === 'due' ? 'Due soon' : options.filter() === 'expired' ? 'Expired' : options.filter() === 'completed' ? 'Completed (none selected)' : 'Open'} filter. You can change any checkbox below.`} Completed returns are excluded.${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}`;
+       showMessage('');
+     } catch (error) {
+       loaded = false;
+diff --git a/src/calendar-batch.ts b/src/calendar-batch.ts
+index 520469648c1177f010edf04fa5f779d900e2431f..a7f490349a6fd1bb8dd01438f0e614e4dae4f2b3 100644
+--- a/src/calendar-batch.ts
++++ b/src/calendar-batch.ts
+@@ -1,8 +1,9 @@
+ import { daysLeft, dueDate, todayISO } from './deadline';
+ import { buildIcsCalendar, type CalendarReminder } from './ics';
+ import type { Order } from './store';
++import { isCompleted } from './completion';
+ 
+-export type CalendarFilter = 'all' | 'due' | 'expired';
++export type CalendarFilter = 'all' | 'due' | 'expired' | 'completed';
+ export type CalendarRow = {
+   order: Order;
+   due: string | null;
+@@ -25,6 +26,7 @@ function isCalendarDate(value: string): boolean {
+ }
+ 
+ function reminder(order: Order): CalendarReminder {
++  if (isCompleted(order)) throw new CalendarBatchError('This return is completed. Reopen it before creating a new reminder.');
+   if (typeof order.id !== 'string' || !order.id.length || order.id.length > 4096
+       || /[\u0000-\u001f\u007f]/.test(order.id) || decoder.decode(encoder.encode(order.id)) !== order.id) {
+     throw new CalendarBatchError('This return has an unsupported calendar identity.');
+@@ -52,7 +54,7 @@ export function calendarRows(orders: readonly Order[], today = todayISO()): Cale
+   if (!isCalendarDate(today)) throw new CalendarBatchError('The current calendar date could not be read.');
+   const counts = new Map<string, number>();
+   for (const order of orders) counts.set(order.id, (counts.get(order.id) ?? 0) + 1);
+-  return orders.map(value => {
++  return orders.filter(value => !isCompleted(value)).map(value => {
+     const order = { ...value };
+     try {
+       if (counts.get(order.id) !== 1) throw new CalendarBatchError('More than one saved return uses this calendar identity.');
+diff --git a/src/completion.ts b/src/completion.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..579b8e2c7b4098a39824ba82cd43bc04b87e2a16
+--- /dev/null
++++ b/src/completion.ts
+@@ -0,0 +1,54 @@
++import type { Order } from './store';
++
++export type CompletionAction = 'complete' | 'reopen';
++export class CompletionError extends Error {}
++
++/** A missing marker is the legacy open state. Present markers fail closed. */
++export const isCompleted = (order: Pick<Order, 'completedAt'>): boolean => order.completedAt !== undefined;
++
++export function isCompletionTimestamp(value: unknown): value is string {
++  if (typeof value !== 'string' || value.length > 35 ||
++      !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/.test(value) ||
++      Number(value.slice(0, 4)) < 1000 || Number(value.slice(11, 13)) > 23 || !Number.isFinite(Date.parse(value))) return false;
++  const day = new Date(`${value.slice(0, 10)}T00:00:00Z`);
++  return Number.isFinite(day.getTime()) && day.toISOString().slice(0, 10) === value.slice(0, 10);
++}
++
++function reviewedOrder(current: readonly Order[], displayed: Order | undefined): Order {
++  const matches = displayed ? current.filter(order => order.id === displayed.id) : [];
++  if (!displayed || matches.length !== 1 || JSON.stringify(matches[0]) !== JSON.stringify(displayed)) {
++    throw new CompletionError('This saved return changed or could not be selected. Review the refreshed tracker before trying again.');
++  }
++  const saved = matches[0];
++  if (isCompleted(saved) && !isCompletionTimestamp(saved.completedAt)) {
++    throw new CompletionError('This return has an unsupported completion date. Its saved details were kept.');
++  }
++  return saved;
++}
++
++/** Plan against the freshly read list; the caller still owns its existing write path. */
++export function planCompletion(
++  current: readonly Order[], displayed: Order | undefined, action: CompletionAction, now = new Date(),
++): { next: Order[]; order: Order; changed: boolean } {
++  const saved = reviewedOrder(current, displayed);
++  if (action !== 'complete' && action !== 'reopen') throw new CompletionError('Choose Complete or Reopen.');
++  const completed = action === 'complete';
++  if (isCompleted(saved) === completed) return { next: [...current], order: saved, changed: false };
++  const nextOrder = { ...saved };
++  if (completed) {
++    if (!Number.isFinite(now.getTime()) || !isCompletionTimestamp(now.toISOString())) {
++      throw new CompletionError('The completion date could not be read. Your saved return was kept.');
++    }
++    nextOrder.completedAt = now.toISOString();
++  } else {
++    delete nextOrder.completedAt;
++  }
++  return { next: current.map(order => order === saved ? nextOrder : order), order: nextOrder, changed: true };
++}
++
++/** Single-reminder actions must not use an obsolete card after completion. */
++export function reviewedOpenReturn(current: readonly Order[], displayed: Order | undefined): Order {
++  const saved = reviewedOrder(current, displayed);
++  if (isCompleted(saved)) throw new CompletionError('This return is completed. Reopen it before creating a new reminder.');
++  return saved;
++}
+diff --git a/src/main.ts b/src/main.ts
+index 9eaa6c1f66d93c8ab7b9c9614ce5940b5aa11b13..0f12a013c52404269bf4b8f29ab9e9654f99e34a 100644
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -11,6 +11,7 @@ import { samples } from './samples';
+ import { bindBackup } from './backup-ui';
+ import { bindOrderEditor } from './edit-ui';
+ import { bindCalendarBatch } from './calendar-batch-ui';
++import { isCompleted, planCompletion, reviewedOpenReturn, type CompletionAction } from './completion';
+ 
+ const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
+ const paste = $<HTMLTextAreaElement>('#paste');
+@@ -21,7 +22,7 @@ const storageRetry = $<HTMLButtonElement>('#storage-retry');
+ let orders: Order[] = [];
+ let loadFailed = false;
+ let sampleIdx = 0;
+-let filterMode: 'all' | 'due' | 'expired' = 'all';
++let filterMode: 'all' | 'due' | 'expired' | 'completed' = 'all';
+ 
+ const loadError = "Couldn't load saved returns. Try loading again before saving, or clear saved returns to start over.";
+ 
+@@ -100,6 +101,27 @@ function removeOrder(id: string) {
+   if (persistOrders(current.filter(order => order.id !== id))) render();
+ }
+ 
++function changeCompletion(id: string, action: CompletionAction) {
++  const displayed = orders.filter(order => order.id === id);
++  const current = readCurrentOrders();
++  if (!current) return;
++  try {
++    const plan = planCompletion(current, displayed.length === 1 ? displayed[0] : undefined, action);
++    if (plan.changed && !persistOrders(plan.next)) return;
++    if (!plan.changed) { orders = current; clearStorageError(); }
++    render();
++    const feedback = $('#completion-feedback');
++    feedback.textContent = action === 'complete'
++      ? `${plan.order.merchant || 'Return'} marked completed. Its details are kept in Completed. Remove any reminders already imported into your calendar there.`
++      : `${plan.order.merchant || 'Return'} reopened. It is back in Open with its original reviewed return window.`;
++    feedback.focus();
++  } catch (error) {
++    orders = current;
++    render();
++    showStorageError(error instanceof Error ? error.message : 'This return could not be changed. Review the refreshed tracker.');
++  }
++}
++
+ const h = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+ 
+ function showPreview() {
+@@ -146,23 +168,36 @@ preview.addEventListener('submit', (e) => {
+ 
+ function render() {
+   if (loadFailed) {
+-    for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
++    for (const id of ['tracked-count', 'soon-count', 'expired-count', 'completed-count']) $(`#${id}`).textContent = '—';
+     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
+     return;
+   }
+-  const all=orders.map(o=>{const due=dueDate(o.orderDate,o.windowDays),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);
++  const all=orders.filter(o=>!isCompleted(o)).map(o=>{const due=dueDate(o.orderDate,o.windowDays),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);
+   $('#tracked-count').textContent=String(all.length);$('#soon-count').textContent=String(all.filter(r=>r.left>=0&&r.left<=7).length);$('#expired-count').textContent=String(all.filter(r=>r.left<0).length);
+-  for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
++  $('#completed-count').textContent=String(orders.length-all.length);
++  for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired'],['filter-completed','completed']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
++  if(filterMode==='completed'){renderCompleted();return;}
+   const rows=all.filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
+-  if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
+-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
++  if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':orders.length?'No open returns. Your saved history is in Completed.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
++  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-complete="${h(o.id)}">Mark completed</button><button class="button button-link" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+ }
+ list.addEventListener('click', (e) => {
+   const t = e.target as HTMLElement;
++  if (t.dataset.complete !== undefined) changeCompletion(t.dataset.complete, 'complete');
++  if (t.dataset.reopen !== undefined) changeCompletion(t.dataset.reopen, 'reopen');
+   if (t.dataset.edit !== undefined) orderEditor.open(t.dataset.edit);
+   if (t.dataset.del) removeOrder(t.dataset.del);
+   if (t.dataset.ics) {
+-    const o = orders.find((x) => x.id === t.dataset.ics)!;
++    const displayed = orders.filter(order => order.id === t.dataset.ics);
++    const current = readCurrentOrders();
++    if (!current) return;
++    let o: Order;
++    try { o = reviewedOpenReturn(current, displayed.length === 1 ? displayed[0] : undefined); }
++    catch (error) {
++      orders = current; render();
++      showStorageError(error instanceof Error ? error.message : 'Review the refreshed return before exporting a reminder.');
++      return;
++    }
+     const blob = new Blob([buildIcs({ ...o, due: dueDate(o.orderDate, o.windowDays) })], { type: 'text/calendar' });
+     const a = document.createElement('a');
+     a.href = URL.createObjectURL(blob); a.download = `return-${(o.merchant || 'order').replace(/\W+/g, '-')}.ics`; a.click();
+@@ -170,6 +205,23 @@ list.addEventListener('click', (e) => {
+   }
+ });
+ 
++function renderCompleted() {
++  const completed = orders.filter(isCompleted).sort((a, b) => Date.parse(b.completedAt!) - Date.parse(a.completedAt!));
++  if (!completed.length) {
++    list.innerHTML = '<li class="empty">No completed returns yet. Mark a return completed when you have finished it; its details will stay here.</li>';
++    return;
++  }
++  list.innerHTML = completed.map(o => {
++    const source = o.windowSource === 'policy' ? 'STORE POLICY' : o.windowSource === 'default' ? 'FALLBACK' : 'YOUR RULE';
++    return `<li class="card completed"><div class="order-head"><div><strong>${h(o.merchant || 'Unknown store')}</strong>${o.orderNo ? ` <span class="mono">#${h(o.orderNo)}</span>` : ''}</div><span class="status-tag">COMPLETED</span></div>
++      <div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${source} / ${o.windowDays} DAYS</span></div>
++      <p class="completion-detail">Completed ${h(o.completedAt!.slice(0, 10))}${o.total ? ` · ${h(o.total)}` : ''}<br>Original return-by ${h(dueDate(o.orderDate, o.windowDays))}</p>
++      <div class="order-actions"><button class="button button-primary" data-reopen="${h(o.id)}">Reopen return</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;
++  }).join('');
++}
++
++$('#filter-completed').addEventListener('click',()=>{filterMode='completed';render();});
++
+ $('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);
+ paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
+ $('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
+diff --git a/src/store.ts b/src/store.ts
+index c7333d076f851c4dbad6199eaebd6ca34f4abdb3..c46afe6a95e2e3e371b5d2340b85ba7e01deeda1 100644
+--- a/src/store.ts
++++ b/src/store.ts
+@@ -1,6 +1,9 @@
++import { isCompletionTimestamp } from './completion';
++
+ export type Order = {
+   id: string; merchant: string; orderNo?: string; total?: string;
+   orderDate: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
++  completedAt?: string;
+ };
+ const KEY = 'returnby.v1';
+ const isOrder = (value: unknown): value is Order => {
+@@ -10,7 +13,8 @@ const isOrder = (value: unknown): value is Order => {
+     && typeof o.windowDays === 'number' && Number.isFinite(o.windowDays)
+     && (o.windowSource === 'policy' || o.windowSource === 'default' || o.windowSource === 'user')
+     && (o.orderNo === undefined || typeof o.orderNo === 'string')
+-    && (o.total === undefined || typeof o.total === 'string');
++    && (o.total === undefined || typeof o.total === 'string')
++    && (o.completedAt === undefined || isCompletionTimestamp(o.completedAt));
+ };
+ // Backup/restore must distinguish unreadable storage from an empty tracker.
+ export const read = (): unknown => {
+diff --git a/src/style.css b/src/style.css
+index d4e76b0ae4264b2ee426472ad2926690029ba3fb..47cbd9206c48b02e175506d56e95d90250268f2a 100644
+--- a/src/style.css
++++ b/src/style.css
+@@ -1 +1,3 @@
+-:root{--paper:#f2efe5;--ink:#20292d;--muted:#647176;--line:#d8d7ce;--white:#fffdf7;--copper:#c95632;--green:#2f6b58;--warn:#b56c25;--danger:#a83f38;--serif:Georgia,'Times New Roman',serif;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font-family:system-ui,-apple-system,Segoe UI,sans-serif}.page-shell{width:min(1320px,calc(100% - 44px));margin:auto}.topbar{height:82px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none}.brand-mark{width:40px;height:40px;display:grid;place-items:center;background:var(--copper);color:white;font:700 14px var(--mono);transform:rotate(-4deg)}.brand strong,.brand small{display:block}.brand strong{font:700 13px var(--mono);letter-spacing:.14em}.brand small{margin-top:4px;color:var(--muted);font:9px var(--mono);letter-spacing:.13em}.local-chip{display:flex;align-items:center;gap:8px;color:var(--muted);font:9px var(--mono);letter-spacing:.08em}.local-chip i{width:7px;height:7px;border-radius:50%;background:var(--green)}.hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(230px,.6fr);gap:30px;align-items:end;padding:56px 0 42px}.eyebrow{margin:0 0 14px;color:var(--copper);font:10px var(--mono);letter-spacing:.14em}.hero h1{font:clamp(48px,7vw,92px)/.94 var(--serif);letter-spacing:-.045em;margin:0}.hero h1 em{color:var(--copper);font-weight:400}.sub{max-width:750px;color:#465257;font-size:15px;line-height:1.75;margin:22px 0 0}.hero-notes{display:flex;gap:18px;flex-wrap:wrap;margin-top:23px;color:var(--muted);font:9px var(--mono);letter-spacing:.1em}.hero-ticket{justify-self:end;width:min(100%,270px);min-height:188px;background:#233a39;color:#f2efe5;padding:20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:8px 8px 0 #ded8c8}.ticket-kicker,.hero-ticket>span:last-child{font:9px var(--mono);letter-spacing:.12em;color:#b9c9bd}.hero-ticket strong{font:56px/.95 var(--serif);color:#efb07e}.hero-ticket strong i{font:12px var(--mono);font-style:normal}.ticket-line{border-top:1px dashed #71857a;margin:8px 0}.desk-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}.intake-panel,.ledger-panel{padding:24px;border:1px solid var(--line);min-width:0}.intake-panel{background:var(--white)}.ledger-panel{background:#233a39;color:#f4f0e7;border-color:#233a39}.panel-heading h2{font:30px/1.05 var(--serif);margin:0}.panel-heading>p:last-child{color:var(--muted);font-size:12px;line-height:1.55;margin:9px 0 18px}.ledger-panel .panel-heading>p:last-child{color:#c3d0c8}.input-label{display:block;margin:16px 0 7px;color:var(--muted);font:9px var(--mono);letter-spacing:.11em}textarea{display:block;width:100%;min-height:175px;resize:vertical;padding:14px;border:1px solid var(--line);border-radius:2px;background:#faf8f0;color:var(--ink);font:12px/1.6 var(--mono)}textarea:focus,input:focus{outline:2px solid var(--copper);outline-offset:2px}.action-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0}.button{appearance:none;border:0;border-radius:0;padding:11px 14px;font:10px var(--mono);letter-spacing:.06em;text-decoration:none;cursor:pointer}.button-primary{background:var(--copper);color:white}.button-primary:hover{background:#a94022}.button-link{background:transparent;color:var(--copper);border:1px solid var(--line)}.button:focus-visible,.filter:focus-visible,a:focus-visible{outline:2px solid var(--copper);outline-offset:3px}.privacy-note{display:flex;align-items:center;gap:10px;padding:11px;background:var(--paper);color:var(--muted)}.privacy-icon{color:var(--green);font:9px var(--mono);letter-spacing:.08em}.privacy-note p{font-size:10px;line-height:1.5;margin:0}.preview-card{margin-top:15px;border:1px solid var(--line);padding:16px;display:grid;gap:10px;background:#f8f4e9}.preview-card[hidden]{display:none}.review-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.review-head span,.review-note{color:var(--muted);font:9px var(--mono);letter-spacing:.07em}.review-head strong{display:block;margin-top:5px;font:18px var(--serif)}.policy-chip{padding:6px 8px;background:#e4ece4;color:var(--green)}.review-note{line-height:1.5;margin:0}.preview-card>label{display:grid;gap:5px;color:var(--muted);font:9px var(--mono);letter-spacing:.08em}.preview-card input{width:100%;padding:9px;border:1px solid var(--line);border-radius:0;background:var(--white);color:var(--ink);font:12px var(--mono)}.preview-card label.missing input{border-color:var(--warn);background:#fff8e9}.preview-card .warn{color:var(--warn);font-size:11px;margin:0}.preview-card .src{font-size:10px;line-height:1.5;color:var(--muted);margin:0}.preview-card button[type=submit]{justify-self:start}.summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:18px 0 14px}.summary-grid div{padding:10px;background:#2d4845;border:1px solid #45615b}.summary-grid span{display:block;color:#b9c9bd;font:8px var(--mono);letter-spacing:.08em}.summary-grid strong{display:block;margin-top:6px;color:#f0b084;font:24px var(--serif)}.filter-row{display:flex;gap:6px;margin-bottom:12px}.filter{padding:7px 10px;border:1px solid #58716b;background:transparent;color:#d9e2d9;font:9px var(--mono);cursor:pointer}.filter.active,.filter[aria-pressed=true]{background:#efb07e;border-color:#efb07e;color:#203636}.ledger-panel ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}.ledger-panel .empty{padding:18px;border:1px dashed #71857a;color:#d0dad1;font-size:12px;line-height:1.6}.list-note{font-size:10px;line-height:1.5;color:#c3d0c8;margin:12px 0 0}.ledger-panel .card{padding:13px;background:var(--white);color:var(--ink);border-left:5px solid var(--green);box-shadow:4px 4px 0 rgba(5,20,17,.12)}.ledger-panel .card.soon{border-color:var(--warn)}.ledger-panel .card.urgent{border-color:var(--danger)}.ledger-panel .card.expired{border-color:#758083;color:#6c767a}.order-head,.order-foot,.window-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.order-head strong{font:18px var(--serif)}.mono{font:10px var(--mono)}.status-tag,.source-tag{padding:4px 6px;background:#e4ece4;color:var(--green);font:8px var(--mono);letter-spacing:.04em}.soon .status-tag,.urgent .status-tag{background:#fff1df;color:#8f4c19}.expired .status-tag{background:#e8e9e7;color:#596165}.window-meta{margin:10px 0 5px;color:var(--muted);font:8px var(--mono);letter-spacing:.04em}.window-track{height:4px;background:#e4e3da;margin:7px 0 10px}.window-track i{display:block;height:100%;background:var(--green)}.soon .window-track i,.urgent .window-track i{background:var(--warn)}.expired .window-track i{background:#758083}.return-by{font:12px var(--mono);color:var(--ink)}.days-left{font:700 15px var(--mono);color:var(--green)}.soon .days-left,.urgent .days-left{color:var(--danger)}.expired .days-left{color:#758083}.order-actions{display:flex;gap:8px;margin-top:10px}.order-actions button{padding:7px 9px;font-size:8px}.order-actions .button-link{border-color:#d5d4ca}.method-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:28px 0 40px}.method-strip article{border-top:1px solid var(--line);padding-top:12px}.method-strip article>span{color:var(--copper);font:10px var(--mono)}.method-strip h3{font:20px var(--serif);margin:9px 0 6px}.method-strip p{max-width:340px;color:var(--muted);font-size:11px;line-height:1.6;margin:0}.footer{display:flex;justify-content:space-between;align-items:center;gap:15px;border-top:1px solid var(--line);padding:18px 0 30px}.footer p{max-width:720px;color:var(--muted);font-size:10px;line-height:1.6;margin:0}.footer strong{color:var(--ink);font:9px var(--mono);letter-spacing:.08em}@media(max-width:900px){.desk-grid{grid-template-columns:minmax(0,1fr)}.hero{grid-template-columns:minmax(0,1fr) 220px}.method-strip{gap:12px}}@media(max-width:620px){.page-shell{width:calc(100% - 24px)}.topbar{height:68px}.local-chip{font-size:7px;letter-spacing:.03em}.brand-mark{width:34px;height:34px}.brand strong{font-size:11px}.hero{grid-template-columns:minmax(0,1fr);padding:34px 0 26px;gap:20px}.hero h1{font-size:clamp(44px,12vw,66px)}.hero-ticket{justify-self:stretch;width:100%;min-height:142px;box-shadow:5px 5px 0 #ded8c8}.hero-ticket strong{font-size:43px}.intake-panel,.ledger-panel{padding:16px}.panel-heading h2{font-size:27px}.summary-grid{gap:5px}.summary-grid div{padding:8px 6px}.summary-grid span{font-size:7px;letter-spacing:0}.summary-grid strong{font-size:20px}.method-strip{grid-template-columns:minmax(0,1fr);gap:14px;padding-top:22px}.footer{align-items:flex-start;flex-direction:column}.order-head strong{font-size:16px}.preview-card{padding:12px}}
+\ No newline at end of file
++:root{--paper:#f2efe5;--ink:#20292d;--muted:#647176;--line:#d8d7ce;--white:#fffdf7;--copper:#c95632;--green:#2f6b58;--warn:#b56c25;--danger:#a83f38;--serif:Georgia,'Times New Roman',serif;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font-family:system-ui,-apple-system,Segoe UI,sans-serif}.page-shell{width:min(1320px,calc(100% - 44px));margin:auto}.topbar{height:82px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none}.brand-mark{width:40px;height:40px;display:grid;place-items:center;background:var(--copper);color:white;font:700 14px var(--mono);transform:rotate(-4deg)}.brand strong,.brand small{display:block}.brand strong{font:700 13px var(--mono);letter-spacing:.14em}.brand small{margin-top:4px;color:var(--muted);font:9px var(--mono);letter-spacing:.13em}.local-chip{display:flex;align-items:center;gap:8px;color:var(--muted);font:9px var(--mono);letter-spacing:.08em}.local-chip i{width:7px;height:7px;border-radius:50%;background:var(--green)}.hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(230px,.6fr);gap:30px;align-items:end;padding:56px 0 42px}.eyebrow{margin:0 0 14px;color:var(--copper);font:10px var(--mono);letter-spacing:.14em}.hero h1{font:clamp(48px,7vw,92px)/.94 var(--serif);letter-spacing:-.045em;margin:0}.hero h1 em{color:var(--copper);font-weight:400}.sub{max-width:750px;color:#465257;font-size:15px;line-height:1.75;margin:22px 0 0}.hero-notes{display:flex;gap:18px;flex-wrap:wrap;margin-top:23px;color:var(--muted);font:9px var(--mono);letter-spacing:.1em}.hero-ticket{justify-self:end;width:min(100%,270px);min-height:188px;background:#233a39;color:#f2efe5;padding:20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:8px 8px 0 #ded8c8}.ticket-kicker,.hero-ticket>span:last-child{font:9px var(--mono);letter-spacing:.12em;color:#b9c9bd}.hero-ticket strong{font:56px/.95 var(--serif);color:#efb07e}.hero-ticket strong i{font:12px var(--mono);font-style:normal}.ticket-line{border-top:1px dashed #71857a;margin:8px 0}.desk-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}.intake-panel,.ledger-panel{padding:24px;border:1px solid var(--line);min-width:0}.intake-panel{background:var(--white)}.ledger-panel{background:#233a39;color:#f4f0e7;border-color:#233a39}.panel-heading h2{font:30px/1.05 var(--serif);margin:0}.panel-heading>p:last-child{color:var(--muted);font-size:12px;line-height:1.55;margin:9px 0 18px}.ledger-panel .panel-heading>p:last-child{color:#c3d0c8}.input-label{display:block;margin:16px 0 7px;color:var(--muted);font:9px var(--mono);letter-spacing:.11em}textarea{display:block;width:100%;min-height:175px;resize:vertical;padding:14px;border:1px solid var(--line);border-radius:2px;background:#faf8f0;color:var(--ink);font:12px/1.6 var(--mono)}textarea:focus,input:focus{outline:2px solid var(--copper);outline-offset:2px}.action-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0}.button{appearance:none;border:0;border-radius:0;padding:11px 14px;font:10px var(--mono);letter-spacing:.06em;text-decoration:none;cursor:pointer}.button-primary{background:var(--copper);color:white}.button-primary:hover{background:#a94022}.button-link{background:transparent;color:var(--copper);border:1px solid var(--line)}.button:focus-visible,.filter:focus-visible,a:focus-visible{outline:2px solid var(--copper);outline-offset:3px}.privacy-note{display:flex;align-items:center;gap:10px;padding:11px;background:var(--paper);color:var(--muted)}.privacy-icon{color:var(--green);font:9px var(--mono);letter-spacing:.08em}.privacy-note p{font-size:10px;line-height:1.5;margin:0}.preview-card{margin-top:15px;border:1px solid var(--line);padding:16px;display:grid;gap:10px;background:#f8f4e9}.preview-card[hidden]{display:none}.review-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.review-head span,.review-note{color:var(--muted);font:9px var(--mono);letter-spacing:.07em}.review-head strong{display:block;margin-top:5px;font:18px var(--serif)}.policy-chip{padding:6px 8px;background:#e4ece4;color:var(--green)}.review-note{line-height:1.5;margin:0}.preview-card>label{display:grid;gap:5px;color:var(--muted);font:9px var(--mono);letter-spacing:.08em}.preview-card input{width:100%;padding:9px;border:1px solid var(--line);border-radius:0;background:var(--white);color:var(--ink);font:12px var(--mono)}.preview-card label.missing input{border-color:var(--warn);background:#fff8e9}.preview-card .warn{color:var(--warn);font-size:11px;margin:0}.preview-card .src{font-size:10px;line-height:1.5;color:var(--muted);margin:0}.preview-card button[type=submit]{justify-self:start}.summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:18px 0 14px}.summary-grid div{padding:10px;background:#2d4845;border:1px solid #45615b}.summary-grid span{display:block;color:#b9c9bd;font:8px var(--mono);letter-spacing:.08em}.summary-grid strong{display:block;margin-top:6px;color:#f0b084;font:24px var(--serif)}.filter-row{display:flex;gap:6px;margin-bottom:12px}.filter{padding:7px 10px;border:1px solid #58716b;background:transparent;color:#d9e2d9;font:9px var(--mono);cursor:pointer}.filter.active,.filter[aria-pressed=true]{background:#efb07e;border-color:#efb07e;color:#203636}.ledger-panel ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}.ledger-panel .empty{padding:18px;border:1px dashed #71857a;color:#d0dad1;font-size:12px;line-height:1.6}.list-note{font-size:10px;line-height:1.5;color:#c3d0c8;margin:12px 0 0}.ledger-panel .card{padding:13px;background:var(--white);color:var(--ink);border-left:5px solid var(--green);box-shadow:4px 4px 0 rgba(5,20,17,.12)}.ledger-panel .card.soon{border-color:var(--warn)}.ledger-panel .card.urgent{border-color:var(--danger)}.ledger-panel .card.expired{border-color:#758083;color:#6c767a}.order-head,.order-foot,.window-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.order-head strong{font:18px var(--serif)}.mono{font:10px var(--mono)}.status-tag,.source-tag{padding:4px 6px;background:#e4ece4;color:var(--green);font:8px var(--mono);letter-spacing:.04em}.soon .status-tag,.urgent .status-tag{background:#fff1df;color:#8f4c19}.expired .status-tag{background:#e8e9e7;color:#596165}.window-meta{margin:10px 0 5px;color:var(--muted);font:8px var(--mono);letter-spacing:.04em}.window-track{height:4px;background:#e4e3da;margin:7px 0 10px}.window-track i{display:block;height:100%;background:var(--green)}.soon .window-track i,.urgent .window-track i{background:var(--warn)}.expired .window-track i{background:#758083}.return-by{font:12px var(--mono);color:var(--ink)}.days-left{font:700 15px var(--mono);color:var(--green)}.soon .days-left,.urgent .days-left{color:var(--danger)}.expired .days-left{color:#758083}.order-actions{display:flex;gap:8px;margin-top:10px}.order-actions button{padding:7px 9px;font-size:8px}.order-actions .button-link{border-color:#d5d4ca}.method-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:28px 0 40px}.method-strip article{border-top:1px solid var(--line);padding-top:12px}.method-strip article>span{color:var(--copper);font:10px var(--mono)}.method-strip h3{font:20px var(--serif);margin:9px 0 6px}.method-strip p{max-width:340px;color:var(--muted);font-size:11px;line-height:1.6;margin:0}.footer{display:flex;justify-content:space-between;align-items:center;gap:15px;border-top:1px solid var(--line);padding:18px 0 30px}.footer p{max-width:720px;color:var(--muted);font-size:10px;line-height:1.6;margin:0}.footer strong{color:var(--ink);font:9px var(--mono);letter-spacing:.08em}@media(max-width:900px){.desk-grid{grid-template-columns:minmax(0,1fr)}.hero{grid-template-columns:minmax(0,1fr) 220px}.method-strip{gap:12px}}@media(max-width:620px){.page-shell{width:calc(100% - 24px)}.topbar{height:68px}.local-chip{font-size:7px;letter-spacing:.03em}.brand-mark{width:34px;height:34px}.brand strong{font-size:11px}.hero{grid-template-columns:minmax(0,1fr);padding:34px 0 26px;gap:20px}.hero h1{font-size:clamp(44px,12vw,66px)}.hero-ticket{justify-self:stretch;width:100%;min-height:142px;box-shadow:5px 5px 0 #ded8c8}.hero-ticket strong{font-size:43px}.intake-panel,.ledger-panel{padding:16px}.panel-heading h2{font-size:27px}.summary-grid{gap:5px}.summary-grid div{padding:8px 6px}.summary-grid span{font-size:7px;letter-spacing:0}.summary-grid strong{font-size:20px}.method-strip{grid-template-columns:minmax(0,1fr);gap:14px;padding-top:22px}.footer{align-items:flex-start;flex-direction:column}.order-head strong{font-size:16px}.preview-card{padding:12px}}
++/* Completion keeps history readable without deadline urgency. */
++.filter-row,.order-actions{flex-wrap:wrap}.completion-feedback{font-size:12px;line-height:1.6;margin:0 0 12px;color:#f4f0e7}.completion-feedback:empty{display:none}.completion-feedback:focus{outline:2px solid #efb07e;outline-offset:4px}.ledger-panel .card.completed{border-color:#71857a}.completed .status-tag{background:#e8eee8;color:#3f5c48}.completion-detail{font:11px/1.7 var(--mono);color:var(--muted);overflow-wrap:anywhere}.order-head>div{min-width:0;overflow-wrap:anywhere}
+diff --git a/tests/backup-ui.test.mjs b/tests/backup-ui.test.mjs
+index cb5862290d369067cf6eb3500b062d2222c1317b..f86bd93f282725f4214399052c129e685d552e4e 100644
+--- a/tests/backup-ui.test.mjs
++++ b/tests/backup-ui.test.mjs
+@@ -101,7 +101,7 @@ test('a byte-limit overflow in the combined tracker is refused before any import
+ test.each(['unsupported version', 'foreign window source', 'malformed JSON', 'late bad row', 'oversized file'])('%s does not commit any rows', async kind => {
+   const app = await open([storedOrder('saved')]);
+   const file = JSON.parse(exportBackup([storedOrder('new'), storedOrder('other')]));
+-  if (kind === 'unsupported version') file.version = 2;
++  if (kind === 'unsupported version') file.version = 3;
+   if (kind === 'foreign window source') file.orders[1].windowSource = 'retailer-verified';
+   if (kind === 'late bad row') file.orders[1].windowDays = false;
+   await app.choose(kind === 'malformed JSON' ? '{' : JSON.stringify(file), kind === 'oversized file' ? MAX_BACKUP_BYTES + 1 : undefined);
+diff --git a/tests/backup.test.ts b/tests/backup.test.ts
+index 16f2e34707efb6edc86c322c01d3a050e7430c64..001583428fd66244be03e94c9b2f132ecdd406d3 100644
+--- a/tests/backup.test.ts
++++ b/tests/backup.test.ts
+@@ -66,7 +66,7 @@ test('two individually portable trackers cannot merge beyond the backup byte lim
+ 
+ describe('untrusted files are rejected completely', () => {
+   test.each([
+-    ['unknown version', file([order()], { version: 2 })],
++    ['unknown version', file([order()], { version: 3 })],
+     ['string version', file([order()], { version: '1' })],
+     ['foreign schema', file([order()], { schema: 'something-else' })],
+     ['unknown root field', file([order()], { rawEmail: 'unexpected' })],
+diff --git a/tests/completion-receiving.test.mjs b/tests/completion-receiving.test.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..4bc41f6a8f64dc98e33b34c4f3fff9d1517bfaec
+--- /dev/null
++++ b/tests/completion-receiving.test.mjs
+@@ -0,0 +1,34 @@
++import { readFileSync } from 'node:fs';
++import { afterEach, expect, test, vi } from 'vitest';
++import { exportBackup, parseBackup } from '../src/backup';
++import { calendarRows, initialCalendarSelection } from '../src/calendar-batch';
++import { storageFixture, storedOrder } from './helpers/storage-fixture.mjs';
++
++afterEach(() => vi.unstubAllGlobals());
++const completedAt = '2026-10-08T12:34:56.000Z';
++
++test('approved backup round trip retains a completed return and its reviewed details', () => {
++  const original = { ...storedOrder('DONE'), completedAt };
++  const contents = exportBackup([original]);
++  expect(JSON.parse(contents).version).toBe(2);
++  expect(parseBackup(contents)).toEqual([original]);
++});
++
++test('calendar eligibility excludes completed returns while retaining open returns', () => {
++  const rows = calendarRows([storedOrder('OPEN'), { ...storedOrder('DONE'), completedAt }], '2026-10-08');
++  expect(initialCalendarSelection(rows, 'all')).toEqual(['OPEN']);
++});
++
++test('the actual tracker offers completion without removing the saved identity', async () => {
++  vi.resetModules();
++  const app = storageFixture(readFileSync(new URL('../index.html', import.meta.url), 'utf8'), [storedOrder('OPEN')]);
++  for (const [key, value] of Object.entries(app.globals)) vi.stubGlobal(key, value);
++  await import('../src/main.ts');
++  expect(app.elements.get('list').innerHTML).toContain('data-complete="OPEN"');
++  app.elements.get('list').listeners.get('click')({ target: { dataset: { complete: 'OPEN' } } });
++  const saved = app.persisted()[0];
++  expect(saved.id).toBe('OPEN');
++  expect(saved.createdAt).toBe(storedOrder('OPEN').createdAt);
++  expect(typeof saved.completedAt).toBe('string');
++  expect(app.count()).toBe(0);
++});
+diff --git a/tests/completion-ui.test.mjs b/tests/completion-ui.test.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..a292fa7442dedbac04932a1361368dc86fad0e5b
+--- /dev/null
++++ b/tests/completion-ui.test.mjs
+@@ -0,0 +1,135 @@
++import { readFileSync } from 'node:fs';
++import { URL as NativeURL } from 'node:url';
++import { afterEach, expect, test, vi } from 'vitest';
++import { storageFixture, storedOrder } from './helpers/storage-fixture.mjs';
++
++afterEach(() => vi.unstubAllGlobals());
++const completedAt = '2026-10-08T12:34:56.000Z';
++
++async function open(initial = [storedOrder('A')]) {
++  vi.resetModules();
++  const app = storageFixture(readFileSync(new URL('../index.html', import.meta.url), 'utf8'), initial);
++  const storage = app.globals.localStorage;
++  let refuseRead = false, allocations = 0;
++  const downloads = [];
++  app.globals.localStorage = {
++    getItem(key) { if (refuseRead) throw Error('Private current-read refusal'); return storage.getItem(key); },
++    setItem: storage.setItem,
++  };
++  app.globals.document.createElement = () => ({ href: '', download: '', click() { downloads.push(this.download); } });
++  app.globals.URL = class extends NativeURL {
++    static createObjectURL() { allocations++; return 'blob:private-fixture'; }
++    static revokeObjectURL() {}
++  };
++  for (const [key, value] of Object.entries(app.globals)) vi.stubGlobal(key, value);
++  await import('../src/main.ts');
++  const click = (id, dataset = {}) => app.elements.get(id).listeners.get('click')({ target: { dataset } });
++  return { ...app, downloads, allocations: () => allocations,
++    complete: id => click('list', { complete: id }), reopen: id => click('list', { reopen: id }),
++    reminder: id => click('list', { ics: id }), history: () => click('filter-completed'), active: () => click('filter-all'),
++    external(rows) { storage.setItem('returnby.v1', JSON.stringify(rows)); },
++    refuseRead(value) { refuseRead = value; }, retry: () => click('storage-retry'),
++  };
++}
++
++test('actual Complete and Reopen handlers retain history, quiet counts, draft and action focus', async () => {
++  const original = { ...storedOrder('A'), orderDate: '2025-01-01' };
++  const app = await open([original]);
++  app.draft('UNSAVED');
++  app.complete('A');
++  const done = app.persisted()[0];
++  expect(done).toMatchObject(original);
++  expect(typeof done.completedAt).toBe('string');
++  expect(app.count()).toBe(0);
++  expect(app.elements.get('expired-count').textContent).toBe('0');
++  expect(app.elements.get('completed-count').textContent).toBe('1');
++  expect(app.globals.document.activeElement.id).toBe('completion-feedback');
++  app.history();
++  const html = app.elements.get('list').innerHTML;
++  expect(html).toContain('COMPLETED');
++  expect(html).toContain('$8.00');
++  expect(html).toContain('Original return-by 2025-01-31');
++  expect(html).toContain('data-edit="A"');
++  expect(html).toContain('data-del="A"');
++  expect(html).not.toMatch(/progressbar|data-ics|days-left|PAST DUE/);
++  app.reopen('A');
++  expect(app.persisted()).toEqual([original]);
++  expect(app.count()).toBe(1);
++  expect(app.elements.get('expired-count').textContent).toBe('1');
++  expect(app.elements.get('paste').value).toBe('Unsaved email UNSAVED');
++  expect(app.elements.get('preview').fields.orderNo).toBe('UNSAVED');
++});
++
++test('a refused completion write retains active UI and a retry preserves subsequent unrelated writes', async () => {
++  const app = await open();
++  app.draft('UNSAVED');
++  app.failNext();
++  app.complete('A');
++  expect(app.persisted()).toEqual([storedOrder('A')]);
++  expect(app.count()).toBe(1);
++  expect(app.elements.get('list').innerHTML).toContain('data-complete="A"');
++  expect(app.elements.get('storage-error').hidden).toBe(false);
++  app.external([storedOrder('A'), storedOrder('OTHER-TAB')]);
++  app.complete('A');
++  expect(app.persisted()[1]).toEqual(storedOrder('OTHER-TAB'));
++  expect(app.persisted()[0].completedAt).toBeDefined();
++  const attempts = app.attempts.length, stamp = app.persisted()[0].completedAt;
++  app.complete('A');
++  expect(app.attempts).toHaveLength(attempts);
++  expect(app.persisted()[0].completedAt).toBe(stamp);
++  expect(app.elements.get('paste').value).toBe('Unsaved email UNSAVED');
++});
++
++test('stale status actions refresh and refuse before any write, then permit an explicit reviewed action', async () => {
++  const app = await open();
++  const corrected = { ...storedOrder('A'), total: '$99.00' };
++  app.external([corrected, storedOrder('OTHER')]);
++  const attempts = app.attempts.length;
++  app.complete('A');
++  expect(app.attempts).toHaveLength(attempts);
++  expect(app.persisted()).toEqual([corrected, storedOrder('OTHER')]);
++  expect(app.elements.get('storage-error').textContent).toMatch(/changed|review/i);
++  app.complete('A');
++  expect(app.persisted()[0]).toMatchObject({ ...corrected, completedAt: expect.any(String) });
++  const reopenedElsewhere = { ...corrected, total: '$101.00' };
++  app.external([reopenedElsewhere]);
++  const beforeReopen = app.attempts.length;
++  app.reopen('A');
++  expect(app.attempts).toHaveLength(beforeReopen);
++  expect(app.persisted()).toEqual([reopenedElsewhere]);
++});
++
++test('read refusal prevents completion until explicit reload; invalid saved markers also fail closed', async () => {
++  const app = await open();
++  app.draft('RETAIN');
++  app.refuseRead(true);
++  app.complete('A');
++  expect(app.attempts).toHaveLength(0);
++  expect(app.elements.get('storage-retry').hidden).toBe(false);
++  app.refuseRead(false); app.retry(); app.complete('A');
++  expect(app.persisted()[0].completedAt).toBeDefined();
++  expect(app.elements.get('paste').value).toBe('Unsaved email RETAIN');
++  for (const value of ['', false, 12, null, '2026-02-30T12:00:00Z']) {
++    const invalid = await open([{ ...storedOrder('BAD'), completedAt: value }]);
++    expect(invalid.elements.get('tracked-count').textContent).toBe('—');
++    expect(invalid.attempts).toHaveLength(0);
++    expect(invalid.persisted()[0].completedAt).toEqual(value);
++  }
++});
++
++test('the actual single-reminder handler refuses stale completion without allocating a file', async () => {
++  const app = await open();
++  app.external([{ ...storedOrder('A'), completedAt }]);
++  const attempts = app.attempts.length;
++  app.reminder('A');
++  expect(app.allocations()).toBe(0);
++  expect(app.downloads).toEqual([]);
++  expect(app.attempts).toHaveLength(attempts);
++  expect(app.elements.get('storage-error').textContent).toMatch(/changed|review/i);
++  app.reminder('A');
++  expect(app.allocations()).toBe(0);
++  expect(app.elements.get('storage-error').textContent).toMatch(/completed/);
++  app.reopen('A'); app.reminder('A');
++  expect(app.allocations()).toBe(1);
++  expect(app.downloads).toHaveLength(1);
++});
+diff --git a/tests/completion.test.ts b/tests/completion.test.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..c12dfe54503b21c78a1a450c0c873459c2403ed4
+--- /dev/null
++++ b/tests/completion.test.ts
+@@ -0,0 +1,116 @@
++import { expect, test } from 'vitest';
++import { isCompleted, isCompletionTimestamp, planCompletion, reviewedOpenReturn } from '../src/completion';
++import { exportBackup, parseBackup, planImport } from '../src/backup';
++import { calendarRows, initialCalendarSelection, planCalendarBatch } from '../src/calendar-batch';
++import { planEdit } from '../src/edit';
++import type { Order } from '../src/store';
++
++const now = new Date('2026-10-08T12:34:56.000Z');
++const order = (id = 'A', patch: Partial<Order> = {}): Order => ({
++  id, merchant: 'Reviewed Shop', orderNo: 'REVIEWED-42', total: '$42.00', orderDate: '2026-10-01',
++  windowDays: 45, windowSource: 'user', createdAt: '2026-10-01T09:10:11+03:00', ...patch,
++});
++const backup = (rows: unknown, version = 2) => JSON.stringify({ schema: 'returnby.backup', version, exportedAt: now.toISOString(), orders: rows });
++
++test('complete and reopen preserve reviewed identity, field order, unrelated rows and source objects', () => {
++  const original = Object.freeze({ ...order(), extension: Object.freeze({ retained: true }) });
++  const other = Object.freeze(order('B'));
++  const current = Object.freeze([other, original]);
++  const before = JSON.stringify(current);
++  const done = planCompletion(current, original, 'complete', now);
++  expect(done.changed).toBe(true);
++  expect(done.next[0]).toBe(other);
++  expect(done.order).toEqual({ ...original, completedAt: now.toISOString() });
++  expect(JSON.stringify(current)).toBe(before);
++  expect(isCompleted(original)).toBe(false);
++  const reopened = planCompletion(done.next, done.order, 'reopen', now);
++  expect(reopened.order).toEqual(original);
++  expect(reopened.next[0]).toBe(other);
++  expect(JSON.stringify(reopened.order)).toBe(JSON.stringify(original));
++  expect(done.order.completedAt).toBe(now.toISOString());
++});
++
++test('deliberate same-state repeats are no-write plans and keep the original completion time', () => {
++  const completed = order('A', { completedAt: now.toISOString() });
++  const same = planCompletion([completed], completed, 'complete', new Date('2026-10-09T01:00:00Z'));
++  expect(same.changed).toBe(false);
++  expect(same.order).toBe(completed);
++  const open = order();
++  expect(planCompletion([open], open, 'reopen', now)).toMatchObject({ changed: false, order: open });
++});
++
++test('stale, missing, duplicated and invalid completion targets refuse without a successor list', () => {
++  const original = order();
++  for (const current of [[], [order('B')], [original, original], [order('A', { total: '$9.00' })],
++    [order('A', { completedAt: now.toISOString() })]]) {
++    const before = JSON.stringify(current);
++    expect(() => planCompletion(current, original, 'complete', now)).toThrow(/changed|selected/);
++    expect(JSON.stringify(current)).toBe(before);
++  }
++  const invalid = order('A', { completedAt: 'not-a-date' });
++  expect(() => planCompletion([invalid], invalid, 'reopen', now)).toThrow(/unsupported/);
++  expect(() => planCompletion([original], original, 'complete', new Date(NaN))).toThrow(/date/);
++});
++
++test.each(['2026-02-30T12:00:00Z', '2026-10-08T24:00:00Z', '2026-10-08T12:34:56', '',
++  '2026-10-08', '0999-10-08T12:00:00Z', '2026-10-08T12:00:00+25:00', null, false, 12])(
++  'invalid completion time %s never becomes an open state', value => {
++    expect(isCompletionTimestamp(value)).toBe(false);
++    const row = { ...order(), completedAt: value };
++    expect(isCompleted(row as Order)).toBe(true);
++    expect(() => parseBackup(backup([order('B'), row]))).toThrow();
++    expect(() => exportBackup([row], now)).toThrow();
++  },
++);
++
++test('legacy active backups stay v1; completed v2 records survive approved projection and restore', () => {
++  const active = order();
++  expect(JSON.parse(exportBackup([active], now)).version).toBe(1);
++  expect(parseBackup(backup([active], 1))).toEqual([active]);
++  const done = order('B', { completedAt: '2026-10-08T15:34:56+03:00' });
++  const output = exportBackup([active, { ...done, rawEmail: 'PRIVATE UNAPPROVED CONTENT' }], now);
++  expect(output).not.toContain('PRIVATE');
++  expect(JSON.parse(output).version).toBe(2);
++  expect(parseBackup(output)).toEqual([active, done]);
++  expect(planImport([], parseBackup(output)).next).toEqual([active, done]);
++  expect(() => parseBackup(backup([done], 1))).toThrow(/unsupported fields/);
++  expect(() => parseBackup(backup([{ ...done, arbitraryStatus: 'open' }]))).toThrow(/unsupported fields/);
++  expect(() => parseBackup(backup([active], 3))).toThrow(/not supported/);
++});
++
++test('same-ID completion or reopening differences block the complete import instead of rewriting status', () => {
++  const active = order();
++  const done = { ...active, completedAt: now.toISOString() };
++  for (const [saved, incoming] of [[active, done], [done, active], [done, { ...done, completedAt: '2026-10-09T12:00:00Z' }]]) {
++    const plan = planImport([saved], [order('NEW'), incoming]);
++    expect(plan.conflicts).toBe(1);
++    expect(plan.rows[1].changedFields).toEqual(['completedAt']);
++    expect(plan.next).toEqual([saved]);
++  }
++  expect(planImport([done], [done])).toMatchObject({ added: 0, skipped: 1, conflicts: 0, next: [done] });
++});
++
++test('both single and batch reminder plans refuse a selected return completed since review', () => {
++  const active = order();
++  const reviewed = calendarRows([active], '2026-10-08');
++  const done = { ...active, completedAt: now.toISOString() };
++  expect(() => reviewedOpenReturn([done], active)).toThrow(/changed/);
++  expect(() => reviewedOpenReturn([done], done)).toThrow(/completed/);
++  expect(() => planCalendarBatch([done], reviewed, ['A'], now)).toThrow(/changed or was removed/);
++  expect(calendarRows([done], '2026-10-08')).toEqual([]);
++  expect(initialCalendarSelection(reviewed, 'completed')).toEqual([]);
++  const reopened = planCompletion([done], done, 'reopen', now).order;
++  const after = planCalendarBatch([reopened], calendarRows([reopened], '2026-10-08'), ['A'], now);
++  const before = planCalendarBatch([active], reviewed, ['A'], now);
++  expect(after.content).toBe(before.content);
++  expect(reviewedOpenReturn([reopened], reopened)).toBe(reopened);
++});
++
++test('the inherited editor preserves completed state and refuses an editor opened before completion', () => {
++  const original = order();
++  const done = { ...original, completedAt: now.toISOString() };
++  const draft = { merchant: original.merchant, orderNo: original.orderNo!, total: '$51.00', orderDate: original.orderDate, windowDays: String(original.windowDays) };
++  expect(() => planEdit([done], original, draft)).toThrow(/changed while you were editing/);
++  const edited = planEdit([done], done, draft);
++  expect(edited.next[0]).toEqual({ ...done, total: '$51.00' });
++});

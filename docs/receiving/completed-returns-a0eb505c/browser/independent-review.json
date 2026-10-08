@@ -1,0 +1,166 @@
+{
+  "actual_downloads": [
+    {
+      "bytes": 1045,
+      "filename": "returnby-reminders-2026-10-08.ics",
+      "path": "evidence/baseline-browser/baseline-all-reminders.ics",
+      "sha256": "28c72fb08756040be49fb6c861f6c61503524ef93852cafd83bfffe6c752ebce"
+    },
+    {
+      "bytes": 943,
+      "filename": "returnby-backup-2026-10-08.json",
+      "path": "evidence/baseline-browser/baseline-approved-backup.json",
+      "sha256": "579a398701444c69a27741612af4c130368eab6984c39d89f018c7fedd90de65"
+    },
+    {
+      "bytes": 1041,
+      "filename": "returnby-backup-2026-10-08.json",
+      "path": "evidence/candidate-ca27-attempt1/lifecycle/completed-reviewed-backup.json",
+      "sha256": "c0182b067cf09d0cc913c9489221d1f2e07cc897af5110c9b44567292d3f51cc"
+    },
+    {
+      "bytes": 1041,
+      "filename": "returnby-backup-2026-10-08.json",
+      "path": "evidence/candidate-ca27-attempt1/portable-status/restored-completed-backup.json",
+      "sha256": "c0182b067cf09d0cc913c9489221d1f2e07cc897af5110c9b44567292d3f51cc"
+    },
+    {
+      "bytes": 943,
+      "filename": "returnby-backup-2026-10-08.json",
+      "path": "evidence/candidate-ca27-attempt1/write-refusals/backup-during-refused-completion.json",
+      "sha256": "579a398701444c69a27741612af4c130368eab6984c39d89f018c7fedd90de65"
+    },
+    {
+      "bytes": 719,
+      "filename": "returnby-reminders-2026-10-08.ics",
+      "path": "evidence/candidate-ca27-attempt2/calendar-lifecycle/active-only-after-completion.ics",
+      "sha256": "caa9bf631782e4c1b1c81851769b0c13a0ed4a9070486fb4d226d6643cc409c3"
+    },
+    {
+      "bytes": 415,
+      "filename": "return-Fictional-Northline-Outfitters.ics",
+      "path": "evidence/candidate-ca27-attempt2/calendar-lifecycle/reopened-original-deadline.ics",
+      "sha256": "3edae845c07795f2890d040d2b091145a5e410a02fde205dc466742bdd924771"
+    },
+    {
+      "bytes": 1041,
+      "filename": "returnby-backup-2026-10-08.json",
+      "path": "evidence/candidate-ca27-attempt2/portable-status/restored-completed-backup.json",
+      "sha256": "c0182b067cf09d0cc913c9489221d1f2e07cc897af5110c9b44567292d3f51cc"
+    }
+  ],
+  "baseline_commit": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "baseline_finding": "Actual v1 import retains three fictional identities and correct due/expired counts, but offers no completion action or history. Its real backup and calendar downloads establish the original field, UID, date and alarm baseline.",
+  "baseline_tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+  "canonical_commit": "9f73bf729b59012ceda564d022a5de664c2b39e5",
+  "canonical_observation_sha256": "3a52dc0656f4ad780884b9dab44f53213f30e68892d449107b04e2919892d730",
+  "canonical_tree": "e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5",
+  "claim_seq": 4583,
+  "current_native_successor": "842a320b4b226da25bdab93a1f5076f394df3432",
+  "focused_receiving_result_sha256": "7acb2184dd61a539658ef4f0ce78feadb4ef7ba8a15334b48392cc9398fa3f6e",
+  "github_writes_by_receiver": 0,
+  "independent_contract_sha256": "d58c789136507191da721828729c71c97b9c166ac6d81f2ede754582eacb3845",
+  "limits": [
+    "Checks bind this exact source/build and fixed fictional UTC date; they do not establish transactional simultaneous cross-tab writes or continuous synchronization.",
+    "Existing external calendar files were not imported, recalled or changed; the UI states that such reminders must be removed in the external calendar.",
+    "Hosted CI is separate producer evidence; this review did not rerun it.",
+    "GitHub content-creation limits remain an independent publication condition; this review made no GitHub write."
+  ],
+  "narrative_label_note": "The focused controller retains the inherited milestone label completed choice disabled. Its actual assertion permits an absent completed row or a disabled unchecked row; this source excludes completed rows. The attested outcome is nonselectability, not a retained disabled row.",
+  "network": "No page errors or external page requests in baseline or any receiving group.",
+  "original_attempt_preserved": {
+    "classifications": [
+      "The backup UI reports the readable completion status/date label rather than the internal completedAt field name.",
+      "The calendar removes completed rows rather than retaining disabled choices. Both satisfy the pre-read contract."
+    ],
+    "passed": 4,
+    "result_sha256": "91438128e2cac48244aaf7614e8dae5e737dd99bebbd59c89f2d02da29e6eb3e",
+    "stopped": 2
+  },
+  "producer_claim_seq": 4573,
+  "producer_worker_id": "chatgpt-a0eb505c4971/integration_review",
+  "product_source_edits_by_receiver": 0,
+  "production_build_or_unit_reruns_by_receiver": 0,
+  "profile_and_data_scope": "Nine owned temporary browser profiles across baseline, original receiving and two focused groups were closed and removed. Storage, clock and refusal controls affect only fictional local orders in those profiles. No user profile or provider account was used.",
+  "qualification_composition": "Four groups passed in the first run. Only the two unfinished groups ran again after correcting receiver assumptions; both then passed on the same runtime.",
+  "qualified_groups": [
+    {
+      "milestones": [
+        "keyboard completion and focus",
+        "active urgency exclusion",
+        "literal retained history",
+        "completed editor preservation",
+        "390px layout",
+        "actual v2 backup",
+        "reopen identity/deadline persistence"
+      ],
+      "name": "lifecycle",
+      "source_attempt": 1
+    },
+    {
+      "milestones": [
+        "Complete persist-before-UI",
+        "backup works without writes",
+        "Reopen persist-before-UI",
+        "deliberate retry succeeds once"
+      ],
+      "name": "write-refusals",
+      "source_attempt": 1
+    },
+    {
+      "milestones": [
+        "real second-tab edit",
+        "stale Complete refused",
+        "fresh Complete retains unrelated add",
+        "real second-tab reopen",
+        "stale Reopen refused"
+      ],
+      "name": "stale-actions",
+      "source_attempt": 1
+    },
+    {
+      "milestones": [
+        "present invalid marker refuses loading",
+        "raw malformed bytes retained",
+        "existing retry control recovers valid private fixture"
+      ],
+      "name": "invalid-stored-marker",
+      "source_attempt": 1
+    },
+    {
+      "milestones": [
+        "actual file restoration",
+        "status preview",
+        "failed import preserves draft/preview",
+        "full approved-field roundtrip",
+        "same-ID status conflict",
+        "invalid marker refusal"
+      ],
+      "name": "portable-status",
+      "source_attempt": 2
+    },
+    {
+      "milestones": [
+        "stale selected reminder refused",
+        "completed choice disabled",
+        "actual active-only calendar",
+        "stale single reminder refused",
+        "reopen preserves actual calendar UID/date/alarm"
+      ],
+      "name": "calendar-lifecycle",
+      "source_attempt": 2
+    }
+  ],
+  "recorded_at": "2026-10-08T17:21:53.974833+00:00",
+  "result": "No blocking finding in the scoped independent actual-browser receiving",
+  "schema": "returnby.lifecycle-independent-receiving-review.v1",
+  "screenshots": [
+    "evidence/baseline-browser/baseline-active-tracker.png",
+    "evidence/candidate-ca27-attempt1/lifecycle/completed-history-desktop.png",
+    "evidence/candidate-ca27-attempt1/lifecycle/completed-history-390.png"
+  ],
+  "source_preservation": "Direct native Git comparison proves README is the sole successor change; all other 195 leaves and all six browser build files are exact. The stronger PR20 README is an exact prefix of the successor README.",
+  "tested_runtime_commit": "ca27fec63ff50256f1092c38453e05a527da8bce",
+  "tested_runtime_tree": "8a27965e1b51946d9f49a1d5c1dfaabbf2f39037",
+  "worker_id": "chatgpt-a0eb505c4971/mac_production"
+}

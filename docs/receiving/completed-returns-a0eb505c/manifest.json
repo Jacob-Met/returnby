@@ -1,0 +1,412 @@
+{
+  "schema": 1,
+  "recorded_at": "2026-10-08T17:30:29.581955+00:00",
+  "qualified_native_source": "842a320b4b226da25bdab93a1f5076f394df3432",
+  "qualified_canonical_source": "9f73bf729b59012ceda564d022a5de664c2b39e5",
+  "qualified_source_tree": "e5185cdd12fa8eebfbc2f7b4afaaf1da0cc9cbe5",
+  "public_prefix": "docs/receiving/completed-returns-a0eb505c",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 15055,
+      "sha256": "5e995566e0140e98f640ad54014e1c6f5b2ed20ab86f51ba6bf14d686acf189a",
+      "blob": "aa4c2ca62303a574083308af30aeeb43d6e6665d",
+      "mode": "100644",
+      "origin": "Producer receiving summary assembled from exact native, hosted, independent and consumer records."
+    },
+    {
+      "path": "browser/completed-history-390.png",
+      "bytes": 67512,
+      "sha256": "d00293a0765f3850cfe63cc41408967ff62af85acb351470972987a20f407f30",
+      "blob": "e44943204f7de72d4901ce9b44889d32a254af1e",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-browser-independent-20261008-a0eb/receiving/evidence/candidate-ca27-attempt1/lifecycle/completed-history-390.png"
+    },
+    {
+      "path": "browser/completed-history-desktop.png",
+      "bytes": 70697,
+      "sha256": "5a7e573aa8fb66a10cee38e401481e1b3bdfba9490701b2cec9111d4e2f4f613",
+      "blob": "eccc2312e68f4ea5c61898e7943ae48775b8a004",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-browser-independent-20261008-a0eb/receiving/evidence/candidate-ca27-attempt1/lifecycle/completed-history-desktop.png"
+    },
+    {
+      "path": "browser/independent-review.json",
+      "bytes": 7820,
+      "sha256": "cc62f7a48f0b898ecc2197e49868fa0b5d80ac5a02db1a6655689429d8647792",
+      "blob": "e1dea75454c3cf15f54a52ab227605967dfb8d5c",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-browser-independent-20261008-a0eb/independent-review.json"
+    },
+    {
+      "path": "browser/manifest.json",
+      "bytes": 14389,
+      "sha256": "402ee7ec77c9d72ddff404673631aeb846d32f20f2fe9a4366d7ea860e51f5fe",
+      "blob": "3657c40099773a7deb035ab4f720251ed3542b79",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-browser-independent-20261008-a0eb/manifest.json"
+    },
+    {
+      "path": "browser/native-closure.json",
+      "bytes": 1407,
+      "sha256": "0fa3976727bed2b87c936dad36f34d13a77f039f8b941fa7b47381ec626cf9d3",
+      "blob": "8f5d9ce81bd9da54645eeeb65b42d8536ce6258e",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-browser-independent-20261008-a0eb/native-closure.json"
+    },
+    {
+      "path": "browser/receiving-evidence.zip",
+      "bytes": 1359948,
+      "sha256": "483da4b605ff6fe7ad2653159e98c39a10a145a1bdac5e1e6e73418f13234b7b",
+      "blob": "d50a9dd4674e0ed56dc030614a97597b076efbf9",
+      "mode": "100644",
+      "origin": "Constructed from all67 manifest-listed independent originals; exact member hashes, paths and modes verified without executing controls."
+    },
+    {
+      "path": "consumer-adoption/completion-consumer-adoption.patch",
+      "bytes": 1718,
+      "sha256": "8a8f84bd11909996a00c509fefa90a938d6b6fa03700b0212f197c945e670759",
+      "blob": "8843b2d87d89fc038724150e8a45f5c7b9f87ca3",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/completion-consumer-adoption.patch"
+    },
+    {
+      "path": "consumer-adoption/consumer-completion.test.mjs.txt",
+      "bytes": 3539,
+      "sha256": "b593ad8535d6c7dde7b1a60c0ca56b49277d7fb58cdbee6228f83943a9b1a0d6",
+      "blob": "d5bacc946ceb6f341fc3ff83fb78fe5baf5f775a",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/consumer-completion.test.mjs"
+    },
+    {
+      "path": "consumer-adoption/original/deadline-overview.ts.txt",
+      "bytes": 4416,
+      "sha256": "1db274a72577c675f68e03a2569e7a33f6dc326864445c5e8eba42368d54e4c9",
+      "blob": "ccec55196aaaef117edb87d9f33930865c9b54b3",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/original/src/deadline-overview.ts"
+    },
+    {
+      "path": "consumer-adoption/original/removal-undo.ts.txt",
+      "bytes": 2069,
+      "sha256": "c5a885be25b70885e284d76635cb7e453ae1be2c04ce87ee38f22adfd69d9d75",
+      "blob": "b29e7493c7efb240dad2dfe73ec9274e1fd583f4",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/original/src/removal-undo.ts"
+    },
+    {
+      "path": "consumer-adoption/original/saved-returns-csv.ts.txt",
+      "bytes": 3109,
+      "sha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+      "blob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/original/src/saved-returns-csv.ts"
+    },
+    {
+      "path": "consumer-adoption/proposed/deadline-overview.ts.txt",
+      "bytes": 4497,
+      "sha256": "b7bf982ec54cb7925e26e2a0eef6666fa722aea55e98b0138c2153a930b81168",
+      "blob": "e3eb2011f2b085e5d0acc9f8e9b69256b6867c51",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/proposed/src/deadline-overview.ts"
+    },
+    {
+      "path": "consumer-adoption/proposed/removal-undo.ts.txt",
+      "bytes": 2069,
+      "sha256": "c5a885be25b70885e284d76635cb7e453ae1be2c04ce87ee38f22adfd69d9d75",
+      "blob": "b29e7493c7efb240dad2dfe73ec9274e1fd583f4",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/proposed/src/removal-undo.ts"
+    },
+    {
+      "path": "consumer-adoption/proposed/saved-returns-csv.ts.txt",
+      "bytes": 3229,
+      "sha256": "b01f4893187b6b95806fa2a62d8a6840fc0a5f09b44781d74eeec73b8622a983",
+      "blob": "a242e2e5e3d02d8d1485e546b73f77843970eafc",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/proposed/src/saved-returns-csv.ts"
+    },
+    {
+      "path": "consumer-adoption/proposed-adoption-positive.log",
+      "bytes": 484,
+      "sha256": "9c8c7e57ff5aafe07a5d9a4d44cf5c805c6dad1e2df7cb648189112a655f96b6",
+      "blob": "8303a157a9582e19b31bb6b2a916a7687daf2def",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/proposed-adoption-positive.log"
+    },
+    {
+      "path": "consumer-adoption/review.json",
+      "bytes": 2478,
+      "sha256": "b566b6d774cb2526621135f603f9caae58003e543e85b5bdb2b6927f4400cf3b",
+      "blob": "ab7fd74ef4a8671468c5b8e3f51b4d978018b049",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/review.json"
+    },
+    {
+      "path": "consumer-adoption/unadapted-composition-negative.log",
+      "bytes": 2841,
+      "sha256": "a1f86badc37b0fedb3219547e73f7d1301fc180f7980d6d749c312b13defb22c",
+      "blob": "c88b4d0a4d6c04c8356d45f5f319a2d39e396dfb",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/consumer-adoption/unadapted-composition-negative.log"
+    },
+    {
+      "path": "coordination/claim.json",
+      "bytes": 2280,
+      "sha256": "cfda691371c6e9685115055df8df32bede0010201aa061c37a06c88168add0b6",
+      "blob": "90bd1789883c865b328272a68aba61e2b8b4f9a2",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/claim.json"
+    },
+    {
+      "path": "coordination/current-source-publication-event.json",
+      "bytes": 2653,
+      "sha256": "5b801e3afa27c5e39fad47e21551d8b2efa7ce640130e31bdb4995471c4a79cd",
+      "blob": "216aec325c402f5717ec2bc947031a24f9a56481",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/source-publication-9f73bf72-event.json"
+    },
+    {
+      "path": "coordination/prior-native-qualification-event.json",
+      "bytes": 1871,
+      "sha256": "ce7c10d2984b5116c4737ab887afe9d3bd630e44957a29edfd103bb49e8df48b",
+      "blob": "df066c410c6add27aa1cfa2c7794a9c32082e311",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/native-qualification-event.json"
+    },
+    {
+      "path": "hosted-ci-9f73bf72/job.json",
+      "bytes": 1463,
+      "sha256": "f05a93c372412e7409437281bc2023ae619d934c2fef83dfe8ccd5d0ec985c63",
+      "blob": "d8d0d327c7de73a40e5aa929e2e82956e349738a",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/hosted-ci-9f73bf72/job.json"
+    },
+    {
+      "path": "hosted-ci-9f73bf72/job.log",
+      "bytes": 19278,
+      "sha256": "4c64531a01621fa2d3432411779d4fa5ecc4c947e309d1112385a3bc09c25756",
+      "blob": "0829c5a438b2c902f1c2447aa4f88e60a17b252a",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/hosted-ci-9f73bf72/job.log"
+    },
+    {
+      "path": "hosted-ci-9f73bf72/qualification.json",
+      "bytes": 1782,
+      "sha256": "33a8e0c0735b7c88fc119f51e16ff2ff9cafd4dcdb4c2b66c080a6e7779df737",
+      "blob": "3b3d56c9a5ea1565355bcddec4262139a446533d",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/hosted-ci-9f73bf72/qualification.json"
+    },
+    {
+      "path": "hosted-ci-9f73bf72/run.json",
+      "bytes": 14817,
+      "sha256": "b2e6a0fd243cc8d2ee1bd0b908414479f6f240d75eb9cb844a0d6786d0c8cd58",
+      "blob": "0cb0fb34feb99ad43065d63ee2ab809a68e1ed9c",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/hosted-ci-9f73bf72/run.json"
+    },
+    {
+      "path": "hosted-ci-9f73bf72/tested-merge-commit.json",
+      "bytes": 2866,
+      "sha256": "38e9f573aa9e33f99e50368ee803b88af73d83d86e90454d141cf31e89c4b377",
+      "blob": "832e573d147be32dcd56589a03a5a56b25929b84",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/hosted-ci-9f73bf72/tested-merge-commit.json"
+    },
+    {
+      "path": "native-gates/baseline-build.log",
+      "bytes": 399,
+      "sha256": "e7315dca83a4c168fb79e52a22f70cba2ca8e8f1205fff799d9fcb449ed001f1",
+      "blob": "2a7b77e70936b448400f7696b23e19093bf532e0",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/baseline-build.log"
+    },
+    {
+      "path": "native-gates/baseline-completion-negative.log",
+      "bytes": 4630,
+      "sha256": "c223ba68115764d2426a09818649829e6110be78a9d72cd15db5b86af5f9d908",
+      "blob": "3cedcca715802f31e902f5bf6f25991ba916a3ee",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/baseline-completion-negative.log"
+    },
+    {
+      "path": "native-gates/baseline-gate.json",
+      "bytes": 796,
+      "sha256": "fe0efbe18f6d43fec4c701340324a30860b6a614b17d279564475156886f9d79",
+      "blob": "2dfc50b43b9300589d885099273ad6838b884681",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/baseline-gate.json"
+    },
+    {
+      "path": "native-gates/candidate-build-01.log",
+      "bytes": 399,
+      "sha256": "bb7319eb11ad0c7e3f7f316b64c288476a5de616943f71026cc0da851a57c661",
+      "blob": "432c1b47730fb9bebb5ffeeb5024cd856205bf1d",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/candidate-build-01.log"
+    },
+    {
+      "path": "native-gates/candidate-gate-01.json",
+      "bytes": 661,
+      "sha256": "35d16950547279b10a569359ad9647444fcc37ba82ec16dd27bf757188f39a05",
+      "blob": "9647da31777acc1fbfc25407352dbab01b471885",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/candidate-gate-01.json"
+    },
+    {
+      "path": "native-gates/candidate-tests-01-with-fixture-failures.log",
+      "bytes": 7936,
+      "sha256": "a88f58836cd7e8d6780f99f233b887ca00471d2bd36a8d9fc8e873ec7f826233",
+      "blob": "52e50e499e448b1c7769954b1a31439ca52a8ee6",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/candidate-tests-01.log"
+    },
+    {
+      "path": "native-gates/corrected-fixtures-02.json",
+      "bytes": 460,
+      "sha256": "c8e052b743e82da153d5515aaf24fb5a717dd9c0029ab681b1d8baf9a4639d92",
+      "blob": "f8e21110eb77b928c2c873632025fb5cbb28a6ee",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/candidate-fixtures-02.json"
+    },
+    {
+      "path": "native-gates/corrected-fixtures-02.log",
+      "bytes": 932,
+      "sha256": "b6a0fd9a2225130e441515232373201a356ca74cdc85344e3536817d90968a7f",
+      "blob": "9cfa5203efce8268d36e3a3c5db817d1f830583d",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/candidate-fixtures-02.log"
+    },
+    {
+      "path": "native-gates/npm-ci.json",
+      "bytes": 316,
+      "sha256": "891fb5714cc2ab930c4d54f26b4cd6e1cbf2968af6292b4cd90cc9bb71839519",
+      "blob": "076b1eb397d3bc507d4c8f72efda5dca6d46c907",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/npm-ci.json"
+    },
+    {
+      "path": "native-gates/npm-ci.log",
+      "bytes": 25,
+      "sha256": "3de8b18ee1c39ab0db9bc44ffc916e2cfeb02772da51bb64a1aee1ad0e65359a",
+      "blob": "1ba530a3d7f1c2700039d88c4dc8af4556425b0b",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/npm-ci.log"
+    },
+    {
+      "path": "producer-receiving-readback.json",
+      "bytes": 2526,
+      "sha256": "b032ff067f0046406825814c70782362958ee7778e4857351cf9326549fac45c",
+      "blob": "fa1af544644273a68c6316260bd2b11b9e6825b6",
+      "mode": "100644",
+      "origin": "This exact producer packaging readback."
+    },
+    {
+      "path": "publication-refusal/attempted-owner-comment.md",
+      "bytes": 2351,
+      "sha256": "b703c43447507f8f9e51d356941723db0feae1c531ac77a8441aacd4061807ac",
+      "blob": "e37fbf4231dbb0024babc0cf73e645692fa0cb5b",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/publication-refusal-1703/attempted-owner-comment.md"
+    },
+    {
+      "path": "publication-refusal/refusal.json",
+      "bytes": 821,
+      "sha256": "5b8593f686fbeac7effea9e1639637a275c12020506277fd748b61c52d0f5abe",
+      "blob": "c1e6019b528b26f4cb0527a310d602bedb3f84d1",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/publication-refusal-1703/refusal.json"
+    },
+    {
+      "path": "publication-refusal/tool-response.json",
+      "bytes": 1661,
+      "sha256": "3d38fb21540f6c4b61a0f3c3ced5b90a7adf2afcab1569a3a8caf1ac7602dc94",
+      "blob": "38a31d5270ae1f1aeabc7b7d4367b433475a18ed",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/publication-refusal-1703/tool-response.json"
+    },
+    {
+      "path": "source/baseline-source.json",
+      "bytes": 348,
+      "sha256": "68ccfa1c6f3684627baae7aa2e44735f6d3b3d1b424460f0b99c1c1dfa75f379",
+      "blob": "6516486d74bf2b9fdac135517c9ea3ce0912aa05",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/baseline-source.json"
+    },
+    {
+      "path": "source/bundle-transport-note.json",
+      "bytes": 405,
+      "sha256": "4725cf05b9791e9dcae83d785fe0243f9632ea1aa74e6d40debddd7f808eb569",
+      "blob": "5ae355d2141425b5df9526604fe26360a308dac4",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/source-packet/transport-note.json"
+    },
+    {
+      "path": "source/current-bundle-verify.log",
+      "bytes": 318,
+      "sha256": "f34d5a6581e3efa08735d6e8964297702825b8c5c055d2e156d5fbda35ef78c0",
+      "blob": "79aeea9294e1899794b97ddbbc089c81a7f8280c",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/source-packet-842a320b/bundle-verify.log"
+    },
+    {
+      "path": "source/current-source-receive.json",
+      "bytes": 1864,
+      "sha256": "960321e04978dc203f318e3925d5d1e53b61eae0437676d5f8c1e96784641c02",
+      "blob": "eb6ed9187346b978bb2e510a149e6b6213383508",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/source-packet-842a320b/source-receive.json"
+    },
+    {
+      "path": "source/detected-readme-preservation-negative.diff",
+      "bytes": 13179,
+      "sha256": "035e56e39c73f43b39472d9b73b64dfdc989745e86797b8f73d7b18fef2e299c",
+      "blob": "3a946fa47dd283d31f226de7cacd2892f1548201",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/readme-correction/wrong-base-readme.diff"
+    },
+    {
+      "path": "source/functional-ca27-source-freeze.json",
+      "bytes": 56238,
+      "sha256": "014f07da65c4637029ad0d220b9ab4a0593a66a90a46f1aa27b0510c50e3cad5",
+      "blob": "82d28776ab81007c698019ae73393da195ecb929",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/functional-01/source-freeze.json"
+    },
+    {
+      "path": "source/readme-corrected-842a-source-freeze.json",
+      "bytes": 55780,
+      "sha256": "4e657cb89b194ff95af8e9c44e26ad7110f093eb007abd8407a32d8c12a7cdb6",
+      "blob": "6441da4872422b95259e2114d3f67e3c47ed0f15",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/readme-correction/source-freeze.json"
+    },
+    {
+      "path": "source/readme-only-correction.diff",
+      "bytes": 14227,
+      "sha256": "653ef02e6623059ca2cc9655270fb5dda42bcf8d529a0f39b86132d859b8067d",
+      "blob": "b9de8b6b15f4cbb965eab3659056d8e4ecca3661",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/readme-correction/correction.diff"
+    },
+    {
+      "path": "source/returnby-completion-842a320b.diff",
+      "bytes": 75527,
+      "sha256": "62f066ce7b8a45abf295e9dd2f3519f75ebab85f9f5aa13ec3e6d59df8a0342d",
+      "blob": "90f5e14e7e7201c9ac991f83c6dd631c0e3b4ebf",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/source-packet-842a320b/returnby-completion-842a320b.diff"
+    },
+    {
+      "path": "source/transport-setup-negative.json",
+      "bytes": 575,
+      "sha256": "17ff219bc26b9dec03a4d389e315a602911cd59fdff0952698cdba4029799391",
+      "blob": "d172d6edad5770d52c13df7ad924efb3df528f51",
+      "mode": "100644",
+      "origin": "/var/lib/hamon/custody/returnby-completion-20261008-a0eb/source-01-transport.json"
+    }
+  ],
+  "manifest_self_excluded": true,
+  "publication_state_at_seal": "held by root; no GitHub mutation performed in this assembly"
+}

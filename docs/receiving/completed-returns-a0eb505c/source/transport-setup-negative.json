@@ -1,0 +1,19 @@
+{
+  "packet_sha256": "4ca99c1912a467ccd80d9327c2c4afb068f157f38b8f85acb73d688e0581afaa",
+  "files": [
+    "index.html",
+    "src/backup.ts",
+    "src/backup-ui.ts",
+    "src/calendar-batch.ts",
+    "src/store.ts",
+    "src/style.css",
+    "src/calendar-batch-ui.ts",
+    "src/main.ts",
+    "src/completion.ts",
+    "tests/backup.test.ts",
+    "tests/completion.test.ts",
+    "tests/completion-ui.test.mjs"
+  ],
+  "predecessors_verified": true,
+  "first_attempt": "RDC start_process returned spawn E2BIG before process creation; no source mutation. File payload succeeded."
+}

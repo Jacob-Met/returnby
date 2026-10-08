@@ -1,0 +1,46 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.3 [39m[90m/home/jacob/returnby-completion-consumer-review-20261008-a0eb[39m
+
+ [31m❯[39m tests/consumer-completion.test.mjs [2m([22m[2m3 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 49[2mms[22m[39m
+[31m   [31m×[31m month view admits the whole collection then omits completed deadline noise[39m[32m 33[2mms[22m[39m
+[31m   [31m×[31m whole-tracker CSV retains explicit state and completion time without losing the original nine fields[39m[32m 8[2mms[22m[39m
+   [32m✓[39m the unchanged Undo implementation restores the exact completed snapshot and rejects a same-ID open record[32m 4[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m tests/consumer-completion.test.mjs[2m > [22mmonth view admits the whole collection then omits completed deadline noise
+[31m[1mAssertionError[22m: expected 2 to be 1 // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 1[39m
+[31m+ 2[39m
+
+[36m [2m❯[22m tests/consumer-completion.test.mjs:[2m22:22[22m[39m
+    [90m 20|[39m   const rows = [row('OPEN'), row('DONE', { completedAt })], before = J…
+    [90m 21|[39m   const view = buildDeadlineOverview(rows, '2026-10', '2026-10-08');
+    [90m 22|[39m   expect(view.total).toBe(1);
+    [90m   |[39m                      [31m^[39m
+    [90m 23|[39m   expect(view.monthTotal).toBe(1);
+    [90m 24|[39m   expect(view.outsideMonth).toBe(0);
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/consumer-completion.test.mjs[2m > [22mwhole-tracker CSV retains explicit state and completion time without losing the original nine fields
+[31m[1mAssertionError[22m: expected '"Saved return ID","Store","Order numb…' to be '"Saved return ID","Store","Order numb…' // Object.is equality[39m
+
+Expected: [32m""Saved return ID","Store","Order number","Total (as entered)","Order date","Return window (days)","Recorded window source","Return deadline","Created at"[7m,"Return status","Completed at"[27m"[39m
+Received: [31m""Saved return ID","Store","Order number","Total (as entered)","Order date","Return window (days)","Recorded window source","Return deadline","Created at""[39m
+
+[36m [2m❯[22m tests/consumer-completion.test.mjs:[2m34:20[22m[39m
+
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (3)[39m
+[2m   Start at [22m 16:38:07
+[2m   Duration [22m 1.04s[2m (transform 65%, import 16%, tests 15%, worker 4%)[22m
+
