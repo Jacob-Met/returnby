@@ -1,0 +1,50 @@
+{
+  "receiver": "estate-6e5752b49b6f/root",
+  "source_path": "/dev/shm/6e5752b49b6f-production-returnby-undo/src/removal-undo.ts",
+  "source_sha256": "c5a885be25b70885e284d76635cb7e453ae1be2c04ce87ee38f22adfd69d9d75",
+  "node": "v24.19.0",
+  "execution": "Exact TypeScript model through native Node type erasure; no implementation substitution or source edits.",
+  "scope": "Independent model semantics and repeated-plan behavior. Actual persistence and DOM wiring are received separately.",
+  "cases": [
+    {
+      "name": "captured review is detached from mutable source and repeat restoration results",
+      "passed": true,
+      "detail": {
+        "detached_source_and_result": true,
+        "exact_id_and_creation_time": true
+      }
+    },
+    {
+      "name": "restoration preserves every newer unrelated row and the current relative order",
+      "passed": true,
+      "detail": {
+        "cases": 16,
+        "unrelated_edits_preserved": true
+      }
+    },
+    {
+      "name": "equal existing identities are a no-write result independent of JSON object key order",
+      "passed": true,
+      "detail": {
+        "cases": 3
+      }
+    },
+    {
+      "name": "every consequential saved-field difference and duplicate identity refuses restoration",
+      "passed": true,
+      "detail": {
+        "differing_fields": 12,
+        "duplicate_cases": 2
+      }
+    },
+    {
+      "name": "a failed first persistence can retry against a different saved world without overwriting it",
+      "passed": true,
+      "detail": {
+        "fresh_state_at_retry": true,
+        "captured_record_unchanged": true
+      }
+    }
+  ],
+  "passed": true
+}

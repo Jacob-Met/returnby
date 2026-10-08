@@ -1,0 +1,124 @@
+{
+  "files": {
+    "README.md": {
+      "sha256": "5b49371f034a7aded636ac1aaba09e875ba8254150e73e5453acd731cc5f3870",
+      "bytes": 9676
+    },
+    "base-admission.json": {
+      "sha256": "85c4ed182b96994745ec4789a02e7b2ad60ca5e90806639f5f303ffe2d5045e9",
+      "bytes": 232
+    },
+    "base-tree.json": {
+      "sha256": "15cc0d0d4045d1bcff0fd79c74eaef07bc7aedff954271ae7492e228fcd0e747",
+      "bytes": 74165
+    },
+    "build-r1.log": {
+      "sha256": "d48c1922eb729481c41d425dc8392001d742a55bdfb2badb5132079ab42d2ecb",
+      "bytes": 344
+    },
+    "independent/README.md": {
+      "sha256": "94b4f0087e745ece5e383a4471cfb7a905fa42180b77f8a61dcd27ffdb413303",
+      "bytes": 4138
+    },
+    "independent/browser-r1/browser-receiving.json": {
+      "sha256": "f97428a6d086a885fde30f4d077aeccf795ee9ea0a317326b26aeaf64605f3f6",
+      "bytes": 5343
+    },
+    "independent/browser-r1/calendar-after.ics": {
+      "sha256": "fc507a2f81d23da02c071f4b899bfa9689645c1d7f1c3e5df3f96f70a55ace28",
+      "bytes": 389
+    },
+    "independent/browser-r1/calendar-before.ics": {
+      "sha256": "57b955c8cb800ffe3fb3e58c5d4af2ff861b1365c3af396276320d3e955018e5",
+      "bytes": 389
+    },
+    "independent/model-native-output.txt": {
+      "sha256": "936330c5852e3eec0fe494d413f599493bbc505f3752ae842a10da6866a8c09f",
+      "bytes": 1497
+    },
+    "independent/model-receiving-r1.json": {
+      "sha256": "ee9da6a10fdbe3b7bcc104b5a8370c77d9aeb64ed580bf84b6b9f6e92444e28c",
+      "bytes": 1649
+    },
+    "independent/receive-browser.mjs": {
+      "sha256": "04b03497003cfd21d744ec833cbab26178b7f8bd9b1997f8f368bc259da7b2ea",
+      "bytes": 11320
+    },
+    "independent/receive-model.mjs": {
+      "sha256": "c9e0e40481553efbcd8bb9e1ab48b69c1d874f58c67e5d3c465eab43dec7d318",
+      "bytes": 7431
+    },
+    "independent/receiving-integrity.json": {
+      "sha256": "b4af609832eeb125d8147412784a3f26d39f334014f3079d9912eb5b5c97b4c4",
+      "bytes": 608
+    },
+    "independent-receiving.tar.gz": {
+      "sha256": "13e7700b2eb91822047808a6078a21278c7e93c722883c6731c7e2112c1dad7f",
+      "bytes": 10242
+    },
+    "mac-transfer-manifest.json": {
+      "sha256": "037f4bc0a60a240acf5284f1432186d5549259a6361f8e4e7ef4f18ff6e6e198",
+      "bytes": 2118
+    },
+    "native-browser-inputs.tar.gz": {
+      "sha256": "ffadf93db288f275a6a376a68dc5d6cf90bf7c72743d9cd3ccdd6939efebe94b",
+      "bytes": 29355
+    },
+    "owner-browser/admit-transfer.py": {
+      "sha256": "6054c0d947355cd59b34dbe298e5a8988865dab7f061029af660536be3e7ddc5",
+      "bytes": 1634
+    },
+    "owner-browser/native-evidence-manifest.json": {
+      "sha256": "319f84f7b39a3ae650752809895c1c483f43929cbd1b5d755a9aff61df66aca0",
+      "bytes": 1471
+    },
+    "owner-browser/receiving-undo/browser-r1/desktop-undo.png": {
+      "sha256": "ecc0ea12dc5cc0d727c7bf7e7b6a6c433b0a9d6de098915ae6fec9405faef6ca",
+      "bytes": 101465
+    },
+    "owner-browser/receiving-undo/browser-r1/phone-long-label.png": {
+      "sha256": "76b0dc3fc9df007ac9983abd6cc9880249d80821c1c584ecde46957d629399df",
+      "bytes": 53265
+    },
+    "owner-browser/receiving-undo/browser-r1/phone-undo.png": {
+      "sha256": "aecff66118c2e333ee8f0ef01bb6633138547ad22f75e9081fd75e912ea2b037",
+      "bytes": 60165
+    },
+    "owner-browser/receiving-undo/browser-r1/receiving.json": {
+      "sha256": "fcc9c3a8ab4ba3e828cc586c74396affde946f3f3d1974e518e2484e1b96b895",
+      "bytes": 4683
+    },
+    "owner-browser/receiving-undo/browser-r1.log": {
+      "sha256": "0dc02969e290734cfa80e7f425b645a774153cea7ca94bdfeda8f91aba69cc5b",
+      "bytes": 151
+    },
+    "owner-browser/receiving-undo/mac-admission.json": {
+      "sha256": "72ce71fcd6e6089d63540c0bc9c76711661c3e6159abf0e5b0be52a7a60fa90f",
+      "bytes": 370
+    },
+    "owner-browser/receiving-undo/mac-browser-r1.json": {
+      "sha256": "c2b543d5895182d34b1d6b1cf29419de72cf363517033dc75f4259d911c08a1f",
+      "bytes": 1081
+    },
+    "owner-browser/receiving-undo/mac-transfer-manifest.json": {
+      "sha256": "037f4bc0a60a240acf5284f1432186d5549259a6361f8e4e7ef4f18ff6e6e198",
+      "bytes": 2118
+    },
+    "owner-browser/run-browser.py": {
+      "sha256": "82c52fe27c3bbf14355dae5eaeeb76fd73688e1c23529444e5cce3b5f9ade98a",
+      "bytes": 2337
+    },
+    "source-preservation.json": {
+      "sha256": "e8ad854d68941a729b0874bc7dcaf0ebc65250e0fde396505956e44b23ec3503",
+      "bytes": 2095
+    },
+    "source-r1.json": {
+      "sha256": "be1e89011e4163fea7f8f5d643a901b573e49aa9f2586c52009d33510a6df3c8",
+      "bytes": 1402
+    },
+    "independent/evidence-manifest.json": {
+      "sha256": "6a4d3920baec00f28446873d6b5dfb6317bfe10b526f954413a82875ddc4776c",
+      "bytes": 1440
+    }
+  }
+}

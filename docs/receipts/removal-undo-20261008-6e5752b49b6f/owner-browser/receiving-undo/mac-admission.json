@@ -1,0 +1,10 @@
+{
+  "accepted": true,
+  "source_head": "28eecc07a6552a9d16da7feebd352db06ab7fcc8",
+  "application_head": "e6877263ae20b2eb8ecd27cc2014badb7d4206d3",
+  "archive_sha256": "ffadf93db288f275a6a376a68dc5d6cf90bf7c72743d9cd3ccdd6939efebe94b",
+  "verified_files": 11,
+  "build": "/tmp/returnby-undo-6e5752b49b6f-production/dist",
+  "free_tmp": 716206080,
+  "node": "v26.3.0"
+}

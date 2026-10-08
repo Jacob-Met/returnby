@@ -1,0 +1,49 @@
+{
+  "files": [
+    {
+      "path": "browser-r1/browser-receiving.json",
+      "bytes": 5343,
+      "sha256": "f97428a6d086a885fde30f4d077aeccf795ee9ea0a317326b26aeaf64605f3f6"
+    },
+    {
+      "path": "browser-r1/calendar-after.ics",
+      "bytes": 389,
+      "sha256": "fc507a2f81d23da02c071f4b899bfa9689645c1d7f1c3e5df3f96f70a55ace28"
+    },
+    {
+      "path": "browser-r1/calendar-before.ics",
+      "bytes": 389,
+      "sha256": "57b955c8cb800ffe3fb3e58c5d4af2ff861b1365c3af396276320d3e955018e5"
+    },
+    {
+      "path": "model-native-output.txt",
+      "bytes": 1497,
+      "sha256": "936330c5852e3eec0fe494d413f599493bbc505f3752ae842a10da6866a8c09f"
+    },
+    {
+      "path": "model-receiving-r1.json",
+      "bytes": 1649,
+      "sha256": "ee9da6a10fdbe3b7bcc104b5a8370c77d9aeb64ed580bf84b6b9f6e92444e28c"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4138,
+      "sha256": "94b4f0087e745ece5e383a4471cfb7a905fa42180b77f8a61dcd27ffdb413303"
+    },
+    {
+      "path": "receive-browser.mjs",
+      "bytes": 11320,
+      "sha256": "04b03497003cfd21d744ec833cbab26178b7f8bd9b1997f8f368bc259da7b2ea"
+    },
+    {
+      "path": "receive-model.mjs",
+      "bytes": 7431,
+      "sha256": "c9e0e40481553efbcd8bb9e1ab48b69c1d874f58c67e5d3c465eab43dec7d318"
+    },
+    {
+      "path": "receiving-integrity.json",
+      "bytes": 608,
+      "sha256": "b4af609832eeb125d8147412784a3f26d39f334014f3079d9912eb5b5c97b4c4"
+    }
+  ]
+}
