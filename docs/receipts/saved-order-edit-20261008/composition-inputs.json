@@ -1,0 +1,53 @@
+{
+  "editor": "f912dbe26874172556824ace922c685af28b0e3a",
+  "remoteEditorBase": "fbd48a6e63d1b071de10e4e40d875184fa461141",
+  "backup": "2ff4f9406ac05e72456a6fb425f5d6499520234f",
+  "commonBackupBase": "43a11d9f66ca2d8cb7902f8ed1bcae2ac0962fbf",
+  "verifiedBackupFiles": [
+    {
+      "path": "README.md",
+      "sha": "dc4eca41fed3dfc0929b48322110875675a4494f"
+    },
+    {
+      "path": "docs/receipts/portable-backup-20261008.json",
+      "sha": "79da05c458df0f3250d8b457ebb9f6e1fadba5cc"
+    },
+    {
+      "path": "index.html",
+      "sha": "6bbdc9f4f4741ed243d9edb7b1a454443b0650dc"
+    },
+    {
+      "path": "src/backup-ui.ts",
+      "sha": "366341e5d5215809bca6d8f32f130336b0ea3be4"
+    },
+    {
+      "path": "src/backup.css",
+      "sha": "bc60d09bf8af57ec56a3b3766559c8829d8a859b"
+    },
+    {
+      "path": "src/backup.ts",
+      "sha": "bdd86ce50c723abf8f1d305d4fdf63353510eba8"
+    },
+    {
+      "path": "src/main.ts",
+      "sha": "2de7df677532a51596922147865cb8ca268894b7"
+    },
+    {
+      "path": "src/store.ts",
+      "sha": "3f2db0264e23fd0719fe1cd3be74ee6a3ae15ac5"
+    },
+    {
+      "path": "tests/backup-ui.test.mjs",
+      "sha": "cb5862290d369067cf6eb3500b062d2222c1317b"
+    },
+    {
+      "path": "tests/backup.test.ts",
+      "sha": "16f2e34707efb6edc86c322c01d3a050e7430c64"
+    },
+    {
+      "path": "tools/check_backup_browser.mjs",
+      "sha": "53426d86f005e3d5b9853c5909d7f3d5bbe2f703"
+    }
+  ],
+  "composition": "Additive backing-up controls/import/read plus edited-order controls. Original #9 load and persistence guards remain; renderer contains both source-day fix and edit button."
+}

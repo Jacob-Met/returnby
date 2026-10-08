@@ -1,0 +1,48 @@
+{
+  "candidate": "7ca9e0f928a40b85cb468720f3ed532b21f3a3ac",
+  "original_freeze": {
+    "repository": "Jacob-Met/returnby",
+    "remote_receiving_base": "fbd48a6e63d1b071de10e4e40d875184fa461141",
+    "local_snapshot": "caf559a900ecaf3502907d70955c880ec4f27aa8",
+    "local_candidate": "7ca9e0f928a40b85cb468720f3ed532b21f3a3ac",
+    "source": [
+      {
+        "path": "README.md",
+        "sha256": "0d95b388c2b18bebe58f5ad072c5cc35d420058cf51e09e7fbe03a607e019756"
+      },
+      {
+        "path": "index.html",
+        "sha256": "e8e33734ba822c77c9efa8f98009c5cdd5429d8eda85b98159f30cd576fa3ffe"
+      },
+      {
+        "path": "src/edit-ui.ts",
+        "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6"
+      },
+      {
+        "path": "src/edit.css",
+        "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42"
+      },
+      {
+        "path": "src/edit.ts",
+        "sha256": "2ae3d9284ba93562dd91e27e9aad10ca00c7cf4447dc2d675184c99253fa3b70"
+      },
+      {
+        "path": "src/main.ts",
+        "sha256": "95d2c57966e79f6b65fa0a04abcdec17477e1f08af3525ca059e8117cdf76bed"
+      },
+      {
+        "path": "tests/edit-ui.test.mjs",
+        "sha256": "09604be0f7a3c6845341f3f8145c3033c488326939616aa84b4f4cc90140e0af"
+      },
+      {
+        "path": "tests/edit.test.ts",
+        "sha256": "688a0921e222dd5fe6347b0b815fe971b0499441e5fd587d98a978830353b6d6"
+      },
+      {
+        "path": "tools/check_edit_browser.mjs",
+        "sha256": "d26ec04f656f3e07cb915f045b67edc3d60062cd60b8675f2a3012f3663c665d"
+      }
+    ]
+  },
+  "all_frozen_hashes_match": true
+}

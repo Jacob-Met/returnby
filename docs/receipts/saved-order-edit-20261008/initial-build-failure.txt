@@ -1,0 +1,6 @@
+Initial candidate build, before correction:
+Command: npm run build
+Result: exit 2
+src/edit-ui.ts(84,24): error TS2488: Type 'NodeListOf<HTMLButtonElement>' must have a '[Symbol.iterator]()' method that returns an iterator.
+
+Correction: use Array.from(document.querySelectorAll(...)) under the receiving project's existing DOM library settings. No tsconfig change. Subsequent native build passes.
