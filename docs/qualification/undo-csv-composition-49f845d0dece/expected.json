@@ -1,0 +1,100 @@
+{
+  "initial": [
+    {
+      "id": "undo-csv-49-target",
+      "merchant": "Harbor, \"North\" 日本",
+      "orderNo": "RN-0049",
+      "total": "109.50",
+      "orderDate": "2026-10-01",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-01T09:10:11.000Z"
+    },
+    {
+      "id": "undo-csv-49-peer",
+      "merchant": "South Books",
+      "orderNo": "BEFORE-0049",
+      "total": "42.75",
+      "orderDate": "2026-09-30",
+      "windowDays": 7,
+      "windowSource": "user",
+      "createdAt": "2026-09-30T08:00:00.000Z"
+    },
+    {
+      "id": "undo-csv-49-stable",
+      "merchant": "Cedar Outfitters",
+      "orderNo": "ST-4900",
+      "total": "80.00",
+      "orderDate": "2026-10-06",
+      "windowDays": 14,
+      "windowSource": "user",
+      "createdAt": "2026-10-06T12:30:00.000Z"
+    }
+  ],
+  "peerIntent": {
+    "id": "undo-csv-49-peer",
+    "merchant": "South Books",
+    "orderNo": "AFTER, \"peer\" 日本",
+    "total": "42.75",
+    "orderDate": "2026-09-30",
+    "windowDays": 7,
+    "windowSource": "user",
+    "createdAt": "2026-09-30T08:00:00.000Z"
+  },
+  "restored": [
+    {
+      "id": "undo-csv-49-target",
+      "merchant": "Harbor, \"North\" 日本",
+      "orderNo": "RN-0049",
+      "total": "109.50",
+      "orderDate": "2026-10-01",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-01T09:10:11.000Z"
+    },
+    {
+      "id": "undo-csv-49-peer",
+      "merchant": "South Books",
+      "orderNo": "AFTER, \"peer\" 日本",
+      "total": "42.75",
+      "orderDate": "2026-09-30",
+      "windowDays": 7,
+      "windowSource": "user",
+      "createdAt": "2026-09-30T08:00:00.000Z"
+    },
+    {
+      "id": "undo-csv-49-stable",
+      "merchant": "Cedar Outfitters",
+      "orderNo": "ST-4900",
+      "total": "80.00",
+      "orderDate": "2026-10-06",
+      "windowDays": 14,
+      "windowSource": "user",
+      "createdAt": "2026-10-06T12:30:00.000Z"
+    }
+  ],
+  "columns": [
+    "Saved return ID",
+    "Store",
+    "Order number",
+    "Total (as entered)",
+    "Order date",
+    "Return window (days)",
+    "Recorded window source",
+    "Return deadline",
+    "Created at"
+  ],
+  "dueById": {
+    "undo-csv-49-target": "2026-10-31",
+    "undo-csv-49-peer": "2026-10-07",
+    "undo-csv-49-stable": "2026-10-20"
+  },
+  "unsavedDraft": {
+    "paste": "A fictional unsaved draft for Undo/CSV receiving.",
+    "merchant": "Unsaved Meadow",
+    "orderDate": "2026-10-08",
+    "orderNo": "DRAFT-0049",
+    "total": "17.00",
+    "windowDays": "11"
+  }
+}

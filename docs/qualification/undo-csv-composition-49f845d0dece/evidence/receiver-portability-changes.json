@@ -1,0 +1,50 @@
+[
+  [
+    "import { execFileSync } from 'node:child_process';\n",
+    ""
+  ],
+  [
+    "chrome: execFileSync(chrome, ['--version'], { encoding: 'utf8' }).trim()",
+    "chrome: null"
+  ],
+  [
+    "  source_commit: '8a4141ad26f068f10992677c715f0b8f7c126581',",
+    "  source_commit: '8a4141ad26f068f10992677c715f0b8f7c126581',\n  native_runtime_snapshot_commit: process.env.RETURNBY_SOURCE_SNAPSHOT_COMMIT || null,"
+  ],
+  [
+    "  shortRoot = await fs.mkdtemp('/home/jacob/rb49-');",
+    "  shortRoot = await fs.mkdtemp(process.env.RETURNBY_BROWSER_TMP_PREFIX || '/tmp/rb49-');"
+  ],
+  [
+    "  progress('browser launched');",
+    "  receipt.runtime.chrome = context.browser()?.version() ?? null;\n  if (!receipt.runtime.chrome) throw new Error('Actual browser version unavailable');\n  progress('browser launched');"
+  ],
+  [
+    "  const pending = page.waitForEvent('download', { timeout: 10000 });\n  await page.locator('#saved-returns-csv').click();\n  const download = await pending;",
+    "  const [download] = await Promise.all([\n    page.waitForEvent('download', { timeout: 10000 }),\n    page.locator('#saved-returns-csv').click(),\n  ]);"
+  ],
+  [
+    "function progress(stage) { process.stdout.write(JSON.stringify({ at: new Date().toISOString(), stage }) + '\\n'); }",
+    "function progress(stage) { process.stdout.write(JSON.stringify({ at: new Date().toISOString(), stage }) + '\\n'); }\nasync function boundedCleanup(promise, label) {\n  let timer;\n  try {\n    await Promise.race([promise, new Promise((_, reject) => { timer = setTimeout(() => reject(new Error(label + ' timed out after 15 seconds')), 15000); })]);\n  } finally { clearTimeout(timer); }\n}"
+  ],
+  [
+    "} finally {\n  progress('closing browser');",
+    "} finally {\n  try { await fs.writeFile(path.join(output, 'pre-cleanup-receipt.json'), JSON.stringify(receipt, null, 2) + '\\n', { flag: 'wx' }); }\n  catch (error) { receipt.pre_cleanup_save_error = String(error); }\n  progress('closing browser');"
+  ],
+  [
+    "  try { if (context) await context.close(); } catch",
+    "  try { if (context) await boundedCleanup(context.close(), 'Owned browser close'); } catch"
+  ],
+  [
+    "  try { if (server) await new Promise(resolve => server.close(resolve)); } catch",
+    "  try { if (server) await boundedCleanup(new Promise(resolve => { server.close(resolve); server.closeAllConnections(); }), 'Owned loopback server close'); } catch"
+  ],
+  [
+    "  if (shortRoot) {\n    try { await fs.rm(shortRoot, { recursive: true, force: false });",
+    "  if (shortRoot && !receipt.browser_close_error) {\n    try { await fs.rm(shortRoot, { recursive: true, force: false });"
+  ],
+  [
+    "  receipt.completed = !receipt.error && !receipt.source_after_error;",
+    "  receipt.completed = !receipt.error && !receipt.source_after_error && !receipt.browser_close_error && !receipt.server_close_error;"
+  ]
+]

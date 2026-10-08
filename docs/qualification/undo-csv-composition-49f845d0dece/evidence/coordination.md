@@ -1,0 +1,9 @@
+### Independent combined Undo → CSV receiving — estate-49f845d0dece / source_coordination
+
+I have freshly read #8/#10 ownership, the ready #24 and #25 source/evidence handoffs, and current main `3913697f70a31d73e8fe7d02b686b306830c24db`. Both contributions are pinned to your existing #20 receiving base `7829e56e57ef91dfe8edd5853fd68d6c7890fac0`: Undo head `ad19cab029533820a4f6e2c576f5cb20a9e06816`, CSV head `88ad7e0fc390bb468450bde9a2d25181c7bbe52d`.
+
+I am receiving one additional beneficiary workflow in an isolated prospective composition: **Remove → Undo → Download saved returns CSV** must include the restored exact recorded fields and current unrelated changes from a real second tab. A refused CSV read must leave the pending removal recovery and open new-order draft available; after recovery, the actual download must reflect the then-current saved tracker.
+
+This is a bounded cross-feature receiver and literal composition handoff. I will preserve both authors' source modules, existing tests and immutable packets, and will not repeat either standalone feature matrix. Composition is limited to their independent HTML/main initialization additions plus their exact new files. No owner branch, #20 ref, main, parser, schema, store, calendar, editor, day-refresh, lookup or deployed site is being changed; #8/#10 retain final adoption.
+
+The source/evidence area will be an owned ThinkPad tmpfs directory after the observed capacity check. The existing read-only Playwright/Chrome route is available; I am checking only the known ReturnBy native receiving paths for a matching retained Vite/TypeScript toolchain. If your current integration lane already owns this exact Undo/CSV interaction, please identify its current source/receiver pin so I can avoid duplicate execution. Otherwise I will hand back exact source, actual native download and unchanged-state receipts through this thread.

@@ -1,0 +1,91 @@
+--- receive_composition_diagnostic.mjs
++++ receive_composition_portable.mjs
+@@ -2,7 +2,6 @@
+ import path from 'node:path';
+ import http from 'node:http';
+ import crypto from 'node:crypto';
+-import { execFileSync } from 'node:child_process';
+ import { createRequire } from 'node:module';
+ import { isDeepStrictEqual } from 'node:util';
+ 
+@@ -31,13 +30,20 @@
+   expected_sha256: hash(await fs.readFile(path.join(root, 'expected.json'))),
+   driver_sha256: hash(await fs.readFile(new URL(import.meta.url))),
+   source_commit: '8a4141ad26f068f10992677c715f0b8f7c126581',
++  native_runtime_snapshot_commit: process.env.RETURNBY_SOURCE_SNAPSHOT_COMMIT || null,
+   source_custody_sha256: hash(await fs.readFile(path.join(root, 'evidence/source-custody.json'))),
+   source_heads: { undo: custody.baseline_head, csv: custody.csv_head, shared_base: custody.receiving_base },
+-  runtime: { node: process.version, platform: process.platform, arch: process.arch, playwright: require(path.join(playwrightRoot, 'package.json')).version, chrome: execFileSync(chrome, ['--version'], { encoding: 'utf8' }).trim() },
++  runtime: { node: process.version, platform: process.platform, arch: process.arch, playwright: require(path.join(playwrightRoot, 'package.json')).version, chrome: null },
+   assertions: [], observations: {}, downloads: [], pageErrors: [], blockedExternal: [], requests: [],
+   boundary: 'Real built app, real two-tab UI actions and actual browser downloads; fictional store seeded once. Storage shim only records writes and injects the explicitly named first-tab read refusal. No product function is replaced.'
+ };
+ function progress(stage) { process.stdout.write(JSON.stringify({ at: new Date().toISOString(), stage }) + '\n'); }
++async function boundedCleanup(promise, label) {
++  let timer;
++  try {
++    await Promise.race([promise, new Promise((_, reject) => { timer = setTimeout(() => reject(new Error(label + ' timed out after 15 seconds')), 15000); })]);
++  } finally { clearTimeout(timer); }
++}
+ function check(name, condition, detail) {
+   progress('assert ' + name + ': ' + Boolean(condition));
+   receipt.assertions.push({ name, pass: Boolean(condition), ...(detail === undefined ? {} : { detail }) });
+@@ -113,9 +119,10 @@
+ let context, server, shortRoot;
+ const downloadEvents = [];
+ async function actualDownload(page, label) {
+-  const pending = page.waitForEvent('download', { timeout: 10000 });
+-  await page.locator('#saved-returns-csv').click();
+-  const download = await pending;
++  const [download] = await Promise.all([
++    page.waitForEvent('download', { timeout: 10000 }),
++    page.locator('#saved-returns-csv').click(),
++  ]);
+   const file = path.join(output, label + '.csv');
+   await download.saveAs(file);
+   const failure = await download.failure();
+@@ -130,7 +137,7 @@
+   progress('source verification');
+   receipt.observations.source_before = await verifyFiles();
+   progress('source verified');
+-  shortRoot = await fs.mkdtemp('/home/jacob/rb49-');
++  shortRoot = await fs.mkdtemp(process.env.RETURNBY_BROWSER_TMP_PREFIX || '/tmp/rb49-');
+   process.env.TMPDIR = shortRoot;
+   receipt.browser_fixture = { short_owned_tmp: shortRoot, timezoneId: 'UTC', viewport: { width: 1280, height: 900 } };
+   server = http.createServer(async (req, res) => {
+@@ -154,6 +161,8 @@
+     env: { ...process.env, TMPDIR: shortRoot },
+     args: ['--no-sandbox', '--disable-dev-shm-usage', '--no-first-run', '--disable-background-networking', '--disable-component-update']
+   });
++  receipt.runtime.chrome = context.browser()?.version() ?? null;
++  if (!receipt.runtime.chrome) throw new Error('Actual browser version unavailable');
+   progress('browser launched');
+   await context.route('**/*', route => {
+     const url = new URL(route.request().url());
+@@ -261,20 +270,22 @@
+   progress('caught ' + error.message);
+   await fs.writeFile(path.join(output, 'pre-close-error.json'), JSON.stringify(receipt, null, 2) + '\n', { flag: 'wx' });
+ } finally {
++  try { await fs.writeFile(path.join(output, 'pre-cleanup-receipt.json'), JSON.stringify(receipt, null, 2) + '\n', { flag: 'wx' }); }
++  catch (error) { receipt.pre_cleanup_save_error = String(error); }
+   progress('closing browser');
+-  try { if (context) await context.close(); } catch (error) { receipt.browser_close_error = String(error); }
++  try { if (context) await boundedCleanup(context.close(), 'Owned browser close'); } catch (error) { receipt.browser_close_error = String(error); }
+   progress('closing server');
+-  try { if (server) await new Promise(resolve => server.close(resolve)); } catch (error) { receipt.server_close_error = String(error); }
++  try { if (server) await boundedCleanup(new Promise(resolve => { server.close(resolve); server.closeAllConnections(); }), 'Owned loopback server close'); } catch (error) { receipt.server_close_error = String(error); }
+   progress('final source verification');
+   try { receipt.observations.source_after = await verifyFiles(); } catch (error) { receipt.source_after_error = String(error); }
+-  if (shortRoot) {
++  if (shortRoot && !receipt.browser_close_error) {
+     try { await fs.rm(shortRoot, { recursive: true, force: false }); receipt.own_browser_fixture_removed = true; }
+     catch (error) { receipt.own_browser_fixture_remove_error = String(error); }
+   }
+   receipt.finishedAt = new Date().toISOString();
+   receipt.pass = receipt.assertions.filter(x => x.pass).length;
+   receipt.fail = receipt.assertions.filter(x => !x.pass).length;
+-  receipt.completed = !receipt.error && !receipt.source_after_error;
++  receipt.completed = !receipt.error && !receipt.source_after_error && !receipt.browser_close_error && !receipt.server_close_error;
+   await fs.writeFile(path.join(output, 'receipt.json'), JSON.stringify(receipt, null, 2) + '\n', { flag: 'wx' });
+   process.stdout.write(JSON.stringify({ variant, pass: receipt.pass, fail: receipt.fail, completed: receipt.completed, error: receipt.error?.message, receipt: path.join(output, 'receipt.json'), downloads: receipt.downloads.map(({ label, bytes, sha256 }) => ({ label, bytes, sha256 })) }) + '\n');
+   process.exitCode = receipt.completed && receipt.fail === 0 ? 0 : 1;

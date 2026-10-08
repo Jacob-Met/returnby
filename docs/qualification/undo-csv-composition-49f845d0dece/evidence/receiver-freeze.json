@@ -1,0 +1,15 @@
+{
+  "source_snapshot_commit": "7b09090f52d0a2c6a54ce3791233de33df9cd1a6",
+  "driver_pins": {
+    "receive_composition.mjs": "aaf31c1caa178cfd608d91f30800c512e51bfc21581f0646fd5a7260cf709740",
+    "receive_composition_diagnostic.mjs": "2b558275322720bd6da26b4477c6ca5b4b17d60427049626887306177ec90746",
+    "receive_composition_portable.mjs": "2515748b748660a24d77eb4537f2666732af8cc713e277483dc91cef469e8606"
+  },
+  "oracles": {
+    "assertion_calls": 19,
+    "all_assertion_call_text_identical": true,
+    "typescript": "5.9.3",
+    "sha256": "349f13b5805aa38881f5ed309100240dcb62c9b9c10074d1bcd5d74091438b61"
+  },
+  "changes": "Only portable short TMPDIR prefix, actual launched-browser version, setup/cleanup diagnostics and bounded cleanup, and immediate handling of concurrent download/click rejection. No product source or check-call argument changed."
+}

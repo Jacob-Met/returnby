@@ -1,0 +1,67 @@
+{
+  "variant": "candidate",
+  "command": [
+    "/opt/homebrew/bin/npm",
+    "run",
+    "build"
+  ],
+  "cwd": "/Users/me/workspace/estate/returnby-undo-csv-receiving-49f845d0dece-mac/candidate",
+  "startedAt": "2026-10-08T15:27:05.232642+00:00",
+  "source_before": {
+    "index.html": "6f17badae80849d56b567d423b96028c6180d2c2b8501028f78d9733101a6136",
+    "package-lock.json": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+    "package.json": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+    "tsconfig.json": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc",
+    "vite.config.ts": "320350dced549cebe2ae248283028ee7ae0fdbb36576a694f70cfbd755f3a30d",
+    "public/favicon.svg": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+    "data/policies.json": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26",
+    "src/saved-returns-csv-ui.ts": "e8f1a3fbb0cb94f1591257c607b4086fe8e673350efd44dd2d7e19bee5ce80c3",
+    "src/samples.ts": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+    "src/removal-undo.css": "4f8c64e51f0485488f5d1b69cd60a6f3d5782e600d7f30088361bd5c5e1a3dfe",
+    "src/ics.ts": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+    "src/main.ts": "fa20b668735a5151b52fb4a79114f1133d8d9707f6e12d8f085c04708653c244",
+    "src/parse.ts": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/backup.css": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+    "src/edit-ui.ts": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+    "src/calendar-batch-ui.ts": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+    "src/calendar-batch.css": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+    "src/removal-undo.ts": "c5a885be25b70885e284d76635cb7e453ae1be2c04ce87ee38f22adfd69d9d75",
+    "src/edit.css": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+    "src/edit.ts": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+    "src/calendar-batch.ts": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+    "src/policy.ts": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+    "src/style.css": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+    "src/removal-undo-ui.ts": "5590981d5a7f4fb714abc09a86cd498606ae116f7956761d53b21cf6d47d3670",
+    "src/backup-ui.ts": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+    "src/backup.ts": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+    "src/saved-returns-csv.ts": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+    "src/store.ts": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf"
+  },
+  "node_version": "v26.3.0",
+  "exit_code": 0,
+  "finishedAt": "2026-10-08T15:27:07.199246+00:00",
+  "source_unchanged": true,
+  "artifacts": [
+    {
+      "path": "dist/assets/index-CTkqPl-v.js",
+      "bytes": 35745,
+      "sha256": "89e7d8681e09e8d22adb8b0679f12b7f7e77495789cd963d2b5b8fabaef503d8"
+    },
+    {
+      "path": "dist/assets/index-WVSeeUEs.css",
+      "bytes": 13358,
+      "sha256": "ca16b1bd04d5862a085149baa2775897755c44333795cf936e736e516b3c3b3d"
+    },
+    {
+      "path": "dist/favicon.svg",
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 11393,
+      "sha256": "6e2a2361c95737d4f6e168647f655afb6443f4a78fc21517ef1b2050881b4d2a"
+    }
+  ]
+}

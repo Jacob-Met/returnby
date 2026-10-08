@@ -1,0 +1,152 @@
+{
+  "runtime_and_build_shared_identical": 21,
+  "identical": [
+    {
+      "path": "data/policies.json",
+      "sha": "8492b1e041d03723b1eac74220afd3d4fe3d2834"
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0"
+    },
+    {
+      "path": "package.json",
+      "sha": "329b4b71fbb631662eec0405ced477134520c9a5"
+    },
+    {
+      "path": "src/backup-ui.ts",
+      "sha": "366341e5d5215809bca6d8f32f130336b0ea3be4"
+    },
+    {
+      "path": "src/backup.css",
+      "sha": "bc60d09bf8af57ec56a3b3766559c8829d8a859b"
+    },
+    {
+      "path": "src/backup.ts",
+      "sha": "bdd86ce50c723abf8f1d305d4fdf63353510eba8"
+    },
+    {
+      "path": "src/calendar-batch-ui.ts",
+      "sha": "f14427126feb325861ceb08783877c97cfc92e4d"
+    },
+    {
+      "path": "src/calendar-batch.css",
+      "sha": "6a9849585c528bd82d8d40d66d2816e7f25bc327"
+    },
+    {
+      "path": "src/calendar-batch.ts",
+      "sha": "520469648c1177f010edf04fa5f779d900e2431f"
+    },
+    {
+      "path": "src/deadline.ts",
+      "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4"
+    },
+    {
+      "path": "src/edit-ui.ts",
+      "sha": "d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab"
+    },
+    {
+      "path": "src/edit.css",
+      "sha": "68691310feaf885d68876d77e25821f44683c4ae"
+    },
+    {
+      "path": "src/edit.ts",
+      "sha": "15ffab3eb7cb4ea365474c2aa50706264e888645"
+    },
+    {
+      "path": "src/ics.ts",
+      "sha": "58c873a116ed6b265864cb3e7d5b0dd27fd81544"
+    },
+    {
+      "path": "src/parse.ts",
+      "sha": "dd15787cbbb4373a1e594c781f3a6d2d5cec15db"
+    },
+    {
+      "path": "src/policy.ts",
+      "sha": "38d8d03e30d1054b7447618afa7e49d5b4655c5d"
+    },
+    {
+      "path": "src/samples.ts",
+      "sha": "cb510076e14da5b3a75edfc472466b93f19bfe94"
+    },
+    {
+      "path": "src/store.ts",
+      "sha": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3"
+    },
+    {
+      "path": "src/style.css",
+      "sha": "d4e76b0ae4264b2ee426472ad2926690029ba3fb"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha": "041854f74501ecbb719e93f24f73e471596ab572"
+    }
+  ],
+  "differences": [
+    {
+      "path": "index.html",
+      "undo": "f64f93d138487b891ef71467ee45c98f4caea888",
+      "csv": "ab039d13a53369a5528c9947f5323b8101b7b3b9"
+    },
+    {
+      "path": "src/main.ts",
+      "undo": "6e0ba0ff32a4bc921790570fdef8e7dbe33d041d",
+      "csv": "1bca9a5d3d57bd796b43c81606eed5a1c83e66db"
+    },
+    {
+      "path": "src/removal-undo-ui.ts",
+      "undo": "009f582071f457f28a528336715a2d2331b110f0",
+      "csv": null
+    },
+    {
+      "path": "src/removal-undo.css",
+      "undo": "73432a0f1c202e31b40ab578b1502b304f86dff6",
+      "csv": null
+    },
+    {
+      "path": "src/removal-undo.ts",
+      "undo": "b29e7493c7efb240dad2dfe73ec9274e1fd583f4",
+      "csv": null
+    },
+    {
+      "path": "src/saved-returns-csv-ui.ts",
+      "undo": null,
+      "csv": "8321f2b207364bbd8eecc2b64c49ad67e19c0d05"
+    },
+    {
+      "path": "src/saved-returns-csv.ts",
+      "undo": null,
+      "csv": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a"
+    }
+  ],
+  "csv_changed_paths": [
+    {
+      "path": "index.html",
+      "status": "modified",
+      "additions": 7,
+      "deletions": 0
+    },
+    {
+      "path": "src/main.ts",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 0
+    },
+    {
+      "path": "src/saved-returns-csv-ui.ts",
+      "status": "added",
+      "additions": 33,
+      "deletions": 0
+    },
+    {
+      "path": "src/saved-returns-csv.ts",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    }
+  ]
+}

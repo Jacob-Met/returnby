@@ -1,0 +1,1269 @@
+{
+  "startedAt": "2026-10-08T15:27:50.250Z",
+  "variant": "candidate",
+  "contract_sha256": "4e8d9fa6356468a617287fbc175797c013ad154036a63e21cb609fb2c352c2f4",
+  "expected_sha256": "e57c6a62bc2987d560c967601e3ff6f1b97a73604352a0e0b43a2b8507272cd9",
+  "driver_sha256": "2515748b748660a24d77eb4537f2666732af8cc713e277483dc91cef469e8606",
+  "source_commit": "8a4141ad26f068f10992677c715f0b8f7c126581",
+  "native_runtime_snapshot_commit": "7b09090f52d0a2c6a54ce3791233de33df9cd1a6",
+  "source_custody_sha256": "cb3cd3d01c38cec75d3a9103201de1bf547b70b3ef6ee5c2fdb2304a256f3763",
+  "source_heads": {
+    "undo": "ad19cab029533820a4f6e2c576f5cb20a9e06816",
+    "csv": "88ad7e0fc390bb468450bde9a2d25181c7bbe52d",
+    "shared_base": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0"
+  },
+  "runtime": {
+    "node": "v26.3.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "playwright": "1.62.1",
+    "chrome": "154.0.8037.98"
+  },
+  "assertions": [
+    {
+      "name": "undo_controls_from_received_pr24",
+      "pass": true
+    },
+    {
+      "name": "csv_composition_entrypoint",
+      "pass": true
+    },
+    {
+      "name": "frozen_filter_date_precondition",
+      "pass": true
+    },
+    {
+      "name": "seed_received_by_both_real_tabs",
+      "pass": true
+    },
+    {
+      "name": "real_remove_retains_pending_recovery",
+      "pass": true
+    },
+    {
+      "name": "real_second_tab_edit_preserves_removal_and_other_fields",
+      "pass": true,
+      "detail": {
+        "actual": [
+          {
+            "id": "undo-csv-49-peer",
+            "merchant": "South Books",
+            "orderNo": "AFTER, \"peer\" 日本",
+            "total": "42.75",
+            "orderDate": "2026-09-30",
+            "windowDays": 7,
+            "windowSource": "user",
+            "createdAt": "2026-09-30T08:00:00.000Z"
+          },
+          {
+            "id": "undo-csv-49-stable",
+            "merchant": "Cedar Outfitters",
+            "orderNo": "ST-4900",
+            "total": "80.00",
+            "orderDate": "2026-10-06",
+            "windowDays": 14,
+            "windowSource": "user",
+            "createdAt": "2026-10-06T12:30:00.000Z"
+          }
+        ],
+        "expected": [
+          {
+            "id": "undo-csv-49-peer",
+            "merchant": "South Books",
+            "orderNo": "AFTER, \"peer\" 日本",
+            "total": "42.75",
+            "orderDate": "2026-09-30",
+            "windowDays": 7,
+            "windowSource": "user",
+            "createdAt": "2026-09-30T08:00:00.000Z"
+          },
+          {
+            "id": "undo-csv-49-stable",
+            "merchant": "Cedar Outfitters",
+            "orderNo": "ST-4900",
+            "total": "80.00",
+            "orderDate": "2026-10-06",
+            "windowDays": 14,
+            "windowSource": "user",
+            "createdAt": "2026-10-06T12:30:00.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unsaved_draft_and_filter_frozen_before_undo",
+      "pass": true
+    },
+    {
+      "name": "undo_restores_exact_target_and_current_peer_edit",
+      "pass": true,
+      "detail": {
+        "actual": [
+          {
+            "id": "undo-csv-49-target",
+            "merchant": "Harbor, \"North\" 日本",
+            "orderNo": "RN-0049",
+            "total": "109.50",
+            "orderDate": "2026-10-01",
+            "windowDays": 30,
+            "windowSource": "user",
+            "createdAt": "2026-10-01T09:10:11.000Z"
+          },
+          {
+            "id": "undo-csv-49-peer",
+            "merchant": "South Books",
+            "orderNo": "AFTER, \"peer\" 日本",
+            "total": "42.75",
+            "orderDate": "2026-09-30",
+            "windowDays": 7,
+            "windowSource": "user",
+            "createdAt": "2026-09-30T08:00:00.000Z"
+          },
+          {
+            "id": "undo-csv-49-stable",
+            "merchant": "Cedar Outfitters",
+            "orderNo": "ST-4900",
+            "total": "80.00",
+            "orderDate": "2026-10-06",
+            "windowDays": 14,
+            "windowSource": "user",
+            "createdAt": "2026-10-06T12:30:00.000Z"
+          }
+        ],
+        "expected": [
+          {
+            "id": "undo-csv-49-target",
+            "merchant": "Harbor, \"North\" 日本",
+            "orderNo": "RN-0049",
+            "total": "109.50",
+            "orderDate": "2026-10-01",
+            "windowDays": 30,
+            "windowSource": "user",
+            "createdAt": "2026-10-01T09:10:11.000Z"
+          },
+          {
+            "id": "undo-csv-49-peer",
+            "merchant": "South Books",
+            "orderNo": "AFTER, \"peer\" 日本",
+            "total": "42.75",
+            "orderDate": "2026-09-30",
+            "windowDays": 7,
+            "windowSource": "user",
+            "createdAt": "2026-09-30T08:00:00.000Z"
+          },
+          {
+            "id": "undo-csv-49-stable",
+            "merchant": "Cedar Outfitters",
+            "orderNo": "ST-4900",
+            "total": "80.00",
+            "orderDate": "2026-10-06",
+            "windowDays": 14,
+            "windowSource": "user",
+            "createdAt": "2026-10-06T12:30:00.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "name": "undo_preserves_unsaved_draft_and_active_filter",
+      "pass": true
+    },
+    {
+      "name": "after-peer-edit-and-undo_actual_download_complete_fields",
+      "pass": true,
+      "detail": {
+        "actual": [
+          [
+            "Saved return ID",
+            "Store",
+            "Order number",
+            "Total (as entered)",
+            "Order date",
+            "Return window (days)",
+            "Recorded window source",
+            "Return deadline",
+            "Created at"
+          ],
+          [
+            "undo-csv-49-peer",
+            "South Books",
+            "AFTER, \"peer\" 日本",
+            "42.75",
+            "2026-09-30",
+            "7",
+            "user",
+            "2026-10-07",
+            "2026-09-30T08:00:00.000Z"
+          ],
+          [
+            "undo-csv-49-stable",
+            "Cedar Outfitters",
+            "ST-4900",
+            "80.00",
+            "2026-10-06",
+            "14",
+            "user",
+            "2026-10-20",
+            "2026-10-06T12:30:00.000Z"
+          ],
+          [
+            "undo-csv-49-target",
+            "Harbor, \"North\" 日本",
+            "RN-0049",
+            "109.50",
+            "2026-10-01",
+            "30",
+            "user",
+            "2026-10-31",
+            "2026-10-01T09:10:11.000Z"
+          ]
+        ],
+        "expected": [
+          [
+            "Saved return ID",
+            "Store",
+            "Order number",
+            "Total (as entered)",
+            "Order date",
+            "Return window (days)",
+            "Recorded window source",
+            "Return deadline",
+            "Created at"
+          ],
+          [
+            "undo-csv-49-peer",
+            "South Books",
+            "AFTER, \"peer\" 日本",
+            "42.75",
+            "2026-09-30",
+            "7",
+            "user",
+            "2026-10-07",
+            "2026-09-30T08:00:00.000Z"
+          ],
+          [
+            "undo-csv-49-stable",
+            "Cedar Outfitters",
+            "ST-4900",
+            "80.00",
+            "2026-10-06",
+            "14",
+            "user",
+            "2026-10-20",
+            "2026-10-06T12:30:00.000Z"
+          ],
+          [
+            "undo-csv-49-target",
+            "Harbor, \"North\" 日本",
+            "RN-0049",
+            "109.50",
+            "2026-10-01",
+            "30",
+            "user",
+            "2026-10-31",
+            "2026-10-01T09:10:11.000Z"
+          ]
+        ],
+        "failure": null
+      }
+    },
+    {
+      "name": "whole_tracker_csv_is_read_only_and_preserves_ui",
+      "pass": true,
+      "detail": {
+        "before": {
+          "raw": "[{\"id\":\"undo-csv-49-target\",\"merchant\":\"Harbor, \\\"North\\\" 日本\",\"orderNo\":\"RN-0049\",\"total\":\"109.50\",\"orderDate\":\"2026-10-01\",\"windowDays\":30,\"windowSource\":\"user\",\"createdAt\":\"2026-10-01T09:10:11.000Z\"},{\"id\":\"undo-csv-49-peer\",\"merchant\":\"South Books\",\"orderNo\":\"AFTER, \\\"peer\\\" 日本\",\"total\":\"42.75\",\"orderDate\":\"2026-09-30\",\"windowDays\":7,\"windowSource\":\"user\",\"createdAt\":\"2026-09-30T08:00:00.000Z\"},{\"id\":\"undo-csv-49-stable\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"ST-4900\",\"total\":\"80.00\",\"orderDate\":\"2026-10-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-10-06T12:30:00.000Z\"}]",
+          "a": {
+            "draft": {
+              "paste": "A fictional unsaved draft for Undo/CSV receiving.",
+              "merchant": "Unsaved Meadow",
+              "orderDate": "2026-10-08",
+              "orderNo": "DRAFT-0049",
+              "total": "17.00",
+              "windowDays": "11"
+            },
+            "draftVisible": true,
+            "filter": "expired",
+            "visibleIds": [
+              "undo-csv-49-peer"
+            ],
+            "recovery": {
+              "panelVisible": true,
+              "undoVisible": false,
+              "title": "Return restored",
+              "description": "Harbor, \"North\" 日本 · #RN-0049",
+              "status": "Restored to your tracker with its original details. Your current filter still applies."
+            },
+            "writes": 2
+          },
+          "b": {
+            "draft": {
+              "paste": "",
+              "merchant": null,
+              "orderDate": null,
+              "orderNo": null,
+              "total": null,
+              "windowDays": null
+            },
+            "draftVisible": false,
+            "filter": "all",
+            "visibleIds": [
+              "undo-csv-49-peer",
+              "undo-csv-49-stable"
+            ],
+            "recovery": {
+              "panelVisible": false,
+              "undoVisible": true,
+              "title": "Return removed",
+              "description": "",
+              "status": ""
+            },
+            "writes": 1
+          }
+        },
+        "after": {
+          "raw": "[{\"id\":\"undo-csv-49-target\",\"merchant\":\"Harbor, \\\"North\\\" 日本\",\"orderNo\":\"RN-0049\",\"total\":\"109.50\",\"orderDate\":\"2026-10-01\",\"windowDays\":30,\"windowSource\":\"user\",\"createdAt\":\"2026-10-01T09:10:11.000Z\"},{\"id\":\"undo-csv-49-peer\",\"merchant\":\"South Books\",\"orderNo\":\"AFTER, \\\"peer\\\" 日本\",\"total\":\"42.75\",\"orderDate\":\"2026-09-30\",\"windowDays\":7,\"windowSource\":\"user\",\"createdAt\":\"2026-09-30T08:00:00.000Z\"},{\"id\":\"undo-csv-49-stable\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"ST-4900\",\"total\":\"80.00\",\"orderDate\":\"2026-10-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-10-06T12:30:00.000Z\"}]",
+          "a": {
+            "draft": {
+              "paste": "A fictional unsaved draft for Undo/CSV receiving.",
+              "merchant": "Unsaved Meadow",
+              "orderDate": "2026-10-08",
+              "orderNo": "DRAFT-0049",
+              "total": "17.00",
+              "windowDays": "11"
+            },
+            "draftVisible": true,
+            "filter": "expired",
+            "visibleIds": [
+              "undo-csv-49-peer"
+            ],
+            "recovery": {
+              "panelVisible": true,
+              "undoVisible": false,
+              "title": "Return restored",
+              "description": "Harbor, \"North\" 日本 · #RN-0049",
+              "status": "Restored to your tracker with its original details. Your current filter still applies."
+            },
+            "writes": 2
+          },
+          "b": {
+            "draft": {
+              "paste": "",
+              "merchant": null,
+              "orderDate": null,
+              "orderNo": null,
+              "total": null,
+              "windowDays": null
+            },
+            "draftVisible": false,
+            "filter": "all",
+            "visibleIds": [
+              "undo-csv-49-peer",
+              "undo-csv-49-stable"
+            ],
+            "recovery": {
+              "panelVisible": false,
+              "undoVisible": true,
+              "title": "Return removed",
+              "description": "",
+              "status": ""
+            },
+            "writes": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "second_removal_has_recoverable_target_and_retained_draft",
+      "pass": true
+    },
+    {
+      "name": "refused_csv_read_downloads_nothing_and_explains_failure",
+      "pass": true
+    },
+    {
+      "name": "refused_csv_preserves_store_recovery_draft_and_filter",
+      "pass": true
+    },
+    {
+      "name": "undo_remains_usable_after_csv_read_refusal",
+      "pass": true
+    },
+    {
+      "name": "after-read-refusal-and-undo_actual_download_complete_fields",
+      "pass": true,
+      "detail": {
+        "actual": [
+          [
+            "Saved return ID",
+            "Store",
+            "Order number",
+            "Total (as entered)",
+            "Order date",
+            "Return window (days)",
+            "Recorded window source",
+            "Return deadline",
+            "Created at"
+          ],
+          [
+            "undo-csv-49-peer",
+            "South Books",
+            "AFTER, \"peer\" 日本",
+            "42.75",
+            "2026-09-30",
+            "7",
+            "user",
+            "2026-10-07",
+            "2026-09-30T08:00:00.000Z"
+          ],
+          [
+            "undo-csv-49-stable",
+            "Cedar Outfitters",
+            "ST-4900",
+            "80.00",
+            "2026-10-06",
+            "14",
+            "user",
+            "2026-10-20",
+            "2026-10-06T12:30:00.000Z"
+          ],
+          [
+            "undo-csv-49-target",
+            "Harbor, \"North\" 日本",
+            "RN-0049",
+            "109.50",
+            "2026-10-01",
+            "30",
+            "user",
+            "2026-10-31",
+            "2026-10-01T09:10:11.000Z"
+          ]
+        ],
+        "expected": [
+          [
+            "Saved return ID",
+            "Store",
+            "Order number",
+            "Total (as entered)",
+            "Order date",
+            "Return window (days)",
+            "Recorded window source",
+            "Return deadline",
+            "Created at"
+          ],
+          [
+            "undo-csv-49-peer",
+            "South Books",
+            "AFTER, \"peer\" 日本",
+            "42.75",
+            "2026-09-30",
+            "7",
+            "user",
+            "2026-10-07",
+            "2026-09-30T08:00:00.000Z"
+          ],
+          [
+            "undo-csv-49-stable",
+            "Cedar Outfitters",
+            "ST-4900",
+            "80.00",
+            "2026-10-06",
+            "14",
+            "user",
+            "2026-10-20",
+            "2026-10-06T12:30:00.000Z"
+          ],
+          [
+            "undo-csv-49-target",
+            "Harbor, \"North\" 日本",
+            "RN-0049",
+            "109.50",
+            "2026-10-01",
+            "30",
+            "user",
+            "2026-10-31",
+            "2026-10-01T09:10:11.000Z"
+          ]
+        ],
+        "failure": null
+      }
+    },
+    {
+      "name": "retry_csv_preserves_data_and_ui_without_storage_writes",
+      "pass": true
+    },
+    {
+      "name": "no_product_runtime_error_or_external_request",
+      "pass": true
+    }
+  ],
+  "observations": {
+    "source_before": [
+      {
+        "path": "data/policies.json",
+        "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26",
+        "bytes": 449
+      },
+      {
+        "path": "index.html",
+        "sha256": "6f17badae80849d56b567d423b96028c6180d2c2b8501028f78d9733101a6136",
+        "bytes": 11292
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+        "bytes": 35404
+      },
+      {
+        "path": "package.json",
+        "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+        "bytes": 313
+      },
+      {
+        "path": "public/favicon.svg",
+        "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+        "bytes": 238
+      },
+      {
+        "path": "src/backup-ui.ts",
+        "sha256": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+        "bytes": 6235
+      },
+      {
+        "path": "src/backup.css",
+        "sha256": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+        "bytes": 978
+      },
+      {
+        "path": "src/backup.ts",
+        "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+        "bytes": 7059
+      },
+      {
+        "path": "src/calendar-batch-ui.ts",
+        "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+        "bytes": 7180
+      },
+      {
+        "path": "src/calendar-batch.css",
+        "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+        "bytes": 1833
+      },
+      {
+        "path": "src/calendar-batch.ts",
+        "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+        "bytes": 6017
+      },
+      {
+        "path": "src/deadline.ts",
+        "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+        "bytes": 837
+      },
+      {
+        "path": "src/edit-ui.ts",
+        "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+        "bytes": 4534
+      },
+      {
+        "path": "src/edit.css",
+        "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+        "bytes": 1782
+      },
+      {
+        "path": "src/edit.ts",
+        "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+        "bytes": 4075
+      },
+      {
+        "path": "src/ics.ts",
+        "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+        "bytes": 2263
+      },
+      {
+        "path": "src/main.ts",
+        "sha256": "fa20b668735a5151b52fb4a79114f1133d8d9707f6e12d8f085c04708653c244",
+        "bytes": 10576
+      },
+      {
+        "path": "src/parse.ts",
+        "sha256": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243",
+        "bytes": 3057
+      },
+      {
+        "path": "src/policy.ts",
+        "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+        "bytes": 595
+      },
+      {
+        "path": "src/removal-undo-ui.ts",
+        "sha256": "5590981d5a7f4fb714abc09a86cd498606ae116f7956761d53b21cf6d47d3670",
+        "bytes": 3046
+      },
+      {
+        "path": "src/removal-undo.css",
+        "sha256": "4f8c64e51f0485488f5d1b69cd60a6f3d5782e600d7f30088361bd5c5e1a3dfe",
+        "bytes": 646
+      },
+      {
+        "path": "src/removal-undo.ts",
+        "sha256": "c5a885be25b70885e284d76635cb7e453ae1be2c04ce87ee38f22adfd69d9d75",
+        "bytes": 2069
+      },
+      {
+        "path": "src/samples.ts",
+        "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+        "bytes": 513
+      },
+      {
+        "path": "src/saved-returns-csv-ui.ts",
+        "sha256": "e8f1a3fbb0cb94f1591257c607b4086fe8e673350efd44dd2d7e19bee5ce80c3",
+        "bytes": 1790
+      },
+      {
+        "path": "src/saved-returns-csv.ts",
+        "sha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+        "bytes": 3109
+      },
+      {
+        "path": "src/store.ts",
+        "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+        "bytes": 1387
+      },
+      {
+        "path": "src/style.css",
+        "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+        "bytes": 8842
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc",
+        "bytes": 273
+      },
+      {
+        "path": "vite.config.ts",
+        "sha256": "320350dced549cebe2ae248283028ee7ae0fdbb36576a694f70cfbd755f3a30d",
+        "bytes": 82
+      }
+    ],
+    "browser_today": "2026-10-08",
+    "fixture_seed": {
+      "count": 1,
+      "fictional": true,
+      "method": "Set initial localStorage only in a fresh owned browser profile, then load the actual app."
+    },
+    "after_peer_edit": [
+      {
+        "id": "undo-csv-49-peer",
+        "merchant": "South Books",
+        "orderNo": "AFTER, \"peer\" 日本",
+        "total": "42.75",
+        "orderDate": "2026-09-30",
+        "windowDays": 7,
+        "windowSource": "user",
+        "createdAt": "2026-09-30T08:00:00.000Z"
+      },
+      {
+        "id": "undo-csv-49-stable",
+        "merchant": "Cedar Outfitters",
+        "orderNo": "ST-4900",
+        "total": "80.00",
+        "orderDate": "2026-10-06",
+        "windowDays": 14,
+        "windowSource": "user",
+        "createdAt": "2026-10-06T12:30:00.000Z"
+      }
+    ],
+    "after_first_undo": {
+      "state": [
+        {
+          "id": "undo-csv-49-target",
+          "merchant": "Harbor, \"North\" 日本",
+          "orderNo": "RN-0049",
+          "total": "109.50",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T09:10:11.000Z"
+        },
+        {
+          "id": "undo-csv-49-peer",
+          "merchant": "South Books",
+          "orderNo": "AFTER, \"peer\" 日本",
+          "total": "42.75",
+          "orderDate": "2026-09-30",
+          "windowDays": 7,
+          "windowSource": "user",
+          "createdAt": "2026-09-30T08:00:00.000Z"
+        },
+        {
+          "id": "undo-csv-49-stable",
+          "merchant": "Cedar Outfitters",
+          "orderNo": "ST-4900",
+          "total": "80.00",
+          "orderDate": "2026-10-06",
+          "windowDays": 14,
+          "windowSource": "user",
+          "createdAt": "2026-10-06T12:30:00.000Z"
+        }
+      ],
+      "view": {
+        "draft": {
+          "paste": "A fictional unsaved draft for Undo/CSV receiving.",
+          "merchant": "Unsaved Meadow",
+          "orderDate": "2026-10-08",
+          "orderNo": "DRAFT-0049",
+          "total": "17.00",
+          "windowDays": "11"
+        },
+        "draftVisible": true,
+        "filter": "expired",
+        "visibleIds": [
+          "undo-csv-49-peer"
+        ],
+        "recovery": {
+          "panelVisible": true,
+          "undoVisible": false,
+          "title": "Return restored",
+          "description": "Harbor, \"North\" 日本 · #RN-0049",
+          "status": "Restored to your tracker with its original details. Your current filter still applies."
+        },
+        "writes": 2
+      }
+    },
+    "refused_read": {
+      "before": {
+        "raw": "[{\"id\":\"undo-csv-49-peer\",\"merchant\":\"South Books\",\"orderNo\":\"AFTER, \\\"peer\\\" 日本\",\"total\":\"42.75\",\"orderDate\":\"2026-09-30\",\"windowDays\":7,\"windowSource\":\"user\",\"createdAt\":\"2026-09-30T08:00:00.000Z\"},{\"id\":\"undo-csv-49-stable\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"ST-4900\",\"total\":\"80.00\",\"orderDate\":\"2026-10-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-10-06T12:30:00.000Z\"}]",
+        "a": {
+          "draft": {
+            "paste": "A fictional unsaved draft for Undo/CSV receiving.",
+            "merchant": "Unsaved Meadow",
+            "orderDate": "2026-10-08",
+            "orderNo": "DRAFT-0049",
+            "total": "17.00",
+            "windowDays": "11"
+          },
+          "draftVisible": true,
+          "filter": "expired",
+          "visibleIds": [
+            "undo-csv-49-peer"
+          ],
+          "recovery": {
+            "panelVisible": true,
+            "undoVisible": true,
+            "title": "Return removed",
+            "description": "Harbor, \"North\" 日本 · #RN-0049",
+            "status": "Undo restores only this return. Available until your next successful removal, clearing saved returns, or reloading this page."
+          },
+          "writes": 3
+        },
+        "b": {
+          "draft": {
+            "paste": "",
+            "merchant": null,
+            "orderDate": null,
+            "orderNo": null,
+            "total": null,
+            "windowDays": null
+          },
+          "draftVisible": false,
+          "filter": "all",
+          "visibleIds": [
+            "undo-csv-49-peer",
+            "undo-csv-49-stable"
+          ],
+          "recovery": {
+            "panelVisible": false,
+            "undoVisible": true,
+            "title": "Return removed",
+            "description": "",
+            "status": ""
+          },
+          "writes": 1
+        },
+        "downloads": 1
+      },
+      "after": {
+        "raw": "[{\"id\":\"undo-csv-49-peer\",\"merchant\":\"South Books\",\"orderNo\":\"AFTER, \\\"peer\\\" 日本\",\"total\":\"42.75\",\"orderDate\":\"2026-09-30\",\"windowDays\":7,\"windowSource\":\"user\",\"createdAt\":\"2026-09-30T08:00:00.000Z\"},{\"id\":\"undo-csv-49-stable\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"ST-4900\",\"total\":\"80.00\",\"orderDate\":\"2026-10-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-10-06T12:30:00.000Z\"}]",
+        "a": {
+          "draft": {
+            "paste": "A fictional unsaved draft for Undo/CSV receiving.",
+            "merchant": "Unsaved Meadow",
+            "orderDate": "2026-10-08",
+            "orderNo": "DRAFT-0049",
+            "total": "17.00",
+            "windowDays": "11"
+          },
+          "draftVisible": true,
+          "filter": "expired",
+          "visibleIds": [
+            "undo-csv-49-peer"
+          ],
+          "recovery": {
+            "panelVisible": true,
+            "undoVisible": true,
+            "title": "Return removed",
+            "description": "Harbor, \"North\" 日本 · #RN-0049",
+            "status": "Undo restores only this return. Available until your next successful removal, clearing saved returns, or reloading this page."
+          },
+          "writes": 3
+        },
+        "b": {
+          "draft": {
+            "paste": "",
+            "merchant": null,
+            "orderDate": null,
+            "orderNo": null,
+            "total": null,
+            "windowDays": null
+          },
+          "draftVisible": false,
+          "filter": "all",
+          "visibleIds": [
+            "undo-csv-49-peer",
+            "undo-csv-49-stable"
+          ],
+          "recovery": {
+            "panelVisible": false,
+            "undoVisible": true,
+            "title": "Return removed",
+            "description": "",
+            "status": ""
+          },
+          "writes": 1
+        },
+        "downloads": 1
+      },
+      "message": "Could not download saved returns. receiving read refusal",
+      "unexpected_download": null
+    },
+    "final": {
+      "saved": [
+        {
+          "id": "undo-csv-49-target",
+          "merchant": "Harbor, \"North\" 日本",
+          "orderNo": "RN-0049",
+          "total": "109.50",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T09:10:11.000Z"
+        },
+        {
+          "id": "undo-csv-49-peer",
+          "merchant": "South Books",
+          "orderNo": "AFTER, \"peer\" 日本",
+          "total": "42.75",
+          "orderDate": "2026-09-30",
+          "windowDays": 7,
+          "windowSource": "user",
+          "createdAt": "2026-09-30T08:00:00.000Z"
+        },
+        {
+          "id": "undo-csv-49-stable",
+          "merchant": "Cedar Outfitters",
+          "orderNo": "ST-4900",
+          "total": "80.00",
+          "orderDate": "2026-10-06",
+          "windowDays": 14,
+          "windowSource": "user",
+          "createdAt": "2026-10-06T12:30:00.000Z"
+        }
+      ],
+      "a": {
+        "draft": {
+          "paste": "A fictional unsaved draft for Undo/CSV receiving.",
+          "merchant": "Unsaved Meadow",
+          "orderDate": "2026-10-08",
+          "orderNo": "DRAFT-0049",
+          "total": "17.00",
+          "windowDays": "11"
+        },
+        "draftVisible": true,
+        "filter": "expired",
+        "visibleIds": [
+          "undo-csv-49-peer"
+        ],
+        "recovery": {
+          "panelVisible": true,
+          "undoVisible": false,
+          "title": "Return restored",
+          "description": "Harbor, \"North\" 日本 · #RN-0049",
+          "status": "Restored to your tracker with its original details. Your current filter still applies."
+        },
+        "writes": 4
+      },
+      "b": {
+        "draft": {
+          "paste": "",
+          "merchant": null,
+          "orderDate": null,
+          "orderNo": null,
+          "total": null,
+          "windowDays": null
+        },
+        "draftVisible": false,
+        "filter": "all",
+        "visibleIds": [
+          "undo-csv-49-peer",
+          "undo-csv-49-stable"
+        ],
+        "recovery": {
+          "panelVisible": false,
+          "undoVisible": true,
+          "title": "Return removed",
+          "description": "",
+          "status": ""
+        },
+        "writes": 1
+      },
+      "downloads": [
+        "returnby-returns-2026-10-08.csv",
+        "returnby-returns-2026-10-08.csv"
+      ],
+      "aWrites": [
+        {
+          "key": "returnby.v1",
+          "value": "[{\"id\":\"undo-csv-49-peer\",\"merchant\":\"South Books\",\"orderNo\":\"BEFORE-0049\",\"total\":\"42.75\",\"orderDate\":\"2026-09-30\",\"windowDays\":7,\"windowSource\":\"user\",\"createdAt\":\"2026-09-30T08:00:00.000Z\"},{\"id\":\"undo-csv-49-stable\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"ST-4900\",\"total\":\"80.00\",\"orderDate\":\"2026-10-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-10-06T12:30:00.000Z\"}]"
+        },
+        {
+          "key": "returnby.v1",
+          "value": "[{\"id\":\"undo-csv-49-target\",\"merchant\":\"Harbor, \\\"North\\\" 日本\",\"orderNo\":\"RN-0049\",\"total\":\"109.50\",\"orderDate\":\"2026-10-01\",\"windowDays\":30,\"windowSource\":\"user\",\"createdAt\":\"2026-10-01T09:10:11.000Z\"},{\"id\":\"undo-csv-49-peer\",\"merchant\":\"South Books\",\"orderNo\":\"AFTER, \\\"peer\\\" 日本\",\"total\":\"42.75\",\"orderDate\":\"2026-09-30\",\"windowDays\":7,\"windowSource\":\"user\",\"createdAt\":\"2026-09-30T08:00:00.000Z\"},{\"id\":\"undo-csv-49-stable\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"ST-4900\",\"total\":\"80.00\",\"orderDate\":\"2026-10-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-10-06T12:30:00.000Z\"}]"
+        },
+        {
+          "key": "returnby.v1",
+          "value": "[{\"id\":\"undo-csv-49-peer\",\"merchant\":\"South Books\",\"orderNo\":\"AFTER, \\\"peer\\\" 日本\",\"total\":\"42.75\",\"orderDate\":\"2026-09-30\",\"windowDays\":7,\"windowSource\":\"user\",\"createdAt\":\"2026-09-30T08:00:00.000Z\"},{\"id\":\"undo-csv-49-stable\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"ST-4900\",\"total\":\"80.00\",\"orderDate\":\"2026-10-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-10-06T12:30:00.000Z\"}]"
+        },
+        {
+          "key": "returnby.v1",
+          "value": "[{\"id\":\"undo-csv-49-target\",\"merchant\":\"Harbor, \\\"North\\\" 日本\",\"orderNo\":\"RN-0049\",\"total\":\"109.50\",\"orderDate\":\"2026-10-01\",\"windowDays\":30,\"windowSource\":\"user\",\"createdAt\":\"2026-10-01T09:10:11.000Z\"},{\"id\":\"undo-csv-49-peer\",\"merchant\":\"South Books\",\"orderNo\":\"AFTER, \\\"peer\\\" 日本\",\"total\":\"42.75\",\"orderDate\":\"2026-09-30\",\"windowDays\":7,\"windowSource\":\"user\",\"createdAt\":\"2026-09-30T08:00:00.000Z\"},{\"id\":\"undo-csv-49-stable\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"ST-4900\",\"total\":\"80.00\",\"orderDate\":\"2026-10-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-10-06T12:30:00.000Z\"}]"
+        }
+      ],
+      "bWrites": [
+        {
+          "key": "returnby.v1",
+          "value": "[{\"id\":\"undo-csv-49-peer\",\"merchant\":\"South Books\",\"orderNo\":\"AFTER, \\\"peer\\\" 日本\",\"total\":\"42.75\",\"orderDate\":\"2026-09-30\",\"windowDays\":7,\"windowSource\":\"user\",\"createdAt\":\"2026-09-30T08:00:00.000Z\"},{\"id\":\"undo-csv-49-stable\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"ST-4900\",\"total\":\"80.00\",\"orderDate\":\"2026-10-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-10-06T12:30:00.000Z\"}]"
+        }
+      ]
+    },
+    "source_after": [
+      {
+        "path": "data/policies.json",
+        "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26",
+        "bytes": 449
+      },
+      {
+        "path": "index.html",
+        "sha256": "6f17badae80849d56b567d423b96028c6180d2c2b8501028f78d9733101a6136",
+        "bytes": 11292
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+        "bytes": 35404
+      },
+      {
+        "path": "package.json",
+        "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+        "bytes": 313
+      },
+      {
+        "path": "public/favicon.svg",
+        "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+        "bytes": 238
+      },
+      {
+        "path": "src/backup-ui.ts",
+        "sha256": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+        "bytes": 6235
+      },
+      {
+        "path": "src/backup.css",
+        "sha256": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+        "bytes": 978
+      },
+      {
+        "path": "src/backup.ts",
+        "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+        "bytes": 7059
+      },
+      {
+        "path": "src/calendar-batch-ui.ts",
+        "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+        "bytes": 7180
+      },
+      {
+        "path": "src/calendar-batch.css",
+        "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+        "bytes": 1833
+      },
+      {
+        "path": "src/calendar-batch.ts",
+        "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+        "bytes": 6017
+      },
+      {
+        "path": "src/deadline.ts",
+        "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+        "bytes": 837
+      },
+      {
+        "path": "src/edit-ui.ts",
+        "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+        "bytes": 4534
+      },
+      {
+        "path": "src/edit.css",
+        "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+        "bytes": 1782
+      },
+      {
+        "path": "src/edit.ts",
+        "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+        "bytes": 4075
+      },
+      {
+        "path": "src/ics.ts",
+        "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+        "bytes": 2263
+      },
+      {
+        "path": "src/main.ts",
+        "sha256": "fa20b668735a5151b52fb4a79114f1133d8d9707f6e12d8f085c04708653c244",
+        "bytes": 10576
+      },
+      {
+        "path": "src/parse.ts",
+        "sha256": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243",
+        "bytes": 3057
+      },
+      {
+        "path": "src/policy.ts",
+        "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+        "bytes": 595
+      },
+      {
+        "path": "src/removal-undo-ui.ts",
+        "sha256": "5590981d5a7f4fb714abc09a86cd498606ae116f7956761d53b21cf6d47d3670",
+        "bytes": 3046
+      },
+      {
+        "path": "src/removal-undo.css",
+        "sha256": "4f8c64e51f0485488f5d1b69cd60a6f3d5782e600d7f30088361bd5c5e1a3dfe",
+        "bytes": 646
+      },
+      {
+        "path": "src/removal-undo.ts",
+        "sha256": "c5a885be25b70885e284d76635cb7e453ae1be2c04ce87ee38f22adfd69d9d75",
+        "bytes": 2069
+      },
+      {
+        "path": "src/samples.ts",
+        "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+        "bytes": 513
+      },
+      {
+        "path": "src/saved-returns-csv-ui.ts",
+        "sha256": "e8f1a3fbb0cb94f1591257c607b4086fe8e673350efd44dd2d7e19bee5ce80c3",
+        "bytes": 1790
+      },
+      {
+        "path": "src/saved-returns-csv.ts",
+        "sha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+        "bytes": 3109
+      },
+      {
+        "path": "src/store.ts",
+        "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+        "bytes": 1387
+      },
+      {
+        "path": "src/style.css",
+        "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+        "bytes": 8842
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc",
+        "bytes": 273
+      },
+      {
+        "path": "vite.config.ts",
+        "sha256": "320350dced549cebe2ae248283028ee7ae0fdbb36576a694f70cfbd755f3a30d",
+        "bytes": 82
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "label": "after-peer-edit-and-undo",
+      "file": "after-peer-edit-and-undo.csv",
+      "suggestedFilename": "returnby-returns-2026-10-08.csv",
+      "bytes": 546,
+      "sha256": "20d41020bdbd409d19661fcabbcf8bd268bceb6216ecc191586c112ffe7304be",
+      "failure": null,
+      "rows": [
+        [
+          "Saved return ID",
+          "Store",
+          "Order number",
+          "Total (as entered)",
+          "Order date",
+          "Return window (days)",
+          "Recorded window source",
+          "Return deadline",
+          "Created at"
+        ],
+        [
+          "undo-csv-49-peer",
+          "South Books",
+          "AFTER, \"peer\" 日本",
+          "42.75",
+          "2026-09-30",
+          "7",
+          "user",
+          "2026-10-07",
+          "2026-09-30T08:00:00.000Z"
+        ],
+        [
+          "undo-csv-49-stable",
+          "Cedar Outfitters",
+          "ST-4900",
+          "80.00",
+          "2026-10-06",
+          "14",
+          "user",
+          "2026-10-20",
+          "2026-10-06T12:30:00.000Z"
+        ],
+        [
+          "undo-csv-49-target",
+          "Harbor, \"North\" 日本",
+          "RN-0049",
+          "109.50",
+          "2026-10-01",
+          "30",
+          "user",
+          "2026-10-31",
+          "2026-10-01T09:10:11.000Z"
+        ]
+      ]
+    },
+    {
+      "label": "after-read-refusal-and-undo",
+      "file": "after-read-refusal-and-undo.csv",
+      "suggestedFilename": "returnby-returns-2026-10-08.csv",
+      "bytes": 546,
+      "sha256": "20d41020bdbd409d19661fcabbcf8bd268bceb6216ecc191586c112ffe7304be",
+      "failure": null,
+      "rows": [
+        [
+          "Saved return ID",
+          "Store",
+          "Order number",
+          "Total (as entered)",
+          "Order date",
+          "Return window (days)",
+          "Recorded window source",
+          "Return deadline",
+          "Created at"
+        ],
+        [
+          "undo-csv-49-peer",
+          "South Books",
+          "AFTER, \"peer\" 日本",
+          "42.75",
+          "2026-09-30",
+          "7",
+          "user",
+          "2026-10-07",
+          "2026-09-30T08:00:00.000Z"
+        ],
+        [
+          "undo-csv-49-stable",
+          "Cedar Outfitters",
+          "ST-4900",
+          "80.00",
+          "2026-10-06",
+          "14",
+          "user",
+          "2026-10-20",
+          "2026-10-06T12:30:00.000Z"
+        ],
+        [
+          "undo-csv-49-target",
+          "Harbor, \"North\" 日本",
+          "RN-0049",
+          "109.50",
+          "2026-10-01",
+          "30",
+          "user",
+          "2026-10-31",
+          "2026-10-01T09:10:11.000Z"
+        ]
+      ]
+    }
+  ],
+  "pageErrors": [],
+  "blockedExternal": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:65266/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65266/assets/index-CTkqPl-v.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65266/assets/index-WVSeeUEs.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65266/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65266/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65266/assets/index-CTkqPl-v.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65266/assets/index-WVSeeUEs.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65266/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65266/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65266/assets/index-CTkqPl-v.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65266/assets/index-WVSeeUEs.css",
+      "method": "GET"
+    }
+  ],
+  "boundary": "Real built app, real two-tab UI actions and actual browser downloads; fictional store seeded once. Storage shim only records writes and injects the explicitly named first-tab read refusal. No product function is replaced.",
+  "browser_fixture": {
+    "short_owned_tmp": "/tmp/rb49-kf8duk",
+    "timezoneId": "UTC",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "loopback_origin": "http://127.0.0.1:65266/",
+  "own_browser_fixture_removed": true,
+  "finishedAt": "2026-10-08T15:27:54.349Z",
+  "pass": 18,
+  "fail": 0,
+  "completed": true
+}

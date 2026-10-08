@@ -1,0 +1,62 @@
+{
+  "kind": "Receiving-worker observation record; original ThinkPad result files remain on the interrupted native device",
+  "original_root": "/home/jacob/returnby-undo-csv-receiving-49f845d0dece",
+  "original_source_commit": "8a4141ad26f068f10992677c715f0b8f7c126581",
+  "initial_dependency_setup": {
+    "exit_code": 1,
+    "reason": "npm rejected double-loading \"/dev/null\" as global and user config",
+    "native_files": [
+      "evidence/dependency-install.json",
+      "evidence/dependency-install.stdout.txt",
+      "evidence/dependency-install.stderr.txt"
+    ]
+  },
+  "dependency_retry": {
+    "exit_code": 0,
+    "versions": {
+      "typescript": "5.9.3",
+      "vite": "8.3.3",
+      "vitest": "5.0.3",
+      "rolldown": "1.2.12"
+    },
+    "lock_sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+  },
+  "builds": {
+    "baseline_exit_code": 0,
+    "candidate_exit_code": 0,
+    "source_unchanged": true,
+    "artifact_correspondence": "All four artifact sizes/hashes per variant printed by the completed ThinkPad native build match the Mac build receipts exactly."
+  },
+  "baseline_browser": {
+    "wrapper_pid": 3357197,
+    "startedAt": "2026-10-08T15:04:39.819527+00:00",
+    "finishedAt": "2026-10-08T15:04:59.169845+00:00",
+    "exit_code": 1,
+    "completed": true,
+    "pass": 1,
+    "fail": 1,
+    "classification": "Expected missing CSV action on original Undo-only source"
+  },
+  "candidate_run_01": {
+    "startedAt": "2026-10-08T15:04:59.172343+00:00",
+    "finishedAt": "2026-10-08T15:06:29.356595+00:00",
+    "exit_code": null,
+    "wrapper_timeout_seconds": 90,
+    "final_receipt": false,
+    "download_files": 0,
+    "stdout_empty": true,
+    "stderr_empty": true,
+    "classification": "Inconclusive; stopping point not established",
+    "driver_sha256": "aaf31c1caa178cfd608d91f30800c512e51bfc21581f0646fd5a7260cf709740"
+  },
+  "candidate_run_02": {
+    "wrapper_pid": 3370149,
+    "native_receiver_commit": "fbeba8446ae6dd132478647b02fad59cecc82afd",
+    "driver_sha256": "2b558275322720bd6da26b4477c6ca5b4b17d60427049626887306177ec90746",
+    "classification": "Inconclusive; progress/receipt unrecovered after device connection interruption",
+    "native_stdout": "evidence/candidate-run-02.stdout.txt",
+    "native_process_receipt": "evidence/candidate-run-02.process.json",
+    "native_final_receipt": "evidence/candidate-run-02/receipt.json"
+  },
+  "continuation": "No native service, owner browser or owner file was terminated or cleaned up. Root authorized fresh isolated Mac receiving after same-workspace hash continuity was independently confirmed; assertions and product source stayed frozen."
+}

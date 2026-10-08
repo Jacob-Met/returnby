@@ -1,0 +1,28 @@
+{
+  "command": [
+    "/opt/homebrew/bin/npm",
+    "ci",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund",
+    "--cache",
+    "/Users/me/workspace/estate/returnby-undo-csv-receiving-49f845d0dece-mac/npm-cache",
+    "--userconfig=/Users/me/workspace/estate/returnby-undo-csv-receiving-49f845d0dece-mac/npm-user-empty.conf",
+    "--globalconfig=/Users/me/workspace/estate/returnby-undo-csv-receiving-49f845d0dece-mac/npm-global-empty.conf",
+    "--registry=https://registry.npmjs.org/"
+  ],
+  "cwd": "/Users/me/workspace/estate/returnby-undo-csv-receiving-49f845d0dece-mac/toolchain",
+  "startedAt": "2026-10-08T15:24:16.354128+00:00",
+  "target_free_before": 1075154944,
+  "exit_code": 0,
+  "versions": {
+    "typescript": "5.9.3",
+    "vite": "8.3.3",
+    "vitest": "5.0.3",
+    "rolldown": "1.2.12",
+    "@rolldown/binding-darwin-arm64": "1.2.12"
+  },
+  "finishedAt": "2026-10-08T15:24:19.101101+00:00",
+  "lock_sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+  "target_free_after": 1003237376
+}

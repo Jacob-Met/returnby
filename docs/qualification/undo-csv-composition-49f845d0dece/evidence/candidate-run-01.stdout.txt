@@ -1,0 +1,30 @@
+{"at":"2026-10-08T15:27:50.258Z","stage":"source verification"}
+{"at":"2026-10-08T15:27:50.265Z","stage":"source verified"}
+{"at":"2026-10-08T15:27:50.270Z","stage":"browser launch"}
+{"at":"2026-10-08T15:27:50.679Z","stage":"browser launched"}
+{"at":"2026-10-08T15:27:50.690Z","stage":"tab A initial navigation"}
+{"at":"2026-10-08T15:27:51.322Z","stage":"assert undo_controls_from_received_pr24: true"}
+{"at":"2026-10-08T15:27:51.323Z","stage":"assert csv_composition_entrypoint: true"}
+{"at":"2026-10-08T15:27:51.324Z","stage":"assert frozen_filter_date_precondition: true"}
+{"at":"2026-10-08T15:27:51.325Z","stage":"tab A seeded reload"}
+{"at":"2026-10-08T15:27:51.889Z","stage":"tab B navigation"}
+{"at":"2026-10-08T15:27:52.425Z","stage":"assert seed_received_by_both_real_tabs: true"}
+{"at":"2026-10-08T15:27:52.486Z","stage":"assert real_remove_retains_pending_recovery: true"}
+{"at":"2026-10-08T15:27:52.537Z","stage":"tab B save click"}
+{"at":"2026-10-08T15:27:52.590Z","stage":"assert real_second_tab_edit_preserves_removal_and_other_fields: true"}
+{"at":"2026-10-08T15:27:52.825Z","stage":"assert unsaved_draft_and_filter_frozen_before_undo: true"}
+{"at":"2026-10-08T15:27:52.975Z","stage":"assert undo_restores_exact_target_and_current_peer_edit: true"}
+{"at":"2026-10-08T15:27:52.975Z","stage":"assert undo_preserves_unsaved_draft_and_active_filter: true"}
+{"at":"2026-10-08T15:27:53.036Z","stage":"assert after-peer-edit-and-undo_actual_download_complete_fields: true"}
+{"at":"2026-10-08T15:27:53.039Z","stage":"assert whole_tracker_csv_is_read_only_and_preserves_ui: true"}
+{"at":"2026-10-08T15:27:53.311Z","stage":"assert second_removal_has_recoverable_target_and_retained_draft: true"}
+{"at":"2026-10-08T15:27:54.025Z","stage":"assert refused_csv_read_downloads_nothing_and_explains_failure: true"}
+{"at":"2026-10-08T15:27:54.025Z","stage":"assert refused_csv_preserves_store_recovery_draft_and_filter: true"}
+{"at":"2026-10-08T15:27:54.196Z","stage":"assert undo_remains_usable_after_csv_read_refusal: true"}
+{"at":"2026-10-08T15:27:54.232Z","stage":"assert after-read-refusal-and-undo_actual_download_complete_fields: true"}
+{"at":"2026-10-08T15:27:54.235Z","stage":"assert retry_csv_preserves_data_and_ui_without_storage_writes: true"}
+{"at":"2026-10-08T15:27:54.239Z","stage":"assert no_product_runtime_error_or_external_request: true"}
+{"at":"2026-10-08T15:27:54.240Z","stage":"closing browser"}
+{"at":"2026-10-08T15:27:54.334Z","stage":"closing server"}
+{"at":"2026-10-08T15:27:54.334Z","stage":"final source verification"}
+{"variant":"candidate","pass":18,"fail":0,"completed":true,"receipt":"/Users/me/workspace/estate/returnby-undo-csv-receiving-49f845d0dece-mac/evidence/candidate-run-01/receipt.json","downloads":[{"label":"after-peer-edit-and-undo","bytes":546,"sha256":"20d41020bdbd409d19661fcabbcf8bd268bceb6216ecc191586c112ffe7304be"},{"label":"after-read-refusal-and-undo","bytes":546,"sha256":"20d41020bdbd409d19661fcabbcf8bd268bceb6216ecc191586c112ffe7304be"}]}

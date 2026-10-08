@@ -1,0 +1,5 @@
+{
+  "csvImport": "import { bindSavedReturnsCsv } from './saved-returns-csv-ui';\n",
+  "csvBind": "bindSavedReturnsCsv(read);\n",
+  "csvSection": "<section class=\"backup-panel\" aria-labelledby=\"saved-csv-title\">\n  <h2 id=\"saved-csv-title\">Review saved returns in a spreadsheet</h2>\n  <p>Download all currently saved returns, including their recorded details and calculated deadlines. Search and date filters do not limit this CSV. The pasted email is excluded.</p>\n  <div class=\"action-row\"><button id=\"saved-returns-csv\" type=\"button\" class=\"button button-primary\" aria-describedby=\"saved-csv-help\">Download saved returns CSV</button></div>\n  <p id=\"saved-csv-help\" class=\"list-note\">CSV is for review. Formula-like text receives a leading apostrophe; import store and order-number columns as text to retain their formatting. Keep a JSON backup to restore or edit the tracker.</p>\n  <p id=\"saved-csv-message\" role=\"status\" aria-live=\"polite\" hidden></p>\n</section>\n"
+}

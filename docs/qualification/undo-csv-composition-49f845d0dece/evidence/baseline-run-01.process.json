@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/opt/homebrew/bin/node",
+    "/Users/me/workspace/estate/returnby-undo-csv-receiving-49f845d0dece-mac/receive_composition_portable.mjs",
+    "--root",
+    "/Users/me/workspace/estate/returnby-undo-csv-receiving-49f845d0dece-mac",
+    "--variant",
+    "baseline",
+    "--output",
+    "/Users/me/workspace/estate/returnby-undo-csv-receiving-49f845d0dece-mac/evidence/baseline-run-01"
+  ],
+  "startedAt": "2026-10-08T15:27:47.935736+00:00",
+  "expected_exit": 1,
+  "environment": {
+    "RETURNBY_PLAYWRIGHT_ROOT": "/Users/me/workspace/estate/production-evidence-49f845d0dece/browser-tools/node_modules/playwright",
+    "RETURNBY_CHROME": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "RETURNBY_BROWSER_TMP_PREFIX": "/tmp/rb49-",
+    "RETURNBY_SOURCE_SNAPSHOT_COMMIT": "7b09090f52d0a2c6a54ce3791233de33df9cd1a6"
+  },
+  "target_free_before": 845615104,
+  "exit_code": 1,
+  "finishedAt": "2026-10-08T15:27:49.995742+00:00"
+}

@@ -1,0 +1,10 @@
+{"at":"2026-10-08T15:27:48.368Z","stage":"source verification"}
+{"at":"2026-10-08T15:27:48.382Z","stage":"source verified"}
+{"at":"2026-10-08T15:27:48.390Z","stage":"browser launch"}
+{"at":"2026-10-08T15:27:49.125Z","stage":"browser launched"}
+{"at":"2026-10-08T15:27:49.203Z","stage":"tab A initial navigation"}
+{"at":"2026-10-08T15:27:49.807Z","stage":"assert undo_controls_from_received_pr24: true"}
+{"at":"2026-10-08T15:27:49.888Z","stage":"closing browser"}
+{"at":"2026-10-08T15:27:49.964Z","stage":"closing server"}
+{"at":"2026-10-08T15:27:49.964Z","stage":"final source verification"}
+{"variant":"baseline","pass":1,"fail":1,"completed":true,"receipt":"/Users/me/workspace/estate/returnby-undo-csv-receiving-49f845d0dece-mac/evidence/baseline-run-01/receipt.json","downloads":[]}

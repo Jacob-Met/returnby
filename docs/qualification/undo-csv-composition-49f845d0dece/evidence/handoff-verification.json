@@ -1,0 +1,42 @@
+{
+  "verifiedAt": "2026-10-08T15:36:30.134419+00:00",
+  "baseline": {
+    "completed": true,
+    "pass": 1,
+    "fail": 1,
+    "expected_missing_action": true
+  },
+  "candidate": {
+    "completed": true,
+    "pass": 18,
+    "fail": 0
+  },
+  "all_source_before_after_equal": true,
+  "tracked_runtime_diff_empty": true,
+  "owned_browser_fixtures_removed": true,
+  "patch_check": {
+    "command": [
+      "git",
+      "apply",
+      "--check",
+      "--directory=baseline",
+      "evidence/composition.patch"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "numstat": "7\t0\tbaseline/index.html\n2\t0\tbaseline/src/main.ts\n33\t0\tbaseline/src/saved-returns-csv-ui.ts\n65\t0\tbaseline/src/saved-returns-csv.ts\n"
+  },
+  "csv_downloads": [
+    {
+      "path": "evidence/candidate-run-01/after-peer-edit-and-undo.csv",
+      "bytes": 546,
+      "sha256": "20d41020bdbd409d19661fcabbcf8bd268bceb6216ecc191586c112ffe7304be"
+    },
+    {
+      "path": "evidence/candidate-run-01/after-read-refusal-and-undo.csv",
+      "bytes": 546,
+      "sha256": "20d41020bdbd409d19661fcabbcf8bd268bceb6216ecc191586c112ffe7304be"
+    }
+  ]
+}

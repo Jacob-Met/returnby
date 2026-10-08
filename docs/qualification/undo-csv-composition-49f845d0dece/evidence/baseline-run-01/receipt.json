@@ -1,0 +1,349 @@
+{
+  "startedAt": "2026-10-08T15:27:48.352Z",
+  "variant": "baseline",
+  "contract_sha256": "4e8d9fa6356468a617287fbc175797c013ad154036a63e21cb609fb2c352c2f4",
+  "expected_sha256": "e57c6a62bc2987d560c967601e3ff6f1b97a73604352a0e0b43a2b8507272cd9",
+  "driver_sha256": "2515748b748660a24d77eb4537f2666732af8cc713e277483dc91cef469e8606",
+  "source_commit": "8a4141ad26f068f10992677c715f0b8f7c126581",
+  "native_runtime_snapshot_commit": "7b09090f52d0a2c6a54ce3791233de33df9cd1a6",
+  "source_custody_sha256": "cb3cd3d01c38cec75d3a9103201de1bf547b70b3ef6ee5c2fdb2304a256f3763",
+  "source_heads": {
+    "undo": "ad19cab029533820a4f6e2c576f5cb20a9e06816",
+    "csv": "88ad7e0fc390bb468450bde9a2d25181c7bbe52d",
+    "shared_base": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0"
+  },
+  "runtime": {
+    "node": "v26.3.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "playwright": "1.62.1",
+    "chrome": "154.0.8037.98"
+  },
+  "assertions": [
+    {
+      "name": "undo_controls_from_received_pr24",
+      "pass": true
+    },
+    {
+      "name": "csv_composition_entrypoint",
+      "pass": false,
+      "detail": {
+        "actual": 0,
+        "expected": 1
+      }
+    }
+  ],
+  "observations": {
+    "source_before": [
+      {
+        "path": "data/policies.json",
+        "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26",
+        "bytes": 449
+      },
+      {
+        "path": "index.html",
+        "sha256": "cd8fada79c79f889085fea6b3ebe807646dfb172bc28cbab4e1418505cb9eeba",
+        "bytes": 10473
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+        "bytes": 35404
+      },
+      {
+        "path": "package.json",
+        "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+        "bytes": 313
+      },
+      {
+        "path": "public/favicon.svg",
+        "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+        "bytes": 238
+      },
+      {
+        "path": "src/backup-ui.ts",
+        "sha256": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+        "bytes": 6235
+      },
+      {
+        "path": "src/backup.css",
+        "sha256": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+        "bytes": 978
+      },
+      {
+        "path": "src/backup.ts",
+        "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+        "bytes": 7059
+      },
+      {
+        "path": "src/calendar-batch-ui.ts",
+        "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+        "bytes": 7180
+      },
+      {
+        "path": "src/calendar-batch.css",
+        "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+        "bytes": 1833
+      },
+      {
+        "path": "src/calendar-batch.ts",
+        "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+        "bytes": 6017
+      },
+      {
+        "path": "src/deadline.ts",
+        "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+        "bytes": 837
+      },
+      {
+        "path": "src/edit-ui.ts",
+        "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+        "bytes": 4534
+      },
+      {
+        "path": "src/edit.css",
+        "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+        "bytes": 1782
+      },
+      {
+        "path": "src/edit.ts",
+        "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+        "bytes": 4075
+      },
+      {
+        "path": "src/ics.ts",
+        "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+        "bytes": 2263
+      },
+      {
+        "path": "src/main.ts",
+        "sha256": "4a4803599a99b1516560176cba1f9dbbda9f54fb189eaaeb8a62a354d250a6d2",
+        "bytes": 10487
+      },
+      {
+        "path": "src/parse.ts",
+        "sha256": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243",
+        "bytes": 3057
+      },
+      {
+        "path": "src/policy.ts",
+        "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+        "bytes": 595
+      },
+      {
+        "path": "src/removal-undo-ui.ts",
+        "sha256": "5590981d5a7f4fb714abc09a86cd498606ae116f7956761d53b21cf6d47d3670",
+        "bytes": 3046
+      },
+      {
+        "path": "src/removal-undo.css",
+        "sha256": "4f8c64e51f0485488f5d1b69cd60a6f3d5782e600d7f30088361bd5c5e1a3dfe",
+        "bytes": 646
+      },
+      {
+        "path": "src/removal-undo.ts",
+        "sha256": "c5a885be25b70885e284d76635cb7e453ae1be2c04ce87ee38f22adfd69d9d75",
+        "bytes": 2069
+      },
+      {
+        "path": "src/samples.ts",
+        "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+        "bytes": 513
+      },
+      {
+        "path": "src/store.ts",
+        "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+        "bytes": 1387
+      },
+      {
+        "path": "src/style.css",
+        "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+        "bytes": 8842
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc",
+        "bytes": 273
+      },
+      {
+        "path": "vite.config.ts",
+        "sha256": "320350dced549cebe2ae248283028ee7ae0fdbb36576a694f70cfbd755f3a30d",
+        "bytes": 82
+      }
+    ],
+    "not_run": "Original Undo-only source has no saved-return CSV action. Standalone Undo tests are not repeated.",
+    "source_after": [
+      {
+        "path": "data/policies.json",
+        "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26",
+        "bytes": 449
+      },
+      {
+        "path": "index.html",
+        "sha256": "cd8fada79c79f889085fea6b3ebe807646dfb172bc28cbab4e1418505cb9eeba",
+        "bytes": 10473
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+        "bytes": 35404
+      },
+      {
+        "path": "package.json",
+        "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+        "bytes": 313
+      },
+      {
+        "path": "public/favicon.svg",
+        "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+        "bytes": 238
+      },
+      {
+        "path": "src/backup-ui.ts",
+        "sha256": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+        "bytes": 6235
+      },
+      {
+        "path": "src/backup.css",
+        "sha256": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+        "bytes": 978
+      },
+      {
+        "path": "src/backup.ts",
+        "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+        "bytes": 7059
+      },
+      {
+        "path": "src/calendar-batch-ui.ts",
+        "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+        "bytes": 7180
+      },
+      {
+        "path": "src/calendar-batch.css",
+        "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+        "bytes": 1833
+      },
+      {
+        "path": "src/calendar-batch.ts",
+        "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+        "bytes": 6017
+      },
+      {
+        "path": "src/deadline.ts",
+        "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+        "bytes": 837
+      },
+      {
+        "path": "src/edit-ui.ts",
+        "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+        "bytes": 4534
+      },
+      {
+        "path": "src/edit.css",
+        "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+        "bytes": 1782
+      },
+      {
+        "path": "src/edit.ts",
+        "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+        "bytes": 4075
+      },
+      {
+        "path": "src/ics.ts",
+        "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+        "bytes": 2263
+      },
+      {
+        "path": "src/main.ts",
+        "sha256": "4a4803599a99b1516560176cba1f9dbbda9f54fb189eaaeb8a62a354d250a6d2",
+        "bytes": 10487
+      },
+      {
+        "path": "src/parse.ts",
+        "sha256": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243",
+        "bytes": 3057
+      },
+      {
+        "path": "src/policy.ts",
+        "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+        "bytes": 595
+      },
+      {
+        "path": "src/removal-undo-ui.ts",
+        "sha256": "5590981d5a7f4fb714abc09a86cd498606ae116f7956761d53b21cf6d47d3670",
+        "bytes": 3046
+      },
+      {
+        "path": "src/removal-undo.css",
+        "sha256": "4f8c64e51f0485488f5d1b69cd60a6f3d5782e600d7f30088361bd5c5e1a3dfe",
+        "bytes": 646
+      },
+      {
+        "path": "src/removal-undo.ts",
+        "sha256": "c5a885be25b70885e284d76635cb7e453ae1be2c04ce87ee38f22adfd69d9d75",
+        "bytes": 2069
+      },
+      {
+        "path": "src/samples.ts",
+        "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+        "bytes": 513
+      },
+      {
+        "path": "src/store.ts",
+        "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+        "bytes": 1387
+      },
+      {
+        "path": "src/style.css",
+        "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+        "bytes": 8842
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc",
+        "bytes": 273
+      },
+      {
+        "path": "vite.config.ts",
+        "sha256": "320350dced549cebe2ae248283028ee7ae0fdbb36576a694f70cfbd755f3a30d",
+        "bytes": 82
+      }
+    ]
+  },
+  "downloads": [],
+  "pageErrors": [],
+  "blockedExternal": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:65247/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65247/assets/index-C3kriZGw.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65247/assets/index-WVSeeUEs.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65247/favicon.svg",
+      "method": "GET"
+    }
+  ],
+  "boundary": "Real built app, real two-tab UI actions and actual browser downloads; fictional store seeded once. Storage shim only records writes and injects the explicitly named first-tab read refusal. No product function is replaced.",
+  "browser_fixture": {
+    "short_owned_tmp": "/tmp/rb49-LqD6Rd",
+    "timezoneId": "UTC",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "loopback_origin": "http://127.0.0.1:65247/",
+  "own_browser_fixture_removed": true,
+  "finishedAt": "2026-10-08T15:27:49.977Z",
+  "pass": 1,
+  "fail": 1,
+  "completed": true
+}

@@ -1,0 +1,138 @@
+--- a/index.html
++++ b/index.html
+@@ -24,6 +24,13 @@
+       <div class="action-row"><button id="backup-apply" type="button" class="button button-primary" disabled>Import orders</button><button id="backup-cancel" type="button" class="button button-link">Cancel import</button></div>
+     </div>
+   </details>
++</section>
++<section class="backup-panel" aria-labelledby="saved-csv-title">
++  <h2 id="saved-csv-title">Review saved returns in a spreadsheet</h2>
++  <p>Download all currently saved returns, including their recorded details and calculated deadlines. Search and date filters do not limit this CSV. The pasted email is excluded.</p>
++  <div class="action-row"><button id="saved-returns-csv" type="button" class="button button-primary" aria-describedby="saved-csv-help">Download saved returns CSV</button></div>
++  <p id="saved-csv-help" class="list-note">CSV is for review. Formula-like text receives a leading apostrophe; import store and order-number columns as text to retain their formatting. Keep a JSON backup to restore or edit the tracker.</p>
++  <p id="saved-csv-message" role="status" aria-live="polite" hidden></p>
+ </section>
+ <section class="method-strip" aria-label="How ReturnBy works"><article><span>01</span><h3>Rules, not guesses.</h3><p>A parser extracts four fields. Missing values are highlighted so you can correct them before saving.</p></article><article><span>02</span><h3>Policy with a fallback.</h3><p>Known stores use the local policy table. Unknown stores are clearly marked with an editable 30-day default.</p></article><article><span>03</span><h3>Keep control.</h3><p>Each saved deadline can be exported as a calendar event with a three-day reminder or removed from the tracker.</p></article></section></main>
+ <footer class="footer"><p><strong>PRIVATE BY DESIGN.</strong> The pasted email is not stored or sent. Only reviewed order fields you save persist on this device.</p><button id="clear" class="button button-link">Clear saved returns</button></footer></div><dialog id="edit-dialog" class="edit-dialog" aria-labelledby="edit-title" aria-describedby="edit-intro">
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -12,6 +12,7 @@
+ import { bindBackup } from './backup-ui';
+ import { bindOrderEditor } from './edit-ui';
+ import { bindCalendarBatch } from './calendar-batch-ui';
++import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
+ import { captureRemoval } from './removal-undo';
+ import { bindRemovalUndo } from './removal-undo-ui';
+ 
+@@ -195,6 +196,7 @@
+   refresh: reloadOrders,
+ });
+ bindCalendarBatch({ read: load, filter: () => filterMode });
++bindSavedReturnsCsv(read);
+ const removalUndo = bindRemovalUndo({
+   read: readCurrentOrders,
+   commit: next => { if (!persistOrders(next)) return false; render(); return true; },
+--- /dev/null
++++ b/src/saved-returns-csv-ui.ts
+@@ -0,0 +1,33 @@
++import { createSavedReturnsCsv } from './saved-returns-csv';
++
++/** Separate read-only download; existing editor/import/tracker state is untouched. */
++export function bindSavedReturnsCsv(readCurrent: () => unknown): void {
++  const button = document.querySelector<HTMLButtonElement>('#saved-returns-csv');
++  const message = document.querySelector<HTMLParagraphElement>('#saved-csv-message');
++  if (!button || !message) throw new Error('Saved-return CSV controls are missing.');
++  button.addEventListener('click', () => {
++    let url: string | undefined;
++    let link: HTMLAnchorElement | undefined;
++    try {
++      // Always receive the latest saved store, including changes in other tabs.
++      const output = createSavedReturnsCsv(readCurrent());
++      url = URL.createObjectURL(new Blob([output.content], { type: 'text/csv;charset=utf-8' }));
++      link = document.createElement('a');
++      link.href = url;
++      link.download = output.filename;
++      document.body.append(link);
++      link.click();
++      message.textContent = `CSV download started for all ${output.count} currently saved ${output.count === 1 ? 'return' : 'returns'}.` +
++        (output.protectedCells ? ` ${output.protectedCells} ${output.protectedCells === 1 ? 'cell has' : 'cells have'} a leading apostrophe to keep formula-like text literal in spreadsheets.` : '');
++      message.classList.remove('warn');
++    } catch (error) {
++      message.textContent = 'Could not download saved returns. ' + (error instanceof Error ? error.message : 'Try again after checking browser storage.');
++      message.classList.add('warn');
++    } finally {
++      link?.remove();
++      const completedUrl = url;
++      if (completedUrl) setTimeout(() => URL.revokeObjectURL(completedUrl), 1000);
++      message.hidden = false;
++    }
++  });
++}
+--- /dev/null
++++ b/src/saved-returns-csv.ts
+@@ -0,0 +1,65 @@
++import { exportBackup, parseBackup, MAX_BACKUP_BYTES } from './backup';
++import { dueDate } from './deadline';
++
++export const MAX_SAVED_CSV_BYTES = MAX_BACKUP_BYTES;
++export const SAVED_CSV_COLUMNS = Object.freeze([
++  'Saved return ID', 'Store', 'Order number', 'Total (as entered)',
++  'Order date', 'Return window (days)', 'Recorded window source',
++  'Return deadline', 'Created at',
++] as const);
++
++export class SavedCsvError extends Error {}
++
++export type SavedReturnsCsv = {
++  content: string;
++  filename: string;
++  count: number;
++  protectedCells: number;
++  bytes: number;
++};
++
++const encoder = new TextEncoder();
++// Preserve a leading U+FEFF as literal cell text during the losslessness check.
++const decoder = new TextDecoder('utf-8', { ignoreBOM: true });
++const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
++
++/** Build a read-only spreadsheet view of the current approved saved records. */
++export function createSavedReturnsCsv(current: unknown, exportedAt = new Date()): SavedReturnsCsv {
++  if (!Number.isFinite(exportedAt.getTime()) || exportedAt.getUTCFullYear() < 1000 || exportedAt.getUTCFullYear() > 9999) {
++    throw new SavedCsvError('The CSV export timestamp could not be read.');
++  }
++  // Reuse the owner's complete admission and approved-field projection. Extra
++  // local properties (including any accidental raw email) never reach this view.
++  const saved = parseBackup(exportBackup(current, exportedAt));
++  if (!saved.length) throw new SavedCsvError('Save a return before downloading a CSV.');
++  const rows = saved.map(order => ({ order, due: dueDate(order.orderDate, order.windowDays) }))
++    .sort((a, b) => compare(a.due, b.due) || compare(a.order.id, b.order.id));
++  let protectedCells = 0;
++  const cell = (value: string | number): string => {
++    let text = String(value);
++    if (/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(text) || decoder.decode(encoder.encode(text)) !== text) {
++      throw new SavedCsvError('Some saved text cannot be represented safely in CSV. Keep the JSON backup and correct that text before exporting.');
++    }
++    // CSV quoting alone does not stop a spreadsheet from treating an authored
++    // value as a formula. Keep these cells literal and report the added prefix.
++    if (/^[\s\u200b\ufeff]*[=+@-]/.test(text) || /^[\t\r\n]/.test(text)) {
++      text = "'" + text;
++      protectedCells += 1;
++    }
++    return '"' + text.replace(/"/g, '""') + '"';
++  };
++  const lines = [SAVED_CSV_COLUMNS.map(cell).join(',')];
++  for (const { order, due } of rows) {
++    lines.push([
++      order.id, order.merchant, order.orderNo ?? '', order.total ?? '',
++      order.orderDate, order.windowDays, order.windowSource, due, order.createdAt,
++    ].map(cell).join(','));
++  }
++  const content = '\ufeff' + lines.join('\r\n') + '\r\n';
++  const bytes = encoder.encode(content).byteLength;
++  if (bytes > MAX_SAVED_CSV_BYTES) throw new SavedCsvError('This CSV is larger than 5 MiB. Keep the JSON backup.');
++  return {
++    content, bytes, count: rows.length, protectedCells,
++    filename: `returnby-returns-${exportedAt.toISOString().slice(0, 10)}.csv`,
++  };
++}
