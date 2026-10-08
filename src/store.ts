@@ -1,6 +1,9 @@
+import { isCompletionTimestamp } from './completion';
+
 export type Order = {
   id: string; merchant: string; orderNo?: string; total?: string;
   orderDate: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
+  completedAt?: string;
 };
 const KEY = 'returnby.v1';
 const isOrder = (value: unknown): value is Order => {
@@ -10,7 +13,8 @@ const isOrder = (value: unknown): value is Order => {
     && typeof o.windowDays === 'number' && Number.isFinite(o.windowDays)
     && (o.windowSource === 'policy' || o.windowSource === 'default' || o.windowSource === 'user')
     && (o.orderNo === undefined || typeof o.orderNo === 'string')
-    && (o.total === undefined || typeof o.total === 'string');
+    && (o.total === undefined || typeof o.total === 'string')
+    && (o.completedAt === undefined || isCompletionTimestamp(o.completedAt));
 };
 // Backup/restore must distinguish unreadable storage from an empty tracker.
 export const read = (): unknown => {

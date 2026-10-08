@@ -101,7 +101,7 @@ test('a byte-limit overflow in the combined tracker is refused before any import
 test.each(['unsupported version', 'foreign window source', 'malformed JSON', 'late bad row', 'oversized file'])('%s does not commit any rows', async kind => {
   const app = await open([storedOrder('saved')]);
   const file = JSON.parse(exportBackup([storedOrder('new'), storedOrder('other')]));
-  if (kind === 'unsupported version') file.version = 2;
+  if (kind === 'unsupported version') file.version = 3;
   if (kind === 'foreign window source') file.orders[1].windowSource = 'retailer-verified';
   if (kind === 'late bad row') file.orders[1].windowDays = false;
   await app.choose(kind === 'malformed JSON' ? '{' : JSON.stringify(file), kind === 'oversized file' ? MAX_BACKUP_BYTES + 1 : undefined);

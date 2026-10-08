@@ -11,6 +11,7 @@ import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
 import { bindCalendarBatch } from './calendar-batch-ui';
+import { isCompleted, planCompletion, reviewedOpenReturn, type CompletionAction } from './completion';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
@@ -21,7 +22,7 @@ const storageRetry = $<HTMLButtonElement>('#storage-retry');
 let orders: Order[] = [];
 let loadFailed = false;
 let sampleIdx = 0;
-let filterMode: 'all' | 'due' | 'expired' = 'all';
+let filterMode: 'all' | 'due' | 'expired' | 'completed' = 'all';
 
 const loadError = "Couldn't load saved returns. Try loading again before saving, or clear saved returns to start over.";
 
@@ -100,6 +101,27 @@ function removeOrder(id: string) {
   if (persistOrders(current.filter(order => order.id !== id))) render();
 }
 
+function changeCompletion(id: string, action: CompletionAction) {
+  const displayed = orders.filter(order => order.id === id);
+  const current = readCurrentOrders();
+  if (!current) return;
+  try {
+    const plan = planCompletion(current, displayed.length === 1 ? displayed[0] : undefined, action);
+    if (plan.changed && !persistOrders(plan.next)) return;
+    if (!plan.changed) { orders = current; clearStorageError(); }
+    render();
+    const feedback = $('#completion-feedback');
+    feedback.textContent = action === 'complete'
+      ? `${plan.order.merchant || 'Return'} marked completed. Its details are kept in Completed. Remove any reminders already imported into your calendar there.`
+      : `${plan.order.merchant || 'Return'} reopened. It is back in Open with its original reviewed return window.`;
+    feedback.focus();
+  } catch (error) {
+    orders = current;
+    render();
+    showStorageError(error instanceof Error ? error.message : 'This return could not be changed. Review the refreshed tracker.');
+  }
+}
+
 const h = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
 function showPreview() {
@@ -146,29 +168,59 @@ preview.addEventListener('submit', (e) => {
 
 function render() {
   if (loadFailed) {
-    for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
+    for (const id of ['tracked-count', 'soon-count', 'expired-count', 'completed-count']) $(`#${id}`).textContent = '—';
     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
     return;
   }
-  const all=orders.map(o=>{const due=dueDate(o.orderDate,o.windowDays),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);
+  const all=orders.filter(o=>!isCompleted(o)).map(o=>{const due=dueDate(o.orderDate,o.windowDays),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);
   $('#tracked-count').textContent=String(all.length);$('#soon-count').textContent=String(all.filter(r=>r.left>=0&&r.left<=7).length);$('#expired-count').textContent=String(all.filter(r=>r.left<0).length);
-  for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
+  $('#completed-count').textContent=String(orders.length-all.length);
+  for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired'],['filter-completed','completed']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
+  if(filterMode==='completed'){renderCompleted();return;}
   const rows=all.filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
-  if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+  if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':orders.length?'No open returns. Your saved history is in Completed.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
+  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-complete="${h(o.id)}">Mark completed</button><button class="button button-link" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
 }
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
+  if (t.dataset.complete !== undefined) changeCompletion(t.dataset.complete, 'complete');
+  if (t.dataset.reopen !== undefined) changeCompletion(t.dataset.reopen, 'reopen');
   if (t.dataset.edit !== undefined) orderEditor.open(t.dataset.edit);
   if (t.dataset.del) removeOrder(t.dataset.del);
   if (t.dataset.ics) {
-    const o = orders.find((x) => x.id === t.dataset.ics)!;
+    const displayed = orders.filter(order => order.id === t.dataset.ics);
+    const current = readCurrentOrders();
+    if (!current) return;
+    let o: Order;
+    try { o = reviewedOpenReturn(current, displayed.length === 1 ? displayed[0] : undefined); }
+    catch (error) {
+      orders = current; render();
+      showStorageError(error instanceof Error ? error.message : 'Review the refreshed return before exporting a reminder.');
+      return;
+    }
     const blob = new Blob([buildIcs({ ...o, due: dueDate(o.orderDate, o.windowDays) })], { type: 'text/calendar' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob); a.download = `return-${(o.merchant || 'order').replace(/\W+/g, '-')}.ics`; a.click();
     URL.revokeObjectURL(a.href);
   }
 });
+
+function renderCompleted() {
+  const completed = orders.filter(isCompleted).sort((a, b) => Date.parse(b.completedAt!) - Date.parse(a.completedAt!));
+  if (!completed.length) {
+    list.innerHTML = '<li class="empty">No completed returns yet. Mark a return completed when you have finished it; its details will stay here.</li>';
+    return;
+  }
+  list.innerHTML = completed.map(o => {
+    const source = o.windowSource === 'policy' ? 'STORE POLICY' : o.windowSource === 'default' ? 'FALLBACK' : 'YOUR RULE';
+    return `<li class="card completed"><div class="order-head"><div><strong>${h(o.merchant || 'Unknown store')}</strong>${o.orderNo ? ` <span class="mono">#${h(o.orderNo)}</span>` : ''}</div><span class="status-tag">COMPLETED</span></div>
+      <div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${source} / ${o.windowDays} DAYS</span></div>
+      <p class="completion-detail">Completed ${h(o.completedAt!.slice(0, 10))}${o.total ? ` · ${h(o.total)}` : ''}<br>Original return-by ${h(dueDate(o.orderDate, o.windowDays))}</p>
+      <div class="order-actions"><button class="button button-primary" data-reopen="${h(o.id)}">Reopen return</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;
+  }).join('');
+}
+
+$('#filter-completed').addEventListener('click',()=>{filterMode='completed';render();});
 
 $('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);
 paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
