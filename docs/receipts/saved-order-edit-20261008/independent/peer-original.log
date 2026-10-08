@@ -1,0 +1,51 @@
+
+ RUN  v5.0.3 /workspace/scratch/965d2e86e979/agents/verification/returnby-review/snapshot
+
+ ❯ tests/edit-peer.test.ts (6 tests | 1 failed) 15ms
+   ❯ independent saved-return receiving (6)
+     × keeps every accepted extreme date exportable as eight-digit calendar date values 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/edit-peer.test.ts > independent saved-return receiving > keeps every accepted extreme date exportable as eight-digit calendar date values
+AssertionError: BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ReturnBy//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:boundary@returnby
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:99991231
+DTEND;VALUE=DATE:100000101
+SUMMARY:Return deadline: Saved Store #boundary
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Return deadline: Saved Store #boundary
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
+: expected 'DTEND;VALUE=DATE:100000101' to match /^DT(?:START|END);VALUE=DATE:\d{8}$/
+
+- Expected:
+/^DT(?:START|END);VALUE=DATE:\d{8}$/
+
++ Received:
+"DTEND;VALUE=DATE:100000101"
+
+ ❯ tests/edit-peer.test.ts:72:55
+     70|     const dateRows = calendar.split('\r\n').filter(row => /^DT(?:START…
+     71|     expect(dateRows).toHaveLength(2);
+     72|     for (const row of dateRows) expect(row, calendar).toMatch(/^DT(?:S…
+       |                                                       ^
+     73|   });
+     74|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  16:34:24
+   Duration  259ms (transform 72%, import 14%, tests 11%, worker 3%)
+

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "baseline-owner-browser",
+    "command": [
+      "node",
+      "--test",
+      "tools/check_stale_browser.mjs"
+    ],
+    "build": "/workspace/scratch/b55367d787c4/production/receiving-composition/candidate/dist",
+    "output": "/workspace/scratch/b55367d787c4/production/receiving-actions/evidence/baseline-owner-browser",
+    "start": "2026-10-08T09:24:46.188Z",
+    "seconds": 3.904,
+    "status": 1,
+    "expected_status": 1,
+    "signal": null
+  },
+  {
+    "name": "composed-owner-browser",
+    "command": [
+      "node",
+      "--test",
+      "tools/check_stale_browser.mjs"
+    ],
+    "build": "/workspace/scratch/b55367d787c4/production/receiving-actions/candidate/dist",
+    "output": "/workspace/scratch/b55367d787c4/production/receiving-actions/evidence/composed-owner-browser",
+    "start": "2026-10-08T09:24:50.093Z",
+    "seconds": 3.93,
+    "status": 0,
+    "expected_status": 0,
+    "signal": null
+  }
+]

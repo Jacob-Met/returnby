@@ -1,0 +1,64 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6706,
+      "sha256": "9cc100e3b1c063e3b0d712fcc5dc93239a58fce302cc61d17128a05b4908cf9a"
+    },
+    {
+      "path": "source-and-runtime.json",
+      "bytes": 5927,
+      "sha256": "47582bb19b24f057569966859796c9b004841713cbb0625d4d8e591b7690de97"
+    },
+    {
+      "path": "baseline-build.log",
+      "bytes": 494,
+      "sha256": "3fe3b1a9a8fad46efc65655ac2f5106f726be3e509999594fc89169bb3bf4364"
+    },
+    {
+      "path": "before-browser.log",
+      "bytes": 7303,
+      "sha256": "6a4cb57fcdd9cfba0f664025891930f092a6c1672aab8ab93222d3e6e0ac9678"
+    },
+    {
+      "path": "before.log",
+      "bytes": 1348,
+      "sha256": "731f0d728bed2003102756113d57d0acadc162c35f3aafc2bfa821a7e8f99b51"
+    },
+    {
+      "path": "before/results.json",
+      "bytes": 136,
+      "sha256": "5d5cdac5c5282769dab6bc93a20074cebb3b8f7cef970f7b93e90aa25899fcd6"
+    },
+    {
+      "path": "final-native-tests.log",
+      "bytes": 266,
+      "sha256": "6c4da5df903092fd6a4ec330e506466247b1996688cf3ef978fb8f34df1405ad"
+    },
+    {
+      "path": "qualified-build.log",
+      "bytes": 395,
+      "sha256": "e03713a563f74c4b59af38bc94918128e504d3e1362618570f5c803b1a76d494"
+    },
+    {
+      "path": "after-browser.log",
+      "bytes": 663,
+      "sha256": "11cd8269e6b0575fb745126e8fe93d22726ba497b7b0cc6141a3c6abd0bbd605"
+    },
+    {
+      "path": "after/results.json",
+      "bytes": 7132,
+      "sha256": "aecf34d4f986b759e5c2deb9d3a177001bdd39d01d145111a2b7673b00ebc43d"
+    },
+    {
+      "path": "after/changed-return-phone.png",
+      "bytes": 194402,
+      "sha256": "6ecb1d8f6e6db56d14e199c3694dab4588bd301e07bf54a1a54db0d5b9fbd9f8"
+    },
+    {
+      "path": "unchanged-editor-browser.log",
+      "bytes": 611,
+      "sha256": "4d9ed98f5db66f7c24f139a84df89478a1487c213b018f48a2d561f76c68f5e5"
+    }
+  ]
+}

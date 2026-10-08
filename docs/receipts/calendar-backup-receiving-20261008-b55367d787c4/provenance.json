@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "repository": "Jacob-Met/returnby",
+  "owner": "parallel-8b336fefde84 / #8 and #10",
+  "remote_receiving_branch": "integrate/portable-recovery-20261008-8b336fefde84",
+  "remote_receiving_commit": "17e1a3286a5e8136d1d5dc09da37f33fd1baa100",
+  "remote_receiving_tree": "7b353c0d59058ff624da8573bedbd41aa61150f0",
+  "local_baseline_commit": "404780afa8de09f19a586f307fdd5678f5696e4b",
+  "editor_remote_commit": "0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13",
+  "calendar_local_freeze": "1973a2230a8292fd487a87f9fdde02dba068649d",
+  "calendar_received_packet": "049eae0059186add28243a6bcd06434f761bcb43",
+  "composed_application_freeze": "d457628a3def47f71bab58f9285fe64173ea1624",
+  "composed_application_tree": "debb013d11b8a9fddc620522192c3c8939c84c76",
+  "baseline_gate": {
+    "native_tests": 122,
+    "build": "passed"
+  },
+  "composed_gate": {
+    "native_tests": 195,
+    "all_inherited_tests_unchanged": true,
+    "build": "passed"
+  },
+  "browser_gate": {
+    "status": "passed",
+    "combined_groups": 4,
+    "baseline_control": 1,
+    "page_errors": 0,
+    "external_requests": 0
+  },
+  "independent_source_review": {
+    "accepted": true,
+    "review_sha256": "21c7c3c18bbf9f9a0cde35c6527b6542d15fa9176587abef48c6925251cb975f",
+    "additional_test_execution": false
+  },
+  "receiver": {
+    "path": "tools/check_calendar_backup_receiving.mjs",
+    "sha256": "f59b80344c078421316337d170461af5629628f3a696c385dcedea85fde625de",
+    "bytes": 21276,
+    "command": [
+      "node",
+      "tools/check_calendar_backup_receiving.mjs"
+    ],
+    "cwd": "/workspace/scratch/b55367d787c4/production/receiving-composition/candidate",
+    "environment": {
+      "TMPDIR": "/dev/shm/returnby-b55367d787c4-composition",
+      "RETURNBY_PLAYWRIGHT": "/workspace/scratch/b55367d787c4/production/browser-runtime/node_modules/playwright/index.mjs",
+      "RETURNBY_CHROME": "/workspace/scratch/b55367d787c4/production/browser-runtime/chromium",
+      "RETURNBY_BASELINE_BUILD": "/workspace/scratch/b55367d787c4/production/receiving-composition/baseline-dist",
+      "RETURNBY_EVIDENCE": "/workspace/scratch/b55367d787c4/production/receiving-composition/evidence/browser-first"
+    }
+  },
+  "source_repair_required": false,
+  "remote_mutations_performed": false,
+  "separately_owned_change_not_included": {
+    "pull_request": 16,
+    "head": "480a99bd6de57ff04089975b34b43856da56fdf9",
+    "tree": "e439842851966ad29f6fc2787c951967e23358b5",
+    "owner": "3e50c5ad22c5",
+    "scope": "Fresh storage reads for ordinary Save and Remove actions",
+    "note": "Observed at final receiving readback; preserve this exact owner delta during subsequent broader integration. This frozen qualification does not include or qualify its composition."
+  },
+  "execution_notes": [
+    "The first attempted browser-receiver file write failed while shared disk reported zero available. It left an empty new file and no browser execution occurred; application source was unchanged.",
+    "Verified all files/modes of four copied dependency packages against an existing read-only donor before replacing only owned duplicate package paths with links.82,743,656 logical bytes were replaced; no claim is made that this much physical space became free.",
+    "The successful browser run used a task-owned memory-backed temporary directory. All launched contexts/browser/server closed; the temporary directory was empty afterward.",
+    "Raw downloaded ICS and raw prior evidence retain original line endings."
+  ],
+  "artifacts": [
+    {
+      "path": "baseline-tests.log",
+      "sha256": "5eec27683540ef18ea9124838575b23565d78ba97fbbda6d8c57e9ffb0374cb3",
+      "bytes": 374
+    },
+    {
+      "path": "baseline-build.log",
+      "sha256": "65d156ba5b7323b3404973537ba420481298188d29e9ec189a10deb4c3f0b893",
+      "bytes": 494
+    },
+    {
+      "path": "composed-tests.log",
+      "sha256": "ab04c27b1ff693e6a5f7818c6fcc5f35d4d4e1507cee21d75ac9fda9de2f6beb",
+      "bytes": 376
+    },
+    {
+      "path": "composed-build.log",
+      "sha256": "5a4efc3c650f525adbc85224a82597800cff56fe9432f36a9ff694440cb0bd7a",
+      "bytes": 497
+    },
+    {
+      "path": "baseline-execution.json",
+      "sha256": "066cde2e7746715d9c619abed5ff39341913f83d729c6f09365b40ddfa086fd6",
+      "bytes": 662
+    },
+    {
+      "path": "composed-execution.json",
+      "sha256": "9be514220d4dff82c929396356cc19d397dc41506ffdc9e1ca33205e5a8141f0",
+      "bytes": 459
+    },
+    {
+      "path": "browser-first.log",
+      "sha256": "1a1a8608ccba483f44edbfbb09a262d5590e22feda6fca72caba4f54db40296f",
+      "bytes": 6092
+    },
+    {
+      "path": "browser/browser-receipt.json",
+      "sha256": "1a1a8608ccba483f44edbfbb09a262d5590e22feda6fca72caba4f54db40296f",
+      "bytes": 6092
+    },
+    {
+      "path": "browser/calendar-during-backup-write-refusal.ics",
+      "sha256": "f373b39821ebbcbdb19a34b8afc52ca224c3022be7dfa90994a91c1511785db5",
+      "bytes": 489
+    },
+    {
+      "path": "browser/combined-approved-backup.json",
+      "sha256": "1248bcf7ae91eb0ceb0536f5ef770563056b172627d2641ae6eab912e9614258",
+      "bytes": 724
+    },
+    {
+      "path": "browser/desktop-replacement-review.png",
+      "sha256": "c2b3bf7d9b9d1f21da31b5c7e75243ce6052376bcd40e61554efe283cb8a2eff",
+      "bytes": 183815
+    },
+    {
+      "path": "browser/phone-restored-calendar.png",
+      "sha256": "00c840e72b9af7e18549b97e7692042eb501a4a35dba9b35b901de58392faf05",
+      "bytes": 73001
+    },
+    {
+      "path": "browser/replacement-reviewed-reminder.ics",
+      "sha256": "cef2229a99a5e0a5c35b067630ee7cf403debf184b21b53e3e52680639a58ad3",
+      "bytes": 429
+    },
+    {
+      "path": "browser/restored-selected-reminders.ics",
+      "sha256": "e55eeeeae3d8ef964c3d52c304477229799a60a5f22c803e6aa1ae448be86575",
+      "bytes": 820
+    },
+    {
+      "path": "browser/valid-subset-after-boundary-backup.ics",
+      "sha256": "831cc018dad18049e8949663be9d66ce09d2427290dadaaa5281643828f41ad7",
+      "bytes": 409
+    },
+    {
+      "path": "inputs/composition-source.json",
+      "sha256": "8fa365bebf653f7fc2e613362e295e088553627bcab02cc60dd624208520cf3e",
+      "bytes": 23529
+    },
+    {
+      "path": "inputs/dependency-reuse.json",
+      "sha256": "c1550eb04f32ed4d40c44e22a845838ef8af2533890a69ba7905d204f2bd9673",
+      "bytes": 2044
+    },
+    {
+      "path": "inputs/final-source-readback.json",
+      "sha256": "bb6323e67a693d19c6fc35390f208de9e86cdc8ae35facd02d019e3f45aab925",
+      "bytes": 13894
+    },
+    {
+      "path": "inputs/integration-seams.patch",
+      "sha256": "9c820bb276847e1d470c2346c7aad5c6604b8199f41cb5da65e882f80d443493",
+      "bytes": 25304
+    },
+    {
+      "path": "inputs/integrator-tree.json",
+      "sha256": "c094cc546faca4cba57d4fd8a96b9fe9bc9e282a4d10ac42fd37229a91d1f2cb",
+      "bytes": 16525
+    },
+    {
+      "path": "inputs/materialization.json",
+      "sha256": "3710768e0f83a9a6a0951d663733c8a8aa0b0d6dc38fb445b6f23f3340947218",
+      "bytes": 15440
+    },
+    {
+      "path": "inputs/ownership-source.json",
+      "sha256": "fc663998acc49875ac73daa73d6016c8a5db3ab96e49818405d1d8707e9b341e",
+      "bytes": 11992
+    },
+    {
+      "path": "independent-review/REVIEW.md",
+      "sha256": "21c7c3c18bbf9f9a0cde35c6527b6542d15fa9176587abef48c6925251cb975f",
+      "bytes": 2980
+    },
+    {
+      "path": "independent-review/artifact-hashes.json",
+      "sha256": "0457ba5a91e986c70d0a8122cf12d8a8a4b9a789196e6f1bcfc477bb3560ee2f",
+      "bytes": 242
+    },
+    {
+      "path": "independent-review/source-review.json",
+      "sha256": "11687404d128fd661424fe7c7eb7d3714b04993efc219bc74a1e427ba7ec2aeb",
+      "bytes": 1417
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "repository": "Jacob-Met/returnby",
+  "issue": 15,
+  "receiving": {
+    "remote": "0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13",
+    "tree": "394ea9a5c0755b2d943345c7d36cc8f4ddc5253e",
+    "local": "2bfb586670102f7e25e4d322b03e441598c61fcb",
+    "matched_materialized_blobs": 64,
+    "preserved_remote_only": [
+      {
+        "path": "public/captures/returnby-desktop.png",
+        "git_blob": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d"
+      },
+      {
+        "path": "public/captures/returnby-mobile.png",
+        "git_blob": "c2ed83d29698fb5a47818c87d8f82944997c2bc4"
+      }
+    ]
+  },
+  "baseline": {
+    "local": "b095e97fc2d4ba20b4fcbd0808ec58e621ae786d",
+    "remote": "26879654250875afd8762688ff02e7104289158d",
+    "tree": "e54d056295ec59255aede9a4cb394884d3ebeeab",
+    "browser_pass": 0,
+    "browser_fail": 5,
+    "log": "before-browser.log"
+  },
+  "product": {
+    "local": "2bcf0eca8e5e3dc6a9f6c483fdd52ca568367639",
+    "local_tree": "eb3883af065c929604134516e2bbfe629c5b75f0",
+    "remote": "8d1e2e8be2fd1acbc18bd3203f0723726696f067",
+    "remote_tree": "da48863f8be8d2ba594e60046e60bc5dbe12faba",
+    "files": [
+      {
+        "path": "src/main.ts",
+        "git_blob": "a4e44abc441b6700d4e12b6d20c879f3aab106cf",
+        "sha256": "e081b6c32e5119c4652f17fc174430b994ef86cfb3e558c3ed1c2784f8da65c4"
+      },
+      {
+        "path": "src/store.ts",
+        "git_blob": "371d25a58a0e7ee34f495b18477d1d0ac6dedaa3",
+        "sha256": "d336aad076bf8f8b8e4daee12992092293ad84c70b8e36f84dec801f9ff05fdf"
+      },
+      {
+        "path": "src/edit.ts",
+        "git_blob": "15ffab3eb7cb4ea365474c2aa50706264e888645",
+        "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482"
+      },
+      {
+        "path": "src/edit-ui.ts",
+        "git_blob": "d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab",
+        "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6"
+      },
+      {
+        "path": "src/parse.ts",
+        "git_blob": "45dd377540c6ec9046604927a6e8803d19fe3b5b",
+        "sha256": "591eea8a9a73009d3870b61df591ad2bb5d62144d931841b063180da588cc439"
+      },
+      {
+        "path": "src/policy.ts",
+        "git_blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+        "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231"
+      },
+      {
+        "path": "src/deadline.ts",
+        "git_blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+        "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+      },
+      {
+        "path": "src/ics.ts",
+        "git_blob": "bf4168e7ad798935875ff9115f1193315e33d423",
+        "sha256": "ccd1efc1ca1211f04a59c0b9e621fc3a2c0f2d1ed483cdc5dc506a707330be72"
+      },
+      {
+        "path": "index.html",
+        "git_blob": "e8f54ca670c784c99b37841e275d99b49f3e35c2",
+        "sha256": "e8e33734ba822c77c9efa8f98009c5cdd5429d8eda85b98159f30cd576fa3ffe"
+      },
+      {
+        "path": "package.json",
+        "git_blob": "329b4b71fbb631662eec0405ced477134520c9a5",
+        "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c"
+      },
+      {
+        "path": "package-lock.json",
+        "git_blob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+        "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+      },
+      {
+        "path": "tests/stale-actions.test.mjs",
+        "git_blob": "bf036f3b3f99be16fb480f0584850861f4678903",
+        "sha256": "144033372f2a5170e4192b8a86ed794ea6f316f4544bdc95b5e35c626687160e"
+      },
+      {
+        "path": "tools/check_stale_browser.mjs",
+        "git_blob": "c3a8bf8434777052910ec63c9f30b52b43d21981",
+        "sha256": "2065e6aa09a66ca339be827418f21823c24af037a780267b50eba1fcb88b0b54"
+      },
+      {
+        "path": "tools/check_edit_browser.mjs",
+        "git_blob": "3a2b901cb584292c7a103233842e3edafc57e7b5",
+        "sha256": "89abbf79dfe75678bd132c0ef7bafabef0e30663b57623f63b94a9320e7dfe82"
+      },
+      {
+        "path": "tests/helpers/storage-fixture.mjs",
+        "git_blob": "b808f12d34896ed4f30742a629b46163b123882f",
+        "sha256": "01be65bd9bbe1bbd516ae4a9fca3cb6d810383738d8e6c081f5de83e9265eabc"
+      }
+    ],
+    "build": [
+      {
+        "path": "index.html",
+        "bytes": 6610,
+        "sha256": "5741c2770f48aa0500c6e172a8602839381c1f4062972331c82c282eed95770f"
+      },
+      {
+        "path": "favicon.svg",
+        "bytes": 238,
+        "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+      },
+      {
+        "path": "assets/index-UrGHw3ih.js",
+        "bytes": 15983,
+        "sha256": "87de032d001e73245aff0e85cd1bb27e250d93d24008f4555c8c9f4e534be38e"
+      },
+      {
+        "path": "assets/index-D2881W16.css",
+        "bytes": 10347,
+        "sha256": "f0a4eac64a9ee032674f3092dc5a303f0b18be348a6553a0f704036cee9c6383"
+      }
+    ]
+  },
+  "verification": {
+    "native_pass": 79,
+    "native_fail": 0,
+    "browser_pass": 5,
+    "browser_fail": 0,
+    "browser_harness_unchanged": true,
+    "existing_editor_browser": "pass",
+    "native_command": "npm test",
+    "build_command": "npm run build",
+    "browser_command": "RETURNBY_PLAYWRIGHT=/workspace/scratch/3e50c5ad22c5/production/longwater-composition/node_modules/playwright/index.mjs RETURNBY_CHROME=/workspace/scratch/3e50c5ad22c5/production/browser/chromium RETURNBY_STALE_OUTPUT=docs/receipts/stale-actions-3e50c5ad22c5/after node --test tools/check_stale_browser.mjs",
+    "editor_command": "node tools/check_edit_browser.mjs with RETURNBY_BASE_URL pointing at the same production build served on a fresh loopback port"
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "typescript": "5.9.3",
+    "vite": "8.3.3",
+    "vitest": "5.0.3",
+    "playwright": "1.62.1",
+    "chromium": "153.0.8010.0",
+    "chromium_sha256": "53a15d6c3a3d27dfb54c4ba60278b1683136f70cf1e67e989da7dfbd3d451ef0"
+  }
+}

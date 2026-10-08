@@ -1,0 +1,40 @@
+{
+  "purpose": "Reclaim only exact duplicated dependency bytes under owned production workspace after shared disk exhaustion",
+  "verified_before_removal": true,
+  "donor_mutated": false,
+  "cache_locations": "Both production and receiving node_modules cache roots remain local; shared package files are only read",
+  "packages": [
+    {
+      "relative": "@rolldown",
+      "owned_copy": "/workspace/scratch/b55367d787c4/production/returnby/node_modules/@rolldown",
+      "readonly_donor": "/workspace/scratch/8b336fefde84/returnby-combined-review/candidate/node_modules/@rolldown",
+      "file_count": 14,
+      "bytes": 39021235,
+      "manifest_sha256": "ac45ecfeeaa4c783e12c2d876d628c76364fb86c19420d6b0a7be45e8e0c53be"
+    },
+    {
+      "relative": "typescript",
+      "owned_copy": "/workspace/scratch/b55367d787c4/production/returnby/node_modules/typescript",
+      "readonly_donor": "/workspace/scratch/8b336fefde84/returnby-combined-review/candidate/node_modules/typescript",
+      "file_count": 132,
+      "bytes": 23625066,
+      "manifest_sha256": "63f3c456486cfd353c8023ba17171042021ddc4a3293dfc6e5f3e937e480a632"
+    },
+    {
+      "relative": "lightningcss-linux-x64-gnu",
+      "owned_copy": "/workspace/scratch/b55367d787c4/production/returnby/node_modules/lightningcss-linux-x64-gnu",
+      "readonly_donor": "/workspace/scratch/8b336fefde84/returnby-combined-review/candidate/node_modules/lightningcss-linux-x64-gnu",
+      "file_count": 4,
+      "bytes": 10048780,
+      "manifest_sha256": "8270c8aea4ff4f41f56be47fffaec7ea21d7d12ce2855f181cbd60677591efcf"
+    },
+    {
+      "relative": "lightningcss-linux-x64-musl",
+      "owned_copy": "/workspace/scratch/b55367d787c4/production/returnby/node_modules/lightningcss-linux-x64-musl",
+      "readonly_donor": "/workspace/scratch/8b336fefde84/returnby-combined-review/candidate/node_modules/lightningcss-linux-x64-musl",
+      "file_count": 4,
+      "bytes": 10048575,
+      "manifest_sha256": "e9bf7053326b6c95d2c598b49d44fa5a1743879e1cf9a638c54ad55ddc3f2705"
+    }
+  ]
+}

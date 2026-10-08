@@ -1,0 +1,46 @@
+{
+  "reviewer": "estate-b55367d787c4 / engine",
+  "node": "v24.19.0",
+  "typescript": "5.9.3",
+  "productionSourceReadOnly": true,
+  "sourceRoot": "/workspace/scratch/b55367d787c4/production/returnby",
+  "sourceHashes": {
+    "src/calendar-batch.ts": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+    "src/deadline.ts": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+    "src/ics.ts": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523"
+  },
+  "checks": [
+    {
+      "name": "Distinct delimiter and Unicode identities round-trip without content-line injection",
+      "result": "pass",
+      "identities": 6,
+      "utf8Bytes": 7268
+    },
+    {
+      "name": "Selected ambiguity refuses while an unrelated ambiguous identity cannot replace a selection",
+      "result": "pass",
+      "selectedRefusal": true,
+      "unrelatedAmbiguityAllowed": true,
+      "nonexportedMetadataStable": true
+    },
+    {
+      "name": "Gregorian leap, century, year limit and DST dates remain exact across four local time zones",
+      "result": "pass",
+      "zones": [
+        "UTC",
+        "America/Los_Angeles",
+        "Pacific/Kiritimati",
+        "Asia/Kathmandu"
+      ],
+      "dateCasesPerZone": 7
+    },
+    {
+      "name": "Escape expansion crosses the exact byte cap even when its lower bound does not",
+      "result": "pass",
+      "unescapedLowerBound": 2140730,
+      "actualOversizedBytes": 4496679,
+      "reducedBytes": 17382
+    }
+  ],
+  "failure": null
+}
