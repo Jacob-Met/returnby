@@ -11,22 +11,55 @@ const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const list = $<HTMLUListElement>('#list');
 const storageError = $<HTMLParagraphElement>('#storage-error');
-let orders = load();
+const storageRetry = $<HTMLButtonElement>('#storage-retry');
+let orders: Order[] = [];
+let loadFailed = false;
 let sampleIdx = 0;
 let filterMode: 'all' | 'due' | 'expired' = 'all';
 
-function persistOrders(next: Order[]): boolean {
+const loadError = "Couldn't load saved returns. Try loading again before saving, or clear saved returns to start over.";
+
+function showStorageError(message: string) {
+  storageError.textContent = message;
+  storageError.hidden = false;
+  storageRetry.hidden = !loadFailed;
+  storageError.focus();
+}
+
+function clearStorageError() {
+  storageError.textContent = '';
+  storageError.hidden = true;
+  storageRetry.hidden = true;
+}
+
+function reloadOrders() {
+  try {
+    orders = load();
+  } catch {
+    loadFailed = true;
+    showStorageError(loadError);
+    render();
+    return;
+  }
+  loadFailed = false;
+  clearStorageError();
+  render();
+}
+
+function persistOrders(next: Order[], reset = false): boolean {
+  if (loadFailed && !reset) {
+    showStorageError(loadError);
+    return false;
+  }
   try {
     save(next);
   } catch {
-    storageError.textContent = "Couldn't save this change in your browser. Check storage availability and try again.";
-    storageError.hidden = false;
-    storageError.focus();
+    showStorageError("Couldn't save this change in your browser. Check storage availability and try again.");
     return false;
   }
   orders = next;
-  storageError.textContent = '';
-  storageError.hidden = true;
+  loadFailed = false;
+  clearStorageError();
   return true;
 }
 
@@ -73,6 +106,11 @@ preview.addEventListener('submit', (e) => {
 });
 
 function render() {
+  if (loadFailed) {
+    for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
+    list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
+    return;
+  }
   const all=orders.map(o=>{const due=dueDate(o.orderDate,o.windowDays),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);
   $('#tracked-count').textContent=String(all.length);$('#soon-count').textContent=String(all.filter(r=>r.left>=0&&r.left<=7).length);$('#expired-count').textContent=String(all.filter(r=>r.left<0).length);
   for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
@@ -95,5 +133,6 @@ list.addEventListener('click', (e) => {
 $('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);
 paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
 $('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
-$('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?') && persistOrders([])) render(); });
-render();
+$('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?') && persistOrders([], true)) render(); });
+storageRetry.addEventListener('click', reloadOrders);
+reloadOrders();
