@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2efe5">
+  <meta name="description" content="Review several local order confirmations and save their approved return deadlines together.">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <title>ReturnBy · Review several confirmations</title>
+</head>
+<body>
+<div class="batch-shell">
+  <header class="batch-topbar">
+    <a class="batch-brand" href="./index.html"><b>R/</b><span><strong>RETURNBY</strong><small>THE RETURN DESK</small></span></a>
+    <span class="batch-local">LOCAL ONLY · NO UPLOAD</span>
+  </header>
+  <main>
+    <section class="batch-heading">
+      <p class="batch-eyebrow">ONE REVIEW / SEVERAL RETURN WINDOWS</p>
+      <h1>Bring your confirmations<br><em>to the same desk.</em></h1>
+      <p>Add confirmations, correct the extracted fields, and select the orders you have reviewed. You will see one final preview before anything is saved.</p>
+      <a href="./index.html">← Back to the return tracker</a>
+    </section>
+    <div class="batch-layout">
+      <aside class="batch-intake" aria-labelledby="batch-add-title">
+        <p class="batch-eyebrow">01 / ADD CONFIRMATIONS</p>
+        <h2 id="batch-add-title">One at a time.<br>Or a few at once.</h2>
+        <label for="batch-paste">Paste one order confirmation</label>
+        <textarea id="batch-paste" rows="9" placeholder="Paste the plain text of an order confirmation…"></textarea>
+        <button id="batch-add" type="button" class="batch-button primary">Add pasted confirmation</button>
+        <div class="batch-divider"><span>OR</span></div>
+        <label for="batch-files">Choose local plain-text files</label>
+        <input id="batch-files" type="file" accept=".txt,text/plain" multiple aria-describedby="batch-file-help">
+        <p id="batch-file-help" class="batch-help">UTF-8 .txt files, one confirmation per file. Up to 20 confirmations, 100 KiB each and 1 MiB total. No PDFs, images or email attachments.</p>
+        <p class="batch-privacy">Original text and unsaved corrections stay in this page’s memory. Leaving or reloading this page discards them. Only fields you review and save enter the tracker.</p>
+        <button id="batch-discard" type="button" class="batch-button quiet" disabled>Discard this batch</button>
+      </aside>
+      <section class="batch-workspace" aria-labelledby="batch-review-title">
+        <header class="batch-section-head">
+          <div><p class="batch-eyebrow">02 / CHECK EVERY ORDER</p><h2 id="batch-review-title">Review the details.</h2></div>
+          <p id="batch-count">0 confirmations</p>
+        </header>
+        <p class="batch-guide">Extraction uses ReturnBy’s existing local rules. Confirm the date, store and return window with the original order and retailer. Amounts stay as entered.</p>
+        <p id="batch-status" class="batch-status" role="status" aria-live="polite"></p>
+        <p id="batch-error" class="batch-error" role="alert" hidden></p>
+        <div id="batch-empty" class="batch-empty">Add a pasted confirmation or choose text files to start your review.</div>
+        <div id="batch-drafts"></div>
+        <div class="batch-review-bar">
+          <p id="batch-selection">No confirmations selected for saving.</p>
+          <button id="batch-preview" type="button" class="batch-button primary" disabled>Review selection</button>
+        </div>
+        <section id="batch-final" class="batch-final" aria-labelledby="batch-final-title" hidden>
+          <p class="batch-eyebrow">03 / THE SAVED RESULT</p>
+          <h2 id="batch-final-title" tabindex="-1">Check the complete append.</h2>
+          <p id="batch-final-summary"></p>
+          <div id="batch-final-orders"></div>
+          <div id="batch-duplicates" class="batch-duplicate-box" hidden>
+            <h3>Check possible matching orders</h3>
+            <p>These store and order numbers also appear in the saved list or this selection. Matching ignores letter case and surrounding spaces; it does not establish that the confirmations are the same order.</p>
+            <ul id="batch-duplicate-list"></ul>
+            <label><input id="batch-duplicate-ack" type="checkbox"> I reviewed these matches and want to add every selected order.</label>
+          </div>
+          <p class="batch-help">Existing saved records stay in the tracker. If that saved list changes, make a fresh preview. Each successful batch is one local save; other tabs can still write concurrently.</p>
+          <div class="batch-final-actions">
+            <button id="batch-save" type="button" class="batch-button primary">Save reviewed orders</button>
+            <button id="batch-back" type="button" class="batch-button quiet">Keep reviewing</button>
+          </div>
+        </section>
+        <p id="batch-success" class="batch-success" role="status" hidden></p>
+      </section>
+    </div>
+  </main>
+  <footer class="batch-footer"><span>REVIEWED FIELDS ONLY.</span> No inbox connection, account or automatic storage. <a href="./index.html">Open the tracker →</a></footer>
+</div>
+<script type="module" src="/src/batch-intake-view.ts"></script>
+</body>
+</html>
