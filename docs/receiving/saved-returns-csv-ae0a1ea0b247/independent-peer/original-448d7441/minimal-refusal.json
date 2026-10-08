@@ -1,0 +1,80 @@
+{
+  "node": "v24.19.0",
+  "moduleBlob": "448d7441efd9637a763d2674a44353cd7db155b8",
+  "moduleSha256": "d143e39e8f63e4b8c1e93dffb728a3aafce5358718ce19d430738c2e35194ec1",
+  "cases": [
+    {
+      "name": "plain-leading-bom",
+      "codePoints": [
+        "feff",
+        "4e",
+        "6f",
+        "72",
+        "74",
+        "68",
+        "20",
+        "53",
+        "74",
+        "6f",
+        "72",
+        "65"
+      ],
+      "nativeBackupExact": true,
+      "defaultDecoderPreserves": false,
+      "bomPreservingDecoderPreserves": true,
+      "csv": {
+        "status": "refused",
+        "name": "SavedCsvError",
+        "message": "Some saved text cannot be represented safely in CSV. Keep the JSON backup and correct that text before exporting."
+      }
+    },
+    {
+      "name": "formula-leading-bom",
+      "codePoints": [
+        "feff",
+        "3d",
+        "31",
+        "2b",
+        "31"
+      ],
+      "nativeBackupExact": true,
+      "defaultDecoderPreserves": false,
+      "bomPreservingDecoderPreserves": true,
+      "csv": {
+        "status": "refused",
+        "name": "SavedCsvError",
+        "message": "Some saved text cannot be represented safely in CSV. Keep the JSON backup and correct that text before exporting."
+      }
+    },
+    {
+      "name": "ordinary-formula-control",
+      "codePoints": [
+        "3d",
+        "31",
+        "2b",
+        "31"
+      ],
+      "nativeBackupExact": true,
+      "defaultDecoderPreserves": true,
+      "bomPreservingDecoderPreserves": true,
+      "csv": {
+        "status": "accepted",
+        "protectedCells": 1
+      }
+    },
+    {
+      "name": "genuine-unpaired-surrogate-control",
+      "codePoints": [
+        "d800"
+      ],
+      "nativeBackupExact": true,
+      "defaultDecoderPreserves": false,
+      "bomPreservingDecoderPreserves": false,
+      "csv": {
+        "status": "refused",
+        "name": "SavedCsvError",
+        "message": "Some saved text cannot be represented safely in CSV. Keep the JSON backup and correct that text before exporting."
+      }
+    }
+  ]
+}

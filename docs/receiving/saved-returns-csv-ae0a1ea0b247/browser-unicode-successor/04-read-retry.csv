@@ -1,0 +1,6 @@
+﻿"Saved return ID","Store","Order number","Total (as entered)","Order date","Return window (days)","Recorded window source","Return deadline","Created at"
+"A","'=Q1, ""river"" 🧭","00042","EUR 15.20","2026-10-01","2","user","2026-10-03","2026-10-01T10:00:00Z"
+"C","Fictional harbour shop","000000000001234567890","as entered","2026-10-07","2","policy","2026-10-09","2026-10-07T10:00:00Z"
+"0bc39471-c7f6-4f6c-ba4d-a7af6fa916e2","Later saved return","00077","JPY 3200","2026-10-08","14","user","2026-10-22","2026-10-08T13:35:36.317Z"
+"5ecad5c9-56a4-4541-b636-0b3152cb297c","Added before explicit retry","00077","JPY 3200","2026-10-08","14","user","2026-10-22","2026-10-08T13:35:36.899Z"
+"B","﻿Fictional hill shop","'﻿=stored-order","$40.00","2026-10-01","30","default","2026-10-31","2026-10-01T10:01:00Z"

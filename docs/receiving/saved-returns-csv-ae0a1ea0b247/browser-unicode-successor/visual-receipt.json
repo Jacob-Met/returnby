@@ -1,0 +1,13 @@
+{
+  "result": "ACCEPT",
+  "inspection": "Read-only visual inspection of the exact retained final 390x844 phone screenshot, after the BOM-preserving pure-module correction.",
+  "screenshot": "phone-csv-control.jpg",
+  "sha256": "08081757de3cf40fb29112794e7cd4836f83e06a18fb41e32185de0de724bc94",
+  "observations": [
+    "CSV heading, scope, action and help are readable and fit the panel.",
+    "The two-protected-cell download status wraps without clipping or overlap."
+  ],
+  "browserReceiptSha256": "d63d42a7e270e80550ead5b7e390652a9653a4f887b0750cc8a42ac191d14841",
+  "moduleBlob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+  "uiBlob": "8321f2b207364bbd8eecc2b64c49ad67e19c0d05"
+}

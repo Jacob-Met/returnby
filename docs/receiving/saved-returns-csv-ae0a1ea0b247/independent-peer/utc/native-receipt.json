@@ -1,0 +1,117 @@
+{
+  "sourceCommit": "da8e814adbc0f087e2920d3129f998be56234044",
+  "node": "v24.19.0",
+  "timezone": "UTC",
+  "csv": {
+    "filename": "returnby-returns-2026-10-09.csv",
+    "count": 12,
+    "protectedCells": 11,
+    "bytes": 1579,
+    "sha256": "82c3d603ae7c5b5950302021f56a6edb19075808a53f7bed2b3fc2e1af11264b"
+  },
+  "nativeDeadlines": [
+    {
+      "id": "A-first-year",
+      "due": "1000-01-02"
+    },
+    {
+      "id": "B-century-leap",
+      "due": "2000-02-29"
+    },
+    {
+      "id": "C-leap",
+      "due": "2024-03-01"
+    },
+    {
+      "id": "D-spring",
+      "due": "2024-03-11"
+    },
+    {
+      "id": "E-autumn",
+      "due": "2024-11-04"
+    },
+    {
+      "id": "F-century-common",
+      "due": "2100-03-01"
+    },
+    {
+      "id": "G-last-year",
+      "due": "9999-12-31"
+    },
+    {
+      "id": "z-tie",
+      "due": "2026-11-07"
+    },
+    {
+      "id": "Z-tie",
+      "due": "2026-11-07"
+    },
+    {
+      "id": "a-tie",
+      "due": "2026-11-07"
+    },
+    {
+      "id": "H-end-month",
+      "due": "2026-03-02"
+    },
+    {
+      "id": "I-year-change",
+      "due": "2024-01-01"
+    }
+  ],
+  "inputSha256": "b38ba3143a3cab9bf66312b83caf928664330bc6adaed30bcb291bf9682aaa82",
+  "inputUnchanged": true,
+  "timestampUnchanged": true,
+  "sourceBefore": [
+    {
+      "path": "src/saved-returns-csv.ts",
+      "blob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+      "sha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+      "bytes": 3109
+    },
+    {
+      "path": "src/backup.ts",
+      "blob": "bdd86ce50c723abf8f1d305d4fdf63353510eba8",
+      "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+      "bytes": 7059
+    },
+    {
+      "path": "src/deadline.ts",
+      "blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+      "bytes": 837
+    },
+    {
+      "path": "src/store.ts",
+      "blob": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3",
+      "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+      "bytes": 1387
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "src/saved-returns-csv.ts",
+      "blob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+      "sha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+      "bytes": 3109
+    },
+    {
+      "path": "src/backup.ts",
+      "blob": "bdd86ce50c723abf8f1d305d4fdf63353510eba8",
+      "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+      "bytes": 7059
+    },
+    {
+      "path": "src/deadline.ts",
+      "blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+      "bytes": 837
+    },
+    {
+      "path": "src/store.ts",
+      "blob": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3",
+      "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+      "bytes": 1387
+    }
+  ]
+}

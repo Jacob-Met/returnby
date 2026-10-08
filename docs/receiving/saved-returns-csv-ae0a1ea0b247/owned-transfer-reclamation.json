@@ -1,0 +1,83 @@
+{
+  "action": "Repurpose only the redundant RecallWeave transfer container after verifying all 18 exact members remain both on disk and committed",
+  "oldArchiveSha256": "bb5632073ca4f71801fcff7f4778070aca01617e00079276687c84d7f7ef6d11",
+  "oldArchiveBytes": 269640,
+  "committedSource": "6d01a84fd8098fe2903141f38a1c725cc4cc82d8",
+  "membersVerified": [
+    {
+      "path": "independent-lesson-ui.cjs",
+      "sha256": "febf0a68e63441bd299ae6a433bfc81e834a264520328fe69cb8bb8aee0091ae"
+    },
+    {
+      "path": "pins-f52bf26f.json",
+      "sha256": "7b7c0fc93a295a8080864c9a68bc9216a30bf096372929856be2f7477a0540e8"
+    },
+    {
+      "path": "candidate-f52bf26f/durable-transfer.json",
+      "sha256": "5378fe55184cc59151295e2d15e8e81b0db0e9184ac5cc1692aee32eec7976cb"
+    },
+    {
+      "path": "candidate-f52bf26f/independent-ui-receipt.json",
+      "sha256": "e8d0906c0a56db0da7a5395da4154bbd8eef0d4b446c6c403245993decf7b09f"
+    },
+    {
+      "path": "candidate-f52bf26f/standalone-phone-preview.png",
+      "sha256": "3499be01aa90b35f8c5bc8fa1617698cf6fda89ac12df3fb5579ade8d3c9f7fb"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/10-after-native-chooser-cancel.json",
+      "sha256": "4443c172d8996a9da62dedb6b3520a8bad653933efd002c3006380f839799bb6"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/09-after-preview-invalidated.json",
+      "sha256": "0b5d8f00591be9d7c0a893e1402f9618f56e1764a34bbab621869d02248d20b9"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/08-after-stale-read.json",
+      "sha256": "d91ab4704db641dad53b64015d11e16dee48d210a249de634d63c079e60d6118"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/held-question-lesson.json",
+      "sha256": "93566df34c7f14c2c138f078a0495813eca669d9ab09affda3f8849deecb8b58"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/held-empty-lesson.json",
+      "sha256": "c01de6cac7cd7a671121db91a32a32988b4782c961f44f480b3f930d10585066"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/altered-source.json",
+      "sha256": "1a24ebfe568d3735aa573f349d668a2d75bbf0414e256e7a65ce1f0acbcb703c"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/07-current-before-refusals.json",
+      "sha256": "b8c268dc7d13173584e4700bf79f31eb9f70a4538f955d3c92aff7bb9026f252"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/06-empty-resumed-first-answer.json",
+      "sha256": "0ce62ae00185a89cabbbd4bdb0bd09b0e9743504126505967d719b13ea45968b"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/05-started-empty.json",
+      "sha256": "c01de6cac7cd7a671121db91a32a32988b4782c961f44f480b3f930d10585066"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/04-completed-3.json",
+      "sha256": "d6d97e45cb2f0dd89f19767dea0d1366c7323fba673d31f4486cc73d438a6776"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/03-standalone-feedback.json",
+      "sha256": "dbddaac1bcf4a3c5e4dc08b518407ff940d4e4fd8588ad9376b7b075389713c4"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/02-completed-1.json",
+      "sha256": "b9346bb56758b63ffefb626cf2889807bff3c2a02ffde1e75a49d33c4bd07d5f"
+    },
+    {
+      "path": "candidate-f52bf26f/downloads/01-modular-question.json",
+      "sha256": "93566df34c7f14c2c138f078a0495813eca669d9ab09affda3f8849deecb8b58"
+    }
+  ],
+  "reservedBytes": 180224,
+  "releasedBytes": 89416,
+  "preserved": "Every source, screenshot, download, receipt and driver member remains unchanged at its original path and in Git. No other-worker files touched."
+}

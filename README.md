@@ -109,3 +109,13 @@ The saved-order browser acceptance runs with `node tools/check_edit_browser.mjs`
 - `src/ics.ts`: calendar reminder generation.
 
 The app is browser-only; no AI runs in the page. The Devpost Learn planning documents are not completed interview output and are not represented as such.
+
+## Review saved returns in a spreadsheet
+
+**Download saved returns CSV** exports all currently saved returns, regardless of the visible search or date filter. Each click reads the current saved store, including changes from another tab. It does not change saved records, the pasted email, an unsaved review form or a pending backup preview. A refused read, invalid record or failed download leaves the current work intact; retry reads saved storage again.
+
+The UTF-8 CSV includes saved return ID, store, order number, total as entered, order date, return-window days, recorded window source, the existing calculated return deadline and original creation timestamp. Rows sort by deadline and ID. The exporter uses the backup module's approved-field projection and complete validation, with the same 10,000-order bound and a 5 MiB CSV limit. The original email and unrelated local fields are excluded. Invalid or ambiguous saved records refuse the whole export.
+
+Fields are quoted, embedded quotes are escaped and row boundaries use CRLF. Formula-like text receives a leading apostrophe, and the completion message reports how many cells were protected. CSV is a review format: import store and order-number columns as text to retain their formatting. Spreadsheet import settings and available fonts can affect display; the exporter does not claim identical rendering in every spreadsheet. Keep the JSON backup for exact saved details and later restore. The recorded window source is historical; confirm current return terms with the retailer.
+
+Source receiving and native controls for this additive export are recorded in `docs/receiving/saved-returns-csv-ae0a1ea0b247/`. It preserves the existing #8/#10 integration owner and the separately owned editor, calendar, search, undo, date-refresh and parser contributions.

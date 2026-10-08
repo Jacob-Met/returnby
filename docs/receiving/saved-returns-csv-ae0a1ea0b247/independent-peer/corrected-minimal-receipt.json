@@ -1,0 +1,78 @@
+{
+  "node": "v24.19.0",
+  "moduleBlob": "2636019c2f785b7ce8bbdab8ea7f3c489ad43d9a",
+  "moduleSha256": "588e84d8c8b2df5781eaceb3e324a46d2ad13511e1ed4ac6e087f62c3936a9f0",
+  "cases": [
+    {
+      "name": "plain-leading-bom",
+      "codePoints": [
+        "feff",
+        "4e",
+        "6f",
+        "72",
+        "74",
+        "68",
+        "20",
+        "53",
+        "74",
+        "6f",
+        "72",
+        "65"
+      ],
+      "nativeBackupExact": true,
+      "defaultDecoderPreserves": false,
+      "bomPreservingDecoderPreserves": true,
+      "csv": {
+        "status": "accepted",
+        "protectedCells": 0
+      }
+    },
+    {
+      "name": "formula-leading-bom",
+      "codePoints": [
+        "feff",
+        "3d",
+        "31",
+        "2b",
+        "31"
+      ],
+      "nativeBackupExact": true,
+      "defaultDecoderPreserves": false,
+      "bomPreservingDecoderPreserves": true,
+      "csv": {
+        "status": "accepted",
+        "protectedCells": 1
+      }
+    },
+    {
+      "name": "ordinary-formula-control",
+      "codePoints": [
+        "3d",
+        "31",
+        "2b",
+        "31"
+      ],
+      "nativeBackupExact": true,
+      "defaultDecoderPreserves": true,
+      "bomPreservingDecoderPreserves": true,
+      "csv": {
+        "status": "accepted",
+        "protectedCells": 1
+      }
+    },
+    {
+      "name": "genuine-unpaired-surrogate-control",
+      "codePoints": [
+        "d800"
+      ],
+      "nativeBackupExact": true,
+      "defaultDecoderPreserves": false,
+      "bomPreservingDecoderPreserves": false,
+      "csv": {
+        "status": "refused",
+        "name": "SavedCsvError",
+        "message": "Some saved text cannot be represented safely in CSV. Keep the JSON backup and correct that text before exporting."
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "result": "ACCEPT",
+  "inspection": "Read-only visual inspection of the exact retained 390x844 Chromium phone screenshot; no new browser execution.",
+  "screenshot": "browser-corrected/phone-csv-control.jpg",
+  "sha256": "43e6ffb2f02747298516bef3875562a2f1114fb913630aa9d558d992428864b9",
+  "observations": [
+    "Heading, complete-saved-tracker explanation, CSV button, literal-cell guidance and download result are readable and contained within the panel.",
+    "No clipping, overlap or horizontal overflow visible in the captured CSV panel.",
+    "Status describes three saved returns and one protected formula-like cell; it does not claim that a spreadsheet application has opened the file."
+  ],
+  "productBlobs": {
+    "src/saved-returns-csv.ts": "448d7441efd9637a763d2674a44353cd7db155b8",
+    "src/saved-returns-csv-ui.ts": "8321f2b207364bbd8eecc2b64c49ad67e19c0d05",
+    "src/main.ts": "1bca9a5d3d57bd796b43c81606eed5a1c83e66db",
+    "index.html": "ab039d13a53369a5528c9947f5323b8101b7b3b9"
+  },
+  "browserReceiptSha256": "dc420534e973178c868740bda2b465df37718f736943adf27f82d5a1066972ef"
+}

@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: projects approved fields and uses exact native leap-day deadlines without changing input
+ok 1 - projects approved fields and uses exact native leap-day deadlines without changing input
+  ---
+  duration_ms: 3.865704
+  type: 'test'
+  ...
+# Subtest: retains literal commas, embedded quotes, CRLF, tabs and supplementary Unicode in decoded CSV cells
+ok 2 - retains literal commas, embedded quotes, CRLF, tabs and supplementary Unicode in decoded CSV cells
+  ---
+  duration_ms: 0.589627
+  type: 'test'
+  ...
+# Subtest: neutralizes formula-like text including leading whitespace and reports exact prefixed-cell count
+ok 3 - neutralizes formula-like text including leading whitespace and reports exact prefixed-cell count
+  ---
+  duration_ms: 0.732352
+  type: 'test'
+  ...
+# Subtest: preserves literal leading BOM characters and still protects BOM-prefixed formula text
+ok 4 - preserves literal leading BOM characters and still protects BOM-prefixed formula text
+  ---
+  duration_ms: 1.288958
+  type: 'test'
+  ...
+# Subtest: sorts by native deadline then exact saved ID without changing recorded attribution or timestamps
+ok 5 - sorts by native deadline then exact saved ID without changing recorded attribution or timestamps
+  ---
+  duration_ms: 0.596838
+  type: 'test'
+  ...
+# Subtest: keeps optional saved text empty and numeric-looking order numbers exact in file bytes
+ok 6 - keeps optional saved text empty and numeric-looking order numbers exact in file bytes
+  ---
+  duration_ms: 0.557399
+  type: 'test'
+  ...
+# Subtest: refuses a whole inconsistent tracker rather than emitting valid-looking partial rows
+ok 7 - refuses a whole inconsistent tracker rather than emitting valid-looking partial rows
+  ---
+  duration_ms: 16.299864
+  type: 'test'
+  ...
+# Subtest: refuses lossy or unsupported CSV text while retaining exact valid Unicode and ignored extra fields
+ok 8 - refuses lossy or unsupported CSV text while retaining exact valid Unicode and ignored extra fields
+  ---
+  duration_ms: 1.478404
+  type: 'test'
+  ...
+# Subtest: admits the existing 10000-order bound and refuses larger or oversized saved data
+ok 9 - admits the existing 10000-order bound and refuses larger or oversized saved data
+  ---
+  duration_ms: 517.652922
+  type: 'test'
+  ...
+# Subtest: has deterministic bytes at a pinned timestamp and rejects an unusable export timestamp
+ok 10 - has deterministic bytes at a pinned timestamp and rejects an unusable export timestamp
+  ---
+  duration_ms: 2.006918
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 703.561598
