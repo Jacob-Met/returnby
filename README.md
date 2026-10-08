@@ -26,3 +26,7 @@ The optional Raider browser acceptance and desktop/phone captures run through `p
 - `src/ics.ts`: calendar reminder generation.
 
 The app is browser-only; no AI runs in the page. The Devpost Learn planning documents are not completed interview output and are not represented as such.
+
+## Return-trip checklist
+
+From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. The page keeps the existing tracker unchanged; selections, paper check marks and notes are not saved. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.

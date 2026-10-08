@@ -1,0 +1,60 @@
+{
+  "schema": "returnby.native-command-receiving.v1",
+  "started_at": "2026-10-08T16:09:23.911904+00:00",
+  "source_commit": "3913697f70a31d73e8fe7d02b686b306830c24db",
+  "native_head": "69d6c7cec37125c4cf119945e062c1ebe1ad7bd2",
+  "commands": [
+    {
+      "argv": [
+        "/opt/homebrew/bin/node",
+        "--version"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.023581541958265007,
+      "log": "/Users/me/hamon-mcp-lab/returnby-checklist-81ba1ed0179c/baseline-commands/command-0.log",
+      "bytes": 8,
+      "sha256": "08f6347c6bc47b1f68fb3e5b85f789b6baabb1c94d2006983a485d4501048459"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/npm",
+        "ci",
+        "--offline",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.6055773750413209,
+      "log": "/Users/me/hamon-mcp-lab/returnby-checklist-81ba1ed0179c/baseline-commands/command-1.log",
+      "bytes": 28,
+      "sha256": "3fa226eeca428747b5d31adae73d619e1e25e57d5378ca35c9c8d513ea837454"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.940280833048746,
+      "log": "/Users/me/hamon-mcp-lab/returnby-checklist-81ba1ed0179c/baseline-commands/command-2.log",
+      "bytes": 723,
+      "sha256": "5b3f25c41d7dfeec0d9a18d61cf1cf68c08fa9218c92e158b2935e7153604c45"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/npm",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.9418653750326484,
+      "log": "/Users/me/hamon-mcp-lab/returnby-checklist-81ba1ed0179c/baseline-commands/command-3.log",
+      "bytes": 395,
+      "sha256": "59d47b168a84f06b871de4795200eaed3f62e6b634f474eb32c93c2663650af4"
+    }
+  ],
+  "complete": true,
+  "source_preserved": true,
+  "finished_at": "2026-10-08T16:09:26.448247+00:00"
+}

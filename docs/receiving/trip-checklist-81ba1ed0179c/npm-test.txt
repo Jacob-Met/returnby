@@ -1,0 +1,19 @@
+Plain-text view of the native command log (ANSI formatting removed).
+Original raw SHA256: 7433590e1af7c8f53256a558491c1bd1b2532a33b85d05485382ebbe623111ed
+
+> returnby@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/me/hamon-mcp-lab/returnby-checklist-81ba1ed0179c/source
+
+ ✓ tests/ics.test.ts (12 tests) 26ms
+ ✓ tests/day-refresh.test.ts (10 tests) 23ms
+ ✓ tests/core.test.ts (6 tests) 8ms
+ ✓ tests/trip-checklist.test.ts (40 tests) 49ms
+
+ Test Files  4 passed (4)
+      Tests  68 passed (68)
+   Start at  09:28:52
+   Duration  272ms (transform 55%, tests 31%, import 11%, worker 3%)
+
