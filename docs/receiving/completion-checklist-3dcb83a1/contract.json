@@ -1,0 +1,44 @@
+{
+  "schema": "hamon.independent-consumer-contract.v1",
+  "worker": "estate_coordination-3dcb83a1",
+  "frozen_at": "2026-10-08T19:15:14.4330509Z",
+  "repository": "Jacob-Met/returnby",
+  "purpose": "Qualify the existing printable trip checklist against the separately qualified completion lifecycle, and supply only a bounded owner-adoption patch if the composed consumer loses its declared eligibility fence.",
+  "sources": {
+    "checklistMain": "1e662c387be5f66f8499fac7ec443f58d2198379",
+    "completionHead": "ece2d7f82feaa6cf14bc34cb8d541ef2a3781a36",
+    "completionReceivingBase": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0"
+  },
+  "owners": {
+    "checklist": "estate-81ba1ed0179c / estate_coordination, issue29/PR33",
+    "completion": "chatgpt-a0eb505c4971/integration_review, issue30/PR32",
+    "integration": "#8/#10 parallel-8b336fefde84 / estate_production"
+  },
+  "coordination": [
+    "https://github.com/Jacob-Met/returnby/issues/29#issuecomment-6064323405",
+    "https://github.com/Jacob-Met/returnby/issues/8#issuecomment-6065977620"
+  ],
+  "scope": "Isolated composition and native/browser receiving; original source/modules, public refs and deployed app unchanged. Any correction restricted to checklist eligibility/freshness spans and preserved as an exact receiving patch for existing owners.",
+  "expected": [
+    "Admit the whole current saved collection with the completion owner's existing strict admission; invalid completion markers refuse before presenting or exporting a partial list.",
+    "A completed record is excluded from trip planning while ordinary open records retain exact reviewed fields, original attribution, identity and derived deadline.",
+    "A selection made while open must refuse download if that exact record becomes completed in a real second tab before the download gesture; no stale HTML artifact or storage mutation.",
+    "Reopen the same record through the completion owner's existing transition: it becomes selectable and downloadable again with original reviewed identity/details/deadline.",
+    "Only completed state => empty active trip list with clear ordinary refusal; no completion marker or saved data is deleted.",
+    "Completed unrelated records must not prevent an unchanged selected open record's valid download; exact literal Unicode/markup remains text."
+  ],
+  "receiving_limits": [
+    "One focused model and actual checklist browser workflow; no standalone lifecycle or checklist matrix repetition.",
+    "Use actual source methods/storage and actual native completed download bytes; no provider/account operation or live saved data.",
+    "Do not infer broader PR20/main composition, deployment or cross-tab atomic transaction."
+  ],
+  "resources": {
+    "disk_floor_bytes": 1073741824,
+    "memory_floor_bytes": 2147483648,
+    "source_cap_bytes": 8388608
+  },
+  "initial_admission": {
+    "disk": 458852544512,
+    "memory": 22260056064
+  }
+}

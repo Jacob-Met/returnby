@@ -1,0 +1,13 @@
+{
+  "command": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "ci",
+    "--cache",
+    "C:\\Users\\jacob\\hamon-returnby-completion-checklist-3dcb83a1\\npm-cache",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "cwd": "C:\\Users\\jacob\\hamon-returnby-completion-checklist-3dcb83a1",
+  "utc": "2026-10-08T19:25:45.541Z"
+}

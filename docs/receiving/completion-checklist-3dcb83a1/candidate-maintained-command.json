@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-08T19:36:50.712Z",
+  "command": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "C:\\Users\\jacob\\hamon-returnby-completion-checklist-3dcb83a1\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "tests/trip-checklist.test.ts",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\jacob\\hamon-returnby-completion-checklist-3dcb83a1\\candidate-maintained.json"
+  ],
+  "status": 0,
+  "error": null
+}

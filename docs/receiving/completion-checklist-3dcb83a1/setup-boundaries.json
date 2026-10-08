@@ -1,0 +1,19 @@
+{
+  "patchInitial": {
+    "reason": "Existing global core.autocrlf=true converted LF source bytes to CRLF during Git apply.",
+    "actualBlob": "1e79873c0569a28c14806d2c7dbdc0affaabea13",
+    "expectedBlob": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+    "lfNormalizedExact": true,
+    "retainedDirectory": "patch-validation",
+    "remedy": "Per-process core.autocrlf=false and core.eol=lf, unchanged patches; separate patch-validation-v2 directory."
+  },
+  "missingDirectory": {
+    "reason": "Initial custody write_file calls returned ENOENT before staging; directory then created normally. No source execution."
+  },
+  "memoryRefusal": {
+    "at": "2026-10-08T19:44:25.6556237Z",
+    "freeBytes": 194609152,
+    "floor": 2147483648,
+    "action": "No MSI allocation/process/patch run; alternate guarded host only."
+  }
+}

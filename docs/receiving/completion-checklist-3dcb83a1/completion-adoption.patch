@@ -1,0 +1,111 @@
+diff --git a/src/trip-checklist.ts b/src/trip-checklist.ts
+--- a/src/trip-checklist.ts
++++ b/src/trip-checklist.ts
+@@ -1,5 +1,6 @@
+ import type { Order } from './store';
+ import { dueDate, daysLeft, todayISO } from './deadline';
++import { isCompleted, isCompletionTimestamp } from './completion';
+ 
+ export const SAVED_ORDERS_KEY = 'returnby.v1';
+ export const MAX_SAVED_BYTES = 2 * 1024 * 1024;
+@@ -87,7 +88,12 @@
+       badRow(index, 'has an unrecognized window source');
+     }
+     const createdAt = textField(row, 'createdAt', index)!;
++    const completedAt = row.completedAt;
++    if (completedAt !== undefined && !isCompletionTimestamp(completedAt)) {
++      badRow(index, 'has an unsupported completion date');
++    }
++    return Object.freeze({ id, merchant, orderNo, total, orderDate, windowDays, windowSource, createdAt,
++      ...(completedAt === undefined ? {} : { completedAt }) });
+-    return Object.freeze({ id, merchant, orderNo, total, orderDate, windowDays, windowSource, createdAt });
+   });
+   return Object.freeze({ raw, orders: Object.freeze(orders) });
+ }
+@@ -126,6 +132,7 @@
+   const orders = selectedIds.map(id => {
+     const order = byId.get(id);
+     if (!order) throw new ChecklistError('A selected order is no longer in this loaded list. Refresh saved orders and choose again.', 'selection');
++    if (isCompleted(order)) throw new ChecklistError('A selected return is completed. Reopen it in your tracker, then refresh saved orders before planning a trip.', 'selection');
+     const due = dueDate(order.orderDate, order.windowDays);
+     return Object.freeze({ order, due, tripTiming: tripTiming(due, tripDate) });
+   }).sort((a, b) => a.due.localeCompare(b.due));
+diff --git a/src/trip-checklist-view.ts b/src/trip-checklist-view.ts
+--- a/src/trip-checklist-view.ts
++++ b/src/trip-checklist-view.ts
+@@ -1,5 +1,6 @@
+ import './trip-checklist.css';
+ import { dueDate, todayISO } from './deadline';
++import { isCompleted } from './completion';
+ import {
+   assertSnapshotCurrent, buildChecklistHtml, CHECKLIST_SHEET_CSS, createChecklist,
+   readSavedOrders, renderChecklist, SAVED_ORDERS_KEY, sourceLabel,
+@@ -104,11 +105,13 @@
+   readMessage.classList.remove('error');
+   try {
+     snapshot = readSavedOrders(savedReader);
++    const ordered = snapshot.orders.filter(order => !isCompleted(order)).sort((a, b) => dueDate(a.orderDate, a.windowDays).localeCompare(dueDate(b.orderDate, b.windowDays)));
+-    const ordered = [...snapshot.orders].sort((a, b) => dueDate(a.orderDate, a.windowDays).localeCompare(dueDate(b.orderDate, b.windowDays)));
+     ordered.forEach(addOrderOption);
+     readMessage.textContent = ordered.length
+       ? ordered.length + (ordered.length === 1 ? ' saved order ready to choose.' : ' saved orders ready to choose.')
++      : snapshot.orders.length
++        ? 'All saved returns are completed. Reopen a return in your tracker, then refresh here to plan a trip.'
++        : 'No saved orders yet. Return to your tracker to review and save an order, then refresh here.';
+-      : 'No saved orders yet. Return to your tracker to review and save an order, then refresh here.';
+     form.hidden = ordered.length === 0;
+   } catch (error) {
+     readMessage.textContent = error instanceof Error ? error.message : 'Saved orders could not be read. Return to the tracker to review them, then refresh here.';
+diff --git a/tests/completion-checklist-independent.test.ts b/tests/completion-checklist-independent.test.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/completion-checklist-independent.test.ts
+@@ -0,0 +1,48 @@
++import { describe, it, expect } from 'vitest';
++import { parseSavedOrders, createChecklist, assertSnapshotCurrent, buildChecklistHtml } from '../src/trip-checklist';
++import { planCompletion, isCompleted } from '../src/completion';
++import type { Order } from '../src/store';
++
++const a:Order={id:'receive-open-a',merchant:'Synthetic <Cedar> 海',orderNo:'A-7\n"reviewed"',total:'EUR 29,50 & JPY 300',orderDate:'2026-09-20',windowDays:30,windowSource:'user',createdAt:'2026-10-01T01:02:03.000Z'};
++const b:Order={...a,id:'receive-open-b',merchant:'Synthetic Birch',orderNo:'B-8',windowSource:'policy'};
++const complete=(orders:Order[],id:string)=>planCompletion(orders,orders.find(x=>x.id===id),'complete',new Date('2026-10-08T19:00:00.000Z')).next;
++describe('current completion producer into printable trip consumer',()=>{
++ it('retains completion identity and refuses selecting a finished return',()=>{
++  const current=complete([a,b],a.id), snap=parseSavedOrders(JSON.stringify(current));
++  expect(snap.orders.find(x=>x.id===a.id)?.completedAt).toBe(current[0].completedAt);
++  expect(()=>createChecklist(snap,[a.id],'2026-10-10','2026-10-08')).toThrow(/completed|reopen/i);
++ });
++ it('refuses invalid completion markers rather than projecting them away',()=>{
++  for(const marker of [null,false,0,'','unknown','2026-02-30T12:00:00Z']){
++   expect(()=>parseSavedOrders(JSON.stringify([{...a,completedAt:marker}]))).toThrow();
++  }
++ });
++ it('admits the complete source before offering an ordinary earlier record',()=>{
++  expect(()=>parseSavedOrders(JSON.stringify([a,{...b,completedAt:'invalid'}]))).toThrow();
++ });
++ it('keeps ordinary selected fields, rendering and stored bytes unchanged beside an unrelated completed order',()=>{
++  const current=complete([a,b],b.id), raw=JSON.stringify(current);
++  const ordinary=createChecklist(parseSavedOrders(JSON.stringify([a])),[a.id],'2026-10-10','2026-10-08');
++  const mixed=createChecklist(parseSavedOrders(raw),[a.id],'2026-10-10','2026-10-08');
++  expect(mixed).toEqual(ordinary); expect(buildChecklistHtml(mixed)).toBe(buildChecklistHtml(ordinary));
++  expect(buildChecklistHtml(mixed)).toContain('Synthetic &lt;Cedar&gt; 海');
++  expect(JSON.stringify(current)).toBe(raw);
++ });
++ it('already refuses a selection completed after its snapshot was prepared',()=>{
++  const original=JSON.stringify([a,b]),snap=parseSavedOrders(original);
++  createChecklist(snap,[a.id],'2026-10-10','2026-10-08');
++  expect(()=>assertSnapshotCurrent(snap,{getItem:()=>JSON.stringify(complete([a,b],a.id))})).toThrow(/changed|refresh/i);
++  expect(snap.raw).toBe(original);
++ });
++ it('reopens through the actual owner transition with original identity and exact printable output',()=>{
++  const current=complete([a,b],a.id);
++  const reopened=planCompletion(current,current[0],'reopen').next;
++  expect(reopened).toEqual([a,b]); expect(isCompleted(reopened[0])).toBe(false);
++  expect(buildChecklistHtml(createChecklist(parseSavedOrders(JSON.stringify(reopened)),[a.id],'2026-10-10','2026-10-08')))
++   .toBe(buildChecklistHtml(createChecklist(parseSavedOrders(JSON.stringify([a,b])),[a.id],'2026-10-10','2026-10-08')));
++ });
++ it('cannot produce an active trip from an all-completed list',()=>{
++  const current=complete(complete([a,b],a.id),b.id),snap=parseSavedOrders(JSON.stringify(current));
++  expect(()=>createChecklist(snap,[a.id,b.id],'2026-10-10','2026-10-08')).toThrow(/completed|reopen/i);
++ });
++});

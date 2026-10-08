@@ -1,0 +1,21 @@
+import fs from 'node:fs';import path from 'node:path';import os from 'node:os';import crypto from 'node:crypto';import assert from 'node:assert/strict';import {fileURLToPath} from 'node:url';import {spawnSync} from 'node:child_process';
+const root=path.dirname(fileURLToPath(import.meta.url)),st=fs.statfsSync(root);
+assert.ok(st.bavail*st.bsize>=1024**3&&os.freemem()>=2*1024**3,'resource guard');
+const intake=JSON.parse(fs.readFileSync(path.join(root,'source-intake.json'),'utf8'));
+const git=b=>crypto.createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex'),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const baseline=path.join(root,'baseline');assert.ok(!fs.existsSync(baseline));fs.mkdirSync(baseline);
+let total=0;const pins=[];
+for(const item of intake.files){const b=Buffer.from(item.content);assert.equal(git(b),item.git_blob,item.path);total+=b.length;assert.ok(total<8*1024**2);assert.ok(!item.path.includes('..')&&!path.isAbsolute(item.path));const p=path.join(baseline,item.path);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,b,{flag:'wx'});pins.push({path:item.path,ref:item.ref,bytes:b.length,sha256:sha(b),git_blob:git(b)});}
+for(const p of ['package.json','package-lock.json'])fs.copyFileSync(path.join(baseline,p),path.join(root,p),fs.constants.COPYFILE_EXCL);
+fs.writeFileSync(path.join(root,'contract.json'),JSON.stringify(intake.contract,null,2)+'\n',{flag:'wx'});
+const test=path.join(baseline,intake.receiver.path);fs.writeFileSync(test,intake.receiver.content,{flag:'wx'});
+const report={utc:new Date().toISOString(),node:process.version,identity:os.userInfo().username,root,disk:st.bavail*st.bsize,memory:os.freemem(),files:pins,receiver:{path:intake.receiver.path,sha256:sha(Buffer.from(intake.receiver.content))},intake_sha256:sha(fs.readFileSync(path.join(root,'source-intake.json'))),sourceBytes:total,setupFailures:['Original LA7 npm metadata command timed out with no PID/output; no source was staged there.','ThinkPad npm --version failed ENOSPC attempting default logs; no source staging/install there.'],limits:intake.limitations};
+fs.writeFileSync(path.join(root,'source-manifest.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});
+const npm=path.join(path.dirname(process.execPath),'node_modules/npm/bin/npm-cli.js');
+const args=[npm,'ci','--cache',path.join(root,'npm-cache'),'--no-audit','--no-fund'];
+fs.writeFileSync(path.join(root,'install-command.json'),JSON.stringify({command:process.execPath,args,cwd:root,utc:new Date().toISOString()},null,2)+'\n',{flag:'wx'});
+const env={...process.env,PATH:path.dirname(process.execPath)+path.delimiter+process.env.PATH};
+const r=spawnSync(process.execPath,args,{cwd:root,env,encoding:'utf8',timeout:180000,maxBuffer:4*1024**2});
+fs.writeFileSync(path.join(root,'install-stdout.txt'),r.stdout??'',{flag:'wx'});fs.writeFileSync(path.join(root,'install-stderr.txt'),r.stderr??'',{flag:'wx'});
+const res={status:r.status,signal:r.signal,error:r.error?String(r.error):null,completedUTC:new Date().toISOString(),manifest_sha256:sha(fs.readFileSync(path.join(root,'source-manifest.json'))),lockUnchanged:sha(fs.readFileSync(path.join(root,'package-lock.json')))===pins.find(x=>x.path==='package-lock.json').sha256};
+fs.writeFileSync(path.join(root,'install-result.json'),JSON.stringify(res,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(res));if(r.status!==0)process.exitCode=1;
