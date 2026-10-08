@@ -1,0 +1,45 @@
+{
+  "schema": "hamon.returnby-trip-notes.source-freeze.v1",
+  "created_at": "2026-10-08T22:04:05.490205+00:00",
+  "source_commit": "f6ff93ecae190bb7a0d7c4fb2d000510f97aeb7c",
+  "source_tree": "0aeaed0b9c79ebadcf78aa89f04a88cd46698715",
+  "base_commit": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "paths": {
+    "src/trip-notes.ts": {
+      "bytes": 1115,
+      "sha256": "709e5a1101f4b01cd0f696783fd0b3628ccdddb01036fa96a0278c47431cba81"
+    },
+    "src/trip-checklist.ts": {
+      "bytes": 13790,
+      "sha256": "660d7c0d59f518341dac692646879ab8e6ba6f89c0891a6483712c3d943f13f9"
+    },
+    "src/trip-checklist-view.ts": {
+      "bytes": 7997,
+      "sha256": "1cbe3eb400dc79da293fbba90351445f40c0694b2ec494c2522b6040bb15d90a"
+    },
+    "src/trip-checklist.css": {
+      "bytes": 8823,
+      "sha256": "f6c498b1b07fdbf12f30a81c1c7cff2d02a93ae895a12b96e8a89089d423ffb3"
+    },
+    "trip-checklist.html": {
+      "bytes": 5177,
+      "sha256": "b2c6c41dbaf550becf17cfb710ec79b8b51f7eae86bdb93c3988c8d3890ae981"
+    },
+    "tests/trip-notes.test.ts": {
+      "bytes": 3577,
+      "sha256": "50ed9465525df2b159838bc85ced72d8ae8a4fc3073d04e6dc0985c8db2fe82e"
+    },
+    "tools/verify_trip_notes.mjs": {
+      "bytes": 12404,
+      "sha256": "41860ad145472be8db6c10ec1e8f760349bd986c7dbb51d94712361386e3d88f"
+    },
+    "docs/TRIP_CHECKLIST.md": {
+      "bytes": 3558,
+      "sha256": "ab222404adb64e2be3e41f5ef0df21c2b303fc6ca47dbc74803363c06118df49"
+    }
+  },
+  "qualified_browser": "browser-qualified/receipt.json",
+  "baseline_browser": "browser-baseline/receipt.json",
+  "qualified_runtime": "ordinary jacob; Node22.22.1; Chromium153.0.8010.47",
+  "native_scope": 5070
+}

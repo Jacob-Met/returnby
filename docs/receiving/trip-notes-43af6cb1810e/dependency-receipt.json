@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-08T21:51:17.473572+00:00",
+  "command": [
+    "npm",
+    "ci",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "exit": 0,
+  "package_lock_sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+}

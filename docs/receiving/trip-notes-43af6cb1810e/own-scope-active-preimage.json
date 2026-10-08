@@ -1,0 +1,43 @@
+{
+  "base_commit": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "created_at": "2026-10-08T21:50:11.980276+00:00",
+  "identity_kind": "external isolated source contributor; no native goal or code lease",
+  "installation_action": false,
+  "native_external_scope": {
+    "event_hash": "90a4aee39175c16c56424201d2c6c4ac2a97de40056a68f1e4ef1b45f2a6c2f0",
+    "event_id": "cev_0ba49ff9babd49bd9369e1d5",
+    "seq": 5070
+  },
+  "ownership_evidence": {
+    "active_code_claims": 0,
+    "coord_files": 472,
+    "path": "/home/jacob/returnby-trip-notes-43af6cb1810e-evidence/ownership.json",
+    "read_errors": 0,
+    "sha256": "5c8693baa52b8c8f1bdfa47f93ae5be638cbeff57b1db314e982f66b23767f3a"
+  },
+  "repository": "Jacob-Met/returnby",
+  "schema": "hamon.external_contribution.v1",
+  "scopes": [
+    {
+      "area": "Optional memory-only notes in existing printable return-trip checklist",
+      "owner": "hamon-astra-43af6cb1810e/coordination",
+      "paths": [
+        "src/trip-notes.ts",
+        "src/trip-checklist.ts: optional trip note and corresponding reading section only",
+        "src/trip-checklist-view.ts: note draft, preview invalidation and refresh only",
+        "src/trip-checklist.css: note field styles only",
+        "trip-checklist.html: note field and related copy only",
+        "tests/trip-notes.test.ts",
+        "tools/verify_trip_notes.mjs",
+        "docs/TRIP_CHECKLIST.md: typed-note contract only",
+        "docs/receiving/trip-notes-43af6cb1810e/**"
+      ],
+      "preserved": "Current tracker, saved record model/store, parser, dates, calendar, batch-intake and lookup owners",
+      "state": "active"
+    }
+  ],
+  "state": "active_isolated_source",
+  "updated_at": "2026-10-08T21:50:11.980276+00:00",
+  "worker_id": "hamon-astra-43af6cb1810e/coordination",
+  "worktree": "/home/jacob/returnby-trip-notes-43af6cb1810e"
+}

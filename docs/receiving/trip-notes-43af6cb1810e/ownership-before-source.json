@@ -1,0 +1,1147 @@
+{
+  "at": "2026-10-08T21:49:26.351508+00:00",
+  "total_coord_files": 472,
+  "read_errors": [],
+  "returnby_scopes": [
+    {
+      "path": "/srv/hamon-estate/coord/chatgpt-406d0fb04c43.json",
+      "sha256": "e226ea0a8a99fdc828413f3ca59383ec813770b41cbdf15586af71cf61b70b1a",
+      "state": "active autonomous product execution; exact integration and qualified source custody retained",
+      "updated_at": null,
+      "matching_scope": [
+        {
+          "scopes": [
+            {
+              "area": "ECS archetype marker filters and real filtered simulation consumer",
+              "base_commit": "075d2376091511eaab1e32d534b6dbab2589d87f",
+              "files": [
+                "crates/hamon-ecs/src/filter.rs",
+                "crates/hamon-ecs/src/lib.rs",
+                "crates/hamon-ecs/src/world.rs",
+                "crates/hamon-ecs/tests/filters.rs",
+                "crates/hamon-ecs/examples/filtered_system.rs",
+                "crates/hamon-ecs/README.md",
+                "docs/qualification/ecs-filters-20261008-406d0fb04c43/"
+              ],
+              "merge": "890346f5db9d8c55d540c06c9064ef16bd2643c4",
+              "owner": "chatgpt-406d0fb04c43/native_engine",
+              "path": "/Users/me/hamon-native-406d0fb04c43",
+              "pull_request": "https://github.com/Jacob-Met/hamon-engine/pull/122",
+              "receiving": {
+                "actual_first_parent": "470ff7871192f4b7727fca50cb58da2af2899a28",
+                "final_leaves": 874,
+                "merge": "890346f5db9d8c55d540c06c9064ef16bd2643c4",
+                "parent_tree": "26c9b97676f4e3f9b8c3a17762df17644b228546",
+                "preserved_unrelated_first_parent_leaves": 857,
+                "result": "all exact blobs, modes and types match; no extra changes",
+                "schema": "hamon.ecs_postmerge_receiving.v1",
+                "second_parent": "a9cc85e472391581b6706beee1641d9737764e05",
+                "state": "source integrated; no installed engine deployment claimed",
+                "tree": "128f94c86d53b6b82d6d8fe4db43e37e64631bc8",
+                "verified_contribution_leaves": 17
+              },
+              "repository": "Jacob-Met/hamon-engine",
+              "state": "source integrated; no runtime deployment",
+              "verification": {
+                "hosted_pr_result": "both success; existing conditional golden step skipped because no goldens",
+                "hosted_pr_runs": [
+                  37755164838,
+                  37755164643
+                ],
+                "independent": "5 public-API methods per profile plus borrowing refusal probes and actual consumer",
+                "native_author": "68 tests + 3 doctests pass debug/release; fmt and strict Clippy pass",
+                "postmerge_push": "37758395723 cancelled; not a pass or test failure"
+              }
+            },
+            {
+              "area": "ScopeSignal Workers AI result contract; PR-only Node24 receiving CI",
+              "base_commit": "33f021aaacd6d7ed68c508d92901e7442d99586c",
+              "files": [
+                "src/workers-ai.mjs",
+                "tests/workers-ai-contract.test.mjs",
+                ".github/workflows/test.yml"
+              ],
+              "head": "69ff3809d2426a82e219e0eee05bbeddc8cfdb8d",
+              "merge": "1e09495df6b79f96e1c32694969edd3ef2f45308",
+              "owner": "chatgpt-406d0fb04c43/production",
+              "path": "/workspace/scratch/406d0fb04c43/agents/production",
+              "pull_request": "https://github.com/Jacob-Met/scopesignal/pull/12",
+              "receiving": {
+                "UI_AI_adoption": false,
+                "exact_hosted_test_tree": true,
+                "existing_pages_deployment_run": 37760249017,
+                "final_leaves": 92,
+                "first_parent": "5d8b9ae344c96db3a357da87472c553485daaaf3",
+                "hosted_pr_run": 37758172577,
+                "hosted_tests_passed": 55,
+                "merge": "1e09495df6b79f96e1c32694969edd3ef2f45308",
+                "pages_deployment_result": "success",
+                "preserved_unrelated_first_parent_leaves": 78,
+                "provider_execution": false,
+                "schema": "scopesignal.postmerge_receiving.v1",
+                "second_parent": "69ff3809d2426a82e219e0eee05bbeddc8cfdb8d",
+                "tree": "235d11794425c8abd00ee82f2cc3e844d449e376",
+                "verified_contribution_leaves": 14
+              },
+              "repository": "Jacob-Met/scopesignal",
+              "state": "source integrated; existing Pages deployment succeeded; no provider execution",
+              "verification": {
+                "current_composition": "41/41 npm tests",
+                "hosted_current_composition": "55/55, zero skips, on the exact subsequently merged tree",
+                "hosted_pr_result": "success",
+                "hosted_pr_run": 37758172577,
+                "independent": "15/15 vs baseline9/15",
+                "pages_result": "success",
+                "pages_run": 37760249017,
+                "runtime": "no provider calls; no application AI consumer"
+              }
+            },
+            {
+              "area": "Bind accelerated lexical matcher counts to actual caller source records; preserve postings/tokcache owners",
+              "base_commit": "d4cd719582966247f2b0d81753d8cf412df0e3e9",
+              "files": [
+                "memory-compute-codesign/accel/match_fast.py",
+                "memory-compute-codesign/test_match_source_receiving.py",
+                "memory-compute-codesign/MATCH_SOURCE_RECEIVING.md",
+                "memory-compute-codesign/evidence/match-source-406d0fb04c43-20261008/"
+              ],
+              "function_custody": "All seven original matcher/selector function bodies identical; imports exact owner union; docstring/native bootstrap/chunk constant exact original. Reused published 34-method normal/optimized composition evidence; no new full native bootstrap claimed.",
+              "handoff_comment": "https://github.com/Jacob-Met/hamon-memory-research/pull/45#issuecomment-6057159176",
+              "head": "3532b1beb24c7eee823c321db56b2344e6e34d71",
+              "merge": "1328bef2eb93ea442d0f91d68fae06c7c35f1b76",
+              "native_packets": [
+                {
+                  "path": "/srv/hamon-estate/receivers/match-source-406d0fb04c43/match-source-native-packet.tar.gz",
+                  "sha256": "efedd421d313c4e951191ff55dd80736889e4e13ce3de8c9f808e2b8889cab36"
+                },
+                {
+                  "path": "/srv/hamon-estate/receivers/match-source-406d0fb04c43/revision-composition-20261008/native-transition-packet.tar.gz",
+                  "sha256": "4d8dfd1821a5e288f6270258085dc1a5cd3aaa0a2273a4d43ada69c13e2f0de9"
+                }
+              ],
+              "owner": "chatgpt-406d0fb04c43/memory_integration",
+              "path": "/workspace/scratch/406d0fb04c43/agents/memory",
+              "pull_request": "https://github.com/Jacob-Met/hamon-memory-research/pull/45",
+              "receiving": {
+                "actual_first_parent": "15a1c9557bbfc0a62c0b815357a301638898571b",
+                "declared_leaves": 40,
+                "final_leaves": 2676,
+                "merge": "1328bef2eb93ea442d0f91d68fae06c7c35f1b76",
+                "original_artifact_leaves_unchanged": 28,
+                "parent_tree": "70ac3a921495617331dca3bcd986807e392f11e1",
+                "preserved_unrelated_first_parent_leaves": 2636,
+                "result": "all original artifacts retained; composed module matches owner pin; all unrelated parent blobs/modes/types preserved with zero extras",
+                "reviewed_composed_head": "3532b1beb24c7eee823c321db56b2344e6e34d71",
+                "schema": "hamon.matcher_postmerge_receiving.v1",
+                "state": "source integrated; no native installation or serving adoption claimed",
+                "tree": "f40a7d7ec7d44c685de476f61d8ba2b1f39a6533"
+              },
+              "receiving_owner": "estate-347f3417824d/memory-integration",
+              "receiving_scope": "Preserve merged selector PR52 functions; compose qualified caller-bound matcher and private chunk helper/imports only; unchanged suites + dependency controls before head update, independent final integration review.",
+              "repository": "Jacob-Met/hamon-memory-research",
+              "source_sha256": "816306478608e29bc00c7fa6de62e0119340b0c48b96a263b77aa6ccea2b589d",
+              "state": "source integrated by established dependency owner; root independent post-merge receiving complete"
+            },
+            {
+              "area": "Independent actual-source qualification and integration of these contributions; current product receiving discovery",
+              "owner": "chatgpt-406d0fb04c43/root"
+            },
+            {
+              "area": "Independent published ReturnBy PR17+#16 receiving and one-line existing-callback Edit focus correction offered to original integration owner",
+              "base_commit": "00bc85c68d37089ae91344369b35d14ae9e8cbc3",
+              "candidate_patch_sha256": "7e48dbf192f0d76d0a273ae6c30b38312f5135f3f6578a21e8731f647922790d",
+              "candidate_source_blob": "50f896475b9271db01a62dbb2cec16b5c007deac",
+              "candidate_source_sha256": "636f8a037d94ff97b2f2e411590b951ae3159fdfa68c9dd95ba457071588d754",
+              "composition": "49bfd5f48ae7e6915fcb9c163d8241c5411c2ed3",
+              "coordination_comment": "https://github.com/Jacob-Met/returnby/issues/8#issuecomment-6056652991",
+              "current_published": "3913697f70a31d73e8fe7d02b686b306830c24db",
+              "files": [
+                "src/main.ts day-refresh action selection in exactf55 composition only",
+                "unique independent receiving/source patch evidence"
+              ],
+              "fixture_packet_sha256": "c5348b216422e9c21b78bfd3492932d512a100152b0033e4960ae73cf0f76ac3",
+              "fixture_patch_sha256": "bb67ae2cc63fbc45ea4d97c4ded91b71c5678f58ebb92ff3f3a8309219f33648",
+              "fixture_verification": "101/101 unchanged existing tests pass after native fixture Window/Document and inert-timer support; actual browser behavior remains separately qualified",
+              "focus_packet_sha256": "c898c06f2d464878eed5a66b93283f69a33e19112e900f8b772dec5567febcc9",
+              "former_write_set": [
+                "src/day-refresh.ts",
+                "tests/day-refresh.test.ts",
+                "src/main.ts import/bootstrap and automatic-render seam only",
+                "unique receiving evidence"
+              ],
+              "handoff_comments": [
+                6059045708,
+                6059277192
+              ],
+              "head": "64d88fc3ea1165c56e3093b7fe05c830b3f4cc97",
+              "independent_receiver": "chatgpt-406d0fb04c43/memory_integration",
+              "integration_handoff_comment": "https://github.com/Jacob-Met/returnby/issues/8#issuecomment-6060406522",
+              "native_receiving": "/srv/hamon-estate/receivers/root-406d0fb04c43/returnby/prospective17-pr16-f55-406d0fb04c43",
+              "negative_packet_sha256": "1eb1ed3ae7a72ce64a7ede89c6a16e3f27033cc8a9f9e1db3d4d777a5011e038",
+              "next_action": "Existing8/10 owner receives the qualified focus/fixture patches with later17 intake. Later20/22/undo/CSV compositions are not claimed tested by this worker.",
+              "owner": "chatgpt-406d0fb04c43/root",
+              "owner_branch_mutations": false,
+              "published_only_composition": "f55c228274165a69e6a6564a98960f329e2cde73",
+              "repository": "Jacob-Met/returnby",
+              "source_custody": "84/85 exact f55 leaves preserved; only data-edit action selection added; all scheduler and PR16 handler bytes preserved",
+              "state": "Two narrow qualified corrections offered to original PR16 owner; no source integration or deployment by this worker",
+              "verification": "Published391 passes8 scoped probes; prospectivef55 passes2 editor/draft/staleaction cases and failsEditfocus. Same native frozen oracle ec9fe94426cf831c2adb9784e6ab2e584565b88d9c8bb5c3ed202f64ff4ecc16 now passes1/1 on one-line correction, including Enter/sameorder/storage/scroll controls, zero browser errors/externalrequests. Two passingeditor cases were not rerun."
+            },
+            {
+              "area": "Authored looping clips through existing .haudio Program and audio.cue.validate/audio.cue.render to PCM16 WAV",
+              "base_commit": "f81cdb5ab45242da3f1886512cf213ec6b79d2d0",
+              "canonical_binary_sha256": "8477bc015c02d817b78d345028f3b9d22a5e319837e52bf20df1e09fbb3d3775",
+              "canonical_custody_sha256": "c53dadf707f592172c855e84aa08cf3fc82b0ce768c643415b49f2644334b88d",
+              "canonical_received_commit": "3183ef8bc4cdd76f62baf862011b7b8028d38d25",
+              "canonical_receiving": "436 exact source leaves, unchanged whole lock; one current Control build; all7 inherited serve assertions, exact short/long WAV bytes after source-to-cue fixture flag translation; unchanged old-format refusal preserves seeded files/state; all57 packet payloads root-verified after native transfer",
+              "canonical_receiving_archive_sha256": "e7020e61d4f093543d2246b594e07c226a637ae6256d18f41e23b2f1df3ffc9b",
+              "canonical_receiving_path": "/srv/hamon-estate/receivers/root-406d0fb04c43/audio-canonical-169",
+              "closed_pull_request": 175,
+              "closure_comment": "https://github.com/Jacob-Met/hamon-engine/pull/175#issuecomment-6060869548",
+              "contract": "optional clip-only looping bool defaultfalse; periodic per-channel existing-frame interpolation; existing cue stop/envelope/budgets; unchanged nonlooping canonical and PCM behavior",
+              "coordination_comment": "https://github.com/Jacob-Met/hamon-engine/issues/58#issuecomment-6058587344",
+              "files": [
+                "crates/hamon-audio/src/authoring.rs",
+                "crates/hamon-audio/src/authoring/looping.rs",
+                "crates/hamon-audio/tests/looping.rs",
+                "crates/hamon-audio/LOOPING.md",
+                "small .haudio fixture",
+                "unique qualification evidence"
+              ],
+              "head": "a2426a83faf1cc1b7fb457314af6a31fa962e174",
+              "hold_comment": "https://github.com/Jacob-Met/hamon-engine/pull/175#issuecomment-6060042148",
+              "native_packet": {
+                "bytes": 69952,
+                "sha256": "5edc9148a9a05e91c7f8d3a92ab7ddec106b128a1e878850e36c52d928c1b666"
+              },
+              "native_path": "/Users/me/hamon-native-406d0fb04c43/audio-looping",
+              "next_action": "No audio product change needed. Existing169 owner received scoped evidence; historical175 source/CI remains preserved and unmerged.",
+              "owner": "chatgpt-406d0fb04c43/native_engine",
+              "owner_handoff_comment": "https://github.com/Jacob-Met/hamon-engine/pull/169#issuecomment-6060885172",
+              "peer_looping_merge": "20692fcb1a1ec839f1b9de0c727f1d6bbffc1371",
+              "preserved_owners": "WAV importer bd1abdb2f886 PR150 and excerpt49f845d0dece #58comment6058371365 retain lib hooks and their new files; original audio mixer/README/Control source/dependencies unchanged by this contribution",
+              "product_commit": "40c4c4ef85df02d9680b65701ac5ffea637cc192",
+              "product_tree": "a86df16d7507c8353efda72c49f6fee1a48257ca",
+              "published_tree": "1fb8b2d13e646040aad8cdf92213f5ce812dad24",
+              "pull_request": "https://github.com/Jacob-Met/hamon-engine/pull/175",
+              "receiving_parent": "73f5d565112a9d50bc67d3ef4782b8289fc7d577",
+              "receiving_tree": "334c3ad6d1b559cd55962f9afb500a82a63259b4",
+              "repository": "Jacob-Met/hamon-engine",
+              "state": "PR175 closed without merge; landed peer169 adopted and actual canonical Control receiving accepted; source-format translation explicit",
+              "verification": {
+                "author": "84 baseline and92 candidate audio+Control tests;45 release audio;8 final focused per profile;fmt and strictClippy;13 actual Control/WAV consequence checks",
+                "current_composition": "Fresh current Control debug built offline/locked/jobs1, SHAad207b5ac0db71aed47db78831b824a9270c1900eb5bcac748d3697ac6fe0da8; one4-request independent serve sequence passes7 assertions",
+                "hosted": {
+                  "branch_ci": 37772893281,
+                  "golden_gate": "existing conditional fixtures absent; skipped",
+                  "pr_ci": 37772897290,
+                  "result": "all success",
+                  "testbench": 37772897334,
+                  "tested_merge": "be74636abbee8f064c3c74f186b8fb9c13b84287"
+                },
+                "independent": "4 complementary realCLI cases pass;source and3binaries unchanged",
+                "lock_closure": "124 audio /127 Control package records identical; all517packages resolved uniquely; wholelock changes only3unrelated local package records",
+                "native_deployment": false,
+                "output_wav_sha256": "467234aed99449d428a29ac2918676b27908226bcec2ed88d4cb1a6eec8d9edd"
+              }
+            },
+            {
+              "actual_first_parent": "28fb8121cdfe3956f02deb3b2817750a76b6e7a2",
+              "area": "Editable first-game beacon and exit layouts through maintained puzzle CLI",
+              "base_commit": "c18c5aab294416ed2dafd2892605e1399d1edbd3",
+              "contribution_leaves": 27,
+              "coordination_comment": "https://github.com/Jacob-Met/hamon-engine/issues/58#issuecomment-6059277401",
+              "declared_product_leaves": 10,
+              "deployment": false,
+              "final_leaves": 2397,
+              "final_packet_path": "/srv/hamon-estate/receivers/root-406d0fb04c43/first-layout-integration/canonical-publication/merge-final",
+              "final_packet_sha256": "cde755d9d7818290a78c37474d145f4b6cac67fa2815f07458747b15bb61201e",
+              "final_receipt_sha256": "0bd9b172f6a0b5f87be123c39aaf04986f4facd96eb86dbb85350eee99a5548f",
+              "handoff_comment": 6061018613,
+              "head": "e433482bc56c2c930c3414f9392f3778e86514ef",
+              "hosted": "Current-head PR CI37781123359 and testbench37781123434 success; push CI37781117049 succeeded on one failed-job retry after original Mesa download timeout before Rust. Postmerge run separately cancelled, not passed.",
+              "independent_binary_sha256": "327d767802f9ae47d7946d5b48e1f1a1be46da4539c7b002729169093e25078f",
+              "independent_packet_sha256": "3de9cdfa04a5ab95c547ff261a5f35706ea94b7890dcce09a0d293fe5382b2d5",
+              "integration_owner": "chatgpt-406d0fb04c43/memory_integration",
+              "merge": "43f6fc511841030cd7192c4fc36c36101319cf2f",
+              "merge_tree": "a814e7a9e7837821b6db3538b8c316f8b19a52e7",
+              "native_receiving": "/srv/hamon-estate/receivers/root-406d0fb04c43/first-layout",
+              "owner": "chatgpt-406d0fb04c43/native_engine",
+              "preserved_owners": "#156 CPU puzzle example/docs and #67 play/window paths/features unchanged",
+              "preserved_unrelated_actual_parent_leaves": 2370,
+              "product_projection": "91e0d38a55aac8fc885a05ab72ed71b8fd3c8f6b",
+              "product_projection_tree": "915364e7b762d7b54bbd0db0a3c513c7738f9c7d",
+              "pull_request": "https://github.com/Jacob-Met/hamon-engine/pull/190",
+              "repository": "Jacob-Met/hamon-engine",
+              "state": "Source integrated at PR190; exact actual-parent receiving complete; no installed deployment",
+              "unrelated_projection_leaves_preserved": 356,
+              "verification": "6 new native CPU contracts + default hash parity; independently rebuilt maintained first-game lib/main on Rust1.99/lavapipe; 5/5 gates,6CLI calls,5 decoded CRC-checked PNGs; default exact golden,custom160/152,default negative,visible layout geometry,malformed beforeGPU/output"
+            },
+            {
+              "actual_first_parent": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+              "area": "Preserve missing non-simulated pose evidence in actual kinematics Parquet/CLI",
+              "base_commit": "72c15d6b623e217291a824e4e4808a385df896a9",
+              "compute_sha256": "59bdcde630edd97833349d59703dd2c3bb5ce06981bc8b311668560cbfb6b2be",
+              "current_source_seam": "Same frozen sparse real-CLI case passes1/1 with newer QC/report; no product edits.",
+              "files": [
+                "libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+                "tests/analysis/test_kinematics_validity.py",
+                "docs/design/KINEMATICS_PIPELINE.md",
+                "docs/design/research/PROGRESS.md",
+                "unique evidence only"
+              ],
+              "final_current_leaves": 892,
+              "final_packet_path": "/srv/hamon-estate/receivers/root-406d0fb04c43/capturesuite-kinematics-final",
+              "final_packet_sha256": "980062070d69d51dd590747595c06f48fa6fece6f56b2a075671fbdd477ff872",
+              "final_receipt_sha256": "39dbc0b3d03b3991cb7bf7ce09b367d92ccc6ffb21fa8f67f757405c2c2ff953",
+              "handoff_comment": 6061914068,
+              "head": "711e8ec22d462b7588e52727cf3d6524d7524c7a",
+              "hosted_current": {
+                "jobId": 113342165806,
+                "passed": 400,
+                "skipped": 6,
+                "skips": "Native daemon executable not built in Python job",
+                "warnings": 2
+              },
+              "hosted_current_detail": {
+                "actualMergeParents": [
+                  "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+                  "711e8ec22d462b7588e52727cf3d6524d7524c7a"
+                ],
+                "baseLeaves": 857,
+                "cmake": {
+                  "ctestFailed": 0,
+                  "ctestPassed": 30,
+                  "jobId": 113342166000,
+                  "nativeDaemonPassed": 6,
+                  "nativeDaemonSkipped": 0
+                },
+                "firstParent": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+                "firstParentTree": "18e97093f04de23de5e9878fd22c1f5ed986d5f3",
+                "head": "711e8ec22d462b7588e52727cf3d6524d7524c7a",
+                "mergeCommit": "d43bdea867d6198a707a5f55e29216c76054517e",
+                "mergeTree": "fea0e03773742d330963b89e0ceb72a22c7ad495",
+                "mergeTreeExactlyEqualsPassedHostedCheckout": true,
+                "nativeCli": {
+                  "assertions": 36,
+                  "fullAndSimParquetBytesExact": true,
+                  "passedCases": 4
+                },
+                "nonProgressOverlaysExact": 37,
+                "pr": 60,
+                "priorProgressBytesEntirelyPreserved": true,
+                "progressEntryCount": 1,
+                "python": {
+                  "jobId": 113342165806,
+                  "passed": 400,
+                  "skipped": 6,
+                  "skips": "Native daemon executable not built in Python job",
+                  "warnings": 2
+                },
+                "repository": "Jacob-Met/CaptureSuite",
+                "runId": 37786404581,
+                "schema": "hamon.capturesuite.root-current-ci-receiving/v1",
+                "states": {
+                  "currentHostedWindowsGatesPassed": true,
+                  "implemented": true,
+                  "installed": false,
+                  "merged": true,
+                  "nativelyVerified": true,
+                  "published": true
+                },
+                "testedLeaves": 892,
+                "testedSyntheticCommit": "dc9ab33f4b3f3aefbb6308bbffb4e3f041d4b524",
+                "testedTree": "fea0e03773742d330963b89e0ceb72a22c7ad495",
+                "unrelatedLeavesPreserved": 854
+              },
+              "hosted_original": {
+                "ctest_passed": 26,
+                "python_deferred_daemon_skips": 6,
+                "python_passed": 383,
+                "result": "both Windows jobs success",
+                "run": 37781773072,
+                "separate_native_daemon_passed": 6,
+                "synthetic": "f72789d423e6ce301c1e27b83a77e30a9e7ed25a",
+                "tree": "c7254bedd203e6cf29abc814ce6af46d7f462c83"
+              },
+              "independent_archive_members": 230,
+              "independent_archive_sha256": "458de13840765923c859f760879171b3f8fd8072b389f105a6b0f31510b397a9",
+              "independent_packet_path": "/Users/me/hamon-native-406d0fb04c43/capturesuite-kinematics/root-receiving/publication/independent",
+              "independent_payloads_verified": 229,
+              "independent_receiver": "chatgpt-406d0fb04c43/root",
+              "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/56",
+              "limitations": "Deterministic fixture geometry; no learned backend, physical recording, smoothing, IMU fusion or calibration qualification; existing Windows CI remains integration gate",
+              "merge": "d43bdea867d6198a707a5f55e29216c76054517e",
+              "merge_resolution": "Actual mergeAPI405 after newer Windows writer merge284d; no merge occurred. Only exact original1527-byte PROGRESS entry prepended to full current log; all37 other contribution leaves and815 unrelated preserved. Expected-head fast-forward ancestry retained. Original hosted run does not claim new combined tree execution.",
+              "merge_tree": "fea0e03773742d330963b89e0ceb72a22c7ad495",
+              "native_path": "/Users/me/hamon-native-406d0fb04c43/capturesuite-kinematics",
+              "overlay_leaves": 38,
+              "owner": "chatgpt-406d0fb04c43/production",
+              "preserved_unrelated_current_leaves": 854,
+              "previous_head": "0dd591b41bea35ce0639bba312d6f56b77f68088",
+              "product_projection": "2a42301a65cb0c44b67950f515b8e9291c4f3816",
+              "pull_request": "https://github.com/Jacob-Met/CaptureSuite/pull/60",
+              "receiving_parent": "284d168d7614e2465bafba1092d8cbe4b6e13b40",
+              "repository": "Jacob-Met/CaptureSuite",
+              "resolution_comment": 6061185873,
+              "state": "Source integrated at PR60; exact merge tree equals the full passed current Windows checkout. No installed deployment.",
+              "tree": "292669efa31d0b8ea5aa2f0d48c22370682d9fa0",
+              "unchanged_non_progress_overlay_leaves": 37,
+              "verification": {
+                "author": "11 baseline failures +2 passing controls retained; same13new +8original pass21/21; scopedRuff",
+                "complete_parquet_byte_parity": "83408165ea4a4ae13ece552e0f40760e7b362f2ce32b5efdcd5cb94a6e65aeb8",
+                "explicit_sim_parquet_byte_parity": "e9bcfb94895ae63fea05fb7dc408918a8e88bd8e0899b27d8e705e0a83667b98",
+                "independent": "Unchanged oracle2a7c7743:baseline2/4 passes with8expectedfailed assertions; candidate4/4 and36assertions pass; all135sourceleaves and all input-session/pose bytes preserved"
+              }
+            },
+            {
+              "actual_first_parent": "ee2241232e6882acd323a74fbd8b2ec6084c67c8",
+              "area": "Preserve explicit client account/effort values at the existing dispatcher boundary",
+              "base_commit": "1b383b5bb699d31a35319a8466fe8f207d52541a",
+              "base_tree": "16f6797181014b3bc69b84fb697e8ccef6a6582f",
+              "baseline_client_blob": "3e8323815ca19002949015ab30419f9c16ea89ce",
+              "coordination_comment": "https://github.com/Jacob-Met/hamon/issues/140#issuecomment-6060671310",
+              "declared_overlay_leaves": 12,
+              "files": [
+                "tools/unified_direct/client.py::send.account",
+                "tools/unified_direct/client.py::start.effort",
+                "tools/unified_direct/client.py::batch.effort",
+                "tools/unified_direct/test_client_explicit_values.py",
+                "narrow README explanation and unique evidence"
+              ],
+              "final_custody_sha256": "b58736853e5e87f0948a1810ee8be9ac8209ec026bf7d40baf570c25340901b6",
+              "final_receipt_sha256": "3ad0d591a2ce758dbd53ce3f250bacb2e77c6e2f8fa2b55d1abc0053c7b12986",
+              "final_receiving_path": "/srv/hamon-estate/receivers/root-406d0fb04c43/unified-client/integration",
+              "final_tree_leaves": 5875,
+              "handoff_comment": 6062375794,
+              "head": "0aa3d1fe78f5d72235a8d99451d9e6486ab7d791",
+              "hosted_state": "No matching hosted gate observed; no hosted pass invented",
+              "independent_archive_sha256": "11f8c3da1aa34bd08149eef62bb65dad8a45f71f4acd75a02cda206fc281d0a1",
+              "independent_baseline_receipt_sha256": "18af8e7c24353ea333ef5c1627b42c4e9146ec4255e658242659223bf89156b5",
+              "independent_candidate_receipt_sha256": "010cf55fc20053c97bfd3f7c519b2a6148f70b77f100b11cf6872395eca5b7a9",
+              "independent_oracle_sha256": "9e39cf45b56df4b7463ed8a6aebfa5a28bab07f9e8bade33514d7ad63469cddd",
+              "independent_receiver": "chatgpt-406d0fb04c43/production",
+              "independent_receiving": "Baseline39/42 cases with16 failedassertions; unchangedcandidate42/42 and380/380 assertions; zero errors/forbidden effects; all17 actual imported source files unchanged; private authored adapter only.",
+              "integration_owner": "chatgpt-406d0fb04c43/root",
+              "merge": "aa8f9b6d6f5c05381fbbe3e36b6c461e23b08131",
+              "merge_tree": "a1fc104f9d3ee81271673bf1619c156be87ca76c",
+              "owner": "chatgpt-406d0fb04c43/native_engine",
+              "packaging_failures": "Original import guard refusal and ENOSPC preserved. Candidate same-oracle retry accepted after own exact-archive-verified cleanup; all final evidence published via immutable Git blobs.",
+              "preserved_owners": "Existing dc13 capability_acceleration source coordination, core normalization/policy, providers, bridge/vendor and native receiving remain intact. No real provider/model/account/MCP operation.",
+              "preserved_unrelated_actual_parent_leaves": 5863,
+              "preserved_unrelated_parent_leaves": 5667,
+              "prior_witness": 6060073913,
+              "product_projection": "5946a55e10895a0f56d04e9bae6029c19d3a8a14",
+              "product_projection_tree": "c02449da69b9621f7c72660d53b3fd8809429d85",
+              "publication_comment": 6061977253,
+              "publication_leaves": 5679,
+              "publication_parent": "d9f12cb69dc5ecad3d83fead577949875a18ca8b",
+              "pull_request": "https://github.com/Jacob-Met/hamon/pull/375",
+              "repository": "Jacob-Met/hamon",
+              "setup_failure": "Original guard refused import-time optional contract variable before product cases. Successor supplies explicit absence for only that lookup; all42 behavioral assertions unchanged; original oracle/failure retained.",
+              "source_leaves": 17,
+              "state": "Source integrated at PR375; exact current-parent receiving complete; no provider or installed-runtime operation",
+              "tree": "faf067e73a7ce1bee516c69515f3174878a50616"
+            },
+            {
+              "actual_first_parent": "0425a8fa411fb385f0285dde49097342a81d6e25",
+              "area": "Bounded explicit stdin for ordinary host commands through existing process pump",
+              "author_packet_sha256": "c30931d0dc3dcae8a25e44384bd4fec973ce0dccd6520ff3f9e68efc763497ab",
+              "base_commit": "0425a8fa411fb385f0285dde49097342a81d6e25",
+              "baseline_binary_sha256": "44d60f5adcf794d83e18549402f29865e773a37587339629e991ef9793b85967",
+              "candidate_binary_sha256": "0f0c7970811d05fce74305911d93702158930e1c16fa322c0e74e378da7a1ea1",
+              "contract": "Optional exact UTF-8 stdin string, inclusive1MiB byte bound. Nonstring/null and overbound refuse before reservations/intent/child. Existing pipe/deadline, complete-args fingerprint, native backend/claim/unknown-outcome contracts preserved.",
+              "files": [
+                "src/effects.rs",
+                "src/manifest.rs",
+                "README.md",
+                "docs/host-stdin.md",
+                "tests/host_stdin.rs"
+              ],
+              "final_receipt_path": "/srv/hamon-estate/receivers/root-406d0fb04c43/tsuka-stdin/integration/root-final-receipt.json",
+              "final_receipt_sha256": "e9b5b0e525e98b36a19cbf57ef84de5cb7fc77ae194ad8d88a314ea2ecf31aef",
+              "head": "20446ebeb2d90f64342b0d7878d5aecd4700a9f7",
+              "independent_custody_sha256": "7956e03bf3d85ccae83bd2f2fd73c93e649a98a0872c5826e12cf9a6194fe30e",
+              "independent_packet_sha256": "2c8bfc28a6f829b53c4a98546bc875665ebf26d52e0b9a7f6aad1758538cc536",
+              "independent_receipt_sha256": "232169393b6d9a938ee928fc25491bf05babd40540f4ae3f2a1dcf33e997b870",
+              "independent_receiver": "chatgpt-406d0fb04c43/root",
+              "issue": "https://github.com/Jacob-Met/tsuka/issues/14",
+              "merge": "473007e85bed00eaf4332ad8136f609e62776ccd",
+              "native_path": "/srv/hamon-estate/receivers/root-406d0fb04c43/tsuka-stdin",
+              "native_policy": "Disposable own repositories and spawned protocol fixtures; preserve host authorization. No hamon-ie MCP or installed/live host service.",
+              "owner": "chatgpt-406d0fb04c43/memory_integration",
+              "proposed_scope": "Only command-data admission/plumbing in effects.rs, input-schema property in manifest.rs, dedicated native cases/docs; preserve capture/journal/claim/backend behavior",
+              "pull_request": "https://github.com/Jacob-Met/tsuka/pull/15",
+              "repository": "Jacob-Met/tsuka",
+              "source_fence_sha256": "e4c3b639f5b4ce3113edd987c9fb6181b2411dfff6177e2668f0e41911ba78a8",
+              "state": "Source integrated at PR15 with exact reviewed whole tree and actual merge parents; no installed service/adoption.",
+              "tree": "7b3bd4331a0f284cb7dbf0d05a56f03994d6b1fc",
+              "verification": {
+                "actualMergeParents": [
+                  "0425a8fa411fb385f0285dde49097342a81d6e25",
+                  "20446ebeb2d90f64342b0d7878d5aecd4700a9f7"
+                ],
+                "authorNative": {
+                  "allTargetsPassed": 65,
+                  "failed": 0,
+                  "ignored": 0,
+                  "mode": "locked offline native Linux"
+                },
+                "finalLeaves": 67,
+                "firstParent": "0425a8fa411fb385f0285dde49097342a81d6e25",
+                "firstParentTree": "edaa75344148e9afe7ac4e15ea7142249ae61168",
+                "head": "20446ebeb2d90f64342b0d7878d5aecd4700a9f7",
+                "hosted": {
+                  "agentObservedActionsRuns": 0,
+                  "agentObservedCheckRuns": 0,
+                  "agentObservedStatusContexts": 0,
+                  "result": "No hosted gate configured; not a hosted test pass",
+                  "workflowFiles": 0
+                },
+                "independent": {
+                  "baseline": {
+                    "cases": 12,
+                    "errors": 0,
+                    "failedAssertions": 25,
+                    "passed": 3,
+                    "receiptSha256": "60406addfdf2e62c6eca0659c7450b44b723fc54a9783f77fc5db7dc01c96f02"
+                  },
+                  "candidate": {
+                    "assertions": 63,
+                    "cases": 12,
+                    "errors": 0,
+                    "failedAssertions": 0,
+                    "passed": 12,
+                    "receiptSha256": "232169393b6d9a938ee928fc25491bf05babd40540f4ae3f2a1dcf33e997b870"
+                  },
+                  "frozenBeforeCandidateInspection": true,
+                  "oracleSha256": "d8837fd168c4bd3017bf083551ad844f55a9182d891f042595454e7ddd31666e"
+                },
+                "mergeCommit": "473007e85bed00eaf4332ad8136f609e62776ccd",
+                "mergeTreeMatchesReviewedTree": true,
+                "nativeCustody": "/srv/hamon-estate/receivers/root-406d0fb04c43/tsuka-stdin",
+                "overlayLeavesExact": 15,
+                "pr": 15,
+                "repository": "Jacob-Met/tsuka",
+                "schema": "hamon.tsuka.root-final-receiving/v1",
+                "sourceReviewAccepted": true,
+                "state": {
+                  "implemented": true,
+                  "installed": false,
+                  "merged": true,
+                  "published": true,
+                  "verifiedNative": true
+                },
+                "tree": "7b3bd4331a0f284cb7dbf0d05a56f03994d6b1fc",
+                "unrelatedLeavesPreserved": 52
+              }
+            },
+            {
+              "actual_first_parent": "710ebc5da7fa7ebb5a65a35009f305ce37fd398d",
+              "area": "Usable HTML goal-sequence report from existing immutable journal/results; exact CSV and original-versus-waypoint plots",
+              "base_commit": "c2d2c3f5aec8ffe6ca9ca3f5152c4a23f3c2524b",
+              "final_tree_leaves": 427,
+              "handoff_comment": 6065795869,
+              "head": "4e7b4c64525ccecf9f5732999a960be5f6ffeb9e",
+              "independent_archive_sha256": "e28b46f771868559bc0cf1e3fab2876c9e9770a5e210c0416da059786309b19c",
+              "independent_receiver": "chatgpt-406d0fb04c43/root",
+              "issue": 19,
+              "limitations": [
+                "Current represented-time change was built and independently CLI-received, with explicit native CI warm-clock controls; no separately rerun current warm browser claim.",
+                "Original native archives are committed. Final current native supplemental archive transfer was not acknowledged before Mac outage.",
+                "No hardware, installed-service or deployment operation."
+              ],
+              "merge": "2db19070dd3efbff10a510f3ea5ccdef2350ace6",
+              "merge_tree": "8cfe33f845e75b283682e21c003f755fd8b45680",
+              "native_current_path": "/Users/me/hamon-native-406d0fb04c43/pneumatic-goals-root/current-710ebc5d",
+              "overlay_leaves": 19,
+              "owner": "chatgpt-406d0fb04c43/memory_integration",
+              "preserved_scope": "Existing simulation, controllers, journal, CSV and summary semantics retained; no medical/hardware/physical-fidelity claim",
+              "preserved_unrelated_actual_parent_leaves": 408,
+              "pull_request": 31,
+              "repository": "Jacob-Met/pneumatic-mri-sim",
+              "state": "Source integrated at PR31; actual merge tree equals received current PR CI tree; actual merged-source native gates pass",
+              "verification": {
+                "author_browser_assertions": 191,
+                "author_browser_groups": 8,
+                "author_original_native_methods": 144,
+                "current_cli_binding_sha256": "9b48624805d542c326b96d0ebf72cdc5d347e1d3bc5acaca8aee739697531ea5",
+                "current_cli_receipt_sha256": "00d7e8f484935d253d36988148d78c46012777402f9d2e8bed474266068ad707",
+                "current_four_successful_html_identical_to_original_independent": true,
+                "current_native_source_leaves": 58,
+                "current_ordinary_methods": 186,
+                "current_original_cli_groups": 6,
+                "current_push_job": 113454035258,
+                "current_push_run": 37818751076,
+                "current_separately_executed_consumers": 3,
+                "current_source_manifest_sha256": "dc651bd86ba78a0ca943761f7aff9b607638eb022163e15167c87605cd3b13bf",
+                "fmt": "pass",
+                "headless_smoke": "pass",
+                "independent_original_browser_assertions": 267,
+                "independent_original_browser_groups": 4,
+                "independent_original_cli_groups": 6,
+                "strict_clippy": "pass"
+              }
+            },
+            {
+              "actual_first_parent": "b60b2912ef4b872ccc83719c68d065da14ec4216",
+              "area": "Original weighted-interval scheduling course and offline take/skip explorer",
+              "author_archive_sha256": "1e107852d94a800168f54c668445100ad04c119e3b16a72fe835654fc55ba7e4",
+              "final_tree_leaves": 2043,
+              "handoff_comment": 6065721836,
+              "head": "deac29c145d530e9a0c868286701e9ad8283d3c9",
+              "independent_archive_sha256": "9de39002e1e0087361a64dcb689135580d641a3cf399d6ed8692f3b9afd50525",
+              "independent_receiver": "chatgpt-406d0fb04c43/native_engine",
+              "integration_owner": "chatgpt-406d0fb04c43/root",
+              "issue": 62,
+              "limitations": [
+                "Automatic Pages workflow37814080632 succeeded; no separate live delivery inspection or manual deployment.",
+                "Final root native supplementary save was not acknowledged before Mac outage; source, original archives, CI logs and final receiving comment are durable."
+              ],
+              "merge": "94dedb3885c06b032dbe926ce08a728d6eb615ad",
+              "merge_tree": "f1680e0181b01f8cf1cfb2a7ad45a6955803d88f",
+              "negative_evidence": "Browser attempt1/job113438079458 timed out on final file-vector-geometry download after8 groups/24 downloads. One unchanged failed-job retry passed; no source, timeout or assertion was changed.",
+              "overlay_leaves": 31,
+              "owner": "chatgpt-406d0fb04c43/production",
+              "preserved_unrelated_actual_parent_leaves": 2012,
+              "published_evidence_path": "docs/receiving/weighted-intervals-20261008-406d0fb04c43",
+              "pull_request": 101,
+              "repository": "Jacob-Met/RecallWeave",
+              "state": "Source integrated; actual merged-source Node and browser gates complete",
+              "verification": {
+                "author_browser_groups": 7,
+                "author_native": 13,
+                "current_push_browser_attempt": 2,
+                "current_push_browser_downloads": 25,
+                "current_push_browser_groups": 11,
+                "current_push_browser_job": 113443960848,
+                "current_push_browser_run": 37814081570,
+                "current_push_node_job": 113438080129,
+                "current_push_node_run": 37814081610,
+                "current_push_node_tests": 475,
+                "independent_browser_downloads": 9,
+                "independent_browser_groups": 5,
+                "independent_math_refusals": 42,
+                "independent_math_valid": 8265
+              }
+            },
+            {
+              "area": "Counted batch admission and signed seed range preservation",
+              "author_archive_path": "/Users/me/hamon-uma-batch-seeds-406d0fb04c43/private-handoff-v2/uma-counted-batch-native.tar.gz",
+              "author_archive_sha256": "8e61a6886b1bcfc818d90d1dc4824f2f970229c362becece17622b8379dddc79",
+              "base_commit": "205178f1bf3bf5f34c04bbda88c3e4df2102f535",
+              "continuation_comment": 6065796117,
+              "convergence": {
+                "code_composition": "2e6d1cb734e804a209db1fe3c392061e088ffb02",
+                "comment": 6067024491,
+                "current_root_rerun": "not performed",
+                "head": "780aae1e4262a8a3ae79b55478769ade9b801054",
+                "owner": "estate-production-2983fe20",
+                "policy_difference": "Peer deliberately rejects nonpositive count, has no100000 cap, and adapts its old zero-boundary test. This is distinct from this worker's historical zero/cap contract.",
+                "public_writes_by_this_worker": 0,
+                "pull_request": 110
+              },
+              "coordination_comment": 6064452846,
+              "current_parent": "e1ca9baaa89036103d783c6eb02b98deed48c69f",
+              "independent_baseline_receipt_sha256": "32e9ce4fd97a4873042d09901c389836ba94608f69efc2c2cd835db4e837fa2d",
+              "independent_candidate_receipt_sha256": "6a04b4b815710833819ee08c34306f30085e115c36ee99235c46c9c8af7692bc",
+              "independent_oracle_sha256": "ad6d8bb04c9ebb6ffd38e8350fd48c85229c58b56996f96fa6356503fcead742",
+              "independent_receiver": "chatgpt-406d0fb04c43/root",
+              "limitations": [
+                "Current Mac source/binary unavailable from this session; ThinkPad recovery alone is not Mac custody recovery.",
+                "Current parent full native root execution and private integration are not claimed.",
+                "No live game, provider, account or policy execution."
+              ],
+              "next_action": "Do not rebuild or publish the retired predicate. Peer owner retains PR110 integration/receiving; no acceptance transferred.",
+              "owner": "chatgpt-406d0fb04c43/memory_integration",
+              "patch_path": "/Users/me/hamon-uma-batch-seeds-406d0fb04c43/private-handoff/uma-counted-batch.patch",
+              "patch_sha256": "ee9ecb83c63f6c0f7e29f7009eaef45aa400c2f67438a623e0859e1fdae6f924",
+              "policy_note": "This private candidate preserves legacy zero-count success and adds100000 count bound. Peer public PR110 deliberately retires zero-count success and uses lazy positive inclusive range without that cap. Do not merge two predicates or transfer incompatible acceptance.",
+              "private_route": "Jacob-Met/hamon issue140 only; no public UMA contribution publication",
+              "repository": "Jacob-Met/uma-sim",
+              "state": "Converged on active owner PR110; this worker's competing private product predicate retired. Historical native acceptance retained under its original contract.",
+              "verification": {
+                "author_focused_native_methods": 29,
+                "current_binary_sha256": "9ca2c74b109a3b0685f04708c029f38266be6e653e94b09c6a97ef29774014d7",
+                "current_candidate_leaves": 305,
+                "current_protected_leaves": 301,
+                "independent_candidate_assertions": 144,
+                "independent_groups": 24,
+                "original_successful_jsonl_bytes_equal": 9
+              }
+            },
+            {
+              "area": "Optional text comparison of two stored Suite artifacts",
+              "base_commit": "f0c88d9c98420dd28e9d05871ae5f5f6c87c82b4",
+              "browser_successor": {
+                "contract_audit_sha256": "e3cfa24db546ec6f9ce353a659bf782eb09f445c6fc46255c5f03a0e57c6a193",
+                "current": "oracles/receive-browser-successor-v3.mjs",
+                "git_blob": "f1e66dd8d554f0eec98c3668e2609564bb2c0fee",
+                "root": "/tmp/hamon-suite-comparison-receiver-406d0fb04c43",
+                "sha256": "e2de909e28a07dfc496ce36de2ae06b2cd95d8434d849e4031f832e20ebcb2a2",
+                "state": "Root-reviewed successor with exact preserved amendments; frozen before browser execution; after candidate source review, not recovered preinspection code.",
+                "v1_sha256": "dc26b9fc7c64f5b4ab948bf090e11091716718b8b37fc55932dce56ce14f2cd6",
+                "v2_sha256": "a0be17c2a66a27b9fc64e4c316a4b8d6986e60dda96e6fa0486a41968c3e90f6"
+              },
+              "candidate_commit": "10c60b7ed2f00aaf9bb72d630997da1db8b47e94",
+              "independent_browser_oracle_sha256": "486033f527a8acef927474f28f8089740600d59f708cedb27ee6155335f51799",
+              "independent_receiver": "chatgpt-406d0fb04c43/production",
+              "issue": 52,
+              "limitations": [
+                "No actual Core/browser pass, visual acceptance or source merge inferred from mathematical tests.",
+                "Preview filename/MIME/refusal metadata admission question remains under receiving review.",
+                "Mac baseline/browser process uncertainty must be inspected before any later restart."
+              ],
+              "math_custody": "Aggregate7259case120591assertion success/digest93947ca1f3edbcd74c7a5950068024d18bc3bc3e83f1558f5fc143d1e43dd7d7 retained in observed output; full per-case report lost from transient store. No rerun to invent/recreate report.",
+              "native_build": "143 verified current-source leaves staged;60 immutable Git leaf intake remaining at latest author observation. Existing exact lock retained; default npm cache misses most React/Vite/TypeScript packages, so no doomed install attempted. Existing private-cache route under investigation; no installed/dist acceptance claimed.",
+              "negative_evidence": "Original49/50 failed duplicated loading status announcement; fixed only new static notice. Original browser-oracle ENOSPC and pre-execution presentation amendments retained.",
+              "original_browser_payload": {
+                "sha256": "486033f527a8acef927474f28f8089740600d59f708cedb27ee6155335f51799",
+                "state": "Final oracle payload lost from transient functions store; not recovered or claimed unchanged."
+              },
+              "owner": "chatgpt-406d0fb04c43/native_engine",
+              "product_leaves": 8,
+              "publication_hold": "Owner Actions hold6067592767",
+              "pull_request": 57,
+              "repository": "Jacob-Met/Suite",
+              "runtime_policy": "Isolated exact-lock offline build now authorized with fresh own capacity guard and own cache. No global/peer mutation, provider/account operations, live-service changes or Mac restart.",
+              "state": "Product candidate and durable source objects retained; draft57 created20:10:47 before no-Actions hold discovery. Actual Linux build and Core/browser receiving remain pending; no further triggering repository writes.",
+              "verification": {
+                "author_build": "pass",
+                "author_focused_tests": 50,
+                "independent_math_assertions": 120591,
+                "independent_math_cases": 7259,
+                "independent_math_result_sha256": "93947ca1f3edbcd74c7a5950068024d18bc3bc3e83f1558f5fc143d1e43dd7d7"
+              }
+            },
+            {
+              "actual_first_parent": "e46a90ff00f80a128baf842587f08df5862318aa",
+              "area": "Find literal text in complete selected-course Canvas announcements",
+              "author_archive_sha256": "05e869121df10211044cec4bff31964dfbac5528cbd98c77c19709d7067180fa",
+              "base_commit": "f618c3ed13f191ea58642283c1f9cd45a0c1ca81",
+              "contribution_leaves": 23,
+              "final_packet": {
+                "all_members_verified": true,
+                "bytes": 17282,
+                "members": 5,
+                "path": "/home/jacob/hamon-contributions/chatgpt-406d0fb04c43-canvas82-final/final-receiving.tar.gz",
+                "payload_manifest_sha256": "39bc0ddb6e48c2d40c2f493ffc7c81dac5815913fdb628f507900b7ea517eb19",
+                "payloads": 4,
+                "receipt_sha256": "8fb2895c3240a2d4fdda38fada46749365f187a8038079852dc7bc9c1e9d291b",
+                "sha256": "a63f89732f82bbde6d4b3d69b91db83321c39f3554fa7839b502b26de5b842fc"
+              },
+              "final_tree_leaves": 1583,
+              "full_tree_closure": {
+                "actual_precomputed_tree_equal": true,
+                "full_current_cli_and_readme_inverse_exact": true,
+                "overlays": 23,
+                "total": 1583,
+                "unrelated": 1560
+              },
+              "head": "6a551a765b538d8aec910c68778fc2cf006c4d70",
+              "hosted": {
+                "checkout": "fb289f00ccaf6c4cad3fc212801ee1b7bca2b8d2",
+                "lint": "pass",
+                "merge_push_run": 37836978770,
+                "merge_push_state": "in_progress at last observation",
+                "pr_job": 113506030860,
+                "pr_run": 37833925463,
+                "skipped": 1,
+                "subtests": 93,
+                "tests": 1126,
+                "tree": "12d5754a02544cb70162188612ad8d12a95bac9e"
+              },
+              "hosted_actual_merge": {
+                "checkout": "b6d73588887ce57a2637ab72ee424a5eb29e543f",
+                "job": 113516388579,
+                "ruff": "passed",
+                "run": 37836978770,
+                "skips": 1,
+                "state": "passed",
+                "subtests": 93,
+                "tests": 1147,
+                "tree": "c6fd4275a75e49847f76849b73f72a1c1d359c15"
+              },
+              "independent": {
+                "assertions": 220,
+                "baseline_assertions": 35,
+                "baseline_cases": 4,
+                "boundary": "Exact20-module source received; later complete current CLI preserved by exact three-span inverse proof and hosted source gates.",
+                "candidate_receipt_sha256": "9074155da04c4c6b2fe3b045356399bf8afc6d1b412549207a0176693323b967",
+                "candidate_zip_sha256": "fb96edaf741668547fb62e7bdbc06695d3a7642d42e3a3ac9d6b4b083004ef37",
+                "cases": 23,
+                "manifest_blob": "498d962ba33fb54d36a36085691fab765141fcdd",
+                "oracle_sha256": "10b7c66d3e742b2ba04c6307f3529c2e4736270d5eb8e8a9704703cc9598654f"
+              },
+              "independent_receiver": "chatgpt-406d0fb04c43/native_engine",
+              "integration_owner": "chatgpt-406d0fb04c43/root",
+              "issue": 74,
+              "limitations": [
+                "No live Canvas account/provider/broker operation or installed deployment.",
+                "Original too-strict client-import oracle and failed baseline retained; corrected before candidate intake."
+              ],
+              "merge": "b6d73588887ce57a2637ab72ee424a5eb29e543f",
+              "merge_tree": "c6fd4275a75e49847f76849b73f72a1c1d359c15",
+              "owner": "chatgpt-406d0fb04c43/memory_integration",
+              "preserved_unrelated_actual_parent_leaves": 1560,
+              "product_commit": "2239de20e604318feccd82b1eec3db4553e7c0e7",
+              "product_leaves": 6,
+              "pull_request": 82,
+              "repository": "Jacob-Met/canvaspilot",
+              "source_zip_sha256": "fb96edaf741668547fb62e7bdbc06695d3a7642d42e3a3ac9d6b4b083004ef37",
+              "state": "Source integrated at PR82; full actual-parent tree independently verified; actual merged-source Ruff and hosted tests passed. No installed runtime/live account deployment.",
+              "verification": {
+                "actual_hosted_base": "543a81ef22cdb6996a83233e86c7fd887e0f977b",
+                "actual_hosted_checkout": "49dbeee55a22e2faa4ee8a140caa0e18377bfb31",
+                "author_actual_cli_processes": 21,
+                "author_focused_v2_methods": 9,
+                "author_http_logger_calls": 6,
+                "author_v1_methods": 17,
+                "hosted_job": 113463192397,
+                "hosted_run": 37821440202,
+                "pytest_passed": 977,
+                "ruff": "pass",
+                "skipped": 1,
+                "subtests_passed": 90
+              }
+            },
+            {
+              "area": "Explicit terminal editing and proposal discovery for existing saved MAL date choices",
+              "author_archive_sha256": "1fc16b118186dece742fd5bf0ac050f2dce335b36dd3fa37dc20c27143ac727e",
+              "base_commit": "ba2458fa83b44c55440d5dc3929812bce13893af",
+              "contribution_leaves": 14,
+              "final_tree_leaves": 579,
+              "head": "3352f188bcfe297af4794da3c860e6b3a3c374b2",
+              "hosted": {
+                "attempt1_jobs": [
+                  113511350201,
+                  113511350679,
+                  113511350546
+                ],
+                "attempt2_jobs": [
+                  113514558100,
+                  113514558366,
+                  113514558797
+                ],
+                "attempts": 2,
+                "hold_comment": 6068111867,
+                "log_failure": "BlobNotFound",
+                "pull_run": 37835495942,
+                "push_run": 37835490139,
+                "root_cause": "unverified; connector annotation subresource unavailable",
+                "state": "Failed/cancelled before test steps; one unchanged failed-job retry also failed startup. No product/workflow/matrix edits; no further identical retry queued."
+              },
+              "independent_archive": {
+                "all_members_verified": true,
+                "bytes": 96032,
+                "git_blob": "8af618ba983b01223ee395a8842eba186c75109c",
+                "members": 259,
+                "payloads": 258,
+                "sha256": "34fd050e2e71b154fefeb52435836f3b7b233a348b63744b5df3302631ec54a6"
+              },
+              "independent_candidate_receipt_sha256": "2953ff0d7b4a7d0ff42da71a4f307cc18b2feb4f745b65e76100eea2a6c99b86",
+              "independent_oracle_sha256": "dd7379a5f8001619d205a8e40fc20c2f0842d7940b8f65c624ffac5f67ac536a",
+              "independent_receiver": "chatgpt-406d0fb04c43/root",
+              "integration_owner": "chatgpt-406d0fb04c43/root",
+              "issue": 50,
+              "limitations": [
+                "No live MAL account or imported upload.",
+                "Native Python3.14.4 acceptance is not labeled hosted matrix acceptance."
+              ],
+              "native_custody": "/home/jacob/.commander-tp-1/receivers-406d0fb04c43/mal-choice-edit-author-ba2458fa/independent",
+              "native_custody_sha256": "dcdeb9787c08d7f29446662762de6272335d9dd9cd6be7a1b4137099ce979ae7",
+              "native_root": "/tmp/hamon-mal-choice-edit-root-406d0fb04c43-20261008T1930Z",
+              "next": "Continue native work and preserve exact source/evidence. Do not restart Actions or merge merely because a runner becomes available; owner direction must change.",
+              "next_action": "Resume exact3.11/3.12/3.13 hosted gate when execution becomes available; preserve source and native acceptance, then expected-head integration.",
+              "no_automatic_retry": true,
+              "owner": "chatgpt-406d0fb04c43/memory_integration",
+              "preserved_unrelated_parent_leaves": 565,
+              "pull_request": 53,
+              "repository": "Jacob-Met/MyAnimeList-Start-End-Date-Adder",
+              "state": "Native/source acceptance complete at open PR53. Hosted matrix never executed after two attempts; further Actions and triggering integration now explicitly held under owner direction6067592767.",
+              "tree": "0b90fe9000cc8fb1358213a3fd8876c48bfc7619",
+              "verification": {
+                "all_passed_native": true,
+                "author_cli_children": 48,
+                "author_focused_methods": 13,
+                "author_full_unittest_methods": 283,
+                "forbidden_attempts": 0,
+                "full_old_export_ZIP_byte_parity": true,
+                "independent_assertions": 437,
+                "independent_cli_children": 58,
+                "independent_groups": 52,
+                "independent_original_assertions": 44,
+                "independent_original_cli_children": 5,
+                "independent_original_groups": 4,
+                "original_JS_and_Python_decoder": true
+              }
+            },
+            {
+              "area": "Static self-contained HTML export through existing conversation transcript and branch projection",
+              "base_commit": "9d3944ee623c5e4734296532823c97e1fd617012",
+              "base_leaves": 682,
+              "base_tree": "b61000e999e29b38328b387974aae49fb0ee43b0",
+              "contract": "HTML add-only format, exact native row order/branch and metadata, explicit content opt-in, escaped literal strings and no active links/scripts/remote assets. Legacy JSON/Markdown and refusal/output semantics unchanged.",
+              "coordination_comment": 6068149000,
+              "independent_receiver": "chatgpt-406d0fb04c43/production",
+              "integration_owner": "chatgpt-406d0fb04c43/root",
+              "issue": 73,
+              "native_root": "/home/jacob/hamon-opencli-html-406d0fb04c43",
+              "owner": "chatgpt-406d0fb04c43/memory_integration",
+              "preserved_owners": [
+                "PR71 combo.py export_project",
+                "Issue72 handoff_extract",
+                "provider/auth/MCP/workflow/ops holds"
+              ],
+              "repository": "Jacob-Met/OpenCLI",
+              "state": "Claimed from direct current source; original4positive/1missing-format witness received. Author staging canonical source; independent oracle freeze before candidate intake in progress."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/srv/hamon-estate/coord/estate-965d2e86e979.json",
+      "sha256": "af88f46d9c23a5cc540e95406bb7e7d11135daf0728501495c78832e63556da2",
+      "state": "active",
+      "updated_at": "2026-10-08T16:24:48.232Z",
+      "matching_scope": [
+        {
+          "scopes": [
+            {
+              "owner": "estate-965d2e86e979/root",
+              "area": "SRS Xsens/MTw packet timing and complete CSV publication",
+              "state": "source_integrated_scope_released",
+              "path": [
+                "XSENS Conversion/convert_mtb_to_csv.py",
+                "XSENS Conversion/tests/test_mtb_packet_timing.py",
+                "XSENS Conversion/README.md",
+                "docs/receiving/mtw-packet-timing-965d2e86e979/"
+              ],
+              "source_claim": "https://github.com/Jacob-Met/srs-vicon-gait-analysis/issues/9",
+              "source_pr": "https://github.com/Jacob-Met/srs-vicon-gait-analysis/pull/12",
+              "head": "4177540a8c8a48dfa96d85e273002bba90fc8a11",
+              "tree": "0d41d1a3a1172260d1236fcd94ab9e16cf940fda",
+              "native_receiving": "/home/jacob/hamon-xsens-timing-965d2e86e979",
+              "limits": "Authored XDA boundary only; no real MTB/installed SDK/hardware/clinical/deployment claim. VICON owners preserved.",
+              "merge": "1ee3943fa14dc9d83632b23c12ecd4acacc7fd2b",
+              "receiving_receipt": "https://github.com/Jacob-Met/srs-vicon-gait-analysis/pull/12#issuecomment-6059181571"
+            },
+            {
+              "owner": "estate-965d2e86e979/production",
+              "area": "MAL offline user-supplied title map",
+              "state": "source_integrated_scope_released",
+              "source_claim": "https://github.com/Jacob-Met/MyAnimeList-Start-End-Date-Adder/issues/10",
+              "native_receiving": "/home/jacob/hamon-mal-965d2e86e979",
+              "limits": "Existing chronology/date guard owners preserved; no actual user export or account mutation.",
+              "merge": "c79c696514e5bb84b3347c5219695f474a7eb3c5",
+              "source_pr": "https://github.com/Jacob-Met/MyAnimeList-Start-End-Date-Adder/pull/16",
+              "receiving_receipt": "https://github.com/Jacob-Met/MyAnimeList-Start-End-Date-Adder/pull/16#issuecomment-6059295860"
+            },
+            {
+              "owner": "estate-965d2e86e979/receiving_verification",
+              "area": "TestPilot generated-execution independent receiving and handoff",
+              "state": "primary_owner_retained_integrated_negative_reproduced_no_competing_repair",
+              "receiving_owner": "estate-86776bb3cdb8",
+              "source_claim": "https://github.com/Jacob-Met/testpilot/issues/13",
+              "handoff": "https://github.com/Jacob-Met/testpilot/issues/13#issuecomment-6058872155",
+              "finding": "https://github.com/Jacob-Met/testpilot/issues/13#issuecomment-6062354263",
+              "native_receiving": "Mac:/Users/me/hamon-testpilot-attribution-peer-965d2e86e979/e2285d68/packet-e2285d68",
+              "limits": "Primary owner estate-86776bb3cdb8 retains repair. No response to latest source-bound negative was received in the one-time current sweep; issue closure preceded the initial negative and is not evidence of an explicit disposition.",
+              "qualified_negative_source": "e2285d68b2ea5eb2158c0a7e0d936ce5d56f8ff5",
+              "qualified_negative_tree": "22da6a890c2befaf72d3826103538491b07793df",
+              "qualification": "Exact integrated e228 source reproduced the unchanged11-case witness:7 pass,4 genuine attribution failures. Current-source sweep finds the same first-marker parser and generated helper; no identical native replay or alternative publication."
+            },
+            {
+              "owner": "estate-965d2e86e979/current_integration",
+              "area": "Suite existing-artifact pin/unpin feature",
+              "state": "qualified_immutable_additive_handoff_delivered_owner_integration_pending",
+              "receiving_owner": "estate-60b2c08feb01",
+              "existing_owner_claim": "https://github.com/Jacob-Met/hamon/issues/140#issuecomment-6058650273",
+              "limits": "Five unique additive docs/capsule/patch leaves; 694 canonical parent leaves exact. Exact owner shell3fe595a6 plus canonical backend received. No competing source PR or installed runtime adoption.",
+              "qualification": "Independent four-method actual API persistence receiving plus three actual browser groups and authored four-browser-group receiving accepted. Exact intake shell dependency remains owner3fe595a6; current canonical scopes preserved. No installed runtime adoption.",
+              "head": "d69279e28bea4b287f72026b274053a05a7bd285",
+              "tree": "6cb8f05bd6ac811f8789d815961e8e178dfc865a",
+              "receiving_receipt": "https://github.com/Jacob-Met/hamon/issues/140#issuecomment-6060849787"
+            },
+            {
+              "owner": "estate-965d2e86e979/receiving_verification",
+              "area": "ReturnBy saved-order lookup by merchant and order number",
+              "state": "qualified_stacked_pr_owner_handoff_pending_integration",
+              "receiving_owner": "existing ReturnBy issue8/issue10 integration owner",
+              "limits": "New native TypeScript matching helper/control with narrow tracker wiring in isolated current receiving composition. Preserve backup/editor/calendar, urgency filter, deadline ordering and global counts. No persisted schema/parser/policy/storage changes; no installed app/account action.",
+              "repository": "Jacob-Met/returnby",
+              "source_pr": "https://github.com/Jacob-Met/returnby/pull/22",
+              "head": "775a16f651858049dccadf99fec3a80844466ab6",
+              "tree": "7330138b474d68f2f28e1660c70a6a3587499747",
+              "receiving_receipt": "https://github.com/Jacob-Met/returnby/issues/8#issuecomment-6059968082",
+              "native_receiving": "/tmp/returnby-lookup-965d2e86e979",
+              "additional_owner": "Issue23 Undo and main day-refresh/parser composition remain with issue8/issue10 receiver."
+            },
+            {
+              "owner": "estate-965d2e86e979/root",
+              "repository": "Jacob-Met/longwater-browser-demo",
+              "area": "Longwater watch-file download open preview and explicit confirmed transfer",
+              "state": "source_integrated_publicly_received_scope_released",
+              "path": [
+                "watch-save.js",
+                "watch-file.js",
+                "watch-file.css",
+                "game.js",
+                "index.html",
+                "scripts/package.mjs",
+                "tests/watch-file.test.mjs",
+                "tests/watch-file.browser.test.mjs"
+              ],
+              "source_claim": "https://github.com/Jacob-Met/longwater-browser-demo/issues/12",
+              "coordination_receipt": "https://github.com/Jacob-Met/longwater-browser-demo/issues/10#issuecomment-6060502633",
+              "qualified_source": "6483543d13e1f0dade3eca18e359d1080f05a1b6",
+              "tree": "aaffb920e4a3a0065756c234cdeb0a8a1631f1a2",
+              "canonical_parent": "e4e9bf82f6ebb363896559507a2fb5af07b490f5",
+              "native_receiving": "Mac:/Users/me/hamon-longwater-watch-file-965d2e86e979",
+              "limits": "Actual desktop Chromium and recorded390px viewport received; no physical-device or screen-reader execution claim. Sound16/PR23 and historical-choice17/PR19 retain owners. Original three-case d40/R6 null seam now3/3, exact handoff6064127972; no historical-choice or audio runtime was applied by this acceptance branch.",
+              "source_pr": "https://github.com/Jacob-Met/longwater-browser-demo/pull/21",
+              "published_source": "7aca4d7d51cfd3c4ee3eb4b4c0d22e70a8db5d0c",
+              "published_tree": "aaffb920e4a3a0065756c234cdeb0a8a1631f1a2",
+              "qualification": "92 native, 92 PR-hosted and 92 post-merge hosted cases passed separately. Exact247-leaf merged tree, normal Pages deployment37803444620 and actual public15-asset/JSON/offline import+reopen receiving accepted. Real failures and all prior evidence preserved.",
+              "runtime_tree": "ee897713a77123186959e89e5d43a3e7b10aaa2b",
+              "merge": "43038d28b08562a5f1c143b2773d925b4d28ca7d",
+              "receiving_receipt": "https://github.com/Jacob-Met/longwater-browser-demo/issues/12#issuecomment-6064127564",
+              "acceptance_evidence": "0c32d4a016e00cc3e6ff55bac9d75ac766bc44e2",
+              "acceptance_tree": "b214ac36e1bc400d22e17f46b0db6f075a951fde",
+              "public_receiving": {
+                "utc": "2026-10-08T15:51:54Z/2026-10-08T15:51:58Z",
+                "site": "https://jacobmetoyer.com/longwater-browser-demo/",
+                "receipt_sha256": "fa20fcb35d472b353d43221a0cd100e2751cec444e333eed9b07908a6a7114c3",
+                "artifact_sha256": "f84055ec92204c9ebe393ee53afde322899b28abb0aa3393fc459607aa26e9ef",
+                "browser_errors": 0,
+                "offline_extra_requests": 0
+              }
+            },
+            {
+              "owner": "estate-965d2e86e979/production",
+              "repository": "Jacob-Met/RecallWeave",
+              "area": "RecallWeave included-course chooser through existing validated preview and explicit Start",
+              "state": "yielded_to_newly_observed_primary_owner_no_product_edits",
+              "receiving_owner": "hamon-ultra-9319fb3272b2",
+              "baseline": "9b69c9c1dcc578d45e58d9b7f78eecb0613d76f3",
+              "limits": "Our proposed claim was never posted and no production source was edited. The provisional browser harness is frozen and unexecuted. Primary owner39 retains catalog/builder/manifest scope.",
+              "source_claim": "https://github.com/Jacob-Met/RecallWeave/issues/39",
+              "coordination_receipt": "https://github.com/Jacob-Met/hamon/issues/140#issuecomment-6060723540"
+            },
+            {
+              "owner": "estate-965d2e86e979/production",
+              "repository": "Jacob-Met/ashen-circuit",
+              "area": "Ashen Circuit standard gamepad gameplay and existing menu input bridge",
+              "state": "source_integrated_scope_released",
+              "source_claim": "https://github.com/Jacob-Met/ashen-circuit/issues/24",
+              "coordination_receipt": "https://github.com/Jacob-Met/ashen-circuit/issues/24#issuecomment-6061220174",
+              "native_advisory": "/srv/hamon-estate/coord/estate-965d2e86e979-production-ashen-gamepad.json",
+              "native_advisory_sha256": "d4331212f898a6eb338346cd35deb5837bf462e50f213ddaf5e907ba776fefb9",
+              "qualified_source": "b3c8104f501ff9d63fe3293338cd636cdcc62b9d",
+              "tree": "b201706e8b88243685baff758d818b5fcc00deae",
+              "native_receiving": "Mac:/Users/me/hamon-ashen-gamepad-965d2e86e979/source",
+              "qualification": "Native59, independent6 release controls plus17 movement and20 headed/menu checks; separate6 weapon and14 progression composition checks accepted. Final1409-leaf tree and1131 unrelated incoming leaves exact. Hosted checks are unconfigured, not represented as passing CI.",
+              "limits": "Keyboard/remap/touch/graft/death/combat, WeaponAuto and progression owner source preserved. Physical hardware controller not exercised. Save-notice focus traversal remains owner17's limitation; controller activation once focused was qualified. Separate native advisory's earlier delayed write result is unconfirmed, while actual merge/Mac receipts are durable.",
+              "source_pr": "https://github.com/Jacob-Met/ashen-circuit/pull/32",
+              "published_source": "5f533cfb1021aeecbee3db50590517f2a5e58192",
+              "merge": "801fa28027b44ed053b74f90266a992a7c4d57d8",
+              "receiving_receipt": "https://github.com/Jacob-Met/ashen-circuit/pull/32#issuecomment-6063214072"
+            },
+            {
+              "owner": "estate-965d2e86e979/production",
+              "repository": "Jacob-Met/RecallWeave",
+              "area": "Original FIFO/LRU cache replacement lesson and offline step explorer",
+              "state": "native_and_peer_qualified_current_parent_composition_pending_publication",
+              "source_claim": "https://github.com/Jacob-Met/RecallWeave/issues/79",
+              "native_receiving": "Mac:/Users/me/hamon-recall-cache-965d2e86e979",
+              "qualified_source": "cae47af5c2b200404dbcf2d698ce7465d57e8163",
+              "qualified_partial_tree": "c070a05bf65cf36d0efc22b83d19c679a4430a18",
+              "last_received_documentary_source": "4fef132159fa1d880fb06e5c8e307e8c23932aae",
+              "last_received_canonical_parent": "3e110dfb0aded80152afea685660105fed224e74",
+              "path": [
+                "courses/cache-replacement.json",
+                "courses/cache-replacement.md",
+                "courses/cache-replacement-core.mjs",
+                "courses/cache-replacement-ui.mjs",
+                "courses/cache-replacement-entry.mjs",
+                "courses/cache-replacement.css",
+                "courses/cache-replacement.template.html",
+                "courses/cache-replacement.html",
+                "tools/build-cache-replacement.mjs",
+                "tools/check-cache-replacement-browser.mjs",
+                "tests/cache-replacement.test.mjs",
+                "docs/receiving/cache-replacement-965d2e86e979/",
+                "README.md (one additive section)"
+              ],
+              "qualification": "19 authored native cases and10 authored browser controls. Independent27436 full-result oracle comparisons,68 controls,12 independently answered keys and3 real offline browser groups accepted. Latest source-only README composition preserves consumer/runtime inputs; no reruns for documentary changes.",
+              "peer_receipt": "Mac:/Users/me/hamon-recall-cache-peer-965d2e86e979/candidate-peer-packet",
+              "peer_manifest_sha256": "97f25a72659bfb983db4f55af807607ab8e8ec15728436ab8c026c76563af454",
+              "limits": "New-only course/core/UI/builder/test/evidence paths plus one additive README section. Catalog39, selection72, learner/importer/model/archive and other course owners remain unchanged. No installed runtime/dependency change. Full latest-parent source, hosted gate, publication and integration still pending."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/srv/hamon-estate/coord/estate-81ba1ed0179c-returnby-checklist.json",
+      "sha256": "659434c37bbad9cce52b75810cb058146d2fe09af43e97048dbfc8185281cb03",
+      "state": "received_verified",
+      "updated_at": "2026-10-08T18:45:59.367857+00:00",
+      "matching_scope": [
+        {
+          "scope": {
+            "repository": "Jacob-Met/returnby",
+            "area": "Separate printable return-trip checklist from selected current-main saved orders",
+            "source_owner": "estate-81ba1ed0179c / estate_coordination",
+            "canonical_base": "3913697f70a31d73e8fe7d02b686b306830c24db",
+            "head": "c5f589b8e9cea561f579b454d45110d38bb83bb2",
+            "tree": "503ea217dc35f54aa7c9dbd1f92217544ad6dbc9",
+            "source_claim": "https://github.com/Jacob-Met/returnby/issues/29",
+            "worktree": "/Users/me/hamon-mcp-lab/returnby-checklist-81ba1ed0179c/source",
+            "pull_request": "https://github.com/Jacob-Met/returnby/pull/33",
+            "merged_commit": "1e662c387be5f66f8499fac7ec443f58d2198379"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/srv/hamon-estate/coord/hamon-ultra-c77045b4-returnby-batch.json",
+      "sha256": "2465b7aa85cf23a9890f36d5b75c2bb0f1ab16136e44554423db460246b8842b",
+      "state": "active",
+      "updated_at": "2026-10-08T20:08:37.723Z",
+      "matching_scope": [
+        {
+          "scopes": [
+            {
+              "owner": "hamon-ultra-20261008-c77045b4-production2",
+              "repository": "Jacob-Met/returnby",
+              "area": "Separate multi-confirmation review page with immutable selected append and exact saved-snapshot freshness",
+              "paths": [
+                "batch-intake.html",
+                "src/batch-intake.ts",
+                "src/batch-intake-view.ts",
+                "src/batch-intake.css",
+                "tests/batch-intake.test.ts",
+                "tools/verify_batch_intake.mjs",
+                "docs/BATCH_INTAKE.md",
+                "docs/receiving/batch-intake-c77045b4/",
+                "index.html: additive link",
+                "vite.config.ts: additive page entry",
+                "README.md: additive paragraph"
+              ],
+              "source_claim": "https://github.com/Jacob-Met/returnby/issues/36",
+              "state": "active",
+              "base": "1e662c387be5f66f8499fac7ec443f58d2198379",
+              "native_source": "/home/jacob/returnby-batch-c77045b4/source",
+              "limits": "Keep existing main/store/schema/parser/policy/checklist/calendars exact. #8/#10 integration and all existing feature owners preserved. No resident lease, runtime or fleet edits."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "matching_recent_events": [],
+  "active_code_claims": [],
+  "decision": "No typed trip-notes source claim found. Existing81ba checklist contribution is received/merged1e662c38; c770 active batch intake and965 pending lookup remain excluded. This is nonexclusive external reservation evidence, not a global ownership assertion."
+}

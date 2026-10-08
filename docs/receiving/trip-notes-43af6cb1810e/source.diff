@@ -1,0 +1,358 @@
+diff --git a/docs/TRIP_CHECKLIST.md b/docs/TRIP_CHECKLIST.md
+index 47f27ec..e95d41c 100644
+--- a/docs/TRIP_CHECKLIST.md
++++ b/docs/TRIP_CHECKLIST.md
+@@ -3,11 +3,13 @@
+ Open **Return-trip checklist** below the tracker’s saved-order list. The checklist reads the same browser origin’s reviewed orders. It does not read the pasted confirmation box or change the tracker.
+ 
+ 1. Choose **Refresh saved orders** if you saved or changed orders in another tab.
+-2. Select the orders you plan to take. Set the planned trip date.
++2. Select the orders you plan to take. Set the planned trip date. Optionally add shared trip notes, such as pickup instructions or a reminder to bring packaging.
+ 3. Choose **Preview trip** and review the order details, stored return-window source and calculated deadlines.
+ 4. Choose **Download printable HTML**. Open that file in a browser and use its Print command. The file has its own styles and works offline.
+ 
+-The paper sheet includes blank item/packaging, receipt and return-arrangement checks, plus space for handwritten notes. It does not record completion. Trip choices and notes are not persisted, and reloading the page starts a new selection.
++The sheet includes your optional typed trip notes, blank item/packaging, receipt and return-arrangement checks, plus space to write more by hand. It does not record completion. Notes stay in page memory and are included in the file you choose to download; they are never saved to the tracker. Reloading the page starts a new plan.
++
++Notes allow up to 1,000 Unicode characters (counted as code points), including line breaks and tabs. CRLF/CR line endings become LF; other text is kept literally. Unsupported control characters and isolated surrogate values are refused. Editing notes retires the preview and disables download until you preview again. Changing the date or selection, including Clear selection, preserves the note draft. Explicit Refresh saved orders clears it; the page explains that before the action.
+ 
+ ## What the dates and amounts mean
+ 
+@@ -17,11 +19,11 @@ Amounts remain literal saved strings. There is no combined total, currency conve
+ 
+ ## Refresh and read errors
+ 
+-The page keeps the exact saved-list bytes it loaded. Before previewing or downloading it checks the current saved list again. A change, removal or read-access failure prevents download until you explicitly refresh, reselect and preview. Cross-tab storage changes also mark the page stale. Refresh clears the current selection and preview.
++The page keeps the exact saved-list bytes it loaded. Before previewing or downloading it checks the current saved list again. A change, removal or read-access failure prevents download until you explicitly refresh, reselect and preview. Cross-tab storage changes also mark the page stale. Refresh clears the current selection, notes and preview.
+ 
+ Malformed JSON, invalid record fields, duplicate identifiers, unsupported dates/windows and lists over 2 MiB or 2,000 records cause a read failure. No records are silently dropped, repaired or saved. Review the source orders in the tracker and refresh here; the checklist does not offer a destructive reset.
+ 
+-The exported HTML contains only selected order facts and the planned/prepared dates. It contains no scripts, remote assets, full saved-list payload, order-creation timestamps or storage data. Anyone you share that file with can read its selected order details.
++The exported HTML contains only selected order facts, the planned/prepared dates and optional typed trip notes. It contains no scripts, remote assets, full saved-list payload, order-creation timestamps or storage data. Anyone you share that file with can read its selected order details and notes.
+ 
+ ## Verification
+ 
+diff --git a/src/trip-checklist-view.ts b/src/trip-checklist-view.ts
+index b3f047b..204c2ac 100644
+--- a/src/trip-checklist-view.ts
++++ b/src/trip-checklist-view.ts
+@@ -1,5 +1,6 @@
+ import './trip-checklist.css';
+ import { dueDate, todayISO } from './deadline';
++import { MAX_TRIP_NOTE_CHARACTERS, withTripNotes } from './trip-notes';
+ import {
+   assertSnapshotCurrent, buildChecklistHtml, CHECKLIST_SHEET_CSS, createChecklist,
+   readSavedOrders, renderChecklist, SAVED_ORDERS_KEY, sourceLabel,
+@@ -10,6 +11,8 @@ const el = <T extends HTMLElement>(id: string) => document.getElementById(id) as
+ const form = el<HTMLFormElement>('trip-form');
+ const options = el<HTMLDivElement>('order-options');
+ const tripDate = el<HTMLInputElement>('trip-date');
++const tripNotes = el<HTMLTextAreaElement>('trip-notes');
++const noteCount = el<HTMLParagraphElement>('trip-note-count');
+ const summary = el<HTMLParagraphElement>('selection-summary');
+ const previewButton = el<HTMLButtonElement>('preview-trip');
+ const downloadButton = el<HTMLButtonElement>('download-checklist');
+@@ -95,6 +98,9 @@ function addOrderOption(order: SavedSnapshot['orders'][number]): void {
+ function refresh(): void {
+   snapshot = null;
+   selected.clear();
++  tripNotes.value = '';
++  noteCount.textContent = '0 / ' + MAX_TRIP_NOTE_CHARACTERS;
++  noteCount.classList.remove('over-limit');
+   stale = false;
+   options.replaceChildren();
+   form.hidden = true;
+@@ -122,6 +128,13 @@ clearButton.addEventListener('click', () => {
+   options.querySelectorAll('.chosen').forEach(label => label.classList.remove('chosen'));
+   selectionChanged();
+ });
++tripNotes.addEventListener('input', () => {
++  const count = Array.from(tripNotes.value).length;
++  noteCount.textContent = count + ' / ' + MAX_TRIP_NOTE_CHARACTERS;
++  noteCount.classList.toggle('over-limit', count > MAX_TRIP_NOTE_CHARACTERS);
++  retirePreview();
++  if (!stale) showNotice('');
++});
+ tripDate.addEventListener('input', () => {
+   retirePreview();
+   if (!stale) showNotice('');
+@@ -130,7 +143,7 @@ form.addEventListener('submit', event => {
+   event.preventDefault();
+   if (!snapshot || !validateCurrent()) return;
+   try {
+-    prepared = createChecklist(snapshot, [...selected], tripDate.value);
++    prepared = withTripNotes(createChecklist(snapshot, [...selected], tripDate.value), tripNotes.value);
+     preview.innerHTML = renderChecklist(prepared);
+     preview.hidden = false;
+     empty.hidden = true;
+diff --git a/src/trip-checklist.css b/src/trip-checklist.css
+index be540de..c8cc6f1 100644
+--- a/src/trip-checklist.css
++++ b/src/trip-checklist.css
+@@ -59,3 +59,5 @@ h1{font:normal 50px/1.04 Georgia,serif;letter-spacing:-1.8px;margin:0 0 18px}h1
+ @media(max-width:480px){.checklist-shell{padding:0 18px}.checklist-topbar{padding:21px 0}.brand strong{font-size:12px}.brand small{font-size:7px}.local-chip{font-size:7px;letter-spacing:.02em;gap:5px}.local-chip i{width:5px;height:5px}.checklist-hero{padding:25px 0 28px}h1{font-size:40px;letter-spacing:-1.3px}.hero-copy{font-size:13px}.planner{padding:22px 18px}.section-heading h2,.preview-top h2{font-size:24px}.preview-top{padding-top:7px}.paper-tag{font-size:7px}.download-panel{grid-template-columns:1fr}.checklist-footer{margin-top:30px}}
+ @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+ @media print{.checklist-topbar,.checklist-hero,.planner,.preview-top,.trip-notice,.download-panel,.checklist-footer,.empty-preview{display:none!important}.checklist-shell{padding:0;max-width:none}.workspace{display:block}.preview-panel{margin:0}#checklist-preview{box-shadow:none}}
++
++.trip-notes-label{margin-top:22px!important}#trip-notes{box-sizing:border-box;display:block;width:100%;resize:vertical;min-height:110px;padding:12px;border:1px solid #9da88f;border-radius:3px;background:#fffefa;color:#27362d;font:inherit;line-height:1.5}#trip-notes:focus-visible{outline:3px solid #566c38;outline-offset:3px}.note-count{margin:6px 0 18px;text-align:right;font-size:12px;color:#5b6555}.note-count.over-limit{color:#9b3027;font-weight:700}
+diff --git a/src/trip-checklist.ts b/src/trip-checklist.ts
+index a5b51cd..3b0c029 100644
+--- a/src/trip-checklist.ts
++++ b/src/trip-checklist.ts
+@@ -24,6 +24,7 @@ export type TripOrder = Readonly<{
+ export type TripChecklist = Readonly<{
+   tripDate: string;
+   preparedOn: string;
++  tripNotes?: string;
+   orders: readonly TripOrder[];
+ }>;
+ type Reader = Pick<Storage, 'getItem'>;
+@@ -146,6 +147,7 @@ export function renderChecklist(checklist: TripChecklist): string {
+     + '<div class="sheet-meta"><p><span>PLANNED TRIP</span><strong>' + escapeHtml(checklist.tripDate) + '</strong></p>'
+     + '<p><span>SELECTED ORDERS</span><strong>' + count + '</strong></p><p><span>PREPARED ON</span><strong>' + escapeHtml(checklist.preparedOn) + '</strong></p></div></header>'
+     + '<p class="sheet-guidance">Check each store’s current return instructions before setting out. These dates use your saved windows; this sheet does not confirm that a return is eligible.</p>'
++    + (checklist.tripNotes ? '<section class="sheet-trip-notes" aria-label="Your trip notes"><h3>YOUR TRIP NOTES</h3><p>' + escapeHtml(checklist.tripNotes) + '</p></section>' : '')
+     + '<ol class="sheet-orders">' + checklist.orders.map(({ order, due, tripTiming: timing }, i) =>
+       '<li class="sheet-order"><header><span class="sheet-number">' + String(i + 1).padStart(2, '0') + '</span><div><h3>' + saved(order.merchant) + '</h3><p class="sheet-order-ref">Order number: ' + saved(order.orderNo) + '</p></div></header>'
+       + '<dl class="sheet-facts"><div><dt>Order date</dt><dd>' + escapeHtml(order.orderDate) + '</dd></div>'
+@@ -162,7 +164,7 @@ export function renderChecklist(checklist: TripChecklist): string {
+     + '<p>Mark this sheet on paper. ReturnBy does not save trip plans, checklist marks or notes.</p></footer></article>';
+ }
+ 
+-export const CHECKLIST_SHEET_CSS = "\n.trip-sheet{background:#fffefa;border:1px solid #d7d7cc;border-radius:3px;padding:32px;color:#27362d;box-sizing:border-box;font-family:Arial,sans-serif}\n.trip-sheet *{box-sizing:border-box}\n.sheet-eyebrow{margin:0 0 15px;color:#516355;font-size:10px;font-weight:700;letter-spacing:.14em}\n.sheet-heading h2{font:normal 32px/1.12 Georgia,serif;margin:0 0 24px}\n.sheet-meta{display:grid;grid-template-columns:1.35fr 1fr 1.35fr;border-top:1px solid #7c8b7e;border-bottom:1px solid #d7d7cc;padding:14px 0;gap:16px}\n.sheet-meta p{margin:0}.sheet-meta span{display:block;font-size:9px;letter-spacing:.1em;font-weight:700;color:#626b61;margin-bottom:7px}.sheet-meta strong{font-size:17px;font-weight:600}\n.sheet-guidance{font-size:12px;line-height:1.65;color:#566154;margin:18px 0 22px}\n.sheet-orders{list-style:none;padding:0;margin:0}.sheet-order{padding:22px 0;border-top:1px solid #b7c1b4;break-inside:avoid}\n.sheet-order>header{display:flex;gap:13px;align-items:flex-start}.sheet-order>header>div{min-width:0}\n.sheet-number{display:flex;align-items:center;justify-content:center;flex:0 0 28px;height:28px;background:#e8eddf;font-size:10px;font-weight:700;border-radius:50%}\n.sheet-order h3{font:normal 24px/1.25 Georgia,serif;margin:0 0 5px;overflow-wrap:anywhere}\n.sheet-order-ref{font-size:11px;margin:0;color:#5a6258;overflow-wrap:anywhere}\n.saved-text{white-space:pre-wrap;overflow-wrap:anywhere}.not-recorded{font-style:italic;color:#60675e}\n.sheet-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;margin:17px 0}\n.sheet-facts div{min-width:0}.sheet-facts dt{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#6a7267;margin-bottom:5px}.sheet-facts dd{margin:0;font-size:12px;line-height:1.4;overflow-wrap:anywhere}\n.sheet-timing{margin:0 0 16px;font-size:11px;background:#eff1e7;border-left:2px solid #6a7b55;padding:8px 10px;line-height:1.5}\n.packing-checks{padding:0;margin:0;list-style:none;display:grid;gap:9px;font-size:12px;line-height:1.45}.packing-checks li{display:flex;align-items:flex-start;gap:8px}\n.blank-check{display:inline-block;width:13px;height:13px;border:1px solid #63705f;border-radius:2px;flex:0 0 13px;margin-top:2px}\n.sheet-notes{margin-top:18px;color:#798072;font-size:8px;font-weight:700;letter-spacing:.08em}.sheet-notes div{height:22px;border-bottom:1px solid #d8dccf}\n.sheet-footer{border-top:1px solid #aab5a4;padding-top:12px;font-size:10px;line-height:1.6;color:#626b5d}.sheet-footer p{margin:5px 0}\n@media(max-width:600px){.trip-sheet{padding:22px 18px}.sheet-heading h2{font-size:27px}.sheet-meta{gap:10px}.sheet-meta span{font-size:8px;letter-spacing:.04em}.sheet-meta strong{font-size:13px}.sheet-order h3{font-size:22px}.sheet-facts{gap:12px}.sheet-facts dd{font-size:11px}}\n@page{size:auto;margin:16mm}\n@media print{.trip-sheet{border:0;padding:0;background:white;box-shadow:none;max-width:none!important}.sheet-order{break-inside:avoid}.sheet-heading{break-after:avoid}.sheet-guidance{break-after:avoid}.sheet-footer{break-inside:avoid}.sheet-timing{background:transparent;border-left:1px solid #63705f}.sheet-meta strong{font-size:17px}.sheet-meta span{font-size:9px}.sheet-order h3{font-size:24px}.sheet-facts dd{font-size:12px}}\n";
++export const CHECKLIST_SHEET_CSS = "\n.trip-sheet{background:#fffefa;border:1px solid #d7d7cc;border-radius:3px;padding:32px;color:#27362d;box-sizing:border-box;font-family:Arial,sans-serif}\n.trip-sheet *{box-sizing:border-box}\n.sheet-eyebrow{margin:0 0 15px;color:#516355;font-size:10px;font-weight:700;letter-spacing:.14em}\n.sheet-heading h2{font:normal 32px/1.12 Georgia,serif;margin:0 0 24px}\n.sheet-meta{display:grid;grid-template-columns:1.35fr 1fr 1.35fr;border-top:1px solid #7c8b7e;border-bottom:1px solid #d7d7cc;padding:14px 0;gap:16px}\n.sheet-meta p{margin:0}.sheet-meta span{display:block;font-size:9px;letter-spacing:.1em;font-weight:700;color:#626b61;margin-bottom:7px}.sheet-meta strong{font-size:17px;font-weight:600}\n.sheet-guidance{font-size:12px;line-height:1.65;color:#566154;margin:18px 0 22px}\n.sheet-orders{list-style:none;padding:0;margin:0}.sheet-order{padding:22px 0;border-top:1px solid #b7c1b4;break-inside:avoid}\n.sheet-order>header{display:flex;gap:13px;align-items:flex-start}.sheet-order>header>div{min-width:0}\n.sheet-number{display:flex;align-items:center;justify-content:center;flex:0 0 28px;height:28px;background:#e8eddf;font-size:10px;font-weight:700;border-radius:50%}\n.sheet-order h3{font:normal 24px/1.25 Georgia,serif;margin:0 0 5px;overflow-wrap:anywhere}\n.sheet-order-ref{font-size:11px;margin:0;color:#5a6258;overflow-wrap:anywhere}\n.saved-text{white-space:pre-wrap;overflow-wrap:anywhere}.not-recorded{font-style:italic;color:#60675e}\n.sheet-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;margin:17px 0}\n.sheet-facts div{min-width:0}.sheet-facts dt{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#6a7267;margin-bottom:5px}.sheet-facts dd{margin:0;font-size:12px;line-height:1.4;overflow-wrap:anywhere}\n.sheet-timing{margin:0 0 16px;font-size:11px;background:#eff1e7;border-left:2px solid #6a7b55;padding:8px 10px;line-height:1.5}\n.packing-checks{padding:0;margin:0;list-style:none;display:grid;gap:9px;font-size:12px;line-height:1.45}.packing-checks li{display:flex;align-items:flex-start;gap:8px}\n.blank-check{display:inline-block;width:13px;height:13px;border:1px solid #63705f;border-radius:2px;flex:0 0 13px;margin-top:2px}\n.sheet-notes{margin-top:18px;color:#798072;font-size:8px;font-weight:700;letter-spacing:.08em}.sheet-notes div{height:22px;border-bottom:1px solid #d8dccf}\n.sheet-footer{border-top:1px solid #aab5a4;padding-top:12px;font-size:10px;line-height:1.6;color:#626b5d}.sheet-footer p{margin:5px 0}\n@media(max-width:600px){.trip-sheet{padding:22px 18px}.sheet-heading h2{font-size:27px}.sheet-meta{gap:10px}.sheet-meta span{font-size:8px;letter-spacing:.04em}.sheet-meta strong{font-size:13px}.sheet-order h3{font-size:22px}.sheet-facts{gap:12px}.sheet-facts dd{font-size:11px}}\n@page{size:auto;margin:16mm}\n@media print{.trip-sheet{border:0;padding:0;background:white;box-shadow:none;max-width:none!important}.sheet-order{break-inside:avoid}.sheet-heading{break-after:avoid}.sheet-guidance{break-after:avoid}.sheet-footer{break-inside:avoid}.sheet-timing{background:transparent;border-left:1px solid #63705f}.sheet-meta strong{font-size:17px}.sheet-meta span{font-size:9px}.sheet-order h3{font-size:24px}.sheet-facts dd{font-size:12px}}\n\n.sheet-trip-notes{margin:18px 0;padding:14px 16px;border:1px solid #b7c1b4;break-inside:avoid}.sheet-trip-notes h3{margin:0 0 9px;font-size:10px;letter-spacing:.08em;color:#516355}.sheet-trip-notes p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.6}\n";
+ 
+ export function buildChecklistHtml(checklist: TripChecklist): string {
+   return '<!doctype html>\n<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
+diff --git a/src/trip-notes.ts b/src/trip-notes.ts
+new file mode 100644
+index 0000000..b9d7383
+--- /dev/null
++++ b/src/trip-notes.ts
+@@ -0,0 +1,27 @@
++import { ChecklistError, type TripChecklist } from './trip-checklist';
++
++export const MAX_TRIP_NOTE_CHARACTERS = 1000;
++
++/** Match textarea line endings; keep the person's remaining literal text. */
++export function normalizeTripNotes(value: string): string {
++  if (typeof value !== 'string') {
++    throw new ChecklistError('Trip notes must be ordinary text.', 'data');
++  }
++  const text = value.replace(/\r\n?/g, '\n');
++  if (Array.from(text).length > MAX_TRIP_NOTE_CHARACTERS) {
++    throw new ChecklistError('Keep trip notes to 1,000 characters or fewer before previewing.', 'data');
++  }
++  for (const char of text) {
++    const code = char.codePointAt(0)!;
++    if ((code < 32 && code !== 9 && code !== 10) || (code >= 127 && code <= 159)
++      || (code >= 0xd800 && code <= 0xdfff)) {
++      throw new ChecklistError('Use ordinary text, tabs and line breaks for trip notes.', 'data');
++    }
++  }
++  return text;
++}
++
++export function withTripNotes(checklist: TripChecklist, value: string): TripChecklist {
++  const notes = normalizeTripNotes(value);
++  return Object.freeze({ ...checklist, tripNotes: notes || undefined });
++}
+diff --git a/tests/trip-notes.test.ts b/tests/trip-notes.test.ts
+new file mode 100644
+index 0000000..e4cc99e
+--- /dev/null
++++ b/tests/trip-notes.test.ts
+@@ -0,0 +1,75 @@
++import { describe, expect, it } from 'vitest';
++import { buildChecklistHtml, createChecklist, parseSavedOrders, renderChecklist } from '../src/trip-checklist';
++import { MAX_TRIP_NOTE_CHARACTERS, normalizeTripNotes, withTripNotes } from '../src/trip-notes';
++
++const raw = JSON.stringify([{
++  id: 'fictional-1', merchant: 'Fictional Harbor Shop', orderNo: 'DEMO-71',
++  total: '€19,95', orderDate: '2026-10-01', windowDays: 30,
++  windowSource: 'user', createdAt: '2026-10-01T12:00:00Z',
++}]);
++const base = () => createChecklist(parseSavedOrders(raw), ['fictional-1'], '2026-10-10', '2026-10-08');
++
++describe('optional typed trip notes', () => {
++  it('adds notes without changing the accepted facts or original checklist', () => {
++    const before = base(), after = withTripNotes(before, 'Bring the packaging.\nUse the side entrance.');
++    expect(after).not.toBe(before);
++    expect(after.orders).toBe(before.orders);
++    expect(after.orders[0].order.total).toBe('€19,95');
++    expect(before.tripNotes).toBeUndefined();
++    expect(after.tripNotes).toBe('Bring the packaging.\nUse the side entrance.');
++    expect(Object.isFrozen(after)).toBe(true);
++  });
++
++  it('renders notes separately from the literal saved facts in preview and download', () => {
++    const model = withTripNotes(base(), 'Desk B — bring receipt 🧾');
++    for (const html of [renderChecklist(model), buildChecklistHtml(model)]) {
++      expect(html).toContain('YOUR TRIP NOTES');
++      expect(html).toContain('Desk B — bring receipt 🧾');
++      expect(html).toContain('€19,95');
++      expect(html).toContain('User-adjusted window');
++      expect(html).not.toContain('2026-10-01T12:00:00Z');
++    }
++  });
++
++  it('keeps markup-looking ordinary text as reading content', () => {
++    const html = buildChecklistHtml(withTripNotes(base(), '<desk> & "door" \'B\''));
++    expect(html).toContain('&lt;desk&gt; &amp; &quot;door&quot; &#39;B&#39;');
++    expect(html).not.toContain('<desk>');
++    expect(html).not.toContain('<script');
++  });
++
++  it('empty notes preserve the original rendered sheet', () => {
++    const model = base();
++    expect(renderChecklist(withTripNotes(model, ''))).toBe(renderChecklist(model));
++    expect(buildChecklistHtml(withTripNotes(model, ''))).toBe(buildChecklistHtml(model));
++  });
++
++  it('retains ordinary spaces, tabs and authored line breaks', () => {
++    expect(normalizeTripNotes('  Desk A\tB\n\n  ')).toBe('  Desk A\tB\n\n  ');
++    expect(normalizeTripNotes('North\r\nSouth\rEast')).toBe('North\nSouth\nEast');
++  });
++
++  it('accepts exactly the documented Unicode code-point bound', () => {
++    const text = '🧾'.repeat(MAX_TRIP_NOTE_CHARACTERS);
++    expect(withTripNotes(base(), text).tripNotes).toBe(text);
++    expect(() => withTripNotes(base(), text + 'x')).toThrow('1,000 characters');
++  });
++
++  it('checks the normalized line-ending count', () => {
++    expect(normalizeTripNotes('\r\n'.repeat(MAX_TRIP_NOTE_CHARACTERS))).toBe('\n'.repeat(MAX_TRIP_NOTE_CHARACTERS));
++  });
++
++  it('refuses unsupported controls or isolated surrogates without changing facts', () => {
++    const model = base(), frozen = JSON.stringify(model);
++    for (const note of ['A\u0000B', 'A\u0007B', 'A\u007fB', 'A\u0085B', 'A\ud800B', 'A\udfffB']) {
++      expect(() => withTripNotes(model, note)).toThrow('ordinary text');
++      expect(JSON.stringify(model)).toBe(frozen);
++    }
++  });
++
++  it('refuses nonstring API values', () => {
++    for (const value of [null, undefined, 0, false, [], {}]) {
++      expect(() => normalizeTripNotes(value as unknown as string)).toThrow('ordinary text');
++    }
++  });
++});
+diff --git a/tools/verify_trip_notes.mjs b/tools/verify_trip_notes.mjs
+new file mode 100644
+index 0000000..03e1079
+--- /dev/null
++++ b/tools/verify_trip_notes.mjs
+@@ -0,0 +1,75 @@
++(async function receiver(){
++ const fs=await import('node:fs/promises'),path=await import('node:path'),http=await import('node:http'),cp=await import('node:child_process'),crypto=await import('node:crypto'),{default:assert}=await import('node:assert/strict');
++ const root=path.resolve(process.argv[2]),out=path.resolve(process.argv[3]),chrome=process.env.CHROME_PATH||'/snap/bin/chromium';
++ await fs.mkdir(out,{recursive:false});await fs.mkdir(path.join(out,'downloads'));
++ const result={schema:'returnby.trip-notes.browser.v1',started_at:new Date().toISOString(),runtime:process.version,checks:[],errors:[],external_requests:[],fixture:'Authored fictional saved orders in a new private profile only'};
++ const h=b=>crypto.createHash('sha256').update(b).digest('hex'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
++ const wait=async(fn,label)=>{for(let i=0;i<120;i++){const v=await fn();if(v)return v;await sleep(100);}throw Error('Timed out: '+label)};
++ let server,child,c;
++ class CDP {
++  constructor(ws){this.ws=ws;this.next=1;this.pending=new Map();this.listeners=[];ws.onmessage=e=>{const msg=JSON.parse(e.data);if(msg.id){const p=this.pending.get(msg.id);if(p){this.pending.delete(msg.id);msg.error?p.reject(Error(JSON.stringify(msg.error))):p.resolve(msg.result)}}else for(const f of this.listeners)f(msg)};}
++  send(method,params={},sessionId){return new Promise((resolve,reject)=>{const id=this.next++;this.pending.set(id,{resolve,reject});this.ws.send(JSON.stringify({id,method,params,...(sessionId?{sessionId}:{})}));})}
++ }
++ const mark=(name,details={})=>result.checks.push({name,passed:true,...details});
++ const fixture=JSON.stringify([{id:'notes-one',merchant:'Fictional Harbor Shop',orderNo:'DEMO-71',total:'€19,95',orderDate:'2026-10-01',windowDays:30,windowSource:'user',createdAt:'2026-10-01T12:00:00Z'},{id:'notes-two',merchant:'Fictional Hill Shop',orderNo:'DEMO-72',total:'$12',orderDate:'2026-10-02',windowDays:14,windowSource:'policy',createdAt:'2026-10-02T12:00:00Z'}]);
++ try{
++  const dist=path.join(root,'dist');
++  server=http.createServer(async(req,res)=>{try{const rel=decodeURIComponent(new URL(req.url,'http://localhost').pathname).replace(/^\/+/,'')||'index.html';const p=path.resolve(dist,rel);if(!p.startsWith(dist+path.sep))throw Error('outside');const b=await fs.readFile(p);res.writeHead(200,{'Content-Type':({'.html':'text/html;charset=utf-8','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml'})[path.extname(p)]||'application/octet-stream'});res.end(b)}catch{res.writeHead(404);res.end()}});
++  await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin='http://127.0.0.1:'+server.address().port;
++  const profile=path.join(out,'profile');child=cp.spawn(chrome,['--headless=new','--no-sandbox','--disable-dev-shm-usage','--disable-gpu','--no-first-run','--no-default-browser-check','--remote-debugging-port=0','--user-data-dir='+profile,'about:blank'],{stdio:['ignore','ignore','pipe']});
++  let stderr='';child.stderr.on('data',b=>{stderr+=b.toString()});child.on('error',e=>result.errors.push(String(e)));
++  const port=await wait(async()=>{try{return(await fs.readFile(path.join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]}catch{return false}},'owned Chrome startup');
++  const version=await(await fetch('http://127.0.0.1:'+port+'/json/version')).json();result.browser=version.Browser;
++  const ws=new WebSocket(version.webSocketDebuggerUrl);await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j});c=new CDP(ws);
++  c.listeners.push(msg=>{if(msg.method==='Runtime.exceptionThrown')result.errors.push(msg.params.exceptionDetails.text);if(msg.method==='Fetch.requestPaused'){const url=msg.params.request.url,allowed=url.startsWith(origin+'/')||url.startsWith('file:')||url.startsWith('data:')||url.startsWith('blob:');if(!allowed)result.external_requests.push(url);c.send(allowed?'Fetch.continueRequest':'Fetch.failRequest',{requestId:msg.params.requestId,...(allowed?{}:{errorReason:'BlockedByClient'})},msg.sessionId).catch(e=>result.errors.push(String(e)));}});
++  await c.send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:path.join(out,'downloads'),eventsEnabled:true});
++  const create=async()=>{
++   const {targetId}=await c.send('Target.createTarget',{url:'about:blank'}),{sessionId}=await c.send('Target.attachToTarget',{targetId,flatten:true});
++   await c.send('Runtime.enable',{},sessionId);await c.send('Page.enable',{},sessionId);await c.send('Network.enable',{},sessionId);await c.send('Fetch.enable',{patterns:[{urlPattern:'*'}]},sessionId);
++   await c.send('Emulation.setDeviceMetricsOverride',{width:1280,height:900,deviceScaleFactor:1,mobile:false},sessionId);
++   return sessionId;
++  };
++  const s=await create();
++  const ev=async(expression,session=s)=>{const r=await c.send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},session);if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
++  const click=async(selector)=>{const p=await ev('(()=>{const e=document.querySelector('+JSON.stringify(selector)+');if(!e)throw Error("Missing "+'+JSON.stringify(selector)+');e.scrollIntoView({block:"center"});const r=e.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2}})()');await c.send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p},s);await c.send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p},s);};
++  const fill=async(selector,text)=>{await click(selector);await ev('document.querySelector('+JSON.stringify(selector)+').select()');await c.send('Input.insertText',{text},s);};
++  const init='if(location.protocol==="http:"){const set=Storage.prototype.setItem;set.call(localStorage,"returnby.v1",'+JSON.stringify(fixture)+');window.__writes=[];for(const name of ["setItem","removeItem","clear"]){const f=Storage.prototype[name];Storage.prototype[name]=function(...args){window.__writes.push([name,...args]);return f.apply(this,args)}}}';
++  await c.send('Page.addScriptToEvaluateOnNewDocument',{source:init},s);await c.send('Page.navigate',{url:origin+'/trip-checklist.html'},s);
++  await wait(()=>ev('document.querySelectorAll(".order-choice").length===2'),'saved order page');
++  assert.equal(await ev('localStorage.getItem("returnby.v1")'),fixture);mark('existing saved records load unchanged');
++  assert.equal(await ev('Boolean(document.querySelector("#trip-notes"))'),true,'user-facing typed trip note field is present');
++  assert.equal(await ev('document.querySelector("#trip-notes").value'),'');assert.equal(await ev('document.querySelector("#trip-note-count").textContent'),'0 / 1000');
++  await click('input[value="notes-one"]');
++  await ev('document.querySelector("#trip-date").value="2026-10-10";document.querySelector("#trip-date").dispatchEvent(new Event("input",{bubbles:true}))');
++  const note='Bring the blue bag 🧾\nDesk <B> & side entrance.';
++  await fill('#trip-notes',note);assert.equal(await ev('document.querySelector("#trip-notes").value'),note);assert.equal(await ev('document.querySelector("#trip-note-count").textContent'),Array.from(note).length+' / 1000');
++  await click('#preview-trip');assert.equal(await ev('document.querySelector(".sheet-trip-notes p").textContent'),note);assert.equal(await ev('document.querySelector("#download-checklist").disabled'),false);mark('actual browser text insertion and preview preserve literal Unicode and separate notes');
++  await fill('#trip-notes','Updated pickup at 15:00.');assert.equal(await ev('document.querySelector("#download-checklist").disabled'),true);assert.equal(await ev('document.querySelector("#checklist-preview").hidden'),true);
++  await click('#clear-selection');assert.equal(await ev('document.querySelector("#trip-notes").value'),'Updated pickup at 15:00.');await click('input[value="notes-one"]');await click('#preview-trip');mark('note edits retire prior export; clearing and reselecting keeps the draft');
++  await fill('#trip-notes','🧾'.repeat(1001));await click('#preview-trip');assert.equal(await ev('document.querySelector("#download-checklist").disabled'),true);assert.match(await ev('document.querySelector("#trip-notice").textContent'),/1,000/);
++  await fill('#trip-notes',note);await click('#preview-trip');mark('over-limit Unicode notes refuse export and valid correction recovers');
++  await c.send('Emulation.setDeviceMetricsOverride',{width:320,height:900,deviceScaleFactor:1,mobile:false},s);
++  assert.equal(await ev('document.documentElement.scrollWidth<=innerWidth'),true);
++  let shot=await c.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true},s);await fs.writeFile(path.join(out,'notes-320.png'),Buffer.from(shot.data,'base64'));mark('320px notes field and preview remain within page');
++  await click('#download-checklist');
++  const downloaded=await wait(async()=>{const names=await fs.readdir(path.join(out,'downloads'));return names.find(n=>n.endsWith('.html'))},'physical HTML download');
++  const bytes=await fs.readFile(path.join(out,'downloads',downloaded)),html=bytes.toString('utf8');
++  assert(html.includes('Desk &lt;B&gt; &amp; side entrance.'));assert(!html.includes('Fictional Hill Shop'));assert(!html.includes('<script'));result.download={name:downloaded,bytes:bytes.length,sha256:h(bytes)};mark('physical self-contained download includes selected facts and typed notes',result.download);
++  const offline=await create();await c.send('Network.emulateNetworkConditions',{offline:true,latency:0,downloadThroughput:0,uploadThroughput:0},offline);await c.send('Page.navigate',{url:'file://'+path.join(out,'downloads',downloaded)},offline);
++  await wait(()=>ev('Boolean(document.querySelector(".sheet-trip-notes"))',offline),'offline file');
++  assert.equal(await ev('document.querySelector(".sheet-trip-notes p").textContent',offline),note);
++  await c.send('Emulation.setEmulatedMedia',{media:'print'},offline);assert.equal(await ev('getComputedStyle(document.querySelector(".sheet-open-help")).display',offline),'none');assert.equal(await ev('document.querySelectorAll("script,iframe,link,form").length',offline),0);
++  shot=await c.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true},offline);await fs.writeFile(path.join(out,'notes-offline-print.png'),Buffer.from(shot.data,'base64'));mark('download reopens offline with identical notes and existing print guidance');
++  await ev('const original=Storage.prototype.setItem;localStorage.setItem("returnby.v1",JSON.stringify([]));window.__writes.pop()');await click('#download-checklist');assert.equal(await ev('document.querySelector("#download-checklist").disabled'),true);assert.match(await ev('document.querySelector("#trip-notice").textContent'),/Saved orders changed/);mark('saved-order change still refuses stale note-bearing download');
++  await ev('localStorage.setItem("returnby.v1",'+JSON.stringify(fixture)+');window.__writes.pop()');await click('#refresh-orders');assert.equal(await ev('document.querySelector("#trip-notes").value'),'');assert.equal(await ev('document.querySelector("#trip-note-count").textContent'),'0 / 1000');assert.equal(await ev('document.querySelectorAll("input[type=checkbox]:checked").length'),0);assert.equal(await ev('document.querySelector("#download-checklist").disabled'),true);assert.equal(await ev('localStorage.getItem("returnby.v1")'),fixture);assert.deepEqual(await ev('window.__writes'),[]);mark('explicit refresh clears plan notes; checklist performs no storage writes');
++  assert.deepEqual(result.errors,[]);assert.deepEqual(result.external_requests,[]);result.status='passed';
++  result.chrome_stderr=stderr;
++ }catch(error){result.status='failed';result.error=error.stack;process.exitCode=1;}
++ finally{
++  if(c){try{await c.send('Browser.close')}catch{}c.ws.close();}
++  if(child){await Promise.race([new Promise(r=>child.once('exit',r)),sleep(3000)]);if(child.exitCode===null)child.kill();}
++  if(server)await new Promise(r=>server.close(r));
++  const profile=path.join(out,'profile');try{await fs.rm(profile,{recursive:true,force:false});result.owned_profile_removed=true}catch(e){if(e.code!=='ENOENT')result.cleanup_error=String(e)}
++  result.finished_at=new Date().toISOString();await fs.writeFile(path.join(out,'receipt.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({status:result.status,checks:result.checks.length,error:result.error,receipt:path.join(out,'receipt.json'),download:result.download}));
++ }
++})();
+diff --git a/trip-checklist.html b/trip-checklist.html
+index f0286c5..22c517d 100644
+--- a/trip-checklist.html
++++ b/trip-checklist.html
+@@ -30,7 +30,7 @@
+     </section>
+     <div class="workspace">
+       <section class="planner" aria-labelledby="planner-title">
+-        <header class="section-heading"><p class="eyebrow">YOUR SAVED ORDERS</p><h2 id="planner-title">What’s coming with you?</h2><p>Only selected orders appear on the sheet. Refreshing reloads this list and clears your selection.</p></header>
++        <header class="section-heading"><p class="eyebrow">YOUR SAVED ORDERS</p><h2 id="planner-title">What’s coming with you?</h2><p>Only selected orders appear on the sheet. Refreshing reloads this list and clears your selection and trip notes.</p></header>
+         <button id="refresh-orders" class="text-button" type="button">↻ Refresh saved orders</button>
+         <p id="read-message" class="read-message" role="status"></p>
+         <form id="trip-form" hidden>
+@@ -39,9 +39,13 @@
+           <label class="date-label" for="trip-date">PLANNED TRIP DATE</label>
+           <input id="trip-date" name="trip-date" type="date" min="1000-01-01" max="9999-12-31" required>
+           <p class="field-note">We’ll compare this date with each saved return window. Confirm current instructions with the store.</p>
++          <label class="date-label trip-notes-label" for="trip-notes">OPTIONAL TRIP NOTES</label>
++          <textarea id="trip-notes" name="trip-notes" rows="4" aria-describedby="trip-notes-help trip-note-count" placeholder="Pickup instructions, drop-off details or a reminder for your trip"></textarea>
++          <p id="trip-notes-help" class="field-note">Up to 1,000 characters. Notes stay on this page until you download them with the checklist. Refreshing clears them.</p>
++          <p id="trip-note-count" class="note-count">0 / 1000</p>
+           <button id="preview-trip" class="primary-button" type="submit" disabled>Preview trip <span aria-hidden="true">→</span></button>
+         </form>
+-        <p class="privacy-note">This page reads your saved details. Trip choices, check marks and notes are never saved to the tracker.</p>
++        <p class="privacy-note">This page reads your saved details. Trip choices and notes are never saved to the tracker. Notes you add are included in the file you download.</p>
+       </section>
+       <section class="preview-panel" aria-labelledby="preview-title">
+         <header class="preview-top"><div><p class="eyebrow">YOUR TAKE-ALONG SHEET</p><h2 id="preview-title">Review before you go.</h2></div><span class="paper-tag">HTML / PRINT</span></header>
+@@ -50,7 +54,7 @@
+           <div class="paper-symbol" aria-hidden="true"><span>R/</span><i></i><i></i><i></i></div>
+           <h3>A little preparation.<br>A lighter errand.</h3>
+           <p>Select the orders you’re taking, then choose <strong>Preview trip</strong>.</p>
+-          <ul><li>Saved order details &amp; dates</li><li>Blank packing and receipt checks</li><li>Space for your own notes</li></ul>
++          <ul><li>Saved order details &amp; dates</li><li>Blank packing and receipt checks</li><li>Your typed trip notes and space to write more</li></ul>
+         </div>
+         <div id="checklist-preview" hidden></div>
+         <div class="download-panel">

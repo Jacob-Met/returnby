@@ -1,0 +1,9 @@
+# ReturnBy optional typed trip notes
+
+This isolated contribution adds optional shared notes to the existing saved-order trip checklist and its self-contained HTML download. Notes remain in page memory until an explicit download; they never change the tracker. The frozen source contract and exact eight paths are in source-freeze.json and CONTRACT.md.
+
+Author qualification passed 77 native tests and the TypeScript/Vite build. The final dependency-free Chromium receiver passed nine groups using authored fictional orders, a private profile, real download bytes and offline reopening. The unchanged base built and loaded its existing records, then the same receiver correctly found the new field absent. The first receiver attempt failed because its Ctrl+A adapter appended text; both the failed receipt and exact receiver are retained. The final adapter selects textarea text before real browser insertion. No product source changed for that correction.
+
+Read receiving-context.json for exact runtime, limits and artifact hashes. The source commit is linked to the actual captured Git parent; future owner composition must reconcile newer source. The selected tracker facts, saved-byte freshness checks, amounts, dates, storage and other project scopes are unchanged. This is a candidate for the established checklist owner, not installed or adopted source. Jacob's no-new-Actions direction includes implicit pushes, PRs and merges; no such action was taken.
+
+The narrow 320px and offline print-media images were directly reviewed by the author. These are browser render checks, not an accessibility audit, printer-hardware result or comprehensive keyboard test. Independent production source review accepted the exact source, receipts and both renderings; its exact separate receipt is included. It did not rerun tests or the browser. Emoji font fallback is a render-environment limitation; the exact underlying Unicode text is retained.

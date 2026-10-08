@@ -1,0 +1,201 @@
+{
+  "schema": "hamon.returnby-trip-notes.independent-source-review.v1",
+  "reviewer": "chatgpt:43af6cb1810e:production",
+  "author": "chatgpt:43af6cb1810e:coordination",
+  "verdict": "accept_no_blocking_source_or_receipt_issue",
+  "source_commit": "f6ff93ecae190bb7a0d7c4fb2d000510f97aeb7c",
+  "source_tree": "0aeaed0b9c79ebadcf78aa89f04a88cd46698715",
+  "base_commit": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "review_method": [
+    "Read the whole notes helper and view module, core admission/freshness/model/render/download functions, eight-path diff, contract/docs, unit-test source and final browser receiver.",
+    "Reconciled all eight source SHA256 values and exact bytes with frozen Git blobs; read author native77-test/build logs and both browser receipts.",
+    "Directly viewed retained320px and offline print-media PNGs; inspected exact physical download hash.",
+    "Read patch tree-reconstruction receipt without repeating that command or any native/browser gates."
+  ],
+  "findings": [
+    {
+      "topic": "Notes and Unicode",
+      "reason": "Only CRLF/CR normalize to LF before Array.from code-point counting. Empty input removes optional notes; ordinary spaces, tabs, repeated line breaks and astral symbols remain literal. C0 except tab/LF, C1 and isolated surrogates are refused before model construction. Combining sequences count as code points, as documented."
+    },
+    {
+      "topic": "Model and saved facts",
+      "reason": "withTripNotes freezes a new object retaining the existing frozen orders from createChecklist. The actual UI starts with admitted saved records. Saved amounts, dates, source labels and order selection semantics are unchanged."
+    },
+    {
+      "topic": "Freshness",
+      "reason": "Submit and download still call validateCurrent. Exact raw stored bytes must equal the loaded snapshot; read failure or mismatch marks the page stale and disables export until explicit refresh. Storage/focus/visibility handlers retain the same checks. Notes cannot bypass them."
+    },
+    {
+      "topic": "Preview and export equality",
+      "reason": "Notes input retires prepared preview and disables download. Preview and buildChecklistHtml render the same accepted prepared model through renderChecklist. Notes enter a separately labelled escaped text context; pre-wrap preserves line breaks and overflow-wrap accommodates long text. Physical6242-byte HTML hash matches the author receipt, which also observes exact note text after offline reopening."
+    },
+    {
+      "topic": "Selection, refresh and cancellation",
+      "reason": "Selection/date changes and Clear selection retire preview while retaining the textarea. Explicit Refresh resets notes/counter/selection/preview before reading, including on read failure, consistent with visible warning and contract. Page reload starts blank. No destructive-refresh confirmation or cancel control is promised. Download creates a Blob/link and does not clear draft, selection or prepared state; its catch changes only the notice. Browser Save As cancellation was not separately executed, so draft-retention reasoning is source-only."
+    },
+    {
+      "topic": "Storage and scope",
+      "reason": "Notes stay in the textarea/prepared in-memory model. No tracker setItem/removeItem/clear, account/API or persistence-schema mutation was introduced. Author receiver monitors storage writes and reports none after excluding its explicit fixture mutations. Other tracker/parser/deadline/ICS/batch-owner paths remain outside this eight-path contribution."
+    },
+    {
+      "topic": "Receiving provenance",
+      "reason": "Direct logs show77 tests in5 files and successful TypeScript/Vite build. Qualified browser receipt has9 passing groups and no page errors/external requests. Baseline loads existing records then fails on absent notes control. The initial appended-text failure and original receiver are retained. Corrected DOM select plus actual CDP insertion is not presented as comprehensive keyboard-shortcut qualification."
+    },
+    {
+      "topic": "Visual output",
+      "reason": "Both retained320px and print-media images keep controls, selected facts and labelled notes readable without an observed layout blocker. Receipt-symbol emoji has fallback/missing glyph rendering in this Linux font environment; source and author DOM/download assertions separately preserve its actual Unicode value. No universal font or physical-printer guarantee is inferred."
+    }
+  ],
+  "execution_attribution": {
+    "reviewer_ran_tests": false,
+    "reviewer_ran_browser": false,
+    "author_native_tests": 77,
+    "author_browser_groups": 9,
+    "reviewer_static_byte_and_git_reconciliation": true
+  },
+  "limits": [
+    "Frozen source/receipt review, not installed-runtime adoption or public main after capture.",
+    "No repeated native/browser gates, cross-browser test, comprehensive keyboard/accessibility audit, physical printer or deployment claim.",
+    "Existing saved-byte freshness policy and source boundaries preserved.",
+    "No product changes requested."
+  ],
+  "created_utc": "2026-10-08T22:13:01.582724+00:00",
+  "source_paths_directly_reconciled_with_git": {
+    "src/trip-notes.ts": {
+      "bytes": 1115,
+      "sha256": "709e5a1101f4b01cd0f696783fd0b3628ccdddb01036fa96a0278c47431cba81"
+    },
+    "src/trip-checklist.ts": {
+      "bytes": 13790,
+      "sha256": "660d7c0d59f518341dac692646879ab8e6ba6f89c0891a6483712c3d943f13f9"
+    },
+    "src/trip-checklist-view.ts": {
+      "bytes": 7997,
+      "sha256": "1cbe3eb400dc79da293fbba90351445f40c0694b2ec494c2522b6040bb15d90a"
+    },
+    "src/trip-checklist.css": {
+      "bytes": 8823,
+      "sha256": "f6c498b1b07fdbf12f30a81c1c7cff2d02a93ae895a12b96e8a89089d423ffb3"
+    },
+    "trip-checklist.html": {
+      "bytes": 5177,
+      "sha256": "b2c6c41dbaf550becf17cfb710ec79b8b51f7eae86bdb93c3988c8d3890ae981"
+    },
+    "tests/trip-notes.test.ts": {
+      "bytes": 3577,
+      "sha256": "50ed9465525df2b159838bc85ced72d8ae8a4fc3073d04e6dc0985c8db2fe82e"
+    },
+    "tools/verify_trip_notes.mjs": {
+      "bytes": 12404,
+      "sha256": "41860ad145472be8db6c10ec1e8f760349bd986c7dbb51d94712361386e3d88f"
+    },
+    "docs/TRIP_CHECKLIST.md": {
+      "bytes": 3558,
+      "sha256": "ab222404adb64e2be3e41f5ef0df21c2b303fc6ca47dbc74803363c06118df49"
+    }
+  },
+  "built_assets_directly_reconciled": {
+    "dist/assets/deadline-DzH3L3IB.js": {
+      "bytes": 1111,
+      "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+    },
+    "dist/assets/main-6De5wGcc.js": {
+      "bytes": 9742,
+      "sha256": "5ce0bf61aad5aa49b18a6033a48d611d42ce93860f8f69c13ead7b76c708c4b6"
+    },
+    "dist/assets/main-Bp_ZSQx5.css": {
+      "bytes": 8801,
+      "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+    },
+    "dist/assets/tripChecklist-BUpTNHf7.css": {
+      "bytes": 8774,
+      "sha256": "d7b94809ca967a0e6015db67794997b84c25143ae2d031daf867e6656d43a0c4"
+    },
+    "dist/assets/tripChecklist-JLgX4II9.js": {
+      "bytes": 18142,
+      "sha256": "3301e5b60bb12552842a16b44acff4b0a4acb6acfeb5b70e1348b546f0e54e75"
+    },
+    "dist/captures/returnby-desktop.png": {
+      "bytes": 131379,
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+    },
+    "dist/captures/returnby-mobile.png": {
+      "bytes": 107642,
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+    },
+    "dist/favicon.svg": {
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    "dist/index.html": {
+      "bytes": 4633,
+      "sha256": "d682fc8df6ac84594558efe91fcbaa473b362b196339fbaadd38a52b5268283b"
+    },
+    "dist/trip-checklist.html": {
+      "bytes": 5357,
+      "sha256": "87f23adf89ad8e790147e821d75541a67ccc239852428e748678de8944940c83"
+    }
+  },
+  "observed_receiving_files": {
+    "source-freeze.json": {
+      "bytes": 1676,
+      "sha256": "417f763c2ca1d96ed9bc7cfbc8078e318751f8c2d8ab842088f62a3a11ecd7f5"
+    },
+    "receiving-context.json": {
+      "bytes": 7618,
+      "sha256": "5668c0fb0583008409c7a9d036cc9b72de63c57004eed5ae787d44a3deb02825"
+    },
+    "CONTRACT.md": {
+      "bytes": 1310,
+      "sha256": "de6462af088d16931f05d411be402e76b2fc64f08dd9ab04d7e40797d7ae5593"
+    },
+    "source.diff": {
+      "bytes": 37799,
+      "sha256": "2abfe4a3651e82a728f66c059b634d6b40b3f6539529e80cc3932afa6b9c0230"
+    },
+    "gate-receipt.json": {
+      "bytes": 632,
+      "sha256": "9ca486cca73087bc2371c6522fbdc7c709ad557a627bab233683a02cdaba75bb"
+    },
+    "tests-readable.log": {
+      "bytes": 467,
+      "sha256": "81899a3766f582fc59adf198a945c7392b49781c757f7e5e0a73ce5c2f86bea4"
+    },
+    "build.log": {
+      "bytes": 688,
+      "sha256": "77c47173ae7f236ccf83e9fcdef9634ed7b689206b9f17e0386d624d68410db6"
+    },
+    "browser-qualified/receipt.json": {
+      "bytes": 4888,
+      "sha256": "80b51bfe5c0d40204ba83dd9ffcee321b4ef77d83a8813165705d0c9a07aea19"
+    },
+    "browser-baseline/receipt.json": {
+      "bytes": 699,
+      "sha256": "427a45c88878653cc87a6ca9d58e56320c8098d55e6c57962c568e64d9911329"
+    },
+    "browser-candidate/receipt.json": {
+      "bytes": 935,
+      "sha256": "3381dd71248d47f8d23e0a8f1a2a8c4da1320a55318f00b65498bf63ea9a7ea0"
+    },
+    "browser-receiver-v1.mjs": {
+      "bytes": 12498,
+      "sha256": "a49ce4ee6f22ce96b210d7572745b984ae313687953260fbd44b373f94ea0473"
+    },
+    "browser-qualified/notes-320.png": {
+      "bytes": 186169,
+      "sha256": "40834f294cd40ce5792550cebd1d2dfc99c1742764dc10968f5c09be57d607bb"
+    },
+    "browser-qualified/notes-offline-print.png": {
+      "bytes": 70985,
+      "sha256": "b65b7d09a5e3a575c72688ae2b80341b6e86ea91d04dd47677a69d8b6580bf89"
+    },
+    "browser-qualified/downloads/returnby-trip-2026-10-10.html": {
+      "bytes": 6242,
+      "sha256": "d58001d1e66e400b8f082df0697dac9274005900be69b0b7ccfb1f9a1f1f0d40"
+    },
+    "patch-receiving.json": {
+      "bytes": 790,
+      "sha256": "da11676392ccbeb5b8d736d9bf352a577d44d4922c495af85b5881c6ce80f405"
+    }
+  }
+}

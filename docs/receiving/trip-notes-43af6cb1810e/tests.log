@@ -1,0 +1,18 @@
+
+> returnby@0.1.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.3 [39m[90m/home/jacob/returnby-trip-notes-43af6cb1810e[39m
+
+ [32m✓[39m tests/core.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 64[2mms[22m[39m
+ [32m✓[39m tests/trip-notes.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 73[2mms[22m[39m
+ [32m✓[39m tests/ics.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 244[2mms[22m[39m
+ [32m✓[39m tests/day-refresh.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 125[2mms[22m[39m
+ [32m✓[39m tests/trip-checklist.test.ts [2m([22m[2m40 tests[22m[2m)[22m[32m 185[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m5 passed[39m[22m[90m (5)[39m
+[2m      Tests [22m [1m[32m77 passed[39m[22m[90m (77)[39m
+[2m   Start at [22m 21:53:35
+[2m   Duration [22m 1.70s[2m (transform 55%, tests 23%, import 17%, worker 5%)[22m
+

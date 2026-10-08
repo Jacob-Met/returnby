@@ -1,0 +1,19 @@
+{
+  "schema": "hamon.returnby-trip-notes.patch-receiving.v1",
+  "source_commit": "f6ff93ecae190bb7a0d7c4fb2d000510f97aeb7c",
+  "base_commit": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "expected_tree": "0aeaed0b9c79ebadcf78aa89f04a88cd46698715",
+  "reconstructed_tree": "0aeaed0b9c79ebadcf78aa89f04a88cd46698715",
+  "source_leaves": 8,
+  "private_index_only": true,
+  "patch": {
+    "path": "/home/jacob/returnby-trip-notes-43af6cb1810e.delivery/trip-notes.patch",
+    "bytes": 38327,
+    "sha256": "40aace21cc01f401ef6c6a12b2087b016671bda129fd8cacddf8df1810e8e6ef"
+  },
+  "source_zip": {
+    "path": "/home/jacob/returnby-trip-notes-43af6cb1810e.delivery/trip-notes-source.zip",
+    "bytes": 20922,
+    "sha256": "ede72965b5fcab203abfe496175e7e95a0419085ce7b2b2a3c2ed79523b1fdcd"
+  }
+}

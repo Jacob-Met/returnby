@@ -1,0 +1,23 @@
+{
+  "schema": "returnby.trip-notes.browser.v1",
+  "started_at": "2026-10-08T21:57:46.705Z",
+  "runtime": "v22.22.1",
+  "checks": [
+    {
+      "name": "existing saved records load unchanged",
+      "passed": true
+    },
+    {
+      "name": "real keyboard entry and preview preserve literal Unicode and separate notes",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "external_requests": [],
+  "fixture": "Authored fictional saved orders in a new private profile only",
+  "browser": "Chrome/153.0.8010.47",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'Bring the blue bag 🧾\\nDesk <B> & side entrance.Updated pickup at 15:00.'\n- 'Updated pickup at 15:00.'\n\n    at receiver (file:///home/jacob/returnby-trip-notes-43af6cb1810e/tools/verify_trip_notes.mjs:48:42)",
+  "owned_profile_removed": true,
+  "finished_at": "2026-10-08T21:57:51.213Z"
+}

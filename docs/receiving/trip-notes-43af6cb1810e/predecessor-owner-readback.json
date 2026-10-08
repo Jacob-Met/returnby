@@ -1,0 +1,73 @@
+{
+  "schema": "hamon.external_contribution.v1",
+  "worker_id": "estate-81ba1ed0179c-returnby-checklist",
+  "source_route": "chatgpt-workspace:/workspace/scratch/81ba1ed0179c",
+  "authority_source": "Jacob's HAMON UNIVERSAL AUTONOMOUS EXECUTION WORKER mandate, upload/01-Pasted-markdown.md",
+  "identity_kind": "external ChatGPT source contributor; not a resident Za or native goal owner",
+  "state": "received_verified",
+  "scope": {
+    "repository": "Jacob-Met/returnby",
+    "area": "Separate printable return-trip checklist from selected current-main saved orders",
+    "source_owner": "estate-81ba1ed0179c / estate_coordination",
+    "canonical_base": "3913697f70a31d73e8fe7d02b686b306830c24db",
+    "head": "c5f589b8e9cea561f579b454d45110d38bb83bb2",
+    "tree": "503ea217dc35f54aa7c9dbd1f92217544ad6dbc9",
+    "source_claim": "https://github.com/Jacob-Met/returnby/issues/29",
+    "worktree": "/Users/me/hamon-mcp-lab/returnby-checklist-81ba1ed0179c/source",
+    "pull_request": "https://github.com/Jacob-Met/returnby/pull/33",
+    "merged_commit": "1e662c387be5f66f8499fac7ec443f58d2198379"
+  },
+  "coordination": "PR33 merged through the normal expected-head guard after ordinary rate-limit recovery. All54 source leaves match the qualified complete tree. Existing Pages deployed that exact merge; all10 public assets match the native build. Future completion30/32 retains its agreed-schema/helper and wider8/10 adoption owners; composition prerequisite remains explicit.",
+  "qualification": {
+    "native_tests": 68,
+    "browser_groups": 17,
+    "actual_html_downloads": 2,
+    "independent_review_sha256": "af56f861cae5e809aac10233a3a02b628d99bc686299fde5f5c6e2c5936e33f2",
+    "installed_receiving": {
+      "path": "/Users/me/hamon-mcp-lab/returnby-checklist-81ba1ed0179c/installed-r2/receipt.json",
+      "sha256": "03bbcefa54b57ee0d3feebe3802944ab533b67cab03dc5287424417f7e376136",
+      "groups": 6,
+      "http_readbacks": 14,
+      "actual_download_bytes": 6831,
+      "actual_download_sha256": "5dc977d0726a1f7b3170cf62c6026852c93ac6b687d9d23614fbcb538699f49f"
+    },
+    "hosted_ci": {
+      "pull_request_run": 37818702120,
+      "merged_run": 37820624954,
+      "conclusion": "success"
+    },
+    "deployed": {
+      "pages_run": 37820624693,
+      "conclusion": "success",
+      "url": "https://jacobmetoyer.com/returnby/",
+      "exact_public_assets": 10,
+      "receipt_sha256": "1d12e271a4f6441fba872d078641cc05a9048dfd2cfc4b0103117987a15ff6b8"
+    }
+  },
+  "artifacts": {
+    "custody": "/srv/hamon-estate/coord/estate-81ba1ed0179c/returnby-checklist",
+    "receipt_sha256": "745f4319cd44fb3e786eab715eb57e6ed6f95f9d9882cc10550cc9fffc5a266a",
+    "pending_pr": "/srv/hamon-estate/coord/estate-81ba1ed0179c/returnby-checklist/pending-pr.json",
+    "boundary": "This packet contains all54 exact source leaves, all24 public contribution/evidence leaves, the pending PR and immutable readback. It does not contain the Mac Git bundle/runtime ZIP/full native archive or installed receiving JSON; those completed native files remain at their stated Mac paths. A later Mac relay preparation and its manifest read both timed out at MCP; preparation outcome is unknown and was not retried.",
+    "publication_completion": {
+      "path": "/srv/hamon-estate/coord/estate-81ba1ed0179c/returnby-checklist/publication-completion.json",
+      "sha256": "09df69d8f895680e9931b9ba3c092832d344153b3fb966886f80bdbb90f8318f"
+    },
+    "public_receiving": {
+      "path": "/srv/hamon-estate/coord/estate-81ba1ed0179c/returnby-checklist/public-receiving.json",
+      "sha256": "1d12e271a4f6441fba872d078641cc05a9048dfd2cfc4b0103117987a15ff6b8"
+    }
+  },
+  "runtime_change": true,
+  "native_goal_or_lease_mutated": false,
+  "updated_at": "2026-10-08T18:45:59.367857+00:00",
+  "history": [
+    {
+      "at": "2026-10-08T17:36:26.952813+00:00",
+      "state": "source_branch_published_pr_rate_limited",
+      "preserved_record": "/srv/hamon-estate/coord/estate-81ba1ed0179c/returnby-checklist/coord-before-receiving.json",
+      "sha256": "d55ce9de712b3e73a2d370afff0b71fe51e357130c54ccc9a7c63e35769d1050"
+    }
+  ],
+  "runtime_change_scope": "ReturnBy static Pages product via its existing workflow; no resident HAMON service or goal/lease change"
+}

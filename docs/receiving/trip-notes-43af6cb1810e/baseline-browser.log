@@ -1,0 +1,1 @@
+{"status":"failed","checks":1,"error":"AssertionError [ERR_ASSERTION]: user-facing typed trip note field is present\n\nfalse !== true\n\n    at receiver (file:///home/jacob/returnby-trip-notes-43af6cb1810e/tools/verify_trip_notes.mjs:40:10)","receipt":"/home/jacob/returnby-trip-notes-43af6cb1810e/docs/receiving/trip-notes-43af6cb1810e/browser-baseline/receipt.json"}

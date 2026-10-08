@@ -1,0 +1,19 @@
+{
+  "schema": "returnby.trip-notes.browser.v1",
+  "started_at": "2026-10-08T21:59:57.039Z",
+  "runtime": "v22.22.1",
+  "checks": [
+    {
+      "name": "existing saved records load unchanged",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "external_requests": [],
+  "fixture": "Authored fictional saved orders in a new private profile only",
+  "browser": "Chrome/153.0.8010.47",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: user-facing typed trip note field is present\n\nfalse !== true\n\n    at receiver (file:///home/jacob/returnby-trip-notes-43af6cb1810e/tools/verify_trip_notes.mjs:40:10)",
+  "owned_profile_removed": true,
+  "finished_at": "2026-10-08T22:00:07.882Z"
+}

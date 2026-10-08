@@ -1,0 +1,58 @@
+{
+  "schema": "returnby.trip-notes.browser.v1",
+  "started_at": "2026-10-08T21:58:49.691Z",
+  "runtime": "v22.22.1",
+  "checks": [
+    {
+      "name": "existing saved records load unchanged",
+      "passed": true
+    },
+    {
+      "name": "actual browser text insertion and preview preserve literal Unicode and separate notes",
+      "passed": true
+    },
+    {
+      "name": "note edits retire prior export; clearing and reselecting keeps the draft",
+      "passed": true
+    },
+    {
+      "name": "over-limit Unicode notes refuse export and valid correction recovers",
+      "passed": true
+    },
+    {
+      "name": "320px notes field and preview remain within page",
+      "passed": true
+    },
+    {
+      "name": "returnby-trip-2026-10-10.html",
+      "passed": true,
+      "bytes": 6242,
+      "sha256": "d58001d1e66e400b8f082df0697dac9274005900be69b0b7ccfb1f9a1f1f0d40"
+    },
+    {
+      "name": "download reopens offline with identical notes and existing print guidance",
+      "passed": true
+    },
+    {
+      "name": "saved-order change still refuses stale note-bearing download",
+      "passed": true
+    },
+    {
+      "name": "explicit refresh clears plan notes; checklist performs no storage writes",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "external_requests": [],
+  "fixture": "Authored fictional saved orders in a new private profile only",
+  "browser": "Chrome/153.0.8010.47",
+  "download": {
+    "name": "returnby-trip-2026-10-10.html",
+    "bytes": 6242,
+    "sha256": "d58001d1e66e400b8f082df0697dac9274005900be69b0b7ccfb1f9a1f1f0d40"
+  },
+  "status": "passed",
+  "chrome_stderr": "[2142897:2143554:1008/215855.835429:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2142897:2143554:1008/215855.836384:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2142897:2143554:1008/215856.067997:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n\nDevTools listening on ws://127.0.0.1:43905/devtools/browser/af20662b-e6d1-4d8d-a733-3314178e0153\n[2142897:2142897:1008/215856.434874:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2142897:2142897:1008/215856.434939:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2142897:2143554:1008/215856.435122:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2142897:2142897:1008/215856.452847:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2142897:2143554:1008/215856.460646:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2142897:2142897:1008/215856.503313:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2142897:2143554:1008/215856.503916:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2142897:2142897:1008/215856.504932:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2142897:2142897:1008/215856.537731:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2142897:2143554:1008/215856.538415:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2142897:2142897:1008/215856.565327:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2142897:2143554:1008/215856.568508:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2142897:2142897:1008/215856.598678:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n",
+  "owned_profile_removed": true,
+  "finished_at": "2026-10-08T21:58:57.970Z"
+}

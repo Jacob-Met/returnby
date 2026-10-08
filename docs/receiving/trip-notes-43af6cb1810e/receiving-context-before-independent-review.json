@@ -1,0 +1,167 @@
+{
+  "schema": "hamon.returnby-trip-notes.receiving.v1",
+  "created_at": "2026-10-08T22:06:48.840047+00:00",
+  "repository": "Jacob-Met/returnby",
+  "external_actor": "chatgpt:43af6cb1810e:coordination",
+  "native_scope": 5070,
+  "source": {
+    "schema": "hamon.returnby-trip-notes.source-freeze.v1",
+    "created_at": "2026-10-08T22:04:05.490205+00:00",
+    "source_commit": "f6ff93ecae190bb7a0d7c4fb2d000510f97aeb7c",
+    "source_tree": "0aeaed0b9c79ebadcf78aa89f04a88cd46698715",
+    "base_commit": "1e662c387be5f66f8499fac7ec443f58d2198379",
+    "paths": {
+      "src/trip-notes.ts": {
+        "bytes": 1115,
+        "sha256": "709e5a1101f4b01cd0f696783fd0b3628ccdddb01036fa96a0278c47431cba81"
+      },
+      "src/trip-checklist.ts": {
+        "bytes": 13790,
+        "sha256": "660d7c0d59f518341dac692646879ab8e6ba6f89c0891a6483712c3d943f13f9"
+      },
+      "src/trip-checklist-view.ts": {
+        "bytes": 7997,
+        "sha256": "1cbe3eb400dc79da293fbba90351445f40c0694b2ec494c2522b6040bb15d90a"
+      },
+      "src/trip-checklist.css": {
+        "bytes": 8823,
+        "sha256": "f6c498b1b07fdbf12f30a81c1c7cff2d02a93ae895a12b96e8a89089d423ffb3"
+      },
+      "trip-checklist.html": {
+        "bytes": 5177,
+        "sha256": "b2c6c41dbaf550becf17cfb710ec79b8b51f7eae86bdb93c3988c8d3890ae981"
+      },
+      "tests/trip-notes.test.ts": {
+        "bytes": 3577,
+        "sha256": "50ed9465525df2b159838bc85ced72d8ae8a4fc3073d04e6dc0985c8db2fe82e"
+      },
+      "tools/verify_trip_notes.mjs": {
+        "bytes": 12404,
+        "sha256": "41860ad145472be8db6c10ec1e8f760349bd986c7dbb51d94712361386e3d88f"
+      },
+      "docs/TRIP_CHECKLIST.md": {
+        "bytes": 3558,
+        "sha256": "ab222404adb64e2be3e41f5ef0df21c2b303fc6ca47dbc74803363c06118df49"
+      }
+    },
+    "qualified_browser": "browser-qualified/receipt.json",
+    "baseline_browser": "browser-baseline/receipt.json",
+    "qualified_runtime": "ordinary jacob; Node22.22.1; Chromium153.0.8010.47",
+    "native_scope": 5070
+  },
+  "root": "/home/jacob/returnby-trip-notes-43af6cb1810e",
+  "contract": {
+    "goal": "Optional typed trip-level notes in the existing local saved-order checklist and offline printable download.",
+    "limit": "1000 Unicode code points after CRLF/CR to LF; tab/LF accepted; unsupported controls and isolated surrogates refused.",
+    "preservation": "Literal remaining text and line breaks; selected saved facts, original deadline/money semantics unchanged.",
+    "lifecycle": "Note edits retire preview. Selection/date changes and Clear selection preserve draft. Explicit Refresh clears notes/selection/preview. No notes or checklist writes to browser storage.",
+    "freshness": "Existing exact saved-byte freshness admission remains required before preview/download."
+  },
+  "qualification": {
+    "author": "chatgpt:43af6cb1810e:coordination",
+    "profile": "ordinary jacob on ThinkPad; Node22.22.1, Chromium153.0.8010.47 via /snap/bin/chromium, installed browser and task-local profile.",
+    "project_tests": {
+      "passed": 77,
+      "files": 5,
+      "receipt": "gate-receipt.json",
+      "log": "tests.log"
+    },
+    "typescript_vite_build": "passed; existing lock/dependencies unchanged",
+    "actual_browser": {
+      "receipt": "browser-qualified/receipt.json",
+      "passed_groups": 9,
+      "download": {
+        "name": "returnby-trip-2026-10-10.html",
+        "bytes": 6242,
+        "sha256": "d58001d1e66e400b8f082df0697dac9274005900be69b0b7ccfb1f9a1f1f0d40"
+      },
+      "errors": 0,
+      "external_requests": 0,
+      "owned_profile_removed": true
+    },
+    "baseline_browser": {
+      "base": "1e662c387be5f66f8499fac7ec443f58d2198379",
+      "build": "passed",
+      "existing_records": "loaded",
+      "failure": "Same final receiver refuses missing user-facing typed trip-note field; no browser runtime errors.",
+      "receipt": "browser-baseline/receipt.json",
+      "tracked_source_unchanged": true
+    },
+    "direct_author_image_review": [
+      "browser-qualified/notes-320.png",
+      "browser-qualified/notes-offline-print.png"
+    ],
+    "independent_review": "pending source/receipt/render review by production; no extra execution requested"
+  },
+  "receiving_corrections": [
+    {
+      "receipt": "browser-candidate/receipt.json",
+      "receiver": "browser-receiver-v1.mjs",
+      "cause": "First receiver Ctrl+A adapter appended text instead of selecting. Its assertion caught receiver behavior; actual product source unchanged.",
+      "correction": "Final receiver selects the focused textarea text through DOM select(), then uses actual CDP text insertion. This is not a comprehensive keyboard shortcut qualification."
+    },
+    {
+      "cause": "Installed Python Playwright facade referenced an absent driver and Node playwright-core was absent. No package installed; final browser receiver uses Node built-in WebSocket CDP."
+    }
+  ],
+  "built_assets_observed_after_qualification": {
+    "dist/assets/deadline-DzH3L3IB.js": {
+      "bytes": 1111,
+      "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+    },
+    "dist/assets/main-6De5wGcc.js": {
+      "bytes": 9742,
+      "sha256": "5ce0bf61aad5aa49b18a6033a48d611d42ce93860f8f69c13ead7b76c708c4b6"
+    },
+    "dist/assets/main-Bp_ZSQx5.css": {
+      "bytes": 8801,
+      "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+    },
+    "dist/assets/tripChecklist-BUpTNHf7.css": {
+      "bytes": 8774,
+      "sha256": "d7b94809ca967a0e6015db67794997b84c25143ae2d031daf867e6656d43a0c4"
+    },
+    "dist/assets/tripChecklist-JLgX4II9.js": {
+      "bytes": 18142,
+      "sha256": "3301e5b60bb12552842a16b44acff4b0a4acb6acfeb5b70e1348b546f0e54e75"
+    },
+    "dist/captures/returnby-desktop.png": {
+      "bytes": 131379,
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+    },
+    "dist/captures/returnby-mobile.png": {
+      "bytes": 107642,
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+    },
+    "dist/favicon.svg": {
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    "dist/index.html": {
+      "bytes": 4633,
+      "sha256": "d682fc8df6ac84594558efe91fcbaa473b362b196339fbaadd38a52b5268283b"
+    },
+    "dist/trip-checklist.html": {
+      "bytes": 5357,
+      "sha256": "87f23adf89ad8e790147e821d75541a67ccc239852428e748678de8944940c83"
+    }
+  },
+  "limits": [
+    "Frozen actual main base, not a claim to latest public main after capture.",
+    "One installed Chromium and the recorded Linux profile; no cross-browser, accessibility audit, printer hardware or deployment claim.",
+    "Downloaded notes and selected facts are readable by people with the file; no tracker persistence.",
+    "No remote mutation, GitHub Actions, shared runtime or other owner scope edits.",
+    "Original81ba checklist source and c770 batch intake/other tracker owners remain integration authorities."
+  ],
+  "provenance": {
+    "ownership": {
+      "path": "/home/jacob/returnby-trip-notes-43af6cb1810e-evidence/ownership.json",
+      "sha256": "5c8693baa52b8c8f1bdfa47f93ae5be638cbeff57b1db314e982f66b23767f3a"
+    },
+    "predecessor_owner": "estate-81ba1ed0179c / estate_coordination",
+    "predecessor_merge": "1e662c387be5f66f8499fac7ec443f58d2198379",
+    "publication_direction": "Jacob no-new-Actions, including implicit push/PR/merge, normal gate requirements preserved."
+  },
+  "repository_remote": "/home/jacob/returnby-product-discovery-43af6cb1810e",
+  "canonical_clone_remote": "https://github.com/Jacob-Met/returnby.git"
+}

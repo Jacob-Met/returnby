@@ -3,11 +3,13 @@
 Open **Return-trip checklist** below the tracker’s saved-order list. The checklist reads the same browser origin’s reviewed orders. It does not read the pasted confirmation box or change the tracker.
 
 1. Choose **Refresh saved orders** if you saved or changed orders in another tab.
-2. Select the orders you plan to take. Set the planned trip date.
+2. Select the orders you plan to take. Set the planned trip date. Optionally add shared trip notes, such as pickup instructions or a reminder to bring packaging.
 3. Choose **Preview trip** and review the order details, stored return-window source and calculated deadlines.
 4. Choose **Download printable HTML**. Open that file in a browser and use its Print command. The file has its own styles and works offline.
 
-The paper sheet includes blank item/packaging, receipt and return-arrangement checks, plus space for handwritten notes. It does not record completion. Trip choices and notes are not persisted, and reloading the page starts a new selection.
+The sheet includes your optional typed trip notes, blank item/packaging, receipt and return-arrangement checks, plus space to write more by hand. It does not record completion. Notes stay in page memory and are included in the file you choose to download; they are never saved to the tracker. Reloading the page starts a new plan.
+
+Notes allow up to 1,000 Unicode characters (counted as code points), including line breaks and tabs. CRLF/CR line endings become LF; other text is kept literally. Unsupported control characters and isolated surrogate values are refused. Editing notes retires the preview and disables download until you preview again. Changing the date or selection, including Clear selection, preserves the note draft. Explicit Refresh saved orders clears it; the page explains that before the action.
 
 ## What the dates and amounts mean
 
@@ -17,11 +19,11 @@ Amounts remain literal saved strings. There is no combined total, currency conve
 
 ## Refresh and read errors
 
-The page keeps the exact saved-list bytes it loaded. Before previewing or downloading it checks the current saved list again. A change, removal or read-access failure prevents download until you explicitly refresh, reselect and preview. Cross-tab storage changes also mark the page stale. Refresh clears the current selection and preview.
+The page keeps the exact saved-list bytes it loaded. Before previewing or downloading it checks the current saved list again. A change, removal or read-access failure prevents download until you explicitly refresh, reselect and preview. Cross-tab storage changes also mark the page stale. Refresh clears the current selection, notes and preview.
 
 Malformed JSON, invalid record fields, duplicate identifiers, unsupported dates/windows and lists over 2 MiB or 2,000 records cause a read failure. No records are silently dropped, repaired or saved. Review the source orders in the tracker and refresh here; the checklist does not offer a destructive reset.
 
-The exported HTML contains only selected order facts and the planned/prepared dates. It contains no scripts, remote assets, full saved-list payload, order-creation timestamps or storage data. Anyone you share that file with can read its selected order details.
+The exported HTML contains only selected order facts, the planned/prepared dates and optional typed trip notes. It contains no scripts, remote assets, full saved-list payload, order-creation timestamps or storage data. Anyone you share that file with can read its selected order details and notes.
 
 ## Verification
 

@@ -1,0 +1,15 @@
+[
+  {
+    "gate": "baseline-deps",
+    "exit": 0
+  },
+  {
+    "gate": "baseline-build",
+    "exit": 0
+  },
+  {
+    "gate": "baseline-browser",
+    "exit": 1,
+    "expected": "Missing user-facing trip note control after existing saved-record load"
+  }
+]

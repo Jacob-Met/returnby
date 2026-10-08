@@ -30,7 +30,7 @@
     </section>
     <div class="workspace">
       <section class="planner" aria-labelledby="planner-title">
-        <header class="section-heading"><p class="eyebrow">YOUR SAVED ORDERS</p><h2 id="planner-title">What’s coming with you?</h2><p>Only selected orders appear on the sheet. Refreshing reloads this list and clears your selection.</p></header>
+        <header class="section-heading"><p class="eyebrow">YOUR SAVED ORDERS</p><h2 id="planner-title">What’s coming with you?</h2><p>Only selected orders appear on the sheet. Refreshing reloads this list and clears your selection and trip notes.</p></header>
         <button id="refresh-orders" class="text-button" type="button">↻ Refresh saved orders</button>
         <p id="read-message" class="read-message" role="status"></p>
         <form id="trip-form" hidden>
@@ -39,9 +39,13 @@
           <label class="date-label" for="trip-date">PLANNED TRIP DATE</label>
           <input id="trip-date" name="trip-date" type="date" min="1000-01-01" max="9999-12-31" required>
           <p class="field-note">We’ll compare this date with each saved return window. Confirm current instructions with the store.</p>
+          <label class="date-label trip-notes-label" for="trip-notes">OPTIONAL TRIP NOTES</label>
+          <textarea id="trip-notes" name="trip-notes" rows="4" aria-describedby="trip-notes-help trip-note-count" placeholder="Pickup instructions, drop-off details or a reminder for your trip"></textarea>
+          <p id="trip-notes-help" class="field-note">Up to 1,000 characters. Notes stay on this page until you download them with the checklist. Refreshing clears them.</p>
+          <p id="trip-note-count" class="note-count">0 / 1000</p>
           <button id="preview-trip" class="primary-button" type="submit" disabled>Preview trip <span aria-hidden="true">→</span></button>
         </form>
-        <p class="privacy-note">This page reads your saved details. Trip choices, check marks and notes are never saved to the tracker.</p>
+        <p class="privacy-note">This page reads your saved details. Trip choices and notes are never saved to the tracker. Notes you add are included in the file you download.</p>
       </section>
       <section class="preview-panel" aria-labelledby="preview-title">
         <header class="preview-top"><div><p class="eyebrow">YOUR TAKE-ALONG SHEET</p><h2 id="preview-title">Review before you go.</h2></div><span class="paper-tag">HTML / PRINT</span></header>
@@ -50,7 +54,7 @@
           <div class="paper-symbol" aria-hidden="true"><span>R/</span><i></i><i></i><i></i></div>
           <h3>A little preparation.<br>A lighter errand.</h3>
           <p>Select the orders you’re taking, then choose <strong>Preview trip</strong>.</p>
-          <ul><li>Saved order details &amp; dates</li><li>Blank packing and receipt checks</li><li>Space for your own notes</li></ul>
+          <ul><li>Saved order details &amp; dates</li><li>Blank packing and receipt checks</li><li>Your typed trip notes and space to write more</li></ul>
         </div>
         <div id="checklist-preview" hidden></div>
         <div class="download-panel">

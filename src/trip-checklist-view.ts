@@ -1,5 +1,6 @@
 import './trip-checklist.css';
 import { dueDate, todayISO } from './deadline';
+import { MAX_TRIP_NOTE_CHARACTERS, withTripNotes } from './trip-notes';
 import {
   assertSnapshotCurrent, buildChecklistHtml, CHECKLIST_SHEET_CSS, createChecklist,
   readSavedOrders, renderChecklist, SAVED_ORDERS_KEY, sourceLabel,
@@ -10,6 +11,8 @@ const el = <T extends HTMLElement>(id: string) => document.getElementById(id) as
 const form = el<HTMLFormElement>('trip-form');
 const options = el<HTMLDivElement>('order-options');
 const tripDate = el<HTMLInputElement>('trip-date');
+const tripNotes = el<HTMLTextAreaElement>('trip-notes');
+const noteCount = el<HTMLParagraphElement>('trip-note-count');
 const summary = el<HTMLParagraphElement>('selection-summary');
 const previewButton = el<HTMLButtonElement>('preview-trip');
 const downloadButton = el<HTMLButtonElement>('download-checklist');
@@ -95,6 +98,9 @@ function addOrderOption(order: SavedSnapshot['orders'][number]): void {
 function refresh(): void {
   snapshot = null;
   selected.clear();
+  tripNotes.value = '';
+  noteCount.textContent = '0 / ' + MAX_TRIP_NOTE_CHARACTERS;
+  noteCount.classList.remove('over-limit');
   stale = false;
   options.replaceChildren();
   form.hidden = true;
@@ -122,6 +128,13 @@ clearButton.addEventListener('click', () => {
   options.querySelectorAll('.chosen').forEach(label => label.classList.remove('chosen'));
   selectionChanged();
 });
+tripNotes.addEventListener('input', () => {
+  const count = Array.from(tripNotes.value).length;
+  noteCount.textContent = count + ' / ' + MAX_TRIP_NOTE_CHARACTERS;
+  noteCount.classList.toggle('over-limit', count > MAX_TRIP_NOTE_CHARACTERS);
+  retirePreview();
+  if (!stale) showNotice('');
+});
 tripDate.addEventListener('input', () => {
   retirePreview();
   if (!stale) showNotice('');
@@ -130,7 +143,7 @@ form.addEventListener('submit', event => {
   event.preventDefault();
   if (!snapshot || !validateCurrent()) return;
   try {
-    prepared = createChecklist(snapshot, [...selected], tripDate.value);
+    prepared = withTripNotes(createChecklist(snapshot, [...selected], tripDate.value), tripNotes.value);
     preview.innerHTML = renderChecklist(prepared);
     preview.hidden = false;
     empty.hidden = true;

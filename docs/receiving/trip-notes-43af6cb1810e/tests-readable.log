@@ -1,0 +1,18 @@
+
+> returnby@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /home/jacob/returnby-trip-notes-43af6cb1810e
+
+ ✓ tests/core.test.ts (6 tests) 64ms
+ ✓ tests/trip-notes.test.ts (9 tests) 73ms
+ ✓ tests/ics.test.ts (12 tests) 244ms
+ ✓ tests/day-refresh.test.ts (10 tests) 125ms
+ ✓ tests/trip-checklist.test.ts (40 tests) 185ms
+
+ Test Files  5 passed (5)
+      Tests  77 passed (77)
+   Start at  21:53:35
+   Duration  1.70s (transform 55%, tests 23%, import 17%, worker 5%)
+
