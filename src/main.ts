@@ -10,9 +10,25 @@ const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const list = $<HTMLUListElement>('#list');
+const storageError = $<HTMLParagraphElement>('#storage-error');
 let orders = load();
 let sampleIdx = 0;
 let filterMode: 'all' | 'due' | 'expired' = 'all';
+
+function persistOrders(next: Order[]): boolean {
+  try {
+    save(next);
+  } catch {
+    storageError.textContent = "Couldn't save this change in your browser. Check storage availability and try again.";
+    storageError.hidden = false;
+    storageError.focus();
+    return false;
+  }
+  orders = next;
+  storageError.textContent = '';
+  storageError.hidden = true;
+  return true;
+}
 
 const h = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
@@ -44,13 +60,14 @@ preview.addEventListener('submit', (e) => {
   const orderDate = String(f.get('orderDate') || '');
   if (!orderDate) { (preview.querySelector('[name=orderDate]') as HTMLInputElement).focus(); return; }
   const days = Number(f.get('windowDays')) || 30;
-  orders.push({
+  const next: Order[] = [...orders, {
     id: crypto.randomUUID(), merchant: String(f.get('merchant') || ''), orderNo: String(f.get('orderNo') || ''),
     total: String(f.get('total') || ''), orderDate, windowDays: days,
     windowSource: String(days) === preview.dataset.days ? (preview.dataset.source as Order['windowSource']) : 'user',
     createdAt: new Date().toISOString(),
-  });
-  save(orders); preview.hidden = true; paste.value = ''; render();
+  }];
+  if (!persistOrders(next)) return;
+  preview.hidden = true; paste.value = ''; render();
 });
 
 function render() {
@@ -63,7 +80,7 @@ function render() {
 }
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
-  if (t.dataset.del) { orders = orders.filter((o) => o.id !== t.dataset.del); save(orders); render(); }
+  if (t.dataset.del) { if (persistOrders(orders.filter((o) => o.id !== t.dataset.del))) render(); }
   if (t.dataset.ics) {
     const o = orders.find((x) => x.id === t.dataset.ics)!;
     const blob = new Blob([buildIcs({ ...o, due: dueDate(o.orderDate, o.windowDays) })], { type: 'text/calendar' });
@@ -76,5 +93,5 @@ list.addEventListener('click', (e) => {
 $('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);
 paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
 $('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
-$('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?')) { orders = []; save(orders); render(); } });
+$('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?') && persistOrders([])) render(); });
 render();
