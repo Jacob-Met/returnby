@@ -1,0 +1,183 @@
+[
+  {
+    "label": "pr20 native",
+    "pid": 53785,
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "No session found for PID 53785"
+          },
+          {
+            "type": "text",
+            "text": "\n[executed on device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "structuredContent": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    }
+  },
+  {
+    "label": "pr22 native",
+    "pid": 54420,
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "No session found for PID 54420"
+          },
+          {
+            "type": "text",
+            "text": "\n[executed on device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "structuredContent": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    }
+  },
+  {
+    "label": "pr22 actions",
+    "pid": 65840,
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "No session found for PID 65840"
+          },
+          {
+            "type": "text",
+            "text": "\n[executed on device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "structuredContent": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    }
+  },
+  {
+    "label": "day before native",
+    "pid": 17889,
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "No session found for PID 17889"
+          },
+          {
+            "type": "text",
+            "text": "\n[executed on device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "structuredContent": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    }
+  },
+  {
+    "label": "day fixed native",
+    "pid": 18336,
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "No session found for PID 18336"
+          },
+          {
+            "type": "text",
+            "text": "\n[executed on device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "structuredContent": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    }
+  },
+  {
+    "label": "day before focus",
+    "pid": 21777,
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "No session found for PID 21777"
+          },
+          {
+            "type": "text",
+            "text": "\n[executed on device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "structuredContent": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    }
+  },
+  {
+    "label": "day fixed focus",
+    "pid": 22233,
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "No session found for PID 22233"
+          },
+          {
+            "type": "text",
+            "text": "\n[executed on device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "structuredContent": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    }
+  },
+  {
+    "label": "day fixed actions",
+    "pid": 27759,
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[Reading 0 new lines (total: 0 lines)]\n\n(No output in requested range)\n✅ Process completed with exit code 0 (runtime: 4.94s)"
+          },
+          {
+            "type": "text",
+            "text": "\n[executed on device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  }
+]
