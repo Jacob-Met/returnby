@@ -69,7 +69,7 @@ export function parse(text: string, knownMerchants: string[] = []): Parsed {
   const merchant = pickMerchant(text, knownMerchants);
   const orderDate = pickOrderDate(text);
   const no = /order\s*(?:#|number|no\.?|id)\s*:?\s*#?\s*([A-Z0-9][A-Z0-9-]{3,})/i.exec(text);
-  const tot = /(?:order\s+)?total\s*:?\s*([$€£]\s?\d[\d,]*(?:\.\d{2})?)/i.exec(text);
+  const tot = /\b(?:order\s+)?total\s*:?\s*([$€£]\s?\d[\d,]*(?:\.\d{2})?)/i.exec(text);
   const orderNo = no ? no[1] : '';
   const total = tot ? tot[1].replace(/\s/g, '') : '';
   return {
