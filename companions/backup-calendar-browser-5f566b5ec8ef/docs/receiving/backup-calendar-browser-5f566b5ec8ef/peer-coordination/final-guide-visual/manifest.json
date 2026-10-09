@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "path": "input-pins.json",
+      "bytes": 1204,
+      "sha256": "7942c5bd63502efd28a0dccb37b836ad74f9a1ec5eeffaa1ee61ca834b7214e5"
+    },
+    {
+      "path": "review.json",
+      "bytes": 2656,
+      "sha256": "898cc1df66e82318e58f5080c2c20a3eeb978de00074ebe26a062b561de6a67d"
+    }
+  ],
+  "count": 2,
+  "total_bytes": 3860
+}

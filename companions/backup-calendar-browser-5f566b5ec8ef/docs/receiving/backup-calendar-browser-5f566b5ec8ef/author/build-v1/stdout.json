@@ -1,0 +1,37 @@
+{
+  "esbuild": "0.25.12",
+  "htmlBytes": 32162,
+  "htmlSha256": "286ee45daab73f43e9d5b07f53afb9f0d33a967515e8910c4c2d03843fa561ad",
+  "scriptSha256": "25a3335656f5b468876b9b2f162abcbd86bfdb32d123a7a146cb11e378287c77",
+  "csp": "JaMzVlb1tGiHa5svFiq8vYa/2zLRI6ehRssR43gofHc=",
+  "inputs": [
+    {
+      "path": "original/src/deadline.ts",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "path": "original/src/backup.ts",
+      "sha256": "f496467c4a7cb96e2638869e2727dac10a6a84c89fb5032f723e21c02c799778"
+    },
+    {
+      "path": "original/src/ics.ts",
+      "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523"
+    },
+    {
+      "path": "original/src/completion.ts",
+      "sha256": "ea58ab75a327e5947d9b9ac13989eebd5e3ad3047febc629ce5543d06bd24fc7"
+    },
+    {
+      "path": "original/src/calendar-batch.ts",
+      "sha256": "2fecbb351572d3e9ec835d1d7683d2a608f1fdfeb7559fee1fa1122cee19608d"
+    },
+    {
+      "path": "browser/calendar-model.mjs",
+      "sha256": "bb99ef6728644452f43a49f3bb7f81ed9246603e5b198e76490507c5bceae827"
+    },
+    {
+      "path": "browser/calendar-ui.mjs",
+      "sha256": "afc1f56cde65c320c5a75eba00710335d3a6a774c7e5fdd46daba3f7b6face32"
+    }
+  ]
+}

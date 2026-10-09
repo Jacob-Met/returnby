@@ -1,0 +1,24 @@
+{
+  "main": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b5688812f36338630c21eb5643318a55496ae09b",
+      "size": 409,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/b5688812f36338630c21eb5643318a55496ae09b",
+      "content": "name: Verify ReturnBy\non:\n  pull_request:\n  push:\n    branches: [main]\npermissions:\n  contents: read\njobs:\n  test-and-build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n          cache: npm\n      - run: npm ci\n      - run: npm audit --audit-level=moderate\n      - run: npm test\n      - run: npm run build"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+      "size": 572,
+      "url": "https://api.github.com/repos/Jacob-Met/returnby/git/blobs/a0b5ed32f62e4f9691180a01f579c95619bb290a",
+      "content": "name: pages\non: { push: { branches: [main] } }\npermissions: { contents: read, pages: write, id-token: write }\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    environment: { name: github-pages, url: \"${{ steps.d.outputs.page_url }}\" }\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: { node-version: 20 }\n      - run: npm install && npm test && npm run build\n      - uses: actions/configure-pages@v5\n      - uses: actions/upload-pages-artifact@v3\n        with: { path: dist }\n      - id: d\n        uses: actions/deploy-pages@v4\n"
+    }
+  ],
+  "issue_comment_actions": 0
+}

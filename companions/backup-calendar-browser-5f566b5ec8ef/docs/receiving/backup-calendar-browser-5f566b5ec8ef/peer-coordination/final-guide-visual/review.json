@@ -1,0 +1,40 @@
+{
+  "schema": "returnby.browser.peer-guide-visual/1",
+  "reviewer": "chatgpt:5f566b5ec8ef:coordination",
+  "utc": "2026-10-09T10:42:58.870235+00:00",
+  "disposition": "ACCEPTED",
+  "original_review_sha256": "b81f0b1a252d1518d34fbbb2cfedebdb7a2a9a468fb143f8446d1301af31262c",
+  "original_manifest_sha256": "b321970c9f17218cf842921ed12717cabb709c5f35423275e5351b491bec597f",
+  "guide_findings": [
+    "Read the entire frozen guide. Explicit file inspection, complete native admission, no automatic selection, all source occurrence visibility and completed/blocked refusal match the reviewed source.",
+    "Preview and download are distinct; guide identifies captured timestamp, native deadline/ID ordering, all-day dates, original three-day alarm, and the distinction between ICS download and calendar import/notification.",
+    "Retirement and chooser cancellation descriptions match the source. Byte-copy before digest and fresh output match the actual independent witness.",
+    "Guide states browser timezone and preserves unusual civil-time/local-calendar limits, with no cross-timezone invariance or fresh retailer-eligibility claim.",
+    "Joined accepted source versus canonical main, unchanged seven-file closure, separate accepted CLI, no restore/storage/provider, and unrun integration boundaries are explicit."
+  ],
+  "personally_viewed_images": [
+    {
+      "path": "evidence/browser-v1/desktop-preview.png",
+      "finding": "All three workflow sections, literal source fields, disabled completed/blocked choices, source metadata and two reminder rows are legible. Explicit reviewed-download action and its limits are visible."
+    },
+    {
+      "path": "evidence/browser-v1/phone-preview.png",
+      "finding": "Narrow view keeps file choice, Clear, selection, Preview and Download controls within the page. Source identity and timestamp wrap. Wide/long tables use their bounded internal scroll area; this is not a claim all table columns/rows are visible simultaneously."
+    }
+  ],
+  "author_receipt_read": {
+    "path": "evidence/browser-v1/receipt.json",
+    "exit": 0,
+    "groups": 16,
+    "seconds_inside_receiver": 3.889999999955762,
+    "errors": [],
+    "external_requests": [],
+    "source_unchanged": true,
+    "attribution": "Read saved author result; no peer replay of those16 browser groups."
+  },
+  "limits": [
+    "No new model/browser/build/calendar-app/provider execution.",
+    "No expanded mathematics/date policy, Node20 or cross-timezone qualification.",
+    "Original twelve-file peer packet and manifest remain byte-identical. This addendum is separately transferable."
+  ]
+}

@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ReturnBy//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:early@returnby
+DTSTAMP:20261009T103831Z
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:Return deadline: Shop Ω <img src="https://example.invalid/x">\,\ns
+ econd #A\,\;\\ #
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Return deadline: Shop Ω <img src="https://example.invalid/x">\
+ ,\nsecond #A\,\;\\ #
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:late@returnby
+DTSTAMP:20261009T103831Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Return deadline: Shop Ω <img src="https://example.invalid/x">\,\ns
+ econd #A\,\;\\ #
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Return deadline: Shop Ω <img src="https://example.invalid/x">\
+ ,\nsecond #A\,\;\\ #
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

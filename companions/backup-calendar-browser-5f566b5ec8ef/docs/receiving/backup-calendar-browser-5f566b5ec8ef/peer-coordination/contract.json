@@ -1,0 +1,42 @@
+{
+  "schema": "hamon.outcome-contract.v1",
+  "owner": "chatgpt:5f566b5ec8ef:mac_continuity",
+  "outcome": "Open one exported ReturnBy backup in a separate offline browser page, inspect every source order and prepare explicitly selected native calendar reminders without restoring or changing tracker storage.",
+  "source": {
+    "repository": "Jacob-Met/returnby",
+    "canonical_main": "1e662c387be5f66f8499fac7ec443f58d2198379",
+    "original_joined": "e92e254524d7544cb9b9a615c643fb57507d17e9",
+    "original_tree": "5eb6df3e95d53223a79d346ed8006e5afd1dd3e0",
+    "accepted_cli_issue": 45,
+    "accepted_manifest": "2f3096c64bbf0bb9362dcf2a4c16ed602809678d",
+    "accepted_root_review": "382b10e52c5de81888e0cf1706168dd7f2f894a8",
+    "native_projection": "All seven original source/package files plus unchanged accepted CLI model for independent parity; no full original repository custody claim until separately verified."
+  },
+  "fence": {
+    "new": "New browser-companion namespace, model/controller/template/build/test/guide and receiving evidence only.",
+    "unchanged": "All original backup/calendar/deadline/completion/store/CLI/runtime inputs; no tracker source, existing UI/README/workflow/package/dependency/provider/storage changes.",
+    "owners": "#8/#10/#20 adoption; #19 calendar; #30 completion; #34 end-date; #40 reminder-time; #41 enquiry/composition; #44 backup comparison; #45 CLI/model/receiving remain with owners."
+  },
+  "behavior": [
+    "Explicit local file choice only; strict UTF8, 5MiB whole-file admission and unchanged complete v1/v2 parseBackup before displaying any rows.",
+    "Retain every source occurrence/order including completed or blocked entries. Native 2000-total-order calendar admission remains; completed and blocked choices visible but unselectable. Literal fields use text DOM; no inference of retailer eligibility.",
+    "Begin with no selections. User selects eligible saved IDs by position/identity, then explicit Preview. Preview lists all resulting native reminders, source filename/bytes/SHA256, saved export date, captured UTC review timestamp, all-day deadline dates and three-day alarm. Native sorting/UID/escaping/date arithmetic/4MiB output bound unchanged.",
+    "Capture current timestamp once per admitted file; no changing clock inside a reviewed download. Use original local-calendar behavior, with actual runtime timezone stated in receiving; do not promise cross-timezone invariance.",
+    "Native serializer makes actual output. Output selection/error/document source identity is detached and authentic; forged and stale reviews refuse. Model output is fresh-owned data; exposed mutation cannot change retained downloaded bytes.",
+    "Any new nonempty file selection, Clear, checkbox edit or page retirement cancels older pending read/hash work and retires preview/download, including A→B→A. File chooser cancellation leaves the current state. Refused selection keeps truthful last admitted source only if clearly marked; no stale downloadable review.",
+    "Explicit Download writes one native-named ICS file through browser download only; no automatic download, network, browser storage, backup restoration, provider/calendar import or server. All original files remain unchanged.",
+    "Offline static standalone page; exact unchanged TypeScript inputs are bundled by an existing native build tool, no package/browser install. Builder retains input/blob/hash provenance."
+  ],
+  "qualification": [
+    "Original accepted pure decoder/calendar controls and demonstrable absent standalone browser entry, not replay of all #45 domain tests.",
+    "Focused new model tests including exact native CLI parity for same complete bytes/IDs/timestamp, completed/blocked/unknown/duplicate selection refusal, capture independence and bounds.",
+    "Actual installed Chrome file-input/keyboard/physical ICS download, native parse/parity, late read/hash success/reject, selection retirement, malformed/invalid-late data, desktop/390px; external/storage requests blocked/observed.",
+    "Independent contract-first peer only at new source/lifetime/native-output boundary; existing #45 author/native campaigns remain attributed and not rerun.",
+    "Unique later recipient package with exact source/evidence, preserving existing deliveries; separate workflow/metadata guard before any GitHub write."
+  ],
+  "coordination": {
+    "conscience": "not_attempted under standing disk hold",
+    "flat_record_scan": "1145 direct scalar metadata records screened; PermissionErrors preserved, no universal absence claim",
+    "github": "Current issue45 six? actual comments and accepted root review read; exact open issue titles/backup-browser search read, no companion browser claim found. Source claim must be posted/read back before candidate."
+  }
+}

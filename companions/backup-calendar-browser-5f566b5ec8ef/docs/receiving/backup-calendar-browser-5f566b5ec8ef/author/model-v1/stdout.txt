@@ -1,0 +1,23 @@
+✔ whole native admission keeps source order and completed/blocked states (13.6593ms)
+✔ selected ICS equals unchanged accepted native model for version1/2 and native order (8.9948ms)
+✔ full invalid later row, duplicate identity and unknown field refuse before document (1.3985ms)
+✔ byte and total-order limits remain original admission (98.4155ms)
+✔ captured input is copied before digest await (1.2414ms)
+✔ documents, reviews and caller selection are detached and recursively frozen (1.7783ms)
+✔ forged document/review and a different authentic same-byte document refuse (1.4645ms)
+✔ download bytes are a fresh copy and preserve the complete authentic review (1.057ms)
+✔ completed blocked unknown duplicate and empty selected IDs all refuse (1.1997ms)
+✔ ordinary selection change and A-B-A epoch changes retire a saved preview (1.6021ms)
+✔ refused preparation and new preview both retire previous preview (2.5476ms)
+✔ retired source cannot prepare or export, including same bytes selected again (1.3297ms)
+✔ canonical timestamp, byte type and filename boundaries are explicit (0.8137ms)
+✔ empty backup is inspected without selecting an implicit event (0.5026ms)
+✔ unchanged serializer output-size guard refuses a fully admitted oversized selection (54.5151ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 370.037

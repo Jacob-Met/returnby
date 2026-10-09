@@ -1,0 +1,42 @@
+{
+  "schema": "returnby.browser.peer-blind-expectations/1",
+  "actor": "chatgpt:5f566b5ec8ef:coordination",
+  "utc": "2026-10-09T10:31:14.875590+00:00",
+  "contract_sha256": "6bd1aed6f2ba464333cc1398a4117c5fdc201f4bc43735679aa225027fc8b403",
+  "candidate_exposure": "Only declared file/API names and hashes received; no product or author tests read.",
+  "cases": [
+    {
+      "id": "mixed-identity",
+      "expectation": "Same visible labels with distinct saved IDs remain separate source occurrences. Completed/blocked records remain visible in their original order; selecting either refuses. Eligible selected IDs alone reach the original native calendar serializer."
+    },
+    {
+      "id": "exact-consumer",
+      "expectation": "For authored UTF8 names with punctuation/newlines and distinct dates, selected ICS bytes equal the unchanged accepted model on exactly the same complete backup bytes, IDs and fixed UTC timestamp. Preserve native UID/escaping/ordering/alarm behavior. Record actual process timezone; do not infer cross-timezone parity."
+    },
+    {
+      "id": "source-authenticity",
+      "expectation": "Two independently admitted documents with identical filename/content still have distinct lifetime identity. A review from one cannot download with the other, nor with a JSON-cloned/forged document/review. Harmless raw whitespace changes must retain parsed behavior while binding the actual different byte count/hash."
+    },
+    {
+      "id": "queued-snapshot",
+      "expectation": "If hash completion is delayed and caller mutates the original Uint8Array meanwhile, admission must use one consistent captured byte snapshot or refuse. Never combine a digest for one byte sequence with decoded rows from another."
+    },
+    {
+      "id": "fresh-output",
+      "expectation": "Mutating caller-owned selected-ID arrays or returned download bytes cannot alter retained selected source or later bytes. A first download mutation must not corrupt a second download from the still-current authentic review."
+    },
+    {
+      "id": "retirement",
+      "expectation": "Explicit review retirement makes the previous review unusable even when IDs return A\u2192B\u2192A. Retiring a document prevents new previews and old downloads; another valid document remains usable. Malformed or invalid complete backup never leaks partial admitted rows."
+    },
+    {
+      "id": "ui-source-lifetime",
+      "expectation": "Source-review only: each file-read/hash continuation requires current generation; file/checkbox/Clear/page retirement invalidate the current review before asynchronous work; chooser cancellation retains current document without starting new work. Refusal may show prior admitted metadata truthfully but must not leave old download enabled. No restore/storage/network/import action."
+    }
+  ],
+  "not_claimed": [
+    "No author15/fullnative/browser campaign replay.",
+    "No imposed cross-timezone invariance.",
+    "No independent UI/browser execution unless a separate consequential source finding justifies it."
+  ]
+}

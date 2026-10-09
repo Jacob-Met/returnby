@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { existsSync, readFileSync } from 'node:fs';
+import { inspectBackup, planBackupCalendar } from './source/original/tools/backup_calendar_model.mjs';
+const at='2026-10-09T12:00:00.000Z';
+const order=(id,extra={})=>({id,merchant:'Store Ω,;\\\nline',orderNo:'literal <em> #',total:'12.34',orderDate:'2026-10-01',windowDays:30,windowSource:'user',createdAt:'2026-10-01T12:00:00.000Z',...extra});
+const doc={schema:'returnby.backup',version:2,exportedAt:at,orders:[order('open'),order('done',{completedAt:at}),order('edge',{orderDate:'9999-12-30',windowDays:1})]};
+const bytes=new TextEncoder().encode(JSON.stringify(doc));
+const inspection=inspectBackup(bytes,at);
+assert.deepEqual(inspection.rows.map(x=>[x.id,x.status]),[['open','eligible'],['done','completed'],['edge','blocked']]);
+const plan=planBackupCalendar(bytes,['open'],at);
+assert.equal(plan.reminders.length,1);assert.equal(plan.reminders[0].due,'2026-10-31');
+assert.match(plan.content,/UID:open@returnby\r\n/);assert.match(plan.content,/TRIGGER:-P3D/);
+assert.throws(()=>planBackupCalendar(bytes,['done'],at));assert.throws(()=>planBackupCalendar(bytes,['edge'],at));
+assert.equal(existsSync(new URL('./source/browser/calendar.html',import.meta.url)),false);
+console.log(JSON.stringify({checks:['Complete original v2 admission retains eligible/completed/blocked source rows','Exact original selected calendar serializes one unchanged date/ID/alarm and refuses completed/blocked','Separate offline browser entry absent'],count:3,at,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone,inspection,calendar:plan.content}));

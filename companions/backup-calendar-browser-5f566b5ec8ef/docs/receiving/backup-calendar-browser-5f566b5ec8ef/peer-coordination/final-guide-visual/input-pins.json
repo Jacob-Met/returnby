@@ -1,0 +1,33 @@
+{
+  "owner_root": "D:\\HAMON\\returnby-backup-calendar-browser-5f566b5ec8ef",
+  "files": {
+    "source/browser/README.md": {
+      "bytes": 5184,
+      "sha256": "b6417cd357ef7b330e356697f47b7a0d1624908f43446fca4d802b0a6bf0ea8f"
+    },
+    "source/browser/calendar-model.mjs": {
+      "bytes": 4530,
+      "sha256": "bb99ef6728644452f43a49f3bb7f81ed9246603e5b198e76490507c5bceae827"
+    },
+    "source/browser/calendar-ui.mjs": {
+      "bytes": 7861,
+      "sha256": "afc1f56cde65c320c5a75eba00710335d3a6a774c7e5fdd46daba3f7b6face32"
+    },
+    "source/browser/calendar.html": {
+      "bytes": 32162,
+      "sha256": "286ee45daab73f43e9d5b07f53afb9f0d33a967515e8910c4c2d03843fa561ad"
+    },
+    "evidence/browser-v1/receipt.json": {
+      "bytes": 3316,
+      "sha256": "7cd45ce578364e3824644b925571e68a64f7ee08c29e66bd72b1fcb334846afd"
+    },
+    "evidence/browser-v1/desktop-preview.png": {
+      "bytes": 186511,
+      "sha256": "f09c6b9e9a48e062803b11e9be8398f685309a2e51a24a3ba55ad55988cd62eb"
+    },
+    "evidence/browser-v1/phone-preview.png": {
+      "bytes": 153269,
+      "sha256": "4f47d2109ac637b377312fdb5a7e188a0d409105f355e98b5f82d1a7a72dddef"
+    }
+  }
+}

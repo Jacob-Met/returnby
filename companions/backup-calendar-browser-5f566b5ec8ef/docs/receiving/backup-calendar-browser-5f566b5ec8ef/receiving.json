@@ -1,0 +1,22 @@
+{
+  "schema": "hamon.qualified-native-source.v1",
+  "at": "2026-10-09T10:45:24.460220+00:00",
+  "product_head": "b35de41214dfcd5708878d97aa5d400446687619",
+  "original_native_projection": "a0f3688eae03f83b8099c994d2132835fc88214a",
+  "canonical_main": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "accepted_joined_parent": "e92e254524d7544cb9b9a615c643fb57507d17e9",
+  "claim_comment": 6078976957,
+  "source_fence": "Additive browser companion only, exact original8 inputs and canonicalLICENSE retained. No original source/CLI/tracker/workflow edits.",
+  "phases": {
+    "original": 3,
+    "new_model": 15,
+    "new_browser": 16,
+    "independent_model": 7,
+    "independent_guide_visual": "accepted, no run"
+  },
+  "limits": "These are distinct campaigns, not a summed unique-test claim. No replay of original45 full campaigns. Browser late-read/digest controls use named test-only async seams. Native build outer exit not recovered; exact artifact/inputs/emittedreceipt and browser execution retained. No root personal review, tracker adoption, provider or calendar import claim.",
+  "entry": "browser/calendar.html",
+  "docs": "browser/README.md",
+  "conscience": "not_attempted",
+  "actions": "held; no ref/PR/main/workflow effect"
+}

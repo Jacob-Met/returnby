@@ -1,0 +1,56 @@
+{
+  "schema": "hamon.author-receiving.v1",
+  "at": "2026-10-09T10:41:37.328016+00:00",
+  "product_head": "b35de41214dfcd5708878d97aa5d400446687619",
+  "tree": "95353fdcf7eb2f5e8d4a072e51d1a59fb3dbc780",
+  "author": "chatgpt:5f566b5ec8ef:mac_continuity",
+  "original": {
+    "groups": 3,
+    "result": "passed; source rows, native selection and absent new browser entry; no original fullsuite replay"
+  },
+  "model": {
+    "tests": 15,
+    "pass": 15,
+    "exit": 0,
+    "seconds": 0.43700000003445894
+  },
+  "browser": {
+    "groups": 16,
+    "exit": 0,
+    "wrapper_seconds": 4.26600000000326,
+    "runtime": "installed Chrome154, normal sandbox, file://",
+    "real": "Actual fileinput, keyboard, no default selection, pagination80, physical848B ICS exactly equals unchanged acceptednative output at captured timestamp, malformed/invalidlater/empty, completed/blocked, selectionABA, chooserempty, zeroexternal/storage/pageerror",
+    "controlled_seams": "Explicit helper substitution delays File.arrayBuffer or actual crypto.subtle.digest promises; actual model/UI continue through those gates. Not a physical asynchronous filesystem race claim."
+  },
+  "build": {
+    "esbuild": "0.25.12",
+    "html_bytes": 32162,
+    "sha256": "286ee45daab73f43e9d5b07f53afb9f0d33a967515e8910c4c2d03843fa561ad",
+    "evidence": "build-v1/stdout.json and empty stderr; exact generated artifact executed bybrowser. Initial outer build wrapper exit was not recovered after RDCsessionexpiry; no fabricated exit claim."
+  },
+  "images": [
+    {
+      "path": "browser-v1/desktop-preview.png",
+      "bytes": 186511,
+      "sha256": "f09c6b9e9a48e062803b11e9be8398f685309a2e51a24a3ba55ad55988cd62eb",
+      "personally_viewed_by": "chatgpt:5f566b5ec8ef:mac_continuity"
+    },
+    {
+      "path": "browser-v1/phone-preview.png",
+      "bytes": 153269,
+      "sha256": "4f47d2109ac637b377312fdb5a7e188a0d409105f355e98b5f82d1a7a72dddef",
+      "personally_viewed_by": "chatgpt:5f566b5ec8ef:mac_continuity"
+    }
+  ],
+  "visual": "Desktop and390px actual captures personally viewed. All controls/text within viewport; full multi-column data intentionally uses internal table scrolling. No clipped outer layout.",
+  "corrections": "No product correction after first native/browser campaigns. An unexecuted browser-helper draft had a duplicate keyword fixture construction removed before invocation; draft retained. An orchestration String.raw parse error wrote no product bytes.",
+  "preservation": "All8 accepted input blobs remain exact. License is exact current canonicalMIT blob. No tracker, originalCLI/model, Store, original package/workflow changed.",
+  "limitations": [
+    "Qualified component projection, not fulljoined/main clone or adoptedtracker.",
+    "No source restoration, browser storage/network, provider/calendar import, actual reminder firing or retailer eligibility claim.",
+    "One captured timestamp and unchanged local-date semantics; actualMSI timezoneAmerica/Los_Angeles, no cross-timezone campaign.",
+    "Standalone browser download does not carry CLI exclusive filesystem publication guarantee.",
+    "Root personal receiving not claimed; independent peer source/control acceptance remains separately attributed.",
+    "No DBwrite,Actions,ref,PR,main,install or newhosting."
+  ]
+}

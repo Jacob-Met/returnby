@@ -1,0 +1,124 @@
+{
+  "at": "2026-10-09T10:23:21.954607+00:00",
+  "exit": 0,
+  "head": "a0f3688eae03f83b8099c994d2132835fc88214a",
+  "input_files": [
+    {
+      "path": "tools/backup_calendar_model.mjs",
+      "git": "f0644f10b2ae6fe597217ad4aedf3f1bffe49583",
+      "bytes": 4143,
+      "sha256": "4bde19840c6953cefadd194aa5716a0c0d154aae7edcf245d983a2bbaa9b081d",
+      "beforeGit": null
+    },
+    {
+      "path": "src/backup.ts",
+      "git": "6ce5062a5ffbda315cae6559dddb41c6ec5a57f8",
+      "bytes": 7583,
+      "sha256": "f496467c4a7cb96e2638869e2727dac10a6a84c89fb5032f723e21c02c799778"
+    },
+    {
+      "path": "src/ics.ts",
+      "git": "58c873a116ed6b265864cb3e7d5b0dd27fd81544",
+      "bytes": 2263,
+      "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523"
+    },
+    {
+      "path": "src/calendar-batch.ts",
+      "git": "a7f490349a6fd1bb8dd01438f0e614e4dae4f2b3",
+      "bytes": 6239,
+      "sha256": "2fecbb351572d3e9ec835d1d7683d2a608f1fdfeb7559fee1fa1122cee19608d"
+    },
+    {
+      "path": "src/deadline.ts",
+      "git": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "bytes": 837,
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "path": "src/completion.ts",
+      "git": "579b8e2c7b4098a39824ba82cd43bc04b87e2a16",
+      "bytes": 2915,
+      "sha256": "ea58ab75a327e5947d9b9ac13989eebd5e3ad3047febc629ce5543d06bd24fc7"
+    },
+    {
+      "path": "src/store.ts",
+      "git": "c46afe6a95e2e3e371b5d2340b85ba7e01deeda1",
+      "bytes": 1543,
+      "sha256": "0b9ce79275c8df1ded6d5840750d00e23031529b9af8f3401231b057b22267ca"
+    },
+    {
+      "path": "package.json",
+      "git": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "bytes": 313,
+      "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c"
+    }
+  ],
+  "status": "",
+  "process": "actual installed Node24.19.0; original module only; not original fullcampaign replay",
+  "result": {
+    "checks": [
+      "Complete original v2 admission retains eligible/completed/blocked source rows",
+      "Exact original selected calendar serializes one unchanged date/ID/alarm and refuses completed/blocked",
+      "Separate offline browser entry absent"
+    ],
+    "count": 3,
+    "at": "2026-10-09T12:00:00.000Z",
+    "timeZone": "America/Los_Angeles",
+    "inspection": {
+      "format": "returnby.backup-calendar-inspection/1",
+      "source": {
+        "sha256": "fe925e879793b782598bcbe4d8a9a61a8e4a2cd401472d5602492cc746901935",
+        "bytes": 704,
+        "version": 2,
+        "exportedAt": "2026-10-09T12:00:00.000Z"
+      },
+      "at": "2026-10-09T12:00:00.000Z",
+      "total": 3,
+      "eligible": 1,
+      "completed": 1,
+      "blocked": 1,
+      "rows": [
+        {
+          "position": 1,
+          "id": "open",
+          "merchant": "Store \u03a9,;\\\nline",
+          "orderNo": "literal <em> #",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "completedAt": null,
+          "status": "eligible",
+          "due": "2026-10-31",
+          "problem": null
+        },
+        {
+          "position": 2,
+          "id": "done",
+          "merchant": "Store \u03a9,;\\\nline",
+          "orderNo": "literal <em> #",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "completedAt": "2026-10-09T12:00:00.000Z",
+          "status": "completed",
+          "due": null,
+          "problem": "This return is completed."
+        },
+        {
+          "position": 3,
+          "id": "edge",
+          "merchant": "Store \u03a9,;\\\nline",
+          "orderNo": "literal <em> #",
+          "orderDate": "9999-12-30",
+          "windowDays": 1,
+          "windowSource": "user",
+          "completedAt": null,
+          "status": "blocked",
+          "due": null,
+          "problem": "The calendar deadline must be before 9999-12-31."
+        }
+      ]
+    },
+    "calendar": "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//ReturnBy//EN\r\nCALSCALE:GREGORIAN\r\nBEGIN:VEVENT\r\nUID:open@returnby\r\nDTSTAMP:20261009T120000Z\r\nDTSTART;VALUE=DATE:20261031\r\nDTEND;VALUE=DATE:20261101\r\nSUMMARY:Return deadline: Store \u03a9\\,\\;\\\\\\nline #literal <em> #\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:Return deadline: Store \u03a9\\,\\;\\\\\\nline #literal <em> #\r\nTRIGGER:-P3D\r\nEND:VALARM\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n"
+  }
+}

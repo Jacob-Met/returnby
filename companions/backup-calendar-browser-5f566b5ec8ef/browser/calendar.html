@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-JaMzVlb1tGiHa5svFiq8vYa/2zLRI6ehRssR43gofHc='; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>ReturnBy · Reminders from a saved backup</title><style>
+:root{color-scheme:light;--ink:#172b36;--muted:#526371;--teal:#0c6668;--line:#c5d2d8;--paper:#fff;--bg:#eff4f5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,sans-serif}main{max-width:1180px;margin:auto;padding:clamp(18px,4vw,48px)}header{max-width:780px;margin-bottom:30px}.eyebrow{color:var(--teal);font-size:13px;font-weight:750;letter-spacing:.1em}h1{font:600 clamp(34px,5vw,54px)/1.1 Georgia,serif;letter-spacing:-.02em;margin:16px 0}h2{font-size:24px;margin:0 0 12px}p{margin:.65em 0}section{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:clamp(16px,3vw,26px);margin:20px 0}.muted{color:var(--muted)}.stack{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.stack>*{max-width:100%}button{border:1px solid var(--teal);border-radius:8px;padding:10px 16px;color:var(--teal);background:white;font:600 15px/1.35 system-ui;cursor:pointer}button.primary{background:var(--teal);color:white}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible{outline:3px solid #edb34d;outline-offset:3px}input[type=file]{width:min(100%,570px);font:inherit}input[type=checkbox]{width:20px;height:20px;accent-color:var(--teal)}label{font-weight:700;display:block;margin-bottom:10px}.scroll{overflow:auto;max-height:580px;border:1px solid var(--line);border-radius:9px;margin:16px 0;overscroll-behavior:contain}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid #e2e9ec;white-space:pre-wrap;min-width:120px;max-width:330px;overflow-wrap:anywhere}th{background:#e7f0f1;position:sticky;top:0;font-size:12px;text-transform:uppercase;letter-spacing:.03em}th:first-child,td:first-child{min-width:65px}code,.hash{font:13px/1.6 ui-monospace,monospace;overflow-wrap:anywhere}.metadata{display:grid;gap:8px;padding:14px;background:#f0f5f6;border-radius:9px}.metadata p{margin:0;overflow-wrap:anywhere}#status{min-height:28px;padding:14px;border-left:4px solid var(--teal);background:#e4f0ee;overflow-wrap:anywhere}.error{border-left-color:#a0332a!important;background:#fff0ed!important;color:#822a25}#count,#selected-count{font-weight:700}.note{border-left:3px solid #d6a348;padding-left:13px}.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}[hidden]{display:none!important}footer{font-size:14px;color:var(--muted);margin:24px 0}a{color:var(--teal)}
+@media(max-width:500px){main{padding:18px}section{padding:16px;border-radius:12px}h2{font-size:22px}.stack button{flex:1 1 auto}.scroll{max-height:450px}.nav{align-items:flex-start}}
+</style></head><body><main>
+<header><div class="eyebrow">RETURNBY · LOCAL BACKUP COMPANION</div><h1>Choose the reminders.<br>Keep the backup untouched.</h1><p>Open an exported ReturnBy backup, inspect the saved orders and download a calendar for the ones you select. Nothing is restored into the tracker.</p><p class="muted">This page works offline. Your chosen file stays in this tab; no account or service is contacted.</p></header>
+<section aria-labelledby="open-heading"><h2 id="open-heading">1. Inspect a backup</h2><label for="choose">Choose a ReturnBy backup JSON file</label><div class="stack"><input id="choose" type="file" accept=".json,application/json"><button id="clear" type="button">Clear view</button></div><p class="muted">Version 1 or 2 · up to 5 MiB and 2,000 saved orders. Complete admission runs before any row appears.</p><p id="loading" hidden>Reading and hashing the selected file…</p></section>
+<p id="status" role="status" aria-live="polite">Choose a backup to begin. No file has been opened.</p>
+<section id="source" hidden aria-labelledby="select-heading"><h2 id="select-heading">2. Choose reminders</h2><div class="metadata"><p><strong id="source-name"></strong></p><p id="source-details"></p><p id="source-clock"></p><p>Exact source SHA-256: <span id="source-hash" class="hash"></span></p></div><p id="count"></p><p class="note">Completed orders stay visible and cannot create a new reminder. A blocked order needs correction in the tracker. These are saved deadlines, not a fresh check of a retailer’s return policy.</p><div class="stack"><button id="select-all" type="button">Select all eligible</button><button id="clear-selection" type="button" disabled>Clear selection</button><span id="selected-count">0 selected</span></div><div class="scroll" role="region" aria-label="All source orders, in saved order" tabindex="0"><table><thead><tr><th>Include</th><th>Source row</th><th>Store</th><th>Order number</th><th>Saved ID</th><th>Order date</th><th>Saved window</th><th>Deadline</th><th>Saved total</th><th>Calendar state</th><th>Completed at</th></tr></thead><tbody id="rows"></tbody></table></div><div class="nav"><button id="previous" type="button">Previous 50</button><span id="page-label"></span><button id="next" type="button">Next 50</button></div><p class="muted">Selections remain while you move between source pages. No orders are selected automatically.</p><button id="prepare" class="primary" type="button" disabled>Preview selected reminders</button></section>
+<section id="preview" hidden aria-labelledby="preview-heading"><h2 id="preview-heading" tabindex="-1">3. Review this calendar</h2><p id="preview-summary"></p><p id="preview-binding" class="hash"></p><p>Every selected reminder is an <strong>all-day deadline</strong>, with the existing <strong>three-day-before display alarm</strong>. Events appear in native deadline/ID order. Your calendar app controls how imported alarms are displayed.</p><div class="scroll" role="region" aria-label="Complete selected reminder preview" tabindex="0"><table><thead><tr><th>Event</th><th>Saved ID</th><th>Store</th><th>Order number</th><th>All-day deadline</th></tr></thead><tbody id="preview-body"></tbody></table></div><button id="download" class="primary" type="button" disabled>Download reviewed calendar</button><p class="muted">Creates an ICS download only. It does not import into a calendar, send notifications or change an order. A selection change requires a new preview.</p></section>
+<footer>Closing or reloading this page clears its temporary view. Keep your original backup. Native ReturnBy admission, calendar limits, sorting, text escaping and date rules are preserved. Unusual historical timezone transitions can affect inherited local-date arithmetic; this companion does not redefine those rules.</footer>
+</main><script>(() => {
+  // original/src/deadline.ts
+  var toDate = (s) => {
+    const [y, m, d] = s.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  };
+  var fmt = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  function dueDate(orderDate, days) {
+    const d = toDate(orderDate);
+    d.setDate(d.getDate() + days);
+    return fmt(d);
+  }
+  function daysLeft(due, today) {
+    const ms = toDate(due).getTime() - toDate(today).getTime();
+    return Math.round(ms / 864e5);
+  }
+  var todayISO = () => fmt(/* @__PURE__ */ new Date());
+
+  // original/src/backup.ts
+  var MAX_BACKUP_BYTES = 5 * 1024 * 1024;
+  var MAX_BACKUP_ORDERS = 1e4;
+  var LEGACY_ORDER_KEYS = ["id", "merchant", "orderNo", "total", "orderDate", "windowDays", "windowSource", "createdAt"];
+  var ORDER_KEYS = [...LEGACY_ORDER_KEYS, "completedAt"];
+  var encoder = new TextEncoder();
+  var SIZE_TIMESTAMP = "2000-01-01T00:00:00.000Z";
+  var BackupError = class extends Error {
+  };
+  function object(value, label) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) throw new BackupError(`${label} must be an object.`);
+    return value;
+  }
+  function onlyKeys(value, keys, label) {
+    if (Object.keys(value).some((key) => !keys.includes(key))) throw new BackupError(`${label} contains unsupported fields.`);
+  }
+  function text(value, label, limit = 4096) {
+    if (typeof value !== "string" || value.length > limit) throw new BackupError(`${label} must be text of at most ${limit} characters.`);
+    return value;
+  }
+  function isDate(value) {
+    if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value) || Number(value.slice(0, 4)) < 1e3) return false;
+    const date = /* @__PURE__ */ new Date(`${value}T00:00:00Z`);
+    return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value;
+  }
+  function timestamp(value, label) {
+    const s = text(value, label, 35);
+    if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/.test(s) || !isDate(s.slice(0, 10)) || !Number.isFinite(Date.parse(s)) || Number(s.slice(11, 13)) > 23) {
+      throw new BackupError(`${label} must be a valid timestamp with a timezone.`);
+    }
+    return s;
+  }
+  function order(value, index, strict, version) {
+    const label = `Order ${index + 1}`;
+    const row = object(value, label);
+    if (strict) onlyKeys(row, version === 1 ? LEGACY_ORDER_KEYS : ORDER_KEYS, label);
+    const id = text(row.id, `${label} ID`, 128);
+    if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(id)) throw new BackupError(`${label} has an invalid ID.`);
+    if (!isDate(row.orderDate)) throw new BackupError(`${label} has an invalid order date.`);
+    if (!Number.isSafeInteger(row.windowDays) || row.windowDays < 1 || row.windowDays > 37e5 || !isDate(dueDate(row.orderDate, row.windowDays))) throw new BackupError(`${label} has an invalid return window.`);
+    if (!["policy", "default", "user"].includes(row.windowSource)) throw new BackupError(`${label} has an invalid window source.`);
+    return {
+      id,
+      merchant: text(row.merchant, `${label} store`),
+      orderNo: row.orderNo === void 0 ? "" : text(row.orderNo, `${label} number`),
+      total: row.total === void 0 ? "" : text(row.total, `${label} total`),
+      orderDate: row.orderDate,
+      windowDays: row.windowDays,
+      windowSource: row.windowSource,
+      createdAt: timestamp(row.createdAt, `${label} creation time`),
+      ...row.completedAt === void 0 ? {} : { completedAt: timestamp(row.completedAt, `${label} completion time`) }
+    };
+  }
+  function orders(value, strict = true, version = 2) {
+    if (!Array.isArray(value) || value.length > MAX_BACKUP_ORDERS) throw new BackupError(`Expected at most ${MAX_BACKUP_ORDERS.toLocaleString("en-US")} saved orders.`);
+    const seen = /* @__PURE__ */ new Set();
+    return value.map((value2, index) => {
+      const row = order(value2, index, strict, version);
+      if (seen.has(row.id)) throw new BackupError(`Order ${index + 1} repeats an ID in this list.`);
+      seen.add(row.id);
+      return row;
+    });
+  }
+  function document2(rows, exportedAt) {
+    return { schema: "returnby.backup", version: rows.some((row) => row.completedAt !== void 0) ? 2 : 1, exportedAt, orders: rows };
+  }
+  function fits(output) {
+    return encoder.encode(output).byteLength <= MAX_BACKUP_BYTES;
+  }
+  function portable(rows, message) {
+    if (!fits(JSON.stringify(document2(rows, SIZE_TIMESTAMP)) + "\n")) throw new BackupError(message);
+  }
+  function parseBackup(input) {
+    if (encoder.encode(input).byteLength > MAX_BACKUP_BYTES) throw new BackupError("Choose a backup no larger than 5 MiB.");
+    let parsed;
+    try {
+      parsed = JSON.parse(input);
+    } catch {
+      throw new BackupError("This file is not valid JSON. Choose a ReturnBy backup.");
+    }
+    const doc = object(parsed, "Backup");
+    if (doc.schema !== "returnby.backup" || doc.version !== 1 && doc.version !== 2) throw new BackupError("This backup format or version is not supported.");
+    onlyKeys(doc, ["schema", "version", "exportedAt", "orders"], "Backup");
+    timestamp(doc.exportedAt, "Backup export time");
+    const rows = orders(doc.orders, true, doc.version);
+    portable(rows, "The normalized saved details would exceed the 5 MiB backup limit.");
+    return rows;
+  }
+
+  // original/src/ics.ts
+  var esc = (s) => s.replace(/\\/g, "\\\\").replace(/\r\n|\r|\n/g, "\\n").replace(/[,;]/g, (c) => "\\" + c).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "�");
+  var encoder2 = new TextEncoder();
+  function fold(line) {
+    let output = "", bytes = 0;
+    for (const character of line) {
+      const size = encoder2.encode(character).byteLength;
+      if (bytes + size > 75) {
+        output += "\r\n ";
+        bytes = 1;
+      }
+      output += character;
+      bytes += size;
+    }
+    return output;
+  }
+  function eventLines(o, ts) {
+    const d = o.due.replace(/-/g, "");
+    const end = new Date(+o.due.slice(0, 4), +o.due.slice(5, 7) - 1, +o.due.slice(8, 10) + 1);
+    const e = `${end.getFullYear()}${String(end.getMonth() + 1).padStart(2, "0")}${String(end.getDate()).padStart(2, "0")}`;
+    const title = esc(`Return deadline: ${o.merchant || "order"}${o.orderNo ? " #" + o.orderNo : ""}`);
+    return [
+      "BEGIN:VEVENT",
+      `UID:${esc(o.id)}@returnby`,
+      `DTSTAMP:${ts}`,
+      `DTSTART;VALUE=DATE:${d}`,
+      `DTEND;VALUE=DATE:${e}`,
+      `SUMMARY:${title}`,
+      "BEGIN:VALARM",
+      "ACTION:DISPLAY",
+      `DESCRIPTION:${title}`,
+      "TRIGGER:-P3D",
+      "END:VALARM",
+      "END:VEVENT"
+    ];
+  }
+  function buildIcsCalendar(reminders, stamp = /* @__PURE__ */ new Date()) {
+    const ts = stamp.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    return [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//ReturnBy//EN",
+      "CALSCALE:GREGORIAN",
+      ...reminders.flatMap((reminder2) => eventLines(reminder2, ts)),
+      "END:VCALENDAR",
+      ""
+    ].map(fold).join("\r\n");
+  }
+
+  // original/src/completion.ts
+  var isCompleted = (order2) => order2.completedAt !== void 0;
+
+  // original/src/calendar-batch.ts
+  var CalendarBatchError = class extends Error {
+  };
+  var compare = (a, b) => a < b ? -1 : a > b ? 1 : 0;
+  var encoder3 = new TextEncoder();
+  var decoder = new TextDecoder();
+  var MAX_CALENDAR_BYTES = 4 * 1024 * 1024;
+  var sizeError = () => new CalendarBatchError("This calendar is larger than 4 MiB. Select fewer returns.");
+  function isCalendarDate(value) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || Number(value.slice(0, 4)) < 1e3) return false;
+    const date = /* @__PURE__ */ new Date(`${value}T00:00:00Z`);
+    return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value;
+  }
+  function reminder(order2) {
+    if (isCompleted(order2)) throw new CalendarBatchError("This return is completed. Reopen it before creating a new reminder.");
+    if (typeof order2.id !== "string" || !order2.id.length || order2.id.length > 4096 || /[\u0000-\u001f\u007f]/.test(order2.id) || decoder.decode(encoder3.encode(order2.id)) !== order2.id) {
+      throw new CalendarBatchError("This return has an unsupported calendar identity.");
+    }
+    if (typeof order2.merchant !== "string" || order2.merchant.length > 4096 || order2.orderNo !== void 0 && (typeof order2.orderNo !== "string" || order2.orderNo.length > 4096)) {
+      throw new CalendarBatchError("Store and order number must each be at most 4,096 characters.");
+    }
+    if (!isCalendarDate(order2.orderDate)) {
+      throw new CalendarBatchError("Correct the order date before exporting this return.");
+    }
+    if (!Number.isSafeInteger(order2.windowDays) || order2.windowDays < 1 || order2.windowDays > 37e5) {
+      throw new CalendarBatchError("Correct the return window to a positive whole number of days.");
+    }
+    const due = dueDate(order2.orderDate, order2.windowDays);
+    if (!isCalendarDate(due) || !isCalendarDate(dueDate(due, 1))) {
+      throw new CalendarBatchError("The calendar deadline must be before 9999-12-31.");
+    }
+    return { id: order2.id, merchant: order2.merchant, orderNo: order2.orderNo, due };
+  }
+  function calendarRows(orders2, today = todayISO()) {
+    if (orders2.length > 2e3) throw new CalendarBatchError("Export supports up to 2,000 saved returns at a time.");
+    if (!isCalendarDate(today)) throw new CalendarBatchError("The current calendar date could not be read.");
+    const counts = /* @__PURE__ */ new Map();
+    for (const order2 of orders2) counts.set(order2.id, (counts.get(order2.id) ?? 0) + 1);
+    return orders2.filter((value) => !isCompleted(value)).map((value) => {
+      const order2 = { ...value };
+      try {
+        if (counts.get(order2.id) !== 1) throw new CalendarBatchError("More than one saved return uses this calendar identity.");
+        const { due } = reminder(order2);
+        return { order: order2, due, left: daysLeft(due, today), problem: null };
+      } catch (error) {
+        return { order: order2, due: null, left: null, problem: error instanceof Error ? error.message : "This return cannot be exported." };
+      }
+    }).sort((a, b) => compare(a.due ?? "~~~~", b.due ?? "~~~~") || compare(a.order.id, b.order.id));
+  }
+  var fingerprint = (order2) => JSON.stringify([
+    order2.id,
+    order2.merchant,
+    order2.orderNo ?? "",
+    order2.orderDate,
+    order2.windowDays
+  ]);
+  function planCalendarBatch(current2, reviewed, selectedIds, stamp = /* @__PURE__ */ new Date()) {
+    if (!selectedIds.length) throw new CalendarBatchError("Select at least one return to download.");
+    const selected2 = new Set(selectedIds);
+    if (selected2.size !== selectedIds.length) throw new CalendarBatchError("A return cannot be included twice in one calendar.");
+    if (!Number.isFinite(stamp.getTime()) || stamp.getUTCFullYear() < 1e3 || stamp.getUTCFullYear() > 9999) {
+      throw new CalendarBatchError("The calendar timestamp could not be read.");
+    }
+    const fresh = calendarRows(current2, stamp.toISOString().slice(0, 10));
+    for (const id of selected2) {
+      const before = reviewed.filter((row) => row.order.id === id);
+      const after = fresh.filter((row) => row.order.id === id);
+      if (before.length !== 1 || before[0].problem) throw new CalendarBatchError("A selected return was not ready for export. Reload and review it.");
+      if (after.length !== 1 || after[0].problem || fingerprint(before[0].order) !== fingerprint(after[0].order)) {
+        throw new CalendarBatchError("A selected return changed or was removed. Reload saved returns and review the selection before downloading.");
+      }
+    }
+    const reminders = fresh.filter((row) => selected2.has(row.order.id)).map((row) => reminder(row.order));
+    const minimumBytes = reminders.reduce((bytes, value) => bytes + encoder3.encode(value.id).byteLength + 2 * encoder3.encode(`Return deadline: ${value.merchant || "order"}${value.orderNo ? " #" + value.orderNo : ""}`).byteLength, 0);
+    if (minimumBytes > MAX_CALENDAR_BYTES) throw sizeError();
+    const content = buildIcsCalendar(reminders, stamp);
+    if (encoder3.encode(content).byteLength > MAX_CALENDAR_BYTES) throw sizeError();
+    return { content, count: reminders.length, reminders, filename: `returnby-reminders-${stamp.toISOString().slice(0, 10)}.ics` };
+  }
+
+  // browser/calendar-model.mjs
+  var documents = /* @__PURE__ */ new WeakMap();
+  var reviews = /* @__PURE__ */ new WeakMap();
+  var encoder4 = new TextEncoder();
+  var freeze = (value) => {
+    if (value && typeof value === "object") {
+      for (const child of Object.values(value)) freeze(child);
+      Object.freeze(value);
+    }
+    return value;
+  };
+  function timestamp2(value) {
+    if (typeof value !== "string" || !/^[1-9]\d{3}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) || !Number.isFinite(Date.parse(value)) || new Date(value).toISOString() !== value) {
+      throw new Error("The review timestamp must be a valid canonical UTC time, years 1000–9999.");
+    }
+    return value;
+  }
+  function current(document3) {
+    const state = documents.get(document3);
+    if (!state) throw new Error("Choose and inspect a backup again before preparing reminders.");
+    return state;
+  }
+  function selection(ids2) {
+    if (!Array.isArray(ids2) || ids2.length < 1 || ids2.length > 2e3 || ids2.some((id) => typeof id !== "string" || !/^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(id)) || new Set(ids2).size !== ids2.length) throw new Error("Choose 1–2,000 distinct eligible saved IDs.");
+    return [...ids2];
+  }
+  async function inspectBackupFile(input, name, at) {
+    if (!(input instanceof Uint8Array)) throw new Error("Choose UTF-8 backup bytes.");
+    if (input.byteLength > MAX_BACKUP_BYTES) throw new Error("Choose a backup no larger than 5 MiB.");
+    if (typeof name !== "string" || name.length > 4096) throw new Error("The source filename is unsupported.");
+    timestamp2(at);
+    const bytes = new Uint8Array(input);
+    const text2 = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes);
+    const orders2 = parseBackup(text2);
+    const nativeRows = calendarRows(orders2, at.slice(0, 10));
+    const byId = new Map(nativeRows.map((row) => [row.order.id, row]));
+    const envelope = JSON.parse(text2);
+    const digest = await crypto.subtle.digest("SHA-256", bytes);
+    const source = {
+      name,
+      bytes: bytes.byteLength,
+      sha256: Array.from(new Uint8Array(digest), (n) => n.toString(16).padStart(2, "0")).join(""),
+      version: envelope.version,
+      exportedAt: envelope.exportedAt
+    };
+    const rows = orders2.map((order2, index) => {
+      const completed = order2.completedAt !== void 0;
+      const native = byId.get(order2.id);
+      return {
+        position: index + 1,
+        ...order2,
+        status: completed ? "completed" : native.problem ? "blocked" : "eligible",
+        due: completed ? null : native.due,
+        problem: completed ? "This return is completed." : native.problem
+      };
+    });
+    const document3 = freeze({
+      kind: "returnby.backup-calendar-browser/1",
+      source,
+      at,
+      rows,
+      total: rows.length,
+      eligible: rows.filter((row) => row.status === "eligible").length,
+      completed: rows.filter((row) => row.status === "completed").length,
+      blocked: rows.filter((row) => row.status === "blocked").length
+    });
+    documents.set(document3, { orders: orders2, nativeRows, epoch: 0 });
+    return document3;
+  }
+  function retireCalendarReview(document3) {
+    const state = documents.get(document3);
+    if (state) state.epoch += 1;
+  }
+  function retireBackup(document3) {
+    documents.delete(document3);
+  }
+  function prepareCalendar(document3, ids2) {
+    const state = current(document3);
+    state.epoch += 1;
+    const selected2 = selection(ids2);
+    const planned = planCalendarBatch(state.orders, state.nativeRows, selected2, new Date(document3.at));
+    const review2 = freeze({
+      source: document3.source,
+      at: document3.at,
+      selectedIds: selected2,
+      reminders: structuredClone(planned.reminders),
+      filename: planned.filename,
+      bytes: encoder4.encode(planned.content).byteLength,
+      content: planned.content
+    });
+    reviews.set(review2, { document: document3, epoch: state.epoch, ids: selected2 });
+    return review2;
+  }
+  function calendarDownload(document3, ids2, review2) {
+    const state = current(document3);
+    const selected2 = selection(ids2);
+    const binding = reviews.get(review2);
+    if (!binding || binding.document !== document3 || binding.epoch !== state.epoch || selected2.length !== binding.ids.length || selected2.some((id, i) => id !== binding.ids[i])) {
+      throw new Error("This selection changed. Preview the current reminders again before downloading.");
+    }
+    return { filename: review2.filename, bytes: encoder4.encode(review2.content) };
+  }
+
+  // browser/calendar-ui.mjs
+  var $ = (id) => document.getElementById(id);
+  var generation = 0;
+  var currentDocument = null;
+  var review = null;
+  var page = 0;
+  var selected = /* @__PURE__ */ new Set();
+  var PAGE_SIZE = 50;
+  function status(message, error = false) {
+    $("status").textContent = message;
+    $("status").classList.toggle("error", error);
+  }
+  function cell(row, text2) {
+    const node = document.createElement("td");
+    node.textContent = text2 ?? "—";
+    row.append(node);
+    return node;
+  }
+  function retireReview() {
+    if (currentDocument) retireCalendarReview(currentDocument);
+    review = null;
+    $("preview").hidden = true;
+    $("download").disabled = true;
+    $("preview-body").replaceChildren();
+  }
+  function clearSource(message = "") {
+    generation += 1;
+    retireReview();
+    if (currentDocument) retireBackup(currentDocument);
+    currentDocument = null;
+    selected.clear();
+    page = 0;
+    $("source").hidden = true;
+    $("choose").value = "";
+    $("rows").replaceChildren();
+    $("count").textContent = "";
+    $("loading").hidden = true;
+    if (message) status(message);
+  }
+  function ids() {
+    return currentDocument ? currentDocument.rows.filter((row) => selected.has(row.id)).map((row) => row.id) : [];
+  }
+  function updateSelection() {
+    $("selected-count").textContent = selected.size + " selected";
+    $("prepare").disabled = !selected.size;
+    $("clear-selection").disabled = !selected.size;
+  }
+  function renderRows() {
+    const rows = currentDocument.rows.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+    $("rows").replaceChildren();
+    for (const row of rows) {
+      const tr = document.createElement("tr");
+      const selectCell = cell(tr, "");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.dataset.id = row.id;
+      checkbox.checked = selected.has(row.id);
+      checkbox.disabled = row.status !== "eligible";
+      checkbox.setAttribute("aria-label", "Include source row " + row.position + ": " + (row.merchant || "(unnamed store)") + " [" + row.id + "]");
+      checkbox.addEventListener("change", () => {
+        retireReview();
+        if (checkbox.checked) selected.add(row.id);
+        else selected.delete(row.id);
+        updateSelection();
+        status("Selection changed. Preview the current reminders before downloading.");
+      });
+      selectCell.append(checkbox);
+      cell(tr, String(row.position));
+      cell(tr, row.merchant);
+      cell(tr, row.orderNo);
+      cell(tr, row.id);
+      cell(tr, row.orderDate);
+      cell(tr, row.windowDays + " days · " + row.windowSource);
+      cell(tr, row.due);
+      cell(tr, row.total ?? "");
+      cell(tr, row.status === "eligible" ? "Eligible for this calendar" : row.status + ": " + row.problem);
+      cell(tr, row.completedAt ?? "");
+      $("rows").append(tr);
+    }
+    const pages = Math.max(1, Math.ceil(currentDocument.total / PAGE_SIZE));
+    $("page-label").textContent = currentDocument.total ? "Source rows " + (page * PAGE_SIZE + 1) + "–" + Math.min((page + 1) * PAGE_SIZE, currentDocument.total) + " of " + currentDocument.total + " · page " + (page + 1) + " of " + pages : "No saved orders in this backup.";
+    $("previous").disabled = page === 0;
+    $("next").disabled = page + 1 >= pages;
+    updateSelection();
+  }
+  function showSource() {
+    $("source").hidden = false;
+    $("source-name").textContent = currentDocument.source.name || "(unnamed file)";
+    $("source-hash").textContent = currentDocument.source.sha256;
+    $("source-details").textContent = currentDocument.source.bytes.toLocaleString("en-US") + " bytes · backup version " + currentDocument.source.version + " · exported " + currentDocument.source.exportedAt;
+    $("source-clock").textContent = "Review captured " + currentDocument.at + ". Browser calendar timezone: " + Intl.DateTimeFormat().resolvedOptions().timeZone + ".";
+    $("count").textContent = currentDocument.total + " saved orders · " + currentDocument.eligible + " eligible · " + currentDocument.completed + " completed · " + currentDocument.blocked + " blocked";
+    $("select-all").disabled = !currentDocument.eligible;
+    renderRows();
+  }
+  $("choose").addEventListener("change", async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    clearSource();
+    const token = generation;
+    const at = (/* @__PURE__ */ new Date()).toISOString();
+    $("loading").hidden = false;
+    status("Reading " + file.name + "…");
+    try {
+      if (file.size > 5 * 1024 * 1024) throw new Error("Choose a backup no larger than 5 MiB.");
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      if (token !== generation) return;
+      if (bytes.byteLength !== file.size) throw new Error("The selected file size changed while reading. Choose it again.");
+      const next = await inspectBackupFile(bytes, file.name, at);
+      if (token !== generation) {
+        retireBackup(next);
+        return;
+      }
+      currentDocument = next;
+      showSource();
+      status("Backup inspected. No orders are selected. Choose reminders, then preview.");
+    } catch (error) {
+      if (token === generation) status("Backup not opened: " + error.message, true);
+    } finally {
+      if (token === generation) $("loading").hidden = true;
+    }
+  });
+  $("clear").addEventListener("click", () => clearSource("Cleared. Your backup and tracker were not changed."));
+  $("select-all").addEventListener("click", () => {
+    if (!currentDocument) return;
+    retireReview();
+    selected.clear();
+    for (const row of currentDocument.rows) if (row.status === "eligible") selected.add(row.id);
+    renderRows();
+    status("All eligible orders selected. Preview them before downloading.");
+  });
+  $("clear-selection").addEventListener("click", () => {
+    retireReview();
+    selected.clear();
+    if (currentDocument) renderRows();
+    status("Selection cleared. The inspected backup is kept.");
+  });
+  $("previous").addEventListener("click", () => {
+    if (currentDocument && page > 0) {
+      page -= 1;
+      renderRows();
+    }
+  });
+  $("next").addEventListener("click", () => {
+    if (currentDocument && (page + 1) * PAGE_SIZE < currentDocument.total) {
+      page += 1;
+      renderRows();
+    }
+  });
+  $("prepare").addEventListener("click", () => {
+    retireReview();
+    if (!currentDocument) return;
+    try {
+      review = prepareCalendar(currentDocument, ids());
+      $("preview-body").replaceChildren();
+      review.reminders.forEach((row, i) => {
+        const tr = document.createElement("tr");
+        cell(tr, String(i + 1));
+        cell(tr, row.id);
+        cell(tr, row.merchant);
+        cell(tr, row.orderNo ?? "");
+        cell(tr, row.due);
+        $("preview-body").append(tr);
+      });
+      $("preview-summary").textContent = review.reminders.length + " reminders · " + review.bytes.toLocaleString("en-US") + " UTF-8 bytes · " + review.filename;
+      $("preview-binding").textContent = "From " + currentDocument.source.name + " · SHA-256 " + currentDocument.source.sha256 + " · timestamp " + review.at;
+      $("preview").hidden = false;
+      $("download").disabled = false;
+      status("Preview ready. Check every selected reminder. Nothing has been downloaded or imported.");
+      $("preview-heading").focus();
+    } catch (error) {
+      status("Calendar not prepared: " + error.message, true);
+    }
+  });
+  $("download").addEventListener("click", () => {
+    let url, anchor;
+    try {
+      const output = calendarDownload(currentDocument, ids(), review);
+      url = URL.createObjectURL(new Blob([output.bytes], { type: "text/calendar;charset=utf-8" }));
+      anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = output.filename;
+      document.body.append(anchor);
+      anchor.click();
+      status("Download requested: " + output.filename + ". Check your browser's download location before importing it into a calendar.");
+    } catch (error) {
+      retireReview();
+      status("Download not prepared: " + error.message, true);
+    } finally {
+      anchor?.remove();
+      if (url) setTimeout(() => URL.revokeObjectURL(url), 1e3);
+    }
+  });
+  window.addEventListener("pagehide", () => clearSource());
+})();
+</script></body></html>

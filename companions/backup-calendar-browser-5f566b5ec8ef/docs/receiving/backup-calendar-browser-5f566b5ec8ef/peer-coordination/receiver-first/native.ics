@@ -1,0 +1,37 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ReturnBy//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:a.first@returnby
+DTSTAMP:20261101T053045Z
+DTSTART;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261103
+SUMMARY:Return deadline: Étoile\, dépôt\; \\line\n店Étoile\, dépôt\;
+  \\line\n店Étoile\, dépôt\; \\line\n店Étoile\, dépôt\; \\line\n店
+ Étoile\, dépôt\; \\line\n店 #A\,1\;\\2\nline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Return deadline: Étoile\, dépôt\; \\line\n店Étoile\, dép
+ ôt\; \\line\n店Étoile\, dépôt\; \\line\n店Étoile\, dépôt\; \\line
+ \n店Étoile\, dépôt\; \\line\n店 #A\,1\;\\2\nline
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:z.last@returnby
+DTSTAMP:20261101T053045Z
+DTSTART;VALUE=DATE:20261105
+DTEND;VALUE=DATE:20261106
+SUMMARY:Return deadline: Étoile\, dépôt\; \\line\n店Étoile\, dépôt\;
+  \\line\n店Étoile\, dépôt\; \\line\n店Étoile\, dépôt\; \\line\n店
+ Étoile\, dépôt\; \\line\n店 #A\,1\;\\2\nline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Return deadline: Étoile\, dépôt\; \\line\n店Étoile\, dép
+ ôt\; \\line\n店Étoile\, dépôt\; \\line\n店Étoile\, dépôt\; \\line
+ \n店Étoile\, dépôt\; \\line\n店 #A\,1\;\\2\nline
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
