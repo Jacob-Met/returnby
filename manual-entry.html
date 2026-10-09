@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f2efe5" />
+  <meta name="description" content="Enter receipt details and your return window. Review the calculated deadline before saving it in this browser." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <title>Manual receipt entry — ReturnBy</title>
+</head>
+<body>
+<div class="page-shell manual-shell">
+  <header class="topbar">
+    <a class="brand" href="./index.html" aria-label="ReturnBy home"><span class="brand-mark">R/</span><span><strong>RETURNBY</strong><small>THE RETURN DESK</small></span></a>
+    <a class="manual-back" href="./index.html">Return to tracker</a>
+  </header>
+  <main>
+    <section class="manual-intro" aria-labelledby="manual-title">
+      <p class="eyebrow">RECEIPT IN / DEADLINE REVIEWED</p>
+      <h1 id="manual-title">No email?<br /><em>Start with your receipt.</em></h1>
+      <p>Enter the purchase date and the return window you checked with the retailer. Review the calculated deadline, then choose whether to save it.</p>
+      <p class="manual-local">LOCAL ONLY · No account or inbox connection.</p>
+    </section>
+    <div class="manual-grid">
+      <section class="manual-card" aria-labelledby="manual-details-title">
+        <p class="eyebrow">01 / ENTER THE DETAILS</p>
+        <h2 id="manual-details-title">Your purchase.</h2>
+        <p class="manual-help">Store, order number and total are optional. Nothing is saved until you choose Save to tracker.</p>
+        <form id="manual-form" novalidate>
+          <label for="manual-merchant">Store <span>(optional)</span></label>
+          <input id="manual-merchant" name="merchant" type="text" maxlength="4096" autocomplete="off" />
+          <div class="manual-field-pair">
+            <div><label for="manual-date">Purchase date</label><input id="manual-date" name="orderDate" type="date" min="1000-01-01" max="9999-12-31" required /></div>
+            <div><label for="manual-days">Return window (days)</label><input id="manual-days" name="windowDays" type="text" inputmode="numeric" pattern="[0-9]+" required aria-describedby="manual-window-note" /></div>
+          </div>
+          <p id="manual-window-note" class="manual-help">Enter a positive whole number of days. This is your window; ReturnBy does not look up a store policy on this page.</p>
+          <label for="manual-order-no">Order number <span>(optional)</span></label>
+          <input id="manual-order-no" name="orderNo" type="text" maxlength="4096" autocomplete="off" />
+          <label for="manual-total">Total <span>(optional)</span></label>
+          <input id="manual-total" name="total" type="text" maxlength="4096" autocomplete="off" placeholder="For example, 2750 JPY" />
+          <button id="manual-review-button" class="button button-primary" type="submit">Review deadline</button>
+        </form>
+        <p id="manual-message" class="manual-message" role="status" tabindex="-1" hidden></p>
+      </section>
+      <aside class="manual-review-column">
+        <section id="manual-review" class="manual-review" hidden aria-labelledby="manual-review-title">
+          <p class="eyebrow">02 / CHECK BEFORE SAVING</p>
+          <h2 id="manual-review-title" tabindex="-1">Review this deadline.</h2>
+          <div class="manual-deadline"><span>RETURN BY</span><time id="review-due"></time></div>
+          <p class="manual-rule">YOUR RETURN WINDOW · No policy match assumed.</p>
+          <dl class="manual-facts">
+            <div><dt>Store</dt><dd id="review-merchant"></dd></div>
+            <div><dt>Purchase date</dt><dd id="review-orderDate"></dd></div>
+            <div><dt>Return window (days)</dt><dd id="review-windowDays"></dd></div>
+            <div><dt>Order number</dt><dd id="review-orderNo"></dd></div>
+            <div><dt>Total</dt><dd id="review-total"></dd></div>
+          </dl>
+          <p class="manual-help">The deadline adds your chosen number of days to the purchase date. Check the retailer's terms, including any exceptions.</p>
+          <button id="manual-save" class="button button-primary" type="button" disabled>Save to tracker</button>
+          <div id="manual-success" hidden>
+            <p>Your receipt is saved in this browser. Calendar reminders are available from the tracker when you choose them.</p>
+            <div class="action-row"><a class="button button-primary" href="./index.html">View tracker</a><button id="manual-another" class="button button-link" type="button">Add another receipt</button></div>
+          </div>
+        </section>
+        <div class="manual-notes"><span>YOUR RECEIPT, YOUR RULE.</span><p>You choose the window. ReturnBy calculates a date from those details and keeps only the fields you explicitly save.</p><p>Editing any field means reviewing the deadline again. The original receipt is never uploaded or stored.</p></div>
+      </aside>
+    </div>
+  </main>
+  <footer class="footer"><p><strong>PRIVATE BY DESIGN.</strong> Saved returns stay in this browser. Use the tracker's backup controls to keep a portable copy.</p></footer>
+</div>
+<script type="module" src="/src/manual-entry-view.ts"></script>
+</body>
+</html>

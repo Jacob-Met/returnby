@@ -109,3 +109,8 @@ The saved-order browser acceptance runs with `node tools/check_edit_browser.mjs`
 - `src/ics.ts`: calendar reminder generation.
 
 The app is browser-only; no AI runs in the page. The Devpost Learn planning documents are not completed interview output and are not represented as such.
+
+
+### Manual receipt entry
+
+Open **Enter a receipt manually** for a direct no-email route. Enter your own return window, review the calculated deadline, then save. See [the manual-entry guide](docs/MANUAL_ENTRY.md).
