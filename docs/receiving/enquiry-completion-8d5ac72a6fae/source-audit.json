@@ -1,0 +1,37 @@
+{
+  "schema": "returnby.enquiry-completion.source-audit/1",
+  "method": "Source text and exact Git tuple comparison inside orchestration V8; no product/module evaluation, native syntax/typecheck/build/test/browser",
+  "base": {
+    "sha": "83abbe9a00a5169354df25c734c00340ae73ae43",
+    "tree": "cfd56ce9960f08c4f5983d5a7a3ca054373f34c8",
+    "leaves": 257
+  },
+  "originalOnlyClosure": "3e4cdb97b839f1bc28befa871e38919432fc3247",
+  "candidate": "ffb320de0b2626a86ec58c8a1422978cdb06287d",
+  "unchangedImportedLeaves": 97,
+  "modifiedBaseLeaves": [
+    "index.html",
+    "vite.config.ts",
+    "README.md"
+  ],
+  "unaffectedBaseLeaves": 254,
+  "intermediateOverlayLeaves": 110,
+  "intermediateExpectedLeaves": 364,
+  "additionalFinalEvidencePending": true,
+  "checks": {
+    "fourRuntimeOriginalsExact": true,
+    "fullFiveInversesExact": true,
+    "originalDOMIdsRetained": true,
+    "enquiryHrefOccurrences": 1,
+    "checklistHrefOccurrences": 1,
+    "viteExactQualifiedOfferedBlob": true,
+    "legacyTestArchivedOutsideTestGlob": true,
+    "allNativeGatesUnrun": true
+  },
+  "preservedLimits": [
+    "Historical tools/fixtures include completed records and are not a combined-reader campaign.",
+    "New guide/index describe open-only context while original page uses generic saved/empty wording.",
+    "Completion planning alone does not change storage; exact raw reread detects already committed changes and allows identical-value ABA recovery.",
+    "Native-only PR37 delivery source unavailable canonically; exact404/422 retained rather than inferred native failure."
+  ]
+}

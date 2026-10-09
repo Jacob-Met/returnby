@@ -1,0 +1,22 @@
+
+> returnby@0.1.0 build
+> tsc --noEmit && vite build
+
+[36mvite v8.3.3 [32mbuilding client environment for production...[36m[39m
+transforming...
+✓ 21 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                          4.71 kB │ gzip: 2.05 kB
+dist/trip-checklist.html                 4.82 kB │ gzip: 1.95 kB
+dist/enquiry.html                        5.44 kB │ gzip: 2.01 kB
+dist/assets/enquiry-ruCCGgGU.css         4.17 kB │ gzip: 1.50 kB
+dist/assets/tripChecklist-CmK7SEMW.css   8.32 kB │ gzip: 2.63 kB
+dist/assets/main-Bp_ZSQx5.css            8.80 kB │ gzip: 2.57 kB
+dist/assets/deadline-DzH3L3IB.js         1.11 kB │ gzip: 0.61 kB
+dist/assets/tripChecklist-DhurdCTq.js    4.02 kB │ gzip: 1.75 kB
+dist/assets/enquiry-BuPlJBeA.js          5.98 kB │ gzip: 2.58 kB
+dist/assets/main-6De5wGcc.js             9.74 kB │ gzip: 4.49 kB
+dist/assets/trip-checklist-4uBXss6Y.js  12.82 kB │ gzip: 3.88 kB
+
+[32m✓ built in 576ms[39m

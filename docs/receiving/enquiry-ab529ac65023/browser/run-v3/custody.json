@@ -1,0 +1,77 @@
+{
+  "classification": "six actual groups/files passed; order was selected by Home/ArrowDown but extra Enter opened native select popup and consumed following Tab; exact trusted-event trace retained; Chrome0/profile removed",
+  "files": {
+    "01-instructions-A.expected.txt": {
+      "bytes": 496,
+      "sha256": "f7630f1fb27e7f679e3db65b9c27ea9eaf448c0c98cbc961e135288b30763750"
+    },
+    "02-eligibility-B.expected.txt": {
+      "bytes": 466,
+      "sha256": "6bd25abe657d221e6dfffae60b09830a162ec63171a7c7cd4f831cb60434c49b"
+    },
+    "03-final-edits.expected.txt": {
+      "bytes": 110,
+      "sha256": "efd7e7c7c78598d67efb38300a9222a1dd8e11618bacb3267a58162a33c923b2"
+    },
+    "04-exchange.expected.txt": {
+      "bytes": 511,
+      "sha256": "47a4c98a2dde52997b9e25d3ab749c8360e7a0617d4e3ff4edb5ee0965569fb6"
+    },
+    "05-fresh-source.expected.txt": {
+      "bytes": 494,
+      "sha256": "ac9edf4a4ba3e7ef2e7becbd753d76ccca0011d1ca7d616074c4e88b7cf10113"
+    },
+    "06-allocation-retry.expected.txt": {
+      "bytes": 110,
+      "sha256": "efd7e7c7c78598d67efb38300a9222a1dd8e11618bacb3267a58162a33c923b2"
+    },
+    "admission.json": {
+      "bytes": 233,
+      "sha256": "3542148f0ce93c9fbc5af570c0f49d8765e17a7ceeb17a4d31cc497fca7ea82d"
+    },
+    "chrome-stderr.log": {
+      "bytes": 6657,
+      "sha256": "22eb26798823b5e1285a27722143a2ec523ba0ec0870ee1c17f26cff15024ee5"
+    },
+    "downloads/3dd05fec-4022-46f9-a3be-4fe7f7b71beb": {
+      "bytes": 494,
+      "sha256": "ac9edf4a4ba3e7ef2e7becbd753d76ccca0011d1ca7d616074c4e88b7cf10113"
+    },
+    "downloads/427184fc-b30c-4acf-b3de-93b894505b08": {
+      "bytes": 511,
+      "sha256": "47a4c98a2dde52997b9e25d3ab749c8360e7a0617d4e3ff4edb5ee0965569fb6"
+    },
+    "downloads/8225306f-c5b3-45db-961f-f8446e86ca38": {
+      "bytes": 466,
+      "sha256": "6bd25abe657d221e6dfffae60b09830a162ec63171a7c7cd4f831cb60434c49b"
+    },
+    "downloads/83187e02-d26e-4147-908a-39dc0c906c34": {
+      "bytes": 496,
+      "sha256": "f7630f1fb27e7f679e3db65b9c27ea9eaf448c0c98cbc961e135288b30763750"
+    },
+    "downloads/a1374da6-8727-4e17-a2b0-12b5a32df050": {
+      "bytes": 110,
+      "sha256": "efd7e7c7c78598d67efb38300a9222a1dd8e11618bacb3267a58162a33c923b2"
+    },
+    "downloads/d60ecaa5-53ac-4f87-a76e-630ab1f7ca9a": {
+      "bytes": 110,
+      "sha256": "efd7e7c7c78598d67efb38300a9222a1dd8e11618bacb3267a58162a33c923b2"
+    },
+    "events.json": {
+      "bytes": 242648,
+      "sha256": "2452662bb61dcdf9fff335e0c0dea729b96b9d089160e15533f027d05b9d9cee"
+    },
+    "failure.png": {
+      "bytes": 45065,
+      "sha256": "768e9751a479c87a51be3dd67ce52abc69c80b6a7b93c0114ae437cb58127520"
+    },
+    "http.json": {
+      "bytes": 4744,
+      "sha256": "b6a422d75811d74610497e40ba568e44ad6dad3a8f08fbb029b973d488e95adf"
+    },
+    "report.json": {
+      "bytes": 101480,
+      "sha256": "acf999de12540a8db8dd9acdd2f1c927e016941c7e4c945121888582a9997ade"
+    }
+  }
+}

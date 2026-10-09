@@ -1,0 +1,35 @@
+[
+  {
+    "label": "candidate-model",
+    "argv": [
+      "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node.exe",
+      "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+      "test",
+      "--",
+      "--maxWorkers=1"
+    ],
+    "exit": 0,
+    "seconds": 5.32159423828125
+  },
+  {
+    "label": "candidate-build",
+    "argv": [
+      "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node.exe",
+      "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+      "run",
+      "build"
+    ],
+    "exit": 0,
+    "seconds": 3.4282302856445312
+  },
+  {
+    "label": "candidate-whitespace",
+    "argv": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit": 0,
+    "seconds": 0.13780808448791504
+  }
+]

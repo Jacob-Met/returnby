@@ -1,0 +1,19 @@
+{
+  "donor_git_blob": "75f0fd2fb43c641a08a754b0ea1906ed40092e7a",
+  "donor_sha256": "454887c01373e660fd87e3f48baca8f20bebae1cf235bd6d8272ef2de30cfae5",
+  "transport_blob": "eb3aefe239616836cccb5aecbed40dcc27ffd2fe",
+  "methods_copied_exact": [
+    "__init__",
+    "event",
+    "call",
+    "evaluate",
+    "until",
+    "pointer",
+    "key",
+    "select_option",
+    "screenshot",
+    "group",
+    "cleanup"
+  ],
+  "boundary": "Own product receiver inherits these reviewed helpers but replaces all product startup, routes, fixtures and exercise logic; original donor unchanged. Initial report schema/scope overridden before execution."
+}

@@ -1,0 +1,527 @@
+{
+  "schema": "returnby.enquiry-completion.independent-root-source-acceptance/1",
+  "worker": "estate-8d5ac72a6fae/root",
+  "at": "2026-10-09T10:30:34.903Z",
+  "repository": "Jacob-Met/returnby",
+  "issue": 41,
+  "decision": "Accept exact source composition for detached candidate integration only; actual final parent/tree receiving remains a subsequent gate. No blocking source contradiction found against nine pre-exposure groups.",
+  "sourceBase": {
+    "commit": "83abbe9a00a5169354df25c734c00340ae73ae43",
+    "tree": "cfd56ce9960f08c4f5983d5a7a3ca054373f34c8",
+    "leaves": 257
+  },
+  "offeredEnquiry": {
+    "commit": "a4aad0e00951959bef5c66ee4d1fe76b1ed43ea1",
+    "tree": "e963c408967656a5603120479d97f1b8e20ef27d",
+    "leaves": 153
+  },
+  "publicContract": "c56b3a1a9718cd0a014add17250516d6b1c3895e",
+  "originalCompleteBodyAndTreeCapsule": "3e4cdb97b839f1bc28befa871e38919432fc3247",
+  "independentBeforeCandidateFreeze": "2a5a0c390cd7d22c7db0d0edf1caf36dbe45d030",
+  "candidateTenProductBodies": "ffb320de0b2626a86ec58c8a1422978cdb06287d",
+  "receivingReadme": "c4cb519ea61498f3be2f337ecb76bdb04b0b246f",
+  "authorProposedOverlay": "5a8c83afeda89c9ac867055a46be11b76270bde0",
+  "independentExactDeltaChecks": "4712b4a89227973893698c9f654a30d7d97b8559",
+  "exposure": {
+    "originalCompleteSemanticReads": 17,
+    "originalCapsuleBodies": 21,
+    "beforeCandidate": true,
+    "fullReadShaList": [
+      "04690ad4c56faf0f1dec424a75f014997f844a59",
+      "b6dbdec93f231dfc90414361f1f6eb5dbe44f416",
+      "579b8e2c7b4098a39824ba82cd43bc04b87e2a16",
+      "c46afe6a95e2e3e371b5d2340b85ba7e01deeda1",
+      "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "f1c7516b0a1d230756b77454b3edd0a403fd8de5",
+      "08e033cb8b08fb34d33502574dca490be8c38c33",
+      "fca6ae646ef17dcc44944e2628cd844774e31c72",
+      "a3f48df64069a4e897800c138794bf1e53cdf316",
+      "2551b9c260a87d5e8eda0c0e60cfcd0ac5c2b20f",
+      "cd7cf23e6c4555b6ff0412e7e71eebf874b331b5",
+      "dea38f9d09ffdc5a246436b4a974917419c5a675",
+      "329b4b71fbb631662eec0405ced477134520c9a5",
+      "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "b5688812f36338630c21eb5643318a55496ae09b",
+      "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+      "56eb13f144b4742c0970d25cf8f6c6331013d874"
+    ],
+    "unreadOriginalBodies": "Legacy reader a5b51cd7, legacy store23cf906e, legacy Vite57cba3d1 and base README4ff9608a were not independently read in full for semantics before freeze. Their identities/bodies are retained. Base README body was used for exact full inverse. Current candidate Vite was fully read.",
+    "candidateCoverage": "Read all five declared source deltas, complete adapted enquiry test, full new7-method completion test, current enquiry guide and complete composition receiving README. The four unchanged runtime bodies match the full original bodies read before freeze. Full original index and exact insertion/inverse establish final index; no claim that historical browser/helper body imports were semantically re-reviewed."
+  },
+  "outcomes": [
+    {
+      "id": "R01",
+      "result": "SOURCE AGREEMENT",
+      "observation": "The unchanged completion-aware reader admits the whole saved array before retaining only open rows, preserves original open order and full exact raw storage, and freezes the snapshot and order list. Mixed A/open,C/completed,B/open yields A/B model indices0/1; controller inserts the placeholder so option positions1/2 are A/B. Completed C remains in raw bytes. New authored method1 binds exact literal enquiry body without mutation."
+    },
+    {
+      "id": "R02",
+      "result": "SOURCE AGREEMENT",
+      "observation": "A valid completed-only collection yields an empty open list. No selection or preparation is invented, and no order is reopened/deleted by enquiry. The unchanged page uses generic empty-list wording rather than a special completed-history explanation; index/README/guide give the explicit existing tracker Reopen path. Authored method2 covers empty/completed selection refusal."
+    },
+    {
+      "id": "R03",
+      "result": "SOURCE AGREEMENT",
+      "observation": "Whole-array validation precedes completion filtering. A hidden invalid marker, merchant, impossible date or duplicate ID rejects the entire source. A null top-level marker is invalid; absence differs from null. The old positive test's completedAt moves into an unknown nested extra object, preserving the literal-marker nonrender assertion without presenting a top-level completed row as open. Authored method3 contains five hidden-invalid specimens."
+    },
+    {
+      "id": "R04",
+      "result": "SOURCE AGREEMENT",
+      "observation": "planCompletion computes without committing. Only changed stored raw makes an old prepared snapshot stale. After a committed Complete and successful Refresh, the completed ID disappears, selection clears if absent, and preparation is invalidated without silently choosing B or clearing author wording. Runtime controller behavior is source-read, not exercised by the new pure model test."
+    },
+    {
+      "id": "R05",
+      "result": "SOURCE AGREEMENT",
+      "observation": "Existing Reopen removes only the top-level marker from a copied record, preserving other literal/unknown properties and order. After actual commit and successful reread the ID becomes selectable; explicit selection/preparation is required. Literal enquiry content omits lifecycle markers, unknown metadata, amount and computed deadline. JSON serialization need not retain source whitespace. Authored method4's initial compact JSON is restored exactly by its particular Complete/Reopen example, consistent with that example rather than a general whitespace guarantee."
+    },
+    {
+      "id": "R06",
+      "result": "SOURCE AGREEMENT WITH EXPLICIT LIMIT",
+      "observation": "Freshness is exact raw-value equality, including hidden-row unknown fields, whitespace and null versus an empty-array string. It is not a monotonic revision counter: if the exact original string is later restored, the original snapshot can become current again. Copy uses an operation token to protect UI feedback from later preparation/selection, not atomic storage or cancellation of an already-started external copy. Authored methods4/5 retain ABA and hidden/whitespace specimens; receiving README states the limits."
+    },
+    {
+      "id": "R07",
+      "result": "SOURCE AGREEMENT WITH EXPLICIT LIMIT",
+      "observation": "Failed Refresh preserves the old snapshot/options, selection, prepared object and wording; already-enabled controls may remain enabled. Prepare, Copy and Download still reread the exact saved value before effect. A continuing read error or changed raw refuses; recovery with the exact original raw can permit the retained preparation. The new final method exercises source-reader/model invariants only and does not claim a controller event test or browser failure campaign."
+    },
+    {
+      "id": "R08",
+      "result": "EXACT STRING/TUPLE AGREEMENT",
+      "observation": "Four enquiry runtime bodies and tuples are identical to the offered originals. Five changed files have root-computed complete exact inverses, each replacement/insertion occurring once. Existing tracker DOM ID order is identical; exactly one enquiry and one trip-checklist link are added. Vite retains base './' and original main/trip inputs while adding enquiry. Proposed overlay changes only index.html, vite.config.ts and README.md among257 existing base leaves, preserving254;97 old enquiry runtime/evidence/tool leaves are imported unchanged. Original old positive test and guide are archived outside active test naming. Existing original helper/browser receipts remain historical source-specific evidence, not ready to run against the completed-filtering parent without requalification."
+    },
+    {
+      "id": "R09",
+      "result": "QUALIFICATION PRESERVED",
+      "observation": "Old enquiry84-tests/build/eight-Chrome-group/seven-download and checklist37 reported24-module/six-Chrome-group results retain their original source attribution. This source composition has no combined Vitest, TypeScript/Vite build, browser, download or installed-use result. Its seven new maintained test methods are authored and unrun. The later checklist native-only evidence child is not canonically available through Git; the retained direct commit404/tree422 do not invalidate the reported native package or qualify new composition evidence. No native replay was attempted."
+    }
+  ],
+  "exactProductTuples": [
+    {
+      "path": "enquiry.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3f48df64069a4e897800c138794bf1e53cdf316",
+      "bytes": 5186
+    },
+    {
+      "path": "src/enquiry.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04690ad4c56faf0f1dec424a75f014997f844a59",
+      "bytes": 2950
+    },
+    {
+      "path": "src/enquiry-view.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6dbdec93f231dfc90414361f1f6eb5dbe44f416",
+      "bytes": 7447
+    },
+    {
+      "path": "src/enquiry.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2551b9c260a87d5e8eda0c0e60cfcd0ac5c2b20f",
+      "bytes": 4240
+    },
+    {
+      "path": "index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a94e543f80c68b997e47506face7c2bc1fccaa5",
+      "bytes": 10756
+    },
+    {
+      "path": "vite.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "57cba3d1c3d565588caba6559718dc92954f7eff",
+      "bytes": 431
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f1745e9441fd9a9f6a88b89c05c2341f7786cda5",
+      "bytes": 13717
+    },
+    {
+      "path": "tests/enquiry.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d4779b9a9eae1a86d12c8400ae962cf3405286a",
+      "bytes": 5505
+    },
+    {
+      "path": "docs/ENQUIRY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "80fd4c765eeced8568ef89ec3baff7aea7a975c8",
+      "bytes": 3415
+    },
+    {
+      "path": "tests/enquiry-completion.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa75b4668dabc9818b0bf4ac8cbeb4ed5d00b6c5",
+      "bytes": 7521
+    }
+  ],
+  "ownDeltaCheck": {
+    "at": "2026-10-09T10:24:55.734Z",
+    "method": "Finite complete-source string, exact inverse and literal tuple comparisons only; no product imports or test/build/browser/native execution.",
+    "inverseChecks": [
+      {
+        "path": "index.html",
+        "originalSha": "cd7cf23e6c4555b6ff0412e7e71eebf874b331b5",
+        "candidateSha": "1a94e543f80c68b997e47506face7c2bc1fccaa5",
+        "counts": [
+          {
+            "insertionOccurs": 1,
+            "anchorOccursInOriginal": 1
+          }
+        ],
+        "wholeInverseExact": true,
+        "originalCharacters": 10275,
+        "candidateCharacters": 10756
+      },
+      {
+        "path": "vite.config.ts",
+        "originalSha": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+        "candidateSha": "57cba3d1c3d565588caba6559718dc92954f7eff",
+        "counts": [
+          {
+            "insertionOccurs": 1,
+            "anchorOccursInOriginal": 1
+          }
+        ],
+        "wholeInverseExact": true,
+        "originalCharacters": 355,
+        "candidateCharacters": 431
+      },
+      {
+        "path": "README.md",
+        "originalSha": "4ff9608a0900585f2cfd8d0580e55ef76261589a",
+        "candidateSha": "f1745e9441fd9a9f6a88b89c05c2341f7786cda5",
+        "counts": [
+          {
+            "insertionOccurs": 1,
+            "appendSuffix": true
+          }
+        ],
+        "wholeInverseExact": true,
+        "originalCharacters": 12126,
+        "candidateCharacters": 13715
+      },
+      {
+        "path": "tests/enquiry.test.ts",
+        "originalSha": "08e033cb8b08fb34d33502574dca490be8c38c33",
+        "candidateSha": "7d4779b9a9eae1a86d12c8400ae962cf3405286a",
+        "counts": [
+          {
+            "oldOccursInOriginal": 1,
+            "newOccursInCurrent": 1
+          },
+          {
+            "oldOccursInOriginal": 1,
+            "newOccursInCurrent": 1
+          }
+        ],
+        "wholeInverseExact": true,
+        "originalCharacters": 5483,
+        "candidateCharacters": 5489
+      },
+      {
+        "path": "docs/ENQUIRY.md",
+        "originalSha": "fca6ae646ef17dcc44944e2628cd844774e31c72",
+        "candidateSha": "80fd4c765eeced8568ef89ec3baff7aea7a975c8",
+        "counts": [
+          {
+            "oldOccursInOriginal": 1,
+            "newOccursInCurrent": 1
+          },
+          {
+            "oldOccursInOriginal": 1,
+            "newOccursInCurrent": 1
+          }
+        ],
+        "wholeInverseExact": true,
+        "originalCharacters": 3036,
+        "candidateCharacters": 3411
+      }
+    ],
+    "immutableChecks": [
+      {
+        "path": "enquiry.html",
+        "sha": "a3f48df64069a4e897800c138794bf1e53cdf316",
+        "shaExact": true,
+        "wholeBodyExact": true,
+        "modeExact": true,
+        "typeExact": true
+      },
+      {
+        "path": "src/enquiry.ts",
+        "sha": "04690ad4c56faf0f1dec424a75f014997f844a59",
+        "shaExact": true,
+        "wholeBodyExact": true,
+        "modeExact": true,
+        "typeExact": true
+      },
+      {
+        "path": "src/enquiry-view.ts",
+        "sha": "b6dbdec93f231dfc90414361f1f6eb5dbe44f416",
+        "shaExact": true,
+        "wholeBodyExact": true,
+        "modeExact": true,
+        "typeExact": true
+      },
+      {
+        "path": "src/enquiry.css",
+        "sha": "2551b9c260a87d5e8eda0c0e60cfcd0ac5c2b20f",
+        "shaExact": true,
+        "wholeBodyExact": true,
+        "modeExact": true,
+        "typeExact": true
+      }
+    ],
+    "ui": {
+      "idsBefore": [
+        "top",
+        "paste",
+        "find",
+        "sample",
+        "preview",
+        "storage-error",
+        "storage-retry",
+        "tracked-count",
+        "soon-count",
+        "expired-count",
+        "filter-all",
+        "filter-due",
+        "filter-expired",
+        "filter-completed",
+        "completed-count",
+        "completion-feedback",
+        "edit-feedback",
+        "calendar-open",
+        "calendar-feedback",
+        "list",
+        "backup-heading",
+        "backup-export",
+        "backup-file",
+        "backup-limits",
+        "backup-message",
+        "backup-preview",
+        "backup-summary",
+        "backup-rows",
+        "backup-previous",
+        "backup-page",
+        "backup-next",
+        "backup-apply",
+        "backup-cancel",
+        "clear",
+        "edit-dialog",
+        "edit-title",
+        "edit-intro",
+        "edit-form",
+        "edit-merchant",
+        "edit-order-date",
+        "edit-window-days",
+        "edit-order-no",
+        "edit-total",
+        "edit-current-deadline",
+        "edit-proposed-deadline",
+        "edit-source",
+        "edit-message",
+        "edit-save",
+        "edit-cancel",
+        "calendar-dialog",
+        "calendar-form",
+        "calendar-title",
+        "calendar-description",
+        "calendar-note",
+        "calendar-select-all",
+        "calendar-select-none",
+        "calendar-reload",
+        "calendar-choices",
+        "calendar-summary",
+        "calendar-message",
+        "calendar-download",
+        "calendar-cancel"
+      ],
+      "idsAfter": [
+        "top",
+        "paste",
+        "find",
+        "sample",
+        "preview",
+        "storage-error",
+        "storage-retry",
+        "tracked-count",
+        "soon-count",
+        "expired-count",
+        "filter-all",
+        "filter-due",
+        "filter-expired",
+        "filter-completed",
+        "completed-count",
+        "completion-feedback",
+        "edit-feedback",
+        "calendar-open",
+        "calendar-feedback",
+        "list",
+        "backup-heading",
+        "backup-export",
+        "backup-file",
+        "backup-limits",
+        "backup-message",
+        "backup-preview",
+        "backup-summary",
+        "backup-rows",
+        "backup-previous",
+        "backup-page",
+        "backup-next",
+        "backup-apply",
+        "backup-cancel",
+        "clear",
+        "edit-dialog",
+        "edit-title",
+        "edit-intro",
+        "edit-form",
+        "edit-merchant",
+        "edit-order-date",
+        "edit-window-days",
+        "edit-order-no",
+        "edit-total",
+        "edit-current-deadline",
+        "edit-proposed-deadline",
+        "edit-source",
+        "edit-message",
+        "edit-save",
+        "edit-cancel",
+        "calendar-dialog",
+        "calendar-form",
+        "calendar-title",
+        "calendar-description",
+        "calendar-note",
+        "calendar-select-all",
+        "calendar-select-none",
+        "calendar-reload",
+        "calendar-choices",
+        "calendar-summary",
+        "calendar-message",
+        "calendar-download",
+        "calendar-cancel"
+      ],
+      "idSequenceExact": true,
+      "enquiryLinkCount": 1,
+      "tripLinkCount": 1,
+      "viteEnquiryInputCount": 1
+    }
+  },
+  "proposedMapCheck": {
+    "stage": "Proposed author overlay against actual original complete source-tree maps; final candidate tree/parent not yet created or received",
+    "baseLeaves": 257,
+    "offeredLeaves": 153,
+    "declaredEntries": 111,
+    "authorSelfPath": "docs/receiving/enquiry-completion-8d5ac72a6fae/author-overlay.json",
+    "modifiedBasePaths": [
+      "index.html",
+      "vite.config.ts",
+      "README.md"
+    ],
+    "unchangedBaseCount": 254,
+    "unchangedOfferedImportsExcludingComposedOrAdaptedPaths": 97,
+    "duplicatePaths": [],
+    "allTenProductTuplesExact": true,
+    "productCheck": [
+      {
+        "path": "enquiry.html",
+        "match": true
+      },
+      {
+        "path": "src/enquiry.ts",
+        "match": true
+      },
+      {
+        "path": "src/enquiry-view.ts",
+        "match": true
+      },
+      {
+        "path": "src/enquiry.css",
+        "match": true
+      },
+      {
+        "path": "index.html",
+        "match": true
+      },
+      {
+        "path": "vite.config.ts",
+        "match": true
+      },
+      {
+        "path": "README.md",
+        "match": true
+      },
+      {
+        "path": "tests/enquiry.test.ts",
+        "match": true
+      },
+      {
+        "path": "docs/ENQUIRY.md",
+        "match": true
+      },
+      {
+        "path": "tests/enquiry-completion.test.ts",
+        "match": true
+      }
+    ]
+  },
+  "maintainedControls": {
+    "file": "tests/enquiry-completion.test.ts",
+    "sha": "aa75b4668dabc9818b0bf4ac8cbeb4ed5d00b6c5",
+    "methods": 7,
+    "methodsReadCompletely": 7,
+    "methodsExecuted": 0,
+    "adaptedOriginalTest": "7d4779b9a9eae1a86d12c8400ae962cf3405286a",
+    "qualification": "Counts are authored methods, not native pass counts. No imports, compilation, test process, controller/DOM campaign, browser or installed-copy execution."
+  },
+  "sourcePrecision": [
+    "The saved-reader validation is the trust boundary used by enquiry. Its exported model accepting a caller-provided snapshot is not asserted as a second independent untrusted-object admission layer.",
+    "Index anchors navigate away. Unsaved reviewed fields/wording do not travel automatically. Actual index and guide tell the user to save/copy relevant work before leaving.",
+    "The existing completion-aware parent is83ab, not a later portable tracker stack whose tree lacks this full reader/page.",
+    "Only exact observed source and manually derived consequences are accepted; no guarantee of absence of all defects or runtime behavior is implied."
+  ],
+  "nativeOnlyUnavailableEvidence": {
+    "reportedCommit": "154105167f55dd377b06515e57b9603cb4da3819",
+    "reportedTree": "296d98276b3778d41dca163e9abaeaa2aae7dbaa",
+    "observedGitResults": "commit404 and tree422 retained in original-only capsule",
+    "reportedNativeOwnerComment": 6078634497,
+    "newNativeEvidenceLeaves": 34,
+    "status": "Native-owner result is attributed; these34 leaves are not treated as fetched Git source."
+  },
+  "boundaries": {
+    "claim": 6078727727,
+    "originalEnquiryOwner": "hamon-ultra-ab529",
+    "checklistCompositionIssue": 37,
+    "lifecycleOwnerIssue": 32,
+    "originalChecklistIssue": 33,
+    "finalAdoptionOwnerIssues": [
+      8,
+      10,
+      20
+    ],
+    "excludedScopes": [
+      40,
+      44,
+      45,
+      "backup-print",
+      "portable joined stacks"
+    ],
+    "noRefOrPush": true,
+    "noPRMergeActionsDeployment": true,
+    "noAllocationProbeOrInstall": true,
+    "noHeldCampaignReplay": true
+  },
+  "next": "Author may compose this accepted capsule and receiving evidence into a detached commit with the exact83ab sole parent. Root must compare the actual resulting complete tree with the original and declared overlay before calling that candidate custody checked; integration, adoption and native execution remain separately owned."
+}

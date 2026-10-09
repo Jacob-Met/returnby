@@ -1,0 +1,26 @@
+{
+  "originalRun": "C:\\Users\\minec\\hamon-returnby-enquiry-ab529ac65023\\run-v1",
+  "classification": "receiver startup sharing violation; zero product groups/downloads; forced own-process cleanup remains failed",
+  "files": {
+    "admission.json": {
+      "bytes": 233,
+      "sha256": "713114503b3a9e4db7c7ac7d8047a2e2628aa697e96cbdcfaedcbe5d06a71d6b"
+    },
+    "chrome-stderr.log": {
+      "bytes": 914,
+      "sha256": "27ae20a2776b2266035f96dcff0ae9087bbd44f48256babf58c6e209cc8f0478"
+    },
+    "events.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "http.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "report.json": {
+      "bytes": 21314,
+      "sha256": "b41c564cb6b349a86ce4e9ce17f2b07e89cc73bce7dd1ad96dd0d20333caace1"
+    }
+  }
+}

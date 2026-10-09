@@ -1,0 +1,65 @@
+{
+  "classification": "actual first four groups passed; five physical files exact; receiver frame wait timed out after selecting prior tab session without foreground activation; Chrome close acknowledged/exit0/profile removed",
+  "files": {
+    "01-instructions-A.expected.txt": {
+      "bytes": 496,
+      "sha256": "f7630f1fb27e7f679e3db65b9c27ea9eaf448c0c98cbc961e135288b30763750"
+    },
+    "02-eligibility-B.expected.txt": {
+      "bytes": 466,
+      "sha256": "6bd25abe657d221e6dfffae60b09830a162ec63171a7c7cd4f831cb60434c49b"
+    },
+    "03-final-edits.expected.txt": {
+      "bytes": 110,
+      "sha256": "efd7e7c7c78598d67efb38300a9222a1dd8e11618bacb3267a58162a33c923b2"
+    },
+    "04-exchange.expected.txt": {
+      "bytes": 511,
+      "sha256": "47a4c98a2dde52997b9e25d3ab749c8360e7a0617d4e3ff4edb5ee0965569fb6"
+    },
+    "05-fresh-source.expected.txt": {
+      "bytes": 494,
+      "sha256": "ac9edf4a4ba3e7ef2e7becbd753d76ccca0011d1ca7d616074c4e88b7cf10113"
+    },
+    "admission.json": {
+      "bytes": 233,
+      "sha256": "a8db36e6e0f093fe22bac5a97bbdb3838ed7959aad885372293e510abeda5283"
+    },
+    "chrome-stderr.log": {
+      "bytes": 5574,
+      "sha256": "2a1329c6d3da7a5dff1872889349068162e66f76456fbd0a493037d746874783"
+    },
+    "downloads/39e5c4ff-cd1a-482c-a8a0-56f25fd5e888": {
+      "bytes": 466,
+      "sha256": "6bd25abe657d221e6dfffae60b09830a162ec63171a7c7cd4f831cb60434c49b"
+    },
+    "downloads/46f5f52e-19e3-461e-8fa7-a375d17cdc7e": {
+      "bytes": 511,
+      "sha256": "47a4c98a2dde52997b9e25d3ab749c8360e7a0617d4e3ff4edb5ee0965569fb6"
+    },
+    "downloads/65941035-a5fd-4abf-a0fb-aca1a3822e12": {
+      "bytes": 496,
+      "sha256": "f7630f1fb27e7f679e3db65b9c27ea9eaf448c0c98cbc961e135288b30763750"
+    },
+    "downloads/9d1454f0-c11a-42cc-82fc-dfc1ba054dd5": {
+      "bytes": 110,
+      "sha256": "efd7e7c7c78598d67efb38300a9222a1dd8e11618bacb3267a58162a33c923b2"
+    },
+    "downloads/b923bf3a-bc99-4f2e-aaac-112e54c21636": {
+      "bytes": 494,
+      "sha256": "ac9edf4a4ba3e7ef2e7becbd753d76ccca0011d1ca7d616074c4e88b7cf10113"
+    },
+    "events.json": {
+      "bytes": 238010,
+      "sha256": "c938fe804a60b45066840429006c81b0f3d303164bfc3eb5acd696282097744e"
+    },
+    "http.json": {
+      "bytes": 4744,
+      "sha256": "ef3d61d153e04d1e10cd67b697248078c818f786ddfb61ee48436d23f071fcb3"
+    },
+    "report.json": {
+      "bytes": 96982,
+      "sha256": "20267bcd01a9ec522021c7deecccc4f15047f457aade9aa650b3856c079adaae"
+    }
+  }
+}

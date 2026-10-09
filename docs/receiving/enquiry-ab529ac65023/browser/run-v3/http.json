@@ -1,0 +1,164 @@
+[
+  {
+    "path": "/seed.html",
+    "status": 200,
+    "bytes": 61,
+    "sha256": "14504d8d104af64a7160d9e911fa50886504d3b3012b7609c92f27a45d7296e6"
+  },
+  {
+    "path": "/favicon.ico",
+    "status": 204,
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "/baseline/index.html",
+    "status": 200,
+    "bytes": 4633,
+    "sha256": "d682fc8df6ac84594558efe91fcbaa473b362b196339fbaadd38a52b5268283b"
+  },
+  {
+    "path": "/baseline/assets/main-6De5wGcc.js",
+    "status": 200,
+    "bytes": 9742,
+    "sha256": "5ce0bf61aad5aa49b18a6033a48d611d42ce93860f8f69c13ead7b76c708c4b6"
+  },
+  {
+    "path": "/baseline/assets/main-Bp_ZSQx5.css",
+    "status": 200,
+    "bytes": 8801,
+    "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+  },
+  {
+    "path": "/baseline/assets/deadline-DzH3L3IB.js",
+    "status": 200,
+    "bytes": 1111,
+    "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+  },
+  {
+    "path": "/baseline/favicon.svg",
+    "status": 200,
+    "bytes": 238,
+    "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+  },
+  {
+    "path": "/candidate/index.html",
+    "status": 200,
+    "bytes": 4715,
+    "sha256": "c40aa5dbc75ca01647f6ac913fb66bedaa7879ab1aea91ee674ff59427e039f2"
+  },
+  {
+    "path": "/candidate/assets/deadline-DzH3L3IB.js",
+    "status": 200,
+    "bytes": 1111,
+    "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+  },
+  {
+    "path": "/candidate/assets/main-6De5wGcc.js",
+    "status": 200,
+    "bytes": 9742,
+    "sha256": "5ce0bf61aad5aa49b18a6033a48d611d42ce93860f8f69c13ead7b76c708c4b6"
+  },
+  {
+    "path": "/candidate/assets/main-Bp_ZSQx5.css",
+    "status": 200,
+    "bytes": 8801,
+    "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+  },
+  {
+    "path": "/candidate/favicon.svg",
+    "status": 200,
+    "bytes": 238,
+    "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+  },
+  {
+    "path": "/candidate/enquiry.html",
+    "status": 200,
+    "bytes": 5445,
+    "sha256": "883f795121f6a45b4bb430672b5fe4dd82f8e5412113f0535ba0439a620d49fc"
+  },
+  {
+    "path": "/candidate/assets/enquiry-BuPlJBeA.js",
+    "status": 200,
+    "bytes": 5980,
+    "sha256": "503845a745988cde0497d65d5869ba4f9fec9434966add0410d0b81d749982db"
+  },
+  {
+    "path": "/candidate/assets/enquiry-ruCCGgGU.css",
+    "status": 200,
+    "bytes": 4178,
+    "sha256": "8d522f0fc1517e37a51e654dfc74cee3d187e7d0ebbc29a881397f6c294031c4"
+  },
+  {
+    "path": "/candidate/assets/deadline-DzH3L3IB.js",
+    "status": 200,
+    "bytes": 1111,
+    "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+  },
+  {
+    "path": "/candidate/assets/trip-checklist-4uBXss6Y.js",
+    "status": 200,
+    "bytes": 12828,
+    "sha256": "10e684256bdbebb17992e28670d9db473895611d518795b58fa032e943ea4cfe"
+  },
+  {
+    "path": "/candidate/enquiry.html",
+    "status": 200,
+    "bytes": 5445,
+    "sha256": "883f795121f6a45b4bb430672b5fe4dd82f8e5412113f0535ba0439a620d49fc"
+  },
+  {
+    "path": "/candidate/assets/enquiry-BuPlJBeA.js",
+    "status": 200,
+    "bytes": 5980,
+    "sha256": "503845a745988cde0497d65d5869ba4f9fec9434966add0410d0b81d749982db"
+  },
+  {
+    "path": "/candidate/assets/deadline-DzH3L3IB.js",
+    "status": 200,
+    "bytes": 1111,
+    "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+  },
+  {
+    "path": "/candidate/assets/enquiry-ruCCGgGU.css",
+    "status": 200,
+    "bytes": 4178,
+    "sha256": "8d522f0fc1517e37a51e654dfc74cee3d187e7d0ebbc29a881397f6c294031c4"
+  },
+  {
+    "path": "/candidate/assets/trip-checklist-4uBXss6Y.js",
+    "status": 200,
+    "bytes": 12828,
+    "sha256": "10e684256bdbebb17992e28670d9db473895611d518795b58fa032e943ea4cfe"
+  },
+  {
+    "path": "/candidate/enquiry.html",
+    "status": 200,
+    "bytes": 5445,
+    "sha256": "883f795121f6a45b4bb430672b5fe4dd82f8e5412113f0535ba0439a620d49fc"
+  },
+  {
+    "path": "/candidate/assets/enquiry-ruCCGgGU.css",
+    "status": 200,
+    "bytes": 4178,
+    "sha256": "8d522f0fc1517e37a51e654dfc74cee3d187e7d0ebbc29a881397f6c294031c4"
+  },
+  {
+    "path": "/candidate/assets/deadline-DzH3L3IB.js",
+    "status": 200,
+    "bytes": 1111,
+    "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+  },
+  {
+    "path": "/candidate/assets/enquiry-BuPlJBeA.js",
+    "status": 200,
+    "bytes": 5980,
+    "sha256": "503845a745988cde0497d65d5869ba4f9fec9434966add0410d0b81d749982db"
+  },
+  {
+    "path": "/candidate/assets/trip-checklist-4uBXss6Y.js",
+    "status": 200,
+    "bytes": 12828,
+    "sha256": "10e684256bdbebb17992e28670d9db473895611d518795b58fa032e943ea4cfe"
+  }
+]

@@ -129,3 +129,27 @@ cannot silently reopen or complete an already saved return.
 
 See [the completion contract](docs/COMPLETED_RETURNS.md) for the exact source and
 integration boundary.
+
+## Prepare a return enquiry from an open saved order
+
+Choose **Prepare a return enquiry** above the saved list, or open `enquiry.html`.
+The separate page uses the existing completion-aware reader: only admitted open
+orders are selectable. Completed returns stay in history. To ask about one,
+deliberately choose **Reopen return** in the tracker, then **Refresh saved orders**
+in the enquiry page. Opening a tool navigates away; save reviewed tracker details
+and copy any unsaved wording you want to keep first.
+
+Describe the items, optionally add context and a sign-off, and prepare an editable
+subject and message. Copy or download your reviewed wording as UTF-8 plain text.
+No message is sent, recipient inferred, refund calculated or saved record changed
+by the enquiry. A completion or any other saved-value change requires a fresh
+read and preparation before copy/download. See [the enquiry guide](docs/ENQUIRY.md).
+**Plan a return trip** beside it opens the existing completion-aware checklist.
+
+This is an isolated source composition of enquiry #41 with checklist #37, not
+wider-stack adoption or a change to an installed copy. The four enquiry runtime
+files and all existing tracker/checklist/core modules remain exact. Original
+native/browser receipts retain their original source attribution; the combined
+Vitest/build/browser/installed-use gates have **not been run**. The adapted
+positive fixture and new completion integration tests are authored, unexecuted
+controls. See [composition evidence and owner boundaries](docs/receiving/enquiry-completion-8d5ac72a6fae/README.md).

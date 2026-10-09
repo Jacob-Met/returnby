@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         tripChecklist: fileURLToPath(new URL('./trip-checklist.html', import.meta.url)),
+        enquiry: fileURLToPath(new URL('./enquiry.html', import.meta.url)),
       },
     },
   },

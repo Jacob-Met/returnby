@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2efe5">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <title>ReturnBy · Prepare a return enquiry</title>
+</head>
+<body>
+<div class="enquiry-shell">
+  <header class="enquiry-top"><a href="./index.html" class="enquiry-brand">R/ <span>RETURNBY</span></a><span class="local-label">LOCAL DRAFT / YOU SEND IT</span></header>
+  <main>
+    <section class="enquiry-intro">
+      <p class="eyebrow">THE RETURN DESK / NEXT STEP</p>
+      <h1>Ask the store.<br><em>Keep your wording.</em></h1>
+      <p>Prepare a return enquiry from one saved order. Add the items and context, review every word, then copy or download a message for your chosen contact method.</p>
+      <p class="boundary">This page does not send a message, open a return or confirm eligibility. Your saved orders stay unchanged. Drafts are kept only while this page is open.</p>
+    </section>
+    <div class="enquiry-grid">
+      <section class="enquiry-card" aria-labelledby="details-heading">
+        <p class="eyebrow">01 / CHOOSE AND DESCRIBE</p><h2 id="details-heading">Your order, your details.</h2>
+        <div class="refresh-row"><p id="enquiry-count" role="status">Reading saved orders…</p><button id="enquiry-refresh" type="button" class="button secondary">Refresh saved orders</button></div>
+        <form id="enquiry-form">
+          <label for="enquiry-order">Saved order</label>
+          <select id="enquiry-order"><option value="">Choose a saved order</option></select>
+          <dl id="enquiry-facts" class="facts" hidden>
+            <div><dt>Store as saved</dt><dd id="fact-merchant"></dd></div>
+            <div><dt>Order reference as saved</dt><dd id="fact-orderNo"></dd></div>
+            <div><dt>Order date</dt><dd id="fact-orderDate"></dd></div>
+          </dl>
+          <label for="enquiry-request">What would you like to ask?</label>
+          <select id="enquiry-request"><option value="instructions">How to arrange a return</option><option value="exchange">Exchange options</option><option value="eligibility">Whether a return is possible</option></select>
+          <label for="enquiry-items">Items you are asking about <span class="required">Required</span></label>
+          <textarea id="enquiry-items" rows="3" maxlength="2000" required aria-describedby="items-help" placeholder="Item name, size, colour or quantity"></textarea>
+          <p id="items-help" class="field-help">Describe the specific items. This is your wording; ReturnBy does not infer individual items from the saved order.</p>
+          <label for="enquiry-reason">Reason or context <span class="optional">Optional</span></label>
+          <textarea id="enquiry-reason" rows="3" maxlength="4000" placeholder="What would you like the store to know?"></textarea>
+          <label for="enquiry-signature">Sign-off <span class="optional">Optional</span></label>
+          <input id="enquiry-signature" maxlength="200" autocomplete="off" placeholder="The name you want to use">
+          <p class="field-help">Prepare creates a new message below and replaces any edits in that message. Changing these details keeps the old message visible but requires a new preparation.</p>
+          <div class="button-row"><button id="enquiry-prepare" type="submit" class="button primary" disabled>Prepare enquiry</button><button id="enquiry-reset" type="button" class="button secondary">Clear this draft</button></div>
+        </form>
+      </section>
+      <section class="enquiry-card draft-card" aria-labelledby="message-heading">
+        <p class="eyebrow">02 / REVIEW BEFORE USING</p><h2 id="message-heading">A message you control.</h2>
+        <p class="draft-guidance">The draft asks the store to confirm its requirements. Saved dates and references are copied as facts you recorded, without promising a return or refund.</p>
+        <div id="enquiry-preview" hidden>
+          <label for="enquiry-subject">Subject <span class="optional">Editable</span></label><input id="enquiry-subject" maxlength="200">
+          <label for="enquiry-body">Message <span class="optional">Editable</span></label><textarea id="enquiry-body" rows="18" maxlength="16000"></textarea>
+          <div class="button-row"><button id="enquiry-copy" type="button" class="button primary" disabled>Copy message</button><button id="enquiry-download" type="button" class="button secondary" disabled>Download text</button></div>
+          <p class="field-help">Both include the subject and the complete edited message. Check the recipient yourself before sending.</p>
+        </div>
+        <p id="enquiry-status" class="feedback" role="status" aria-live="polite">Choose an order and prepare a draft to begin.</p>
+        <p id="enquiry-error" class="error" role="alert" hidden></p>
+      </section>
+    </div>
+  </main>
+  <footer><a href="./index.html">← Back to your return tracker</a><p>No inbox connection. No upload. Copying or downloading does not contact a retailer.</p></footer>
+</div>
+<script type="module" src="/src/enquiry-view.ts"></script>
+</body>
+</html>

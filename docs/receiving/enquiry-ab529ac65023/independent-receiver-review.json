@@ -1,0 +1,60 @@
+{
+  "schema": "returnby.enquiry.independent-receiver-review/1",
+  "reviewer": "hamon-ultra-ab529ac65023-20261008/thinkpad_production",
+  "reviewedReceiver": "f096196262c6fde63ab488fa3f6a88211f719622",
+  "verdict": "accepted source; no blocking download/freshness/clipboard oracle finding",
+  "findings": [
+    "Independent literal templates; all7 unique completed physical GUID files match exact UTF8 bytes/count/filename",
+    "Real second-tab whole raw-string changes tested before stale prepare/copy/URL checks; malformed unselected rows and read failures preserve fields/facts",
+    "Controlled clipboard/reset ports accurately labelled; stale copy release drained through microtasks/frames before comparison",
+    "Storage mutation methods wrapped before product load, local snapshots include unrelated keys"
+  ],
+  "limits": [
+    "No execution or visual review by independent reviewer",
+    "Inherited browser_base/CDP transport not re-reviewed"
+  ],
+  "requestedReceiptTightening": "Compare created/revoked URL identities and multiplicity using retained report; no rerun needed",
+  "tighteningResult": {
+    "created": {
+      "blob:http://127.0.0.1:64859/7f74b704-7a66-424f-a055-7b2f439396c3": 1,
+      "blob:http://127.0.0.1:64859/7b2a657c-29a5-489c-b5c9-a7b7a191ce66": 1,
+      "blob:http://127.0.0.1:64859/cb0d0e69-9a06-4d58-b40a-980a481aec61": 1,
+      "blob:http://127.0.0.1:64859/dad6303a-d0af-411e-92f5-7f5ff722d4c4": 1,
+      "blob:http://127.0.0.1:64859/2a2771fd-3015-4810-85cd-85ac57497d89": 1,
+      "blob:http://127.0.0.1:64859/9e777104-2195-4224-a8e0-f962cd7ce3ab": 1,
+      "blob:http://127.0.0.1:64859/ce641a33-3b2f-4ed8-a446-b18d72fee441": 1
+    },
+    "revoked": {
+      "blob:http://127.0.0.1:64859/7f74b704-7a66-424f-a055-7b2f439396c3": 1,
+      "blob:http://127.0.0.1:64859/7b2a657c-29a5-489c-b5c9-a7b7a191ce66": 1,
+      "blob:http://127.0.0.1:64859/cb0d0e69-9a06-4d58-b40a-980a481aec61": 1,
+      "blob:http://127.0.0.1:64859/dad6303a-d0af-411e-92f5-7f5ff722d4c4": 1,
+      "blob:http://127.0.0.1:64859/2a2771fd-3015-4810-85cd-85ac57497d89": 1,
+      "blob:http://127.0.0.1:64859/9e777104-2195-4224-a8e0-f962cd7ce3ab": 1,
+      "blob:http://127.0.0.1:64859/ce641a33-3b2f-4ed8-a446-b18d72fee441": 1
+    },
+    "exactIdentityMultiplicityMatch": true,
+    "eachCount": 1,
+    "sourceReportSHA256": "2bc307cc40e198bcdb307435464d6d08e10725c83469ceb28015da3ac6088924"
+  },
+  "originalReceiverHistory": [
+    {
+      "name": "v1-frozen",
+      "nativeCommit": "bf0e728f01c6a05e0303420c505f6aecf5ab6d08",
+      "blob": "564b6618ec1bd9a8cb50cf3e2849c92cbfefcf1d",
+      "sha256": "9a05900063b09754bc2819a205bf919b03580fe6b042f6d0615e4a2a6d437170"
+    },
+    {
+      "name": "v2-readable-port",
+      "nativeCommit": "95405ec2f1b355424e4df3c36a08dd33a6675269",
+      "blob": "1e4417ea542fa8bdc61efee5fd065e124e9c4df1",
+      "sha256": "baed2ce4f8565be241eb093516ffb48bc675bacd7ba1db1577cd315d7c069273"
+    },
+    {
+      "name": "v3-foreground",
+      "nativeCommit": "cc601c642160360f6a19d998e55f2b44bea22e42",
+      "blob": "234bdccac7e61c250aa37fbad9cfe6ba0020bc67",
+      "sha256": "e82ebcff460677fb06a3b908a3c0944e7149efb1959c3894c2492accb5d52f4c"
+    }
+  ]
+}

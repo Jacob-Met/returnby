@@ -1,0 +1,21 @@
+
+> returnby@0.1.0 test
+> vitest run --maxWorkers=1
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.3 [39m[90mC:/Users/minec/hamon-returnby-enquiry-ab529ac65023/source[39m
+
+ [32m✓[39m tests/enquiry.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m tests/ics.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+ [32m✓[39m tests/trip-checklist.test.ts [2m([22m[2m40 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m tests/day-refresh.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m tests/core.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m5 passed[39m[22m[90m (5)[39m
+[2m      Tests [22m [1m[32m84 passed[39m[22m[90m (84)[39m
+[2m   Start at [22m 15:22:52
+[2m   Duration [22m 1.56s[2m (import 36%, transform 35%, tests 20%, worker 8%)[22m
+
+[2m    Isolate [22m [33m5 workers spawned[39m[2m · ~197ms startup each (spawn + environment, per file)[22m
+[2m            [22m [2mat least ~787ms faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+

@@ -1,0 +1,43 @@
+[
+  {
+    "label": "baseline-install",
+    "argv": [
+      "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node.exe",
+      "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "exit": 0,
+    "seconds": 14.459933280944824,
+    "free_before": 420410208256,
+    "at": "2026-10-08T22:12:38.235428+00:00"
+  },
+  {
+    "label": "baseline-tests",
+    "argv": [
+      "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node.exe",
+      "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+      "test",
+      "--",
+      "--maxWorkers=1"
+    ],
+    "exit": 0,
+    "seconds": 2.962812900543213,
+    "free_before": 420329127936,
+    "at": "2026-10-08T22:12:41.198241+00:00"
+  },
+  {
+    "label": "baseline-build",
+    "argv": [
+      "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node.exe",
+      "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+      "run",
+      "build"
+    ],
+    "exit": 0,
+    "seconds": 2.0401699542999268,
+    "free_before": 420328271872,
+    "at": "2026-10-08T22:12:43.239412+00:00"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "schema": "returnby.enquiry-completion.root-overlay/1",
+  "repository": "Jacob-Met/returnby",
+  "baseCommit": "83abbe9a00a5169354df25c734c00340ae73ae43",
+  "authorOverlay": "5a8c83afeda89c9ac867055a46be11b76270bde0",
+  "entries": [
+    {
+      "path": "docs/receiving/enquiry-completion-8d5ac72a6fae/root/source-acceptance.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "518a09e091dd1fee53dd0082b62397a286833604"
+    },
+    {
+      "path": "docs/receiving/enquiry-completion-8d5ac72a6fae/root/exact-delta-checks.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4712b4a89227973893698c9f654a30d7d97b8559"
+    }
+  ],
+  "selfPath": "docs/receiving/enquiry-completion-8d5ac72a6fae/root/overlay.json",
+  "qualification": "Both full UTF-8 bodies created and fetched back exactly. Root's original expectation freeze is already present in the author overlay. Additive source/manual receiving only; actual final commit/parent/tree remains pending; no native/refs/PR/Actions/installed work."
+}

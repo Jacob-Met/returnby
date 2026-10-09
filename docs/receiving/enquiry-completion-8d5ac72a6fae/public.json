@@ -1,0 +1,117 @@
+{
+  "schema": "returnby.enquiry-completion.public/1",
+  "repository": "Jacob-Met/returnby",
+  "owner": "chatgpt:8d5ac72a6fae:engine",
+  "createdAt": "2026-10-09",
+  "sourceBase": {
+    "commit": "83abbe9a00a5169354df25c734c00340ae73ae43",
+    "tree": "cfd56ce9960f08c4f5983d5a7a3ca054373f34c8",
+    "leaves": 257
+  },
+  "offeredEnquiry": {
+    "commit": "a4aad0e00951959bef5c66ee4d1fe76b1ed43ea1",
+    "tree": "e963c408967656a5603120479d97f1b8e20ef27d",
+    "handoff": 6070968335
+  },
+  "purpose": "Make the existing locally authored enquiry composer discoverable and buildable beside the completion-aware tracker and checklist, preserving their existing implementations.",
+  "ownership": {
+    "enquiry": "hamon-ultra-ab529ac65023-20261008/coordination-integration",
+    "checklistComposition": "estate-kestrel-2ff081f4",
+    "lifecycle": "#32",
+    "originalChecklist": "#33",
+    "finalAdoption": [
+      "#8",
+      "#10",
+      "#20"
+    ],
+    "nativeReceiving": "#37 comment6078634497 closes 2d2d276bbccc receiving; this work does not alter its installed copy",
+    "excluded": [
+      "#40 timed reminders",
+      "#44 backup comparison",
+      "#45 backup calendar",
+      "#8 comment6077902774 backup-to-print",
+      "portable tracker mutation and other receiving stacks"
+    ]
+  },
+  "behavior": [
+    "Tracker offers explicit links to the existing trip-checklist.html and enquiry.html. Opening another page is navigation: unsaved tracker/new enquiry form work is not persisted or carried across pages.",
+    "Vite retains main and tripChecklist inputs and adds enquiry. Existing package, lock, compiler settings and workflows remain exact.",
+    "The four original enquiry runtime files (model, controller, CSS, HTML) are carried byte-identically. No email transport, recipient inference, automatic send, new store or replacement reader is introduced.",
+    "Enquiry imports the exact PR37 reader. Every raw saved row is admitted before completed rows are hidden. Only admitted open orders can be selected through the page. Completed does not mean deleted; use the existing tracker Reopen action deliberately, then Refresh saved orders. Enquiry does not perform Reopen.",
+    "An invalid field, invalid completion marker or duplicate identity anywhere in the collection refuses the whole read, including a record that would otherwise be hidden. Existing byte/count/string/date limits are unchanged.",
+    "The reader retains the complete raw storage string. Completion, reopening, removal, any unrelated or unknown-field/raw-whitespace change invalidates a prepared snapshot at the unchanged Prepare/Copy/Download freshness checks. This is optimistic, not atomic; an already-started clipboard request cannot be recalled.",
+    "Refresh keeps authored wording but requires fresh preparation; a hidden/disappeared selected ID is not replaced silently. A completed-only admitted collection has zero selectable options and no preparable enquiry; the existing page's generic empty wording is retained.",
+    "Plain enquiry rendering/edited output, literal Unicode and CRLF rules remain original. Completed state, total, derived due date and unknown fields are not copied into the message. No saved or unrelated storage is written by this page.",
+    "The original positive test fixture contains top-level completedAt that was ignored by its older reader. In this composition it must be open: move that marker into nested unknown evidence and update only the corresponding non-rendering assertion; preserve exact historical test separately. Add focused integration tests with the real unchanged reader and completion planner.",
+    "Update the original guide's navigation and completed-selection statement to the open-only receiving context, and append current qualification to README. Preserve exact original guide and all source-specific evidence; do not rewrite old receipts."
+  ],
+  "mutationFence": {
+    "existingBaseOnly": [
+      "index.html (additive navigation/help)",
+      "vite.config.ts (one additional build input)",
+      "README.md (append-only section)"
+    ],
+    "importedUnchanged": [
+      "enquiry.html",
+      "src/enquiry.ts",
+      "src/enquiry-view.ts",
+      "src/enquiry.css",
+      "all original enquiry receiving evidence/tools"
+    ],
+    "importedAdapted": [
+      "tests/enquiry.test.ts (open fixture only)",
+      "docs/ENQUIRY.md (navigation/completion explanation only)"
+    ],
+    "new": [
+      "tests/enquiry-completion.test.ts",
+      "docs/receiving/enquiry-completion-8d5ac72a6fae/"
+    ],
+    "held": "Every other base path/mode/type/SHA remains identical. No ref, PR, Actions, deployment, native/runtime operation or installed-copy change."
+  },
+  "verification": {
+    "current": "source/manual and exact Git composition only",
+    "authorNativeTestsExecuted": 0,
+    "newBrowserGroupsExecuted": 0,
+    "priorEnquiry": "84 tests/build/8 Chrome groups/7 physical downloads are historical evidence for a4aad0, not this composition.",
+    "priorChecklist": "PR37 source/hosted and latest native delivery remain attributed to83abbe9a. Native-only child15410516/tree296d9827 is unavailable via canonical Git (404/422 retained); do not pretend to preserve its34 evidence leaves.",
+    "remaining": "Combined Vitest/strict build, three-entry built navigation, mixed/completed-only real UI, two-tab completion/reopen, actual copy/download, layout and installed receiving require a separately assigned existing native owner."
+  },
+  "questionOnlyCases": [
+    {
+      "id": "R01",
+      "question": "For valid raw source order [open-A, completed-C, open-B], which identities and positions appear in the enquiry selection, and what raw text remains bound?"
+    },
+    {
+      "id": "R02",
+      "question": "For an all-completed valid collection, which actions can prepare a message? Does opening the page mutate lifecycle state?"
+    },
+    {
+      "id": "R03",
+      "question": "What happens if a hidden completed row has an invalid marker/field, or repeats an open identity?"
+    },
+    {
+      "id": "R04",
+      "question": "Prepare from open-A, then complete A using the existing planner in another tab. What happens to old snapshot use, then Refresh and selection?"
+    },
+    {
+      "id": "R05",
+      "question": "Reopen that exact record through the original planner, then Refresh and prepare again. Which literal saved details change, and which must be retained?"
+    },
+    {
+      "id": "R06",
+      "question": "With A still open, change a hidden completed record's unknown property, or only raw JSON whitespace. Is the previously prepared snapshot current?"
+    },
+    {
+      "id": "R07",
+      "question": "After a refresh read failure, what data/draft remain visible and what checks must still precede Copy/Download?"
+    },
+    {
+      "id": "R08",
+      "question": "Which exact original source/build entries and owners must remain unchanged, and which old test/guide statements are incompatible with the receiving reader?"
+    },
+    {
+      "id": "R09",
+      "question": "Do the separate prior native/browser receipts establish a result for this composition or its newly wired tracker links?"
+    }
+  ]
+}

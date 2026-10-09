@@ -1,0 +1,216 @@
+{
+  "schema": "returnby.enquiry-completion.root-manual-freeze/1",
+  "worker": "estate-8d5ac72a6fae/root",
+  "at": "2026-10-09T10:10:26.710Z",
+  "repository": "Jacob-Met/returnby",
+  "issue": 41,
+  "public": "c56b3a1a9718cd0a014add17250516d6b1c3895e",
+  "original": "3e4cdb97b839f1bc28befa871e38919432fc3247",
+  "sourceBase": {
+    "commit": "83abbe9a00a5169354df25c734c00340ae73ae43",
+    "tree": "cfd56ce9960f08c4f5983d5a7a3ca054373f34c8",
+    "leaves": 257
+  },
+  "offeredEnquiry": {
+    "commit": "a4aad0e00951959bef5c66ee4d1fe76b1ed43ea1",
+    "tree": "e963c408967656a5603120479d97f1b8e20ef27d",
+    "handoff": 6070968335
+  },
+  "exposure": {
+    "before": "Public nine question-only cases and the listed17 complete original bodies. Author's source-only discovery that original completed fixtures and guide conflict with the receiving reader was already disclosed; it is part of the public problem. Root has not seen a candidate, new integration tests, revised guide or author per-case results.",
+    "method": "Independent manual source reasoning. No TypeScript execution, parser, import, Vitest, browser, DOM simulation, build, storage, clipboard, download or substitute-language implementation.",
+    "independenceLimit": "The author selected the compatibility goal and question families and may draft privately. This is not blinded discovery of the original fixture incompatibility, nor native behavioral acceptance."
+  },
+  "completeOriginalReads": [
+    {
+      "side": "offered",
+      "path": "src/enquiry.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04690ad4c56faf0f1dec424a75f014997f844a59",
+      "bytes": 2950
+    },
+    {
+      "side": "offered",
+      "path": "src/enquiry-view.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6dbdec93f231dfc90414361f1f6eb5dbe44f416",
+      "bytes": 7447
+    },
+    {
+      "side": "offered",
+      "path": "enquiry.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3f48df64069a4e897800c138794bf1e53cdf316",
+      "bytes": 5186
+    },
+    {
+      "side": "offered",
+      "path": "src/enquiry.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2551b9c260a87d5e8eda0c0e60cfcd0ac5c2b20f",
+      "bytes": 4240
+    },
+    {
+      "side": "offered",
+      "path": "tests/enquiry.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "08e033cb8b08fb34d33502574dca490be8c38c33",
+      "bytes": 5499
+    },
+    {
+      "side": "offered",
+      "path": "docs/ENQUIRY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fca6ae646ef17dcc44944e2628cd844774e31c72",
+      "bytes": 3042
+    },
+    {
+      "side": "offered",
+      "path": "docs/receiving/enquiry-ab529ac65023/FROZEN.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56eb13f144b4742c0970d25cf8f6c6331013d874",
+      "bytes": 7227
+    },
+    {
+      "side": "base",
+      "path": "src/trip-checklist.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f1c7516b0a1d230756b77454b3edd0a403fd8de5",
+      "bytes": 13742
+    },
+    {
+      "side": "base",
+      "path": "vite.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+      "bytes": 355
+    },
+    {
+      "side": "base",
+      "path": ".github/workflows/ci.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b5688812f36338630c21eb5643318a55496ae09b",
+      "bytes": 409
+    },
+    {
+      "side": "base",
+      "path": ".github/workflows/pages.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+      "bytes": 572
+    },
+    {
+      "side": "base",
+      "path": "index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd7cf23e6c4555b6ff0412e7e71eebf874b331b5",
+      "bytes": 10275
+    },
+    {
+      "side": "base",
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "bytes": 313
+    },
+    {
+      "side": "base",
+      "path": "tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "bytes": 273
+    },
+    {
+      "side": "base",
+      "path": "src/completion.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "579b8e2c7b4098a39824ba82cd43bc04b87e2a16",
+      "bytes": 2915
+    },
+    {
+      "side": "base",
+      "path": "src/store.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c46afe6a95e2e3e371b5d2340b85ba7e01deeda1",
+      "bytes": 1543
+    },
+    {
+      "side": "base",
+      "path": "src/deadline.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "bytes": 837
+    }
+  ],
+  "readCoverage": "17 of21 supplied complete source bodies were read, including all four offered enquiry runtime bodies; actual receiving reader, completion/store/deadline; offered tests/guide/frozen contract; receiving index/Vite/package/tsconfig and both workflows. Root did not read the full legacy reader/store/Vite or receiving README semantically. The full21-body and tree/ownership/error capsule remains retained.",
+  "groups": [
+    {
+      "id": "R01",
+      "expected": "For source array[open-A,completed-C,open-B], every row is validated in original source order, then completed-C is excluded. snapshot.orders=[A,B] in that order, indexes0 and1. Enquiry's select has its empty placeholder at option0, A at option1, B at option2; original source positions0 and2 are not an exposed SavedSnapshot index field. snapshot.raw is the full original exact string including C/unknown metadata/whitespace. No sort, rewriting or lifecycle write."
+    },
+    {
+      "id": "R02",
+      "expected": "An admitted completed-only collection produces orders[] and a sole placeholder option. There is no selectable/preparable saved record: UI Prepare disabled and buildEnquiry cannot find an ID. Opening/refreshing the page does not reopen or delete anything. The unchanged generic empty-message text says no saved orders found even though completed records remain; this imprecision is expressly disclosed, not represented as an absence of stored records. Use existing tracker Reopen deliberately and then successful Refresh."
+    },
+    {
+      "id": "R03",
+      "expected": "Validation precedes filtering. A malformed completedAt (including null, wrong type or invalid timestamp), malformed required field/date/window/source, repeated identifier or invalid raw collection causes ChecklistError data for the whole read, even if the row would be completed/hidden. A duplicate of A in a completed row cannot be hidden to evade identity admission. Unknown nested metadata is not promoted into a top-level completion marker. No partial list or repair is returned."
+    },
+    {
+      "id": "R04",
+      "expected": "Old prepared snapshot retains its old raw text. Completing A via original planCompletion creates a shallow-copy record with the reviewed completion timestamp; the existing caller owns committing it. If the actual stored raw string then changes, assertSnapshotCurrent on old Prepare/Copy/Download throws stale before a new effect; this is distinct from a merely computed but uncommitted plan. Successful Refresh removes A from options, clears its selection to the placeholder and invalidates prepared state, while retaining authored wording and visible old message. It does not silently select B. An already-started clipboard request cannot be recalled."
+    },
+    {
+      "id": "R05",
+      "expected": "Original planner Reopen deletes only the selected saved record's top-level completedAt in its planned copy. ID, merchant, literal order reference, optional total, orderDate, windowDays, windowSource, createdAt and unknown nested fields remain; other records and order remain. Persisting through the unchanged caller may reserialize JSON, so previous raw whitespace is not a preservation promise. After successful Refresh, A is again an open option in original order, prepared remains invalid and no disappeared selection is restored automatically. Explicitly select A and prepare; the original model again uses its literal merchant/orderNo/orderDate and authored fields, not completion/amount/derived deadline/unknown evidence."
+    },
+    {
+      "id": "R06",
+      "expected": "Any different stored raw string invalidates the prior snapshot: a hidden completed record's unknown property change, completion/reopen/removal elsewhere, raw JSON whitespace only, null versus[] or another raw alteration. assertSnapshotCurrent compares exact getItem return to snapshot.raw, not parsed equivalence or selected-row equality. Identical exact text remains current; this is an optimistic read immediately before the effect, not a cross-tab transaction or a guarantee against change just afterward."
+    },
+    {
+      "id": "R07",
+      "expected": "refresh failure takes the catch path before replacing snapshot/options/selection/facts or invalidating prepared. Existing authored inputs, edited subject/body, prepared binding and current selection remain. Buttons may remain enabled according to prepared/copying; this is not proof that use is current. Copy/Download call reviewedText, check prepared/selected identity and then assertSnapshotCurrent before format/effect. If storage remains unreadable or text differs, they refuse with no new clipboard call/Blob allocation. If a transient read failure clears and exact prior raw text is restored, the old prepared draft may pass; successful refresh is not an unconditional required repair after every transient failure. A successful refresh always invalidates prior preparation even if text is unchanged."
+    },
+    {
+      "id": "R08",
+      "expected": "Preserve all257 base leaf identities except declared additive index, one Vite input and README append. Preserve receiving reader f1c7516b, completion579b8e2c, storec46afe6a, deadlinebcef920c, package329b4b71, lock, tsconfigbe856876, main and existing tests/workflows. Import four offered enquiry runtime bodies exactly; no older trip reader/store/Vite overwrite. Original offered fixture has a top-level completedAt on both records, so this reader yields an empty snapshot and its positive use is incompatible. Move only that marker into the existing nested unknown extra evidence and change the corresponding non-rendering assertion; archive exact original test outside active tests. Update only the guide's navigation/open-only explanation, preserving original. Add meaningful source integration cases through actual original parse/read/assert/model/planner interfaces, not a replacement implementation."
+    },
+    {
+      "id": "R09",
+      "expected": "The separate historical enquiry84 tests/build/eight browser groups/seven downloads and checklist/native delivery remain bound to their original sources and recipients. They do not establish combined build, new tracker navigation, adapted test fixture, mixed/completed-only actual UI, cross-tab completion/reopen or installed adoption here. Native-only15410516/tree296d9827 returned exact retained404/422 to author lookup; do not describe unavailable34 evidence leaves as canonically carried. No native replay/source placement/ref/PR/Actions follows from source acceptance."
+    }
+  ],
+  "integrationCriteria": [
+    "The tracker must expose both real ./trip-checklist.html and ./enquiry.html navigation near intelligible help, with explicit open-only enquiry/Reopen→Refresh guidance. Navigation is not persistence of unsaved work. No existing control/ID handler is removed or renamed.",
+    "Vite base './' and main/tripChecklist input values stay exact; add one enquiry input resolving actual enquiry.html. Original enquiry.html's module /src/enquiry-view.ts and controller's original imports/DOM IDs remain present. Build success cannot be inferred from text.",
+    "README must retain its entire original prefix and append only current composition use/qualification; guide change must preserve unrelated original wording. Old source/receiving records must remain separately identifiable.",
+    "Original FROZEN/browser group2 uses completion metadata under an older reader. Carried unchanged legacy receiving tools remain historical artifacts; their exact fixtures are not assumed compatible launch instructions for this composition. A future admitted combined receiver must deliberately bind the new context.",
+    "No email, recipient inference, automatic send, inbox, data repair, alternate store, lifecycle write or hidden auto-reopen is introduced. Existing source/adoption/native owners remain.",
+    "Final detached Git custody must bind actual sole available83abbe9a source parent and complete257-leaf map; retain source-qualified old receiving evidence with precise native-only limitations. Every imported/new/modified leaf must be explicitly accounted for."
+  ],
+  "sourcePrecision": [
+    "buildEnquiry trusts an admitted SavedSnapshot and looks up its orders; it does not independently re-run completion admission on arbitrarily constructed caller objects. This composition's product promise is through unchanged real reader/page, not a strengthened standalone API contract.",
+    "planCompletion computes a plan and does not write storage itself. Only actual persisted raw changes make a previously stored snapshot stale. Tests should keep planning and committing distinct.",
+    "Raw exact-string checks can detect hidden/unknown-field changes, but no statement of atomicity or cancellation of an in-flight clipboard effect is permitted. The operation token suppresses feedback for a newer UI draft/selection; it is not a storage-event transaction.",
+    "All evidence arrays/counts here are manual source conclusions, not executed test results. Native corpus acceptance remains unrun for this composition."
+  ],
+  "qualification": "Candidate-unseen source/manual expectation freeze, with stated original-error exposure. No runtime effects. Both checked-in original workflows have only pull_request and/or push-main events; no issue/comment trigger. This is not a global hosted-event guarantee; no source ref will be created."
+}

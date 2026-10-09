@@ -1,0 +1,17 @@
+{
+  "freeze_commit": "fa1242ae05bd71d5aace57d56119f8c149b30ada",
+  "tests_blob": "08e033cb8b08fb34d33502574dca490be8c38c33",
+  "frozen_blob": "56eb13f144b4742c0970d25cf8f6c6331013d874",
+  "missing_model_baseline_exit": 1,
+  "baseline_existing_test_output": "\n> returnby@0.1.0 test\n> vitest run --maxWorkers=1\n\n\n\u001b[1m\u001b[30m\u001b[46m RUN \u001b[49m\u001b[39m\u001b[22m \u001b[36mv5.0.3 \u001b[39m\u001b[90mC:/Users/minec/hamon-returnby-enquiry-ab529ac65023/source\u001b[39m\n\n \u001b[32m\u2713\u001b[39m tests/trip-checklist.test.ts \u001b[2m(\u001b[22m\u001b[2m40 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 24\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m\u2713\u001b[39m tests/day-refresh.test.ts \u001b[2m(\u001b[22m\u001b[2m10 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 13\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m\u2713\u001b[39m tests/ics.test.ts \u001b[2m(\u001b[22m\u001b[2m12 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 24\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m\u2713\u001b[39m tests/core.test.ts \u001b[2m(\u001b[22m\u001b[2m6 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 9\u001b[2mms\u001b[22m\u001b[39m\n\n\u001b[2m Test Files \u001b[22m \u001b[1m\u001b[32m4 passed\u001b[39m\u001b[22m\u001b[90m (4)\u001b[39m\n\u001b[2m      Tests \u001b[22m \u001b[1m\u001b[32m68 passed\u001b[39m\u001b[22m\u001b[90m (68)\u001b[39m\n\u001b[2m   Start at \u001b[22m 15:12:39\n\u001b[2m   Duration \u001b[22m 1.21s\u001b[2m (import 38%, transform 34%, tests 18%, worker 11%)\u001b[22m\n\n\u001b[2m    Isolate \u001b[22m \u001b[33m4 workers spawned\u001b[39m\u001b[2m \u00b7 ~191ms startup each (spawn + environment, per file)\u001b[22m\n\u001b[2m            \u001b[22m \u001b[2mat least ~574ms faster with \u001b[22m\u001b[33misolate: false\u001b[39m\u001b[2m \u2014 reuses workers across files instead of one per file\u001b[22m\n\n",
+  "baseline_dist_files": [
+    "assets\\deadline-DzH3L3IB.js",
+    "assets\\main-6De5wGcc.js",
+    "assets\\main-Bp_ZSQx5.css",
+    "assets\\tripChecklist-CmK7SEMW.css",
+    "assets\\tripChecklist-DwME05Y-.js",
+    "favicon.svg",
+    "index.html",
+    "trip-checklist.html"
+  ]
+}

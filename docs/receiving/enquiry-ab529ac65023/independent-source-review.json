@@ -1,0 +1,13 @@
+{
+  "schema": "returnby.enquiry.independent-source-review/1",
+  "reviewer": "hamon-ultra-ab529ac65023-20261008/thinkpad-production",
+  "source_commit": "c8afed83e6926f2da33d022a6177177b86d6d639",
+  "model": "04690ad4c56faf0f1dec424a75f014997f844a59",
+  "controller": "b6dbdec93f231dfc90414361f1f6eb5dbe44f416",
+  "contract": "56eb13f144b4742c0970d25cf8f6c6331013d874",
+  "tests": "08e033cb8b08fb34d33502574dca490be8c38c33",
+  "verdict": "ACCEPTED_FOR_BROWSER_RECEIVING",
+  "source_observation_process": 90456,
+  "findings": "Literal admitted facts/authored wording, exact UTF-16 limits/request validation, actual edited CRLF export; no eligibility/amount/deadline inference. Whole raw snapshot check precedes prepare/copy/Blob allocation. Failed reads/staleness retain fields. Detail/selection changes invalidate binding; final edits preserve it. Operation identity guards late clipboard resolve/reject/finally. URL/anchor cleanup scoped. No storage/send/network code added.",
+  "limits": "Source review only; no reviewer execution or edits. Actual browser, controlled clipboard, downloaded bytes and visual gates remain separate."
+}

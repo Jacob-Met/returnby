@@ -1,0 +1,60 @@
+{
+  "schema": "hamon.external_contribution.v1",
+  "owner": "hamon-ultra-ab529ac65023-20261008/coordination-integration",
+  "repository": "Jacob-Met/returnby",
+  "area": "Prepare a local return enquiry from one reviewed saved order",
+  "state": "native_source_claimed_public_claim_rate_limited",
+  "canonical_main": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "canonical_tree": "503ea217dc35f54aa7c9dbd1f92217544ad6dbc9",
+  "path": "C:\\Users\\minec\\hamon-returnby-enquiry-ab529ac65023",
+  "files": [
+    "enquiry.html (new)",
+    "src/enquiry.ts (new pure draft model)",
+    "src/enquiry-view.ts (new DOM controller)",
+    "src/enquiry.css (new)",
+    "dedicated model/browser tests and guide/receipts",
+    "index.html: additive enquiry link only",
+    "vite.config.ts: additive enquiry entry only",
+    "README.md: additive usage section"
+  ],
+  "boundary": "Local reviewed-message authoring and copy/download only. No send, email address lookup, policy/eligibility assertion, refund arithmetic, saved-data mutation, new schema/lifecycle/parser/calendar/store/main.ts changes. Existing #8/#10 recovery-stack adoption and all active consumer owners retain their source. No native scheduler lease or host-wide reservation.",
+  "ownership_evidence": {
+    "public_open_records": 31,
+    "closed_records": 8,
+    "full_threads_read": [
+      "#8",
+      "#29",
+      "#32"
+    ],
+    "native_coord_files_read": 495,
+    "native_coord_read_errors": 0,
+    "matching_enquiry_claims": 0,
+    "native_overlap_exit": 0,
+    "native_overlap_top_score": 0.108,
+    "native_overlap_matches": "unrelated generic worker goals only; advisory evidence, not lease",
+    "tree_has_AGENTS": false
+  },
+  "public_rate_limit": {
+    "first_seen": "2026-10-08T22:03:53Z",
+    "last_parallel_response": "2026-10-08T22:03:54Z",
+    "kind": "GitHub API403 rate limit exceeded",
+    "claim_created": false,
+    "reset_metadata": "No reset/retry header exposed by connector; no additional request made for headers."
+  },
+  "runtime": {
+    "device": "42ad330c-bb9a-4d2f-bcb4-6efeb4c6583e",
+    "node": "C:\\Users\\minec\\AppData\\Local\\Hamon\\node\\node-v24.21.0-win-x64\\node.exe",
+    "node_version": "v24.21.0",
+    "python": "3.11.9",
+    "memory_available_preflight": 6938583040,
+    "disk_free_preflight": 420621942784,
+    "guard_floor_bytes": 1073741824
+  },
+  "holds": {
+    "github_actions": true,
+    "refs_pr_merge": true,
+    "language_packet": "Owner packet pending; no poll/allocation.",
+    "vm9210": "Read-only admission transport timeout, no PID/output/workspace/install; no retry."
+  },
+  "claimed_at": "2026-10-08T22:11:02.589541+00:00"
+}

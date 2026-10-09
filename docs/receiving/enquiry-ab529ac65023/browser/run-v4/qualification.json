@@ -1,0 +1,153 @@
+{
+  "schema": "returnby.enquiry.native-qualification/1",
+  "at": "2026-10-08T23:12:46.499902+00:00",
+  "owner": "hamon-ultra-ab529ac65023-20261008/coordination-integration",
+  "canonicalParent": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "canonicalTree": "503ea217dc35f54aa7c9dbd1f92217544ad6dbc9",
+  "sourceQualification": "34-file canonical runtime projection plus exact own additive product delta; full-repository composition pending",
+  "testSourceHead": "31b7e93af01f86c23d43fb1eaaa694f0a869975d",
+  "receiver": "f096196262c6fde63ab488fa3f6a88211f719622",
+  "nativeUnitTests": 84,
+  "baselineUnitTests": 68,
+  "strictTypeScriptAndViteBuild": "passed",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/154.0.8037.98",
+    "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.20"
+  },
+  "controllerPid": 85336,
+  "controllerExitCode": 0,
+  "groups": 8,
+  "physicalDownloads": 7,
+  "allDownloadsExact": true,
+  "sourceAndBuildUnchanged": true,
+  "cleanup": {
+    "browserCloseAcknowledged": true,
+    "chromeExitCode": 0,
+    "chromeExitedAt": "2026-10-08T23:11:38.083603+00:00",
+    "chromeExited": true,
+    "profileRemoved": true
+  },
+  "visualReview": {
+    "reviewer": "coordination-integration",
+    "method": "actual PNGs displayed through RDC read_file and visually inspected",
+    "files": {
+      "desktop.png": {
+        "bytes": 110805,
+        "sha256": "104ce2e136970537023ee8caab202ecf52e4b962a758d3789912eaa31c503e71"
+      },
+      "phone-top.png": {
+        "bytes": 44411,
+        "sha256": "4e5f568362c7ba80ea27080ca4dc5076a1fe4d0daf4d6e8cef2e126e3b02cf61"
+      },
+      "phone-message.png": {
+        "bytes": 36127,
+        "sha256": "1adacaa180bbcaf55a89d2ebdee996e9bd1d6f63b91c3114c4a7bd670423e567"
+      }
+    },
+    "findings": "Desktop two-column and390px stacked layout readable; literal facts visible; focused Download outline visible; message and actions fit viewport. Textarea intentionally scrolls; exact full text independently proven by downloaded bytes."
+  },
+  "limits": [
+    "Controlled navigator.clipboard success/reject/missing/pending port, no operating-system clipboard claim",
+    "Controlled confirmation cancel/accept, no native dialog claim",
+    "Programmatic initial brand focus followed by real trusted Tab/select/edit/Enter traversal",
+    "No retailer message sends, production deployment, GitHub Actions or hosted test claim"
+  ],
+  "preservedFailures": [
+    "run-v1 failed_cleanup before product groups",
+    "run-v2 frame-wait timeout after4groups5files; clean close",
+    "run-v3 native select popup consumed Tab after6groups6files; clean close"
+  ],
+  "files": {
+    "01-instructions-A.expected.txt": {
+      "bytes": 496,
+      "sha256": "f7630f1fb27e7f679e3db65b9c27ea9eaf448c0c98cbc961e135288b30763750"
+    },
+    "02-eligibility-B.expected.txt": {
+      "bytes": 466,
+      "sha256": "6bd25abe657d221e6dfffae60b09830a162ec63171a7c7cd4f831cb60434c49b"
+    },
+    "03-final-edits.expected.txt": {
+      "bytes": 110,
+      "sha256": "efd7e7c7c78598d67efb38300a9222a1dd8e11618bacb3267a58162a33c923b2"
+    },
+    "04-exchange.expected.txt": {
+      "bytes": 511,
+      "sha256": "47a4c98a2dde52997b9e25d3ab749c8360e7a0617d4e3ff4edb5ee0965569fb6"
+    },
+    "05-fresh-source.expected.txt": {
+      "bytes": 494,
+      "sha256": "ac9edf4a4ba3e7ef2e7becbd753d76ccca0011d1ca7d616074c4e88b7cf10113"
+    },
+    "06-allocation-retry.expected.txt": {
+      "bytes": 110,
+      "sha256": "efd7e7c7c78598d67efb38300a9222a1dd8e11618bacb3267a58162a33c923b2"
+    },
+    "07-keyboard-phone.expected.txt": {
+      "bytes": 496,
+      "sha256": "f7630f1fb27e7f679e3db65b9c27ea9eaf448c0c98cbc961e135288b30763750"
+    },
+    "admission.json": {
+      "bytes": 233,
+      "sha256": "e4c5f7da728322e2dce454a3361c2ccfe8d2ae9a6e92fbea857c8daacd77575a"
+    },
+    "chrome-stderr.log": {
+      "bytes": 7921,
+      "sha256": "31c608877db72ad1c98e890c0b3528a2f1f89679de643042cb9c488e2684b5bb"
+    },
+    "desktop.png": {
+      "bytes": 110805,
+      "sha256": "104ce2e136970537023ee8caab202ecf52e4b962a758d3789912eaa31c503e71"
+    },
+    "downloads/0e30f2c7-7d83-4fe3-ae88-743b6e6e910a": {
+      "bytes": 110,
+      "sha256": "efd7e7c7c78598d67efb38300a9222a1dd8e11618bacb3267a58162a33c923b2"
+    },
+    "downloads/65df59c3-ec00-49e5-ae5b-7ce2d328ed07": {
+      "bytes": 494,
+      "sha256": "ac9edf4a4ba3e7ef2e7becbd753d76ccca0011d1ca7d616074c4e88b7cf10113"
+    },
+    "downloads/7164bf68-b8aa-4413-9bd9-9215475029bb": {
+      "bytes": 496,
+      "sha256": "f7630f1fb27e7f679e3db65b9c27ea9eaf448c0c98cbc961e135288b30763750"
+    },
+    "downloads/85b9de85-b2ee-45ef-9630-f8445069cd4b": {
+      "bytes": 110,
+      "sha256": "efd7e7c7c78598d67efb38300a9222a1dd8e11618bacb3267a58162a33c923b2"
+    },
+    "downloads/8bcf2eec-d4e3-432b-aaa9-b515494e83ea": {
+      "bytes": 496,
+      "sha256": "f7630f1fb27e7f679e3db65b9c27ea9eaf448c0c98cbc961e135288b30763750"
+    },
+    "downloads/e7b24c27-3fc0-48a5-affe-9795b435189c": {
+      "bytes": 466,
+      "sha256": "6bd25abe657d221e6dfffae60b09830a162ec63171a7c7cd4f831cb60434c49b"
+    },
+    "downloads/fa278d67-873c-4748-a31e-8793af807704": {
+      "bytes": 511,
+      "sha256": "47a4c98a2dde52997b9e25d3ab749c8360e7a0617d4e3ff4edb5ee0965569fb6"
+    },
+    "events.json": {
+      "bytes": 247774,
+      "sha256": "7b149129c351191bf14b2273a960c91f9a040ae64343b538190250d80d278ff0"
+    },
+    "http.json": {
+      "bytes": 4744,
+      "sha256": "936289336caa87c0061144937f9103d6efc955fe7babdef9fe16404867a3f378"
+    },
+    "phone-message.png": {
+      "bytes": 36127,
+      "sha256": "1adacaa180bbcaf55a89d2ebdee996e9bd1d6f63b91c3114c4a7bd670423e567"
+    },
+    "phone-top.png": {
+      "bytes": 44411,
+      "sha256": "4e5f568362c7ba80ea27080ca4dc5076a1fe4d0daf4d6e8cef2e126e3b02cf61"
+    },
+    "report.json": {
+      "bytes": 142383,
+      "sha256": "2bc307cc40e198bcdb307435464d6d08e10725c83469ceb28015da3ac6088924"
+    }
+  }
+}

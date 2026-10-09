@@ -1,0 +1,8 @@
+{
+  "process": 90368,
+  "exit": 1,
+  "stage": "literal entry-link anchor guard",
+  "error": "AssertionError before any existing-file mutation",
+  "correction": "Use ASCII source with escaped Unicode arrow in the PowerShell-to-Python wrapper. The exact canonical index beforeimage was verified again and matched; only then append the approved link.",
+  "product_logic_changed_by_correction": false
+}

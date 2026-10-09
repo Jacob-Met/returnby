@@ -1,0 +1,252 @@
+{
+  "at": "2026-10-09T10:24:55.734Z",
+  "method": "Finite complete-source string, exact inverse and literal tuple comparisons only; no product imports or test/build/browser/native execution.",
+  "inverseChecks": [
+    {
+      "path": "index.html",
+      "originalSha": "cd7cf23e6c4555b6ff0412e7e71eebf874b331b5",
+      "candidateSha": "1a94e543f80c68b997e47506face7c2bc1fccaa5",
+      "counts": [
+        {
+          "insertionOccurs": 1,
+          "anchorOccursInOriginal": 1
+        }
+      ],
+      "wholeInverseExact": true,
+      "originalCharacters": 10275,
+      "candidateCharacters": 10756
+    },
+    {
+      "path": "vite.config.ts",
+      "originalSha": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+      "candidateSha": "57cba3d1c3d565588caba6559718dc92954f7eff",
+      "counts": [
+        {
+          "insertionOccurs": 1,
+          "anchorOccursInOriginal": 1
+        }
+      ],
+      "wholeInverseExact": true,
+      "originalCharacters": 355,
+      "candidateCharacters": 431
+    },
+    {
+      "path": "README.md",
+      "originalSha": "4ff9608a0900585f2cfd8d0580e55ef76261589a",
+      "candidateSha": "f1745e9441fd9a9f6a88b89c05c2341f7786cda5",
+      "counts": [
+        {
+          "insertionOccurs": 1,
+          "appendSuffix": true
+        }
+      ],
+      "wholeInverseExact": true,
+      "originalCharacters": 12126,
+      "candidateCharacters": 13715
+    },
+    {
+      "path": "tests/enquiry.test.ts",
+      "originalSha": "08e033cb8b08fb34d33502574dca490be8c38c33",
+      "candidateSha": "7d4779b9a9eae1a86d12c8400ae962cf3405286a",
+      "counts": [
+        {
+          "oldOccursInOriginal": 1,
+          "newOccursInCurrent": 1
+        },
+        {
+          "oldOccursInOriginal": 1,
+          "newOccursInCurrent": 1
+        }
+      ],
+      "wholeInverseExact": true,
+      "originalCharacters": 5483,
+      "candidateCharacters": 5489
+    },
+    {
+      "path": "docs/ENQUIRY.md",
+      "originalSha": "fca6ae646ef17dcc44944e2628cd844774e31c72",
+      "candidateSha": "80fd4c765eeced8568ef89ec3baff7aea7a975c8",
+      "counts": [
+        {
+          "oldOccursInOriginal": 1,
+          "newOccursInCurrent": 1
+        },
+        {
+          "oldOccursInOriginal": 1,
+          "newOccursInCurrent": 1
+        }
+      ],
+      "wholeInverseExact": true,
+      "originalCharacters": 3036,
+      "candidateCharacters": 3411
+    }
+  ],
+  "immutableChecks": [
+    {
+      "path": "enquiry.html",
+      "sha": "a3f48df64069a4e897800c138794bf1e53cdf316",
+      "shaExact": true,
+      "wholeBodyExact": true,
+      "modeExact": true,
+      "typeExact": true
+    },
+    {
+      "path": "src/enquiry.ts",
+      "sha": "04690ad4c56faf0f1dec424a75f014997f844a59",
+      "shaExact": true,
+      "wholeBodyExact": true,
+      "modeExact": true,
+      "typeExact": true
+    },
+    {
+      "path": "src/enquiry-view.ts",
+      "sha": "b6dbdec93f231dfc90414361f1f6eb5dbe44f416",
+      "shaExact": true,
+      "wholeBodyExact": true,
+      "modeExact": true,
+      "typeExact": true
+    },
+    {
+      "path": "src/enquiry.css",
+      "sha": "2551b9c260a87d5e8eda0c0e60cfcd0ac5c2b20f",
+      "shaExact": true,
+      "wholeBodyExact": true,
+      "modeExact": true,
+      "typeExact": true
+    }
+  ],
+  "ui": {
+    "idsBefore": [
+      "top",
+      "paste",
+      "find",
+      "sample",
+      "preview",
+      "storage-error",
+      "storage-retry",
+      "tracked-count",
+      "soon-count",
+      "expired-count",
+      "filter-all",
+      "filter-due",
+      "filter-expired",
+      "filter-completed",
+      "completed-count",
+      "completion-feedback",
+      "edit-feedback",
+      "calendar-open",
+      "calendar-feedback",
+      "list",
+      "backup-heading",
+      "backup-export",
+      "backup-file",
+      "backup-limits",
+      "backup-message",
+      "backup-preview",
+      "backup-summary",
+      "backup-rows",
+      "backup-previous",
+      "backup-page",
+      "backup-next",
+      "backup-apply",
+      "backup-cancel",
+      "clear",
+      "edit-dialog",
+      "edit-title",
+      "edit-intro",
+      "edit-form",
+      "edit-merchant",
+      "edit-order-date",
+      "edit-window-days",
+      "edit-order-no",
+      "edit-total",
+      "edit-current-deadline",
+      "edit-proposed-deadline",
+      "edit-source",
+      "edit-message",
+      "edit-save",
+      "edit-cancel",
+      "calendar-dialog",
+      "calendar-form",
+      "calendar-title",
+      "calendar-description",
+      "calendar-note",
+      "calendar-select-all",
+      "calendar-select-none",
+      "calendar-reload",
+      "calendar-choices",
+      "calendar-summary",
+      "calendar-message",
+      "calendar-download",
+      "calendar-cancel"
+    ],
+    "idsAfter": [
+      "top",
+      "paste",
+      "find",
+      "sample",
+      "preview",
+      "storage-error",
+      "storage-retry",
+      "tracked-count",
+      "soon-count",
+      "expired-count",
+      "filter-all",
+      "filter-due",
+      "filter-expired",
+      "filter-completed",
+      "completed-count",
+      "completion-feedback",
+      "edit-feedback",
+      "calendar-open",
+      "calendar-feedback",
+      "list",
+      "backup-heading",
+      "backup-export",
+      "backup-file",
+      "backup-limits",
+      "backup-message",
+      "backup-preview",
+      "backup-summary",
+      "backup-rows",
+      "backup-previous",
+      "backup-page",
+      "backup-next",
+      "backup-apply",
+      "backup-cancel",
+      "clear",
+      "edit-dialog",
+      "edit-title",
+      "edit-intro",
+      "edit-form",
+      "edit-merchant",
+      "edit-order-date",
+      "edit-window-days",
+      "edit-order-no",
+      "edit-total",
+      "edit-current-deadline",
+      "edit-proposed-deadline",
+      "edit-source",
+      "edit-message",
+      "edit-save",
+      "edit-cancel",
+      "calendar-dialog",
+      "calendar-form",
+      "calendar-title",
+      "calendar-description",
+      "calendar-note",
+      "calendar-select-all",
+      "calendar-select-none",
+      "calendar-reload",
+      "calendar-choices",
+      "calendar-summary",
+      "calendar-message",
+      "calendar-download",
+      "calendar-cancel"
+    ],
+    "idSequenceExact": true,
+    "enquiryLinkCount": 1,
+    "tripLinkCount": 1,
+    "viteEnquiryInputCount": 1
+  }
+}
