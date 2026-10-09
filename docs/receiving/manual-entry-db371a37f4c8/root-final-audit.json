@@ -1,0 +1,101 @@
+{
+  "schema": "returnby-root-final-audit-v1",
+  "verified": "2026-10-09T04:04:54.525946+00:00",
+  "all34CandidateSourceBytesExact": true,
+  "all9BuildFilesExact": true,
+  "browserWrappers": {
+    "original-browser-r1": {
+      "receipt": {
+        "bytes": 1632,
+        "sha256": "7dc1c9f4da6bb1e3f49ed708d7f1547067da314e32c67b59fd1b2661281f9b78",
+        "gitBlob": "c02c5561e8def229d971ad7d2ada3ce38e32f5f1"
+      },
+      "wrapper": {
+        "bytes": 12961,
+        "sha256": "cbc57ed1b9c3faf028c7de892a4e2092b3e6bd37020c9e059134545702659c8b",
+        "gitBlob": "d6f5086a1960cafcf1e1f8aa2567b2ed746e0e67"
+      },
+      "exit": 0,
+      "finished": "2026-10-09T03:38:06.559499+00:00"
+    },
+    "candidate-browser-r1": {
+      "receipt": {
+        "bytes": 11946,
+        "sha256": "9010a9a43f6d0b7cb0c532a883e9715d2af351a8fbc12bfd4665a817d7732ead",
+        "gitBlob": "10460305fcd35607ecc4be7f0cc487336a5bb0a0"
+      },
+      "wrapper": {
+        "bytes": 23549,
+        "sha256": "7de723d143eef843d2c95ea57281168d5017070683d921f4b16cedf44427108a",
+        "gitBlob": "a5181b676fd7c8ee88591fe84331b927badd39fe"
+      },
+      "exit": 1,
+      "finished": "2026-10-09T03:44:40.349759+00:00"
+    },
+    "candidate-browser-r2": {
+      "receipt": {
+        "bytes": 9220,
+        "sha256": "c5967b39c8c9969c028aad41415e1f94a4552ae469d1595cde4608f2956c2d14",
+        "gitBlob": "00c8e31825dcee4e1f366c99782257beae81d131"
+      },
+      "wrapper": {
+        "bytes": 21468,
+        "sha256": "554cd320e25e93590c497bcf096dc3d834228572234af1c1b91205c56da02e6e",
+        "gitBlob": "59e206bfb7d7440663942b13247ec0af7855e3d5"
+      },
+      "exit": 1,
+      "finished": "2026-10-09T03:49:09.706155+00:00"
+    },
+    "candidate-browser-r3": {
+      "receipt": {
+        "bytes": 22481,
+        "sha256": "fbaa23a9ae5173e39dfa733684c0ec5e175376d20fb9e1499a7f95e96be9ac88",
+        "gitBlob": "3731973228d3e162e00642da382e5c9b852157fb"
+      },
+      "wrapper": {
+        "bytes": 22223,
+        "sha256": "0a94b45096b174cc854c692b802a517eee820875e7bd9167b586db35744ede5d",
+        "gitBlob": "1951ceab31ad33ffb3487153db20bfba754d665e"
+      },
+      "exit": 0,
+      "finished": "2026-10-09T03:51:35.935625+00:00"
+    }
+  },
+  "ownedBrowserNamespaceAbsent": true,
+  "sourcePlan": {
+    "bytes": 2698,
+    "sha256": "ef14ce56410f9e0f4f7c2f5ed0c80b34d7654e0bba47ca97dea6b04fd09bd317",
+    "gitBlob": "a17adcbaf1775fc10f1106367b5ab96e750a6914"
+  },
+  "runtimeAudit": {
+    "bytes": 2062,
+    "sha256": "9cb75cc90e81e488ca44b40fa71c2b4d4a10590b5cbe6ff3b4a301ab78d568eb",
+    "gitBlob": "6e0d682ab6bea127e85cfe608636145d1ba867db"
+  },
+  "preview": {
+    "bytes": 26444,
+    "sha256": "45d5f732879ab0101295648c59c1955b5f8ec190aa4c44a42b46bc24a9b464e4",
+    "gitBlob": "b62844474e965b5549c2dbf5eac3a435dae801ed"
+  },
+  "rootReport": {
+    "bytes": 14798,
+    "sha256": "5f37a6804860049d65a5b96cdce71655e1677e89028565a1b1e4752abcf46daa",
+    "gitBlob": "315f141c703382bf9d4ecb5ee56070cdd1c422d3"
+  },
+  "authorArchiveAdmission": {
+    "verified": "2026-10-09T04:04:54.511641+00:00",
+    "archive": {
+      "bytes": 969745,
+      "sha256": "124872603b961bd2ef2f30639f42c3a4cb2eb7ae5352e32667555c2e5d9ffd84",
+      "gitBlob": "a4135fd098527ab7abe07b06459a9d6c0ead195d"
+    },
+    "members": 190,
+    "payloads": 189,
+    "allMemberBytesAndNativeFilesExact": true,
+    "manifest": {
+      "bytes": 43723,
+      "sha256": "a087c76dc2b487b4ecf710ce8d02623fca9d771b04ebc9ce4d73b44999f545ba",
+      "gitBlob": "1f6a4a7797d9c0935447f9cb3af88837823ff26e"
+    }
+  }
+}

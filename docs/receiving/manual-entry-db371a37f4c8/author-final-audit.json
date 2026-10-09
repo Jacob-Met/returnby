@@ -1,0 +1,26 @@
+{
+  "sealed": "2026-10-09T03:44:45.413357+00:00",
+  "priorActualSourceDependencyProcessAudit": {
+    "at": "2026-10-09T03:39:08.467689+00:00",
+    "originalMismatches": [],
+    "candidateMismatches": [],
+    "donorAndCopyMismatches": [],
+    "knownOwnPidsStillPresent": [],
+    "profilesAbsent": {
+      "original-browser-r1": true,
+      "original-browser-r2": true,
+      "candidate-browser-r1": true
+    },
+    "rootReceivingExcluded": "reserved root-receiving is never read or archived; root browser may currently be active",
+    "mainSharedSourceExact": true,
+    "free": 877793280
+  },
+  "payloadFiles": 189,
+  "logicalArchiveMembers": 190,
+  "payloadBytes": 2204482,
+  "allMembersExact": true,
+  "allPayloadBeforeAfterExact": true,
+  "archiveBytes": 969745,
+  "archiveSha256": "124872603b961bd2ef2f30639f42c3a4cb2eb7ae5352e32667555c2e5d9ffd84",
+  "peerDirectoryExcluded": true
+}

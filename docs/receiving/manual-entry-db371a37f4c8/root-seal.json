@@ -1,0 +1,18 @@
+{
+  "sealed": "2026-10-09T04:04:54.817893+00:00",
+  "archive": {
+    "bytes": 987640,
+    "sha256": "c19f201cc90e2f5af4eff400e95846d5d5107be795789b94e397595657342f21",
+    "gitBlob": "7f2861d4faaf0404bc5970b09f4f7153cd3e231c"
+  },
+  "payloads": 160,
+  "members": 161,
+  "payloadBytes": 1958580,
+  "allArchiveMembersRoundTripExact": true,
+  "sourceAndBuiltBytesUnchanged": true,
+  "manifest": {
+    "bytes": 37444,
+    "sha256": "6aa9dc168152f680de81b2b9ded6d3fff0b3ea4696b227a831d7c0d67765b0bf",
+    "gitBlob": "c587ba30788cab995a6f36915b4616e9bfaf4c73"
+  }
+}

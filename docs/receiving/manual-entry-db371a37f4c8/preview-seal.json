@@ -1,0 +1,76 @@
+{
+  "verified": "2026-10-09T04:04:54.516982+00:00",
+  "archive": {
+    "bytes": 26444,
+    "sha256": "45d5f732879ab0101295648c59c1955b5f8ec190aa4c44a42b46bc24a9b464e4",
+    "gitBlob": "b62844474e965b5549c2dbf5eac3a435dae801ed"
+  },
+  "staticFiles": 9,
+  "members": 10,
+  "allNativeBuildBytesExact": true,
+  "sourceCommit": "d153659d1f561e1c316a1f9278b3d0b32c222c2f",
+  "manifest": {
+    "schema": "returnby-qualified-preview-v1",
+    "sourceCommit": "d153659d1f561e1c316a1f9278b3d0b32c222c2f",
+    "sourceTree": "c22fdac96a2d4219bb1a0b8b350b1f6c60d7d8db",
+    "parent": "bd07785d10ba40e524756b059c3f3cc548927f9f",
+    "buildReceipt": {
+      "bytes": 4480,
+      "sha256": "eb6bb5784efc6894b6d1ec732ba7c641b86ec603a8e0390c762fe4adaaf24e33",
+      "gitBlob": "37bf8d3b1beaa5a3406f6128baa7b36a16a3d757"
+    },
+    "files": {
+      "assets/main-CZ6nOqh4.css": {
+        "bytes": 3985,
+        "sha256": "e695da42f8c70e02bf7f8232959daa51f6e73e98812178fe9c22c92fb9b421b8",
+        "gitBlob": "984f0db641749e2dad02a42feb12e04c9939d7f9"
+      },
+      "assets/main-chTbUV5O.js": {
+        "bytes": 28431,
+        "sha256": "33a9605057f81ab995c7e39fc9ffc74d1f3f54557fe5c49138af7581fa3db61f",
+        "gitBlob": "fd2c9adb0eb8222acbd30a940b62e82163c97180"
+      },
+      "assets/manual-C76pRCPN.js": {
+        "bytes": 3264,
+        "sha256": "fb2ab45ae5a12c9002fdb1e77edacc80e2777a42009d454228740f1f7752d926",
+        "gitBlob": "7eed9d9f1a3e3b9153355df31be7e1b804e0c864"
+      },
+      "assets/manual-COJ3z-YY.css": {
+        "bytes": 3298,
+        "sha256": "ba48217fa8fc78a3585a2c6653961069ff1276e99763be638bd9507063d6a254",
+        "gitBlob": "e394a398e45e87e6e0ee5480899bd7ecbfdcc19a"
+      },
+      "assets/order-admission-Bp_ZSQx5.css": {
+        "bytes": 8801,
+        "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f",
+        "gitBlob": "21247f985a776da37232ac23cb555ee1445d2c7b"
+      },
+      "assets/order-admission-qAxwqzWX.js": {
+        "bytes": 2835,
+        "sha256": "3ce943eef0fd72e5b782d73668f9fc44103662030596294592052619f8b765b9",
+        "gitBlob": "882e8a06c5568952d7106ca0d7de19410de32a7b"
+      },
+      "favicon.svg": {
+        "bytes": 238,
+        "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+        "gitBlob": "2805d210d2571bbfe5468ac5b5743a703c6bb74b"
+      },
+      "index.html": {
+        "bytes": 10245,
+        "sha256": "bfde57d899d6710410499b2a6ec1e907a53b3d7266ba5ec593464997ee4c495d",
+        "gitBlob": "b4c00c12c3e1c84dec26cd67e83fd9a5f5a9162b"
+      },
+      "manual-entry.html": {
+        "bytes": 5525,
+        "sha256": "fce39979ace65c9dac42e472b4e519b3398ab99e246dc2900b73b87d91b0dd7b",
+        "gitBlob": "8d2060c5c2024aafd3b878a9bb77e84257948d78"
+      }
+    },
+    "receiving": [
+      "9010a9a43f6d0b7cb0c532a883e9715d2af351a8fbc12bfd4665a817d7732ead",
+      "c5967b39c8c9969c028aad41415e1f94a4552ae469d1595cde4608f2956c2d14",
+      "fbaa23a9ae5173e39dfa733684c0ec5e175376d20fb9e1499a7f95e96be9ac88"
+    ],
+    "use": "Extract all files together; serve through an existing permitted local static route. Open index.html or manual-entry.html. Keep this qualified owner-baseline preview separate from newer installed owner generations."
+  }
+}

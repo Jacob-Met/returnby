@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "sealed": "2026-10-09T03:44:45.415489+00:00",
+  "archive": {
+    "name": "author-receiving.tar.gz",
+    "bytes": 969745,
+    "sha256": "124872603b961bd2ef2f30639f42c3a4cb2eb7ae5352e32667555c2e5d9ffd84",
+    "gitBlob": "a4135fd098527ab7abe07b06459a9d6c0ead195d"
+  },
+  "manifest": {
+    "name": "author-manifest.json",
+    "sha256": "a087c76dc2b487b4ecf710ce8d02623fca9d771b04ebc9ce4d73b44999f545ba"
+  },
+  "report": {
+    "name": "AUTHOR.md",
+    "sha256": "c4c92c375e2afe86feafaba10dbe2773f2e192e434907cbf4ae8aeb40d954ed9"
+  },
+  "audit": {
+    "name": "author-final-audit.json",
+    "sha256": "80e49e63fee758b86874d9762d81897d26aa8678843ff0e31f0feb517d8f9257"
+  },
+  "refWritten": false
+}
