@@ -1,0 +1,161 @@
+{
+  "schema": "returnby-independent-portable-custody-v1",
+  "created_at": "2026-10-09T04:55:36.708Z",
+  "owner": "estate-c945953fdeb7/control_execution",
+  "repository": "Jacob-Met/returnby",
+  "native_root": "/Users/me/Developer/returnby-local-preview-receiving-c945953fdeb7",
+  "installed_product": "/Users/me/Applications/ReturnBy-c945953fdeb7",
+  "outcome": "R1-R5 passed; driver process 60612 exit 0; four owned launcher/Chrome children exit 0",
+  "files": {
+    "CONTRACT.md": {
+      "bytes": 7794,
+      "sha256": "e4c45a5cfb0ab5a80e7b04f853837147b6dcd9a35e1dbc9404782ab7a84cf0a8",
+      "gitBlob": "e9af0b677eb3d2bee3361389109c8c36b7461063",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "receiver-v1.mjs": {
+      "bytes": 23266,
+      "sha256": "76083df50210240276e24687e913d80c1d7ca3ac26f5dabe2492efc3dd601cd7",
+      "gitBlob": "10d090cfc2356f67785cef2688b9fe130b3271ae",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "preview-seal.json": {
+      "bytes": 3243,
+      "sha256": "f47dfae884f7e45d24c5fa5055e07eb529a67bd9abcc8bef2fab4c93ba6cbee9",
+      "gitBlob": "5f2aac5fa5ae48978d4ee74352b80a5f278c231c",
+      "readback": "exact UTF-8 bytes",
+      "uploaded": true
+    },
+    "run-v1/receipt.json": {
+      "bytes": 79039,
+      "sha256": "e99becf87cb5a04fa61be0b7f25da5976872ac9bc6ed89d1d0b2b027e609bb93",
+      "gitBlob": "73cac7aa468d122b0ba4821a95e48858b58eb1c1",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "post-run-verification.json": {
+      "bytes": 8943,
+      "sha256": "b68eeba02db4366cdd84ed28d4b28f5eb369ee1547ee6c226e99fe83c3dcd184",
+      "gitBlob": "a71d239bd532afdbc085f2da6f945459f4c6b721",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "admission-and-freeze.json": {
+      "bytes": 972,
+      "sha256": "c0f2f2457a65defb557bd82eddd51a20d6a2aba9b2b7979c142e29fdc113d016",
+      "gitBlob": "e4302939cb5df4aa47870588c9a721b77d81d44f",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "run-v1/launcher-1.stdout": {
+      "bytes": 145,
+      "sha256": "42a7df070076f9cb99ba96d0aae568e599f3d1f95b8aec300b7144b2757047c0",
+      "gitBlob": "6e0f810df8f5cfbc1b9d8da6f1cb295506d7f3bb",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "run-v1/launcher-1.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "run-v1/chrome-2.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "run-v1/chrome-2.stderr": {
+      "bytes": 1155,
+      "sha256": "95aaa2674d2af58b3258a083c565d3196693d24fb35f9606e4e17a2fac22bb70",
+      "gitBlob": "12ca80e54eb27972be2bcc200818e7d9ffb02744",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "run-v1/launcher-3.stdout": {
+      "bytes": 145,
+      "sha256": "42a7df070076f9cb99ba96d0aae568e599f3d1f95b8aec300b7144b2757047c0",
+      "gitBlob": "6e0f810df8f5cfbc1b9d8da6f1cb295506d7f3bb",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "run-v1/launcher-3.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "run-v1/chrome-4.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "run-v1/chrome-4.stderr": {
+      "bytes": 1578,
+      "sha256": "895d6a1def0e283472bcf1bcd36b4063daa081f4c1671cbfbb5a34f2bc088183",
+      "gitBlob": "7738b1e7845bf2c313b1cf465d92c421c7cca888",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "run-v1/downloads/21d7d1e0-af0a-41df-af36-e1b8bd019bd3": {
+      "bytes": 411,
+      "sha256": "05cc665c726316c971b8260ca3e592a00f1ad91a57197abc2dfb72e8657b8582",
+      "gitBlob": "7e20bd0ca4ce5b0453ebf25db113192fe95f7c9d",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "run-v1/review.png": {
+      "bytes": 109406,
+      "sha256": "8a2541925a75ff5d1cdbdbac37865fdff97533f9a8060d8bed7267bf2bcd4ce1",
+      "gitBlob": "906024aecdc448824e1f3a5f1c881603c2ec431c",
+      "uploaded": true,
+      "readback": "exact native Git identity on upload; exact base64 carrier readback",
+      "carrierGitBlob": "fbed771cb2e4af3ce2000c0b02943eddeb6e5e0f"
+    },
+    "run-v1/tracker-saved.png": {
+      "bytes": 38964,
+      "sha256": "93df3d45037b4ac9652833a74c2429b1cca2bff41d2641e4d215cad3fc1e84d5",
+      "gitBlob": "47cbc820b26047f30c3ef597f09061d5de2965e6",
+      "uploaded": true,
+      "readback": "exact native Git identity on upload; exact base64 carrier readback",
+      "carrierGitBlob": "fbed771cb2e4af3ce2000c0b02943eddeb6e5e0f"
+    },
+    "run-v1/backup-preview.png": {
+      "bytes": 73850,
+      "sha256": "17450c09f5745e9883063699c1d205204ccf8f32715983357f4c8cd0ce9b610b",
+      "gitBlob": "370159be697b9c9922ccada51ed4e8db38925840",
+      "uploaded": true,
+      "readback": "exact native Git identity on upload; exact base64 carrier readback",
+      "carrierGitBlob": "fbed771cb2e4af3ce2000c0b02943eddeb6e5e0f"
+    },
+    "native-screenshots.base64.json": {
+      "bytes": 297538,
+      "gitBlob": "fbed771cb2e4af3ce2000c0b02943eddeb6e5e0f",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "execution-transport.txt": {
+      "gitBlob": "9cd14c5d6b34f2c9160b63e2e0ffe5a96e46566d",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    },
+    "README.md": {
+      "gitBlob": "e8b2fbf91d6c41210ae8c9479b2949f5e4042f88",
+      "uploaded": true,
+      "readback": "exact UTF-8 bytes"
+    }
+  },
+  "native_only": "The full private profile remains at run-v1/profile; receipt.json carries its original file digest census. The portable carrier contains only the screenshots, not the profile.",
+  "scope": "Installed .command --no-open + actual headless Chrome/private profile. No Finder/default-profile, hosted/new owner stack or LA7 adoption. Date value input/change was synthetic; Review/Save/Backup/Import and form submit were trusted. Restore selected the original physical download via the real file input.",
+  "preserved_observations": "Chrome stderr includes duplicate-allocator and macOS CVDisplayLink messages; no application page/console exceptions were observed. One direct PNG fetch_blob attempt failed UTF-8 decoding; exact uploaded-and-read-back base64 carrier retains the PNG bytes.",
+  "retention": "All listed Git blobs are uploaded. Raw unreferenced objects do not anchor retention. No ref, PR, merge or workflow operation was performed.",
+  "excludes_self": "This custody file does not list its own digest; its resulting object ID is carried in the handoff."
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "returnby.backup",
+  "version": 1,
+  "exportedAt": "2026-10-09T04:40:15.710Z",
+  "orders": [
+    {
+      "id": "b5483fd3-dae7-4cb9-b509-4011dc164684",
+      "merchant": "Harbor <b>& Pine</b>",
+      "orderNo": "RCPT-1042 A",
+      "total": "USD42.50",
+      "orderDate": "2099-01-15",
+      "windowDays": 14,
+      "windowSource": "user",
+      "createdAt": "2026-10-09T04:40:14.443Z"
+    }
+  ]
+}

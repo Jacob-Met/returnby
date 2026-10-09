@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-09T04:39:34.178241+00:00",
+  "owner": "estate-c945953fdeb7/control_execution",
+  "base": "/Users/me/Developer/returnby-local-preview-receiving-c945953fdeb7",
+  "disk_free": 533602304,
+  "memory_free_inactive_speculative": 12687556608,
+  "files": {
+    "CONTRACT.md": {
+      "bytes": 7794,
+      "sha256": "e4c45a5cfb0ab5a80e7b04f853837147b6dcd9a35e1dbc9404782ab7a84cf0a8",
+      "gitBlob": "e9af0b677eb3d2bee3361389109c8c36b7461063"
+    },
+    "preview-seal.json": {
+      "bytes": 3243,
+      "sha256": "f47dfae884f7e45d24c5fa5055e07eb529a67bd9abcc8bef2fab4c93ba6cbee9",
+      "gitBlob": "5f2aac5fa5ae48978d4ee74352b80a5f278c231c"
+    },
+    "receiver-v1.mjs": {
+      "bytes": 23266,
+      "sha256": "76083df50210240276e24687e913d80c1d7ca3ac26f5dabe2492efc3dd601cd7",
+      "gitBlob": "10d090cfc2356f67785cef2688b9fe130b3271ae"
+    }
+  },
+  "native_node_check": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "browser_launched": false
+}

@@ -1,0 +1,306 @@
+{
+  "schema": "returnby-independent-postrun-verification-v1",
+  "utc": "2026-10-09T04:42:24.115838+00:00",
+  "receipt": {
+    "path": "/Users/me/Developer/returnby-local-preview-receiving-c945953fdeb7/run-v1/receipt.json",
+    "bytes": 79039,
+    "sha256": "e99becf87cb5a04fa61be0b7f25da5976872ac9bc6ed89d1d0b2b027e609bb93",
+    "gitBlob": "73cac7aa468d122b0ba4821a95e48858b58eb1c1"
+  },
+  "terminal": {
+    "passed": true,
+    "finished_at": "2026-10-09T04:40:17.089Z",
+    "milliseconds": 3771
+  },
+  "groups": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5"
+  ],
+  "verified_artifact_files": 192,
+  "saved_order": {
+    "id": "b5483fd3-dae7-4cb9-b509-4011dc164684",
+    "merchant": "Harbor <b>& Pine</b>",
+    "orderNo": "RCPT-1042 A",
+    "total": "USD42.50",
+    "orderDate": "2099-01-15",
+    "windowDays": 14,
+    "windowSource": "user",
+    "createdAt": "2026-10-09T04:40:14.443Z"
+  },
+  "backup": {
+    "native_path": "/Users/me/Developer/returnby-local-preview-receiving-c945953fdeb7/run-v1/downloads/21d7d1e0-af0a-41df-af36-e1b8bd019bd3",
+    "suggested_filename": "returnby-backup-2026-10-09.json",
+    "bytes": 411,
+    "sha256": "05cc665c726316c971b8260ca3e592a00f1ad91a57197abc2dfb72e8657b8582",
+    "document": {
+      "schema": "returnby.backup",
+      "version": 1,
+      "exportedAt": "2026-10-09T04:40:15.710Z",
+      "orders": [
+        {
+          "id": "b5483fd3-dae7-4cb9-b509-4011dc164684",
+          "merchant": "Harbor <b>& Pine</b>",
+          "orderNo": "RCPT-1042 A",
+          "total": "USD42.50",
+          "orderDate": "2099-01-15",
+          "windowDays": 14,
+          "windowSource": "user",
+          "createdAt": "2026-10-09T04:40:14.443Z"
+        }
+      ]
+    }
+  },
+  "processes": [
+    {
+      "label": "launcher",
+      "program": "/Users/me/Applications/ReturnBy-c945953fdeb7/Launch ReturnBy.command",
+      "args": [
+        "--no-open"
+      ],
+      "pid": 60679,
+      "started_at": "2026-10-09T04:40:13.462Z",
+      "stdout": "launcher-1.stdout",
+      "stderr": "launcher-1.stderr",
+      "exit_code": 0,
+      "signal": null,
+      "finished_at": "2026-10-09T04:40:14.824Z"
+    },
+    {
+      "label": "chrome",
+      "program": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "args": [
+        "--headless=new",
+        "--no-first-run",
+        "--no-default-browser-check",
+        "--disable-background-networking",
+        "--disable-component-update",
+        "--disable-sync",
+        "--disable-extensions",
+        "--metrics-recording-only",
+        "--mute-audio",
+        "--disable-breakpad",
+        "--disable-gpu",
+        "--disk-cache-size=1048576",
+        "--media-cache-size=1048576",
+        "--remote-debugging-address=127.0.0.1",
+        "--remote-debugging-port=48644",
+        "--user-data-dir=/Users/me/Developer/returnby-local-preview-receiving-c945953fdeb7/run-v1/profile",
+        "about:blank"
+      ],
+      "pid": 60693,
+      "started_at": "2026-10-09T04:40:13.629Z",
+      "stdout": "chrome-2.stdout",
+      "stderr": "chrome-2.stderr",
+      "exit_code": 0,
+      "signal": null,
+      "finished_at": "2026-10-09T04:40:14.816Z"
+    },
+    {
+      "label": "launcher",
+      "program": "/Users/me/Applications/ReturnBy-c945953fdeb7/Launch ReturnBy.command",
+      "args": [
+        "--no-open"
+      ],
+      "pid": 60715,
+      "started_at": "2026-10-09T04:40:14.881Z",
+      "stdout": "launcher-3.stdout",
+      "stderr": "launcher-3.stderr",
+      "exit_code": 0,
+      "signal": null,
+      "finished_at": "2026-10-09T04:40:17.045Z"
+    },
+    {
+      "label": "chrome",
+      "program": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "args": [
+        "--headless=new",
+        "--no-first-run",
+        "--no-default-browser-check",
+        "--disable-background-networking",
+        "--disable-component-update",
+        "--disable-sync",
+        "--disable-extensions",
+        "--metrics-recording-only",
+        "--mute-audio",
+        "--disable-breakpad",
+        "--disable-gpu",
+        "--disk-cache-size=1048576",
+        "--media-cache-size=1048576",
+        "--remote-debugging-address=127.0.0.1",
+        "--remote-debugging-port=48644",
+        "--user-data-dir=/Users/me/Developer/returnby-local-preview-receiving-c945953fdeb7/run-v1/profile",
+        "about:blank"
+      ],
+      "pid": 60720,
+      "started_at": "2026-10-09T04:40:14.970Z",
+      "stdout": "chrome-4.stdout",
+      "stderr": "chrome-4.stderr",
+      "exit_code": 0,
+      "signal": null,
+      "finished_at": "2026-10-09T04:40:17.037Z"
+    }
+  ],
+  "last_process_census": {
+    "label": "final cleanup observation",
+    "at": "2026-10-09T04:40:17.126Z",
+    "entries": []
+  },
+  "remaining_owned_processes": [],
+  "ports": {
+    "48643": "free",
+    "48644": "free"
+  },
+  "disk_free": 507351040,
+  "guard_observations": [
+    {
+      "at": "2026-10-09T04:40:13.323Z",
+      "label": "before materialization",
+      "disk_free": 539832320,
+      "memory_free_inactive_speculative": 12522586112,
+      "owned_bytes": 0
+    },
+    {
+      "at": "2026-10-09T04:40:13.459Z",
+      "label": "before launcher",
+      "disk_free": 539688960,
+      "memory_free_inactive_speculative": 12514394112,
+      "owned_bytes": 989
+    },
+    {
+      "at": "2026-10-09T04:40:13.626Z",
+      "label": "before browser",
+      "disk_free": 539832320,
+      "memory_free_inactive_speculative": 12475252736,
+      "owned_bytes": 8975
+    },
+    {
+      "at": "2026-10-09T04:40:14.869Z",
+      "label": "after first close",
+      "disk_free": 537419776,
+      "memory_free_inactive_speculative": 13063421952,
+      "owned_bytes": 2861522
+    },
+    {
+      "at": "2026-10-09T04:40:14.876Z",
+      "label": "before launcher",
+      "disk_free": 537419776,
+      "memory_free_inactive_speculative": 13065289728,
+      "owned_bytes": 2861522
+    },
+    {
+      "at": "2026-10-09T04:40:14.968Z",
+      "label": "before browser",
+      "disk_free": 537407488,
+      "memory_free_inactive_speculative": 13058850816,
+      "owned_bytes": 2861648
+    },
+    {
+      "at": "2026-10-09T04:40:17.086Z",
+      "label": "final",
+      "disk_free": 547274752,
+      "memory_free_inactive_speculative": 13023232000,
+      "owned_bytes": 2986037
+    }
+  ],
+  "input_pins": {
+    "contract": "e4c45a5cfb0ab5a80e7b04f853837147b6dcd9a35e1dbc9404782ab7a84cf0a8",
+    "driver": "76083df50210240276e24687e913d80c1d7ca3ac26f5dabe2492efc3dd601cd7",
+    "seal": "f47dfae884f7e45d24c5fa5055e07eb529a67bd9abcc8bef2fab4c93ba6cbee9"
+  },
+  "requests": 34,
+  "exceptions": 0,
+  "actions": [
+    {
+      "session": "4D0E35A87E7AB53D73D1E0EE132A4297",
+      "kind": "click",
+      "trusted": true,
+      "id": "",
+      "text": "Enter a receipt manually"
+    },
+    {
+      "kind": "date-fill",
+      "value": "2099-01-15",
+      "trusted": false,
+      "method": "native date value and explicitly synthetic input/change; actual Review/Save clicks remain native"
+    },
+    {
+      "session": "4D0E35A87E7AB53D73D1E0EE132A4297",
+      "kind": "click",
+      "trusted": true,
+      "id": "manual-review-button",
+      "text": "Review deadline"
+    },
+    {
+      "session": "4D0E35A87E7AB53D73D1E0EE132A4297",
+      "kind": "submit",
+      "trusted": true,
+      "id": "manual-form"
+    },
+    {
+      "session": "4D0E35A87E7AB53D73D1E0EE132A4297",
+      "kind": "click",
+      "trusted": true,
+      "id": "manual-save",
+      "text": "Save to tracker"
+    },
+    {
+      "session": "4D0E35A87E7AB53D73D1E0EE132A4297",
+      "kind": "click",
+      "trusted": true,
+      "id": "",
+      "text": "View tracker"
+    },
+    {
+      "session": "7C9A048E3CBF07E596BBFCF22927A1C8",
+      "kind": "click",
+      "trusted": true,
+      "id": "backup-heading",
+      "text": "Back up or restore saved returns"
+    },
+    {
+      "session": "7C9A048E3CBF07E596BBFCF22927A1C8",
+      "kind": "click",
+      "trusted": true,
+      "id": "backup-export",
+      "text": "Download backup"
+    },
+    {
+      "session": "50BA371DFFCC63831C01425CA3539FFE",
+      "kind": "click",
+      "trusted": true,
+      "id": "backup-heading",
+      "text": "Back up or restore saved returns"
+    },
+    {
+      "session": "50BA371DFFCC63831C01425CA3539FFE",
+      "kind": "click",
+      "trusted": true,
+      "id": "backup-apply",
+      "text": "Import 1 order"
+    },
+    {
+      "session": "50BA371DFFCC63831C01425CA3539FFE",
+      "kind": "click",
+      "trusted": true,
+      "id": "backup-heading",
+      "text": "Back up or restore saved returns"
+    }
+  ],
+  "screenshots": {
+    "review.png": {
+      "bytes": 109406,
+      "sha256": "8a2541925a75ff5d1cdbdbac37865fdff97533f9a8060d8bed7267bf2bcd4ce1"
+    },
+    "tracker-saved.png": {
+      "bytes": 38964,
+      "sha256": "93df3d45037b4ac9652833a74c2429b1cca2bff41d2641e4d215cad3fc1e84d5"
+    },
+    "backup-preview.png": {
+      "bytes": 73850,
+      "sha256": "17450c09f5745e9883063699c1d205204ccf8f32715983357f4c8cd0ce9b610b"
+    }
+  }
+}

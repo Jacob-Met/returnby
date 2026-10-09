@@ -1,0 +1,204 @@
+{
+  "schema": "returnby.nontriggering-source-storage-assessment.v1",
+  "recorded_at": "2026-10-09 05:21:18 UTC",
+  "operation_scope": "Create an exclusively new non-main source branch at the reviewed source/evidence commit. No PR, main update, existing owner ref change or workflow change.",
+  "source_parent_commit": "7269e885b8707500efa4c522e3fb6eceafd6830f",
+  "source_parent_tree": "b3612145b0fcca2bbcc5121db043608941836f28",
+  "main_commit": "1e662c387be5f66f8499fac7ec443f58d2198379",
+  "proposed_branch": "receiving/local-preview-c945953fdeb7",
+  "repository_rulesets": [],
+  "before_branches": [
+    {
+      "name": "astra/returnby-completion-20261008-a0eb505c",
+      "sha": "ece2d7f82feaa6cf14bc34cb8d541ef2a3781a36",
+      "protected": false
+    },
+    {
+      "name": "autonomous-e3a41d2b3368-returnby-store-order-native-20261008",
+      "sha": "b8d8273ba7ce43afd101159c4cbf593c02160c78",
+      "protected": false
+    },
+    {
+      "name": "estate/upload-pages-artifact-v4",
+      "sha": "c88d89871c43ed8321fbea671788e792ea8c5fc3",
+      "protected": false
+    },
+    {
+      "name": "estate/49f845d0dece-returnby-undo-csv-receiving",
+      "sha": "3a811e33c4aaaee706077a9ff179acc49b75c757",
+      "protected": false
+    },
+    {
+      "name": "evidence/deadline-overview-7879c2abc07f-20261008",
+      "sha": "f9bc0f7d1baeac51a134ad1e25c0e477f5c57021",
+      "protected": false
+    },
+    {
+      "name": "feat/bulk-calendar-afe225d6c6be",
+      "sha": "0d5af85cadf9bee00afbe0a8117862606b324338",
+      "protected": false
+    },
+    {
+      "name": "feat/calendar-batch-20261008-b55367d787c4",
+      "sha": "e64fd96ffda52ec571779edfeec609f7b01c3c9f",
+      "protected": false
+    },
+    {
+      "name": "feat/portable-backup-20261008-8b336fefde84",
+      "sha": "2ff4f9406ac05e72456a6fb425f5d6499520234f",
+      "protected": false
+    },
+    {
+      "name": "feat/removal-undo-20261008-6e5752b49b6f",
+      "sha": "ad19cab029533820a4f6e2c576f5cb20a9e06816",
+      "protected": false
+    },
+    {
+      "name": "feat/saved-order-edit-20261008-965d2e86e979",
+      "sha": "0e6e29d4a14bfdce0579085b4d79c5b4f54aeb13",
+      "protected": false
+    },
+    {
+      "name": "feat/saved-order-lookup-20261008-965d2e86e979",
+      "sha": "775a16f651858049dccadf99fec3a80844466ab6",
+      "protected": false
+    },
+    {
+      "name": "feat/saved-returns-csv-20261008-ae0a1ea0b247",
+      "sha": "88ad7e0fc390bb468450bde9a2d25181c7bbe52d",
+      "protected": false
+    },
+    {
+      "name": "feature/return-trip-checklist-81ba1ed0179c",
+      "sha": "c5f589b8e9cea561f579b454d45110d38bb83bb2",
+      "protected": false
+    },
+    {
+      "name": "feature/returnby-batch-c77045b4",
+      "sha": "bf5af33d4040b9fa09548589bdc9e1dbf935eafc",
+      "protected": false
+    },
+    {
+      "name": "feature/returnby-trip-notes-81ba1ed0179c",
+      "sha": "af9aa06a8731fb420f914c129772dcba8247d07f",
+      "protected": false
+    },
+    {
+      "name": "fix/calendar-civil-end-kestrel-2ff081f4",
+      "sha": "7cf2f6d6e1cd71143569f972ab6ca0bbc0c46772",
+      "protected": false
+    },
+    {
+      "name": "fix/calendar-text-export-e3a41d2b3368",
+      "sha": "8764c614bf9bc9ddf483a9b3364d03738576bbc7",
+      "protected": false
+    },
+    {
+      "name": "fix/daily-refresh-preserve-focus-8a3b",
+      "sha": "abf6166312577c1fc960023aa7fbec659c47844b",
+      "protected": false
+    },
+    {
+      "name": "fix/order-date-priority-20261008",
+      "sha": "37b2c9cd1018d6a0c25652100068474914483ee7",
+      "protected": false
+    },
+    {
+      "name": "fix/storage-commit-20261008",
+      "sha": "adc545d9c8c88a4417c721a407c289ddb2a29f0d",
+      "protected": false
+    },
+    {
+      "name": "fix/storage-load-preservation-20261008",
+      "sha": "fbd48a6e63d1b071de10e4e40d875184fa461141",
+      "protected": false
+    },
+    {
+      "name": "fix/submitted-window-source-20261008",
+      "sha": "43a11d9f66ca2d8cb7902f8ed1bcae2ac0962fbf",
+      "protected": false
+    },
+    {
+      "name": "fix/subtotal-boundary-20261008",
+      "sha": "4ef4594f8903fb562d0fe7291a177c027ccccce2",
+      "protected": false
+    },
+    {
+      "name": "integrate/calendar-backup-actions-receiving-20261008-b55367d787c4",
+      "sha": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+      "protected": false
+    },
+    {
+      "name": "integrate/checklist-completion-kestrel-2ff081f4",
+      "sha": "83abbe9a00a5169354df25c734c00340ae73ae43",
+      "protected": false
+    },
+    {
+      "name": "integrate/portable-recovery-20261008-8b336fefde84",
+      "sha": "17e1a3286a5e8136d1d5dc09da37f33fd1baa100",
+      "protected": false
+    },
+    {
+      "name": "main",
+      "sha": "1e662c387be5f66f8499fac7ec443f58d2198379",
+      "protected": false
+    },
+    {
+      "name": "receiving/calendar-download-3e50c5ad22c5",
+      "sha": "619568a2fbe99ff37211f4742769d8eaabb7c169",
+      "protected": false
+    },
+    {
+      "name": "receiving/completion-checklist-3dcb83a1-20261008",
+      "sha": "1cd9bea7d5da53384e7f6546d94eb3343befc3fb",
+      "protected": false
+    },
+    {
+      "name": "receiving/manual-entry-db371a37f4c8",
+      "sha": "7269e885b8707500efa4c522e3fb6eceafd6830f",
+      "protected": false
+    },
+    {
+      "name": "review/pr22-receiving-cf5799f6d38b",
+      "sha": "bfca053d4cd2397a396caaf149eb5a554994ddb8",
+      "protected": false
+    },
+    {
+      "name": "t129/concurrency-cancel",
+      "sha": "e8f747d98325ed262c63b50032c1589b97df2aa4",
+      "protected": false
+    },
+    {
+      "name": "work/monthly-deadline-overview-7879c2abc07f-20261008",
+      "sha": "4ca4edf2741851b9bfa46c0fb651131463dd17c2",
+      "protected": false
+    },
+    {
+      "name": "work/3e50c5ad22c5-stale-actions",
+      "sha": "480a99bd6de57ff04089975b34b43856da56fdf9",
+      "protected": false
+    },
+    {
+      "name": "work/0378a7b6-reminder-time",
+      "sha": "175378e535a93f8a4555a4570cb6478b1db4ad3a",
+      "protected": false
+    }
+  ],
+  "workflows": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "git_blob": "b5688812f36338630c21eb5643318a55496ae09b",
+      "content": "name: Verify ReturnBy\non:\n  pull_request:\n  push:\n    branches: [main]\npermissions:\n  contents: read\njobs:\n  test-and-build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n          cache: npm\n      - run: npm ci\n      - run: npm audit --audit-level=moderate\n      - run: npm test\n      - run: npm run build"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "git_blob": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+      "content": "name: pages\non: { push: { branches: [main] } }\npermissions: { contents: read, pages: write, id-token: write }\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    environment: { name: github-pages, url: \"${{ steps.d.outputs.page_url }}\" }\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: { node-version: 20 }\n      - run: npm install && npm test && npm run build\n      - uses: actions/configure-pages@v5\n      - uses: actions/upload-pages-artifact@v3\n        with: { path: dist }\n      - id: d\n        uses: actions/deploy-pages@v4\n"
+    }
+  ],
+  "decision": "Current full versioned workflow set contains only pull_request and push events. Both push subscriptions require literal branch main. A new receiving/local-preview-c945953fdeb7 source ref does not match either push subscription; there is no create, workflow_run, repository_dispatch, scheduled or issue/comment subscriber. The standalone source-branch publication is admitted; PR and main publication remain held because they would trigger Actions.",
+  "authority": "The standing estate instruction authorizes qualified contribution preservation and integration. The 2026-10-08 Actions hold explicitly requires checking whether a repository write would start Actions and holding that triggering step; it is not a blanket prohibition on nontriggering source refs.",
+  "quality": "Actual installed/native author qualification and independent R1-R5 receiving are retained. No unrun gate is described as passing; no CI/permissions/rules changes.",
+  "limits": "The separate native outcome is Mac-local. This record grants no LA7 target access or owner-stack adoption and does not infer authority from missing connectors.",
+  "primary_semantics": "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow"
+}
