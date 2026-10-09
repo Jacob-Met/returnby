@@ -1,0 +1,224 @@
+{
+  "authority": {
+    "audited_workflows": [
+      "authority/.github/workflows/ci.yml",
+      "authority/.github/workflows/pages.yml"
+    ],
+    "coordination_issue": "https://github.com/Jacob-Met/returnby/issues/8",
+    "current_priority": "https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6069904551",
+    "no_actions": "https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6067592767",
+    "safe_publication": "Unattached Git objects and audited issue comment only; no issue or issue_comment workflow triggers in current default tree."
+  },
+  "inputs": [
+    {
+      "allocation_bytes": 727510,
+      "allocation_sha256": "1904298b52b8560dafd91debeab816deaa8e80a058d47bb441832486b3ecbfa4",
+      "path": "/workspace/scratch/a4a1879c582f/receiving-reserve-returnby-native.bin",
+      "zip_bytes": 625316,
+      "zip_sha256": "d2663e3c834ca4e094f94fbc037a28fafed380b8da1468f46ccc016a9a76d524"
+    },
+    {
+      "allocation_bytes": 465639,
+      "allocation_sha256": "158c571d78c0b5566b8c408e36919c458a2e0b28691389928903abf8c213f10a",
+      "path": "/workspace/scratch/a4a1879c582f/receiving-reserve-scopesignal-author.bin",
+      "zip_bytes": 463851,
+      "zip_sha256": "90c4771a7f25638bf16b6d904cae71677a4be9bfecd415040ba4fed0db3364a8"
+    },
+    {
+      "allocation_bytes": 262144,
+      "allocation_sha256": "4dea17f1f5712ee3b78fb684a2a551cdff068e4769edc385881884afcf67ab79",
+      "path": "/workspace/scratch/a4a1879c582f/receiving-reserve-named-author.bin",
+      "zip_bytes": 202364,
+      "zip_sha256": "b998a64b8095e3f82ac39049c060ac935ec260637bf28108b1b298dd0b390807"
+    },
+    {
+      "allocation_bytes": 262144,
+      "allocation_sha256": "482dc5aed2f2b3b4594f114834c729d06bd9dc6a30a83e768def7e2d3be49e0d",
+      "path": "/workspace/scratch/a4a1879c582f/receiving-reserve-named-peer.bin",
+      "zip_bytes": 256814,
+      "zip_sha256": "3c2ebbe8fdd099af3ae21e4140f3e21db83643924747e0ac5cc04d80bcca03b4"
+    },
+    {
+      "allocation_bytes": 727510,
+      "allocation_sha256": "2152196efaddab62e412e590f84a628580ac7c1727d819e110da086b70d8b9d6",
+      "path": "/workspace/scratch/a4a1879c582f/receiving-reserve-returnby-root.bin",
+      "zip_bytes": 661278,
+      "zip_sha256": "7e9e19e0a8758494c60a81ccf82d90b76b77844564ce5fd3f8b5c2caf0fe5f5f"
+    }
+  ],
+  "limits": [
+    "Exact #20 receiving base; current main and later feature stacks require independent receiving.",
+    "Desktop headless Chromium en-US/UTC only; no physical device, non-UTC calendar behavior, or external calendar-app import claim.",
+    "Historical browser/build source manifest uses original 3025-byte fixture; final 4007-byte helper only supports the existing native form API calls in maintained tests. Production source and dist unchanged between those gates.",
+    "Adoption remains with ReturnBy #8/#10/#20. No Actions, refs, pushes, PR creation, merge, workflow change, deployment, or protection bypass.",
+    "Later daily-refresh/completion work is separate and is not qualified by this artifact."
+  ],
+  "meaningful_negative_evidence": [
+    "Baseline native Save admitted 1000000000 and displayed NaN-NaN-NaN; actual strict Backup refused.",
+    "Due 9999-12-31 is refused because its exclusive next-day calendar end cannot be represented in the accepted four-digit range.",
+    "Original candidate maintained suite had 28 inert fixture failures; full logs retained.",
+    "Original pure baseline capture normalized CRLF to LF; raw-restored bytes independently match original native byte counts/hashes; normalized originals retained.",
+    "First candidate pure execution lost packaging custody due reserve limit; recorded failure and one identical retained replay, not counted as an accepted run.",
+    "Browser driver download-count expectation was corrected from four to three before its first and only browser execution; both driver revisions retained.",
+    "Original cached tree header echoed the commit instead of the canonical tree; root and independent review reconstructed all trees.",
+    "Final ZIP preflight exceeded the owned allocation at 761358 bytes; no write occurred. Byte-identical source/driver copies are stored once with complete exact aliases and a hash-checking expander. No native receipt or raw output was removed.",
+    "Final-package guard initially assumed diff --git headers; exact accepted patch has four standard unified-diff file headers. It stopped read-only before any write; corrected guard counts --- file headers and six @@ hunks.",
+    "First final-package builder orchestration had a JavaScript template-literal syntax error before any nested tool or file mutation; not a source/test failure."
+  ],
+  "metadata_notes": [
+    "The frozen author boolean named all_four_hunks_reconstructed_in_memory_to_qualified_afterimages means four file sections; there are six actual hunks.",
+    "Source-only tree excludes the separate immutable evidence files to be added at publication."
+  ],
+  "owner": "estate-a4a1879c582f/root",
+  "qualification": {
+    "author_consumer": {
+      "groups_passed": 6
+    },
+    "independent_application_review": {
+      "decision": "ACCEPT",
+      "receipt_sha256": "4b917424c5e566d9945471490f2d0b9010725cb6e41ec0ebd3cda17662c70da8"
+    },
+    "independent_consumers": {
+      "baseline_groups": 8,
+      "candidate_exact_artifacts": 14,
+      "candidate_groups": 3,
+      "candidate_vectors": 10
+    },
+    "independent_source_review": {
+      "comparisons": 15,
+      "decision": "ACCEPT"
+    },
+    "maintained_suite": {
+      "baseline": {
+        "failed": 0,
+        "files": 12,
+        "passed": 201
+      },
+      "final_candidate_fixture": {
+        "assertions_unchanged": true,
+        "failed": 0,
+        "files": 12,
+        "passed": 201,
+        "receipt_sha256": "5c2128cb36f3c3845487a17cdbceca58012242745dbf09ae2ebeb6253f57ab01"
+      },
+      "original_candidate": {
+        "failed": 28,
+        "failure": "Inert preview fixture lacked elements.namedItem, preventing changed Save handler from executing.",
+        "passed": 173
+      }
+    },
+    "native_browser": {
+      "actual_downloads": [
+        {
+          "bytes": 408,
+          "name": "01-returnby-backup-2026-10-08.json",
+          "sha256": "9a25d41bcc202dafa9039154af0b5498b28ed4c1c226baca444495219e947f91"
+        },
+        {
+          "bytes": 459,
+          "name": "02-return--Fictional-Caf-Eli-.ics",
+          "sha256": "1020281976c26b3015267c70a835916226808af824306f4f49b4a8d22c1211ad"
+        },
+        {
+          "bytes": 1644,
+          "name": "03-returnby-backup-2026-10-08.json",
+          "sha256": "bf45e58f3225fe4fafd0dcc29e69b391842f88a0034c99a9ba30e7f8079dc775"
+        }
+      ],
+      "chromium": "153.0.8010.0",
+      "driver_sha256": "563d4dfaa9f56a0c0fe97c3bd7bd12918d50ee0dca6b83c1eb1837c06ea2a45b",
+      "ended_at": "2026-10-08T23:15:10.780Z",
+      "input_method_note": "Playwright native locators/keyboard; date fill emits untrusted input while Save/submit/native invalid observations were trusted. No synthetic submit, novalidate, or constraint bypass.",
+      "node": "24.19.0",
+      "phases_failed": 0,
+      "phases_passed": 16,
+      "receipt_sha256": "836e38eb68d2d28517e5418e2dac761c5317e9a70736b43bf9e8b278b1120145",
+      "restored_records": 5,
+      "retries": 0,
+      "runs": 1,
+      "saved_json_sha256": "6d15ad7d8c023c96b390b56f657d9e6e3e48c049126e07047061db55ec78ca87",
+      "saved_json_utf8_bytes": 1163,
+      "scope": "Desktop headless Chromium, locale en-US, timezone UTC; no physical device or calendar-app import claim",
+      "served_responses": 9,
+      "started_at": "2026-10-08T23:15:06.175Z"
+    },
+    "root_git_apply_production": {
+      "apply": 0,
+      "check": 0
+    },
+    "typescript_and_vite": {
+      "base_exit_codes": [
+        0,
+        0
+      ],
+      "candidate_exit_codes": [
+        0,
+        0
+      ]
+    }
+  },
+  "qualified_at": "2026-10-09T00:04:59.660884+00:00",
+  "repository": "Jacob-Met/returnby",
+  "root_readback_checks": {
+    "all_nine_served_responses_bound_to_build": true,
+    "all_phase_states_pass": true,
+    "baseline_invalid_due_and_backup_refusal": true,
+    "baseline_native_save_huge_window_admitted": true,
+    "candidate_invalid_draft_and_tracker_retained": true,
+    "download_hashes_and_raw_crlf": true,
+    "error_arrays_empty": true,
+    "fresh_context_actual_file_restore_exact": true,
+    "native_bad_input_blocked_before_submit": true,
+    "old_allocation_exact_bytes_reconstructed": true,
+    "same_baseline_candidate_field_strings_and_paste": true,
+    "source_only_tree_matches_independent_review": true
+  },
+  "schema": "returnby.ordinary-intake-admission.qualified-handoff.v1",
+  "source": {
+    "actual_hunks": 6,
+    "current_main_at_coordination": "1e662c387be5f66f8499fac7ec443f58d2198379",
+    "deletions": 44,
+    "file_sections": 4,
+    "files": [
+      {
+        "bytes": 1748,
+        "git_blob": "fcc5ad1761f4d2125549554f1c2835854d5e98c5",
+        "path": "src/order-admission.ts",
+        "sha256": "6251cd1e8334bf4fd15aeb5ed95ee7d4022fd1578f283134b9f449132cfc40f1"
+      },
+      {
+        "bytes": 2749,
+        "git_blob": "fd83cef629ee35af4d8979b170855f16e9b5175f",
+        "path": "src/edit.ts",
+        "sha256": "324b8b4d51275296a3000f10ee0efc2248741326b1651ef2c659ec3db97f9302"
+      },
+      {
+        "bytes": 11059,
+        "git_blob": "4b7a909c30c06271932f4887e4b783a6b27395d1",
+        "path": "src/main.ts",
+        "sha256": "e5e63342bd6aefdb93ff497e73d61448e3dfae8231a83d722dec63ca87c4871c"
+      },
+      {
+        "bytes": 4007,
+        "git_blob": "2728b24ae06d05bc8a9da3a59a48f5e45c7e4aa3",
+        "path": "tests/helpers/storage-fixture.mjs",
+        "sha256": "1ab92dd4d253871fd49971832d5c7d5a302d51fca832e7c73047bb3f319e010d"
+      }
+    ],
+    "insertions": 101,
+    "patch_bytes": 8269,
+    "patch_sha256": "60c2ecaeb8ebb177006015316bf44d139b84b42ef43e47ae45aef283ba6226bd",
+    "receiving_commit": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+    "receiving_tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+    "source_only_tree": "584d04643c7ade03ded7d59db481731464c36d3f",
+    "unchanged_old_leaves": 188,
+    "unchanged_old_subtrees": 33
+  },
+  "state": {
+    "deployed": false,
+    "implemented": true,
+    "independently_accepted": true,
+    "integrated": false,
+    "locally_native_qualified": true
+  }
+}

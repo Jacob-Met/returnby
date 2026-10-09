@@ -10,6 +10,7 @@ import { load, read, save, type Order } from './store';
 import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
+import { validateOrderFields, EditError, type EditDraft } from './order-admission';
 import { bindCalendarBatch } from './calendar-batch-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
@@ -124,19 +125,45 @@ function showPreview() {
   preview.hidden = false;
 }
 
+// A date correction can also fix a return-window error, so clear custom
+// messages on every intake edit; native type/min/step constraints stay active.
+preview.addEventListener('input', () => {
+  preview.querySelectorAll<HTMLInputElement>('input').forEach(input => input.setCustomValidity(''));
+});
+
 preview.addEventListener('submit', (e) => {
   e.preventDefault();
   const f = new FormData(preview);
-  const orderDate = String(f.get('orderDate') || '');
-  if (!orderDate) { (preview.querySelector('[name=orderDate]') as HTMLInputElement).focus(); return; }
-  const days = Number(f.get('windowDays')) || 30;
-  const merchant = String(f.get('merchant') || '');
+  const rawWindow = String(f.get('windowDays') || '');
+  const windowInput = preview.elements.namedItem('windowDays') as HTMLInputElement;
+  if (!windowInput.checkValidity()) { windowInput.reportValidity(); return; }
+  // Keep the optional blank-window fallback and native numeric meanings such
+  // as 3e1 or 30.0. Saved text fields remain exactly as the reviewer entered.
+  const draft: EditDraft = {
+    merchant: String(f.get('merchant') || ''),
+    orderNo: String(f.get('orderNo') || ''),
+    total: String(f.get('total') || ''),
+    orderDate: String(f.get('orderDate') || ''),
+    windowDays: String(rawWindow === '' ? 30 : Number(rawWindow)),
+  };
+  let days: number;
+  try {
+    ({ days } = validateOrderFields(draft));
+  } catch (error) {
+    if (!(error instanceof EditError)) throw error;
+    const input = preview.elements.namedItem(error.field || 'orderDate') as HTMLInputElement;
+    input.setCustomValidity(error.message);
+    input.reportValidity();
+    input.focus();
+    return;
+  }
+  const { merchant, orderDate, orderNo, total } = draft;
   const pol = lookup(merchant);
   const current = readCurrentOrders();
   if (!current) return;
   const next: Order[] = [...current, {
-    id: crypto.randomUUID(), merchant, orderNo: String(f.get('orderNo') || ''),
-    total: String(f.get('total') || ''), orderDate, windowDays: days,
+    id: crypto.randomUUID(), merchant, orderNo,
+    total, orderDate, windowDays: days,
     windowSource: days === pol.days ? pol.source : 'user',
     createdAt: new Date().toISOString(),
   }];

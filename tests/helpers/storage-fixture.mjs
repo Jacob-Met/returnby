@@ -23,6 +23,26 @@ export function storageFixture(html, initial = []) {
   }
   const preview = elements.get('preview');
   preview.dataset = { source: 'default', days: '30' };
+  // Known intake controls keep reading the current authored form fields.
+  // Native type/min/step constraints are covered by the browser receiving journey.
+  const inputs = new Map(['merchant', 'orderDate', 'orderNo', 'total', 'windowDays'].map(name => [name, {
+    name, validationMessage: '',
+    get value() { return String(preview.fields[name] ?? ''); },
+    set value(next) { preview.fields[name] = String(next); },
+    setCustomValidity(message) { this.validationMessage = String(message); },
+    checkValidity() { return this.validationMessage === ''; },
+    reportValidity() {
+      const valid = this.checkValidity();
+      if (!valid) this.focus();
+      return valid;
+    },
+    focus() { document.activeElement = this; },
+  }]));
+  preview.elements = { namedItem: name => inputs.get(name) ?? null };
+  preview.querySelectorAll = selector => {
+    if (selector !== 'input') throw Error(`Unexpected preview selector: ${selector}`);
+    return [...inputs.values()];
+  };
   const localStorage = {
     getItem(key) { if (key !== 'returnby.v1') throw Error('Unexpected storage key'); return value; },
     setItem(key, next) {
