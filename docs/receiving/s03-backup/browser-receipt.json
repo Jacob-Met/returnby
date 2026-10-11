@@ -1,0 +1,36 @@
+{
+  "recorded_at": "2026-10-11T00:10:52.503669+00:00",
+  "data": "fictional sample orders and explicitly authored negative fixtures",
+  "tested": "local production dist, not live-site deployment",
+  "browser": "headless Chromium",
+  "checks": [
+    "real sample parse-review-save flow creates two orders",
+    "download contains actual approved tracker fields only",
+    "export metadata uses supported version",
+    "export leaves source storage byte-for-byte unchanged",
+    "preview states new records before confirmation",
+    "preview does not write target storage",
+    "confirmation required before write",
+    "confirmed restore round trips approved fields",
+    "repeat restore skips both exact duplicates",
+    "conflicting identifier blocks all writes",
+    "conflict preserves target fields",
+    "malformed file has visible error and disabled write",
+    "untrusted merchant is rendered as text, not HTML",
+    "cross-tab change retires preview and disables import",
+    "cross-tab records are not overwritten",
+    "phone layout does not overflow the viewport",
+    "restored orders appear in actual tracker after navigation",
+    "blocked storage has actionable error without an uncaught exception",
+    "malformed saved data remains untouched",
+    "no outbound requests or uploads during acceptance",
+    "no uncaught JavaScript errors during acceptance"
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "artifact_sha256": {
+    "desktop-preview.png": "fd0ac9408a86f1d4d464cbefae7418d5730dfbd59dc7bfecea3944fddfa18c9e",
+    "fictional-returnby-backup.json": "047e3bb4e9b02830cd85e647279bfa9a18ead25924a7d1227789d55190b4c5fe",
+    "phone-preview.png": "45f36b5c8940893b4846711530e1603548bad75f30a55c7a013d11aa04386b85"
+  }
+}

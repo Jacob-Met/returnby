@@ -3,3 +3,10 @@ dist/
 /devpost/learner-profile.md
 .env
 .env.*
+# Locally installed Skill Pack links; installation is documented, not learner interview evidence.
+.agents/
+.claude/
+.astrbot/
+.eve/
+/agent/skills/
+/data/skills/

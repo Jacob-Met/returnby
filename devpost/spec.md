@@ -15,7 +15,7 @@ paste → `parse.ts` → `policy.ts` (fallback 30) → `deadline.ts` → preview
 TypeScript 5 + Vite 5, vanilla DOM; Vitest for unit tests; no runtime dependencies; plain CSS. Node 20+.
 
 ## Where It Runs and How Someone Tries It
-`npm install && npm run dev` → http://localhost:5173. `npm test` runs tests. `npm run build` → static `dist/` deployed to GitHub Pages by `.github/workflows/pages.yml`.
+`npm ci && npm run dev` → http://localhost:5173. `npm test` runs the local test suite. `npm run build` → static `dist/`. GitHub Actions is forbidden; verification runs locally on the worker host. Publish reviewed static files through the existing site deployment owner, not an Actions workflow.
 
 ## Components
 - `parse.ts` — regex extraction + date normalization + per-field found flags. PRD: Parsing.

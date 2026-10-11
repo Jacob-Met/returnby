@@ -27,6 +27,10 @@ The optional Raider browser acceptance and desktop/phone captures run through `p
 
 The app is browser-only; no AI runs in the page. The Devpost Learn planning documents are not completed interview output and are not represented as such.
 
+## Local backup desk
+
+The tracker links to a local JSON backup/restore page. Download only approved fields, preview a restore, then explicitly confirm adding new records. Identical records are skipped; conflicting identifiers or a changed saved list block the import. No existing order is replaced, and no file is uploaded. Backups are **not encrypted**. See [the local backup guide](docs/LOCAL_BACKUP.md) for limits, reproducible browser checks and the unresolved Skill Pack provenance boundary.
+
 ## Return-trip checklist
 
 From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. The page keeps the existing tracker unchanged; selections, paper check marks and notes are not saved. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
