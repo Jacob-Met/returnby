@@ -23,12 +23,16 @@ type Hit = { date: string; index: number };
 export function findDates(text: string): Hit[] {
   const hits: Hit[] = [];
   const mon = '(jan|feb|mar|apr|may|jun|jul|aug|sept?|oct|nov|dec)[a-z]*\\.?';
+  const time = '(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?';
+  const zone = '(?:[Zz]|[+-](?:[01]\\d|2[0-3]):[0-5]\\d)?';
   const patterns: [RegExp, (m: RegExpExecArray) => string][] = [
     [new RegExp(`\\b${mon}\\s+(\\d{1,2})(?:st|nd|rd|th)?,?\\s+(\\d{4})\\b`, 'gi'),
       (m) => iso(+m[3], MONTHS[m[1].toLowerCase()], +m[2])],
     [new RegExp(`\\b(\\d{1,2})\\s+${mon}\\s+(\\d{4})\\b`, 'gi'),
       (m) => iso(+m[3], MONTHS[m[2].toLowerCase()], +m[1])],
-    [/\b(\d{4})-(\d{2})-(\d{2})\b/g, (m) => iso(+m[1], +m[2], +m[3])],
+    // Preserve the written date; the attached time only establishes a valid boundary.
+    [new RegExp(`\\b(\\d{4})-(\\d{2})-(\\d{2})(?:[Tt]${time}${zone}(?![\\w:+-]|\\.\\d)|\\b)`, 'g'),
+      (m) => iso(+m[1], +m[2], +m[3])],
     [/\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/g, (m) => iso(+m[3], +m[1], +m[2])], // US order
   ];
   for (const [re, conv] of patterns) {

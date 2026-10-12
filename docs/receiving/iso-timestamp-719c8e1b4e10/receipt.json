@@ -1,0 +1,1173 @@
+{
+  "schema": "returnby-iso-timestamp-native-receiving-v1",
+  "actor": "719c8e1b4e10/source_product",
+  "repository": "Jacob-Met/returnby",
+  "base_commit": "8df144cd393fd66a99f46683c54b55c97665d6e8",
+  "base_tree": "cc4ded942b2f59b8c2eac5f6e69d886a069557fb",
+  "stage": "/var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x",
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+  "uid": 1000,
+  "node": "v22.22.1",
+  "npm": "9.2.0",
+  "completed_at": "2026-10-12T23:34:58.363155+00:00",
+  "source_projection": [
+    {
+      "path": "data/policies.json",
+      "base_git_blob": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "candidate_git_blob": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "bytes": 449,
+      "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+    },
+    {
+      "path": "index.html",
+      "base_git_blob": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+      "candidate_git_blob": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+      "bytes": 4455,
+      "sha256": "7ab7e2a77337b9ca92534a5270a46ee36c606e551b598b20205b0bbb079a8ab1"
+    },
+    {
+      "path": "package-lock.json",
+      "base_git_blob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "candidate_git_blob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "bytes": 35404,
+      "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+    },
+    {
+      "path": "package.json",
+      "base_git_blob": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "candidate_git_blob": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "bytes": 313,
+      "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c"
+    },
+    {
+      "path": "public/favicon.svg",
+      "base_git_blob": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+      "candidate_git_blob": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "path": "src/day-refresh.ts",
+      "base_git_blob": "362aae5b5be7bf399174483327a2b15018edeca4",
+      "candidate_git_blob": "362aae5b5be7bf399174483327a2b15018edeca4",
+      "bytes": 1320,
+      "sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430"
+    },
+    {
+      "path": "src/deadline.ts",
+      "base_git_blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "candidate_git_blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "bytes": 837,
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "path": "src/ics.ts",
+      "base_git_blob": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+      "candidate_git_blob": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+      "bytes": 1844,
+      "sha256": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f"
+    },
+    {
+      "path": "src/main.ts",
+      "base_git_blob": "798e5329fe9983e67b5832595605a49294f0a529",
+      "candidate_git_blob": "798e5329fe9983e67b5832595605a49294f0a529",
+      "bytes": 7354,
+      "sha256": "a67c4878d70502eb5f2ff5bfa286bf932c66cb73fecb1fd6184d7f80426fa26b"
+    },
+    {
+      "path": "src/parse.ts",
+      "base_git_blob": "6a59607db8418e20daf783f0738ba600dd16cf05",
+      "candidate_git_blob": "adddc727f469289fa40cb69ab9223f0145747868",
+      "bytes": 3572,
+      "sha256": "d6974c8b6b1e8142e5cf679d601ad495706723b6831fada983fa0ac4c05b7355"
+    },
+    {
+      "path": "src/policy.ts",
+      "base_git_blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+      "candidate_git_blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+      "bytes": 595,
+      "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231"
+    },
+    {
+      "path": "src/samples.ts",
+      "base_git_blob": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "candidate_git_blob": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "bytes": 513,
+      "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04"
+    },
+    {
+      "path": "src/store.ts",
+      "base_git_blob": "23cf906e26187ff28c94718111e69d9603c97fa8",
+      "candidate_git_blob": "23cf906e26187ff28c94718111e69d9603c97fa8",
+      "bytes": 430,
+      "sha256": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080"
+    },
+    {
+      "path": "src/style.css",
+      "base_git_blob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+      "candidate_git_blob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+      "bytes": 8842,
+      "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892"
+    },
+    {
+      "path": "src/trip-checklist-view.ts",
+      "base_git_blob": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+      "candidate_git_blob": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+      "bytes": 7349,
+      "sha256": "cdb7e3e0111086e2826849f0a21e1594998b48e6e656efc9a7c0d6b83ba21f32"
+    },
+    {
+      "path": "src/trip-checklist.css",
+      "base_git_blob": "be540de5163c0b66cda28296311b2ce02204e087",
+      "candidate_git_blob": "be540de5163c0b66cda28296311b2ce02204e087",
+      "bytes": 8367,
+      "sha256": "1a5167a9a0b46bbcf600c986266f5a7fdcc97222e6a0ad46a8896bccbc8fe1bc"
+    },
+    {
+      "path": "src/trip-checklist.ts",
+      "base_git_blob": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+      "candidate_git_blob": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+      "bytes": 13299,
+      "sha256": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c"
+    },
+    {
+      "path": "tests/core.test.ts",
+      "base_git_blob": "41ca82a8942dc111fa51a04396a16bcfaffa85c1",
+      "candidate_git_blob": "41ca82a8942dc111fa51a04396a16bcfaffa85c1",
+      "bytes": 4649,
+      "sha256": "bf0ac09a394b44d0bd5e98f752523a940363d790fc556de2c35c2ff61856ab61"
+    },
+    {
+      "path": "tests/day-refresh.test.ts",
+      "base_git_blob": "1d76fd6ef7364ae84f4775666768815211981ff6",
+      "candidate_git_blob": "1d76fd6ef7364ae84f4775666768815211981ff6",
+      "bytes": 4830,
+      "sha256": "1f6ba366278a67d92c6aa219586158a3d8ecab9394395f79cb5c91545627aa6d"
+    },
+    {
+      "path": "tests/ics.test.ts",
+      "base_git_blob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+      "candidate_git_blob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+      "bytes": 4526,
+      "sha256": "1c945625f9988963760e3804142a7292603409bd0d95846109997ebcd6ed08fa"
+    },
+    {
+      "path": "tests/trip-checklist.test.ts",
+      "base_git_blob": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe",
+      "candidate_git_blob": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe",
+      "bytes": 8753,
+      "sha256": "44afbdf66731650384cec49d9dec7398e8e747b77e1f9ad347a79f5fbf6bf88d"
+    },
+    {
+      "path": "trip-checklist.html",
+      "base_git_blob": "f0286c5e6817c1656297c67489d4b796ddec4510",
+      "candidate_git_blob": "f0286c5e6817c1656297c67489d4b796ddec4510",
+      "bytes": 4558,
+      "sha256": "a1f8fd94b38acea81efe6f6f410ca2a2808ac88914694b4c660a559dc0d35681"
+    },
+    {
+      "path": "tsconfig.json",
+      "base_git_blob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "candidate_git_blob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "bytes": 273,
+      "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc"
+    },
+    {
+      "path": "vite.config.ts",
+      "base_git_blob": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+      "candidate_git_blob": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+      "bytes": 355,
+      "sha256": "78d228170cb7b113fdde43ca738f1f4e73827656c42cce2440bd2239bcd35e5e"
+    }
+  ],
+  "test_git_blob": "cad4508823488281ce0d03ae3d50805a744d6f9d",
+  "test_sha256": "b8e718e6268cda5a2a3efe487aa2c2fc374b07b9393a39f9038ed2fc4625193a",
+  "baseline": {
+    "schema": "returnby-iso-timestamp-baseline-v1",
+    "base_commit": "8df144cd393fd66a99f46683c54b55c97665d6e8",
+    "base_tree": "cc4ded942b2f59b8c2eac5f6e69d886a069557fb",
+    "completed_at": "2026-10-12T23:33:30.337149+00:00",
+    "source_projection": [
+      {
+        "path": "data/policies.json",
+        "git_blob": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+        "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26",
+        "bytes": 449
+      },
+      {
+        "path": "index.html",
+        "git_blob": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+        "sha256": "7ab7e2a77337b9ca92534a5270a46ee36c606e551b598b20205b0bbb079a8ab1",
+        "bytes": 4455
+      },
+      {
+        "path": "package-lock.json",
+        "git_blob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+        "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52",
+        "bytes": 35404
+      },
+      {
+        "path": "package.json",
+        "git_blob": "329b4b71fbb631662eec0405ced477134520c9a5",
+        "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+        "bytes": 313
+      },
+      {
+        "path": "public/favicon.svg",
+        "git_blob": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+        "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+        "bytes": 238
+      },
+      {
+        "path": "src/day-refresh.ts",
+        "git_blob": "362aae5b5be7bf399174483327a2b15018edeca4",
+        "sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430",
+        "bytes": 1320
+      },
+      {
+        "path": "src/deadline.ts",
+        "git_blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+        "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+        "bytes": 837
+      },
+      {
+        "path": "src/ics.ts",
+        "git_blob": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+        "sha256": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f",
+        "bytes": 1844
+      },
+      {
+        "path": "src/main.ts",
+        "git_blob": "798e5329fe9983e67b5832595605a49294f0a529",
+        "sha256": "a67c4878d70502eb5f2ff5bfa286bf932c66cb73fecb1fd6184d7f80426fa26b",
+        "bytes": 7354
+      },
+      {
+        "path": "src/parse.ts",
+        "git_blob": "6a59607db8418e20daf783f0738ba600dd16cf05",
+        "sha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749",
+        "bytes": 3284
+      },
+      {
+        "path": "src/policy.ts",
+        "git_blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+        "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+        "bytes": 595
+      },
+      {
+        "path": "src/samples.ts",
+        "git_blob": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+        "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+        "bytes": 513
+      },
+      {
+        "path": "src/store.ts",
+        "git_blob": "23cf906e26187ff28c94718111e69d9603c97fa8",
+        "sha256": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080",
+        "bytes": 430
+      },
+      {
+        "path": "src/style.css",
+        "git_blob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+        "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+        "bytes": 8842
+      },
+      {
+        "path": "src/trip-checklist-view.ts",
+        "git_blob": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+        "sha256": "cdb7e3e0111086e2826849f0a21e1594998b48e6e656efc9a7c0d6b83ba21f32",
+        "bytes": 7349
+      },
+      {
+        "path": "src/trip-checklist.css",
+        "git_blob": "be540de5163c0b66cda28296311b2ce02204e087",
+        "sha256": "1a5167a9a0b46bbcf600c986266f5a7fdcc97222e6a0ad46a8896bccbc8fe1bc",
+        "bytes": 8367
+      },
+      {
+        "path": "src/trip-checklist.ts",
+        "git_blob": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+        "sha256": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c",
+        "bytes": 13299
+      },
+      {
+        "path": "tests/core.test.ts",
+        "git_blob": "41ca82a8942dc111fa51a04396a16bcfaffa85c1",
+        "sha256": "bf0ac09a394b44d0bd5e98f752523a940363d790fc556de2c35c2ff61856ab61",
+        "bytes": 4649
+      },
+      {
+        "path": "tests/day-refresh.test.ts",
+        "git_blob": "1d76fd6ef7364ae84f4775666768815211981ff6",
+        "sha256": "1f6ba366278a67d92c6aa219586158a3d8ecab9394395f79cb5c91545627aa6d",
+        "bytes": 4830
+      },
+      {
+        "path": "tests/ics.test.ts",
+        "git_blob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+        "sha256": "1c945625f9988963760e3804142a7292603409bd0d95846109997ebcd6ed08fa",
+        "bytes": 4526
+      },
+      {
+        "path": "tests/trip-checklist.test.ts",
+        "git_blob": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe",
+        "sha256": "44afbdf66731650384cec49d9dec7398e8e747b77e1f9ad347a79f5fbf6bf88d",
+        "bytes": 8753
+      },
+      {
+        "path": "trip-checklist.html",
+        "git_blob": "f0286c5e6817c1656297c67489d4b796ddec4510",
+        "sha256": "a1f8fd94b38acea81efe6f6f410ca2a2808ac88914694b4c660a559dc0d35681",
+        "bytes": 4558
+      },
+      {
+        "path": "tsconfig.json",
+        "git_blob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+        "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc",
+        "bytes": 273
+      },
+      {
+        "path": "vite.config.ts",
+        "git_blob": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+        "sha256": "78d228170cb7b113fdde43ca738f1f4e73827656c42cce2440bd2239bcd35e5e",
+        "bytes": 355
+      }
+    ],
+    "first_route": {
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "probe.mjs"
+      ],
+      "exit_code": 1,
+      "seconds": 0.082,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4117cb2e36dcfb8c4b68a4fdfdf4f9cc87fd115dbd065e7bf42af02d9dda34c5",
+      "stdout": "",
+      "stderr": "node:internal/util:226\n    throw new ERR_NO_TYPESCRIPT();\n          ^\n\nError [ERR_NO_TYPESCRIPT]: Node.js is not compiled with TypeScript support\n    at assertTypeScript (node:internal/util:226:11)\n    at node:internal/modules/typescript:41:3\n    at node:internal/util:785:15\n    at parseTypeScript (node:internal/modules/typescript:53:17)\n    at processTypeScriptCode (node:internal/modules/typescript:133:42)\n    at stripTypeScriptModuleTypes (node:internal/modules/typescript:163:10)\n    at ModuleLoader.<anonymous> (node:internal/modules/esm/translators:605:16)\n    at #translate (node:internal/modules/esm/loader:546:20)\n    at afterLoad (node:internal/modules/esm/loader:596:29)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:601:12) {\n  code: 'ERR_NO_TYPESCRIPT'\n}\n\nNode.js v22.22.1\n"
+    },
+    "route_note": "Native distro Node was compiled without built-in TypeScript support; that failed probe is preserved and is not source failure evidence. Ordinary repository Vitest executes unchanged TypeScript.",
+    "dependency_install": {
+      "command": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "--cache",
+        "/var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/npm-cache"
+      ],
+      "exit_code": 0,
+      "seconds": 5.645,
+      "stdout": "\nadded 38 packages in 5s\n",
+      "stderr": "",
+      "stdout_sha256": "3de8b18ee1c39ab0db9bc44ffc916e2cfeb02772da51bb64a1aee1ad0e65359a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "test": {
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "tests/parse-iso-timestamp.test.ts",
+        "--reporter=json",
+        "--outputFile",
+        "/var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline-vitest-report.json"
+      ],
+      "exit_code": 1,
+      "seconds": 1.092,
+      "stdout": "\n> returnby@0.1.0 test\n> vitest run tests/parse-iso-timestamp.test.ts --reporter=json --outputFile /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline-vitest-report.json\n\nJSON report written to /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline-vitest-report.json\n",
+      "stderr": "",
+      "stdout_sha256": "c7abb9524b1a49aa09d14e02ceea33c39e47e1672f8add1a064339e4a51c177f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "counts": {
+      "numTotalTests": 46,
+      "numPassedTests": 26,
+      "numFailedTests": 20,
+      "numPendingTests": 0,
+      "success": false
+    },
+    "test_report": {
+      "numTotalTestSuites": 2,
+      "numPassedTestSuites": 0,
+      "numFailedTestSuites": 2,
+      "numPendingTestSuites": 0,
+      "numTotalTests": 46,
+      "numPassedTests": 26,
+      "numFailedTests": 20,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "snapshot": {
+        "added": 0,
+        "failure": false,
+        "filesAdded": 0,
+        "filesRemoved": 0,
+        "filesRemovedList": [],
+        "filesUnmatched": 0,
+        "filesUpdated": 0,
+        "matched": 0,
+        "total": 0,
+        "unchecked": 0,
+        "uncheckedKeysByFile": [],
+        "unmatched": 0,
+        "updated": 0,
+        "didUpdate": false
+      },
+      "startTime": 1791848009950,
+      "success": false,
+      "testResults": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-10-03T15:24:00Z",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-10-03T15:24:00Z",
+              "duration": 12.885622000000012,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-10-03t15:24:00z",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-10-03t15:24:00z",
+              "duration": 1.8855780000000095,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-10-03T15:24:00.123456Z",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-10-03T15:24:00.123456Z",
+              "duration": 1.0266230000000007,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-10-03T00:15:00+14:00",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-10-03T00:15:00+14:00",
+              "duration": 0.7033219999999858,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-10-03T23:45:00-12:00",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-10-03T23:45:00-12:00",
+              "duration": 0.824089000000015,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-10-03T15:24:00+00:00",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-10-03T15:24:00+00:00",
+              "duration": 0.5563319999999976,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-10-03T15:24:00",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-10-03T15:24:00",
+              "duration": 0.578801999999996,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-10-03T15:24",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-10-03T15:24",
+              "duration": 0.4458940000000098,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-10-03T15:24Z",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-10-03T15:24Z",
+              "duration": 1.265340000000009,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-10-03T15:24-04:00",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-10-03T15:24-04:00",
+              "duration": 1.7940289999999948,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2024-02-29T23:59:59.999Z",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2024-02-29T23:59:59.999Z",
+              "duration": 0.6131680000000017,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2024-02-29', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates keeps the written calendar date in 2026-12-31T23:59:59Z",
+              "status": "failed",
+              "title": "keeps the written calendar date in 2026-12-31T23:59:59Z",
+              "duration": 0.37671399999999267,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-12-31', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:19:34\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03Today",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03Today",
+              "duration": 0.9766730000000052,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T",
+              "duration": 0.3049049999999909,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T24:00:00Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T24:00:00Z",
+              "duration": 0.09609399999999368,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:60:00Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:60:00Z",
+              "duration": 0.08817500000000678,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24:60Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24:60Z",
+              "duration": 0.15987000000001217,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T1:24:00Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T1:24:00Z",
+              "duration": 0.08071100000000797,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:2:00Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:2:00Z",
+              "duration": 0.07114000000001397,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24:0Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24:0Z",
+              "duration": 0.06683200000000511,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24:00.123oops",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24:00.123oops",
+              "duration": 0.17821000000000708,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24:00+24:00",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24:00+24:00",
+              "duration": 0.13100000000000023,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24:00+02:60",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24:00+02:60",
+              "duration": 0.07687000000001376,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24:00+0200",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24:00+0200",
+              "duration": 0.05966699999999037,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24:00+02",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24:00+02",
+              "duration": 0.05698699999999235,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24:00Zextra",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24:00Zextra",
+              "duration": 0.060222999999979265,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24:00Z+01:00",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24:00Z+01:00",
+              "duration": 0.057169999999985066,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24.123Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24.123Z",
+              "duration": 0.055006000000020094,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-10-03T15:24:00.1.2Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-10-03T15:24:00.1.2Z",
+              "duration": 0.054946999999998525,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-02-29T15:24:00Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-02-29T15:24:00Z",
+              "duration": 0.05513300000001209,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-04-31T15:24:00Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-04-31T15:24:00Z",
+              "duration": 0.05382699999998408,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates does not extract a date from malformed attached text 2026-13-03T15:24:00Z",
+              "status": "passed",
+              "title": "does not extract a date from malformed attached text 2026-13-03T15:24:00Z",
+              "duration": 0.056111000000015565,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates accepts a timestamp followed by \"\"",
+              "status": "failed",
+              "title": "accepts a timestamp followed by \"\"",
+              "duration": 0.4193490000000111,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:52:60\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates accepts a timestamp followed by \".\"",
+              "status": "failed",
+              "title": "accepts a timestamp followed by \".\"",
+              "duration": 0.32807900000000245,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:52:60\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates accepts a timestamp followed by \",\"",
+              "status": "failed",
+              "title": "accepts a timestamp followed by \",\"",
+              "duration": 0.29969500000001403,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:52:60\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates accepts a timestamp followed by \";\"",
+              "status": "failed",
+              "title": "accepts a timestamp followed by \";\"",
+              "duration": 0.32811399999999935,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:52:60\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates accepts a timestamp followed by \")\"",
+              "status": "failed",
+              "title": "accepts a timestamp followed by \")\"",
+              "duration": 0.39714100000000485,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:52:60\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates accepts a timestamp followed by \"]\"",
+              "status": "failed",
+              "title": "accepts a timestamp followed by \"]\"",
+              "duration": 0.29421800000000076,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:52:60\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates accepts a timestamp followed by \"\\nNext line\"",
+              "status": "failed",
+              "title": "accepts a timestamp followed by \"\\nNext line\"",
+              "duration": 0.31632600000000366,
+              "failureMessages": [
+                "AssertionError: expected [] to deeply equal [ { date: '2026-10-03', index: +0 } ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:52:60\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2869:63\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates preserves original offsets, source ordering, and explicit order-date selection",
+              "status": "failed",
+              "title": "preserves original offsets, source ordering, and explicit order-date selection",
+              "duration": 1.2592070000000035,
+              "failureMessages": [
+                "AssertionError: expected [ { date: '2026-10-10', index: 28 } ] to deeply equal [ \u2026(2) ]\n    at /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts:57:29\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:1628:35\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:2783:26\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3321:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3316:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3301:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3259:10)\n    at file:///var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/node_modules/vitest/dist/chunks/run.BTlFXlnv.js:3882:64"
+              ],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates retains reviewed parser fallbacks after refusing an invalid explicit timestamp",
+              "status": "passed",
+              "title": "retains reviewed parser fallbacks after refusing an invalid explicit timestamp",
+              "duration": 0.2740359999999953,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates preserves the supported plain date October 3, 2026",
+              "status": "passed",
+              "title": "preserves the supported plain date October 3, 2026",
+              "duration": 0.1975169999999764,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates preserves the supported plain date Oct 3, 2026",
+              "status": "passed",
+              "title": "preserves the supported plain date Oct 3, 2026",
+              "duration": 0.10755100000000084,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates preserves the supported plain date 10/03/2026",
+              "status": "passed",
+              "title": "preserves the supported plain date 10/03/2026",
+              "duration": 0.10347099999998477,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates preserves the supported plain date 2026-10-03",
+              "status": "passed",
+              "title": "preserves the supported plain date 2026-10-03",
+              "duration": 0.10018099999999208,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            },
+            {
+              "ancestorTitles": [
+                "ISO timestamp receipt dates"
+              ],
+              "fullName": "ISO timestamp receipt dates preserves the supported plain date 3 Oct 2026",
+              "status": "passed",
+              "title": "preserves the supported plain date 3 Oct 2026",
+              "duration": 0.09397700000002374,
+              "failureMessages": [],
+              "meta": {},
+              "tags": [],
+              "benchmarks": []
+            }
+          ],
+          "startTime": 1791848010176,
+          "endTime": 1791848010206.1975,
+          "status": "failed",
+          "message": "",
+          "name": "/var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/baseline/tests/parse-iso-timestamp.test.ts"
+        }
+      ]
+    },
+    "test_git_blob": "cad4508823488281ce0d03ae3d50805a744d6f9d"
+  },
+  "candidate_counts": {
+    "numTotalTests": 120,
+    "numPassedTests": 120,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "timezone_checks": [
+    {
+      "timezone": "Pacific/Kiritimati",
+      "exit_code": 0,
+      "numTotalTests": 46,
+      "numPassedTests": 46,
+      "numFailedTests": 0
+    },
+    {
+      "timezone": "America/Los_Angeles",
+      "exit_code": 0,
+      "numTotalTests": 46,
+      "numPassedTests": 46,
+      "numFailedTests": 0
+    }
+  ],
+  "commands": [
+    {
+      "label": "candidate-full-vitest",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--reporter=json",
+        "--outputFile",
+        "/var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/candidate-full-vitest-report.json"
+      ],
+      "timezone": "UTC",
+      "started_at": "2026-10-12T23:34:53.422954+00:00",
+      "exit_code": 0,
+      "seconds": 1.057,
+      "stdout": "\n> returnby@0.1.0 test\n> vitest run --reporter=json --outputFile /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/candidate-full-vitest-report.json\n\nJSON report written to /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/candidate-full-vitest-report.json\n",
+      "stderr": "",
+      "stdout_sha256": "bfe3fea6ef9c0772b54656a1ff4297710c2589a3c6a7f75aa52a82cff2bd9c57",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "candidate-plus14",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "tests/parse-iso-timestamp.test.ts",
+        "--reporter=json",
+        "--outputFile",
+        "/var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/candidate-plus14-report.json"
+      ],
+      "timezone": "Pacific/Kiritimati",
+      "started_at": "2026-10-12T23:34:54.480949+00:00",
+      "exit_code": 0,
+      "seconds": 0.969,
+      "stdout": "\n> returnby@0.1.0 test\n> vitest run tests/parse-iso-timestamp.test.ts --reporter=json --outputFile /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/candidate-plus14-report.json\n\nJSON report written to /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/candidate-plus14-report.json\n",
+      "stderr": "",
+      "stdout_sha256": "e5c5c86ca5df6b822a7953fb939c0ae63fa2087d13dc73d6da7eb9f7b907b90b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "candidate-los-angeles",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "tests/parse-iso-timestamp.test.ts",
+        "--reporter=json",
+        "--outputFile",
+        "/var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/candidate-los-angeles-report.json"
+      ],
+      "timezone": "America/Los_Angeles",
+      "started_at": "2026-10-12T23:34:55.450912+00:00",
+      "exit_code": 0,
+      "seconds": 0.983,
+      "stdout": "\n> returnby@0.1.0 test\n> vitest run tests/parse-iso-timestamp.test.ts --reporter=json --outputFile /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/candidate-los-angeles-report.json\n\nJSON report written to /var/tmp/returnby-iso-timestamp-719c8e1b4e10-se79dh4x/candidate-los-angeles-report.json\n",
+      "stderr": "",
+      "stdout_sha256": "5cc500a56e9b43d9bbd81cb09a97e020ec00f5fb13895b5199a16bf2e684eb0d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "candidate-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "timezone": "UTC",
+      "started_at": "2026-10-12T23:34:56.434321+00:00",
+      "exit_code": 0,
+      "seconds": 1.639,
+      "stdout": "\n> returnby@0.1.0 build\n> tsc --noEmit && vite build\n\nvite v8.3.3 building client environment for production...\ntransforming...\n\u2713 17 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                          4.63 kB \u2502 gzip: 2.03 kB\ndist/trip-checklist.html                 4.73 kB \u2502 gzip: 1.93 kB\ndist/assets/tripChecklist-CmK7SEMW.css   8.32 kB \u2502 gzip: 2.63 kB\ndist/assets/main-Bp_ZSQx5.css            8.80 kB \u2502 gzip: 2.57 kB\ndist/assets/deadline-DzH3L3IB.js         1.11 kB \u2502 gzip: 0.61 kB\ndist/assets/main-BafSzsA9.js            10.01 kB \u2502 gzip: 4.63 kB\ndist/assets/tripChecklist-DwME05Y-.js   16.65 kB \u2502 gzip: 5.30 kB\n\n\u2713 built in 126ms\n",
+      "stderr": "",
+      "stdout_sha256": "2aaa45072b7cc8bde135f6cf278932ccb75344d8f5aa40c44356d546eb65b077",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "preserved_original_files": true,
+  "qualification": "Author native receiving on a 24-file runtime/test/config projection. Complete repository tree preservation is checked separately. No browser, independent review, main adoption, installed deployment or GitHub Actions claim."
+}
