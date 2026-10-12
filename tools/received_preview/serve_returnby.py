@@ -75,7 +75,9 @@ def main():
             pass
 
     class LocalServer(HTTPServer):
-        allow_reuse_address = False
+        # Reopen after Linux TIME_WAIT; never share an active listening port.
+        allow_reuse_address = sys.platform == "linux"
+        allow_reuse_port = False
 
         def get_request(self):
             request, address = super().get_request()

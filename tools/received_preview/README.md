@@ -79,3 +79,31 @@ platform precondition is simulated in a disposable test directory; shell/server
 execution still belongs to that actual host. Such a result is not Mac acceptance.
 No package manager, browser profile, existing server, dependency, workflow, or
 service configuration is modified by these tests.
+
+
+## Linux foreground restarts
+
+The source foreground entry now enables address reuse on Linux so it can reopen
+at the fixed local origin after an HTTP connection closes. It explicitly keeps
+port reuse disabled: a second live copy or another active listener still owns
+that address and makes this entry refuse to start. Other platforms retain the
+original address-reuse setting.
+
+This changes the directly consumed server source. The Mac installer still admits
+the original pinned archive and its original server; existing installed copies
+and that archive are not rewritten. The navigation receiving package applies the
+server source update separately and records its own manifest hash.
+
+Run the focused Linux lifecycle receiver with an extracted original received
+build containing `ASSETS.json` and `app/`:
+
+```sh
+RETURNBY_RECEIVED_DIRECTORY=/path/to/received-build \
+  python3 tests/received_preview/test_linux_server_restart.py
+```
+
+The receiver checks real HTTP/Enter and HTTP/EOF restarts on one unchanged test
+port, refusal of a second live copy, and preservation of an existing listener.
+`RETURNBY_SERVER_SOURCE` optionally selects an earlier source file for comparison.
+Python documents `SO_REUSEADDR` and closed sockets in `TIME_WAIT` in the
+[socket module reference](https://docs.python.org/3/library/socket.html#socket.create_server).
