@@ -109,3 +109,66 @@ That guide links the exact saved ZIP in the existing project record. A fresh
 saved-download GET on MSI / jacob returned the expected 464,024 bytes and
 SHA-256 above; this is separate from the Windows CLI course on MSI / Veria.
 Source publication and review are recorded on [PR74](https://github.com/Jacob-Met/returnby/pull/74).
+
+
+## Second received package: RecallWeave MinHash
+
+The unchanged helper has also received one concrete package from a second
+project: the offline RecallWeave MinHash teaching companion. This records that
+actual archive and opening route; it does not establish acceptance of arbitrary
+applications or replace their own source/browser review.
+
+The package is `RecallWeave-Minhash-Companion-0d3fa410-v1.zip`, **320,771 bytes**,
+with SHA-256
+`41a78f125d9ff54da3395d7d0e6ffbb08626f5d871087efbc507443d3a5e9cbb`.
+Its manifest binds RecallWeave tree
+`12ee5a0cc5b23053b71a54bc36dade5d7d286e14`. This standalone package predates the
+separate directory-mapping increment; it is not a hosted or main-branch release.
+
+The root contributor ran the exact maintained helper
+`2d30a8a10014f8d21e5d34febc1f446e36fceba3` (13,114 bytes, SHA-256
+`beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac`)
+on Windows with the existing Veria Python 3.11 interpreter, a new output root
+and loopback port **8807**. No helper code change was needed.
+
+The [unaltered native receipt](receiving/static-preview-command/recallweave-minhash-receiving.json)
+records **57 ZIP members / 56 manifest payloads** and these **four HTTP 200**
+responses:
+
+| Route | Exact package member | Bytes |
+| --- | --- | ---: |
+| `/` | `preview/index.html` | 48,370 |
+| `/index.html` | `preview/index.html` | 48,370 |
+| `/minhash.md` | `preview/minhash.md` | 10,174 |
+| `/probability-foundations.json` | `preview/probability-foundations.json` | 13,164 |
+
+The two homepage routes return the same exact received standalone HTML,
+Git `c601c22c99c53aef15de4f21ed4a3fa3ec69b0ce`. The guide is
+`ee10d4e34b2a996d4f25944f4fcb623f5b76855c`; the original probability course is
+`82cc4bdd8bf22afc5ca84098a0b19c3d485d2f45`. The owned server **PID 33356**
+reported readiness and then exited **0**. The outer archive and all **57**
+extracted files retained their recorded bytes and native metadata.
+
+For this exact saved ZIP, the same command contract is:
+
+```sh
+python3 -B tools/receive_static_preview.py \
+  --archive RecallWeave-Minhash-Companion-0d3fa410-v1.zip \
+  --sha256 41a78f125d9ff54da3395d7d0e6ffbb08626f5d871087efbc507443d3a5e9cbb \
+  --output new-minhash-receiving \
+  --port 8807
+```
+
+Use the Windows interpreter form described above when appropriate, and choose
+an unoccupied port and a new output directory. The recorded server has already
+stopped. The package's own opening guide describes the separate direct-file
+browser route.
+
+The raw receipt was copied byte-for-byte from RecallWeave Git blob
+`49b15dfc66399651c1b0ee0716b5e5584e181d4f`; no receipt data was reserialized.
+This documentation update independently read that saved result and performed
+no receiver, browser, build, model, course-import or installation replay.
+The separately qualified mathematical model and 167-check browser course are
+recorded under [RecallWeave issue333](https://github.com/Jacob-Met/RecallWeave/issues/333).
+They are not counted again as HTTP checks. The existing no-Actions and
+RecallWeave managed-Pages integration boundaries remain unchanged.
