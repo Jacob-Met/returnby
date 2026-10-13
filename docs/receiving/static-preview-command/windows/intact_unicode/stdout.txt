@@ -1,0 +1,1 @@
+{"passed": true, "receipt": "new preview \u6771\u4eac space\\receiving.json", "http_responses": 4, "error": null}

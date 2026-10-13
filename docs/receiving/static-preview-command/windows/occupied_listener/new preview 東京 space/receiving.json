@@ -1,0 +1,106 @@
+{
+  "schema": "returnby.static-preview-receiving/1",
+  "passed": false,
+  "archive": "C:\\Users\\Veria\\AppData\\Local\\Temp\\hamon-dcac8b3b8755-preview74-independent-scgz0_1r\\occupied_listener\\synthetic archive \u03a9.zip",
+  "archive_before": {
+    "bytes": 1667,
+    "sha256": "f4f6e995e21b863678b860c066cee77028efae4d143ad3939ae4f26854a39204",
+    "git_blob": "5cb3dfce6e1d62b425bb9284a2d49f33205aa958",
+    "mode": 33206,
+    "mtime_ns": 1791912175676152700,
+    "inode": 562949954941700
+  },
+  "archive_members": 5,
+  "manifest_payloads": 4,
+  "product_tree": "ffffffffffffffffffffffffffffffffffffffff",
+  "http": [],
+  "scope": "Archive integrity and loopback HTTP bytes only; no packaged code, browser, build or install.",
+  "started_unix": 1791912178.9751759,
+  "server": {
+    "argv": [
+      "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-I",
+      "-B",
+      "-u",
+      "C:\\Users\\Veria\\AppData\\Local\\Temp\\hamon-dcac8b3b8755-preview74-independent-scgz0_1r\\receive_static_preview.py",
+      "--serve-directory",
+      "C:\\Users\\Veria\\AppData\\Local\\Temp\\hamon-dcac8b3b8755-preview74-independent-scgz0_1r\\occupied_listener\\new preview \u6771\u4eac space\\package\\preview",
+      "--port",
+      "53623",
+      "--ready-token",
+      "7de8e9506f03451ab8d9d889813ec465"
+    ],
+    "pid": 30116,
+    "port": 53623,
+    "returncode": 1
+  },
+  "archive_after": {
+    "bytes": 1667,
+    "sha256": "f4f6e995e21b863678b860c066cee77028efae4d143ad3939ae4f26854a39204",
+    "git_blob": "5cb3dfce6e1d62b425bb9284a2d49f33205aa958",
+    "mode": 33206,
+    "mtime_ns": 1791912175676152700,
+    "inode": 562949954941700
+  },
+  "extracted_files_preserved": 5,
+  "extracted_identity": {
+    "MANIFEST.json": {
+      "bytes": 837,
+      "sha256": "a6f45414e78e64d4564e537994c206aa2867df0409af010da316df72d36e352c",
+      "git_blob": "515adad29d827e141a86d98847b8b01bccbeb917",
+      "mode": 33206,
+      "mtime_ns": 1791912178981178600,
+      "inode": 562949954941733
+    },
+    "VERIFY.py": {
+      "bytes": 94,
+      "sha256": "4264b096f65dd03fce5d97974952f62c587eb2544f62b5947a070ecce6abee14",
+      "git_blob": "e6824aef1371bd33ad40ad741c0610e3adc86e62",
+      "mode": 33206,
+      "mtime_ns": 1791912178981178600,
+      "inode": 562949954941732
+    },
+    "preview/assets/caf\u00e9 1.txt": {
+      "bytes": 36,
+      "sha256": "b876c20d23d2bf94fcac0333381a0b69826cf85d34410abc52023dd45214a5a7",
+      "git_blob": "ba55778622c16b77c125a3abf1106ccb5c1166c9",
+      "mode": 33206,
+      "mtime_ns": 1791912178979177200,
+      "inode": 562949954941730
+    },
+    "preview/assets/plain.css": {
+      "bytes": 25,
+      "sha256": "3f876ff1240fb2b6e442980f352b6ca1f70e0b8cb0de7b9370d6a1b89e4f1c9c",
+      "git_blob": "8c7d132e20c8e5f6ae80a19e7b350431c93e0b3b",
+      "mode": 33206,
+      "mtime_ns": 1791912178980176700,
+      "inode": 562949954941731
+    },
+    "preview/index.html": {
+      "bytes": 93,
+      "sha256": "bc8b41f67f76f04f2918bbb615c7b9c13aaa8cacd560acef0ca152ff88d0f255",
+      "git_blob": "d79c1e42b4c0e84c71cce5cfbb271b704055e2b6",
+      "mode": 33206,
+      "mtime_ns": 1791912178977177100,
+      "inode": 562949954941728
+    }
+  },
+  "archive_preserved": true,
+  "error": "ValueError: Owned server exited before readiness; inspect server.stderr",
+  "finished_unix": 1791912179.3996832,
+  "observer": {
+    "bytes": 13114,
+    "sha256": "beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac",
+    "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3"
+  },
+  "server.stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+  },
+  "server.stderr": {
+    "bytes": 149,
+    "sha256": "793ae1ac046c651615df2237235ce46ffae1b5fc3677448f467ceac6b3386901",
+    "git_blob": "6c51a52c4225a608b8fb3c08bbf891df7a834cbb"
+  }
+}

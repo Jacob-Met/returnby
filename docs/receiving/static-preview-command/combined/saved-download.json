@@ -1,0 +1,22 @@
+{
+  "schema": "hamon.saved-returnby-combined-receiving/2",
+  "time": "2026-10-13T17:38:58.502183+00:00",
+  "device": {
+    "node": "MSI",
+    "user": "jacob",
+    "python": "3.14.3"
+  },
+  "http_status": 200,
+  "bytes": 464024,
+  "sha256": "d73df74c588e9387bab391b2cf2c731056a7b1e01feb4bc89bde79a2a829f06f",
+  "source_identity": "exact already sealed and independently accepted Mac archive pin",
+  "no_browser_build_replay": true,
+  "no_upload_replay": true,
+  "prior_mac_get": {
+    "device": "0e3d582f-e25b-44b2-8418-9639fc4e4e33",
+    "start_status": "MCP initial response timed out; no PID returned",
+    "execution_status": "unknown; not replayed",
+    "native_output_retrieval": "pending route recovery",
+    "mac_custody_during_that_get": "unqualified"
+  }
+}

@@ -49,8 +49,26 @@ MANIFEST.json lists the 13 exact raw files (26,727 bytes) by size, SHA-256 and
 Git identity. It excludes this explanatory index and itself. Input metadata's
 nanosecond integers remain in the native raw bytes.
 
-Independent source review and the separately frozen Windows receiving course
-are tracked in [PR74](https://github.com/Jacob-Met/returnby/pull/74).
-This directory makes no Windows result claim. The command checks integrity and
-served bytes; source provenance, browser behavior and package-code safety
-remain separate questions. There is no installed-copy or hosted deployment.
+## Independent Windows receiving
+
+The separate [Windows record](windows/README.md) retains six independently
+frozen cases /37 checks on MSI / Veria, CPython 3.11.9. Its successful server
+exited 0; its occupied-listener child refused without sending the incumbent
+any request. All source, criteria and archive witnesses were conserved. The
+28 exact raw files and their manifest remain separate from the 13 Mac files
+listed above. Neither set is relabeled as the other platform’s tests.
+
+## Saved combined preview
+
+The [Eyes opening guide](https://docs.google.com/document/d/1nwO-iiVNjNjMjURDF-R5NCrauVV43vGgGxEClw1tK4Y/edit)
+links the exact ZIP attachment in the existing Applications record. The raw
+[download receipt](combined/saved-download.json) records a fresh MSI / jacob
+GET: HTTP200, 464,024 bytes and the expected SHA-256. Outer PID157992 was
+collected exit0. An earlier Mac GET start had timed out without a PID; its
+execution remains unknown and was not replayed or claimed as conserved.
+This later saved-copy receipt is separate from the 13-file Mac manifest.
+
+Independent source and runtime reviews are tracked in [PR74](https://github.com/Jacob-Met/returnby/pull/74).
+The command checks integrity and served bytes; source provenance, browser
+behavior and package-code safety remain separate questions. There is no
+installed-copy or hosted deployment.

@@ -1,0 +1,69 @@
+{
+  "schema": "hamon.independent-static-preview-fixtures/1",
+  "files": {
+    "intact_unicode": {
+      "bytes": 1667,
+      "sha256": "f4f6e995e21b863678b860c066cee77028efae4d143ad3939ae4f26854a39204",
+      "git_blob": "5cb3dfce6e1d62b425bb9284a2d49f33205aa958",
+      "mode": 33206,
+      "mtime_ns": 1791912175667396800,
+      "inode": 1125899908363004
+    },
+    "wrong_archive_digest": {
+      "bytes": 1667,
+      "sha256": "f4f6e995e21b863678b860c066cee77028efae4d143ad3939ae4f26854a39204",
+      "git_blob": "5cb3dfce6e1d62b425bb9284a2d49f33205aa958",
+      "mode": 33206,
+      "mtime_ns": 1791912175669396900,
+      "inode": 562949954941694
+    },
+    "altered_payload": {
+      "bytes": 1667,
+      "sha256": "2d63d6c50f9092d7fa1c1a032e6a86e91d924ac76c018eadc83a639180b94778",
+      "git_blob": "19251d0a5b9c6114abab03a34f2724510be35379",
+      "mode": 33206,
+      "mtime_ns": 1791912175671100700,
+      "inode": 562949954941696
+    },
+    "unsafe_or_ambiguous_membership": {
+      "bytes": 1816,
+      "sha256": "18fd1b5eba783f90354d48dd86133d094303d407a865bf78d97a3ebd2e1a1ba8",
+      "git_blob": "b3d6052f3671552583724be941e40f043d34d486",
+      "mode": 33206,
+      "mtime_ns": 1791912175673155500,
+      "inode": 562949954941698
+    },
+    "occupied_listener": {
+      "bytes": 1667,
+      "sha256": "f4f6e995e21b863678b860c066cee77028efae4d143ad3939ae4f26854a39204",
+      "git_blob": "5cb3dfce6e1d62b425bb9284a2d49f33205aa958",
+      "mode": 33206,
+      "mtime_ns": 1791912175676152700,
+      "inode": 562949954941700
+    },
+    "occupied_destination": {
+      "bytes": 1667,
+      "sha256": "f4f6e995e21b863678b860c066cee77028efae4d143ad3939ae4f26854a39204",
+      "git_blob": "5cb3dfce6e1d62b425bb9284a2d49f33205aa958",
+      "mode": 33206,
+      "mtime_ns": 1791912175678152600,
+      "inode": 562949954941702
+    }
+  },
+  "frozen_before": {
+    "bytes": 2048,
+    "sha256": "b0ebe9379b7bba6fd5d54098969b381ed9e9c2773748313097e5ba4b0e128c9e",
+    "git_blob": "dcc567590d764ae94345948207ca2e49402d6731",
+    "mode": 33206,
+    "mtime_ns": 1791912170769795800,
+    "inode": 1688849861784313
+  },
+  "source": {
+    "bytes": 13114,
+    "sha256": "beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac",
+    "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3",
+    "mode": 33206,
+    "mtime_ns": 1791912168787272100,
+    "inode": 1407374885073653
+  }
+}

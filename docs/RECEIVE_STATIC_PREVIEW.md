@@ -95,5 +95,17 @@ The first native author course ran all ten cases on macOS with CPython 3.13.7.
 The same candidate then received the already built combined PR71 ZIP: 28
 members, 27 payloads and 11 exact HTTP responses (homepage plus ten preview
 files), with owned-server exit 0. Neither course rebuilt the application or
-opened a browser. Independent receiving and immutable source publication are
-recorded on [issue 73](https://github.com/Jacob-Met/returnby/issues/73).
+opened a browser.
+
+A separate peer froze six cases before candidate exposure and exercised this
+same helper on Windows CPython 3.11.9: all six cases /37 checks passed,
+including exact Unicode-path HTTP, admission refusals, and preserved occupied
+listener/output controls. The successful server exited 0; the bind-refused
+child exited 1 without requesting the incumbent. The native evidence and
+limits are in the [receiving record](receiving/static-preview-command/README.md).
+
+The combined preview is available through its [Eyes opening guide](https://docs.google.com/document/d/1nwO-iiVNjNjMjURDF-R5NCrauVV43vGgGxEClw1tK4Y/edit).
+That guide links the exact saved ZIP in the existing project record. A fresh
+saved-download GET on MSI / jacob returned the expected 464,024 bytes and
+SHA-256 above; this is separate from the Windows CLI course on MSI / Veria.
+Source publication and review are recorded on [PR74](https://github.com/Jacob-Met/returnby/pull/74).
