@@ -1,0 +1,19 @@
+{
+  "schema": "hamon.connected-process-collection/1",
+  "note": "Connected-tool result retained by the root contributor; separate from the native receipt and streams.",
+  "device_id": "9ea77fe9-bb87-46e0-a5a8-8b3e25f6ff7e",
+  "pid": 23124,
+  "collection": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[Reading 2 new lines (total: 2 lines)]\n\n{\"passed\": true, \"child_pid\": 31308, \"child_exit\": 0, \"receipt\": {\"bytes\": 8583, \"sha256\": \"24cebfaad3cb385c548df8822765e2b973dba7d3ef9754161f570df7dc960f65\", \"git_blob\": \"af7bd766730b8c40afa6fb2b0d66a0a8585aa5b1\"}, \"packet\": {\"bytes\": 21816, \"sha256\": \"ac7c997be1509571512a954d21fad868930eff9daa3ee0d98b13759af8a3c274\", \"git_blob\": \"15b5832f5ddebf52fffb0a6cadf276b57604ea83\"}, \"temporary_files_remaining\": []}\r\n\n✅ Process completed with exit code 0 (runtime: 19.23s)"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: MSI (9ea77fe9-bb87-46e0-a5a8-8b3e25f6ff7e)]"
+      }
+    ],
+    "isError": false
+  }
+}

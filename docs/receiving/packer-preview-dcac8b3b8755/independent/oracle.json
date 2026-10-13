@@ -1,0 +1,116 @@
+{
+  "schema": "hamon.returnby-producer-compatibility-oracle/1",
+  "frozen_before_candidate": true,
+  "producer": {
+    "repository": "Jacob-Met/estate-push-tools",
+    "path": "make_delivery_zip.py",
+    "git_blob": "34e192096abed7216025e8141a9cf3106bb82dfd"
+  },
+  "original_receiver": {
+    "repository": "Jacob-Met/returnby",
+    "path": "tools/receive_static_preview.py",
+    "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3"
+  },
+  "fixture_payloads": [
+    {
+      "path": "preview/index.html",
+      "kind": "UTF-8 HTML with literal Unicode, CRLF, HTML-like text; bytes are authoritative"
+    },
+    {
+      "path": "preview/guide.bin",
+      "kind": "all 256 byte values, no decoding"
+    },
+    {
+      "path": "preview/notes.txt",
+      "kind": "literal Unicode, leading/trailing spaces and CRLF"
+    },
+    {
+      "path": "VERIFY.py",
+      "kind": "inert selected script; executing it would write PACKAGED-CODE-RAN"
+    }
+  ],
+  "original_course": [
+    {
+      "case": "producer",
+      "expected_exit": 1,
+      "expected_error": "Unsupported manifest schema",
+      "output_absent": true
+    },
+    {
+      "case": "legacy",
+      "expected_exit": 0,
+      "http": 4,
+      "server_ready": true,
+      "server_exit": 0
+    }
+  ],
+  "candidate_course": [
+    {
+      "case": "producer",
+      "expected_exit": 0,
+      "http": 4,
+      "server_ready": true,
+      "server_exit": 0
+    },
+    {
+      "case": "legacy",
+      "expected_exit": 0,
+      "http": 4,
+      "server_ready": true,
+      "server_exit": 0
+    },
+    {
+      "case": "mixed-row",
+      "expected_exit": 1,
+      "output_absent": true,
+      "mutation": "producer row gains git_blob"
+    },
+    {
+      "case": "mixed-top",
+      "expected_exit": 1,
+      "output_absent": true,
+      "mutation": "producer manifest gains product_tree"
+    },
+    {
+      "case": "legacy-missing-git",
+      "expected_exit": 1,
+      "output_absent": true,
+      "mutation": "legacy row loses git_blob"
+    },
+    {
+      "case": "bad-payload",
+      "expected_exit": 1,
+      "output_absent": true,
+      "mutation": "flip one binary payload byte, retain original manifest and repin whole ZIP"
+    },
+    {
+      "case": "uppercase-sha",
+      "expected_exit": 1,
+      "output_absent": true,
+      "mutation": "producer SHA256 made uppercase with same payload"
+    },
+    {
+      "case": "nonascii-path",
+      "expected_exit": 1,
+      "output_absent": true,
+      "mutation": "producer path renamed with Unicode, both manifest and ZIP agree"
+    },
+    {
+      "case": "duplicate-member",
+      "expected_exit": 1,
+      "output_absent": true,
+      "mutation": "duplicate ZIP payload with identical bytes"
+    }
+  ],
+  "conservation": [
+    "producer source",
+    "original receiver source",
+    "candidate source when supplied",
+    "observer and criteria",
+    "all selected fixture files",
+    "all immutable archives/manifest",
+    "legacy and producer output members incl exact raw manifest"
+  ],
+  "scope": "Actual maintained producer once; original two CLI calls then candidate nine CLI calls. Stdlib-only native Windows, own D: root and process TEMP/TMP, no packaged code/browser/build/install, no replay of prior six-case server course. A private listener/PID/token must be reported ready before HTTP and exit0; source and archive bytes/modes/mtimes/inodes remain exact.",
+  "identity_reporting": "Producer schema has no supplied Git identity. Any computed Git ID must remain identified as a byte-derived observation, not producer-supplied authentication."
+}

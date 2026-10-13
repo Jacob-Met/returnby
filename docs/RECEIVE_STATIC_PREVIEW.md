@@ -35,8 +35,9 @@ The output directory contains:
   normal HTTP access log or startup error.
 
 The server stops before the command returns. To explore the app afterward,
-follow `package/OPEN-FIRST.md` from the extracted package directory. That is a
-separate browser session; this receiver does not inspect the app's behavior.
+follow `package/OPEN-FIRST.md` when the package provides it, or the project's
+opening instructions for `package/preview/index.html`. That is a separate
+browser session; this receiver does not inspect the app's behavior.
 
 Exit 1 means refusal or incomplete receiving. An archive/manifest refusal or
 existing output directory fails before creating a new output directory or
@@ -47,10 +48,14 @@ another attempt. The command does not erase a failed course or change the input.
 ## What admission checks
 
 The expected outer SHA-256 covers the entire ZIP, including its manifest.
-The archive must contain ordinary, unique file members, a
-`hamon.exact-delivery-manifest/1` manifest and `preview/index.html`.
-The manifest's `files` array must list every payload except `MANIFEST.json`,
-with exact `path`, integer `bytes`, `sha256` and `git_blob` identities.
+The archive must contain ordinary, unique file members, `preview/index.html`
+and a `MANIFEST.json` using either `hamon.exact-delivery-manifest/1` or
+[`hamon.delivery-zip/1`](#previews-produced-by-the-maintained-estate-zip-packer).
+The manifest's `files` array must list every payload except `MANIFEST.json`.
+Both formats declare exact `path`, integer `bytes` and `sha256` identities;
+the original `hamon.exact-delivery-manifest/1` format also declares and checks
+`git_blob`. The packer's format has the additional field and size constraints
+listed in its section below.
 
 Paths must be relative and canonical. Directory entries, symlinks, encrypted
 members, parent traversal, file/directory collisions and case or Unicode
@@ -82,14 +87,18 @@ operating system.
 ## Maintained checks
 
 ```sh
-python3 -I -B tools/test_receive_static_preview.py
+python3 -I -B -m unittest discover -s tools -p 'test_receive_*preview.py' -v
 ```
 
-The ten command-line cases include a real small HTTP course with Unicode and
+The ten original command-line cases include a real small HTTP course with Unicode and
 percent-bearing filenames; an inert packaged-code tripwire; wrong archive
 and payload digests; duplicate, noncanonical and aliased members; a Boolean
 byte count; and preservation of existing output and listener sentinels.
-Every subprocess has a bounded wait. Fixture directories are temporary.
+The second ten-method module exercises the estate packer's manifest format,
+its exact literal and binary HTTP payloads, schema mixing, malformed fields,
+name constraints and manifest/file-count limits. The command above runs both
+modules (20 test methods). Every subprocess has a bounded wait; fixture
+directories are temporary.
 
 The first native author course ran all ten cases on macOS with CPython 3.13.7.
 The same candidate then received the already built combined PR71 ZIP: 28
@@ -172,3 +181,44 @@ The separately qualified mathematical model and 167-check browser course are
 recorded under [RecallWeave issue333](https://github.com/Jacob-Met/RecallWeave/issues/333).
 They are not counted again as HTTP checks. The existing no-Actions and
 RecallWeave managed-Pages integration boundaries remain unchanged.
+
+
+## Previews produced by the maintained estate ZIP packer
+
+The receiver also accepts the exact `hamon.delivery-zip/1` manifest produced by
+[estate-push-tools make_delivery_zip.py](https://github.com/Jacob-Met/estate-push-tools/blob/38cc62a2bfbd8c05bb75ab84ded70352245fde0b/make_delivery_zip.py).
+This connects an existing explicit-file packer to the same receiving command.
+The original `hamon.exact-delivery-manifest/1` format remains supported.
+
+For the packer's schema, the top-level fields must be exactly `schema` and
+`files`. Every payload row must have exactly `path`, `bytes` and `sha256`.
+Digests must be 64 lowercase hexadecimal characters. Extra fields, including a
+Git identity or product-tree claim mixed into this schema, are refused.
+The receiver compares each supplied byte count and SHA-256 to the complete
+actual member and requires exact manifest/archive membership.
+
+The packer's limits also apply: a manifest at most 1 MiB, 1–1,024 payloads,
+at most 64 MiB total payload bytes, and printable-ASCII names at most 240
+characters without surrounding component spaces or Windows device stems.
+Internal spaces and arbitrary literal file bytes are supported. The receiver
+retains its own existing limits as well, including 64 MiB compressed archive,
+16 MiB per member and 16 path components. A valid general delivery ZIP can
+therefore be outside this preview receiver's supported subset. Every accepted
+preview still needs `preview/index.html`; only the explicit preview folder is
+served. No selected payload script is executed.
+
+Use the producer's separately documented manifest-pin/creation command to
+make a new ZIP, then supply its independently retained final archive SHA-256
+to the same receiving command shown above. Neither tool authenticates a
+publisher or makes arbitrary HTML trustworthy.
+
+The receipt now names `manifest_schema` and `manifest_fields_checked`.
+For the packer's schema, the fields checked against manifest declarations are
+`bytes` and `sha256`; Git blob identities in HTTP/extracted observations are
+computed from received bytes, not supplied by that manifest. The original
+schema still checks all three declared fields, including `git_blob`.
+The existing source/tree field remains null when the manifest supplies none.
+
+Both schema routes retain the same create-only output, full archive/path
+admission, independently identified loopback server, occupied-listener
+refusal, orderly owned-server cleanup and byte/metadata preservation.

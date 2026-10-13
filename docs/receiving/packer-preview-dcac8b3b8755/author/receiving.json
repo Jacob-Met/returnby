@@ -1,0 +1,143 @@
+{
+  "schema": "returnby.packer-compatibility-author/1",
+  "started_utc": "2026-10-13T20:32:04.039710+00:00",
+  "identity": {
+    "host": "MSI",
+    "user": "Veria",
+    "python": "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "version": "3.11.9"
+  },
+  "argv": [
+    "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-I",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source\\tools",
+    "-p",
+    "test_receive_*preview.py",
+    "-v"
+  ],
+  "source_before": {
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source-packet.json": {
+      "bytes": 42512,
+      "sha256": "144b4639f2f57e78eb8466f39bd07d26b10958cd7a34e8e5aa7af1b249b6b887",
+      "git_blob": "e9d91c69b92c6964fd123e4a16feec390e8dcd10",
+      "mode": 33206,
+      "mtime_ns": "1791923239669859300",
+      "inode": "281474978276043"
+    },
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\author-course.py": {
+      "bytes": 3956,
+      "sha256": "b623e1db57eaca95c52bbace13213c24124733fa611c76aed10fc44839a9dee5",
+      "git_blob": "ed9bcadf36ab0ee83c75f7035095b2a4d23c1b15",
+      "mode": 33206,
+      "mtime_ns": "1791923424743268300",
+      "inode": "281474978276134"
+    },
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source\\tools\\receive_static_preview.py": {
+      "bytes": 15045,
+      "sha256": "e80606f31f90108a49e4a8209802abc506d1be4abc0ffb49365819782d674295",
+      "git_blob": "669b1b13ac3c980c8acbba4acff9bb24d71efba4",
+      "mode": 33206,
+      "mtime_ns": "1791923523964829400",
+      "inode": "562949954986810"
+    },
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source\\tools\\test_receive_static_preview.py": {
+      "bytes": 7529,
+      "sha256": "c74b3eb24effbb2dae15eae99c3a51b79c454dfa749ae2865906dab45354c9ee",
+      "git_blob": "5e3f81450ba70509635a02061075aa6468c8b5a6",
+      "mode": 33206,
+      "mtime_ns": "1791923523965829800",
+      "inode": "562949954986811"
+    },
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source\\tools\\test_receive_packer_preview.py": {
+      "bytes": 5983,
+      "sha256": "302f88335703f247652f4630f71efdd9423524755423d8f9d07ee58800afa3cc",
+      "git_blob": "b1047d89da87387f6445c2e952bde7e4a2060272",
+      "mode": 33206,
+      "mtime_ns": "1791923523966830100",
+      "inode": "562949954986812"
+    },
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source\\docs\\RECEIVE_STATIC_PREVIEW.md": {
+      "bytes": 11382,
+      "sha256": "fe72b8855ba7aed38f6c916a94d44eae450a42c62ab349c686f7099b3f55ab2f",
+      "git_blob": "06eb2b15cc04201d94f288fe5b792c2db9424ddf",
+      "mode": 33206,
+      "mtime_ns": "1791923523967561800",
+      "inode": "562949954986814"
+    }
+  },
+  "passed": true,
+  "child_pid": 31308,
+  "child_exit": 0,
+  "source_after": {
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source-packet.json": {
+      "bytes": 42512,
+      "sha256": "144b4639f2f57e78eb8466f39bd07d26b10958cd7a34e8e5aa7af1b249b6b887",
+      "git_blob": "e9d91c69b92c6964fd123e4a16feec390e8dcd10",
+      "mode": 33206,
+      "mtime_ns": "1791923239669859300",
+      "inode": "281474978276043"
+    },
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\author-course.py": {
+      "bytes": 3956,
+      "sha256": "b623e1db57eaca95c52bbace13213c24124733fa611c76aed10fc44839a9dee5",
+      "git_blob": "ed9bcadf36ab0ee83c75f7035095b2a4d23c1b15",
+      "mode": 33206,
+      "mtime_ns": "1791923424743268300",
+      "inode": "281474978276134"
+    },
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source\\tools\\receive_static_preview.py": {
+      "bytes": 15045,
+      "sha256": "e80606f31f90108a49e4a8209802abc506d1be4abc0ffb49365819782d674295",
+      "git_blob": "669b1b13ac3c980c8acbba4acff9bb24d71efba4",
+      "mode": 33206,
+      "mtime_ns": "1791923523964829400",
+      "inode": "562949954986810"
+    },
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source\\tools\\test_receive_static_preview.py": {
+      "bytes": 7529,
+      "sha256": "c74b3eb24effbb2dae15eae99c3a51b79c454dfa749ae2865906dab45354c9ee",
+      "git_blob": "5e3f81450ba70509635a02061075aa6468c8b5a6",
+      "mode": 33206,
+      "mtime_ns": "1791923523965829800",
+      "inode": "562949954986811"
+    },
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source\\tools\\test_receive_packer_preview.py": {
+      "bytes": 5983,
+      "sha256": "302f88335703f247652f4630f71efdd9423524755423d8f9d07ee58800afa3cc",
+      "git_blob": "b1047d89da87387f6445c2e952bde7e4a2060272",
+      "mode": 33206,
+      "mtime_ns": "1791923523966830100",
+      "inode": "562949954986812"
+    },
+    "D:\\hamon-dcac8b3b8755-packer-receiver-author-v1\\source\\docs\\RECEIVE_STATIC_PREVIEW.md": {
+      "bytes": 11382,
+      "sha256": "fe72b8855ba7aed38f6c916a94d44eae450a42c62ab349c686f7099b3f55ab2f",
+      "git_blob": "06eb2b15cc04201d94f288fe5b792c2db9424ddf",
+      "mode": 33206,
+      "mtime_ns": "1791923523967561800",
+      "inode": "562949954986814"
+    }
+  },
+  "source_conserved": true,
+  "temporary_files_remaining": [],
+  "source_paths_after": [
+    "docs/RECEIVE_STATIC_PREVIEW.md",
+    "tools/receive_static_preview.py",
+    "tools/test_receive_packer_preview.py",
+    "tools/test_receive_static_preview.py"
+  ],
+  "source_paths_expected": [
+    "docs/RECEIVE_STATIC_PREVIEW.md",
+    "tools/receive_static_preview.py",
+    "tools/test_receive_packer_preview.py",
+    "tools/test_receive_static_preview.py"
+  ],
+  "stdout": "",
+  "stderr": "test_boolean_byte_count_refuses (test_receive_packer_preview.PackerReceiving.test_boolean_byte_count_refuses) ... ok\ntest_complete_packer_schema_receives_exact_literal_binary_payloads (test_receive_packer_preview.PackerReceiving.test_complete_packer_schema_receives_exact_literal_binary_payloads) ... ok\ntest_file_count_limit_refuses (test_receive_packer_preview.PackerReceiving.test_file_count_limit_refuses) ... ok\ntest_manifest_size_limit_refuses (test_receive_packer_preview.PackerReceiving.test_manifest_size_limit_refuses) ... ok\ntest_mixed_or_extra_manifest_fields_refuse (test_receive_packer_preview.PackerReceiving.test_mixed_or_extra_manifest_fields_refuse) ... ok\ntest_mixed_or_missing_row_fields_refuse (test_receive_packer_preview.PackerReceiving.test_mixed_or_missing_row_fields_refuse) ... ok\ntest_nonproducer_member_names_refuse (test_receive_packer_preview.PackerReceiving.test_nonproducer_member_names_refuse) ... ok\ntest_payload_difference_refuses_before_materialization (test_receive_packer_preview.PackerReceiving.test_payload_difference_refuses_before_materialization) ... ok\ntest_unknown_schema_refuses (test_receive_packer_preview.PackerReceiving.test_unknown_schema_refuses) ... ok\ntest_uppercase_digest_refuses_even_when_numerically_equal (test_receive_packer_preview.PackerReceiving.test_uppercase_digest_refuses_even_when_numerically_equal) ... ok\ntest_boolean_size_is_not_an_integer_size (test_receive_static_preview.Receiving.test_boolean_size_is_not_an_integer_size) ... ok\ntest_case_alias_refuses_without_extraction (test_receive_static_preview.Receiving.test_case_alias_refuses_without_extraction) ... ok\ntest_complete_http_course_with_literal_paths_and_no_packaged_execution (test_receive_static_preview.Receiving.test_complete_http_course_with_literal_paths_and_no_packaged_execution) ... ok\ntest_corrupt_payload_manifest_identity_refuses_without_output (test_receive_static_preview.Receiving.test_corrupt_payload_manifest_identity_refuses_without_output) ... ok\ntest_duplicate_archive_member_refuses_without_extraction (test_receive_static_preview.Receiving.test_duplicate_archive_member_refuses_without_extraction) ... ok\ntest_duplicate_manifest_row_refuses_without_output (test_receive_static_preview.Receiving.test_duplicate_manifest_row_refuses_without_output) ... ok\ntest_existing_output_is_preserved (test_receive_static_preview.Receiving.test_existing_output_is_preserved) ... ok\ntest_noncanonical_member_refuses_without_extraction (test_receive_static_preview.Receiving.test_noncanonical_member_refuses_without_extraction) ... ok\ntest_occupied_listener_is_not_requested_or_stopped (test_receive_static_preview.Receiving.test_occupied_listener_is_not_requested_or_stopped) ... ok\ntest_wrong_external_digest_refuses_without_output (test_receive_static_preview.Receiving.test_wrong_external_digest_refuses_without_output) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 17.150s\n\nOK\n",
+  "finished_utc": "2026-10-13T20:32:21.967729+00:00"
+}

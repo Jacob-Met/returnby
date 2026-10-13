@@ -1,0 +1,25 @@
+test_boolean_byte_count_refuses (test_receive_packer_preview.PackerReceiving.test_boolean_byte_count_refuses) ... ok
+test_complete_packer_schema_receives_exact_literal_binary_payloads (test_receive_packer_preview.PackerReceiving.test_complete_packer_schema_receives_exact_literal_binary_payloads) ... ok
+test_file_count_limit_refuses (test_receive_packer_preview.PackerReceiving.test_file_count_limit_refuses) ... ok
+test_manifest_size_limit_refuses (test_receive_packer_preview.PackerReceiving.test_manifest_size_limit_refuses) ... ok
+test_mixed_or_extra_manifest_fields_refuse (test_receive_packer_preview.PackerReceiving.test_mixed_or_extra_manifest_fields_refuse) ... ok
+test_mixed_or_missing_row_fields_refuse (test_receive_packer_preview.PackerReceiving.test_mixed_or_missing_row_fields_refuse) ... ok
+test_nonproducer_member_names_refuse (test_receive_packer_preview.PackerReceiving.test_nonproducer_member_names_refuse) ... ok
+test_payload_difference_refuses_before_materialization (test_receive_packer_preview.PackerReceiving.test_payload_difference_refuses_before_materialization) ... ok
+test_unknown_schema_refuses (test_receive_packer_preview.PackerReceiving.test_unknown_schema_refuses) ... ok
+test_uppercase_digest_refuses_even_when_numerically_equal (test_receive_packer_preview.PackerReceiving.test_uppercase_digest_refuses_even_when_numerically_equal) ... ok
+test_boolean_size_is_not_an_integer_size (test_receive_static_preview.Receiving.test_boolean_size_is_not_an_integer_size) ... ok
+test_case_alias_refuses_without_extraction (test_receive_static_preview.Receiving.test_case_alias_refuses_without_extraction) ... ok
+test_complete_http_course_with_literal_paths_and_no_packaged_execution (test_receive_static_preview.Receiving.test_complete_http_course_with_literal_paths_and_no_packaged_execution) ... ok
+test_corrupt_payload_manifest_identity_refuses_without_output (test_receive_static_preview.Receiving.test_corrupt_payload_manifest_identity_refuses_without_output) ... ok
+test_duplicate_archive_member_refuses_without_extraction (test_receive_static_preview.Receiving.test_duplicate_archive_member_refuses_without_extraction) ... ok
+test_duplicate_manifest_row_refuses_without_output (test_receive_static_preview.Receiving.test_duplicate_manifest_row_refuses_without_output) ... ok
+test_existing_output_is_preserved (test_receive_static_preview.Receiving.test_existing_output_is_preserved) ... ok
+test_noncanonical_member_refuses_without_extraction (test_receive_static_preview.Receiving.test_noncanonical_member_refuses_without_extraction) ... ok
+test_occupied_listener_is_not_requested_or_stopped (test_receive_static_preview.Receiving.test_occupied_listener_is_not_requested_or_stopped) ... ok
+test_wrong_external_digest_refuses_without_output (test_receive_static_preview.Receiving.test_wrong_external_digest_refuses_without_output) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 17.150s
+
+OK

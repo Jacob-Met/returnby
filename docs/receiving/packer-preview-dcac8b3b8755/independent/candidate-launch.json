@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-I",
+    "-B",
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\receive_compatibility.py",
+    "--root",
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq",
+    "--phase",
+    "candidate",
+    "--receiver",
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\candidate-receiver.py",
+    "--receiver-git",
+    "669b1b13ac3c980c8acbba4acff9bb24d71efba4"
+  ],
+  "pid": 33532,
+  "returncode": 0,
+  "started_unix": 1791923579.8790631,
+  "finished_unix": 1791923586.3343496
+}
