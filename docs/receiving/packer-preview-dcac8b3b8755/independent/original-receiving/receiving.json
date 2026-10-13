@@ -1,0 +1,819 @@
+{
+  "schema": "hamon.returnby-producer-compatibility-receiving/1",
+  "phase": "original",
+  "passed": true,
+  "checks": [
+    {
+      "name": "receiver exact supplied Git identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exact maintained producer identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frozen oracle identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual maintained producer exits zero",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "producer preserves all selected inputs and source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "producer has exact five members",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "producer preserves exact manifest bytes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "producer preserves every literal and binary payload",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "producer exit",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "producer refused before creating output",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "producer expected original reason",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "producer packaged code never executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "legacy exit",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "legacy receiving passed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "legacy own server ready and collected zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "legacy extracted membership exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "legacy all extracted bytes exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "legacy four exact HTTP identities",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "legacy conserved receiver archive and five extracted files",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "legacy packaged code never executed",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-I",
+        "-B",
+        "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\original-receiver.py",
+        "--archive",
+        "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\producer.zip",
+        "--sha256",
+        "3a8bddb245a8951df52543bbd0f3c78221061049d2f26c2b3e8b3f2b220e5f8f",
+        "--output",
+        "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\original-receiving\\producer-output",
+        "--port",
+        "58549"
+      ],
+      "pid": 32448,
+      "returncode": 1,
+      "started_unix": 1791923348.7371576,
+      "finished_unix": 1791923349.124932,
+      "stdout": "",
+      "stderr": "{\"passed\": false, \"error\": \"ValueError: Unsupported manifest schema\"}\r\n",
+      "stdout_identity": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      },
+      "stderr_identity": {
+        "bytes": 71,
+        "sha256": "c13ada0282793ee364fbefec8c21c60030efabf44637222df787a311b58adf9d",
+        "git_blob": "e88222add8e1845b9e695f7801a216c58cd8c947"
+      },
+      "case": "producer"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-I",
+        "-B",
+        "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\original-receiver.py",
+        "--archive",
+        "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\legacy.zip",
+        "--sha256",
+        "bbf003d371c5d2fa7de1ae1a78d518d0199d1122d5dd1c2feb277faf84343799",
+        "--output",
+        "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\original-receiving\\legacy-output",
+        "--port",
+        "58551"
+      ],
+      "pid": 20592,
+      "returncode": 0,
+      "started_unix": 1791923349.1269307,
+      "finished_unix": 1791923350.0624676,
+      "stdout": "{\"passed\": true, \"receipt\": \"D:\\\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\\\original-receiving\\\\legacy-output\\\\receiving.json\", \"http_responses\": 4, \"error\": null}\r\n",
+      "stderr": "",
+      "stdout_identity": {
+        "bytes": 166,
+        "sha256": "1988dbdf6865381350fd761755974fd0f7a9ead661f326e7c2865d24ad810d1f",
+        "git_blob": "e9b002f6d5a57f525dab9aa8ada2349f9a7812f3"
+      },
+      "stderr_identity": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      },
+      "case": "legacy",
+      "receiver_receipt": {
+        "schema": "returnby.static-preview-receiving/1",
+        "passed": true,
+        "archive": "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\legacy.zip",
+        "archive_before": {
+          "bytes": 1540,
+          "sha256": "bbf003d371c5d2fa7de1ae1a78d518d0199d1122d5dd1c2feb277faf84343799",
+          "git_blob": "2a347ae0403139f463bc31fe1c6f0c6f4f4427ff",
+          "mode": 33206,
+          "mtime_ns": 1791923348595366000,
+          "inode": 844424931697419
+        },
+        "archive_members": 5,
+        "manifest_payloads": 4,
+        "product_tree": "fictional-fixture-not-a-source-claim",
+        "http": [
+          {
+            "path": "/",
+            "member": "preview/index.html",
+            "status": 200,
+            "bytes": 114,
+            "sha256": "c1facac7547429507864999d8dbd3314b3662226a1f0f0e68745e708cce71a66",
+            "git_blob": "c3f58c3b0c15b2f584bed516383eef8ca5528a04"
+          },
+          {
+            "path": "/guide.bin",
+            "member": "preview/guide.bin",
+            "status": 200,
+            "bytes": 256,
+            "sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+            "git_blob": "c86626638e0bc8cf47ca49bb1525b40e9737ee64"
+          },
+          {
+            "path": "/index.html",
+            "member": "preview/index.html",
+            "status": 200,
+            "bytes": 114,
+            "sha256": "c1facac7547429507864999d8dbd3314b3662226a1f0f0e68745e708cce71a66",
+            "git_blob": "c3f58c3b0c15b2f584bed516383eef8ca5528a04"
+          },
+          {
+            "path": "/notes.txt",
+            "member": "preview/notes.txt",
+            "status": 200,
+            "bytes": 37,
+            "sha256": "fb08c8c8ab4bd4e6fb5cf2c031181c3b10645da9652ebd87b1a679f0cfafd2c8",
+            "git_blob": "17bc48061ada2ac7acbfcf8016fd6644a7998dda"
+          }
+        ],
+        "scope": "Archive integrity and loopback HTTP bytes only; no packaged code, browser, build or install.",
+        "started_unix": 1791923349.4347548,
+        "server": {
+          "argv": [
+            "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+            "-I",
+            "-B",
+            "-u",
+            "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\original-receiver.py",
+            "--serve-directory",
+            "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\original-receiving\\legacy-output\\package\\preview",
+            "--port",
+            "58551",
+            "--ready-token",
+            "d92ede566ff844d8b9c2a49c83264c05"
+          ],
+          "pid": 21728,
+          "port": 58551,
+          "ready": true,
+          "returncode": 0
+        },
+        "archive_after": {
+          "bytes": 1540,
+          "sha256": "bbf003d371c5d2fa7de1ae1a78d518d0199d1122d5dd1c2feb277faf84343799",
+          "git_blob": "2a347ae0403139f463bc31fe1c6f0c6f4f4427ff",
+          "mode": 33206,
+          "mtime_ns": 1791923348595366000,
+          "inode": 844424931697419
+        },
+        "extracted_files_preserved": 5,
+        "extracted_identity": {
+          "MANIFEST.json": {
+            "bytes": 968,
+            "sha256": "66709a48ddde5a1967b32dabd4217d2cf25c85cbb0421c2d84b1b5436fb66c5d",
+            "git_blob": "4b2938283ffa5bb530c2b025308ac61d6c03d13c",
+            "mode": 33206,
+            "mtime_ns": 1791923349435752400,
+            "inode": 281474978276121
+          },
+          "VERIFY.py": {
+            "bytes": 86,
+            "sha256": "0e53eb917b74d8196308a4127444a3a2996f665eeed92dda82c6adfce449617d",
+            "git_blob": "d9bfc31395625761402f568a2911ba73e06850b5",
+            "mode": 33206,
+            "mtime_ns": 1791923349435752400,
+            "inode": 281474978276122
+          },
+          "preview/guide.bin": {
+            "bytes": 256,
+            "sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+            "git_blob": "c86626638e0bc8cf47ca49bb1525b40e9737ee64",
+            "mode": 33206,
+            "mtime_ns": 1791923349436754600,
+            "inode": 281474978276124
+          },
+          "preview/index.html": {
+            "bytes": 114,
+            "sha256": "c1facac7547429507864999d8dbd3314b3662226a1f0f0e68745e708cce71a66",
+            "git_blob": "c3f58c3b0c15b2f584bed516383eef8ca5528a04",
+            "mode": 33206,
+            "mtime_ns": 1791923349436754600,
+            "inode": 281474978276125
+          },
+          "preview/notes.txt": {
+            "bytes": 37,
+            "sha256": "fb08c8c8ab4bd4e6fb5cf2c031181c3b10645da9652ebd87b1a679f0cfafd2c8",
+            "git_blob": "17bc48061ada2ac7acbfcf8016fd6644a7998dda",
+            "mode": 33206,
+            "mtime_ns": 1791923349437752300,
+            "inode": 281474978276126
+          }
+        },
+        "archive_preserved": true,
+        "finished_unix": 1791923350.015211,
+        "observer": {
+          "bytes": 13114,
+          "sha256": "beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac",
+          "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3"
+        },
+        "server.stdout": {
+          "bytes": 76,
+          "sha256": "08473e79686411cb7d5d0cd3d91b3381ecbb70ef30784e47a6591e4504f50919",
+          "git_blob": "d6eec2bc3bd863a1397ef97c4e0e1818178161c5"
+        },
+        "server.stderr": {
+          "bytes": 272,
+          "sha256": "cf179a738a681e0467d69f1d255e8912f23b63f33da6f00b33ffd83714cd0022",
+          "git_blob": "c83f5f6171619132d8272867b900a8762a8d0c06"
+        }
+      },
+      "receiver_receipt_identity": {
+        "bytes": 4827,
+        "sha256": "c191a3285efd675e121e3d9ec8a1b95b306794c7a28575b382cc85ce37fb5c58",
+        "git_blob": "5d95d86ad1ec61bda9f3ebc1dd7abe68069c3fc7"
+      }
+    }
+  ],
+  "started_unix": 1791923348.0484223,
+  "environment": {
+    "host": "MSI",
+    "user": "Veria",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "executable": "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"
+  },
+  "scope": "Actual producer and CLI/HTTP byte receiving; no packaged code, browser or build execution.",
+  "producer_command": {
+    "argv": [
+      "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-I",
+      "-B",
+      "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\make_delivery_zip.py",
+      "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\selected",
+      "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\producer-manifest.json",
+      "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\producer.zip",
+      "--manifest-sha256",
+      "7350673ff76279adc1acb76a6f502ab317c4e448b552a4dc50d3525252fc0306"
+    ],
+    "pid": 30904,
+    "returncode": 0,
+    "started_unix": 1791923348.2069473,
+    "finished_unix": 1791923348.5886295,
+    "stdout": "{\"manifest_sha256\": \"7350673ff76279adc1acb76a6f502ab317c4e448b552a4dc50d3525252fc0306\", \"members\": 5, \"output\": \"D:\\\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\\\archives\\\\producer.zip\", \"payload_bytes\": 493, \"payloads\": 4, \"schema\": \"hamon.delivery-zip-receipt/1\", \"scope\": \"selected regular-file artifact bytes; no source execution or mode preservation\", \"zip_bytes\": 1379, \"zip_sha256\": \"3a8bddb245a8951df52543bbd0f3c78221061049d2f26c2b3e8b3f2b220e5f8f\"}\r\n",
+    "stderr": "",
+    "stdout_identity": {
+      "bytes": 458,
+      "sha256": "8cc06368e127e0a4adb99ee82e194d28f66a7eea8ba30fb4af4f72cfd764b097",
+      "git_blob": "02ac1bc0ca14af35705f02416a6c1853b4d646cb"
+    },
+    "stderr_identity": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    }
+  },
+  "producer_source_before": {
+    "make_delivery_zip.py": {
+      "bytes": 7700,
+      "sha256": "a49477cc522c7bc56a831f51418b57873c826e18fd2a98a18157a1c1f29599bf",
+      "git_blob": "34e192096abed7216025e8141a9cf3106bb82dfd",
+      "mode": 33206,
+      "mtime_ns": 1791923347735680400,
+      "inode": 844424931697142
+    },
+    "original-receiver.py": {
+      "bytes": 13114,
+      "sha256": "beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac",
+      "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3",
+      "mode": 33206,
+      "mtime_ns": 1791923347735680400,
+      "inode": 844424931697143
+    },
+    "oracle.json": {
+      "bytes": 3547,
+      "sha256": "bf6a328a13be3f1bd2d4db9fb69ff7a1f464bafffa05f7fa4a5d6d3a56efb44f",
+      "git_blob": "d08b347e5850cfe9d0154effd59915849796f5d9",
+      "mode": 33206,
+      "mtime_ns": 1791923347736680700,
+      "inode": 1688849861829112
+    },
+    "receive_compatibility.py": {
+      "bytes": 12973,
+      "sha256": "202f0ac2d5eff1f14d512eede659fb1bda7fae339965faac5db25067a87f7b6a",
+      "git_blob": "a3dd2ebed93f7d73a6e5391177d214536bbc7691",
+      "mode": 33206,
+      "mtime_ns": 1791923347749379200,
+      "inode": 844424931697149
+    },
+    "producer-manifest.json": {
+      "bytes": 651,
+      "sha256": "7350673ff76279adc1acb76a6f502ab317c4e448b552a4dc50d3525252fc0306",
+      "git_blob": "244a00b6c890475bb26def4b9e82f3a430dafa7f",
+      "mode": 33206,
+      "mtime_ns": 1791923348146803100,
+      "inode": 562949954986733
+    },
+    "selected\\VERIFY.py": {
+      "bytes": 86,
+      "sha256": "0e53eb917b74d8196308a4127444a3a2996f665eeed92dda82c6adfce449617d",
+      "git_blob": "d9bfc31395625761402f568a2911ba73e06850b5",
+      "mode": 33206,
+      "mtime_ns": 1791923348145804000,
+      "inode": 562949954986732
+    },
+    "selected\\preview\\guide.bin": {
+      "bytes": 256,
+      "sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+      "git_blob": "c86626638e0bc8cf47ca49bb1525b40e9737ee64",
+      "mode": 33206,
+      "mtime_ns": 1791923348144803900,
+      "inode": 562949954986709
+    },
+    "selected\\preview\\index.html": {
+      "bytes": 114,
+      "sha256": "c1facac7547429507864999d8dbd3314b3662226a1f0f0e68745e708cce71a66",
+      "git_blob": "c3f58c3b0c15b2f584bed516383eef8ca5528a04",
+      "mode": 33206,
+      "mtime_ns": 1791923348144803900,
+      "inode": 562949954986708
+    },
+    "selected\\preview\\notes.txt": {
+      "bytes": 37,
+      "sha256": "fb08c8c8ab4bd4e6fb5cf2c031181c3b10645da9652ebd87b1a679f0cfafd2c8",
+      "git_blob": "17bc48061ada2ac7acbfcf8016fd6644a7998dda",
+      "mode": 33206,
+      "mtime_ns": 1791923348145804000,
+      "inode": 562949954986731
+    }
+  },
+  "producer_source_after": {
+    "make_delivery_zip.py": {
+      "bytes": 7700,
+      "sha256": "a49477cc522c7bc56a831f51418b57873c826e18fd2a98a18157a1c1f29599bf",
+      "git_blob": "34e192096abed7216025e8141a9cf3106bb82dfd",
+      "mode": 33206,
+      "mtime_ns": 1791923347735680400,
+      "inode": 844424931697142
+    },
+    "original-receiver.py": {
+      "bytes": 13114,
+      "sha256": "beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac",
+      "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3",
+      "mode": 33206,
+      "mtime_ns": 1791923347735680400,
+      "inode": 844424931697143
+    },
+    "oracle.json": {
+      "bytes": 3547,
+      "sha256": "bf6a328a13be3f1bd2d4db9fb69ff7a1f464bafffa05f7fa4a5d6d3a56efb44f",
+      "git_blob": "d08b347e5850cfe9d0154effd59915849796f5d9",
+      "mode": 33206,
+      "mtime_ns": 1791923347736680700,
+      "inode": 1688849861829112
+    },
+    "receive_compatibility.py": {
+      "bytes": 12973,
+      "sha256": "202f0ac2d5eff1f14d512eede659fb1bda7fae339965faac5db25067a87f7b6a",
+      "git_blob": "a3dd2ebed93f7d73a6e5391177d214536bbc7691",
+      "mode": 33206,
+      "mtime_ns": 1791923347749379200,
+      "inode": 844424931697149
+    },
+    "producer-manifest.json": {
+      "bytes": 651,
+      "sha256": "7350673ff76279adc1acb76a6f502ab317c4e448b552a4dc50d3525252fc0306",
+      "git_blob": "244a00b6c890475bb26def4b9e82f3a430dafa7f",
+      "mode": 33206,
+      "mtime_ns": 1791923348146803100,
+      "inode": 562949954986733
+    },
+    "selected\\VERIFY.py": {
+      "bytes": 86,
+      "sha256": "0e53eb917b74d8196308a4127444a3a2996f665eeed92dda82c6adfce449617d",
+      "git_blob": "d9bfc31395625761402f568a2911ba73e06850b5",
+      "mode": 33206,
+      "mtime_ns": 1791923348145804000,
+      "inode": 562949954986732
+    },
+    "selected\\preview\\guide.bin": {
+      "bytes": 256,
+      "sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+      "git_blob": "c86626638e0bc8cf47ca49bb1525b40e9737ee64",
+      "mode": 33206,
+      "mtime_ns": 1791923348144803900,
+      "inode": 562949954986709
+    },
+    "selected\\preview\\index.html": {
+      "bytes": 114,
+      "sha256": "c1facac7547429507864999d8dbd3314b3662226a1f0f0e68745e708cce71a66",
+      "git_blob": "c3f58c3b0c15b2f584bed516383eef8ca5528a04",
+      "mode": 33206,
+      "mtime_ns": 1791923348144803900,
+      "inode": 562949954986708
+    },
+    "selected\\preview\\notes.txt": {
+      "bytes": 37,
+      "sha256": "fb08c8c8ab4bd4e6fb5cf2c031181c3b10645da9652ebd87b1a679f0cfafd2c8",
+      "git_blob": "17bc48061ada2ac7acbfcf8016fd6644a7998dda",
+      "mode": 33206,
+      "mtime_ns": 1791923348145804000,
+      "inode": 562949954986731
+    }
+  },
+  "source_and_fixture_before": {
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\bad-payload.zip": {
+      "bytes": 1379,
+      "sha256": "8c57d3abf8912fa3566a17e66ceba9b832ee013e9e274220db065595a6ddea4b",
+      "git_blob": "56823d8b695b80860f0c38904cbda8351147948c",
+      "mode": 33206,
+      "mtime_ns": 1791923348601365900,
+      "inode": 281474978276111
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\duplicate-member.zip": {
+      "bytes": 1745,
+      "sha256": "f8b055539f4d73da2eda86bfccc6ec1dfe6aa448084b309ff894b81942d1d259",
+      "git_blob": "485f5cb69f0de1088f0cb823bb35a91267efc005",
+      "mode": 33206,
+      "mtime_ns": 1791923348605365700,
+      "inode": 281474978276114
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\legacy-missing-git.zip": {
+      "bytes": 1515,
+      "sha256": "6bed412c3eb60ca573b14d933c6c92d638dee8c0ebce35c49cbf0266e02f0584",
+      "git_blob": "ac0247e070fa598cda8aab8faf664eaeec5bcf5b",
+      "mode": 33206,
+      "mtime_ns": 1791923348599365700,
+      "inode": 281474978276110
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\legacy.zip": {
+      "bytes": 1540,
+      "sha256": "bbf003d371c5d2fa7de1ae1a78d518d0199d1122d5dd1c2feb277faf84343799",
+      "git_blob": "2a347ae0403139f463bc31fe1c6f0c6f4f4427ff",
+      "mode": 33206,
+      "mtime_ns": 1791923348595366000,
+      "inode": 844424931697419
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\mixed-row.zip": {
+      "bytes": 1416,
+      "sha256": "969c05abf7439f75b8a40f0570c7565fbba7f51025cb0c033c839fe4d78fa08a",
+      "git_blob": "7f4abd916c324e33f9529b6cd58fe88395aca584",
+      "mode": 33206,
+      "mtime_ns": 1791923348597365700,
+      "inode": 281474978276108
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\mixed-top.zip": {
+      "bytes": 1403,
+      "sha256": "acf5d33d3f61845bd959bbc9cf239ee3eb1b34f7e93167becf6fdb6526c1ed79",
+      "git_blob": "1cb5c888c8ece2911207e205d11e2aa6d3012a33",
+      "mode": 33206,
+      "mtime_ns": 1791923348598365100,
+      "inode": 281474978276109
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\nonascii-path.zip": {
+      "bytes": 1389,
+      "sha256": "97517436db2e4c56cd3fd367e7dd28603cce17e7531cc31631b000f4a5c622b6",
+      "git_blob": "51ded829b881a261d6884853b0c5fba8a7407f8e",
+      "mode": 33206,
+      "mtime_ns": 1791923348603366500,
+      "inode": 281474978276113
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\producer.zip": {
+      "bytes": 1379,
+      "sha256": "3a8bddb245a8951df52543bbd0f3c78221061049d2f26c2b3e8b3f2b220e5f8f",
+      "git_blob": "889cbe0ab7c0d92bbc965a6c81797338d5d881cc",
+      "mode": 33206,
+      "mtime_ns": 1791923348501877900,
+      "inode": 562949954986735
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\uppercase-sha.zip": {
+      "bytes": 1390,
+      "sha256": "f907be539b9232cf737de1fe067c39e52b10d83aaaa3b9de8aa12fcdba987755",
+      "git_blob": "90981494211f58d5c88ed58a5e656051987ecd01",
+      "mode": 33206,
+      "mtime_ns": 1791923348602366200,
+      "inode": 281474978276112
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\fixture-identities.json": {
+      "bytes": 2616,
+      "sha256": "40ea8a511847bfaa67141d2c4d5bb8bf628e206f494e6b4c18255383c69e9eac",
+      "git_blob": "59c2dbf7f81c008375928106ffb1288afb58219b",
+      "mode": 33206,
+      "mtime_ns": 1791923348712427300,
+      "inode": 281474978276115
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\make_delivery_zip.py": {
+      "bytes": 7700,
+      "sha256": "a49477cc522c7bc56a831f51418b57873c826e18fd2a98a18157a1c1f29599bf",
+      "git_blob": "34e192096abed7216025e8141a9cf3106bb82dfd",
+      "mode": 33206,
+      "mtime_ns": 1791923347735680400,
+      "inode": 844424931697142
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\oracle.json": {
+      "bytes": 3547,
+      "sha256": "bf6a328a13be3f1bd2d4db9fb69ff7a1f464bafffa05f7fa4a5d6d3a56efb44f",
+      "git_blob": "d08b347e5850cfe9d0154effd59915849796f5d9",
+      "mode": 33206,
+      "mtime_ns": 1791923347736680700,
+      "inode": 1688849861829112
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\original-receiver.py": {
+      "bytes": 13114,
+      "sha256": "beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac",
+      "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3",
+      "mode": 33206,
+      "mtime_ns": 1791923347735680400,
+      "inode": 844424931697143
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\producer-manifest.json": {
+      "bytes": 651,
+      "sha256": "7350673ff76279adc1acb76a6f502ab317c4e448b552a4dc50d3525252fc0306",
+      "git_blob": "244a00b6c890475bb26def4b9e82f3a430dafa7f",
+      "mode": 33206,
+      "mtime_ns": 1791923348146803100,
+      "inode": 562949954986733
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\receive_compatibility.py": {
+      "bytes": 12973,
+      "sha256": "202f0ac2d5eff1f14d512eede659fb1bda7fae339965faac5db25067a87f7b6a",
+      "git_blob": "a3dd2ebed93f7d73a6e5391177d214536bbc7691",
+      "mode": 33206,
+      "mtime_ns": 1791923347749379200,
+      "inode": 844424931697149
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\selected\\preview\\guide.bin": {
+      "bytes": 256,
+      "sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+      "git_blob": "c86626638e0bc8cf47ca49bb1525b40e9737ee64",
+      "mode": 33206,
+      "mtime_ns": 1791923348144803900,
+      "inode": 562949954986709
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\selected\\preview\\index.html": {
+      "bytes": 114,
+      "sha256": "c1facac7547429507864999d8dbd3314b3662226a1f0f0e68745e708cce71a66",
+      "git_blob": "c3f58c3b0c15b2f584bed516383eef8ca5528a04",
+      "mode": 33206,
+      "mtime_ns": 1791923348144803900,
+      "inode": 562949954986708
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\selected\\preview\\notes.txt": {
+      "bytes": 37,
+      "sha256": "fb08c8c8ab4bd4e6fb5cf2c031181c3b10645da9652ebd87b1a679f0cfafd2c8",
+      "git_blob": "17bc48061ada2ac7acbfcf8016fd6644a7998dda",
+      "mode": 33206,
+      "mtime_ns": 1791923348145804000,
+      "inode": 562949954986731
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\selected\\VERIFY.py": {
+      "bytes": 86,
+      "sha256": "0e53eb917b74d8196308a4127444a3a2996f665eeed92dda82c6adfce449617d",
+      "git_blob": "d9bfc31395625761402f568a2911ba73e06850b5",
+      "mode": 33206,
+      "mtime_ns": 1791923348145804000,
+      "inode": 562949954986732
+    }
+  },
+  "source_and_fixture_after": {
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\bad-payload.zip": {
+      "bytes": 1379,
+      "sha256": "8c57d3abf8912fa3566a17e66ceba9b832ee013e9e274220db065595a6ddea4b",
+      "git_blob": "56823d8b695b80860f0c38904cbda8351147948c",
+      "mode": 33206,
+      "mtime_ns": 1791923348601365900,
+      "inode": 281474978276111
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\duplicate-member.zip": {
+      "bytes": 1745,
+      "sha256": "f8b055539f4d73da2eda86bfccc6ec1dfe6aa448084b309ff894b81942d1d259",
+      "git_blob": "485f5cb69f0de1088f0cb823bb35a91267efc005",
+      "mode": 33206,
+      "mtime_ns": 1791923348605365700,
+      "inode": 281474978276114
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\legacy-missing-git.zip": {
+      "bytes": 1515,
+      "sha256": "6bed412c3eb60ca573b14d933c6c92d638dee8c0ebce35c49cbf0266e02f0584",
+      "git_blob": "ac0247e070fa598cda8aab8faf664eaeec5bcf5b",
+      "mode": 33206,
+      "mtime_ns": 1791923348599365700,
+      "inode": 281474978276110
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\legacy.zip": {
+      "bytes": 1540,
+      "sha256": "bbf003d371c5d2fa7de1ae1a78d518d0199d1122d5dd1c2feb277faf84343799",
+      "git_blob": "2a347ae0403139f463bc31fe1c6f0c6f4f4427ff",
+      "mode": 33206,
+      "mtime_ns": 1791923348595366000,
+      "inode": 844424931697419
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\mixed-row.zip": {
+      "bytes": 1416,
+      "sha256": "969c05abf7439f75b8a40f0570c7565fbba7f51025cb0c033c839fe4d78fa08a",
+      "git_blob": "7f4abd916c324e33f9529b6cd58fe88395aca584",
+      "mode": 33206,
+      "mtime_ns": 1791923348597365700,
+      "inode": 281474978276108
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\mixed-top.zip": {
+      "bytes": 1403,
+      "sha256": "acf5d33d3f61845bd959bbc9cf239ee3eb1b34f7e93167becf6fdb6526c1ed79",
+      "git_blob": "1cb5c888c8ece2911207e205d11e2aa6d3012a33",
+      "mode": 33206,
+      "mtime_ns": 1791923348598365100,
+      "inode": 281474978276109
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\nonascii-path.zip": {
+      "bytes": 1389,
+      "sha256": "97517436db2e4c56cd3fd367e7dd28603cce17e7531cc31631b000f4a5c622b6",
+      "git_blob": "51ded829b881a261d6884853b0c5fba8a7407f8e",
+      "mode": 33206,
+      "mtime_ns": 1791923348603366500,
+      "inode": 281474978276113
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\producer.zip": {
+      "bytes": 1379,
+      "sha256": "3a8bddb245a8951df52543bbd0f3c78221061049d2f26c2b3e8b3f2b220e5f8f",
+      "git_blob": "889cbe0ab7c0d92bbc965a6c81797338d5d881cc",
+      "mode": 33206,
+      "mtime_ns": 1791923348501877900,
+      "inode": 562949954986735
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\uppercase-sha.zip": {
+      "bytes": 1390,
+      "sha256": "f907be539b9232cf737de1fe067c39e52b10d83aaaa3b9de8aa12fcdba987755",
+      "git_blob": "90981494211f58d5c88ed58a5e656051987ecd01",
+      "mode": 33206,
+      "mtime_ns": 1791923348602366200,
+      "inode": 281474978276112
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\fixture-identities.json": {
+      "bytes": 2616,
+      "sha256": "40ea8a511847bfaa67141d2c4d5bb8bf628e206f494e6b4c18255383c69e9eac",
+      "git_blob": "59c2dbf7f81c008375928106ffb1288afb58219b",
+      "mode": 33206,
+      "mtime_ns": 1791923348712427300,
+      "inode": 281474978276115
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\make_delivery_zip.py": {
+      "bytes": 7700,
+      "sha256": "a49477cc522c7bc56a831f51418b57873c826e18fd2a98a18157a1c1f29599bf",
+      "git_blob": "34e192096abed7216025e8141a9cf3106bb82dfd",
+      "mode": 33206,
+      "mtime_ns": 1791923347735680400,
+      "inode": 844424931697142
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\oracle.json": {
+      "bytes": 3547,
+      "sha256": "bf6a328a13be3f1bd2d4db9fb69ff7a1f464bafffa05f7fa4a5d6d3a56efb44f",
+      "git_blob": "d08b347e5850cfe9d0154effd59915849796f5d9",
+      "mode": 33206,
+      "mtime_ns": 1791923347736680700,
+      "inode": 1688849861829112
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\original-receiver.py": {
+      "bytes": 13114,
+      "sha256": "beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac",
+      "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3",
+      "mode": 33206,
+      "mtime_ns": 1791923347735680400,
+      "inode": 844424931697143
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\producer-manifest.json": {
+      "bytes": 651,
+      "sha256": "7350673ff76279adc1acb76a6f502ab317c4e448b552a4dc50d3525252fc0306",
+      "git_blob": "244a00b6c890475bb26def4b9e82f3a430dafa7f",
+      "mode": 33206,
+      "mtime_ns": 1791923348146803100,
+      "inode": 562949954986733
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\receive_compatibility.py": {
+      "bytes": 12973,
+      "sha256": "202f0ac2d5eff1f14d512eede659fb1bda7fae339965faac5db25067a87f7b6a",
+      "git_blob": "a3dd2ebed93f7d73a6e5391177d214536bbc7691",
+      "mode": 33206,
+      "mtime_ns": 1791923347749379200,
+      "inode": 844424931697149
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\selected\\preview\\guide.bin": {
+      "bytes": 256,
+      "sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+      "git_blob": "c86626638e0bc8cf47ca49bb1525b40e9737ee64",
+      "mode": 33206,
+      "mtime_ns": 1791923348144803900,
+      "inode": 562949954986709
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\selected\\preview\\index.html": {
+      "bytes": 114,
+      "sha256": "c1facac7547429507864999d8dbd3314b3662226a1f0f0e68745e708cce71a66",
+      "git_blob": "c3f58c3b0c15b2f584bed516383eef8ca5528a04",
+      "mode": 33206,
+      "mtime_ns": 1791923348144803900,
+      "inode": 562949954986708
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\selected\\preview\\notes.txt": {
+      "bytes": 37,
+      "sha256": "fb08c8c8ab4bd4e6fb5cf2c031181c3b10645da9652ebd87b1a679f0cfafd2c8",
+      "git_blob": "17bc48061ada2ac7acbfcf8016fd6644a7998dda",
+      "mode": 33206,
+      "mtime_ns": 1791923348145804000,
+      "inode": 562949954986731
+    },
+    "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\selected\\VERIFY.py": {
+      "bytes": 86,
+      "sha256": "0e53eb917b74d8196308a4127444a3a2996f665eeed92dda82c6adfce449617d",
+      "git_blob": "d9bfc31395625761402f568a2911ba73e06850b5",
+      "mode": 33206,
+      "mtime_ns": 1791923348145804000,
+      "inode": 562949954986732
+    }
+  },
+  "source_and_fixture_preserved": true,
+  "finished_unix": 1791923350.0862324,
+  "observer": {
+    "bytes": 12973,
+    "sha256": "202f0ac2d5eff1f14d512eede659fb1bda7fae339965faac5db25067a87f7b6a",
+    "git_blob": "a3dd2ebed93f7d73a6e5391177d214536bbc7691"
+  }
+}

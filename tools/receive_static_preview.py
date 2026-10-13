@@ -107,19 +107,42 @@ def admit(archive, expected_sha):
                 "Manifest and preview/index.html are required")
         payloads = {e.filename: package.read(e) for e in entries}
     manifest = json.loads(payloads["MANIFEST.json"].decode("utf-8"), object_pairs_hook=unique_object)
-    require(isinstance(manifest, dict) and manifest.get("schema") == "hamon.exact-delivery-manifest/1",
+    require(isinstance(manifest, dict), "Invalid manifest object")
+    schema = manifest.get("schema")
+    require(schema in ("hamon.exact-delivery-manifest/1", "hamon.delivery-zip/1"),
             "Unsupported manifest schema")
+    packed = schema == "hamon.delivery-zip/1"
     rows = manifest.get("files")
     require(isinstance(rows, list) and len(rows) == len(payloads) - 1, "Manifest membership mismatch")
+    if packed:
+        require(set(manifest) == {"schema", "files"}, "Delivery manifest has unsupported fields")
+        require(len(payloads["MANIFEST.json"]) <= 1024 * 1024, "Delivery manifest exceeds 1 MiB")
+        require(1 <= len(rows) <= 1024, "Delivery manifest requires 1 through 1024 payloads")
+        require(sum(len(body) for name, body in payloads.items() if name != "MANIFEST.json") <=
+                64 * 1024 * 1024, "Delivery payloads exceed 64 MiB")
     indexed = {}
     for row in rows:
         require(isinstance(row, dict), "Invalid manifest row")
+        if packed:
+            require(set(row) == {"path", "bytes", "sha256"}, "Invalid delivery manifest row fields")
         name = safe_name(row.get("path"))
         require(name != "MANIFEST.json" and name not in indexed, "Duplicate or self-listed manifest member")
         require(name in payloads, "Missing manifest payload: " + name)
         require(type(row.get("bytes")) is int and row["bytes"] >= 0, "Invalid byte count")
+        if packed:
+            require(len(name) <= 240 and all(32 <= ord(c) < 127 for c in name),
+                    "Delivery member name must be printable ASCII and at most 240 characters")
+            require(name.split("/")[0].casefold() != "manifest.json", "Delivery manifest path is reserved")
+            for part in name.split("/"):
+                require(part.strip() == part, "Delivery member has surrounding spaces")
+                stem = part.split(".")[0].rstrip(" ").upper()
+                require(stem not in {"CON", "PRN", "AUX", "NUL", *(f"COM{i}" for i in range(1, 10)),
+                                     *(f"LPT{i}" for i in range(1, 10))}, "Reserved delivery member")
+            require(isinstance(row["sha256"], str) and re.fullmatch(r"[0-9a-f]{64}", row["sha256"]) is not None,
+                    "Delivery payload SHA-256 must be lowercase hexadecimal")
         found = identity(payloads[name])
-        require(all(found[key] == row.get(key) for key in found), "Payload identity mismatch: " + name)
+        expected_fields = ("bytes", "sha256") if packed else ("bytes", "sha256", "git_blob")
+        require(all(found[key] == row.get(key) for key in expected_fields), "Payload identity mismatch: " + name)
         indexed[name] = row
     require(set(indexed) == set(payloads) - {"MANIFEST.json"}, "Manifest membership mismatch")
     require(snapshot(archive) == before, "Archive changed during admission")
@@ -167,6 +190,9 @@ def receive(archive, digest, output, port):
         "archive_members": len(payloads),
         "manifest_payloads": len(payloads) - 1,
         "product_tree": manifest.get("product_tree"),
+        "manifest_schema": manifest["schema"],
+        "manifest_fields_checked": ["bytes", "sha256"] if manifest["schema"] == "hamon.delivery-zip/1"
+                                   else ["bytes", "sha256", "git_blob"],
         "http": [],
         "scope": "Archive integrity and loopback HTTP bytes only; no packaged code, browser, build or install.",
         "started_unix": time.time(),

@@ -1,0 +1,144 @@
+{
+  "schema": "returnby.static-preview-receiving/1",
+  "passed": true,
+  "archive": "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\archives\\producer.zip",
+  "archive_before": {
+    "bytes": 1379,
+    "sha256": "3a8bddb245a8951df52543bbd0f3c78221061049d2f26c2b3e8b3f2b220e5f8f",
+    "git_blob": "889cbe0ab7c0d92bbc965a6c81797338d5d881cc",
+    "mode": 33206,
+    "mtime_ns": 1791923348501877900,
+    "inode": 562949954986735
+  },
+  "archive_members": 5,
+  "manifest_payloads": 4,
+  "product_tree": null,
+  "manifest_schema": "hamon.delivery-zip/1",
+  "manifest_fields_checked": [
+    "bytes",
+    "sha256"
+  ],
+  "http": [
+    {
+      "path": "/",
+      "member": "preview/index.html",
+      "status": 200,
+      "bytes": 114,
+      "sha256": "c1facac7547429507864999d8dbd3314b3662226a1f0f0e68745e708cce71a66",
+      "git_blob": "c3f58c3b0c15b2f584bed516383eef8ca5528a04"
+    },
+    {
+      "path": "/guide.bin",
+      "member": "preview/guide.bin",
+      "status": 200,
+      "bytes": 256,
+      "sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+      "git_blob": "c86626638e0bc8cf47ca49bb1525b40e9737ee64"
+    },
+    {
+      "path": "/index.html",
+      "member": "preview/index.html",
+      "status": 200,
+      "bytes": 114,
+      "sha256": "c1facac7547429507864999d8dbd3314b3662226a1f0f0e68745e708cce71a66",
+      "git_blob": "c3f58c3b0c15b2f584bed516383eef8ca5528a04"
+    },
+    {
+      "path": "/notes.txt",
+      "member": "preview/notes.txt",
+      "status": 200,
+      "bytes": 37,
+      "sha256": "fb08c8c8ab4bd4e6fb5cf2c031181c3b10645da9652ebd87b1a679f0cfafd2c8",
+      "git_blob": "17bc48061ada2ac7acbfcf8016fd6644a7998dda"
+    }
+  ],
+  "scope": "Archive integrity and loopback HTTP bytes only; no packaged code, browser, build or install.",
+  "started_unix": 1791923580.858837,
+  "server": {
+    "argv": [
+      "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-I",
+      "-B",
+      "-u",
+      "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\candidate-receiver.py",
+      "--serve-directory",
+      "D:\\hamon-dcac8b3b8755-preview-format-z01m1aeq\\candidate-receiving\\producer-output\\package\\preview",
+      "--port",
+      "50910",
+      "--ready-token",
+      "af206920005a4171ad6853b3ddeba54a"
+    ],
+    "pid": 31816,
+    "port": 50910,
+    "ready": true,
+    "returncode": 0
+  },
+  "archive_after": {
+    "bytes": 1379,
+    "sha256": "3a8bddb245a8951df52543bbd0f3c78221061049d2f26c2b3e8b3f2b220e5f8f",
+    "git_blob": "889cbe0ab7c0d92bbc965a6c81797338d5d881cc",
+    "mode": 33206,
+    "mtime_ns": 1791923348501877900,
+    "inode": 562949954986735
+  },
+  "extracted_files_preserved": 5,
+  "extracted_identity": {
+    "MANIFEST.json": {
+      "bytes": 651,
+      "sha256": "7350673ff76279adc1acb76a6f502ab317c4e448b552a4dc50d3525252fc0306",
+      "git_blob": "244a00b6c890475bb26def4b9e82f3a430dafa7f",
+      "mode": 33206,
+      "mtime_ns": 1791923580859369300,
+      "inode": 562949954986836
+    },
+    "VERIFY.py": {
+      "bytes": 86,
+      "sha256": "0e53eb917b74d8196308a4127444a3a2996f665eeed92dda82c6adfce449617d",
+      "git_blob": "d9bfc31395625761402f568a2911ba73e06850b5",
+      "mode": 33206,
+      "mtime_ns": 1791923580860111700,
+      "inode": 562949954986837
+    },
+    "preview/guide.bin": {
+      "bytes": 256,
+      "sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+      "git_blob": "c86626638e0bc8cf47ca49bb1525b40e9737ee64",
+      "mode": 33206,
+      "mtime_ns": 1791923580860474700,
+      "inode": 562949954986839
+    },
+    "preview/index.html": {
+      "bytes": 114,
+      "sha256": "c1facac7547429507864999d8dbd3314b3662226a1f0f0e68745e708cce71a66",
+      "git_blob": "c3f58c3b0c15b2f584bed516383eef8ca5528a04",
+      "mode": 33206,
+      "mtime_ns": 1791923580860977600,
+      "inode": 562949954986840
+    },
+    "preview/notes.txt": {
+      "bytes": 37,
+      "sha256": "fb08c8c8ab4bd4e6fb5cf2c031181c3b10645da9652ebd87b1a679f0cfafd2c8",
+      "git_blob": "17bc48061ada2ac7acbfcf8016fd6644a7998dda",
+      "mode": 33206,
+      "mtime_ns": 1791923580860977600,
+      "inode": 562949954986841
+    }
+  },
+  "archive_preserved": true,
+  "finished_unix": 1791923581.5212662,
+  "observer": {
+    "bytes": 15045,
+    "sha256": "e80606f31f90108a49e4a8209802abc506d1be4abc0ffb49365819782d674295",
+    "git_blob": "669b1b13ac3c980c8acbba4acff9bb24d71efba4"
+  },
+  "server.stdout": {
+    "bytes": 76,
+    "sha256": "43f0d3470e1b334569f24898bbc4ebcf2e4ccd2923c83f6127fd131539f48f0c",
+    "git_blob": "4201e75a7a4f2fbe6a5b912a783027252a0e18d0"
+  },
+  "server.stderr": {
+    "bytes": 272,
+    "sha256": "84b99ad86f02c3e763c5b825cb31ad5435983947bb74f4e26eb09cd13c589849",
+    "git_blob": "779cd668150e7f8e19d20c849e7f2dbb10efc253"
+  }
+}
