@@ -44,4 +44,4 @@ The first direct Node TypeScript probe failed because the distro Node binary was
 
 The complete [native receipt](receipt.json) includes commands, exit codes, original failures, dependency provenance, source hashes and the environment limitation. Its SHA-256 is `9f96acedbee9a028802022c689e9217cbb3c0389e99f1d30b58d4641e43a7f07`.
 
-This is author source qualification. Independent receiving, actual-browser interaction and final stack adoption remain separate. Both repository workflows select PRs or main pushes; this publication opens no PR, updates no owner branch or main, and requests no Actions run or site deployment.
+This original receipt is author source qualification. The [later native-browser follow-up](browser/README.md) received the same parser through the actual form, saved tracker and reload in fourteen passing journeys. Independent source review and final stack adoption remain separate. Both repository workflows select PRs or main pushes; this publication opens no PR, updates no owner branch or main, and requests no Actions run or site deployment.

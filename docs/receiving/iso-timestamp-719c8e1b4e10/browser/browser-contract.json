@@ -1,0 +1,50 @@
+{
+  "schema": "returnby.timestamp_browser_contract.v1",
+  "actor": "719c8e1b4e10/source_product",
+  "scope": "Author receiving of exact built original/candidate with native Chromium text and pointer events. Form admission, stored calendar date, reload and removal; no physical download, independent source review or deployed site claim.",
+  "expectedFields": {
+    "merchant": "Northwind Outfitters",
+    "orderDate": "2026-10-03",
+    "orderNo": "ISO-1001",
+    "total": "$49.95",
+    "windowDays": "30"
+  },
+  "scenarios": [
+    {
+      "name": "positive-offset-with-earlier-shipping-date",
+      "text": "From: Northwind Outfitters <orders@northwind.example>\nOrder # ISO-1001\nSubtotal: $42.95\nOrder total: $49.95\nShipping date: 2026-10-01\nOrder date: 2026-10-03T00:15:00+14:00\n",
+      "originalDate": "2026-10-01"
+    },
+    {
+      "name": "negative-offset-crossing-following-utc-date",
+      "text": "From: Northwind Outfitters <orders@northwind.example>\nOrder # ISO-1001\nSubtotal: $42.95\nOrder total: $49.95\nOrder date: 2026-10-03T23:45:00-11:00\n",
+      "originalDate": ""
+    }
+  ],
+  "plain": {
+    "name": "plain-order-date-control",
+    "text": "From: Northwind Outfitters <orders@northwind.example>\nOrder # ISO-1001\nSubtotal: $42.95\nOrder total: $49.95\nOrder date: October 3, 2026\n"
+  },
+  "invalid": {
+    "name": "malformed-attached-hour",
+    "text": "From: Northwind Outfitters <orders@northwind.example>\nOrder # ISO-1001\nSubtotal: $42.95\nOrder total: $49.95\nOrder date: 2026-10-03T25:15:00+14:00\n"
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "mobile": false
+    },
+    {
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "mobile": true
+    }
+  ],
+  "timezones": [
+    "Pacific/Kiritimati",
+    "America/Los_Angeles"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "returnby.timestamp_browser_processes.v1",
+  "actor": "719c8e1b4e10/source_product",
+  "device": "cadafaf3-4d0b-4c4f-a0d3-34a95d2cec90",
+  "build_process": {
+    "pid": 2490522,
+    "completion": [
+      "[Reading 4 new lines (total: 4 lines)]\n\n{\"variant\": \"original\", \"exit\": 0, \"seconds\": 4.525, \"source_unchanged\": true, \"outputs\": 8}\n{\"variant\": \"candidate\", \"exit\": 0, \"seconds\": 2.693, \"source_unchanged\": true, \"outputs\": 8}\n{\"accepted\": true, \"receipt_sha256\": \"0f3eb7974c147eef08563f5b8bbb57b5188a7854a135ff633fd17b9ce25b32e7\", \"receipt_git_blob\": \"8c10e0596368a935c43de19d07f464788b040fa6\", \"bytes\": 17147}\n\n✅ Process completed with exit code 0 (runtime: 10.67s)",
+      "\n[executed on device: hamon-thinkpad (cadafaf3-4d0b-4c4f-a0d3-34a95d2cec90)]"
+    ]
+  },
+  "browser_process": {
+    "pid": 2498190,
+    "completion": [
+      "[Reading 2 new lines (total: 2 lines)]\n\n{\"status\":\"passed\",\"checks\":14,\"sourceUnchanged\":true,\"runtimeUnchanged\":true,\"browserExited\":true,\"serverClosed\":true,\"receiptSha256\":\"f75a3f9350b7687f9b973f8e99c86007e9bcf78b9c2a6e30c8fc287e27287223\",\"error\":null}\n\n✅ Process completed with exit code 0 (runtime: 5.65s)",
+      "\n[executed on device: hamon-thinkpad (cadafaf3-4d0b-4c4f-a0d3-34a95d2cec90)]"
+    ]
+  },
+  "post_run": {
+    "hashes": {
+      "source-bundle.json": {
+        "bytes": 135731,
+        "sha256": "f58f3977fa42092422e341b598be1efab8882df6889b0a24cd94783b2da43706",
+        "git_blob": "804db97be994cd06bfc8b11ad9793e6460909c57"
+      },
+      "build-browser.py": {
+        "bytes": 3566,
+        "sha256": "db049d89f660372cd9430cb6b3aa1e83bdfa35a49f042d776eb93e65b928712d",
+        "git_blob": "aa3d7370ca8d5eb7fca2ac2f865f08d783091fb1"
+      },
+      "build-receipt.json": {
+        "bytes": 17147,
+        "sha256": "0f3eb7974c147eef08563f5b8bbb57b5188a7854a135ff633fd17b9ce25b32e7",
+        "git_blob": "8c10e0596368a935c43de19d07f464788b040fa6"
+      },
+      "browser-contract.json": {
+        "bytes": 1839,
+        "sha256": "3f8970f4b607c117a5c07b148f470eb957a814a6fbfb1cdb2b0bb246d9b084a9",
+        "git_blob": "b8e3fc607b7aa9e51e70bbd06918605be3845d1f"
+      },
+      "receive-browser.mjs": {
+        "bytes": 16907,
+        "sha256": "d07accf0cd8c5513059f2c97e10a68371123ced424d13553d5f7667b5e818ff4",
+        "git_blob": "4bf1da5df5b1f17db4c3a42145c55190c7b38a79"
+      },
+      "receiving/receipt.json": {
+        "bytes": 50831,
+        "sha256": "f75a3f9350b7687f9b973f8e99c86007e9bcf78b9c2a6e30c8fc287e27287223",
+        "git_blob": "d2c21ba0782cf0b0ed8a6733cddb8596ab3f6b27"
+      },
+      "receiving/desktop.png": {
+        "bytes": 203475,
+        "sha256": "65787a6a59f6d8ff1c3c45cf98f9f2c36b5bacde1bec5a19e0796dcf4ac87f06",
+        "git_blob": "be23152637a62dfdc4cf031fc9fca3dab86341f1"
+      },
+      "receiving/phone.png": {
+        "bytes": 181945,
+        "sha256": "d372911e6843d2812a49aeff9f1cbf7cb911939ac5ef88c86576db7f58658e15",
+        "git_blob": "b206de86cfe065ea1d2533710013d4e2fe994474"
+      }
+    },
+    "matching_owned_browser_pids": []
+  },
+  "visual_inspection": {
+    "desktop": "Recognized review fields and retained tracker are readable; date and total stay visible.",
+    "phone": "Form and tracker stack cleanly at 390px, with readable date and policy; no horizontal page overflow."
+  }
+}
