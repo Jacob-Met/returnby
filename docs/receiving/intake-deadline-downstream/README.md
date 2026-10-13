@@ -57,9 +57,16 @@ after the documented interrupt. All extracted files and the original ZIP were
 conserved. This was an archive/opening-route course, with no browser or build
 replay. Its normal HTTP access log is intentionally retained in stderr.
 
-The Notion upload and page/guide readback completed; the later fresh saved-copy
-GET is a separate delivery check and is not claimed by this native artifact
-receipt.
+The Notion upload and page/guide readback completed. The first actual fresh
+saved-copy GET then returned HTTP 200 and the exact 1,028,338-byte ZIP with the
+SHA-256 above; the original ZIP retained its bytes, mode, mtime and inode. The
+collected native process 84723 exited 0. This separate delivery check did not
+replay a browser/build course or perform another upload. Its [868-byte raw
+receipt](https://api.github.com/repos/Jacob-Met/returnby/git/blobs/5c74bcb84403bf7b17b3c2cb75cc4492c9e5c142)
+has SHA-256 `d2c4ec86600831efcc6ab4bb60974fce14bfe9b9ed6a6f20d5d06758aa1163fd`.
+The receipt preserves the earlier write-file transport timeout and the verified
+absence of script/download/receipt outputs before this first actual GET. These
+saved-copy results remain separate from the native artifact-opening receipt.
 
 ## Exact support-file boundary
 
