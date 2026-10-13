@@ -1,0 +1,799 @@
+{
+  "schema": "returnby-independent-public-main-policy-v1",
+  "source": "/dev/shm/root-d3745-returnby-safe/serve_returnby.py",
+  "source_bytes": 5744,
+  "source_sha256": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+  "source_unchanged": true,
+  "host_platform": "linux",
+  "python": "3.12.14",
+  "optimize": 0,
+  "scope": "Actual frozen main() with stubbed socket/server/time/worker boundaries; no sockets, threads or Mac processes opened. Kernel exclusion and wall-clock timing are separately qualified by native owner controls.",
+  "courses": [
+    {
+      "name": "fresh Darwin start and normal cleanup",
+      "platform_simulated": "darwin",
+      "exit_code": 0,
+      "simulated_elapsed_seconds": 0.0,
+      "bind_attempts": 1,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "success",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "success",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 0,
+      "probe_first_last": [],
+      "probe_closes": 0,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 1,
+      "worker_starts": 1,
+      "worker_joins": 1,
+      "serves": 1,
+      "shutdowns": 1,
+      "server_closes": 1,
+      "stdout": "Tracker: http://127.0.0.1:8769/index.html\nTrip checklist: http://127.0.0.1:8769/trip-checklist.html\nOpen a URL manually. Press Enter here when finished.\n",
+      "stderr": "",
+      "trace_sha256": "8f67699eda5b57ea2d2a15f9a3006dfe3cea3a43a7801b46fea59f2d2f3fa454",
+      "passed": true
+    },
+    {
+      "name": "explicit refusals then successful Darwin bind",
+      "platform_simulated": "darwin",
+      "exit_code": 0,
+      "simulated_elapsed_seconds": 0.5,
+      "bind_attempts": 3,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 0.5,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "success",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 2,
+      "probe_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "refused"
+        },
+        {
+          "time": 0.25,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "refused"
+        }
+      ],
+      "probe_closes": 0,
+      "sleep_calls": 2,
+      "sleep_seconds": 0.5,
+      "assets_admissions": 1,
+      "worker_starts": 1,
+      "worker_joins": 1,
+      "serves": 1,
+      "shutdowns": 1,
+      "server_closes": 1,
+      "stdout": "Waiting up to 60 seconds for the local address to become available. Press Ctrl+C to cancel.\nTracker: http://127.0.0.1:8769/index.html\nTrip checklist: http://127.0.0.1:8769/trip-checklist.html\nOpen a URL manually. Press Enter here when finished.\n",
+      "stderr": "",
+      "trace_sha256": "1480d4c1ada0c79ae7f61d037f93f4a0ddb6e77c3e08f76c622a2fc982ba6b2e",
+      "passed": true
+    },
+    {
+      "name": "reachable incumbent refuses and closes probe",
+      "platform_simulated": "darwin",
+      "exit_code": 1,
+      "simulated_elapsed_seconds": 0.0,
+      "bind_attempts": 1,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 1,
+      "probe_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "reachable"
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "reachable"
+        }
+      ],
+      "probe_closes": 1,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "",
+      "stderr": "ReturnBy could not bind 127.0.0.1:8769: [Errno 98] owned simulated incumbent or retained state\n",
+      "trace_sha256": "d67e1ef190cf26f84ee80478e565d79adb9e5503eeccd292981a87f3c38adb64",
+      "passed": true
+    },
+    {
+      "name": "probe timeout refuses without retry",
+      "platform_simulated": "darwin",
+      "exit_code": 1,
+      "simulated_elapsed_seconds": 0.25,
+      "bind_attempts": 1,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 1,
+      "probe_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "timeout"
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "timeout"
+        }
+      ],
+      "probe_closes": 0,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "",
+      "stderr": "ReturnBy could not bind 127.0.0.1:8769: [Errno 98] owned simulated incumbent or retained state\n",
+      "trace_sha256": "9dee8cf0f251aa7c82574f49daa401900bf11839d7634dd4ec32b5dcd7995cfe",
+      "passed": true
+    },
+    {
+      "name": "uncertain probe error refuses without retry",
+      "platform_simulated": "darwin",
+      "exit_code": 1,
+      "simulated_elapsed_seconds": 0.0,
+      "bind_attempts": 1,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 1,
+      "probe_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "other_error"
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "other_error"
+        }
+      ],
+      "probe_closes": 0,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "",
+      "stderr": "ReturnBy could not bind 127.0.0.1:8769: [Errno 98] owned simulated incumbent or retained state\n",
+      "trace_sha256": "7cd83f9b65b24de9799e73ce2f6fbb44db7ccf4f009e87c50009bc05d2ffe6f3",
+      "passed": true
+    },
+    {
+      "name": "non-address bind error does not probe or retry",
+      "platform_simulated": "darwin",
+      "exit_code": 1,
+      "simulated_elapsed_seconds": 0.0,
+      "bind_attempts": 1,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "denied",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "denied",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 0,
+      "probe_first_last": [],
+      "probe_closes": 0,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "",
+      "stderr": "ReturnBy could not bind 127.0.0.1:8769: [Errno 13] owned simulated permission refusal\n",
+      "trace_sha256": "c231a46ee659e550510594a7e7d25199242e3412a3c8b40d2d9b7b8e2cf11a6f",
+      "passed": true
+    },
+    {
+      "name": "repeated refused endpoint reaches fixed deadline",
+      "platform_simulated": "darwin",
+      "exit_code": 1,
+      "simulated_elapsed_seconds": 60.0,
+      "bind_attempts": 240,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 59.75,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 240,
+      "probe_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "refused"
+        },
+        {
+          "time": 59.75,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "refused"
+        }
+      ],
+      "probe_closes": 0,
+      "sleep_calls": 240,
+      "sleep_seconds": 60.0,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "Waiting up to 60 seconds for the local address to become available. Press Ctrl+C to cancel.\n",
+      "stderr": "ReturnBy could not bind 127.0.0.1:8769: [Errno 98] The local address is still unavailable after 60 seconds.\n",
+      "trace_sha256": "04bf8cddd5f255d2833551b2bbd1c1edd197d0cd012241e894e304a30719bf77",
+      "passed": true
+    },
+    {
+      "name": "probe timeout is capped by remaining deadline",
+      "platform_simulated": "darwin",
+      "exit_code": 1,
+      "simulated_elapsed_seconds": 60.0,
+      "bind_attempts": 1,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 1,
+      "probe_first_last": [
+        {
+          "time": 59.900000000000006,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.09999999999999432,
+          "action": "timeout"
+        },
+        {
+          "time": 59.900000000000006,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.09999999999999432,
+          "action": "timeout"
+        }
+      ],
+      "probe_closes": 0,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "",
+      "stderr": "ReturnBy could not bind 127.0.0.1:8769: [Errno 98] owned simulated incumbent or retained state\n",
+      "trace_sha256": "4673d347d09bc6dd35575e02b02c0c1937fa2995d7ebc6331582694dba3b0c35",
+      "passed": true
+    },
+    {
+      "name": "incumbent appears after refused probe; next bind remains non-reuse",
+      "platform_simulated": "darwin",
+      "exit_code": 1,
+      "simulated_elapsed_seconds": 0.25,
+      "bind_attempts": 2,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 0.25,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 2,
+      "probe_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "refused"
+        },
+        {
+          "time": 0.25,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "reachable"
+        }
+      ],
+      "probe_closes": 1,
+      "sleep_calls": 1,
+      "sleep_seconds": 0.25,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "Waiting up to 60 seconds for the local address to become available. Press Ctrl+C to cancel.\n",
+      "stderr": "ReturnBy could not bind 127.0.0.1:8769: [Errno 98] owned simulated incumbent or retained state\n",
+      "trace_sha256": "cb0ede33e6c103cd1a200db260c16caca5a8a5445cf28304327fb53f0bd1b6eb",
+      "passed": true
+    },
+    {
+      "name": "Ctrl-C cancels startup wait without worker",
+      "platform_simulated": "darwin",
+      "exit_code": 0,
+      "simulated_elapsed_seconds": 0.0,
+      "bind_attempts": 1,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 1,
+      "probe_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "refused"
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "timeout": 0.25,
+          "action": "refused"
+        }
+      ],
+      "probe_closes": 0,
+      "sleep_calls": 1,
+      "sleep_seconds": 0.25,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "Waiting up to 60 seconds for the local address to become available. Press Ctrl+C to cancel.\nReturnBy startup cancelled.\n",
+      "stderr": "",
+      "trace_sha256": "d0f35e9c51d900da48eb1609e5af7cf0cc69d3b05893a119442e1612b7d26cbe",
+      "passed": true
+    },
+    {
+      "name": "Linux busy bind retains existing immediate policy",
+      "platform_simulated": "linux",
+      "exit_code": 1,
+      "simulated_elapsed_seconds": 0.0,
+      "bind_attempts": 1,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": true,
+          "reuse_port": false
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": true,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 0,
+      "probe_first_last": [],
+      "probe_closes": 0,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "",
+      "stderr": "ReturnBy could not bind 127.0.0.1:8769: [Errno 98] owned simulated incumbent or retained state\n",
+      "trace_sha256": "6e93b9f2cb634be84873b20e49fce623fbefc915c5f7355937b72a81146e799e",
+      "passed": true
+    },
+    {
+      "name": "other-platform busy bind retains existing immediate policy",
+      "platform_simulated": "win32",
+      "exit_code": 1,
+      "simulated_elapsed_seconds": 0.0,
+      "bind_attempts": 1,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "busy",
+          "reuse_address": false,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 0,
+      "probe_first_last": [],
+      "probe_closes": 0,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "",
+      "stderr": "ReturnBy could not bind 127.0.0.1:8769: [Errno 98] owned simulated incumbent or retained state\n",
+      "trace_sha256": "7fa8e377ba5f73c13281964f794017f3ee5d9d1233a94aa7db889fba9404010a",
+      "passed": true
+    },
+    {
+      "name": "invalid assets stop before all socket boundaries",
+      "platform_simulated": "darwin",
+      "exit_code": 1,
+      "simulated_elapsed_seconds": 0.0,
+      "bind_attempts": 0,
+      "bind_first_last": [],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 0,
+      "probe_first_last": [],
+      "probe_closes": 0,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 1,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "",
+      "stderr": "ReturnBy cannot start: owned simulated invalid asset set\n",
+      "trace_sha256": "5bfa69c72f9c482d53571196addbc965c5a3dbafdf06e2ed8a9dbb5f5cde719f",
+      "passed": true
+    },
+    {
+      "name": "unexpected arguments stop before admission",
+      "platform_simulated": "darwin",
+      "exit_code": 2,
+      "simulated_elapsed_seconds": 0.0,
+      "bind_attempts": 0,
+      "bind_first_last": [],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 0,
+      "probe_first_last": [],
+      "probe_closes": 0,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 0,
+      "worker_starts": 0,
+      "worker_joins": 0,
+      "serves": 0,
+      "shutdowns": 0,
+      "server_closes": 0,
+      "stdout": "",
+      "stderr": "This foreground entry takes no arguments.\n",
+      "trace_sha256": "947ae9ec69616e22487ed5eed5006146cbdee7ecd9647125dac79478a9f1beae",
+      "passed": true
+    },
+    {
+      "name": "fresh Linux start retains existing cleanup",
+      "platform_simulated": "linux",
+      "exit_code": 0,
+      "simulated_elapsed_seconds": 0.0,
+      "bind_attempts": 1,
+      "bind_first_last": [
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "success",
+          "reuse_address": true,
+          "reuse_port": false
+        },
+        {
+          "time": 0.0,
+          "endpoint": [
+            "127.0.0.1",
+            8769
+          ],
+          "action": "success",
+          "reuse_address": true,
+          "reuse_port": false
+        }
+      ],
+      "all_binds_keep_platform_reuse_policy": true,
+      "probe_attempts": 0,
+      "probe_first_last": [],
+      "probe_closes": 0,
+      "sleep_calls": 0,
+      "sleep_seconds": 0,
+      "assets_admissions": 1,
+      "worker_starts": 1,
+      "worker_joins": 1,
+      "serves": 1,
+      "shutdowns": 1,
+      "server_closes": 1,
+      "stdout": "Tracker: http://127.0.0.1:8769/index.html\nTrip checklist: http://127.0.0.1:8769/trip-checklist.html\nOpen a URL manually. Press Enter here when finished.\n",
+      "stderr": "",
+      "trace_sha256": "6a8a2ded50e23ada28e737d3daa5a6af23f2fab7b352403632ab8db4bd11fc00",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

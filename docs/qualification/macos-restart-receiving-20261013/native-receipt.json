@@ -1,0 +1,44 @@
+{
+  "schema": "returnby.safe-darwin-restart.native.v1",
+  "host": "Mac.lan",
+  "python": "3.13.7 (v3.13.7:bcee1c32211, Aug 14 2025, 19:10:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "source_before": {
+    "serve_returnby.py": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+    "test_foreground_restarts.py": "b395f99e7e428b475ab702c710c6f2081db2f4f435ab0c0b246ba88b3d491220"
+  },
+  "courses": [
+    {
+      "name": "normal",
+      "pid": 43993,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/safe-start/test_foreground_restarts.py"
+      ],
+      "exit": 0,
+      "elapsedSeconds": 124.86,
+      "stdout": "{\"platform\": \"darwin\", \"python\": \"3.13.7\", \"source\": \"/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/safe-start/serve_returnby.py\", \"sourceSha256\": \"d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2\"}\n{\"port\": 60363, \"readinessSeconds\": 0.056, \"optimizedChild\": false}\n{\"port\": 60363, \"readinessSeconds\": 31.115, \"optimizedChild\": false}\n{\"port\": 60363, \"readinessSeconds\": 30.876, \"optimizedChild\": false}\n{\"port\": 63153, \"readinessSeconds\": 0.059, \"optimizedChild\": false}\n{\"port\": 63153, \"readinessSeconds\": 30.908, \"optimizedChild\": false}\n{\"port\": 63153, \"readinessSeconds\": 30.759, \"optimizedChild\": false}\n{\"port\": 49515, \"readinessSeconds\": 0.061, \"optimizedChild\": false}\n",
+      "stderr": "test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) ... ok\ntest_reopen_after_http_and_enter (__main__.ForegroundRestarts.test_reopen_after_http_and_enter) ... ok\ntest_reopen_after_http_and_eof (__main__.ForegroundRestarts.test_reopen_after_http_and_eof) ... ok\ntest_second_live_copy_refuses (__main__.ForegroundRestarts.test_second_live_copy_refuses) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 124.725s\n\nOK\n"
+    },
+    {
+      "name": "optimized",
+      "pid": 43995,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-O",
+        "/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/safe-start/test_foreground_restarts.py"
+      ],
+      "exit": 0,
+      "elapsedSeconds": 124.859,
+      "stdout": "{\"platform\": \"darwin\", \"python\": \"3.13.7\", \"source\": \"/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/safe-start/serve_returnby.py\", \"sourceSha256\": \"d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2\"}\n{\"port\": 60364, \"readinessSeconds\": 0.055, \"optimizedChild\": true}\n{\"port\": 60364, \"readinessSeconds\": 30.101, \"optimizedChild\": true}\n{\"port\": 60364, \"readinessSeconds\": 31.024, \"optimizedChild\": true}\n{\"port\": 63115, \"readinessSeconds\": 0.12, \"optimizedChild\": true}\n{\"port\": 63115, \"readinessSeconds\": 30.679, \"optimizedChild\": true}\n{\"port\": 63115, \"readinessSeconds\": 30.954, \"optimizedChild\": true}\n{\"port\": 49494, \"readinessSeconds\": 0.061, \"optimizedChild\": true}\n",
+      "stderr": "test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) ... ok\ntest_reopen_after_http_and_enter (__main__.ForegroundRestarts.test_reopen_after_http_and_enter) ... ok\ntest_reopen_after_http_and_eof (__main__.ForegroundRestarts.test_reopen_after_http_and_eof) ... ok\ntest_second_live_copy_refuses (__main__.ForegroundRestarts.test_second_live_copy_refuses) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 123.899s\n\nOK\n"
+    }
+  ],
+  "source_after": {
+    "serve_returnby.py": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+    "test_foreground_restarts.py": "b395f99e7e428b475ab702c710c6f2081db2f4f435ab0c0b246ba88b3d491220"
+  },
+  "source_unchanged": true,
+  "passed": true
+}

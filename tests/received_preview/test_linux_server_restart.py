@@ -1,4 +1,4 @@
-"""Exercise actual Linux foreground restarts against an original received build."""
+"""Exercise actual Linux/macOS foreground restarts against an original received build."""
 from pathlib import Path
 import hashlib
 import json
@@ -25,8 +25,8 @@ raise SystemExit(module.main())
 '''
 
 
-@unittest.skipUnless(sys.platform == 'linux' and RECEIVED, 'Requires Linux and RETURNBY_RECEIVED_DIRECTORY')
-class LinuxForegroundRestarts(unittest.TestCase):
+@unittest.skipUnless(sys.platform in ('linux', 'darwin') and RECEIVED, 'Requires Linux/macOS and RETURNBY_RECEIVED_DIRECTORY')
+class ForegroundRestarts(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix='ReturnBy restart é ')
         self.root = Path(self.temp.name)
@@ -56,7 +56,10 @@ class LinuxForegroundRestarts(unittest.TestCase):
             return sock.getsockname()[1]
 
     def start(self, port):
-        child = subprocess.Popen([sys.executable, '-B', '-u', '-c', DRIVER,
+        command = [sys.executable, '-B', '-u']
+        if sys.flags.optimize:
+            command.append('-O')
+        child = subprocess.Popen(command + ['-c', DRIVER,
                                   str(self.root / 'serve_returnby.py'), str(port)],
                                  stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         self.children.append(child)
@@ -73,16 +76,19 @@ class LinuxForegroundRestarts(unittest.TestCase):
         self.assertEqual(body, self.index)
 
     def ready(self, child, port):
-        deadline = time.monotonic() + 5
+        started = time.monotonic()
+        deadline = started + (65 if sys.platform == "darwin" else 5)
         while time.monotonic() < deadline:
             if child.poll() is not None:
                 self.fail('Server exited before HTTP readiness: ' + child.stderr.read().decode())
             try:
                 self.request(port)
+                print(json.dumps({"port": port, "readinessSeconds": round(time.monotonic()-started, 3),
+                                  "optimizedChild": bool(sys.flags.optimize)}), flush=True)
                 return
             except (ConnectionRefusedError, TimeoutError):
-                time.sleep(0.01)
-        self.fail('Server did not serve its pinned tracker within five seconds')
+                time.sleep(0.05)
+        self.fail('Server did not serve its pinned tracker within the platform startup budget')
 
     def stop(self, child, eof=False):
         if eof:
@@ -99,10 +105,10 @@ class LinuxForegroundRestarts(unittest.TestCase):
             self.ready(child, port)
             self.stop(child, eof)
 
-    def test_immediate_restart_after_http_and_enter(self):
+    def test_reopen_after_http_and_enter(self):
         self.cycle(False)
 
-    def test_immediate_restart_after_http_and_eof(self):
+    def test_reopen_after_http_and_eof(self):
         self.cycle(True)
 
     def test_second_live_copy_refuses(self):
@@ -117,21 +123,27 @@ class LinuxForegroundRestarts(unittest.TestCase):
         self.stop(first)
 
     def test_existing_listener_keeps_its_port(self):
-        for reuse_address in (False, True):
-            with self.subTest(reuse_address=reuse_address), socket.socket() as owner:
-                owner.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, int(reuse_address))
-                owner.bind(('127.0.0.1', 0))
-                owner.listen()
-                port = owner.getsockname()[1]
-                child = self.start(port)
-                _, error = child.communicate(b'\n', timeout=5)
-                self.assertEqual(child.returncode, 1)
-                self.assertIn(b'could not bind', error)
-                with socket.create_connection(('127.0.0.1', port), timeout=2) as client:
-                    connection, _ = owner.accept()
-                    with connection:
-                        client.sendall(b'original listener')
-                        self.assertEqual(connection.recv(64), b'original listener')
+        for host in ('127.0.0.1', '0.0.0.0'):
+            for reuse_address in (False, True):
+                with self.subTest(host=host, reuse_address=reuse_address), socket.socket() as owner:
+                    owner.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, int(reuse_address))
+                    owner.bind((host, 0))
+                    owner.listen()
+                    port = owner.getsockname()[1]
+                    child = self.start(port)
+                    _, error = child.communicate(b'\n', timeout=5)
+                    self.assertEqual(child.returncode, 1)
+                    self.assertIn(b'could not bind', error)
+                    if sys.platform == 'darwin':
+                        owner.settimeout(2)
+                        probe, _ = owner.accept()
+                        with probe:
+                            self.assertEqual(probe.recv(64), b'')
+                    with socket.create_connection(('127.0.0.1', port), timeout=2) as client:
+                        connection, _ = owner.accept()
+                        with connection:
+                            client.sendall(b'original listener')
+                            self.assertEqual(connection.recv(64), b'original listener')
 
 
 if __name__ == '__main__':
