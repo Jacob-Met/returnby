@@ -5,6 +5,7 @@ shell/HTTP execution retains that host's identity and is not Mac acceptance.
 """
 from __future__ import annotations
 
+import errno
 import hashlib
 import importlib.util
 import json
@@ -27,6 +28,29 @@ assert spec.loader is not None
 spec.loader.exec_module(installer)
 ARCHIVE = os.environ.get("RETURNBY_RECEIVED_ARCHIVE")
 NATIVE_MAC = sys.platform == "darwin"
+
+
+def bind_incumbent_fixture(owner):
+    """Admit the test-owned listener without mistaking TIME_WAIT for a product failure."""
+    if sys.platform == "linux":
+        # This fixture covers a reuse-enabled incumbent; port reuse stays off.
+        owner.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    deadline = time.monotonic() + 65
+    while True:
+        try:
+            owner.bind(("127.0.0.1", 8769))
+            return
+        except OSError as error:
+            if not NATIVE_MAC or error.errno != errno.EADDRINUSE or time.monotonic() >= deadline:
+                raise
+            # Keep Darwin's non-reuse fixture bind; never wait out a live owner.
+            try:
+                with socket.create_connection(("127.0.0.1", 8769), timeout=0.25):
+                    pass
+            except ConnectionRefusedError:
+                time.sleep(0.25)
+            else:
+                raise RuntimeError("Receiver fixture port already has a live owner") from error
 
 
 def inventory(path: Path) -> dict:
@@ -63,7 +87,7 @@ class ReceivedMacEntry(unittest.TestCase):
         return child
 
     def wait_ready(self, child):
-        deadline = time.monotonic() + 10
+        deadline = time.monotonic() + (65 if NATIVE_MAC else 10)
         while time.monotonic() < deadline:
             if child.poll() is not None:
                 self.fail("Entry exited before readiness: " + repr(child.communicate()))
@@ -73,9 +97,9 @@ class ReceivedMacEntry(unittest.TestCase):
                     return
             except OSError:
                 time.sleep(0.05)
-        self.fail("Entry did not become ready within ten seconds")
+        self.fail("Entry did not become ready within the host startup deadline")
 
-    def test_all_assets_and_server_remain_exact(self):
+    def test_all_assets_and_source_identity_remain_exact(self):
         self.assertEqual(self.receipt["assetsVerified"], 10)
         self.assertEqual(self.receipt["sourceCommit"], installer.SOURCE_COMMIT)
         self.assertEqual(installer.check_installation(self.destination), self.receipt)
@@ -131,7 +155,7 @@ class ReceivedMacEntry(unittest.TestCase):
 
     def test_occupied_port_is_preserved(self):
         with socket.socket() as owner:
-            owner.bind(("127.0.0.1", 8769))
+            bind_incumbent_fixture(owner)
             owner.listen()
             child = self.start()
             out, err = child.communicate(timeout=6)
@@ -155,6 +179,7 @@ class ReceivedMacEntry(unittest.TestCase):
         with self.assertRaises(HTTPError) as caught:
             urlopen("http://127.0.0.1:8769/INSTALLATION.json", timeout=3)
         self.assertEqual(caught.exception.code, 404)
+        caught.exception.close()
         out, err = child.communicate("\n", timeout=6)
         self.assertEqual(child.returncode, 0, err)
         self.assertIn("Tracker:", out)
@@ -172,6 +197,173 @@ class ReceivedMacEntry(unittest.TestCase):
         self.assertIn("Tracker:", out)
         with socket.socket() as probe:
             self.assertNotEqual(probe.connect_ex(("127.0.0.1", 8769)), 0)
+
+    def source_copy(self, name="source copy"):
+        source = self.root / name
+        source.mkdir()
+        own_installer = source / "install_macos.py"
+        own_installer.write_bytes(Path(installer.__file__).read_bytes())
+        (source / "serve_returnby.py").write_bytes(
+            (ROOT / "tools/received_preview/serve_returnby.py").read_bytes())
+        return own_installer
+
+    def test_original_custody_and_installed_runtime_roles_are_exact(self):
+        archive, files, _ = installer.admit_archive(Path(ARCHIVE))
+        runtime = (ROOT / "tools/received_preview/serve_returnby.py").read_bytes()
+        self.assertEqual((self.destination / "recovery/received-build.zip").read_bytes(), archive)
+        self.assertEqual((self.destination / "recovery/original-serve_returnby.py").read_bytes(),
+                         files["serve_returnby.py"])
+        self.assertEqual((self.destination / "serve_returnby.py").read_bytes(), runtime)
+        self.assertEqual((self.destination / "recovery/serve_returnby.py").read_bytes(), runtime)
+        self.assertNotEqual(runtime, files["serve_returnby.py"])
+        self.assertEqual(self.receipt["originalServerSha256"], installer.ORIGINAL_SERVER_SHA256)
+        self.assertEqual(self.receipt["installedServerSha256"], installer.INSTALLED_SERVER_SHA256)
+
+    def test_bad_adjacent_runtime_refuses_before_mkdir_then_corrected_retry_succeeds(self):
+        original = (ROOT / "tools/received_preview/serve_returnby.py").read_bytes()
+        for kind in ("missing", "directory", "symlink", "changed", "truncated", "oversized"):
+            with self.subTest(kind=kind):
+                own_installer = self.source_copy("source " + kind)
+                runtime = own_installer.with_name("serve_returnby.py")
+                runtime.unlink()
+                if kind == "directory":
+                    runtime.mkdir()
+                elif kind == "symlink":
+                    target = own_installer.with_name("same bytes.py")
+                    target.write_bytes(original)
+                    runtime.symlink_to(target)
+                elif kind == "changed":
+                    runtime.write_bytes(bytes([original[0] ^ 1]) + original[1:])
+                elif kind == "truncated":
+                    runtime.write_bytes(original[:-1])
+                elif kind == "oversized":
+                    runtime.write_bytes(original + b"\n")
+                destination = self.root / ("corrected " + kind)
+                with patch.object(installer, "__file__", str(own_installer)):
+                    with patch.object(installer.sys, "platform", "darwin"):
+                        with self.assertRaises((OSError, ValueError)):
+                            installer.install(Path(ARCHIVE), destination)
+                        self.assertFalse(destination.exists())
+                        if runtime.is_symlink() or runtime.is_file():
+                            runtime.unlink()
+                        elif runtime.is_dir():
+                            runtime.rmdir()
+                        runtime.write_bytes(original)
+                        received = installer.install(Path(ARCHIVE), destination)
+                self.assertTrue(received["accepted"])
+                self.assertEqual((destination / "serve_returnby.py").read_bytes(), original)
+
+    def test_admitted_runtime_bytes_are_reused_after_source_changes(self):
+        own_installer = self.source_copy()
+        runtime = own_installer.with_name("serve_returnby.py")
+        admitted = runtime.read_bytes()
+        destination = self.root / "admitted before source changed"
+        original_mkdir = Path.mkdir
+
+        def change_after_admission(path, *args, **kwargs):
+            if path == destination:
+                runtime.write_bytes(b"changed after runtime admission")
+            return original_mkdir(path, *args, **kwargs)
+
+        with patch.object(installer, "__file__", str(own_installer)):
+            with patch.object(installer.sys, "platform", "darwin"):
+                with patch.object(Path, "mkdir", change_after_admission):
+                    received = installer.install(Path(ARCHIVE), destination)
+        self.assertTrue(received["accepted"])
+        self.assertNotEqual(runtime.read_bytes(), admitted)
+        self.assertEqual((destination / "serve_returnby.py").read_bytes(), admitted)
+        self.assertEqual((destination / "recovery/serve_returnby.py").read_bytes(), admitted)
+
+    def test_self_check_refuses_each_changed_runtime_custody_copy(self):
+        for name in ("serve_returnby.py", "recovery/serve_returnby.py",
+                     "recovery/original-serve_returnby.py", "recovery/install_macos.py"):
+            with self.subTest(name=name):
+                path = self.destination / name
+                original = path.read_bytes()
+                try:
+                    path.write_bytes(bytes([original[0] ^ 1]) + original[1:])
+                    with self.assertRaises(ValueError):
+                        installer.check_installation(self.destination)
+                finally:
+                    path.write_bytes(original)
+                self.assertEqual(installer.check_installation(self.destination), self.receipt)
+
+    def test_self_check_refuses_runtime_role_tampering_and_v1_receipt(self):
+        path = self.destination / "INSTALLATION.json"
+        original = path.read_bytes()
+        for field, value in (
+                ("originalServerSha256", installer.INSTALLED_SERVER_SHA256),
+                ("installedServerSha256", installer.ORIGINAL_SERVER_SHA256),
+                ("schema", "returnby-macos-received-preview-v1")):
+            with self.subTest(field=field):
+                changed = json.loads(original)
+                changed[field] = value
+                try:
+                    path.write_text(json.dumps(changed), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, "receipt does not match"):
+                        installer.check_installation(self.destination)
+                finally:
+                    path.write_bytes(original)
+        self.assertEqual(installer.check_installation(self.destination), self.receipt)
+
+    def test_retained_installer_recovers_into_another_new_destination(self):
+        original = inventory(self.destination)
+        retained = self.destination / "recovery/install_macos.py"
+        recovery_spec = importlib.util.spec_from_file_location("returnby_recovery_copy", retained)
+        recovery = importlib.util.module_from_spec(recovery_spec)
+        recovery_spec.loader.exec_module(recovery)
+        second = self.root / "Recovered reçu copy"
+        with patch.object(recovery.sys, "platform", "darwin"):
+            received = recovery.install(self.destination / "recovery/received-build.zip", second)
+            with self.assertRaises(FileExistsError):
+                recovery.install(self.destination / "recovery/received-build.zip", second)
+        self.assertTrue(received["accepted"])
+        self.assertEqual(recovery.check_installation(second), received)
+        self.assertEqual(inventory(second), original)
+        self.assertEqual(inventory(self.destination), original)
+
+    def test_payload_write_failure_retains_partial_copy_without_launcher(self):
+        destination = self.root / "partial copy"
+        original_open = Path.open
+
+        def fail_payload(path, mode="r", *args, **kwargs):
+            if path == destination / "recovery/serve_returnby.py" and mode == "xb":
+                raise OSError("controlled recovery payload write failure")
+            return original_open(path, mode, *args, **kwargs)
+
+        with patch.object(installer.sys, "platform", "darwin"):
+            with patch.object(Path, "open", fail_payload):
+                with self.assertRaisesRegex(OSError, "controlled recovery"):
+                    installer.install(Path(ARCHIVE), destination)
+            self.assertTrue(destination.is_dir())
+            self.assertFalse((destination / installer.ENTRY_NAME).exists())
+            self.assertFalse((destination / "INSTALLATION.json").exists())
+            partial = inventory(destination)
+            with self.assertRaises(FileExistsError):
+                installer.install(Path(ARCHIVE), destination)
+            self.assertEqual(inventory(destination), partial)
+            fresh = self.root / "fresh after partial"
+            self.assertTrue(installer.install(Path(ARCHIVE), fresh)["accepted"])
+
+    def test_non_object_receipt_is_a_controlled_cli_refusal(self):
+        path = self.destination / "INSTALLATION.json"
+        original = path.read_bytes()
+        for value in (None, [], 7, "invalid receipt"):
+            with self.subTest(value=value):
+                try:
+                    path.write_text(json.dumps(value), encoding="utf-8")
+                    child = subprocess.run(
+                        [sys.executable, "-B", *(["-O"] if sys.flags.optimize else []),
+                         str(self.destination / "recovery/install_macos.py"),
+                         "--check", str(self.destination)],
+                        text=True, capture_output=True, timeout=6)
+                    self.assertEqual(child.returncode, 2)
+                    self.assertEqual(child.stdout, "")
+                    self.assertIn("receipt does not match", child.stderr)
+                    self.assertNotIn("Traceback", child.stderr)
+                finally:
+                    path.write_bytes(original)
+        self.assertEqual(installer.check_installation(self.destination), self.receipt)
 
 
 if __name__ == "__main__":

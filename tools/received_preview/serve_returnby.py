@@ -2,12 +2,16 @@
 from pathlib import Path
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from threading import Thread
+import errno
 import hashlib
 import json
 import sys
+import socket
+import time
 
 MANIFEST_SHA256 = "5bf81ba20fd4c12732661f0008c09ca71095176d72b373b04f4767c73fb75a83"
 PORT = 8769
+STARTUP_WAIT_SECONDS = 60.0
 
 
 def admitted_assets():
@@ -37,6 +41,43 @@ def admitted_assets():
         assets["/" + item["path"]] = (body, mime)
     assets["/"] = assets["/index.html"]
     return assets
+
+
+def bind_local_server(server_type, handler):
+    """Keep Darwin's non-reuse bind and wait only for a refused local endpoint."""
+    deadline = time.monotonic() + STARTUP_WAIT_SECONDS
+    last_error = None
+    announced = False
+    while True:
+        if last_error is not None and time.monotonic() >= deadline:
+            raise OSError(errno.EADDRINUSE,
+                          "The local address is still unavailable after 60 seconds.") from last_error
+        try:
+            return server_type(("127.0.0.1", PORT), handler)
+        except OSError as error:
+            if sys.platform != "darwin" or error.errno != errno.EADDRINUSE:
+                raise
+            last_error = error
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                continue
+            try:
+                with socket.create_connection(("127.0.0.1", PORT),
+                                              timeout=min(0.25, remaining)):
+                    pass
+            except ConnectionRefusedError:
+                pass
+            except OSError:
+                raise error from None
+            else:
+                raise error
+            if not announced:
+                print("Waiting up to 60 seconds for the local address to become available. "
+                      "Press Ctrl+C to cancel.", flush=True)
+                announced = True
+            remaining = deadline - time.monotonic()
+            if remaining > 0:
+                time.sleep(min(0.25, remaining))
 
 
 def main():
@@ -75,7 +116,9 @@ def main():
             pass
 
     class LocalServer(HTTPServer):
-        allow_reuse_address = False
+        # Linux retains released-address reuse. Darwin keeps non-reuse binding.
+        allow_reuse_address = sys.platform == "linux"
+        allow_reuse_port = False
 
         def get_request(self):
             request, address = super().get_request()
@@ -83,10 +126,13 @@ def main():
             return request, address
 
     try:
-        server = LocalServer(("127.0.0.1", PORT), Handler)
+        server = bind_local_server(LocalServer, Handler)
     except OSError as error:
         print("ReturnBy could not bind 127.0.0.1:8769: " + str(error), file=sys.stderr)
         return 1
+    except KeyboardInterrupt:
+        print("ReturnBy startup cancelled.", flush=True)
+        return 0
     worker = Thread(target=lambda: server.serve_forever(poll_interval=0.05), daemon=True)
     started = False
     try:
