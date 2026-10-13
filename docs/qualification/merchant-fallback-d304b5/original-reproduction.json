@@ -1,0 +1,197 @@
+{
+  "node": "v24.19.0",
+  "sourceSha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749",
+  "policySha256": "1752f81e3fb63c4ab038fd74bf5528cb437828278b672376b5ba885988d7334a",
+  "results": [
+    {
+      "label": "Contosocial",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "label": "Fabrikamatic",
+      "parsed": {
+        "merchant": "fabrikam",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 60,
+        "source": "policy"
+      }
+    },
+    {
+      "label": "NotContoso",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "label": "éContoso",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "label": "Contoso2",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "label": "Contoso_Orders",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "label": "Contoso",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "label": "Contoso Electronics",
+      "parsed": {
+        "merchant": "Contoso Electronics",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "label": "(Fabrikam)",
+      "parsed": {
+        "merchant": "fabrikam",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 60,
+        "source": "policy"
+      }
+    },
+    {
+      "label": "From: Contosocial <orders@example.test>",
+      "parsed": {
+        "merchant": "Contosocial",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      }
+    }
+  ]
+}

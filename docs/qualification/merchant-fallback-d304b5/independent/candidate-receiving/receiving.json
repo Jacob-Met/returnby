@@ -1,0 +1,725 @@
+{
+  "completed_at": "2026-10-13T09:39:37.739Z",
+  "runtime": "v24.19.0",
+  "mode": "fixed",
+  "contract_sha256": "d67384b5e646befc5f65f528bb87080721e3c370ed4977671f2f60119e52f112",
+  "before": {
+    "src/parse.ts": "fef62a112b19f1729809f6cbc3eb2ad337ebe912a422cd5d1a71cb235ee61b4b",
+    "src/policy.ts": "1752f81e3fb63c4ab038fd74bf5528cb437828278b672376b5ba885988d7334a",
+    "data/policies.json": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+  },
+  "after": {
+    "src/parse.ts": "fef62a112b19f1729809f6cbc3eb2ad337ebe912a422cd5d1a71cb235ee61b4b",
+    "src/policy.ts": "1752f81e3fb63c4ab038fd74bf5528cb437828278b672376b5ba885988d7334a",
+    "data/policies.json": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+  },
+  "unchanged": true,
+  "cases": [
+    {
+      "name": "reject-Contosocial",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-NotContoso",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-Contoso2",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-2Contoso",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-Contoso_Orders",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-éContoso",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-Contoso東京",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-́Contoso",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-Contosó",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-Fabrikamatic",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-Tailspinning",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-Northwindy",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "reject-AdventureworksPlus",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "complete-alias",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "complete-display",
+      "parsed": {
+        "merchant": "Contoso Electronics",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "punctuation-delimiters",
+      "parsed": {
+        "merchant": "fabrikam",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 60,
+        "source": "policy"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "emoji-delimiters",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "later-valid-occurrence",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "configured-order-not-text-order",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "from-display-priority",
+      "parsed": {
+        "merchant": "Contosocial",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "from-domain-priority",
+      "parsed": {
+        "merchant": "Fabrikam",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 60,
+        "source": "policy"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "invalid-from-fallback",
+      "parsed": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "unknown-only",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "literal-plus",
+      "parsed": {
+        "merchant": "A+B",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "literal-dot",
+      "parsed": {
+        "merchant": "C.S",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "literal-brackets",
+      "parsed": {
+        "merchant": "Shop[one]",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    },
+    {
+      "name": "literal-not-regex",
+      "parsed": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "checks": {
+        "merchant": true,
+        "found": true,
+        "policy": true,
+        "unchanged_fields": true
+      },
+      "passed": true
+    }
+  ],
+  "passed_cases": 27,
+  "total_cases": 27,
+  "qualified": true,
+  "scope": "Actual unchanged parser import and maintained policy module with only its JSON transport adapted to Node built-in loading; no application/browser/native execution."
+}

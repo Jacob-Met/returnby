@@ -1,0 +1,11 @@
+file:///dev/shm/hamon-d304b5-source/returnby-merchant/candidate/src/parse.ts:73
+    if (new RegExp('(?:^|' + boundary + ')' + escaped + '(?=$|' + boundary + ')', 'u').test(lower)) return k;
+        ^
+
+SyntaxError: Invalid regular expression: /(?:^|[^\p{L}\p{M}\p{N}_])a\  for (const k of known) if (lower.includes(k.toLowerCase())) return k;cme(?=$|[^\p{L}\p{M}\p{N}_])/u: Invalid escape
+    at new RegExp (<anonymous>)
+    at pickMerchant (file:///dev/shm/hamon-d304b5-source/returnby-merchant/candidate/src/parse.ts:73:9)
+    at parse (file:///dev/shm/hamon-d304b5-source/returnby-merchant/candidate/src/parse.ts:79:20)
+    at file:///dev/shm/hamon-d304b5-source/returnby-merchant/candidate/tests/merchant-fallback.native.mjs:65:18
+
+Node.js v24.19.0

@@ -1,0 +1,297 @@
+{
+  "schema": "hamon.returnby-independent-receiver.v1",
+  "frozen_at": "2026-10-13T09:31:46.585569+00:00",
+  "scope": "Independent fixture contract frozen before candidate exposure, parser fallback span only; all calls also retain order/date/total fields. Existing From priority and configured known-name order preserved.",
+  "original_commit": "7a271cf",
+  "cases": [
+    {
+      "name": "reject-Contosocial",
+      "text": "Contosocial",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-NotContoso",
+      "text": "NotContoso",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-Contoso2",
+      "text": "Contoso2",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-2Contoso",
+      "text": "2Contoso",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-Contoso_Orders",
+      "text": "Contoso_Orders",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-éContoso",
+      "text": "éContoso",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-Contoso東京",
+      "text": "Contoso東京",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-́Contoso",
+      "text": "́Contoso",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-Contosó",
+      "text": "Contosó",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-Fabrikamatic",
+      "text": "Fabrikamatic",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-Tailspinning",
+      "text": "Tailspinning",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-Northwindy",
+      "text": "Northwindy",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "reject-AdventureworksPlus",
+      "text": "AdventureworksPlus",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "complete-alias",
+      "text": "Receipt from CONTOSO.",
+      "expected_merchant": "contoso",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "name": "complete-display",
+      "text": "Contoso Electronics receipt",
+      "expected_merchant": "Contoso Electronics",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "name": "punctuation-delimiters",
+      "text": "(Fabrikam), receipt",
+      "expected_merchant": "fabrikam",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 60,
+        "source": "policy"
+      }
+    },
+    {
+      "name": "emoji-delimiters",
+      "text": "🍂Contoso🧾 receipt",
+      "expected_merchant": "contoso",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "name": "later-valid-occurrence",
+      "text": "Contosocial ad; Contoso receipt",
+      "expected_merchant": "contoso",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "name": "configured-order-not-text-order",
+      "text": "Tailspin and Contoso receipt",
+      "expected_merchant": "contoso",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "name": "from-display-priority",
+      "text": "From: Contosocial <orders@example.test>\nContoso receipt",
+      "expected_merchant": "Contosocial",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "from-domain-priority",
+      "text": "From: orders@fabrikam.example\nContoso receipt",
+      "expected_merchant": "Fabrikam",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 60,
+        "source": "policy"
+      }
+    },
+    {
+      "name": "invalid-from-fallback",
+      "text": "From: <not-an-email>\nContoso receipt",
+      "expected_merchant": "contoso",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 15,
+        "source": "policy"
+      }
+    },
+    {
+      "name": "unknown-only",
+      "text": "Unlisted Store receipt",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      }
+    },
+    {
+      "name": "literal-plus",
+      "text": "Receipt (A+B).",
+      "expected_merchant": "A+B",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "known": [
+        "A+B"
+      ]
+    },
+    {
+      "name": "literal-dot",
+      "text": "Receipt (C.S).",
+      "expected_merchant": "C.S",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "known": [
+        "C.S"
+      ]
+    },
+    {
+      "name": "literal-brackets",
+      "text": "Receipt (Shop[one]).",
+      "expected_merchant": "Shop[one]",
+      "expected_found": true,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "known": [
+        "Shop[one]"
+      ]
+    },
+    {
+      "name": "literal-not-regex",
+      "text": "Receipt AAAB and CxS and Shopo.",
+      "expected_merchant": "",
+      "expected_found": false,
+      "expected_policy": {
+        "days": 30,
+        "source": "default"
+      },
+      "known": [
+        "A+B",
+        "C.S",
+        "Shop[one]"
+      ]
+    }
+  ],
+  "unchanged_fields": {
+    "orderDate": "2026-10-03",
+    "orderNo": "AB1234",
+    "total": "$12.00"
+  }
+}

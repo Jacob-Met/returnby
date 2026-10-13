@@ -1,0 +1,38 @@
+{
+  "schema": "hamon.returnby.merchant-fallback.independent-review.v1",
+  "at": "2026-10-13T09:41:29.042538+00:00",
+  "disposition": "accepted for narrow source publication and downstream receiving",
+  "reviewer": "runtime_consumer",
+  "source_sha256": "fef62a112b19f1729809f6cbc3eb2ad337ebe912a422cd5d1a71cb235ee61b4b",
+  "source_bytes": 3496,
+  "contract_sha256": "d67384b5e646befc5f65f528bb87080721e3c370ed4977671f2f60119e52f112",
+  "receiver_sha256": "15be7dbca76c730ce0833d13c7f65c224a24ce20d01b1e62a4e95c47a2b47e3b",
+  "original": {
+    "passed": 14,
+    "total": 27,
+    "expected_boundary_failures": 13
+  },
+  "candidate": {
+    "passed": 27,
+    "total": 27,
+    "all_source_hashes_preserved": true,
+    "completed_at": "2026-10-13T09:39:37.739Z",
+    "receipt_sha256": "821e9e4f5774c049c89febbe7c34e845ef2e308a4a8f9fbc7e32639151bc3045"
+  },
+  "source_review": [
+    "Read complete original parser and policy/data, full candidate delta, maintained48-case course and guide.",
+    "Exact inverse of the sole six-line loop replacement restores every original parser byte; From logic, dates, reference and total extraction unchanged. Policy/data/package byte-identical.",
+    "Unicode letters, marks, numbers and underscore remain word constituents; literal alias regex escaping, later occurrences, configured order and empty-alias early stop are correct.",
+    "Unchanged independent27-case caller executes actual parser and maintained policy with only JSON loader transport adaptation. Full contract frozen before candidate exposure."
+  ],
+  "history": [
+    "First candidate invocation ran evaluation but hit ENOSPC while writing receiving.json;12,288-byte partial receipt retained with original combined tool result in session. No acceptance relied on it.",
+    "Unchanged receiver repeated once into per-command temporary /dev storage solely to recover complete evidence. Complete16,180-byte JSON was gzip-transferred in that same command and verified after extraction.",
+    "This is one completed candidate qualification plus one failed evidence-write attempt, not two independent successes."
+  ],
+  "limits": [
+    "No author48-case rerun, browser, installed-copy receiving, full Vitest/build or main merge by reviewer.",
+    "Temporary PR62 composition remains author-qualified separate evidence; narrow source excludes its lines.",
+    "Independent test confirms lexical parsing and policy attribution, not merchant authenticity or real return terms."
+  ]
+}

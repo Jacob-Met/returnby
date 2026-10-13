@@ -1,0 +1,91 @@
+{
+  "schema": "returnby.merchant-fallback.author-qualification.v1",
+  "timestamp": "2026-10-13T09:41:28.613743+00:00",
+  "repository": "Jacob-Met/returnby",
+  "issue": 66,
+  "parent": "7a271cfbc27e6c79a889b90920a700fdbf638e22",
+  "tree": "c53ca326af314176e1367b6585e876ed3e560a21",
+  "production_change": {
+    "path": "src/parse.ts",
+    "original_bytes": 3284,
+    "candidate_bytes": 3496,
+    "original_sha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749",
+    "candidate_sha256": "fef62a112b19f1729809f6cbc3eb2ad337ebe912a422cd5d1a71cb235ee61b4b",
+    "old_lines": 1,
+    "new_lines": 6,
+    "inverse_exact": true
+  },
+  "preserved_inputs": {
+    "src/policy.ts": {
+      "bytes": 971,
+      "sha256": "1752f81e3fb63c4ab038fd74bf5528cb437828278b672376b5ba885988d7334a"
+    },
+    "data/policies.json": {
+      "bytes": 449,
+      "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+    },
+    "package.json": {
+      "bytes": 313,
+      "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c"
+    }
+  },
+  "courses": {
+    "original-regression": {
+      "bytes": 51917,
+      "sha256": "696591fc0db885b4e15ee02c9afa0956bd048030fb428275d5fcc3d759b2119a",
+      "counts": {
+        "total": 48,
+        "passed": 27,
+        "failed": 21
+      }
+    },
+    "candidate-regression": {
+      "bytes": 44885,
+      "sha256": "48ecc3f73c0fb515188aa15cca6171672db56ff87ebbe0df8ec42d14eef28f85",
+      "counts": {
+        "total": 48,
+        "passed": 48,
+        "failed": 0
+      }
+    },
+    "composition-merchant": {
+      "bytes": 44885,
+      "sha256": "b166804d5814a98db09baae2a08c4a7c6efb52343dc567a8d8d6a9141137d6c9",
+      "counts": {
+        "total": 48,
+        "passed": 48,
+        "failed": 0
+      }
+    },
+    "composition-date": {
+      "bytes": 21972,
+      "sha256": "09e91e8cf0b82f14fcc1e603d6145366c69854c4e0cd4ee99e4164a5354c9347",
+      "counts": {
+        "checks": 22,
+        "passed": 22,
+        "failed": 0
+      }
+    }
+  },
+  "history": {
+    "first-edit-parse.ts": {
+      "bytes": 3565,
+      "sha256": "6252ac77749fe5f1a2c0b9e7a28ba112824de320a9ba61763e3dfe02bbb9d658"
+    },
+    "first-edit.stderr": {
+      "bytes": 752,
+      "sha256": "6953e593ec5badea0d616dc235e8a82cb5a6fde1f4dbea3a0efd8aa843994a57"
+    },
+    "first-edit.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "limits": [
+    "No full Vitest or TypeScript/Vite build",
+    "No browser or installed-copy receiving",
+    "No main merge or PR62 adoption",
+    "No Actions execution"
+  ],
+  "independent_review": "Separate peer receipt follows; author results do not substitute for it."
+}

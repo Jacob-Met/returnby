@@ -1,0 +1,15 @@
+{
+  "frozen_contract_at": "2026-10-13T09:31:46.585569+00:00",
+  "original_completed_at": "2026-10-13T09:32:50.395Z",
+  "receiver_sha256": "15be7dbca76c730ce0833d13c7f65c224a24ce20d01b1e62a4e95c47a2b47e3b",
+  "contract_sha256": "d67384b5e646befc5f65f528bb87080721e3c370ed4977671f2f60119e52f112",
+  "candidate_unexposed": true,
+  "original_result": {
+    "qualified": true,
+    "passing_controls": 14,
+    "expected_failing_cases": 13,
+    "source_unchanged": true
+  },
+  "execution": "One actual Node24 receiver invocation, exit0 for expected original-failure profile; original returned14/27 contract passes. Node experimental stripTypeScriptTypes warning retained in tool output.",
+  "scope": "Frozen before any candidate body or patch details received. Author reports48-case course independently; this27-case receiver does not consume that course."
+}

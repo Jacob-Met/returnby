@@ -1,0 +1,16 @@
+--- a/src/parse.ts
++++ b/src/parse.ts
+@@ -66,7 +66,12 @@
+     if (dom) return dom[1].charAt(0).toUpperCase() + dom[1].slice(1);
+   }
+   const lower = text.toLowerCase();
+-  for (const k of known) if (lower.includes(k.toLowerCase())) return k;
++  const boundary = '[^\\p{L}\\p{M}\\p{N}_]';
++  for (const k of known) {
++    if (!k) return k;
++    const escaped = k.toLowerCase().replace(/[.*+?^{}$()|[\]\\]/g, '\\$&');
++    if (new RegExp('(?:^|' + boundary + ')' + escaped + '(?=$|' + boundary + ')', 'u').test(lower)) return k;
++  }
+   return '';
+ }
+ 

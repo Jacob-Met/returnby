@@ -1,0 +1,1853 @@
+{
+  "schema": "returnby.merchant-fallback-regression.v1",
+  "node": "v24.19.0",
+  "loader": "Exact parser imported via built-in TypeScript stripping; exact policy stripped with only its static JSON import resolved to exact repository data and the Node-required JSON import attribute.",
+  "inputs": [
+    {
+      "path": "src/parse.ts",
+      "bytes": 3284,
+      "sha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749"
+    },
+    {
+      "path": "src/policy.ts",
+      "bytes": 971,
+      "sha256": "1752f81e3fb63c4ab038fd74bf5528cb437828278b672376b5ba885988d7334a"
+    },
+    {
+      "path": "data/policies.json",
+      "bytes": 449,
+      "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+    }
+  ],
+  "counts": {
+    "total": 48,
+    "passed": 27,
+    "failed": 21
+  },
+  "results": [
+    {
+      "label": "embedded: Contosocial",
+      "input": "Contosocial\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: NotContoso",
+      "input": "NotContoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: Fabrikamatic",
+      "input": "Fabrikamatic\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "fabrikam",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 60,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'fabrikam',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: Tailspinner",
+      "input": "Tailspinner\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "tailspin",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 90,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'tailspin',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: AdventureWorksheets",
+      "input": "AdventureWorksheets\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "adventureworks",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 45,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'adventureworks',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: éContoso",
+      "input": "éContoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: Contosoé",
+      "input": "Contosoé\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: 中Contoso",
+      "input": "中Contoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: Contoso中",
+      "input": "Contoso中\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: ́Contoso",
+      "input": "́Contoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: Contosó",
+      "input": "Contosó\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: 2Contoso",
+      "input": "2Contoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: Contoso2",
+      "input": "Contoso2\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: _Contoso",
+      "input": "_Contoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: Contoso_",
+      "input": "Contoso_\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: 𝟚Contoso",
+      "input": "𝟚Contoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: Contoso𝟚",
+      "input": "Contoso𝟚\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: 𐐀Contoso",
+      "input": "𐐀Contoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: Contoso𐐀",
+      "input": "Contoso𐐀\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "embedded: Contosocial\nFabrikamatic",
+      "input": "Contosocial\nFabrikamatic\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n+     merchant: true,\n-     merchant: false,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: '',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "control: Contoso",
+      "input": "Contoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: CONTOSO",
+      "input": "CONTOSO\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: Contoso Electronics",
+      "input": "Contoso Electronics\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "Contoso Electronics",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Contoso Electronics",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: cOnToSo eLeCtRoNiCs",
+      "input": "cOnToSo eLeCtRoNiCs\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "Contoso Electronics",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Contoso Electronics",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: (Contoso)",
+      "input": "(Contoso)\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: Contoso—receipt",
+      "input": "Contoso—receipt\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: Receipt: Contoso!",
+      "input": "Receipt: Contoso!\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: 🛍Contoso🧾",
+      "input": "🛍Contoso🧾\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: Northwind Outfitters",
+      "input": "Northwind Outfitters\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "Northwind Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Northwind Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: Fabrikam",
+      "input": "Fabrikam\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "fabrikam",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "fabrikam",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 60,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 60,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: Tailspin Toys",
+      "input": "Tailspin Toys\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "Tailspin Toys",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Tailspin Toys",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 90,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 90,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: Adventure Works",
+      "input": "Adventure Works\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "Adventure Works",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Adventure Works",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 45,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 45,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: ADVENTUREWORKS",
+      "input": "ADVENTUREWORKS\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "adventureworks",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "adventureworks",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 45,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 45,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: Contosocial\nFabrikam",
+      "input": "Contosocial\nFabrikam\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "fabrikam",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 60,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n      orderDate: true,\n      orderNo: true,\n      total: true\n    },\n+   merchant: 'contoso',\n-   merchant: 'fabrikam',\n    orderDate: '2026-10-03',\n    orderNo: 'AB1234',\n    total: '$12.00'\n  }\n"
+    },
+    {
+      "label": "control: Contosocial\nContoso",
+      "input": "Contosocial\nContoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: Tailspin\nContoso",
+      "input": "Tailspin\nContoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 15,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: From: Contosocial <orders@example.test>\nContoso",
+      "input": "From: Contosocial <orders@example.test>\nContoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "Contosocial",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Contosocial",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: From: \"Fictional Shop\" <orders@contoso.test>\nContoso",
+      "input": "From: \"Fictional Shop\" <orders@contoso.test>\nContoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "Fictional Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Fictional Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "control: From: orders@fabrikam.test\nContoso",
+      "input": "From: orders@fabrikam.test\nContoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "Fabrikam",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Fabrikam",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 60,
+        "source": "policy"
+      },
+      "actualPolicy": {
+        "days": 60,
+        "source": "policy"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "literal dot matches",
+      "input": "(A.CME)\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "A.CME",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "A.CME",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "literal dot refuses wildcard",
+      "input": "AXCME\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "literal plus matches",
+      "input": "C++ receipt\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "C++",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "C++",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "literal brackets match",
+      "input": "[Shop] receipt\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "[Shop]",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "[Shop]",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "literal regex sequence matches",
+      "input": "(A.*B)\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "A.*B",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "A.*B",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "literal regex refuses wildcard",
+      "input": "AzzB\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "configured order stays first",
+      "input": "Beta, Alpha\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "Alpha",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Alpha",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "empty known list",
+      "input": "Contoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    },
+    {
+      "label": "empty alias preserves original stop",
+      "input": "Contoso\nOrder #AB1234\nOrder date: 2026-10-03\nTotal: $12.00",
+      "expected": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "",
+        "orderDate": "2026-10-03",
+        "orderNo": "AB1234",
+        "total": "$12.00",
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "actualPolicy": {
+        "days": 30,
+        "source": "default"
+      },
+      "pass": true,
+      "error": null
+    }
+  ]
+}
