@@ -50,6 +50,10 @@ Chromium, if already available.
 Parent directories can be created. If omitted, a unique temporary directory
 is created and its absolute path appears in the printed receipt.
 
+A success receipt is printed only after the browser has closed and `result.json`
+has been saved. A failure while closing the browser or saving the receipt prevents
+that success message.
+
 Successful receiving keeps these files:
 
 - `result.json`: target, actual parsed review values and their expectations,

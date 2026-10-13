@@ -83,7 +83,7 @@ Total: $42.50"""
             mobile.screenshot(path=str(out/'returnby-mobile.png'),full_page=True)
             assert not errors,errors;assert not bad,bad
             receipt.update({'passed':True,'orders_saved':2,'custom_window_days':45,'ics_alarm':'-P3D','email_not_persisted':True,'mobile_overflow':overflow,'calendar':ics_path.name,'captures':[(p.name,p.stat().st_size) for p in out.glob('returnby-*.png')]})
-            print(json.dumps(receipt));browser.close()
+            browser.close()
     except Exception as exc:
         receipt['passed']=False
         receipt['failure']={'type':type(exc).__name__,'message':str(exc)}
@@ -91,4 +91,5 @@ Total: $42.50"""
     finally:
         if server is not None: server.shutdown();server.server_close()
         (out/'result.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
+    print(json.dumps(receipt))
 if __name__=='__main__': main()
