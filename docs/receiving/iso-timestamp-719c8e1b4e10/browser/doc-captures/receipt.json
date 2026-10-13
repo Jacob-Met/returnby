@@ -1,0 +1,501 @@
+{
+  "schema": "returnby.timestamp_doc_captures.v1",
+  "actor": "719c8e1b4e10/source_product",
+  "scope": "Author native capture follow-up: one existing positive-offset form/save/reload/remove journey produces two fresh 390px viewport images for the review document. This is no additional independent-source or calendar-download qualification.",
+  "startedAt": "2026-10-13T00:45:11.105Z",
+  "node": "v22.22.1",
+  "originalCommit": "8df144cd393fd66a99f46683c54b55c97665d6e8",
+  "candidateCommit": "fa85a0181968c18a5b0d6ff71579a93f73d146b4",
+  "buildReceiptSha256": "0f3eb7974c147eef08563f5b8bbb57b5188a7854a135ff633fd17b9ce25b32e7",
+  "contractSha256": "3f8970f4b607c117a5c07b148f470eb957a814a6fbfb1cdb2b0bb246d9b084a9",
+  "sourceInputs": [
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/data/policies.json",
+      "git_blob": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/index.html",
+      "git_blob": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+      "sha256": "7ab7e2a77337b9ca92534a5270a46ee36c606e551b598b20205b0bbb079a8ab1"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/package-lock.json",
+      "git_blob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/package.json",
+      "git_blob": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/public/favicon.svg",
+      "git_blob": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/day-refresh.ts",
+      "git_blob": "362aae5b5be7bf399174483327a2b15018edeca4",
+      "sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/deadline.ts",
+      "git_blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/ics.ts",
+      "git_blob": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+      "sha256": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/main.ts",
+      "git_blob": "798e5329fe9983e67b5832595605a49294f0a529",
+      "sha256": "a67c4878d70502eb5f2ff5bfa286bf932c66cb73fecb1fd6184d7f80426fa26b"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/parse.ts",
+      "git_blob": "6a59607db8418e20daf783f0738ba600dd16cf05",
+      "sha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/policy.ts",
+      "git_blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+      "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/samples.ts",
+      "git_blob": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/store.ts",
+      "git_blob": "23cf906e26187ff28c94718111e69d9603c97fa8",
+      "sha256": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/style.css",
+      "git_blob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+      "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/trip-checklist-view.ts",
+      "git_blob": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+      "sha256": "cdb7e3e0111086e2826849f0a21e1594998b48e6e656efc9a7c0d6b83ba21f32"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/trip-checklist.css",
+      "git_blob": "be540de5163c0b66cda28296311b2ce02204e087",
+      "sha256": "1a5167a9a0b46bbcf600c986266f5a7fdcc97222e6a0ad46a8896bccbc8fe1bc"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/src/trip-checklist.ts",
+      "git_blob": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+      "sha256": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/tests/core.test.ts",
+      "git_blob": "41ca82a8942dc111fa51a04396a16bcfaffa85c1",
+      "sha256": "bf0ac09a394b44d0bd5e98f752523a940363d790fc556de2c35c2ff61856ab61"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/tests/day-refresh.test.ts",
+      "git_blob": "1d76fd6ef7364ae84f4775666768815211981ff6",
+      "sha256": "1f6ba366278a67d92c6aa219586158a3d8ecab9394395f79cb5c91545627aa6d"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/tests/ics.test.ts",
+      "git_blob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+      "sha256": "1c945625f9988963760e3804142a7292603409bd0d95846109997ebcd6ed08fa"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/tests/trip-checklist.test.ts",
+      "git_blob": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe",
+      "sha256": "44afbdf66731650384cec49d9dec7398e8e747b77e1f9ad347a79f5fbf6bf88d"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/trip-checklist.html",
+      "git_blob": "f0286c5e6817c1656297c67489d4b796ddec4510",
+      "sha256": "a1f8fd94b38acea81efe6f6f410ca2a2808ac88914694b4c660a559dc0d35681"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/tsconfig.json",
+      "git_blob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc"
+    },
+    {
+      "variant": "original",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/original/vite.config.ts",
+      "git_blob": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+      "sha256": "78d228170cb7b113fdde43ca738f1f4e73827656c42cce2440bd2239bcd35e5e"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/data/policies.json",
+      "git_blob": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "sha256": "49ee6fab0dbd8eea90dfabcab2f78fde033256bb2e31fdef58399e0fc4ba7a26"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/index.html",
+      "git_blob": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+      "sha256": "7ab7e2a77337b9ca92534a5270a46ee36c606e551b598b20205b0bbb079a8ab1"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/package-lock.json",
+      "git_blob": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "sha256": "18224e47bde7a1bab3314d2b33b2ced399e4fd3a5e7e4763f9ed0c6b657c7a52"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/package.json",
+      "git_blob": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/public/favicon.svg",
+      "git_blob": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/day-refresh.ts",
+      "git_blob": "362aae5b5be7bf399174483327a2b15018edeca4",
+      "sha256": "569a84799ba80e04fc005aa660c9a322c46b1e9d2cf778f1c9a10bd464985430"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/deadline.ts",
+      "git_blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/ics.ts",
+      "git_blob": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+      "sha256": "92809f86f76a1cf2d28e1d5e17d4590fc852f63d97e94a68546a2b4a892b065f"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/main.ts",
+      "git_blob": "798e5329fe9983e67b5832595605a49294f0a529",
+      "sha256": "a67c4878d70502eb5f2ff5bfa286bf932c66cb73fecb1fd6184d7f80426fa26b"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/parse.ts",
+      "git_blob": "adddc727f469289fa40cb69ab9223f0145747868",
+      "sha256": "d6974c8b6b1e8142e5cf679d601ad495706723b6831fada983fa0ac4c05b7355"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/policy.ts",
+      "git_blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d",
+      "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/samples.ts",
+      "git_blob": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/store.ts",
+      "git_blob": "23cf906e26187ff28c94718111e69d9603c97fa8",
+      "sha256": "23dc0597a1599309c176f4e94bed9831c70602b311aed726bbfd335cffbde080"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/style.css",
+      "git_blob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb",
+      "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/trip-checklist-view.ts",
+      "git_blob": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+      "sha256": "cdb7e3e0111086e2826849f0a21e1594998b48e6e656efc9a7c0d6b83ba21f32"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/trip-checklist.css",
+      "git_blob": "be540de5163c0b66cda28296311b2ce02204e087",
+      "sha256": "1a5167a9a0b46bbcf600c986266f5a7fdcc97222e6a0ad46a8896bccbc8fe1bc"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/src/trip-checklist.ts",
+      "git_blob": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+      "sha256": "4de748ac7f2acf5cac3d31c24e87b19ccfbe80c1e0df6c83890fb51dcd28da8c"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/tests/core.test.ts",
+      "git_blob": "41ca82a8942dc111fa51a04396a16bcfaffa85c1",
+      "sha256": "bf0ac09a394b44d0bd5e98f752523a940363d790fc556de2c35c2ff61856ab61"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/tests/day-refresh.test.ts",
+      "git_blob": "1d76fd6ef7364ae84f4775666768815211981ff6",
+      "sha256": "1f6ba366278a67d92c6aa219586158a3d8ecab9394395f79cb5c91545627aa6d"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/tests/ics.test.ts",
+      "git_blob": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+      "sha256": "1c945625f9988963760e3804142a7292603409bd0d95846109997ebcd6ed08fa"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/tests/trip-checklist.test.ts",
+      "git_blob": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe",
+      "sha256": "44afbdf66731650384cec49d9dec7398e8e747b77e1f9ad347a79f5fbf6bf88d"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/trip-checklist.html",
+      "git_blob": "f0286c5e6817c1656297c67489d4b796ddec4510",
+      "sha256": "a1f8fd94b38acea81efe6f6f410ca2a2808ac88914694b4c660a559dc0d35681"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/tsconfig.json",
+      "git_blob": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "sha256": "d326e204b24eaeddb648dd7b4321154e8b0393bce5d19da74e5cb5fca059dbcc"
+    },
+    {
+      "variant": "candidate",
+      "file": "/home/jacob/returnby-browser-719c8e1b4e10-9haf7hze/candidate/vite.config.ts",
+      "git_blob": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+      "sha256": "78d228170cb7b113fdde43ca738f1f4e73827656c42cce2440bd2239bcd35e5e"
+    }
+  ],
+  "runtimeInputs": [
+    {
+      "url": "/original/assets/deadline-DzH3L3IB.js",
+      "bytes": 1111,
+      "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+    },
+    {
+      "url": "/original/assets/main-Bp_ZSQx5.css",
+      "bytes": 8801,
+      "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+    },
+    {
+      "url": "/original/assets/main-uIY2DWpI.js",
+      "bytes": 9878,
+      "sha256": "2daded8c965073b017c30288208c9bcc9c5509310b09c980f4406d001e8221eb"
+    },
+    {
+      "url": "/original/assets/tripChecklist-CmK7SEMW.css",
+      "bytes": 8320,
+      "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8"
+    },
+    {
+      "url": "/original/assets/tripChecklist-DwME05Y-.js",
+      "bytes": 16658,
+      "sha256": "55ad0aae6831073a049290eab3fdd771291ce83b5881cb8eb6ac4ca91218a11a"
+    },
+    {
+      "url": "/original/favicon.svg",
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "url": "/original/index.html",
+      "bytes": 4633,
+      "sha256": "a2ebccdbbbcc2bbdc80797757f9597d754557968ee4e1a9754360a84c0a43e93"
+    },
+    {
+      "url": "/original/trip-checklist.html",
+      "bytes": 4738,
+      "sha256": "94049e67756e797f02888a1d9311cd5fb17d026fc4dd923c531d235d3ee6ed85"
+    },
+    {
+      "url": "/candidate/assets/deadline-DzH3L3IB.js",
+      "bytes": 1111,
+      "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+    },
+    {
+      "url": "/candidate/assets/main-BafSzsA9.js",
+      "bytes": 10016,
+      "sha256": "616edce6d828f1f2777e98918911e70d31dd07c1f1e05fa04106994131225401"
+    },
+    {
+      "url": "/candidate/assets/main-Bp_ZSQx5.css",
+      "bytes": 8801,
+      "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+    },
+    {
+      "url": "/candidate/assets/tripChecklist-CmK7SEMW.css",
+      "bytes": 8320,
+      "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8"
+    },
+    {
+      "url": "/candidate/assets/tripChecklist-DwME05Y-.js",
+      "bytes": 16658,
+      "sha256": "55ad0aae6831073a049290eab3fdd771291ce83b5881cb8eb6ac4ca91218a11a"
+    },
+    {
+      "url": "/candidate/favicon.svg",
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "url": "/candidate/index.html",
+      "bytes": 4633,
+      "sha256": "042c228d7be723b52225eecd57b704173d7e658581543ffdb9104243929aff1a"
+    },
+    {
+      "url": "/candidate/trip-checklist.html",
+      "bytes": 4738,
+      "sha256": "94049e67756e797f02888a1d9311cd5fb17d026fc4dd923c531d235d3ee6ed85"
+    }
+  ],
+  "checks": [
+    {
+      "label": "phone/Pacific/Kiritimati/positive-offset-with-earlier-shipping-date",
+      "passed": true,
+      "preview": {
+        "fields": {
+          "merchant": "Northwind Outfitters",
+          "orderDate": "2026-10-03",
+          "orderNo": "ISO-1001",
+          "total": "$49.95",
+          "windowDays": "30"
+        },
+        "recognized": "4 OF 4 FIELDS RECOGNIZED",
+        "timezone": "Pacific/Kiritimati",
+        "offset": -840
+      },
+      "savedOrder": {
+        "id": "d397a948-b39c-4f2f-a81e-3ff907afcb1e",
+        "merchant": "Northwind Outfitters",
+        "orderNo": "ISO-1001",
+        "total": "$49.95",
+        "orderDate": "2026-10-03",
+        "windowDays": 30,
+        "windowSource": "policy",
+        "createdAt": "2026-10-13T00:45:12.517Z"
+      },
+      "reopenedCard": "Northwind Outfitters #ISO-1001\nON TRACK\nORDER 2026-10-03\nSTORE POLICY / 30 DAYS\nRETURN BY 2026-11-02\n20 DAYS LEFT\nAdd calendar reminder\nRemove",
+      "removed": true
+    }
+  ],
+  "served": [
+    {
+      "path": "/candidate/index.html",
+      "query": "?receiving=phone%2FPacific%2FKiritimati%2Fpositive-offset-with-earlier-shipping-date&navigation=1",
+      "sha256": "042c228d7be723b52225eecd57b704173d7e658581543ffdb9104243929aff1a"
+    },
+    {
+      "path": "/candidate/assets/main-BafSzsA9.js",
+      "query": "",
+      "sha256": "616edce6d828f1f2777e98918911e70d31dd07c1f1e05fa04106994131225401"
+    },
+    {
+      "path": "/candidate/assets/deadline-DzH3L3IB.js",
+      "query": "",
+      "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+    },
+    {
+      "path": "/candidate/assets/main-Bp_ZSQx5.css",
+      "query": "",
+      "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+    },
+    {
+      "path": "/candidate/favicon.svg",
+      "query": "",
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "path": "/candidate/index.html",
+      "query": "?receiving=phone%2FPacific%2FKiritimati%2Fpositive-offset-with-earlier-shipping-date%2Freload&navigation=2",
+      "sha256": "042c228d7be723b52225eecd57b704173d7e658581543ffdb9104243929aff1a"
+    },
+    {
+      "path": "/candidate/assets/main-Bp_ZSQx5.css",
+      "query": "",
+      "sha256": "0a53a592318c8364c78d8d5a2f13fa3bc8b6166ff4b435a244483efc60f2e63f"
+    },
+    {
+      "path": "/candidate/assets/main-BafSzsA9.js",
+      "query": "",
+      "sha256": "616edce6d828f1f2777e98918911e70d31dd07c1f1e05fa04106994131225401"
+    },
+    {
+      "path": "/candidate/assets/deadline-DzH3L3IB.js",
+      "query": "",
+      "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404"
+    }
+  ],
+  "pageErrors": [],
+  "externalPageRequests": [],
+  "screenshots": [
+    {
+      "path": "phone-review.png",
+      "bytes": 48972,
+      "sha256": "3b1d07268d1a2e3ae6ae320c0c329de4b898456b207d4bd0fe2549e1252f11d5",
+      "timezone": "Pacific/Kiritimati",
+      "scenario": "positive-offset-with-earlier-shipping-date",
+      "stage": "#preview",
+      "viewportWidth": 390,
+      "viewportHeight": 844
+    },
+    {
+      "path": "phone-tracker.png",
+      "bytes": 59925,
+      "sha256": "e251f365e97ae423a06ec2701dcacae341617e6234e8fa28c6dad97c1d0ba1c2",
+      "timezone": "Pacific/Kiritimati",
+      "scenario": "positive-offset-with-earlier-shipping-date",
+      "stage": ".ledger-panel",
+      "viewportWidth": 390,
+      "viewportHeight": 844
+    }
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/153.0.8010.47",
+    "revision": "@73934a44f61e6b3878d1943064c141a5a820f5f7",
+    "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "jsVersion": "15.3.76.12"
+  },
+  "status": "passed",
+  "sourceUnchanged": true,
+  "runtimeUnchanged": true,
+  "browserExited": true,
+  "browserExitCode": 0,
+  "browserSignal": null,
+  "serverClosed": true,
+  "browserLog": "[2545141:2545404:1013/004511.978791:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2545141:2545404:1013/004511.979138:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2545141:2545404:1013/004512.042762:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n\nDevTools listening on ws://127.0.0.1:41309/devtools/browser/0e4d536c-4643-4031-97fb-6ae2a605b68f\n[2545141:2545141:1013/004512.177154:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2545141:2545141:1013/004512.177179:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2545141:2545404:1013/004512.177246:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2545141:2545141:1013/004512.184808:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2545141:2545404:1013/004512.185091:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2545141:2545141:1013/004512.204299:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2545141:2545404:1013/004512.204963:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2545141:2545141:1013/004512.205141:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2545141:2545141:1013/004512.221474:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2545141:2545404:1013/004512.221767:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2545141:2545141:1013/004512.236767:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[2545141:2545404:1013/004512.236835:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[2545141:2545141:1013/004512.264235:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n",
+  "finishedAt": "2026-10-13T00:45:12.845Z",
+  "receiverSha256": "398a5ce972a7f10aeb2500c8364fba689c096e37cabd6fa07833d648312c1771"
+}
