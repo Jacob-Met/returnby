@@ -30,3 +30,9 @@ The app is browser-only; no AI runs in the page. The Devpost Learn planning docu
 ## Return-trip checklist
 
 From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. The page keeps the existing tracker unchanged; selections, paper check marks and notes are not saved. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
+
+## Reading long saved-order labels
+
+Saved store names and order references wrap within their tracker cards, including
+long unbroken identifiers on phone screens. The full text stays available; saved
+fields, deadline calculations, filters and calendar contents are unchanged.
