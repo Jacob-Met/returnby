@@ -1,0 +1,687 @@
+{
+  "schema": "returnby70-artifact-http-receiving-v1",
+  "source_archive": "/private/var/tmp/hamon-dcac8b3b8755-returnby-intake-delivery-v1/returnby-intake-deadline-preview-72168cc8-v1.zip",
+  "checks": [
+    {
+      "name": "outer archive exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "39 unique safe regular members",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "archive CRC",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "38 manifest payloads and exact membership",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload OPEN-FIRST.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload SOURCES.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload VERIFY.py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/RECEIVING.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/author-unit/receiving.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/author-unit/unit-observer.py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/author-unit/unit.stderr.log",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/author-unit/unit.stdout.log",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/candidate/build-0.stderr.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/candidate/build-0.stdout.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/candidate/build-1.stderr.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/candidate/build-1.stdout.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/candidate/receiving.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/consumer-criteria.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/consumer-observer.py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/original/build-0.stderr.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/original/build-0.stdout.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/original/build-1.stderr.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/original/build-1.stdout.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload evidence/original/receiving.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload preview/assets/deadline-DzH3L3IB.js",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload preview/assets/main-CQCkkC-q.js",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload preview/assets/main-Dk47JxGM.css",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload preview/assets/tripChecklist-CmK7SEMW.css",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload preview/assets/tripChecklist-DwME05Y-.js",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload preview/captures/returnby-desktop.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload preview/captures/returnby-mobile.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload preview/favicon.svg",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload preview/index.html",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload preview/trip-checklist.html",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload review/candidate/desktop-review.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload review/candidate/narrow-review.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload review/original/desktop-review.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload review/original/narrow-review.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload source-selected/INTAKE_DEADLINE_PREVIEW.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload source-selected/src/intake-deadline.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload source-selected/src/main.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "payload source-selected/tests/intake-deadline.test.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "product and receiver source pins",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "ten actual built assets",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "documented integrity check",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "documented opening URL serves exact homepage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP preview/assets/deadline-DzH3L3IB.js",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP preview/assets/main-CQCkkC-q.js",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP preview/assets/main-Dk47JxGM.css",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP preview/assets/tripChecklist-CmK7SEMW.css",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP preview/assets/tripChecklist-DwME05Y-.js",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP preview/captures/returnby-desktop.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP preview/captures/returnby-mobile.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP preview/favicon.svg",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP preview/index.html",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP preview/trip-checklist.html",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "documented interrupt closes owned server",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "all extracted payloads conserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "original archive conserved",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "http": [
+    {
+      "path": "preview/assets/deadline-DzH3L3IB.js",
+      "status": 200,
+      "bytes": 1111,
+      "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404",
+      "content_type": "text/javascript"
+    },
+    {
+      "path": "preview/assets/main-CQCkkC-q.js",
+      "status": 200,
+      "bytes": 11172,
+      "sha256": "00ff912aa3a008c73f8d9a3b225b46aaa9829e0dffbc2ebdc18c346480a88931",
+      "content_type": "text/javascript"
+    },
+    {
+      "path": "preview/assets/main-Dk47JxGM.css",
+      "status": 200,
+      "bytes": 8998,
+      "sha256": "f67cf3e456b8892ba6665b33f12411b33ee801de785b38f255db509ba86efa38",
+      "content_type": "text/css"
+    },
+    {
+      "path": "preview/assets/tripChecklist-CmK7SEMW.css",
+      "status": 200,
+      "bytes": 8320,
+      "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8",
+      "content_type": "text/css"
+    },
+    {
+      "path": "preview/assets/tripChecklist-DwME05Y-.js",
+      "status": 200,
+      "bytes": 16658,
+      "sha256": "55ad0aae6831073a049290eab3fdd771291ce83b5881cb8eb6ac4ca91218a11a",
+      "content_type": "text/javascript"
+    },
+    {
+      "path": "preview/captures/returnby-desktop.png",
+      "status": 200,
+      "bytes": 131379,
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+      "content_type": "image/png"
+    },
+    {
+      "path": "preview/captures/returnby-mobile.png",
+      "status": 200,
+      "bytes": 107642,
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+      "content_type": "image/png"
+    },
+    {
+      "path": "preview/favicon.svg",
+      "status": 200,
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+      "content_type": "image/svg+xml"
+    },
+    {
+      "path": "preview/index.html",
+      "status": 200,
+      "bytes": 4633,
+      "sha256": "60aee98816f37c6350d9e2f8b2701a8439062add6b8eab0ff393f989b91cb77a",
+      "content_type": "text/html"
+    },
+    {
+      "path": "preview/trip-checklist.html",
+      "status": 200,
+      "bytes": 4738,
+      "sha256": "94049e67756e797f02888a1d9311cd5fb17d026fc4dd923c531d235d3ee6ed85",
+      "content_type": "text/html"
+    }
+  ],
+  "browser_replay": false,
+  "build_replay": false,
+  "source_before": {
+    "bytes": 1028338,
+    "sha256": "cce7c108c88a906d65b7a1ff0af2b491f94604f4bfb6fe99c59bb41b5ebaf2db",
+    "mode": 33188,
+    "mtime_ns": 1791905633146315667,
+    "inode": 148921119
+  },
+  "admitted": {
+    "MANIFEST.json": {
+      "bytes": 9988,
+      "sha256": "82b567e9937ebf41b5105a4e93029e198a0dab2837c4460764aee961e9039303",
+      "mode": 33188,
+      "mtime_ns": 1791905970856983771,
+      "inode": 148942111
+    },
+    "OPEN-FIRST.md": {
+      "bytes": 5683,
+      "sha256": "6752216735da7d122024c95839b68126a28d6a2a71cfcabed8d1c703d58748d4",
+      "mode": 33188,
+      "mtime_ns": 1791905970857340693,
+      "inode": 148942112
+    },
+    "SOURCES.json": {
+      "bytes": 32866,
+      "sha256": "3f6a1178e263420bcb0c117839644fffae2cc86845f7d4e237bce60c9024de1a",
+      "mode": 33188,
+      "mtime_ns": 1791905970857577738,
+      "inode": 148942113
+    },
+    "VERIFY.py": {
+      "bytes": 951,
+      "sha256": "5822f849ec073db4063d111c12f40e76de1f4a049d5ec05f9e0e76f30a1670b8",
+      "mode": 33188,
+      "mtime_ns": 1791905970857712698,
+      "inode": 148942114
+    },
+    "evidence/RECEIVING.md": {
+      "bytes": 5120,
+      "sha256": "cdc08bec7adc428d35f7791fcea0e5ede0eed9c95291fafed152e69ad20be12b",
+      "mode": 33188,
+      "mtime_ns": 1791905970857920784,
+      "inode": 148942116
+    },
+    "evidence/author-unit/receiving.json": {
+      "bytes": 21232,
+      "sha256": "d4fc942741d018b589e41aa0650b0be366d04e26287391484a40a85a9f39fb91",
+      "mode": 33188,
+      "mtime_ns": 1791905970861658628,
+      "inode": 148942118
+    },
+    "evidence/author-unit/unit-observer.py": {
+      "bytes": 4434,
+      "sha256": "df343e5fd7e9286689f16e24f38385130d00a57c01030a26cc055e30ec63d656",
+      "mode": 33188,
+      "mtime_ns": 1791905970861907965,
+      "inode": 148942119
+    },
+    "evidence/author-unit/unit.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 33188,
+      "mtime_ns": 1791905970861988466,
+      "inode": 148942120
+    },
+    "evidence/author-unit/unit.stdout.log": {
+      "bytes": 4469,
+      "sha256": "8132552f2aa3091cc5a89bbdbebe0d8dd684475f46ee0509fb7b30f3d2e93dbb",
+      "mode": 33188,
+      "mtime_ns": 1791905970862166594,
+      "inode": 148942121
+    },
+    "evidence/candidate/build-0.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 33188,
+      "mtime_ns": 1791905970862293471,
+      "inode": 148942123
+    },
+    "evidence/candidate/build-0.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 33188,
+      "mtime_ns": 1791905970862382638,
+      "inode": 148942124
+    },
+    "evidence/candidate/build-1.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 33188,
+      "mtime_ns": 1791905970862467681,
+      "inode": 148942125
+    },
+    "evidence/candidate/build-1.stdout.txt": {
+      "bytes": 633,
+      "sha256": "630f1e7f1fd51b738892911a2af6ef373e8a6b235b444ef8cd5a98beb3717fc7",
+      "mode": 33188,
+      "mtime_ns": 1791905970862609225,
+      "inode": 148942126
+    },
+    "evidence/candidate/receiving.json": {
+      "bytes": 29592,
+      "sha256": "5f0935ef46e8e6760546f5f57341f525314cdb93eef0bf75edac07106dadec0c",
+      "mode": 33188,
+      "mtime_ns": 1791905970862803853,
+      "inode": 148942127
+    },
+    "evidence/consumer-criteria.json": {
+      "bytes": 2253,
+      "sha256": "720b454a3b281acf0fc5b6c50961ee475051cf8e4769e390ba42caa0454546b4",
+      "mode": 33188,
+      "mtime_ns": 1791905970862926271,
+      "inode": 148942128
+    },
+    "evidence/consumer-observer.py": {
+      "bytes": 10535,
+      "sha256": "1f24406ce6f1ea04a8e20254aa35bcebd1a2701995079155939b0dc486ff8d65",
+      "mode": 33188,
+      "mtime_ns": 1791905970863145399,
+      "inode": 148942129
+    },
+    "evidence/original/build-0.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 33188,
+      "mtime_ns": 1791905970863252442,
+      "inode": 148942131
+    },
+    "evidence/original/build-0.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 33188,
+      "mtime_ns": 1791905970863332777,
+      "inode": 148942132
+    },
+    "evidence/original/build-1.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 33188,
+      "mtime_ns": 1791905970863413361,
+      "inode": 148942133
+    },
+    "evidence/original/build-1.stdout.txt": {
+      "bytes": 633,
+      "sha256": "830d1e8c832f8314d82b6c855f0208811e6d1f1f029dad3b33df491e6aff9b36",
+      "mode": 33188,
+      "mtime_ns": 1791905970863532738,
+      "inode": 148942134
+    },
+    "evidence/original/receiving.json": {
+      "bytes": 26749,
+      "sha256": "b0306d9f602af38b06e77277386f5da6bbab5f0b9e2a91279b90b654443ef6dd",
+      "mode": 33188,
+      "mtime_ns": 1791905970863691115,
+      "inode": 148942135
+    },
+    "preview/assets/deadline-DzH3L3IB.js": {
+      "bytes": 1111,
+      "sha256": "5d032d977c6662d30c89dc19761cda49d286c00df2f17b35b5048670b72b7404",
+      "mode": 33188,
+      "mtime_ns": 1791905970863912577,
+      "inode": 148942138
+    },
+    "preview/assets/main-CQCkkC-q.js": {
+      "bytes": 11172,
+      "sha256": "00ff912aa3a008c73f8d9a3b225b46aaa9829e0dffbc2ebdc18c346480a88931",
+      "mode": 33188,
+      "mtime_ns": 1791905970864118413,
+      "inode": 148942139
+    },
+    "preview/assets/main-Dk47JxGM.css": {
+      "bytes": 8998,
+      "sha256": "f67cf3e456b8892ba6665b33f12411b33ee801de785b38f255db509ba86efa38",
+      "mode": 33188,
+      "mtime_ns": 1791905970865501349,
+      "inode": 148942140
+    },
+    "preview/assets/tripChecklist-CmK7SEMW.css": {
+      "bytes": 8320,
+      "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8",
+      "mode": 33188,
+      "mtime_ns": 1791905970865793145,
+      "inode": 148942141
+    },
+    "preview/assets/tripChecklist-DwME05Y-.js": {
+      "bytes": 16658,
+      "sha256": "55ad0aae6831073a049290eab3fdd771291ce83b5881cb8eb6ac4ca91218a11a",
+      "mode": 33188,
+      "mtime_ns": 1791905970865980689,
+      "inode": 148942142
+    },
+    "preview/captures/returnby-desktop.png": {
+      "bytes": 131379,
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+      "mode": 33188,
+      "mtime_ns": 1791905970866557655,
+      "inode": 148942144
+    },
+    "preview/captures/returnby-mobile.png": {
+      "bytes": 107642,
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+      "mode": 33188,
+      "mtime_ns": 1791905970873271833,
+      "inode": 148942145
+    },
+    "preview/favicon.svg": {
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+      "mode": 33188,
+      "mtime_ns": 1791905970873416251,
+      "inode": 148942146
+    },
+    "preview/index.html": {
+      "bytes": 4633,
+      "sha256": "60aee98816f37c6350d9e2f8b2701a8439062add6b8eab0ff393f989b91cb77a",
+      "mode": 33188,
+      "mtime_ns": 1791905970873563712,
+      "inode": 148942147
+    },
+    "preview/trip-checklist.html": {
+      "bytes": 4738,
+      "sha256": "94049e67756e797f02888a1d9311cd5fb17d026fc4dd923c531d235d3ee6ed85",
+      "mode": 33188,
+      "mtime_ns": 1791905970873694297,
+      "inode": 148942148
+    },
+    "review/candidate/desktop-review.png": {
+      "bytes": 206613,
+      "sha256": "ffc59dd8012f75753715c17e7b4ded6a5aa7031874cc07b37fceec461b5d7d53",
+      "mode": 33188,
+      "mtime_ns": 1791905970874567184,
+      "inode": 148942151
+    },
+    "review/candidate/narrow-review.png": {
+      "bytes": 183337,
+      "sha256": "dbf71f6a0b4e950acb201b8fabe37e261adbf44096114303997a807616442558",
+      "mode": 33188,
+      "mtime_ns": 1791905970879427669,
+      "inode": 148942152
+    },
+    "review/original/desktop-review.png": {
+      "bytes": 203506,
+      "sha256": "7714d9432125c3b1dedc69d6e2978b5e4670acc88c7b5ddae15f5659d704eb71",
+      "mode": 33188,
+      "mtime_ns": 1791905970883822772,
+      "inode": 148942154
+    },
+    "review/original/narrow-review.png": {
+      "bytes": 181057,
+      "sha256": "ec1c69226b4c69dec24f126f3059c3cab7d4d2b2211cc93948374a8e44588b1c",
+      "mode": 33188,
+      "mtime_ns": 1791905970884542824,
+      "inode": 148942155
+    },
+    "source-selected/INTAKE_DEADLINE_PREVIEW.md": {
+      "bytes": 4104,
+      "sha256": "22f36463552591a943ba6db62f0129ba565538b217a6da3d61d3dc9c0c535594",
+      "mode": 33188,
+      "mtime_ns": 1791905970887780161,
+      "inode": 148942157
+    },
+    "source-selected/src/intake-deadline.ts": {
+      "bytes": 2176,
+      "sha256": "f18cf76bd9a3480feb714cb6da51da0f2531f4b230bb87fe98dccf2c4c689ca5",
+      "mode": 33188,
+      "mtime_ns": 1791905970887925497,
+      "inode": 148942159
+    },
+    "source-selected/src/main.ts": {
+      "bytes": 7596,
+      "sha256": "1845ee9f416e401af96facab0cf9e5abf6c91da67cc27bc7b3a1b02704dfd80c",
+      "mode": 33188,
+      "mtime_ns": 1791905970888057873,
+      "inode": 148942160
+    },
+    "source-selected/tests/intake-deadline.test.ts": {
+      "bytes": 5607,
+      "sha256": "fce393cc6cf4880cd8abe5df3d6ed6b28401aa92dec3f5aba0e94e76590e90db",
+      "mode": 33188,
+      "mtime_ns": 1791905970888215042,
+      "inode": 148942162
+    }
+  },
+  "verify": {
+    "exit": 0,
+    "stdout": "Verified 38 exact payloads.\n",
+    "stderr": ""
+  },
+  "server": {
+    "argv": [
+      "/usr/local/bin/python3",
+      "-B",
+      "-m",
+      "http.server",
+      "8797",
+      "--bind",
+      "127.0.0.1",
+      "--directory",
+      "preview"
+    ],
+    "pid": 55600,
+    "cwd": "/private/var/tmp/hamon-dcac8b3b8755-returnby-intake-v1/artifact-receiving-70/received package \u03a9",
+    "exit_after_interrupt": 0
+  },
+  "passed": true,
+  "source_after": {
+    "bytes": 1028338,
+    "sha256": "cce7c108c88a906d65b7a1ff0af2b491f94604f4bfb6fe99c59bb41b5ebaf2db",
+    "mode": 33188,
+    "mtime_ns": 1791905633146315667,
+    "inode": 148921119
+  },
+  "observer_sha256": "3740cab02ce5a51b6dfa83830c1dc94af345c8a1f61257443fe45ac1c98d84ec"
+}
