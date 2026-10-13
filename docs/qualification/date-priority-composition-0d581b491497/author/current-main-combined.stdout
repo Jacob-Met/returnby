@@ -1,0 +1,610 @@
+{
+  "schema": "hamon.returnby.combined-parser.v1",
+  "node": "v24.19.0",
+  "source": "/dev/shm/hamon-returnby-datepriority-0d581b491497/donor/src/parse.ts",
+  "source_sha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749",
+  "receiver_sha256": "ada702f9b136613deaebf2c668509159ebc4715f93e4ae83cd63ae198fb935f2",
+  "passed": 3,
+  "failed": 17,
+  "checks": 20,
+  "scope": "Actual public parser exports; fictional receipts; all output fields checked; no provider, browser, storage or installed-adoption claim.",
+  "results": [
+    {
+      "label": "combined October 3, 2026 / Order ID: GOOD-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder ID: GOOD-4826\nOrder placed October 3, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "GOOD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "GOOD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "label": "combined October 3, 2026 / Order notification",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder notification\nOrder placed October 3, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": false,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "tification",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n      orderDate: true,\n+     orderNo: true,\n-     orderNo: false,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n    orderDate: '2026-10-03',\n+   orderNo: 'tification',\n-   orderNo: '',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined October 3, 2026 / Reorder ID: OLD-4826\nOrder no.: NEW-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nReorder ID: OLD-4826\nOrder no.: NEW-4826\nOrder placed October 3, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "NEW-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "OLD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    found: {\n      merchant: true,\n      orderDate: true,\n      orderNo: true,\n...\n    orderDate: '2026-10-03',\n+   orderNo: 'OLD-4826',\n-   orderNo: 'NEW-4826',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined October 3, 2026 / Order identity: FAKE-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder identity: FAKE-4826\nOrder placed October 3, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": false,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "entity",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n      orderDate: true,\n+     orderNo: true,\n-     orderNo: false,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n    orderDate: '2026-10-03',\n+   orderNo: 'entity',\n-   orderNo: '',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined Octopus 3, 2026 / Order ID: GOOD-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder ID: GOOD-4826\nOrder placed Octopus 3, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "",
+        "orderNo": "GOOD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "GOOD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n+     orderDate: true,\n-     orderDate: false,\n      orderNo: true,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n+   orderDate: '2026-10-03',\n-   orderDate: '',\n    orderNo: 'GOOD-4826',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined Octopus 3, 2026 / Order notification",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder notification\nOrder placed Octopus 3, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": false,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "tification",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n+     orderDate: true,\n+     orderNo: true,\n-     orderDate: false,\n-     orderNo: false,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n+   orderDate: '2026-10-03',\n+   orderNo: 'tification',\n-   orderDate: '',\n-   orderNo: '',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined Octopus 3, 2026 / Reorder ID: OLD-4826\nOrder no.: NEW-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nReorder ID: OLD-4826\nOrder no.: NEW-4826\nOrder placed Octopus 3, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "",
+        "orderNo": "NEW-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "OLD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n+     orderDate: true,\n-     orderDate: false,\n      orderNo: true,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n+   orderDate: '2026-10-03',\n+   orderNo: 'OLD-4826',\n-   orderDate: '',\n-   orderNo: 'NEW-4826',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined Octopus 3, 2026 / Order identity: FAKE-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder identity: FAKE-4826\nOrder placed Octopus 3, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": false,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "entity",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n+     orderDate: true,\n+     orderNo: true,\n-     orderDate: false,\n-     orderNo: false,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n+   orderDate: '2026-10-03',\n+   orderNo: 'entity',\n-   orderDate: '',\n-   orderNo: '',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined May 6, 2026 / Order ID: GOOD-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder ID: GOOD-4826\nOrder placed May 6, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "GOOD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "GOOD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "label": "combined May 6, 2026 / Order notification",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder notification\nOrder placed May 6, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": false,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "tification",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n      orderDate: true,\n+     orderNo: true,\n-     orderNo: false,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n    orderDate: '2026-05-06',\n+   orderNo: 'tification',\n-   orderNo: '',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined May 6, 2026 / Reorder ID: OLD-4826\nOrder no.: NEW-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nReorder ID: OLD-4826\nOrder no.: NEW-4826\nOrder placed May 6, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "NEW-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "OLD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    found: {\n      merchant: true,\n      orderDate: true,\n      orderNo: true,\n...\n    orderDate: '2026-05-06',\n+   orderNo: 'OLD-4826',\n-   orderNo: 'NEW-4826',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined May 6, 2026 / Order identity: FAKE-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder identity: FAKE-4826\nOrder placed May 6, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": false,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "entity",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n      orderDate: true,\n+     orderNo: true,\n-     orderNo: false,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n    orderDate: '2026-05-06',\n+   orderNo: 'entity',\n-   orderNo: '',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined Mayonnaise 6, 2026 / Order ID: GOOD-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder ID: GOOD-4826\nOrder placed Mayonnaise 6, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "",
+        "orderNo": "GOOD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "GOOD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n+     orderDate: true,\n-     orderDate: false,\n      orderNo: true,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n+   orderDate: '2026-05-06',\n-   orderDate: '',\n    orderNo: 'GOOD-4826',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined Mayonnaise 6, 2026 / Order notification",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder notification\nOrder placed Mayonnaise 6, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": false,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "tification",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n+     orderDate: true,\n+     orderNo: true,\n-     orderDate: false,\n-     orderNo: false,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n+   orderDate: '2026-05-06',\n+   orderNo: 'tification',\n-   orderDate: '',\n-   orderNo: '',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined Mayonnaise 6, 2026 / Reorder ID: OLD-4826\nOrder no.: NEW-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nReorder ID: OLD-4826\nOrder no.: NEW-4826\nOrder placed Mayonnaise 6, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "",
+        "orderNo": "NEW-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "OLD-4826",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n+     orderDate: true,\n-     orderDate: false,\n      orderNo: true,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n+   orderDate: '2026-05-06',\n+   orderNo: 'OLD-4826',\n-   orderDate: '',\n-   orderNo: 'NEW-4826',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "combined Mayonnaise 6, 2026 / Order identity: FAKE-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder identity: FAKE-4826\nOrder placed Mayonnaise 6, 2026\nSubtotal: $10.00\nTotal: $64.50",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": false,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2026-05-06",
+        "orderNo": "entity",
+        "total": "$64.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n+     orderDate: true,\n+     orderNo: true,\n-     orderDate: false,\n-     orderNo: false,\n      total: true\n    },\n    merchant: 'Example Outfitters',\n+   orderDate: '2026-05-06',\n+   orderNo: 'entity',\n-   orderDate: '',\n-   orderNo: '',\n    total: '$64.50'\n  }\n"
+    },
+    {
+      "label": "subtotal preservation / Order ID: GOOD-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder ID: GOOD-4826\nOrder placed February 29, 2028\nSubtotal: $10.00",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2028-02-29",
+        "orderNo": "GOOD-4826",
+        "total": "",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2028-02-29",
+        "orderNo": "GOOD-4826",
+        "total": "",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "label": "subtotal preservation / Order notification",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder notification\nOrder placed February 29, 2028\nSubtotal: $10.00",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2028-02-29",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2028-02-29",
+        "orderNo": "tification",
+        "total": "",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n      orderDate: true,\n+     orderNo: true,\n-     orderNo: false,\n      total: false\n    },\n    merchant: 'Example Outfitters',\n    orderDate: '2028-02-29',\n+   orderNo: 'tification',\n-   orderNo: '',\n    total: ''\n  }\n"
+    },
+    {
+      "label": "subtotal preservation / Reorder ID: OLD-4826\nOrder no.: NEW-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nReorder ID: OLD-4826\nOrder no.: NEW-4826\nOrder placed February 29, 2028\nSubtotal: $10.00",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2028-02-29",
+        "orderNo": "NEW-4826",
+        "total": "",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2028-02-29",
+        "orderNo": "OLD-4826",
+        "total": "",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    found: {\n      merchant: true,\n      orderDate: true,\n      orderNo: true,\n...\n    orderDate: '2028-02-29',\n+   orderNo: 'OLD-4826',\n-   orderNo: 'NEW-4826',\n    total: ''\n  }\n"
+    },
+    {
+      "label": "subtotal preservation / Order identity: FAKE-4826",
+      "input": "From: Example Outfitters <receipts@example.test>\nOrder identity: FAKE-4826\nOrder placed February 29, 2028\nSubtotal: $10.00",
+      "expected": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2028-02-29",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "actual": {
+        "merchant": "Example Outfitters",
+        "orderDate": "2028-02-29",
+        "orderNo": "entity",
+        "total": "",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    found: {\n      merchant: true,\n      orderDate: true,\n+     orderNo: true,\n-     orderNo: false,\n      total: false\n    },\n    merchant: 'Example Outfitters',\n    orderDate: '2028-02-29',\n+   orderNo: 'entity',\n-   orderNo: '',\n    total: ''\n  }\n"
+    }
+  ]
+}

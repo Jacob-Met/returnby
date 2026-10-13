@@ -1,0 +1,12 @@
+{
+  "baseline_parse_sha256": "b603f60a64fe77a50c527f18f852838248cbe9747d6f241ae19379a238f85fc1",
+  "baseline_source": "af2e4f5f460f6880bdfb4b271fe93fd8a92558f6",
+  "candidate_or_donor_tests_seen": false,
+  "cases": 28,
+  "created_at_utc": "2026-10-13T04:21:26.476459+00:00",
+  "expectations": "Manually authored complete parsed records and recognized literal date hits. Indices are authored literal positions counted as UTF-16 units; no candidate result or donor test is used.",
+  "oracle_bytes": 22613,
+  "oracle_sha256": "3e0f4ac466bd67d8dd4f085a07bc3be1c26a1a4dc56bbbd653c9831952a077f2",
+  "public_contract": "Valid directly labeled Order date takes priority; earliest explicit valid original occurrence; otherwise retain original near-order then chronological fallback; preserve complete fields and original findDates indices.",
+  "schema": "hamon.returnby.date-priority.freeze.v1"
+}

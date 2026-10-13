@@ -1,0 +1,48 @@
+[
+  {
+    "name": "current-main-labels",
+    "command": [
+      "node",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/tests/order-number-labels.native.mjs",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/donor/src/parse.ts"
+    ],
+    "exit_code": 1,
+    "checks": 45,
+    "passed": 27,
+    "failed": 18,
+    "source_sha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749",
+    "stdout_sha256": "b2a2c148c2df96421254d3b89c1e0f4e7f939492647805dafde53e452da8fe9a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "current-main-combined",
+    "command": [
+      "node",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/docs/qualification/date-priority-composition-0d581b491497/inherited/receive_combined_parser.mjs",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/donor/src/parse.ts"
+    ],
+    "exit_code": 1,
+    "checks": 20,
+    "passed": 3,
+    "failed": 17,
+    "source_sha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749",
+    "stdout_sha256": "2f3f425f2b7fcb284f1f084254bde274fbf4c8a48e7ff690e0a72f603019667b",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "current-main-months",
+    "command": [
+      "node",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/docs/qualification/date-priority-composition-0d581b491497/inherited/receive_month_tokens.mjs",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/donor/src/parse.ts",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/docs/qualification/date-priority-composition-0d581b491497/author/current-main-months-report.json"
+    ],
+    "exit_code": 1,
+    "checks": 106,
+    "passed": 57,
+    "failed": 49,
+    "source_sha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749",
+    "stdout_sha256": "81061509ebf2274791854b0020c331ace2142360b6f364f5fa2cd0c2365c49f3",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

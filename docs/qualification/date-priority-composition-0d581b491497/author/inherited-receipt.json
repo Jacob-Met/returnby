@@ -1,0 +1,48 @@
+[
+  {
+    "name": "inherited-labels",
+    "command": [
+      "node",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/tests/order-number-labels.native.mjs",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/src/parse.ts"
+    ],
+    "exit_code": 0,
+    "checks": 45,
+    "passed": 45,
+    "failed": 0,
+    "stdout_sha256": "05df93670b821018a7d2bbb4825df2766b56786b7e7b3e055d6d0b5eb68aeaa9",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_unchanged": true
+  },
+  {
+    "name": "inherited-combined",
+    "command": [
+      "node",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/docs/qualification/combined-parser-9b000c33eb4c/receive_combined_parser.mjs",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/src/parse.ts"
+    ],
+    "exit_code": 0,
+    "checks": 20,
+    "passed": 20,
+    "failed": 0,
+    "stdout_sha256": "18c17a03efc13a3514879386719c53913176cbbf67b06d5d40900b5b80d9a97d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_unchanged": true
+  },
+  {
+    "name": "inherited-months",
+    "command": [
+      "node",
+      "/dev/shm/hamon-returnby-month-consumer-0d581b491497/receive_month_tokens.mjs",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/src/parse.ts",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/runs/inherited-months-report.json"
+    ],
+    "exit_code": 0,
+    "checks": 106,
+    "passed": 106,
+    "failed": 0,
+    "stdout_sha256": "ee7a818f34776d6f48908c17867487a861fce7417fad83d783f042a325cfba8e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_unchanged": true
+  }
+]

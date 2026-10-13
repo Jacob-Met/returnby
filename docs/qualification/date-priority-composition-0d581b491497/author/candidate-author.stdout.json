@@ -1,0 +1,701 @@
+{
+  "schema": "hamon.returnby.date-priority-composition.author.v1",
+  "node": "v24.19.0",
+  "parser": {
+    "path": "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/src/parse.ts",
+    "sha256": "6fdc382d9d3172d71cf66fd86e1597ff38c28c31b6977bbad5e0c096d9ecb55a"
+  },
+  "deadline": {
+    "path": "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/src/deadline.ts",
+    "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+  },
+  "receiver_sha256": "6bbcf4fd056709882cbe5abb52d10d83ea33804025c5259a0a47d6bf6767f83a",
+  "checks": 22,
+  "passed": 22,
+  "failed": 0,
+  "scope": "Actual existing public parse and dueDate functions on fictional receipts; no UI, storage, policy selection, maintained Vitest/build, deployment or installed-adoption claim.",
+  "results": [
+    {
+      "name": "explicit date format October 3, 2026",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date: October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-02",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-02",
+      "pass": true
+    },
+    {
+      "name": "explicit date format 3 Oct 2026",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date: 3 Oct 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-02",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-02",
+      "pass": true
+    },
+    {
+      "name": "explicit date format 2026-10-03",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date: 2026-10-03\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-02",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-02",
+      "pass": true
+    },
+    {
+      "name": "explicit date format 10/03/2026",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date: 10/03/2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-02",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-02",
+      "pass": true
+    },
+    {
+      "name": "explicit label \"ORDER DATE \"",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nORDER DATE October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-02",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-02",
+      "pass": true
+    },
+    {
+      "name": "explicit label \"order\\tdate : \"",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\norder\tdate : October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-02",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-02",
+      "pass": true
+    },
+    {
+      "name": "explicit label \"Order\\ndate:\\n\"",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder\ndate:\nOctober 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-02",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-02",
+      "pass": true
+    },
+    {
+      "name": "explicit label \"Order date                                                                                \"",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date                                                                                October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-02",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-02",
+      "pass": true
+    },
+    {
+      "name": "earliest explicit text order",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date: 2026-10-05\nOrder date: October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-05",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-04",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-05",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-04",
+      "pass": true
+    },
+    {
+      "name": "invalid explicit then valid explicit",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: March 10, 2027\nOrder date: February 29, 2027\nOrder date: March 1, 2027\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2027-03-01",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2027-03-31",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2027-03-01",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2027-03-31",
+      "pass": true
+    },
+    {
+      "name": "unknown explicit then valid explicit",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: March 10, 2027\nOrder date: pending\nOrder date: March 1, 2027\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2027-03-01",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2027-03-31",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2027-03-01",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2027-03-31",
+      "pass": true
+    },
+    {
+      "name": "false month then valid explicit",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date: Octopus 1, 2026\nOrder date: October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-02",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-02",
+      "pass": true
+    },
+    {
+      "name": "leap day and subtotal-only",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: March 10, 2028\nOrder date: 29 February 2028\nSubtotal: $42.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2028-02-29",
+        "orderNo": "KEEP-2000",
+        "total": "",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "expectedDue": "2028-03-30",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2028-02-29",
+        "orderNo": "KEEP-2000",
+        "total": "",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "actualDue": "2028-03-30",
+      "pass": true
+    },
+    {
+      "name": "retained non-direct fallback Preorder date: October 3, 2026",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nPreorder date: October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-10",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-09",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-10",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-09",
+      "pass": true
+    },
+    {
+      "name": "retained non-direct fallback Order date revised to October 3, 2026",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date revised to October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-10",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-09",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-10",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-09",
+      "pass": true
+    },
+    {
+      "name": "retained non-direct fallback Order date - October 3, 2026",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date - October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-10",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-09",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-10",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-09",
+      "pass": true
+    },
+    {
+      "name": "retained non-direct fallback Order date: February 30, 2026\nReminder: October 3, 2026",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date: February 30, 2026\nReminder: October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-10",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-09",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-10",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-09",
+      "pass": true
+    },
+    {
+      "name": "impostor only preserves other fields",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nOrder date: Mayonnaise 6, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": null,
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": null,
+      "pass": true
+    },
+    {
+      "name": "invalid only preserves other fields",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nOrder date: February 29, 2027\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": null,
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": null,
+      "pass": true
+    },
+    {
+      "name": "unknown only preserves other fields",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nOrder date: unknown\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": null,
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": null,
+      "pass": true
+    },
+    {
+      "name": "valid recovery after refusals",
+      "input": "From: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: May 15, 2026\nOrder date: May 6, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-05-06",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-06-05",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-05-06",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-06-05",
+      "pass": true
+    },
+    {
+      "name": "original offsets despite lowercase-expanding prefix",
+      "input": "İİİ😀\nFrom: Sample Shop <receipts@example.test>\nOrder notification\nReorder ID: OLD-1000\nOrder ID: KEEP-2000\nDelivery: October 10, 2026\nOrder date: October 3, 2026\nSubtotal: $42.00\nTotal: $47.00",
+      "expected": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "expectedDue": "2026-11-02",
+      "actual": {
+        "merchant": "Sample Shop",
+        "orderDate": "2026-10-03",
+        "orderNo": "KEEP-2000",
+        "total": "$47.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actualDue": "2026-11-02",
+      "pass": true
+    }
+  ]
+}

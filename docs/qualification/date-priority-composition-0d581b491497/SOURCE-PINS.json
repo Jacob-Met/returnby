@@ -1,0 +1,17 @@
+{
+  "repository": "Jacob-Met/returnby",
+  "date_priority_donor": "8df144cd393fd66a99f46683c54b55c97665d6e8",
+  "original_parser_sha256": "b603f60a64fe77a50c527f18f852838248cbe9747d6f241ae19379a238f85fc1",
+  "candidate_parser_sha256": "6fdc382d9d3172d71cf66fd86e1597ff38c28c31b6977bbad5e0c096d9ecb55a",
+  "candidate_parser_git_blob": "84083e2dcc39b724ca6210ed40792406eb276d00",
+  "candidate_core_tests_git_blob": "41ca82a8942dc111fa51a04396a16bcfaffa85c1",
+  "peer_review_sha256": "9fbaeedd820ca6f408d24f7123cb066696995945a95c7170604e29ccdb1c8b3a",
+  "source_scope": "On current main change only the three reviewed month-token lines and one reviewed reference-label line. Preserve every other 53 inherited file/mode and the complete existing PR54 core tests. Add original maintained tests and bounded native test/receiving evidence; no larger af2e UI stack import.",
+  "runtime_scope": "Actual Node24.19 source execution; candidate maintained Vitest/build/browser/installed gates unrun.",
+  "qualified_composition_reference": "af2e4f5f460f6880bdfb4b271fe93fd8a92558f6",
+  "qualified_composition_reference_tree": "8ba196c07305c5c529cc7d2b4043e60c56d274d3",
+  "publication_parent": "1883a078be5bbc1796818476ce3cb513e5ebf9db",
+  "publication_parent_tree": "571c8b004c73e22438a050057278bfcc29d74dc1",
+  "publication_parent_parser_sha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749",
+  "publication_parent_parser_git_blob": "6a59607db8418e20daf783f0738ba600dd16cf05"
+}

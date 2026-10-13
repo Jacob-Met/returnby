@@ -1,0 +1,830 @@
+{
+  "node": "v24.19.0",
+  "source": "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/src/parse.ts",
+  "cases": 45,
+  "passed": 45,
+  "failed": 0,
+  "results": [
+    {
+      "kind": "supported",
+      "input": "Order#ABCD",
+      "expected": "ABCD",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "ABCD",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Order # ABCD",
+      "expected": "ABCD",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "ABCD",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Order#: #ABCD",
+      "expected": "ABCD",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "ABCD",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Order number: ABCD",
+      "expected": "ABCD",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "ABCD",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "ORDER NUMBER # MiXeD-123",
+      "expected": "MiXeD-123",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "MiXeD-123",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Order no: AB12",
+      "expected": "AB12",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "AB12",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Order no.:AB12",
+      "expected": "AB12",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "AB12",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Order no. #Ab-1",
+      "expected": "Ab-1",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "Ab-1",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Order id ABCD",
+      "expected": "ABCD",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "ABCD",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "OrderID:ABCD",
+      "expected": "ABCD",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "ABCD",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "OrderNumber:ABCD",
+      "expected": "ABCD",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "ABCD",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "OrderNo.:ABCD",
+      "expected": "ABCD",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "ABCD",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Order#1-23",
+      "expected": "1-23",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "1-23",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Your Order\tno.\n#A1b2",
+      "expected": "A1b2",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "A1b2",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Reference (Order ID: AbcD-1234)",
+      "expected": "AbcD-1234",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "AbcD-1234",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "supported",
+      "input": "Order ID: 1234",
+      "expected": "1234",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "1234",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Order notification",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Order notice",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Order identity",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Order identifier",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Order numbering",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Order numbered",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Order numberABCD",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Order noABCD",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Order idABCD",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Reorder ID: OLD-1234",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Preorder #OLD-1234",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "backorder number: OLD-1234",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "disorder no. OLD-1234",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "order_notification #OLD-1234",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "preorderID:OLD-1234",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "unrelated-label",
+      "input": "Order notification #OLD-1234",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "Order notification\nOrder ID: NEW-5678",
+      "expected": "NEW-5678",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "NEW-5678",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "Reorder ID: OLD-1234\nOrder ID: NEW-5678",
+      "expected": "NEW-5678",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "NEW-5678",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "Order identity: FAKE-1234\nOrder #REAL-9876",
+      "expected": "REAL-9876",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "REAL-9876",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "Order numberABCD\nORDER NO. #Right-21",
+      "expected": "Right-21",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "Right-21",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "Order no: A12\nOrder id: NEXT-55",
+      "expected": "NEXT-55",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "NEXT-55",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "Order ID: ---1\nOrder ID: VALID-1",
+      "expected": "VALID-1",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "VALID-1",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "Order #FIRST-1\nOrder ID: SECOND-2",
+      "expected": "FIRST-1",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "FIRST-1",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "İİİ\nOrder #MiXeD-99",
+      "expected": "MiXeD-99",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "MiXeD-99",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "Order number: ABCD\nOrder notification",
+      "expected": "ABCD",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "ABCD",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "Order #123",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "Unlabelled ABCD",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "recovery-and-preservation",
+      "input": "",
+      "expected": "",
+      "actual": {
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "",
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "kind": "complete-receipt",
+      "input": "From: Northwind Outfitters <orders@example.test>\nOrder notification\nOrder ID: New-5678\nOrder placed October 3, 2026\nTotal: $64.00",
+      "expected": {
+        "merchant": "Northwind Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "New-5678",
+        "total": "$64.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Northwind Outfitters",
+        "orderDate": "2026-10-03",
+        "orderNo": "New-5678",
+        "total": "$64.00",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": true
+    }
+  ]
+}

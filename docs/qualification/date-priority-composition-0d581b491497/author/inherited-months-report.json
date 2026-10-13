@@ -1,0 +1,1432 @@
+{
+  "schema": "hamon.returnby.month-token-independent.v1",
+  "source": "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/src/parse.ts",
+  "source_sha256": "6fdc382d9d3172d71cf66fd86e1597ff38c28c31b6977bbad5e0c096d9ecb55a",
+  "receiver_sha256": "62c6111c123328d518b18b27817ccdcaf853932415e2f37e92d29c0ed872874d",
+  "node": "v24.19.0",
+  "timezone": "UTC",
+  "checks": 106,
+  "passed": 106,
+  "failed": 0,
+  "scope": "Actual unmodified public TypeScript parser exports; no browser, storage, policy, deadline, deployment or Actions claim.",
+  "results": [
+    {
+      "label": "full-month-first-01",
+      "operation": "findDates",
+      "input": "January 15, 2026",
+      "expected": [
+        {
+          "date": "2026-01-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-01-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-01",
+      "operation": "findDates",
+      "input": "15 january 2026",
+      "expected": [
+        {
+          "date": "2026-01-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-01-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-01",
+      "operation": "findDates",
+      "input": "JAN. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-01-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-01-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-02",
+      "operation": "findDates",
+      "input": "February 15, 2026",
+      "expected": [
+        {
+          "date": "2026-02-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-02-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-02",
+      "operation": "findDates",
+      "input": "15 february 2026",
+      "expected": [
+        {
+          "date": "2026-02-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-02-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-02",
+      "operation": "findDates",
+      "input": "FEB. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-02-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-02-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-03",
+      "operation": "findDates",
+      "input": "March 15, 2026",
+      "expected": [
+        {
+          "date": "2026-03-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-03-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-03",
+      "operation": "findDates",
+      "input": "15 march 2026",
+      "expected": [
+        {
+          "date": "2026-03-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-03-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-03",
+      "operation": "findDates",
+      "input": "MAR. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-03-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-03-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-04",
+      "operation": "findDates",
+      "input": "April 15, 2026",
+      "expected": [
+        {
+          "date": "2026-04-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-04-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-04",
+      "operation": "findDates",
+      "input": "15 april 2026",
+      "expected": [
+        {
+          "date": "2026-04-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-04-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-04",
+      "operation": "findDates",
+      "input": "APR. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-04-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-04-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-05",
+      "operation": "findDates",
+      "input": "May 15, 2026",
+      "expected": [
+        {
+          "date": "2026-05-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-05-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-05",
+      "operation": "findDates",
+      "input": "15 may 2026",
+      "expected": [
+        {
+          "date": "2026-05-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-05-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-05",
+      "operation": "findDates",
+      "input": "MAY. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-05-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-05-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-06",
+      "operation": "findDates",
+      "input": "June 15, 2026",
+      "expected": [
+        {
+          "date": "2026-06-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-06-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-06",
+      "operation": "findDates",
+      "input": "15 june 2026",
+      "expected": [
+        {
+          "date": "2026-06-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-06-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-06",
+      "operation": "findDates",
+      "input": "JUN. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-06-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-06-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-07",
+      "operation": "findDates",
+      "input": "July 15, 2026",
+      "expected": [
+        {
+          "date": "2026-07-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-07-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-07",
+      "operation": "findDates",
+      "input": "15 july 2026",
+      "expected": [
+        {
+          "date": "2026-07-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-07-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-07",
+      "operation": "findDates",
+      "input": "JUL. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-07-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-07-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-08",
+      "operation": "findDates",
+      "input": "August 15, 2026",
+      "expected": [
+        {
+          "date": "2026-08-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-08-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-08",
+      "operation": "findDates",
+      "input": "15 august 2026",
+      "expected": [
+        {
+          "date": "2026-08-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-08-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-08",
+      "operation": "findDates",
+      "input": "AUG. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-08-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-08-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-09",
+      "operation": "findDates",
+      "input": "September 15, 2026",
+      "expected": [
+        {
+          "date": "2026-09-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-09-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-09",
+      "operation": "findDates",
+      "input": "15 september 2026",
+      "expected": [
+        {
+          "date": "2026-09-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-09-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-09",
+      "operation": "findDates",
+      "input": "SEP. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-09-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-09-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-10",
+      "operation": "findDates",
+      "input": "October 15, 2026",
+      "expected": [
+        {
+          "date": "2026-10-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-10-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-10",
+      "operation": "findDates",
+      "input": "15 october 2026",
+      "expected": [
+        {
+          "date": "2026-10-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-10-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-10",
+      "operation": "findDates",
+      "input": "OCT. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-10-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-10-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-11",
+      "operation": "findDates",
+      "input": "November 15, 2026",
+      "expected": [
+        {
+          "date": "2026-11-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-11-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-11",
+      "operation": "findDates",
+      "input": "15 november 2026",
+      "expected": [
+        {
+          "date": "2026-11-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-11-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-11",
+      "operation": "findDates",
+      "input": "NOV. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-11-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-11-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-month-first-12",
+      "operation": "findDates",
+      "input": "December 15, 2026",
+      "expected": [
+        {
+          "date": "2026-12-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-12-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-day-first-12",
+      "operation": "findDates",
+      "input": "15 december 2026",
+      "expected": [
+        {
+          "date": "2026-12-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-12-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "abbreviation-12",
+      "operation": "findDates",
+      "input": "DEC. 15th, 2026",
+      "expected": [
+        {
+          "date": "2026-12-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-12-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "four-letter-sept",
+      "operation": "findDates",
+      "input": "15 Sept. 2026",
+      "expected": [
+        {
+          "date": "2026-09-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-09-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "full-name-period",
+      "operation": "findDates",
+      "input": "15 FEBRUARY. 2028",
+      "expected": [
+        {
+          "date": "2028-02-15",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2028-02-15",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "mixed-case-ordinal",
+      "operation": "findDates",
+      "input": "jAnUaRy 21ST, 2026",
+      "expected": [
+        {
+          "date": "2026-01-21",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-01-21",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Janitor",
+      "operation": "findDates",
+      "input": "Janitor 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Janitor",
+      "operation": "findDates",
+      "input": "15 Janitor 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Janua",
+      "operation": "findDates",
+      "input": "Janua 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Janua",
+      "operation": "findDates",
+      "input": "15 Janua 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Februaryness",
+      "operation": "findDates",
+      "input": "Februaryness 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Februaryness",
+      "operation": "findDates",
+      "input": "15 Februaryness 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Febrile",
+      "operation": "findDates",
+      "input": "Febrile 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Febrile",
+      "operation": "findDates",
+      "input": "15 Febrile 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Marching",
+      "operation": "findDates",
+      "input": "Marching 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Marching",
+      "operation": "findDates",
+      "input": "15 Marching 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Market",
+      "operation": "findDates",
+      "input": "Market 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Market",
+      "operation": "findDates",
+      "input": "15 Market 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Aprilish",
+      "operation": "findDates",
+      "input": "Aprilish 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Aprilish",
+      "operation": "findDates",
+      "input": "15 Aprilish 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Apricot",
+      "operation": "findDates",
+      "input": "Apricot 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Apricot",
+      "operation": "findDates",
+      "input": "15 Apricot 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Mayonnaise",
+      "operation": "findDates",
+      "input": "Mayonnaise 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Mayonnaise",
+      "operation": "findDates",
+      "input": "15 Mayonnaise 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Maybe",
+      "operation": "findDates",
+      "input": "Maybe 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Maybe",
+      "operation": "findDates",
+      "input": "15 Maybe 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Junior",
+      "operation": "findDates",
+      "input": "Junior 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Junior",
+      "operation": "findDates",
+      "input": "15 Junior 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Juniper",
+      "operation": "findDates",
+      "input": "Juniper 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Juniper",
+      "operation": "findDates",
+      "input": "15 Juniper 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Julyish",
+      "operation": "findDates",
+      "input": "Julyish 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Julyish",
+      "operation": "findDates",
+      "input": "15 Julyish 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Juliet",
+      "operation": "findDates",
+      "input": "Juliet 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Juliet",
+      "operation": "findDates",
+      "input": "15 Juliet 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Augustus",
+      "operation": "findDates",
+      "input": "Augustus 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Augustus",
+      "operation": "findDates",
+      "input": "15 Augustus 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Augury",
+      "operation": "findDates",
+      "input": "Augury 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Augury",
+      "operation": "findDates",
+      "input": "15 Augury 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Septic",
+      "operation": "findDates",
+      "input": "Septic 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Septic",
+      "operation": "findDates",
+      "input": "15 Septic 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Septemberish",
+      "operation": "findDates",
+      "input": "Septemberish 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Septemberish",
+      "operation": "findDates",
+      "input": "15 Septemberish 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Octopus",
+      "operation": "findDates",
+      "input": "Octopus 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Octopus",
+      "operation": "findDates",
+      "input": "15 Octopus 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Octoberly",
+      "operation": "findDates",
+      "input": "Octoberly 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Octoberly",
+      "operation": "findDates",
+      "input": "15 Octoberly 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Novel",
+      "operation": "findDates",
+      "input": "Novel 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Novel",
+      "operation": "findDates",
+      "input": "15 Novel 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Novemberish",
+      "operation": "findDates",
+      "input": "Novemberish 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Novemberish",
+      "operation": "findDates",
+      "input": "15 Novemberish 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Decaf",
+      "operation": "findDates",
+      "input": "Decaf 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Decaf",
+      "operation": "findDates",
+      "input": "15 Decaf 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-month-first-Decemberish",
+      "operation": "findDates",
+      "input": "Decemberish 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "word-refusal-day-first-Decemberish",
+      "operation": "findDates",
+      "input": "15 Decemberish 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "adjacent-token-refusal-XJanuary 15, 2026",
+      "operation": "findDates",
+      "input": "XJanuary 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "adjacent-token-refusal-15 XMarch 2026",
+      "operation": "findDates",
+      "input": "15 XMarch 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "adjacent-token-refusal-Mar2 15, 2026",
+      "operation": "findDates",
+      "input": "Mar2 15, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "adjacent-token-refusal-15 September2 2026",
+      "operation": "findDates",
+      "input": "15 September2 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "unicode-prefix-offsets",
+      "operation": "findDates",
+      "input": "😀 Order received: September 15, 2026\nNext: Jan. 2, 2027",
+      "expected": [
+        {
+          "date": "2026-09-15",
+          "index": 19
+        },
+        {
+          "date": "2027-01-02",
+          "index": 44
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-09-15",
+          "index": 19
+        },
+        {
+          "date": "2027-01-02",
+          "index": 44
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "mixed-format-text-order",
+      "operation": "findDates",
+      "input": "x 05/06/2026\nx 2026-04-02\nx March 1, 2026",
+      "expected": [
+        {
+          "date": "2026-05-06",
+          "index": 2
+        },
+        {
+          "date": "2026-04-02",
+          "index": 15
+        },
+        {
+          "date": "2026-03-01",
+          "index": 28
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-05-06",
+          "index": 2
+        },
+        {
+          "date": "2026-04-02",
+          "index": 15
+        },
+        {
+          "date": "2026-03-01",
+          "index": 28
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "same-date-repeated-preserved",
+      "operation": "findDates",
+      "input": "May 3, 2026; 2026-05-03",
+      "expected": [
+        {
+          "date": "2026-05-03",
+          "index": 0
+        },
+        {
+          "date": "2026-05-03",
+          "index": 13
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-05-03",
+          "index": 0
+        },
+        {
+          "date": "2026-05-03",
+          "index": 13
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "valid-leap-day",
+      "operation": "findDates",
+      "input": "February 29, 2028",
+      "expected": [
+        {
+          "date": "2028-02-29",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2028-02-29",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "numeric-us-order",
+      "operation": "findDates",
+      "input": "03/04/2026",
+      "expected": [
+        {
+          "date": "2026-03-04",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-03-04",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "numeric-iso",
+      "operation": "findDates",
+      "input": "2026-12-09",
+      "expected": [
+        {
+          "date": "2026-12-09",
+          "index": 0
+        }
+      ],
+      "actual": [
+        {
+          "date": "2026-12-09",
+          "index": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "label": "invalid-calendar-control-February 29, 2027",
+      "operation": "findDates",
+      "input": "February 29, 2027",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "invalid-calendar-control-April 31, 2026",
+      "operation": "findDates",
+      "input": "April 31, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "invalid-calendar-control-June 0, 2026",
+      "operation": "findDates",
+      "input": "June 0, 2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "invalid-calendar-control-2026-02-30",
+      "operation": "findDates",
+      "input": "2026-02-30",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "invalid-calendar-control-13/01/2026",
+      "operation": "findDates",
+      "input": "13/01/2026",
+      "expected": [],
+      "actual": [],
+      "pass": true
+    },
+    {
+      "label": "actual-parse-refuses-impostor",
+      "operation": "parse",
+      "input": "From: Example Mart <receipts@example.test>\nOrder number: ZX-4826\nOrder date: Mayonnaise 6, 2026\nTotal: $24.50",
+      "expected": {
+        "merchant": "Example Mart",
+        "orderDate": "",
+        "orderNo": "ZX-4826",
+        "total": "$24.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Mart",
+        "orderDate": "",
+        "orderNo": "ZX-4826",
+        "total": "$24.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "label": "actual-parse-valid-after-refusal",
+      "operation": "parse",
+      "input": "From: Example Mart <receipts@example.test>\nOrder number: ZX-4826\nOrder date: May 6, 2026\nTotal: $24.50",
+      "expected": {
+        "merchant": "Example Mart",
+        "orderDate": "2026-05-06",
+        "orderNo": "ZX-4826",
+        "total": "$24.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Mart",
+        "orderDate": "2026-05-06",
+        "orderNo": "ZX-4826",
+        "total": "$24.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "label": "actual-parse-day-first",
+      "operation": "parse",
+      "input": "From: Example Mart <receipts@example.test>\nOrder number: ZX-4826\nOrder date: 6 SEPT. 2026\nTotal: $24.50",
+      "expected": {
+        "merchant": "Example Mart",
+        "orderDate": "2026-09-06",
+        "orderNo": "ZX-4826",
+        "total": "$24.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Mart",
+        "orderDate": "2026-09-06",
+        "orderNo": "ZX-4826",
+        "total": "$24.50",
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "label": "actual-parse-other-fields-without-date",
+      "operation": "parse",
+      "input": "From: Example Mart <receipts@example.test>\nOrder number: ZX-4826\nOrder date: date pending\nTotal: $24.50",
+      "expected": {
+        "merchant": "Example Mart",
+        "orderDate": "",
+        "orderNo": "ZX-4826",
+        "total": "$24.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "actual": {
+        "merchant": "Example Mart",
+        "orderDate": "",
+        "orderNo": "ZX-4826",
+        "total": "$24.50",
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        }
+      },
+      "pass": true
+    }
+  ]
+}

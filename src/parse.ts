@@ -22,12 +22,12 @@ type Hit = { date: string; index: number };
 
 export function findDates(text: string): Hit[] {
   const hits: Hit[] = [];
-  const mon = '(jan|feb|mar|apr|may|jun|jul|aug|sept?|oct|nov|dec)[a-z]*\\.?';
+  const mon = '(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember|t)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\\.?';
   const patterns: [RegExp, (m: RegExpExecArray) => string][] = [
     [new RegExp(`\\b${mon}\\s+(\\d{1,2})(?:st|nd|rd|th)?,?\\s+(\\d{4})\\b`, 'gi'),
-      (m) => iso(+m[3], MONTHS[m[1].toLowerCase()], +m[2])],
+      (m) => iso(+m[3], MONTHS[m[1].slice(0, 3).toLowerCase()], +m[2])],
     [new RegExp(`\\b(\\d{1,2})\\s+${mon}\\s+(\\d{4})\\b`, 'gi'),
-      (m) => iso(+m[3], MONTHS[m[2].toLowerCase()], +m[1])],
+      (m) => iso(+m[3], MONTHS[m[2].slice(0, 3).toLowerCase()], +m[1])],
     [/\b(\d{4})-(\d{2})-(\d{2})\b/g, (m) => iso(+m[1], +m[2], +m[3])],
     [/\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/g, (m) => iso(+m[3], +m[1], +m[2])], // US order
   ];
@@ -73,7 +73,7 @@ function pickMerchant(text: string, known: string[]): string {
 export function parse(text: string, knownMerchants: string[] = []): Parsed {
   const merchant = pickMerchant(text, knownMerchants);
   const orderDate = pickOrderDate(text);
-  const no = /order\s*(?:#|number|no\.?|id)\s*:?\s*#?\s*([A-Z0-9][A-Z0-9-]{3,})/i.exec(text);
+  const no = /\border\s*(?:#|number\b|no\b\.?|id\b)\s*:?\s*#?\s*([A-Z0-9][A-Z0-9-]{3,})/i.exec(text);
   const tot = /\b(?:order\s+)?total\s*:?\s*([$€£]\s?\d[\d,]*(?:\.\d{2})?)/i.exec(text);
   const orderNo = no ? no[1] : '';
   const total = tot ? tot[1].replace(/\s/g, '') : '';
