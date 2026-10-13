@@ -1,0 +1,145 @@
+{
+  "format": "returnby.node-browser-profile.v1",
+  "status": "Unexecuted supported Node API adaptation after retained Python driver bootstrap failure",
+  "repository": "Jacob-Met/returnby",
+  "reservation": "https://github.com/Jacob-Met/returnby/issues/66#issuecomment-6148695060",
+  "base_contract_git_blob": "6b410f82313611ec9d1a81d0c53a835ac76a03f1",
+  "source_input_git_blob": "98a434fe34dd6e175a64d0396d079cadf6f779b7",
+  "stage_build_git_blob": "d519828d86e84d364e270dcac49c19dfd36f8012",
+  "prior_python_receiver_git_blob": "85d200eb1266a942b6d9ae95cd64e1642c419690",
+  "prior_failure": {
+    "path": "browser-original/RECEIVING.json",
+    "git_blob": "63d567971b2ed16ee705f46708385aa08fc605ca",
+    "bytes": 42786,
+    "sha256": "ba9e5895250375013451a31f04a74a0ba6f0dc598278110359149550c3920ce9",
+    "attribution": "Installed distro Python Playwright points to absent /usr/share/nodejs/playwright/cli.js; no Chromium launch or fixture completed. Original stage and tsc/Vite passed. Candidate build/browser was not submitted."
+  },
+  "device": {
+    "id": "cadafaf3-4d0b-4c4f-a0d3-34a95d2cec90",
+    "hostname": "hamon-thinkpad",
+    "user": "jacob",
+    "uid": 1000,
+    "python": "3.14.4",
+    "node_path": "/usr/bin/node",
+    "node_version": "22.22.1",
+    "playwright": "1.55.0",
+    "chrome_path": "/snap/bin/chromium",
+    "chrome_version": "153.0.8010.47"
+  },
+  "toolchain": {
+    "source": "/home/jacob/hamon-returnby-choices-9785663a4318/driver/node_modules",
+    "inventory_path": "NODE-TOOLCHAIN-READONLY.json",
+    "inventory_git_blob": "a5f2f1554773ac4da0927117277f38b63d43e9d4",
+    "copy": "node-browser-driver/node_modules",
+    "copy_receipt": "NODE-DRIVER-COPY.json",
+    "packages": [
+      "playwright",
+      "playwright-core"
+    ],
+    "version": "1.55.0",
+    "files": 455,
+    "bytes": 12133249,
+    "aliases": [],
+    "policy": "Read only the exact observed regular file bytes/modes and original package/lock metadata. Copy exactly two unchanged packages into a create-only owned node_modules. Preserve all original metadata/source bytes/modes. Darwin-only optional fsevents is not applicable. No npm install, source mutation, shim, monkeypatch or shared symlink."
+  },
+  "browser": {
+    "api": "Supported Node playwright chromium.launchServer plus chromium.connect using the same copied package version",
+    "output_prefix": "browser-node-",
+    "timezone": "UTC",
+    "sandbox": true,
+    "lifecycle": "Bind BrowserServer.process() owned ChildProcess PID to actual browser CDP PID equality and /proc uid/start ticks/argv. Require contexts/client/BrowserServer closure, actual owned child exit and own HTTP/WebSocket listeners closed. No unowned process signal or inference of Chromium exit from a different wrapper PID.",
+    "network": "Allow only exact own loopback origin and abort/log other page/context HTTP(S) requests; no provider/mailbox calls. This is not an OS-wide Chromium network audit.",
+    "original_gate": "These eleven expected original mismatches are inferred from exact source, not yet native observations. Retain complete first original results; require both controls to pass and all cleanup/source/build/dependency gates to pass before candidate product receiving. Any automation/build/lifecycle error stops with evidence.",
+    "expected_original_only_mismatch_names": [
+      "embedded-alias.preview.merchant",
+      "embedded-alias.preview.days",
+      "embedded-alias.preview.source",
+      "embedded-alias.preview.highlighted",
+      "embedded-alias.source_label",
+      "embedded-alias.saved.windowDays",
+      "embedded-alias.saved.windowSource",
+      "embedded-alias.card_due",
+      "embedded-alias.reload_card_due",
+      "embedded-alias.calendar.DTSTART;VALUE=DATE",
+      "embedded-alias.calendar.DTEND;VALUE=DATE"
+    ]
+  },
+  "fixtures": [
+    {
+      "id": "embedded-alias",
+      "text": "Order confirmation\nContosocial\nOrder # RB1001\nOrder date: 2026-10-10\nOrder total: $42.50\nAuthored private memo: never store this pasted text.",
+      "preview": {
+        "merchant": "",
+        "orderDate": "2026-10-10",
+        "orderNo": "RB1001",
+        "total": "$42.50",
+        "days": 30,
+        "source": "default",
+        "highlighted": true
+      },
+      "manual_merchant": "Contosocial",
+      "saved": {
+        "merchant": "Contosocial",
+        "windowDays": 30,
+        "windowSource": "default"
+      },
+      "due": "2026-11-09",
+      "original_known_defect": {
+        "preview_merchant": "contoso",
+        "days": 15,
+        "source": "policy",
+        "highlighted": false,
+        "due": "2026-10-25"
+      },
+      "calendar_download": true
+    },
+    {
+      "id": "complete-alias",
+      "text": "Order confirmation\nContoso\nOrder # RB1002\nOrder date: 2026-10-10\nOrder total: $55.00",
+      "preview": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-10",
+        "orderNo": "RB1002",
+        "total": "$55.00",
+        "days": 15,
+        "source": "policy",
+        "highlighted": false
+      },
+      "manual_merchant": null,
+      "saved": {
+        "merchant": "contoso",
+        "windowDays": 15,
+        "windowSource": "policy"
+      },
+      "due": "2026-10-25",
+      "calendar_download": false
+    },
+    {
+      "id": "from-priority",
+      "text": "From: Tailspin Toys <orders@tailspin.example>\nContosocial\nOrder # RB1003\nOrder date: 2026-10-10\nOrder total: $66.00",
+      "preview": {
+        "merchant": "Tailspin Toys",
+        "orderDate": "2026-10-10",
+        "orderNo": "RB1003",
+        "total": "$66.00",
+        "days": 90,
+        "source": "policy",
+        "highlighted": false
+      },
+      "manual_merchant": null,
+      "saved": {
+        "merchant": "Tailspin Toys",
+        "windowDays": 90,
+        "windowSource": "policy"
+      },
+      "due": "2027-01-08",
+      "calendar_download": false
+    }
+  ],
+  "preservation": "Reuse exact accepted original source/build and immutable intake without rewriting prior records; original build need not rerun. Candidate direct build and browser remain gated by a complete original Node course with exact expected semantic mismatches and passing controls. Pin Node profile/inventory/copy receipt plus existing source/build manifests before/after. Use exact timestamp integers or strings rather than rounded JavaScript Numbers.",
+  "limits": [
+    "Only driver language/platform bootstrap and owned process lifecycle change; all three functional fixtures remain exact.",
+    "The previous Python failure and historical Windows held course remain attributed separately.",
+    "No dependency/toolchain installation, HOME/security configuration, product source change, GitHub Actions, merge, release or adoption."
+  ]
+}

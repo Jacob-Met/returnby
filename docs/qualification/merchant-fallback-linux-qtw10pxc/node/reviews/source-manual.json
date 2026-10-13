@@ -1,0 +1,49 @@
+{
+  "format": "returnby.node-adapter.source-manual-review.v1",
+  "status": "Accepted final Node adaptation for native syntax/copy/original receiving; no Node product execution yet",
+  "repository": "Jacob-Met/returnby",
+  "pins": {
+    "profile": "e23bb4224084ca8612fe52c8fc757e8bfa2b03e9",
+    "inventory": "a5f2f1554773ac4da0927117277f38b63d43e9d4",
+    "copier": "56eecba28925ecd02611d64d4400eeda5e723fab",
+    "browser_v1": "73342804daaf01c1b6594361fe65a9ebfbfc8c8c",
+    "browser_v2": "18e4f9adb26f1c89b7cecfdf142077a17d93418b"
+  },
+  "findings": [
+    "All three profile fixtures and eleven source-derived original mismatch names remain exact to base Linux contract.",
+    "Copier compares455 actual regular package files and modes to independently read native inventory, plus five exact metadata objects. Only owned create-only package files receive chmod; all shared metadata/source remain read-only.",
+    "Old input/stage/original build/Python failure and all staged source/dist files are preserved before/after copy. New timestamp values are decimal strings.",
+    "Node receiver binds complete original source/build/stage/copy acceptance and exact immutable inputs. All source files reconstruct Base64 body identity, actual byte count/SHA256/Git and exact bigint modification times.",
+    "Only frozen mtime_ns integer tokens in source/stage manifests are read as decimal strings; raw JSON bytes remain pinned and unchanged.",
+    "Supported public Node Playwright launchServer/connect use only copied1.55.0 packages. Explicit sandbox enabled; actual own browser args refuse sandbox-disable flags.",
+    "Own BrowserServer ChildProcess PID must equal CDP main browser PID; /proc UID/start ticks and actual args remain unchanged. Owned child clean exit and both loopback listeners plus all contexts/client/server cleanup gate completion.",
+    "Desktop fixtures, reviewed save/reload/whitelist/calendar checks and candidate narrow geometry are a direct translation of existing course; observed results are still pending.",
+    "V1 was held for two receipt-retention fixes and strict UTF8 parity. Final v2 changes exactly seven lines: two version lines, immediate Promise.all download+click observation, fatal UTF8 ICS decode, two caught listener probes and required cleanup status list. Every other line is byte-identical.",
+    "Original source build is reused without rerun. Candidate build/browser remains gated by completed original Node receipt with exact eleven semantic mismatches and both unrelated controls passing."
+  ],
+  "v1_findings": {
+    "status": "Hold for bounded receiver corrections; product/source/copy scope accepted",
+    "browser": "73342804daaf01c1b6594361fe65a9ebfbfc8c8c",
+    "blockers": [
+      "Wrap both final listenerClosed calls in cleanup helper and require successful probe operation statuses to preserve receipt on synchronous probe error.",
+      "Observe download event and click promises together immediately using Promise.all so click failure cannot leave an unhandled download rejection."
+    ],
+    "parity": [
+      "Use TextDecoder utf-8 fatal for ICS bytes to retain Python strict decoding."
+    ],
+    "accepted": [
+      "Immutable source/profile/build/copy bindings",
+      "Same fixtures and eleven expected original semantic mismatches",
+      "Exact mtime_ns strings and bigint stat",
+      "Owned launchServer child PID equals actual CDP browser PID",
+      "Sandbox opt-in and actual argv refusal",
+      "Source/dist/dependency/manifests before/after gates"
+    ],
+    "executed": false
+  },
+  "native_limits": [
+    "No Node package import, copy or browser execution performed by this Source review.",
+    "Native syntax checks must precede owned package copy; runtime failure remains held with raw evidence, without install or sandbox workaround.",
+    "Historical Python missing-CLI failure and Windows held profile retain separate scope."
+  ]
+}

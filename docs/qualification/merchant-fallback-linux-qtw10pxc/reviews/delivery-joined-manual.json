@@ -1,0 +1,105 @@
+{
+  "format": "returnby-linux-delivery-joined-manual-review-v1",
+  "date": "2026-10-13",
+  "reviewer": "HAMON Delivery",
+  "status": "ACCEPTED manual static review of exact final Linux drafts; no native syntax, staging, build or browser execution by this reviewer",
+  "repository": "Jacob-Met/returnby",
+  "reservation": "https://github.com/Jacob-Met/returnby/issues/66#issuecomment-6148695060",
+  "source": {
+    "original": "7a271cfbc27e6c79a889b90920a700fdbf638e22",
+    "candidate": "f2ad8039ddef8f783bccf491847d7b95854f92e1"
+  },
+  "final_pins": {
+    "contract": "6b410f82313611ec9d1a81d0c53a835ac76a03f1",
+    "input": "98a434fe34dd6e175a64d0396d079cadf6f779b7",
+    "build": "d519828d86e84d364e270dcac49c19dfd36f8012",
+    "browser": "85d200eb1266a942b6d9ae95cd64e1642c419690"
+  },
+  "preserved_prior": {
+    "windows_contract": "837781b16a669c0eeb66b00e8901a2877c8696f4",
+    "windows_input": "6dfc8145a8b2f442424f036a733d1938b1977462",
+    "windows_build": "ab3ac85199faa51039e93bf477aaba3404c0e306",
+    "windows_browser": "a6830407fe4af938a523fb8df491119d32ff0608",
+    "linux_browser_v1": "2fd3e7e858023005ccb160154a75a3b3d748210d"
+  },
+  "mechanical_comparison": {
+    "windows_base": "ab3ac85199faa51039e93bf477aaba3404c0e306",
+    "linux_candidate": "d519828d86e84d364e270dcac49c19dfd36f8012",
+    "unchanged_helpers": [
+      "require",
+      "now",
+      "identity",
+      "regular",
+      "no_redirects",
+      "relative",
+      "read_json",
+      "create_bytes",
+      "save",
+      "capacity",
+      "inventory",
+      "source_rows",
+      "check_source_shape",
+      "applicable",
+      "dependency_projection",
+      "main"
+    ],
+    "changed_functions": [
+      "intake",
+      "packages",
+      "node_version",
+      "stage",
+      "build"
+    ],
+    "added_functions": [
+      "dependency_inventory"
+    ],
+    "removed_functions": [],
+    "direct_jobs_unchanged": true,
+    "input_projections_and_bodies_unchanged": true
+  },
+  "comparison_findings": [
+    "All three fixture objects match the prior frozen Windows contract.",
+    "Original and candidate projections and all29 encoded source bodies match Windows INPUT; only input status and contract pin change.",
+    "Build direct tsc/Vite job span and sixteen helper function bodies remain unchanged; five platform/dependency functions change and dependency_inventory is added.",
+    "Linux browser functional fixture/assertion block matches Windows after removal only of explicit UTC context setting.",
+    "Exact reversal of final Linux browser version markers and actual own-browser argv guard restores Linux v1 byte-for-byte; final draft adds328 ASCII bytes."
+  ],
+  "build_review": [
+    "Exact host, uid, user, Python and direct owned nonhidden root gates.",
+    "No redirect ancestors; only seven exact internal dependency aliases, kept distinct from regular byte/mode inventory.",
+    "Alias target resolution is relative to its .bin parent and remains inside each own node_modules root.",
+    "Fresh create-only file copies preserve bytes and source modes; chmod targets only newly created owned copies, never shared files.",
+    "38 applicable Linux-x64 lock metadata checks; exact735-file/91349554-byte count gate; before/copy/after bytes and modes plus aliases must match.",
+    "Original source bodies and source byte/mtime gates retained; only compiler and Vite commands, both HTML outputs, capacity and manifests.",
+    "Stream pinning remains inside preservation exception handling; timeout does not establish descendant cleanup.",
+    "No HOME, sandbox, toolchain, dependency install, shared code execution or installed consumer change."
+  ],
+  "browser_review": [
+    "Immutable INPUT and CONTRACT Git identities, full STAGED-SOURCE.accepted and BUILD.accepted/manifests_unchanged are required. Build input/stage pins, node version, successful tsc and Vite, dependency custody and actual dist are bound before launch.",
+    "All27/28 source rows reconstruct immutable Base64 bodies and match Git identity, bytes, SHA256 and staged modification times. Source, dist and binding manifests are reread after receiving.",
+    "Dependencies before/copied/source_after regular byte/mode inventories and seven exact alias pairs must agree; stage/build owns fresh dependency admission and copy preservation.",
+    "All live browser/server setup is under one covering try/finally. Nullable resources and started-thread guards permit truthful failed setup receipt without treating missing cleanup as success.",
+    "Chromium launch explicitly sets chromium_sandbox=True. The browser identified through its own CDP session has UID/start_ticks read before and after pidfd_open.",
+    "Actual own /proc browser cmdline is retained and any --no-sandbox or --disable-setuid-sandbox argument, including equals forms, refuses acceptance. No sandbox-disable fallback is authorized.",
+    "Linux pidfd POLLIN, descriptor close, explicit context/browser/Playwright/server shutdown, listener refusal and thread exit all gate receiver completion; no unowned process is killed.",
+    "Each fictional fixture uses a fresh UTC context and own origin/storage. Network routing allows only the current ephemeral loopback origin and records/aborts other HTTP(S).",
+    "Product failures remain distinct from receiver errors and postflight failures; exactly three completed cases and verified cleanup are required for receiver_complete.",
+    "Original expected11 mismatch names remain source-derived until observed. Candidate execution depends on completed original course, exact known mismatch set and passing genuine-alias/From controls."
+  ],
+  "historical_hash_scope": "Prior regular-manifest and hidden-lock SHA values are historical preflight observations. This driver performs a fresh current byte/mode/alias admission and copy equality course. No claim that it enforces those historical aggregate hashes.",
+  "native_preflight_attribution": {
+    "blob": "33ee48086bf0075be0b0fec1b65c6fb7a16b0b76",
+    "scope": "Read-only observation only; no source staging, dependency copying, product build or browser qualification."
+  },
+  "peer_review_read": "8f28d2bbe7619de02c716e74b779a1f21a49c012",
+  "next_gate": "Runtime follows existing pending syntax-review write calls without mutation retry, performs one bounded exact-driver compile/data-only preflight, then owns separate explicitly recorded product staging/build and original/candidate browser course after successful gates.",
+  "limits": [
+    "Static acceptance is not a native execution result and does not establish present host availability or remaining free disk.",
+    "No Linux product operation has been submitted in this review. Known pending writes belong only to Runtime syntax-review folder.",
+    "The historical Windows packet and unknown original MSI mkdir remain unchanged; Linux receiving cannot qualify Windows.",
+    "No dependency/toolchain install, HOME/security configuration change, product source change, source-owner takeover, deployment, merge or installed consumer acceptance.",
+    "Build timeout only proves direct child killed/reaped; descendants remain unestablished and the course must stay held if that occurs.",
+    "No GitHub Actions trigger: this review is a detached immutable blob, with no PR or main/ref mutation."
+  ],
+  "executed": false
+}

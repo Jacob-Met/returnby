@@ -1,0 +1,282 @@
+{
+  "format": "returnby-linux-receiving-publication-manifest-v1",
+  "source_base": "f2ad8039ddef8f783bccf491847d7b95854f92e1",
+  "source_tree": "80a4535a69ca36be41598051945e1dd4b2aba7bd",
+  "original_source": "7a271cfbc27e6c79a889b90920a700fdbf638e22",
+  "branch": "worker/evidence-returnby-linux-qtw10pxc",
+  "prefix": "docs/qualification/merchant-fallback-linux-qtw10pxc/",
+  "scope": "Additive evidence only for exact source offer; no product change, PR, merge, Actions or adoption. No qualification of current main or held integration stacks.",
+  "file_count_excluding_this_manifest": 46,
+  "bytes_excluding_this_manifest": 5501564,
+  "files": [
+    {
+      "path": "calendars/candidate-embedded-alias.ics",
+      "git_blob": "31516e3f60375bc2584329ac38372abb33bdeea8",
+      "bytes": 400,
+      "sha256": "8648f44a37e64f8b029d911fa7779f49f1f161698cf5defb20a618723511df7d"
+    },
+    {
+      "path": "calendars/original-embedded-alias.ics",
+      "git_blob": "9e6712cca9c379c9a5bbaa1a1472625f54da46d0",
+      "bytes": 400,
+      "sha256": "1c68f9008c0cdc154ba1385a8ee4c5835ed65e182ab2cc71494663823b372abd"
+    },
+    {
+      "path": "captures/candidate-embedded-preview-desktop.png",
+      "git_blob": "fcdb52d29030a6eb6d0fd45b9e5b44b6f2bdcf22",
+      "bytes": 189976,
+      "sha256": "e5ece62e62c4c74686b6eacb27f9190c13c14c9ff9adac5805c86c2cd9789472"
+    },
+    {
+      "path": "captures/candidate-embedded-saved-narrow.png",
+      "git_blob": "f84de478f9e6251c28802d1954dfb2d6b46588f2",
+      "bytes": 142088,
+      "sha256": "a8b8d984e1d8136f0d8b074b823b11a0b10a9b6761e9f022c36a387bc3be18a5"
+    },
+    {
+      "path": "captures/original-embedded-preview-desktop.png",
+      "git_blob": "f92e70b7d43c5a035abed27f176f54835eb6f7a5",
+      "bytes": 190934,
+      "sha256": "42b3e2c253d65af48d074bdecf87490d060093d4f7336e6c05c57dac5e119be5"
+    },
+    {
+      "path": "CONTRACT.json",
+      "git_blob": "6b410f82313611ec9d1a81d0c53a835ac76a03f1",
+      "bytes": 8999
+    },
+    {
+      "path": "evidence/INDEX.json",
+      "git_blob": "bdcf1373f6001ab31617773b90cea15c9909105a",
+      "bytes": 8742
+    },
+    {
+      "path": "evidence/seal_transport.py",
+      "git_blob": "555c09c9a2857394ba17801f963b6714c0dca3e9",
+      "bytes": 2548
+    },
+    {
+      "path": "evidence/TRANSPORT-HISTORY.json",
+      "git_blob": "b4e5f3ec98864537cec8b893a18fe75c48d566af",
+      "bytes": 2213
+    },
+    {
+      "path": "evidence/TRANSPORT-INDEX.json",
+      "git_blob": "9cce8ecdf3d69934330c7f47a29481cc0a040823",
+      "bytes": 7008
+    },
+    {
+      "path": "evidence/transport/candidate-node-browser-1.transport.json",
+      "git_blob": "b5d6db50f884bb29d748e41f810f41f8957e97dd",
+      "bytes": 406072,
+      "sha256": "2c95d68542d5381da2823607cc03bf58a56c083b5de2ceb093efc326db25c0de"
+    },
+    {
+      "path": "evidence/transport/candidate-node-browser-2.transport.json",
+      "git_blob": "51ec41640e83f88aefeae30a63dbf08766bbdb43",
+      "bytes": 442076,
+      "sha256": "75516fdcda151bab49d84ce92f4b4392b7e748969c377b581949ee6ee799aa4c"
+    },
+    {
+      "path": "evidence/transport/node-adapter-1.transport.json",
+      "git_blob": "49cba59f2285a9eea0186ab30d1bbd3198a0325b",
+      "bytes": 290610,
+      "sha256": "aae3945a3a09caa1e0518f56e64cb015c5fa3a9e77cec06db17f89c2e260355b"
+    },
+    {
+      "path": "evidence/transport/original-node-browser-1.transport.json",
+      "git_blob": "d6f00453d2e41ed01975aa5bf92d60344c3f80c8",
+      "bytes": 403863,
+      "sha256": "2d82680692fac19d0e430acc872be762d2cf702be3b2d6dc9729d69322625678"
+    },
+    {
+      "path": "evidence/transport/original-node-browser-2.transport.json",
+      "git_blob": "95104f6e49027db3fcae74e2bd4797d90c769148",
+      "bytes": 254014,
+      "sha256": "9949976a2ca8f9ef36be5393e6f934c0cdcdf676637bf58e60cc118ab97234c5"
+    },
+    {
+      "path": "evidence/transport/preparation-python-held-1.transport.json",
+      "git_blob": "77801838a069a615995ee8df5ce9aec29fd60506",
+      "bytes": 580560,
+      "sha256": "bcbc9c679a0a8ab4955e7c01572cc942b9948104fd46ac44c58ef3c779020793"
+    },
+    {
+      "path": "evidence/transport/preparation-python-held-2.transport.json",
+      "git_blob": "d26b4c729468ae0b440c94b5c2b2aba6ff106fcc",
+      "bytes": 415454,
+      "sha256": "ac9ec6163fd3ca435ef7bb0b613d93620c08db8fd659afcf2807f5928af6aacd"
+    },
+    {
+      "path": "evidence/transport/preparation-python-held-3.transport.json",
+      "git_blob": "27fd5a998fb115c1a47c5838aaf001577d21cbfd",
+      "bytes": 11027,
+      "sha256": "37f60918f1b05052174dd1197c56992dde7711f0cef826a71e990523b2923585"
+    },
+    {
+      "path": "evidence/transport/syntax-review-1.transport.json",
+      "git_blob": "54cfc5435c490a9c4d6fac3cb52a949d4aa2ac06",
+      "bytes": 592746,
+      "sha256": "2b1fd07bd0ee98da89255909c690eb78575ba07051e27c93748052eba20a6967"
+    },
+    {
+      "path": "history/receive_browser-v1-unexecuted.py",
+      "git_blob": "2fd3e7e858023005ccb160154a75a3b3d748210d",
+      "bytes": 25287
+    },
+    {
+      "path": "INPUT.json",
+      "git_blob": "98a434fe34dd6e175a64d0396d079cadf6f779b7",
+      "bytes": 526660
+    },
+    {
+      "path": "node/copy_node_driver.py",
+      "git_blob": "56eecba28925ecd02611d64d4400eeda5e723fab",
+      "bytes": 12505
+    },
+    {
+      "path": "node/history/receive_node-v1-unexecuted.mjs",
+      "git_blob": "73342804daaf01c1b6594361fe65a9ebfbfc8c8c",
+      "bytes": 25344
+    },
+    {
+      "path": "node/NODE-BROWSER-PROFILE.json",
+      "git_blob": "e23bb4224084ca8612fe52c8fc757e8bfa2b03e9",
+      "bytes": 6716
+    },
+    {
+      "path": "node/NODE-TOOLCHAIN-READONLY.json",
+      "git_blob": "a5f2f1554773ac4da0927117277f38b63d43e9d4",
+      "bytes": 98826
+    },
+    {
+      "path": "node/receive_node.mjs",
+      "git_blob": "18e4f9adb26f1c89b7cecfdf142077a17d93418b",
+      "bytes": 25514
+    },
+    {
+      "path": "node/reviews/delivery-joined-manual.json",
+      "git_blob": "bcc3d9547feb03756ed25a166a7d9001bf020ac7",
+      "bytes": 9819
+    },
+    {
+      "path": "node/reviews/source-manual.json",
+      "git_blob": "8d5436df6f4a8ddb66822089a625059ec1ee2196",
+      "bytes": 3914
+    },
+    {
+      "path": "preflight/read-only.json",
+      "git_blob": "33ee48086bf0075be0b0fec1b65c6fb7a16b0b76",
+      "bytes": 39723
+    },
+    {
+      "path": "README.md",
+      "git_blob": "4cc715efd3913448b4faff96399f0673b8a08990",
+      "bytes": 13061
+    },
+    {
+      "path": "receive_browser.py",
+      "git_blob": "85d200eb1266a942b6d9ae95cd64e1642c419690",
+      "bytes": 25615
+    },
+    {
+      "path": "reviews/delivery-joined-manual.json",
+      "git_blob": "9c09b9993134fd4ef443a2e2d68a1647a4688480",
+      "bytes": 7310
+    },
+    {
+      "path": "reviews/node-retained-data.json",
+      "git_blob": "17696a56bc5c0b58bae8134a5c974e68f492c852",
+      "bytes": 236496
+    },
+    {
+      "path": "reviews/portable-decoder-receiving.json",
+      "git_blob": "aec9f0be2e0efaad15ff8bc22021070ea762224b",
+      "bytes": 11331
+    },
+    {
+      "path": "reviews/portable-decoder.stderr",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "reviews/portable-decoder.stdout",
+      "git_blob": "84f8a5c6708ac14138c7638d76a3b0a81a989358",
+      "bytes": 70
+    },
+    {
+      "path": "reviews/python-partial-retained-data.json",
+      "git_blob": "9d8018390c8e3a4b470ec2104d24e5537a092d09",
+      "bytes": 291229
+    },
+    {
+      "path": "reviews/receive_node_data.py",
+      "git_blob": "ade7430003269c7b744b35db7e95332475f40bf0",
+      "bytes": 28159
+    },
+    {
+      "path": "reviews/receive_portable_decoder.py",
+      "git_blob": "7d807cc17372af8df0f24fe21daddc1b5f4a7fc6",
+      "bytes": 4456
+    },
+    {
+      "path": "reviews/receive_python_partial.py",
+      "git_blob": "ec4c474a2325733c7efdb4f1501bc1bff307790c",
+      "bytes": 13398
+    },
+    {
+      "path": "reviews/receive_transport.py",
+      "git_blob": "45831ed9428605d319e83a9d1df2528f0f7f0a3f",
+      "bytes": 8191
+    },
+    {
+      "path": "reviews/runtime-build-manual.json",
+      "git_blob": "5eec94c8b3021aa33c6b7bd81d1738e34cf88d03",
+      "bytes": 2376
+    },
+    {
+      "path": "reviews/source-manual.json",
+      "git_blob": "8f28d2bbe7619de02c716e74b779a1f21a49c012",
+      "bytes": 4570
+    },
+    {
+      "path": "reviews/transport-custody.json",
+      "git_blob": "6ae314c2b6d928cf10bcd8271f89b6f92f83450f",
+      "bytes": 105609
+    },
+    {
+      "path": "stage_build.py",
+      "git_blob": "d519828d86e84d364e270dcac49c19dfd36f8012",
+      "bytes": 23375
+    },
+    {
+      "path": "verify_packets.py",
+      "git_blob": "ff14a9e9287c2a5def795f299b6fcf106360188c",
+      "bytes": 2280
+    }
+  ],
+  "source_preservation": {
+    "parent_leaf_count": 81,
+    "workflows": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "git_blob": "b5688812f36338630c21eb5643318a55496ae09b"
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "git_blob": "a0b5ed32f62e4f9691180a01f579c95619bb290a"
+      }
+    ]
+  },
+  "native_evidence": {
+    "index": "bdcf1373f6001ab31617773b90cea15c9909105a",
+    "transport_index": "9cce8ecdf3d69934330c7f47a29481cc0a040823",
+    "packets": 9,
+    "members": 80
+  },
+  "limits": [
+    "Direct TypeScript/Vite builds and three affected main-page cases only; no full Vitest, parser rerun or checklist-flow qualification.",
+    "Original distro Python bootstrap failure is retained separately from completed Node API browser receiving.",
+    "Git clone/archive instructions are not claimed executed here; the portable read-only verifier is independently received.",
+    "Windows held packet and source/integration/adoption owner boundaries remain unchanged."
+  ]
+}

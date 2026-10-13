@@ -1,0 +1,30 @@
+{
+  "format": "returnby-linux-build-runtime-static-review-v1",
+  "status": "manual static acceptance; no native compile/stage/build/browser performed",
+  "reviewed": {
+    "build": "d519828d86e84d364e270dcac49c19dfd36f8012",
+    "input": "98a434fe34dd6e175a64d0396d079cadf6f779b7",
+    "contract": "6b410f82313611ec9d1a81d0c53a835ac76a03f1"
+  },
+  "scope": "Independent manual review of Source's Linux stage/build adaptation; browser author is Runtime, independent browser review belongs to Source and Delivery.",
+  "findings": [
+    "Create-only source and dependency roots under admitted Jacob-owned nonhidden home child; ancestor redirects rejected.",
+    "Frozen original/candidate commits, trees, 27/28 projections and 29 Git bodies are verified before stage.",
+    "Package metadata covers 38 Linux/x64 applicable source-lock dependencies; regular-file byte/mode equality and seven exact internal aliases are independently recorded.",
+    "Shared dependencies are read only; copied regular bytes created exclusively and original executable modes applied only to own new files.",
+    "Each alias resolves inside the corresponding dependency root to a regular target; no additional redirect is admitted.",
+    "Source rows bind actual bytes, Git objects and integer mtime; input and staged manifest pins remain exact.",
+    "Build invokes only existing /usr/bin/node v22.22.1 and owned TypeScript/Vite direct entrypoints in original configured sequence.",
+    "No npm install, full Vitest, browser, source edit, installed adoption or workflow action occurs in this driver.",
+    "Both configured HTML outputs are mandatory for accepted build.",
+    "Shared and copied original dependencies, aliases, source bytes/mtime and binding manifests are checked after each build.",
+    "Only separately attributed owned .vite-temp cache additions are admitted.",
+    "Capacity floor and command timeouts are explicit; direct-child timeout cleanup limits are recorded, not overclaimed.",
+    "Raw command streams remain pinned inside preservation handling even for failed/timeout builds."
+  ],
+  "limitations": [
+    "Static review is not syntax, native execution or dependency-copy evidence.",
+    "Fresh stage admission must be recorded separately from historical read-only manifest hashes.",
+    "Caller must reconcile current native operations before any product action."
+  ]
+}

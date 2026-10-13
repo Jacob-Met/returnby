@@ -1,0 +1,146 @@
+{
+  "format": "returnby-linux-node-delivery-joined-manual-review-v1",
+  "date": "2026-10-13",
+  "reviewer": "HAMON Delivery",
+  "status": "ACCEPTED manual source/interface/lifecycle review of exact final Node recovery drafts; no product execution by reviewer",
+  "repository": "Jacob-Met/returnby",
+  "reservation": "https://github.com/Jacob-Met/returnby/issues/66#issuecomment-6148695060",
+  "pins": {
+    "profile": "e23bb4224084ca8612fe52c8fc757e8bfa2b03e9",
+    "inventory": "a5f2f1554773ac4da0927117277f38b63d43e9d4",
+    "copier": "56eecba28925ecd02611d64d4400eeda5e723fab",
+    "final_browser": "18e4f9adb26f1c89b7cecfdf142077a17d93418b",
+    "historical_unexecuted_browser_v1": "73342804daaf01c1b6594361fe65a9ebfbfc8c8c"
+  },
+  "existing_intake": {
+    "contract": "6b410f82313611ec9d1a81d0c53a835ac76a03f1",
+    "input": "98a434fe34dd6e175a64d0396d079cadf6f779b7",
+    "stage_build": "d519828d86e84d364e270dcac49c19dfd36f8012",
+    "original_source": "7a271cfbc27e6c79a889b90920a700fdbf638e22",
+    "candidate_source": "f2ad8039ddef8f783bccf491847d7b95854f92e1"
+  },
+  "preserved_python_course": {
+    "failed_receiver": "63d567971b2ed16ee705f46708385aa08fc605ca",
+    "independent_data_receipt": "9d8018390c8e3a4b470ec2104d24e5537a092d09",
+    "independent_data_driver": "ec4c474a2325733c7efdb4f1501bc1bff307790c",
+    "scope": "105 retained-data checks accepted over827 files, confirming stage/original build and held Playwright bootstrap. Zero browser fixtures/new screenshots/downloads. Candidate staged only at that checkpoint."
+  },
+  "copy_review": {
+    "status": "Accepted manual review of exact profile/copier/inventory; standalone browser adapter pending",
+    "comparison": {
+      "profile_blob": "e23bb4224084ca8612fe52c8fc757e8bfa2b03e9",
+      "copier_blob": "56eecba28925ecd02611d64d4400eeda5e723fab",
+      "inventory_blob": "a5f2f1554773ac4da0927117277f38b63d43e9d4",
+      "same_three_fixtures": true,
+      "same_original_negative_names": true,
+      "files": 455,
+      "bytes": 12133249,
+      "unique_paths": 455,
+      "only_two_package_roots": true,
+      "all_modes_integers": true,
+      "aliases": [],
+      "prior_failure": {
+        "path": "browser-original/RECEIVING.json",
+        "git_blob": "63d567971b2ed16ee705f46708385aa08fc605ca",
+        "bytes": 42786,
+        "sha256": "ba9e5895250375013451a31f04a74a0ba6f0dc598278110359149550c3920ce9",
+        "attribution": "Installed distro Python Playwright points to absent /usr/share/nodejs/playwright/cli.js; no Chromium launch or fixture completed. Original stage and tsc/Vite passed. Candidate build/browser was not submitted."
+      },
+      "metadata": [
+        "package.json",
+        "package-lock.json",
+        "node_modules/.package-lock.json",
+        "node_modules/playwright/package.json",
+        "node_modules/playwright-core/package.json"
+      ]
+    },
+    "findings": [
+      "Both package trees are read-only inventoried with file modes and exact metadata before copy; paths/ancestors disallow links and file lstat requires regular files.",
+      "Frozen inventory455/12133249 and all metadata hashes/content are enforced. Required playwright-core version and inapplicable Darwin fsevents closure are explicit.",
+      "New node-browser-driver and receipt must not already exist. Files create-only, chmod only own copies, no package import/install/browser or shared mutation.",
+      "Existing frozen input/stage/accepted original build and failed Python receipt are required; both source trees and original dist plus existing records snapshotted before/after with exact integer timestamps encoded as strings.",
+      "Copy receipt accepts only equal before/copied/shared-after records plus metadata and preservation gates; any exception/preservation failure holds with receipt.",
+      "Profile preserves allthree fixtures, exact11 negative-name list, sandbox and process/listener closure requirements; adapter still needs implementation review.",
+      "Partial Python retained-data receipt9d801839 remains independent; current review does not execute code."
+    ],
+    "executed": false,
+    "inventory_metadata_crosschecks": [
+      [
+        "metadata_count",
+        true
+      ],
+      [
+        "required_dependency",
+        true
+      ],
+      [
+        "core_no_dependencies",
+        true
+      ],
+      [
+        "optional_darwin_only",
+        true
+      ],
+      [
+        "regular_paths_canonical",
+        true
+      ],
+      [
+        "playwright.metadata_regular_and_lock_match",
+        true
+      ],
+      [
+        "playwright-core.metadata_regular_and_lock_match",
+        true
+      ]
+    ]
+  },
+  "final_delta": {
+    "mechanical_reversal_restores_entire_v1": true,
+    "changed_lines": 7,
+    "added_bytes": 170,
+    "changes": [
+      "Two version markers.",
+      "Observe download wait and click immediately in Promise.all; unchanged actual download/save/check flow.",
+      "Fatal TextDecoder UTF-8 decoding retains prior Python strict decoding behavior.",
+      "HTTP and WebSocket listener probes run inside cleanup error capture; both probe statuses join required cleanup list."
+    ],
+    "preserved_findings": "Source identified concrete unhandled failure paths in unexecuted v1; both v1 and exact v2 remain separate. No previous product result is reclassified."
+  },
+  "browser_review": [
+    "Exact immutable input, contract, profile and Node inventory Git pins are required before reading their fields. Profile three fixtures and11 original negative names exactly match the original Linux contract.",
+    "Full stage/build accepted and source/manifests preservation flags required; complete tsc then Vite exits, both HTML outputs, exact dist, source commit/tree/parser, dependency byte/mode/alias receipt identities are bound.",
+    "All27/28 actual source file bodies match immutable Base64 Git identities and exact timestamp strings read from frozen manifests. fs.statSync bigint mtimeNs comparison avoids JavaScript integer rounding.",
+    "Known mtime_ns integer values in stage/build JSON are converted to decimal strings for interpretation only; raw native manifest bytes are never rewritten or reserialized for custody.",
+    "Accepted Node copy receipt binds455 regular files and exact metadata/preservation snapshots. Actual owned/shared Node byte/mode trees and original metadata are read before/after receiving.",
+    "Earlier input/stage/original build/Python failure and source/dist files copied into preservation snapshot are compared bytewise and by timestamp strings; the original build is reused.",
+    "New browser-node-* output and own TMPDIR/TMP/TEMP are separate from the failed Python outputs. No HOME, installed/shared files, package manager, shim or monkeypatch changes.",
+    "Public same-version chromium.launchServer/connect uses explicit127.0.0.1,20-second launch/connect timeouts, Chromium sandbox true and no sandbox-disable fallback.",
+    "Retained BrowserServer ChildProcess identity must equal CDP main-browser PID, UID1000 and stable /proc start ticks/argv; actual no-sandbox or disable-setuid-sandbox flags refuse.",
+    "All live setup sits in covering try/finally; contexts, browser client, BrowserServer, owned child clean exit, HTTP server and both listener probes must close. Bounded cleanup failures remain held and recorded; no unowned process is signalled.",
+    "Loopback HTTP serves only pinned dist keys, validates file containment and records requests; context routes allow only own origin and reject/log foreign page requests.",
+    "Three functional scenarios retain the original preview, explicit merchant review, exact approved localStorage keys, due dates, reload and actual ICS download assertions. UTC and desktop/narrow dimensions remain unchanged.",
+    "Receipt distinguishes receiver_complete from product_pass. Runtime must verify original complete plus exactly11 semantic failures and all other checks/controls passing before any candidate build/browser.",
+    "Node v2 listener errors now enter cleanup_errors without preventing later retained receipt; download rejection is observed immediately and malformed UTF-8 ICS raises.",
+    "Final postflight validates actual source/dist/manifests/Node toolchain; failed preservation or cleanup is never counted as valid original semantic negative."
+  ],
+  "official_api_references": [
+    {
+      "url": "https://playwright.dev/docs/api/class-browsertype#browser-type-launch-server",
+      "used_for": "Public launchServer/connect matching-version contract, explicit sandbox and loopback host options; connect timeout set explicitly."
+    },
+    {
+      "url": "https://playwright.dev/docs/api/class-browserserver",
+      "used_for": "Public owned ChildProcess and graceful close interface; native identity/exit still independently required."
+    }
+  ],
+  "next_gate": "Runtime owns one bounded copier compile and node --check plus data-only exact timestamp comparisons, then create-only driver copy and original-first course. No source/build/browser rerun is performed by this reviewer.",
+  "limits": [
+    "Manual review establishes intended control flow only. Syntax, Node package copy and browser behavior remain unexecuted at this review point.",
+    "Existing application dependency735-file snapshot remains attributable to prior accepted stage/build and independent partial data course; Node455-file driver closure is separate.",
+    "Cleanup timeouts may leave owned resources unresolved; do not infer termination from Promise timeout and preserve held status.",
+    "External page/context traffic blocking does not establish an OS-wide Chromium network audit.",
+    "Historical Windows hold and Python bootstrap failure stay exact. No GitHub Actions, merge, source edit, install, deployment or installed consumer acceptance."
+  ],
+  "executed": false
+}

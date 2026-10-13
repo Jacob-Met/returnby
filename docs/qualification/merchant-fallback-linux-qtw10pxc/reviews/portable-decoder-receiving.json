@@ -1,0 +1,291 @@
+{
+  "format": "returnby-portable-decoder-receiving-v1",
+  "accepted": true,
+  "checks": [
+    {
+      "name": "frozen_transport_index",
+      "passed": true
+    },
+    {
+      "name": "frozen_portable_verifier",
+      "passed": true
+    },
+    {
+      "name": "source_wrapper.syntax-review-1.transport.json",
+      "passed": true
+    },
+    {
+      "name": "source_wrapper.preparation-python-held-1.transport.json",
+      "passed": true
+    },
+    {
+      "name": "source_wrapper.preparation-python-held-2.transport.json",
+      "passed": true
+    },
+    {
+      "name": "source_wrapper.preparation-python-held-3.transport.json",
+      "passed": true
+    },
+    {
+      "name": "source_wrapper.node-adapter-1.transport.json",
+      "passed": true
+    },
+    {
+      "name": "source_wrapper.original-node-browser-1.transport.json",
+      "passed": true
+    },
+    {
+      "name": "source_wrapper.original-node-browser-2.transport.json",
+      "passed": true
+    },
+    {
+      "name": "source_wrapper.candidate-node-browser-1.transport.json",
+      "passed": true
+    },
+    {
+      "name": "source_wrapper.candidate-node-browser-2.transport.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.verify_packets.py",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/TRANSPORT-INDEX.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/INDEX.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/transport/syntax-review-1.transport.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/transport/preparation-python-held-1.transport.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/transport/preparation-python-held-2.transport.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/transport/preparation-python-held-3.transport.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/transport/node-adapter-1.transport.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/transport/original-node-browser-1.transport.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/transport/original-node-browser-2.transport.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/transport/candidate-node-browser-1.transport.json",
+      "passed": true
+    },
+    {
+      "name": "exact_copy.evidence/transport/candidate-node-browser-2.transport.json",
+      "passed": true
+    },
+    {
+      "name": "portable_exit_zero",
+      "passed": true
+    },
+    {
+      "name": "portable_exact_output",
+      "passed": true
+    },
+    {
+      "name": "all_copied_evidence_unchanged",
+      "passed": true
+    },
+    {
+      "name": "no_decoder_written_files",
+      "passed": true
+    },
+    {
+      "name": "native_originals_unchanged",
+      "passed": true
+    }
+  ],
+  "scope": "Single execution of the inspected read-only packet decoder only; no product, application tests, build or browser execution.",
+  "started_at": "2026-10-13T17:26:41.184770+00:00",
+  "directory": "/home/jacob/.commander-tp-2/hamon-team-20261013-1bkvjx8k/delivery/returnby-packet-portable-02poht5g",
+  "argv": [
+    "/usr/bin/python3",
+    "-B",
+    "verify_packets.py"
+  ],
+  "exit_code": 0,
+  "copied_files": {
+    "verify_packets.py": {
+      "bytes": 2280,
+      "sha256": "96c5f2df143561b1c463ef3aba8693a077614bea70de9d0be1195823c329cd55",
+      "git_blob": "ff14a9e9287c2a5def795f299b6fcf106360188c",
+      "mtime_ns": "1791912401194146906"
+    },
+    "evidence/TRANSPORT-INDEX.json": {
+      "bytes": 7008,
+      "sha256": "7d77c3581cb9b7472f841f8535fb79bc14def770f5441f872fd740d3c0714ed6",
+      "git_blob": "9cce8ecdf3d69934330c7f47a29481cc0a040823",
+      "mtime_ns": "1791912401194228275"
+    },
+    "evidence/INDEX.json": {
+      "bytes": 8742,
+      "sha256": "829a7f7282fd3a35ae6209fedc838e5735d5fa4d926b239a24e8e4a39ad6f998",
+      "git_blob": "bdcf1373f6001ab31617773b90cea15c9909105a",
+      "mtime_ns": "1791912401194288412"
+    },
+    "evidence/transport/syntax-review-1.transport.json": {
+      "bytes": 592746,
+      "sha256": "2b1fd07bd0ee98da89255909c690eb78575ba07051e27c93748052eba20a6967",
+      "git_blob": "54cfc5435c490a9c4d6fac3cb52a949d4aa2ac06",
+      "mtime_ns": "1791912401194353799"
+    },
+    "evidence/transport/preparation-python-held-1.transport.json": {
+      "bytes": 580560,
+      "sha256": "bcbc9c679a0a8ab4955e7c01572cc942b9948104fd46ac44c58ef3c779020793",
+      "git_blob": "77801838a069a615995ee8df5ce9aec29fd60506",
+      "mtime_ns": "1791912401198304407"
+    },
+    "evidence/transport/preparation-python-held-2.transport.json": {
+      "bytes": 415454,
+      "sha256": "ac9ec6163fd3ca435ef7bb0b613d93620c08db8fd659afcf2807f5928af6aacd",
+      "git_blob": "d26b4c729468ae0b440c94b5c2b2aba6ff106fcc",
+      "mtime_ns": "1791912401200569826"
+    },
+    "evidence/transport/preparation-python-held-3.transport.json": {
+      "bytes": 11027,
+      "sha256": "37f60918f1b05052174dd1197c56992dde7711f0cef826a71e990523b2923585",
+      "git_blob": "27fd5a998fb115c1a47c5838aaf001577d21cbfd",
+      "mtime_ns": "1791912401201208387"
+    },
+    "evidence/transport/node-adapter-1.transport.json": {
+      "bytes": 290610,
+      "sha256": "aae3945a3a09caa1e0518f56e64cb015c5fa3a9e77cec06db17f89c2e260355b",
+      "git_blob": "49cba59f2285a9eea0186ab30d1bbd3198a0325b",
+      "mtime_ns": "1791912401201269785"
+    },
+    "evidence/transport/original-node-browser-1.transport.json": {
+      "bytes": 403863,
+      "sha256": "2d82680692fac19d0e430acc872be762d2cf702be3b2d6dc9729d69322625678",
+      "git_blob": "d6f00453d2e41ed01975aa5bf92d60344c3f80c8",
+      "mtime_ns": "1791912401202115732"
+    },
+    "evidence/transport/original-node-browser-2.transport.json": {
+      "bytes": 254014,
+      "sha256": "9949976a2ca8f9ef36be5393e6f934c0cdcdf676637bf58e60cc118ab97234c5",
+      "git_blob": "95104f6e49027db3fcae74e2bd4797d90c769148",
+      "mtime_ns": "1791912401203079367"
+    },
+    "evidence/transport/candidate-node-browser-1.transport.json": {
+      "bytes": 406072,
+      "sha256": "2c95d68542d5381da2823607cc03bf58a56c083b5de2ceb093efc326db25c0de",
+      "git_blob": "b5d6db50f884bb29d748e41f810f41f8957e97dd",
+      "mtime_ns": "1791912401203461755"
+    },
+    "evidence/transport/candidate-node-browser-2.transport.json": {
+      "bytes": 442076,
+      "sha256": "75516fdcda151bab49d84ce92f4b4392b7e748969c377b581949ee6ee799aa4c",
+      "git_blob": "51ec41640e83f88aefeae30a63dbf08766bbdb43",
+      "mtime_ns": "1791912401204055639"
+    }
+  },
+  "stdout": {
+    "path": "/home/jacob/.commander-tp-2/hamon-team-20261013-1bkvjx8k/delivery/returnby-packet-portable-02poht5g/stdout.txt",
+    "bytes": 70,
+    "sha256": "c99ff5c88a3ad4d4d05207de5d37e52e2d0c05216127a031e23ae5aebeca3302",
+    "git_blob": "84f8a5c6708ac14138c7638d76a3b0a81a989358"
+  },
+  "stderr": {
+    "path": "/home/jacob/.commander-tp-2/hamon-team-20261013-1bkvjx8k/delivery/returnby-packet-portable-02poht5g/stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+  },
+  "observed_statement": "Verified nine wrappers and 80 exact native members; no files written.",
+  "originals": {
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/TRANSPORT-INDEX.json": {
+      "bytes": 7008,
+      "sha256": "7d77c3581cb9b7472f841f8535fb79bc14def770f5441f872fd740d3c0714ed6",
+      "git_blob": "9cce8ecdf3d69934330c7f47a29481cc0a040823",
+      "mtime_ns": "1791911070927827155"
+    },
+    "/home/jacob/.commander-tp-2/hamon-team-20261013-1bkvjx8k/delivery/RETURNBY-PORTABLE-VERIFY-PACKETS.py": {
+      "bytes": 2280,
+      "sha256": "96c5f2df143561b1c463ef3aba8693a077614bea70de9d0be1195823c329cd55",
+      "git_blob": "ff14a9e9287c2a5def795f299b6fcf106360188c",
+      "mtime_ns": "1791912246390064767"
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/INDEX.json": {
+      "bytes": 8742,
+      "sha256": "829a7f7282fd3a35ae6209fedc838e5735d5fa4d926b239a24e8e4a39ad6f998",
+      "git_blob": "bdcf1373f6001ab31617773b90cea15c9909105a",
+      "mtime_ns": "1791910675762592413"
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/syntax-review-1.transport.json": {
+      "bytes": 592746,
+      "sha256": "2b1fd07bd0ee98da89255909c690eb78575ba07051e27c93748052eba20a6967",
+      "git_blob": "54cfc5435c490a9c4d6fac3cb52a949d4aa2ac06",
+      "mtime_ns": "1791911070753942339"
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/preparation-python-held-1.transport.json": {
+      "bytes": 580560,
+      "sha256": "bcbc9c679a0a8ab4955e7c01572cc942b9948104fd46ac44c58ef3c779020793",
+      "git_blob": "77801838a069a615995ee8df5ce9aec29fd60506",
+      "mtime_ns": "1791911070788068802"
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/preparation-python-held-2.transport.json": {
+      "bytes": 415454,
+      "sha256": "ac9ec6163fd3ca435ef7bb0b613d93620c08db8fd659afcf2807f5928af6aacd",
+      "git_blob": "d26b4c729468ae0b440c94b5c2b2aba6ff106fcc",
+      "mtime_ns": "1791911070818523875"
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/preparation-python-held-3.transport.json": {
+      "bytes": 11027,
+      "sha256": "37f60918f1b05052174dd1197c56992dde7711f0cef826a71e990523b2923585",
+      "git_blob": "27fd5a998fb115c1a47c5838aaf001577d21cbfd",
+      "mtime_ns": "1791911070823942155"
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/node-adapter-1.transport.json": {
+      "bytes": 290610,
+      "sha256": "aae3945a3a09caa1e0518f56e64cb015c5fa3a9e77cec06db17f89c2e260355b",
+      "git_blob": "49cba59f2285a9eea0186ab30d1bbd3198a0325b",
+      "mtime_ns": "1791911070839795656"
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/original-node-browser-1.transport.json": {
+      "bytes": 403863,
+      "sha256": "2d82680692fac19d0e430acc872be762d2cf702be3b2d6dc9729d69322625678",
+      "git_blob": "d6f00453d2e41ed01975aa5bf92d60344c3f80c8",
+      "mtime_ns": "1791911070867112074"
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/original-node-browser-2.transport.json": {
+      "bytes": 254014,
+      "sha256": "9949976a2ca8f9ef36be5393e6f934c0cdcdf676637bf58e60cc118ab97234c5",
+      "git_blob": "95104f6e49027db3fcae74e2bd4797d90c769148",
+      "mtime_ns": "1791911070880680819"
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/candidate-node-browser-1.transport.json": {
+      "bytes": 406072,
+      "sha256": "2c95d68542d5381da2823607cc03bf58a56c083b5de2ceb093efc326db25c0de",
+      "git_blob": "b5d6db50f884bb29d748e41f810f41f8957e97dd",
+      "mtime_ns": "1791911070905275551"
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/candidate-node-browser-2.transport.json": {
+      "bytes": 442076,
+      "sha256": "75516fdcda151bab49d84ce92f4b4392b7e748969c377b581949ee6ee799aa4c",
+      "git_blob": "51ec41640e83f88aefeae30a63dbf08766bbdb43",
+      "mtime_ns": "1791911070924407213"
+    }
+  },
+  "passed_checks": 28,
+  "failed_checks": 0,
+  "finished_at": "2026-10-13T17:26:41.305414+00:00"
+}

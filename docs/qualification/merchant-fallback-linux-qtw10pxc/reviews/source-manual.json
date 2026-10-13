@@ -1,0 +1,59 @@
+{
+  "format": "returnby.linux.source-manual-build-review.v1",
+  "status": "Manual static review accepted; no Linux product staging/build/browser result",
+  "repository": "Jacob-Met/returnby",
+  "windows_build_git_blob": "ab3ac85199faa51039e93bf477aaba3404c0e306",
+  "linux_build_git_blob": "d519828d86e84d364e270dcac49c19dfd36f8012",
+  "linux_input_git_blob": "98a434fe34dd6e175a64d0396d079cadf6f779b7",
+  "linux_contract_git_blob": "6b410f82313611ec9d1a81d0c53a835ac76a03f1",
+  "delta_categories": [
+    "title",
+    "scope",
+    "platform constants",
+    "host and root gates",
+    "owned root",
+    "alias contract binding",
+    "Linux package selectors",
+    "38 package closure",
+    "Node version",
+    "735-file Linux closure",
+    "owned mode/symlink copy",
+    "alias manifests",
+    "stage alias postflight",
+    "build alias intake",
+    "build alias outcome",
+    "Linux owned child temp",
+    "build preflight dependencies",
+    "build dependency postflight",
+    "alias acceptance",
+    "dependency files and alias inventory"
+  ],
+  "review": [
+    "Three fixture objects byte-equivalent under canonical controller serialization to prior Windows contract; source projections and all29 bodies unchanged.",
+    "Frozen Linux root/uid/host/interpreter gates and no NODE_OPTIONS/NODE_PATH injection handling retain refusal semantics.",
+    "dependency_inventory separates exact seven relative file aliases; resolution is from actual symlink parent and requires same dependency root regular target. Directory links and other symlinks refuse.",
+    "Each regular copy is create-only and byte checked; os.chmod touches only the new owned copied file. Shared source is only read. Alias creation is limited to exact frozen pairs and follows regular copying.",
+    "Before/copied/source_after arrays compare exact path/bytes/SHA256/mode; alias arrays also compare exact pairs. Builds preserve original copied dependency files and shared files, allow only owned .vite-temp additions.",
+    "Direct tsc --noEmit and Vite build retain timeouts, raw stream files and zero-exit requirements. Product sources, source timestamps and immutable intake/manifest pins are checked before and after.",
+    "Both configured HTML outputs remain required. Browser must separately require full accepted flag, source/dependency/dist identities and cleanup acceptance.",
+    "Timeout attribution remains direct child only; descendant state is explicitly unestablished and receiving held. Raw-stream read failure stays inside receipt-preservation try.",
+    "No package install, npm script, parser/Vitest rerun, product source edit, shared write, HOME change or adoption is introduced."
+  ],
+  "limits": [
+    "Unexecuted drafts until independent peer review and native syntax check.",
+    "Prior metadata admission is not source-copy or build qualification.",
+    "Separate Linux course does not resolve historical unknown Windows mkdir or qualify Windows product flow."
+  ],
+  "browser_v1_git_blob": "2fd3e7e858023005ccb160154a75a3b3d748210d",
+  "browser_review": [
+    "Browser reconstructs immutable input source bodies and exact staged bytes/timestamps; complete build accepted/manifests flags, dist equality and node/dependency pins are required before launch.",
+    "Seven alias custody arrays must exactly equal frozen Linux contract; source/dependency copy remains stage/build responsibility.",
+    "Only per-context explicit UTC changes product fixture block relative to prior Windows receiver; same preview, manual review, save/reload/ICS expectations remain.",
+    "Chromium sandbox is explicitly true; v2 records actual own browser argv and refuses --no-sandbox/--disable-setuid-sandbox. No sandbox-disable fallback.",
+    "CDP identifies only its own browser; UID/start_ticks are read before and after pidfd_open. Retained descriptor POLLIN, close, context/browser/Playwright/server/listener/thread closure all gate acceptance.",
+    "Source and dist/manifest identities are reread after receiving. Genuine setup/build/lifecycle errors remain separate from original semantic negatives.",
+    "Source-derived original expected11 mismatch names remain unobserved; require completed original course and passing controls before candidate."
+  ],
+  "browser_v2_git_blob": "85d200eb1266a942b6d9ae95cd64e1642c419690",
+  "browser_v2_delta": "Controller full-string reversal confirms only version markers, own PID actual argv capture and refusal of --no-sandbox/--disable-setuid-sandbox. V1 retained as historical unexecuted draft. No fixture or other receiver behavior changed."
+}

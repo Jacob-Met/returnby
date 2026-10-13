@@ -1,0 +1,62 @@
+{
+  "format": "returnby-native-evidence-transport-history-v1",
+  "scope": "Transport only; native builds/browser qualification and sealed envelopes are unchanged.",
+  "attempts": [
+    {
+      "object": "Detached Linux syntax-review input payload",
+      "bytes": 602969,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "ReadTimeout: "
+          }
+        ],
+        "structuredContent": {
+          "error": "ReadTimeout: ",
+          "error_code": "UNKNOWN"
+        },
+        "isError": true
+      },
+      "note": "Create returned ReadTimeout; no success pin claimed and no retry. Exact native payload is preserved inside syntax-review packet."
+    },
+    {
+      "object": "syntax-review-1.json",
+      "expected_git_blob": "8e5adc53188e274ee3ed07547df36ad4de3fdd3a",
+      "bytes": 851735,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "ReadTimeout: "
+          }
+        ],
+        "structuredContent": {
+          "error": "ReadTimeout: ",
+          "error_code": "UNKNOWN"
+        },
+        "isError": true
+      },
+      "read_only_lookup": {
+        "content": [
+          {
+            "type": "text",
+            "text": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/git/blobs#get-a-blob\",\"status\":\"404\"}"
+          }
+        ],
+        "structuredContent": {
+          "error": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/git/blobs#get-a-blob\",\"status\":\"404\"}",
+          "error_code": "NOT_FOUND",
+          "error_data": {
+            "message": "Not Found",
+            "documentation_url": "https://docs.github.com/rest/git/blobs#get-a-blob",
+            "status": "404"
+          }
+        },
+        "isError": true
+      },
+      "note": "ReadTimeout followed by404 at exact expected blob; no inference that asynchronous original can never appear. No original mutation repeated."
+    }
+  ],
+  "resolution": "Deterministic gzip+Base64 transport wrappers bound to full unchanged native envelope bytes/SHA256/Git, with decompression roundtrip verified on host."
+}

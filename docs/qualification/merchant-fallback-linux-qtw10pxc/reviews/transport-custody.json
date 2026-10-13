@@ -1,0 +1,3062 @@
+{
+  "format": "returnby-linux-delivery-transport-custody-v1",
+  "accepted": true,
+  "scope": "Remote-wrapper Git identities checked in controller, followed by native wrapper/decompressed-envelope/member bytes and metadata verification only. No product or original receiver rerun.",
+  "started_at": "2026-10-13T17:21:37.776422+00:00",
+  "checks": [
+    {
+      "name": "transport_index_pin",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "native_index_pin",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "transport_native_link",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nine_wrappers",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique80_authorized_members",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_path.syntax-review-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_full_identity.syntax-review-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_schema.syntax-review-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "decoded_identity.syntax-review-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deterministic_gzip_timestamp.syntax-review-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_native_identity.syntax-review-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_member_names.syntax-review-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.syntax-review/REVIEW-INPUT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.syntax-review/REVIEW-INPUT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.syntax-review/REVIEW-INPUT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.syntax-review/review.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.syntax-review/review.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.syntax-review/review.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.syntax-review/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.syntax-review/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.syntax-review/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.syntax-review/review.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.syntax-review/review.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.syntax-review/review.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.syntax-review/review.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.syntax-review/review.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.syntax-review/review.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_path.preparation-python-held-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_full_identity.preparation-python-held-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_schema.preparation-python-held-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "decoded_identity.preparation-python-held-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deterministic_gzip_timestamp.preparation-python-held-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_native_identity.preparation-python-held-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_member_names.preparation-python-held-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.INPUT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.INPUT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.INPUT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.CONTRACT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.CONTRACT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.CONTRACT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.stage_build.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.stage_build.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.stage_build.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser_receive.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser_receive.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser_receive.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.STAGED-SOURCE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.STAGED-SOURCE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.STAGED-SOURCE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_path.preparation-python-held-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_full_identity.preparation-python-held-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_schema.preparation-python-held-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "decoded_identity.preparation-python-held-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deterministic_gzip_timestamp.preparation-python-held-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_native_identity.preparation-python-held-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_member_names.preparation-python-held-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.DEPENDENCIES.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.DEPENDENCIES.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.DEPENDENCIES.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.STAGE-ATTEMPT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.STAGE-ATTEMPT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.STAGE-ATTEMPT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.STAGE-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.STAGE-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.STAGE-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.stage.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.stage.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.stage.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.stage.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.stage.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.stage.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.BUILD-original.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.BUILD-original.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.BUILD-original.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.ORIGINAL-BUILD-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.ORIGINAL-BUILD-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.ORIGINAL-BUILD-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.original-build.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.original-build.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.original-build.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.original-build.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.original-build.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.original-build.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.build-original/tsc.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.build-original/tsc.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.build-original/tsc.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.build-original/tsc.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.build-original/tsc.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.build-original/tsc.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.build-original/vite.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.build-original/vite.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.build-original/vite.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.build-original/vite.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.build-original/vite.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.build-original/vite.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-original/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-original/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-original/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.ORIGINAL-BROWSER-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.ORIGINAL-BROWSER-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.ORIGINAL-BROWSER-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.original-browser.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.original-browser.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.original-browser.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.original-browser.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.original-browser.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.original-browser.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.OPERATION-HISTORY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.OPERATION-HISTORY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.OPERATION-HISTORY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.STATIC-REVIEWS.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.STATIC-REVIEWS.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.STATIC-REVIEWS.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.ORIGINAL-READONLY-PREFLIGHT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.ORIGINAL-READONLY-PREFLIGHT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.ORIGINAL-READONLY-PREFLIGHT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.independent-partial/RETURNBY-LINUX-PARTIAL-RETAINED-DATA.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.independent-partial/RETURNBY-LINUX-PARTIAL-RETAINED-DATA.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.independent-partial/RETURNBY-LINUX-PARTIAL-RETAINED-DATA.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_path.preparation-python-held-3.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_full_identity.preparation-python-held-3.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_schema.preparation-python-held-3.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "decoded_identity.preparation-python-held-3.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deterministic_gzip_timestamp.preparation-python-held-3.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_native_identity.preparation-python-held-3.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_member_names.preparation-python-held-3.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.independent-partial/receive_returnby_linux_partial_20261013.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.independent-partial/receive_returnby_linux_partial_20261013.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.independent-partial/receive_returnby_linux_partial_20261013.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_path.node-adapter-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_full_identity.node-adapter-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_schema.node-adapter-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "decoded_identity.node-adapter-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deterministic_gzip_timestamp.node-adapter-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_native_identity.node-adapter-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_member_names.node-adapter-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.NODE-BROWSER-PROFILE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.NODE-BROWSER-PROFILE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.NODE-BROWSER-PROFILE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.NODE-TOOLCHAIN-READONLY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.NODE-TOOLCHAIN-READONLY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.NODE-TOOLCHAIN-READONLY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.copy_node_driver.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.copy_node_driver.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.copy_node_driver.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser_node_receive.mjs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser_node_receive.mjs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser_node_receive.mjs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser_node_receive_v2.mjs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser_node_receive_v2.mjs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser_node_receive_v2.mjs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.NODE-DRIVER-COPY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.NODE-DRIVER-COPY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.NODE-DRIVER-COPY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.NODE-COPY-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.NODE-COPY-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.NODE-COPY-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.node-copy.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.node-copy.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.node-copy.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.node-copy.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.node-copy.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.node-copy.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.node_adapter_syntax.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.node_adapter_syntax.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.node_adapter_syntax.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.NODE-ADAPTER-SYNTAX.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.NODE-ADAPTER-SYNTAX.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.NODE-ADAPTER-SYNTAX.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.node-syntax.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.node-syntax.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.node-syntax.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.node-syntax.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.node-syntax.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.node-syntax.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.node-mtime.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.node-mtime.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.node-mtime.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.node-mtime.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.node-mtime.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.node-mtime.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.node-adapter-review.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.node-adapter-review.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.node-adapter-review.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.node-adapter-review.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.node-adapter-review.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.node-adapter-review.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.NODE-OPERATION-HISTORY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.NODE-OPERATION-HISTORY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.NODE-OPERATION-HISTORY.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.NODE-STATIC-REVIEWS.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.NODE-STATIC-REVIEWS.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.NODE-STATIC-REVIEWS.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.seal_linux_evidence.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.seal_linux_evidence.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.seal_linux_evidence.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_path.original-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_full_identity.original-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_schema.original-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "decoded_identity.original-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deterministic_gzip_timestamp.original-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_native_identity.original-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_member_names.original-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-original/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-original/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-original/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_path.original-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_full_identity.original-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_schema.original-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "decoded_identity.original-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deterministic_gzip_timestamp.original-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_native_identity.original-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_member_names.original-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.ORIGINAL-NODE-GATE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.ORIGINAL-NODE-GATE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.ORIGINAL-NODE-GATE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.ORIGINAL-NODE-BROWSER-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.ORIGINAL-NODE-BROWSER-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.ORIGINAL-NODE-BROWSER-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.original-node-browser.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.original-node-browser.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.original-node-browser.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.original-node-browser.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.original-node-browser.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.original-node-browser.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-original/embedded-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-original/embedded-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-original/embedded-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-original/complete-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-original/complete-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-original/complete-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-original/from-priority.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-original/from-priority.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-original/from-priority.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-original/downloads/embedded-alias.ics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-original/downloads/embedded-alias.ics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-original/downloads/embedded-alias.ics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-original/original-embedded-preview-desktop.png",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-original/original-embedded-preview-desktop.png",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-original/original-embedded-preview-desktop.png",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_path.candidate-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_full_identity.candidate-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_schema.candidate-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "decoded_identity.candidate-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deterministic_gzip_timestamp.candidate-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_native_identity.candidate-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_member_names.candidate-node-browser-1.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-candidate/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-candidate/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-candidate/RECEIVING.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_path.candidate-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_full_identity.candidate-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wrapper_schema.candidate-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "decoded_identity.candidate-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deterministic_gzip_timestamp.candidate-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_native_identity.candidate-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "envelope_member_names.candidate-node-browser-2.transport.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.BUILD-candidate.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.BUILD-candidate.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.BUILD-candidate.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.CANDIDATE-BUILD-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.CANDIDATE-BUILD-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.CANDIDATE-BUILD-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.candidate-build.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.candidate-build.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.candidate-build.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.candidate-build.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.candidate-build.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.candidate-build.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.build-candidate/tsc.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.build-candidate/tsc.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.build-candidate/tsc.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.build-candidate/tsc.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.build-candidate/tsc.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.build-candidate/tsc.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.build-candidate/vite.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.build-candidate/vite.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.build-candidate/vite.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.build-candidate/vite.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.build-candidate/vite.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.build-candidate/vite.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.CANDIDATE-NODE-BROWSER-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.CANDIDATE-NODE-BROWSER-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.CANDIDATE-NODE-BROWSER-COMMAND.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.candidate-node-browser.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.candidate-node-browser.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.candidate-node-browser.stdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.candidate-node-browser.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.candidate-node-browser.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.candidate-node-browser.stderr",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-candidate/embedded-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-candidate/embedded-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-candidate/embedded-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-candidate/complete-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-candidate/complete-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-candidate/complete-alias.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-candidate/from-priority.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-candidate/from-priority.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-candidate/from-priority.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-candidate/downloads/embedded-alias.ics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-candidate/downloads/embedded-alias.ics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-candidate/downloads/embedded-alias.ics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-candidate/candidate-embedded-preview-desktop.png",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-candidate/candidate-embedded-preview-desktop.png",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-candidate/candidate-embedded-preview-desktop.png",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_path.browser-node-candidate/candidate-embedded-saved-narrow.png",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_bytes.browser-node-candidate/candidate-embedded-saved-narrow.png",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_native_metadata.browser-node-candidate/candidate-embedded-saved-narrow.png",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all80_members_received",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "transport_history_pin",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "paired_observer_receipt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "paired_observer_executed_driver",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all_read_files_preserved",
+      "passed": true,
+      "detail": {
+        "files": 103,
+        "changed": []
+      }
+    }
+  ],
+  "controller_remote_wrapper_validation": {
+    "wrappers": 9,
+    "bytes": 3396422,
+    "algorithm": "SHA-1 over exact ASCII Git blob header+full fetched body",
+    "self_controls": [
+      "abc SHA1 a9993e364706816aba3e25717850c26c9cd0d89d",
+      "empty Git blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    ]
+  },
+  "product_execution": false,
+  "transport_history": {
+    "format": "returnby-native-evidence-transport-history-v1",
+    "scope": "Transport only; native builds/browser qualification and sealed envelopes are unchanged.",
+    "attempts": [
+      {
+        "object": "Detached Linux syntax-review input payload",
+        "bytes": 602969,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "ReadTimeout: "
+            }
+          ],
+          "structuredContent": {
+            "error": "ReadTimeout: ",
+            "error_code": "UNKNOWN"
+          },
+          "isError": true
+        },
+        "note": "Create returned ReadTimeout; no success pin claimed and no retry. Exact native payload is preserved inside syntax-review packet."
+      },
+      {
+        "object": "syntax-review-1.json",
+        "expected_git_blob": "8e5adc53188e274ee3ed07547df36ad4de3fdd3a",
+        "bytes": 851735,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "ReadTimeout: "
+            }
+          ],
+          "structuredContent": {
+            "error": "ReadTimeout: ",
+            "error_code": "UNKNOWN"
+          },
+          "isError": true
+        },
+        "read_only_lookup": {
+          "content": [
+            {
+              "type": "text",
+              "text": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/git/blobs#get-a-blob\",\"status\":\"404\"}"
+            }
+          ],
+          "structuredContent": {
+            "error": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/git/blobs#get-a-blob\",\"status\":\"404\"}",
+            "error_code": "NOT_FOUND",
+            "error_data": {
+              "message": "Not Found",
+              "documentation_url": "https://docs.github.com/rest/git/blobs#get-a-blob",
+              "status": "404"
+            }
+          },
+          "isError": true
+        },
+        "note": "ReadTimeout followed by404 at exact expected blob; no inference that asynchronous original can never appear. No original mutation repeated."
+      }
+    ],
+    "resolution": "Deterministic gzip+Base64 transport wrappers bound to full unchanged native envelope bytes/SHA256/Git, with decompression roundtrip verified on host."
+  },
+  "wrappers": [
+    {
+      "name": "syntax-review-1.transport.json",
+      "bytes": 592746,
+      "sha256": "2b1fd07bd0ee98da89255909c690eb78575ba07051e27c93748052eba20a6967",
+      "git_blob": "54cfc5435c490a9c4d6fac3cb52a949d4aa2ac06",
+      "compressed_bytes": 444301,
+      "decompressed": {
+        "bytes": 851735,
+        "sha256": "ca1a76848e33d6eec1a63e34284c1cc99695b5b331e22a30550da631c3d92432",
+        "git_blob": "8e5adc53188e274ee3ed07547df36ad4de3fdd3a"
+      },
+      "members": 5
+    },
+    {
+      "name": "preparation-python-held-1.transport.json",
+      "bytes": 580560,
+      "sha256": "bcbc9c679a0a8ab4955e7c01572cc942b9948104fd46ac44c58ef3c779020793",
+      "git_blob": "77801838a069a615995ee8df5ce9aec29fd60506",
+      "compressed_bytes": 435154,
+      "decompressed": {
+        "bytes": 803092,
+        "sha256": "4d6e957f51fb256daba470004b56c14f5983139baaeeda43b2da119868b08e06",
+        "git_blob": "df71c425db0f981d3129ed16e4e1c467fffcfee5"
+      },
+      "members": 5
+    },
+    {
+      "name": "preparation-python-held-2.transport.json",
+      "bytes": 415454,
+      "sha256": "ac9ec6163fd3ca435ef7bb0b613d93620c08db8fd659afcf2807f5928af6aacd",
+      "git_blob": "d26b4c729468ae0b440c94b5c2b2aba6ff106fcc",
+      "compressed_bytes": 311324,
+      "decompressed": {
+        "bytes": 1196678,
+        "sha256": "70cba751b436128f359e2ba6bdc73b43c2d704b3c081525f43eddb345c7cdace",
+        "git_blob": "2372ccfb16c5408be8bde9be6c6593b7ce410c59"
+      },
+      "members": 21
+    },
+    {
+      "name": "preparation-python-held-3.transport.json",
+      "bytes": 11027,
+      "sha256": "37f60918f1b05052174dd1197c56992dde7711f0cef826a71e990523b2923585",
+      "git_blob": "27fd5a998fb115c1a47c5838aaf001577d21cbfd",
+      "compressed_bytes": 8007,
+      "decompressed": {
+        "bytes": 18873,
+        "sha256": "576b44b94aff2d19560e14dff4e3b6ffb8affc02eeccc29fcd08f793ce0d4a07",
+        "git_blob": "6413994ad019c4270b1ba14a68075bb866b484bb"
+      },
+      "members": 1
+    },
+    {
+      "name": "node-adapter-1.transport.json",
+      "bytes": 290610,
+      "sha256": "aae3945a3a09caa1e0518f56e64cb015c5fa3a9e77cec06db17f89c2e260355b",
+      "git_blob": "49cba59f2285a9eea0186ab30d1bbd3198a0325b",
+      "compressed_bytes": 217701,
+      "decompressed": {
+        "bytes": 741077,
+        "sha256": "6d858c89c56f9e75984cb43564c6c7ef5c6576ae08bc60a7c22f19b8b0355ce0",
+        "git_blob": "cd611d8d7c2597a0cd1473102869e190a9a4dff2"
+      },
+      "members": 20
+    },
+    {
+      "name": "original-node-browser-1.transport.json",
+      "bytes": 403863,
+      "sha256": "2d82680692fac19d0e430acc872be762d2cf702be3b2d6dc9729d69322625678",
+      "git_blob": "d6f00453d2e41ed01975aa5bf92d60344c3f80c8",
+      "compressed_bytes": 302634,
+      "decompressed": {
+        "bytes": 1250325,
+        "sha256": "3d05db5ff4d1a18724522b1ba7a9e9ef260abb0d5bae4921b7dbd4158cfb46be",
+        "git_blob": "ffa43afb0585eb3fc21ba1099b83b2ff3655a970"
+      },
+      "members": 1
+    },
+    {
+      "name": "original-node-browser-2.transport.json",
+      "bytes": 254014,
+      "sha256": "9949976a2ca8f9ef36be5393e6f934c0cdcdf676637bf58e60cc118ab97234c5",
+      "git_blob": "95104f6e49027db3fcae74e2bd4797d90c769148",
+      "compressed_bytes": 190246,
+      "decompressed": {
+        "bytes": 271617,
+        "sha256": "65bbebcdd60a8c7e6f337acf5b7ccf0b6f128af52ea1eae7db671456eafaa4c8",
+        "git_blob": "f1f79802ac41e8119155cee95509c4b32d1ea0f2"
+      },
+      "members": 9
+    },
+    {
+      "name": "candidate-node-browser-1.transport.json",
+      "bytes": 406072,
+      "sha256": "2c95d68542d5381da2823607cc03bf58a56c083b5de2ceb093efc326db25c0de",
+      "git_blob": "b5d6db50f884bb29d748e41f810f41f8957e97dd",
+      "compressed_bytes": 304289,
+      "decompressed": {
+        "bytes": 1252420,
+        "sha256": "308212400bfe49215e2c6dba9f5b5980d7171e8a02a73c68b6b262e5ae8014c5",
+        "git_blob": "8a0e7eaa9dc82fd770760667349ae15905e69e86"
+      },
+      "members": 1
+    },
+    {
+      "name": "candidate-node-browser-2.transport.json",
+      "bytes": 442076,
+      "sha256": "75516fdcda151bab49d84ce92f4b4392b7e748969c377b581949ee6ee799aa4c",
+      "git_blob": "51ec41640e83f88aefeae30a63dbf08766bbdb43",
+      "compressed_bytes": 331293,
+      "decompressed": {
+        "bytes": 483381,
+        "sha256": "eb2fb70a5f40588f00d3a5ed2aa28c13d4ad026cd4c7c956bfc2c932f43670b6",
+        "git_blob": "e9b550c6e1c2e6f68a3b4835623d92089ac757d6"
+      },
+      "members": 17
+    }
+  ],
+  "members": [
+    {
+      "name": "syntax-review/REVIEW-INPUT.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-review-qtw10pxc-vhvphrhu/REVIEW-INPUT.json",
+      "bytes": 602969,
+      "sha256": "1caab1bce0e775ac0bb99e3fb440b5e34fabf9cee0b35f5b4b99718ebaab0d66",
+      "git_blob": "d6c7a54a225f93a508d0c57df7e4f0f770bdc010"
+    },
+    {
+      "name": "syntax-review/review.py",
+      "original_path": "/home/jacob/hamon-returnby-linux-review-qtw10pxc-vhvphrhu/review.py",
+      "bytes": 6471,
+      "sha256": "dc6a5667b1e854ea571deb581968e2b19b45b148b2a468a120c2a10677c57ae7",
+      "git_blob": "4b9226850ad7330b8fb21647ef7fba6c2943a08e"
+    },
+    {
+      "name": "syntax-review/RECEIVING.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-review-qtw10pxc-vhvphrhu/RECEIVING.json",
+      "bytes": 27011,
+      "sha256": "2b72ad7271cf931f4af47a49ad9500a4cd4df731f16c303ac10661298815b49f",
+      "git_blob": "baeda79915c1813fcf20c1499cc3cf20f5bcfd59"
+    },
+    {
+      "name": "syntax-review/review.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-review-qtw10pxc-vhvphrhu/review.stdout",
+      "bytes": 360,
+      "sha256": "d928fd99cc8dbba7812721ff783981d35c0ab5db7fd4061c84e68a80c9e01112",
+      "git_blob": "fe852799961205a977c625cba6a0363a8612cdba"
+    },
+    {
+      "name": "syntax-review/review.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-review-qtw10pxc-vhvphrhu/review.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "INPUT.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/INPUT.json",
+      "bytes": 526660,
+      "sha256": "6c3ad3a3fffcadcfd4548ef3f75413b681df47030dba1bf8d87d0867a671ae04",
+      "git_blob": "98a434fe34dd6e175a64d0396d079cadf6f779b7"
+    },
+    {
+      "name": "CONTRACT.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/CONTRACT.json",
+      "bytes": 8999,
+      "sha256": "d24524692c814cad86260a8f528bcabc087846fdec7863b106c306507459f610",
+      "git_blob": "6b410f82313611ec9d1a81d0c53a835ac76a03f1"
+    },
+    {
+      "name": "stage_build.py",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/stage_build.py",
+      "bytes": 23375,
+      "sha256": "b58dcd567ec7d37b185878ac9cb6e9afe9c4852d50afa677da02d0eab7627311",
+      "git_blob": "d519828d86e84d364e270dcac49c19dfd36f8012"
+    },
+    {
+      "name": "browser_receive.py",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser_receive.py",
+      "bytes": 25615,
+      "sha256": "dbb7ba8df41cdc78f80bc474d05c464b204fed7cbe92d44dcd42e30609ec1ed1",
+      "git_blob": "85d200eb1266a942b6d9ae95cd64e1642c419690"
+    },
+    {
+      "name": "STAGED-SOURCE.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/STAGED-SOURCE.json",
+      "bytes": 15730,
+      "sha256": "9fcda80835df03ddcaa3a6631350829a379e17722f85955081e29094f2d39f21",
+      "git_blob": "0a35388bed70597a868b7a6ff102da7720d81e66"
+    },
+    {
+      "name": "DEPENDENCIES.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/DEPENDENCIES.json",
+      "bytes": 426047,
+      "sha256": "9dd092aac2798a30231cec3c6e6eb4ee39264a3cce2f9e21430abbcaf449e57e",
+      "git_blob": "2d3a3fb0cebefc9cc50353e9b32e57e7c9859016"
+    },
+    {
+      "name": "STAGE-ATTEMPT.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/STAGE-ATTEMPT.json",
+      "bytes": 982,
+      "sha256": "419e2d58a118072779f14785ae6c1482a763e7651a749e631111b72be82c6e34",
+      "git_blob": "4632a4c9e1bfe53ee53f38ca55699bc8430edaa3"
+    },
+    {
+      "name": "STAGE-COMMAND.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/STAGE-COMMAND.json",
+      "bytes": 280,
+      "sha256": "97c323b8b7b2ea6c06e8f5da80157f87e50e27842dcafdb2e1764912c8580017",
+      "git_blob": "eef25dfc6042388713f378eb74fac5c4f0eab4f9"
+    },
+    {
+      "name": "stage.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/stage.stdout",
+      "bytes": 37,
+      "sha256": "46a0d87756b9f49d3e072748f24e43bbe9579c14b02c4bf6c848145a7f847633",
+      "git_blob": "9a8739ecbe97bf6612727a749468ecfbd7d05907"
+    },
+    {
+      "name": "stage.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/stage.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "BUILD-original.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/BUILD-original.json",
+      "bytes": 18579,
+      "sha256": "fa064e2e37cf2daee61fed9c19a63cd3ccec3dbad9a4c2d6be99ef3406c8ec6b",
+      "git_blob": "13fb483166b8367246679c61a9bd04cb91e7a911"
+    },
+    {
+      "name": "ORIGINAL-BUILD-COMMAND.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/ORIGINAL-BUILD-COMMAND.json",
+      "bytes": 296,
+      "sha256": "7cd37dd9a13fc2380e6cd2bb1270a11dc42b6d5be727927a692d3199ce307dfc",
+      "git_blob": "7ea21b4168e02029023ac3682f357c1dae7693a3"
+    },
+    {
+      "name": "original-build.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-build.stdout",
+      "bytes": 40,
+      "sha256": "9a2ed1c5b6130fc3b4ac823f14af7fd9baaf3b580466e6b22c59be8c432ddece",
+      "git_blob": "ee25ccb45dd4b72dd1ddd001a6ddb3e9a56c0054"
+    },
+    {
+      "name": "original-build.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-build.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "build-original/tsc.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-original/tsc.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "build-original/tsc.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-original/tsc.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "build-original/vite.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-original/vite.stdout",
+      "bytes": 634,
+      "sha256": "c7cd70cd360b73d4b63634d501f9a5d24c5d5bd6b417ef8237e10ea69164da13",
+      "git_blob": "18615b8b1c10a6ae39aea96d938f6cdeaeaeb30e"
+    },
+    {
+      "name": "build-original/vite.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-original/vite.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "browser-original/RECEIVING.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-original/RECEIVING.json",
+      "bytes": 42786,
+      "sha256": "ba9e5895250375013451a31f04a74a0ba6f0dc598278110359149550c3920ce9",
+      "git_blob": "63d567971b2ed16ee705f46708385aa08fc605ca"
+    },
+    {
+      "name": "ORIGINAL-BROWSER-COMMAND.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/ORIGINAL-BROWSER-COMMAND.json",
+      "bytes": 285,
+      "sha256": "738dedfbcb5266405e7fa1adcc145e04ffac1565238a4ec13880d8f7e4f60122",
+      "git_blob": "632c172dfab730010a9514dac337c6590a07dd59"
+    },
+    {
+      "name": "original-browser.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-browser.stdout",
+      "bytes": 403,
+      "sha256": "5c99af1711df643ad3be9f81422c1e5052bf04a80e5a6fb54857ceefd9826bf6",
+      "git_blob": "206620193206a983eb1a7fabd792eb915059d918"
+    },
+    {
+      "name": "original-browser.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-browser.stderr",
+      "bytes": 2507,
+      "sha256": "1046a8d9174e275c47a95af5cc23f5ddcc41a22676c3cc8e3dda95d8a46df6ad",
+      "git_blob": "abaaf97acbaa3c9a9b9a1157e3afa9fdfbe54f11"
+    },
+    {
+      "name": "OPERATION-HISTORY.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/OPERATION-HISTORY.json",
+      "bytes": 51358,
+      "sha256": "d761840cbdba5e315e21ad42fe7def1e6b7406878d37b8428810ae370d0980b3",
+      "git_blob": "6c4973ce3206d1bd904fcde2dfa627ee4fb26e4e"
+    },
+    {
+      "name": "STATIC-REVIEWS.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/STATIC-REVIEWS.json",
+      "bytes": 15131,
+      "sha256": "d66135f34e873b94df5c40d7f41d2b7fc5b15a94c3fb96a458c2f08384bef432",
+      "git_blob": "d72fe5cd15250d16bbbb79fcc32ca4b438dd88b1"
+    },
+    {
+      "name": "ORIGINAL-READONLY-PREFLIGHT.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/ORIGINAL-READONLY-PREFLIGHT.json",
+      "bytes": 39723,
+      "sha256": "bd854fead0d432a0c338246883c09f36394d4f7de42f4b802d8a6e3ee2ec0eef",
+      "git_blob": "33ee48086bf0075be0b0fec1b65c6fb7a16b0b76"
+    },
+    {
+      "name": "independent-partial/RETURNBY-LINUX-PARTIAL-RETAINED-DATA.json",
+      "original_path": "/home/jacob/.commander-tp-2/hamon-team-20261013-1bkvjx8k/delivery/RETURNBY-LINUX-PARTIAL-RETAINED-DATA.json",
+      "bytes": 291229,
+      "sha256": "41bafbbd3c85b914142c4e5581636de7e3642dfea68ffb2c3792e8c8ad81c8be",
+      "git_blob": "9d8018390c8e3a4b470ec2104d24e5537a092d09"
+    },
+    {
+      "name": "independent-partial/receive_returnby_linux_partial_20261013.py",
+      "original_path": "/home/jacob/.commander-tp-2/hamon-team-20261013-1bkvjx8k/delivery/receive_returnby_linux_partial_20261013.py",
+      "bytes": 13398,
+      "sha256": "2d0e3b984ed6599ffceeac4f5f00b4a751ef513247ea59f891de976d1b8de4b4",
+      "git_blob": "ec4c474a2325733c7efdb4f1501bc1bff307790c"
+    },
+    {
+      "name": "NODE-BROWSER-PROFILE.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-BROWSER-PROFILE.json",
+      "bytes": 6716,
+      "sha256": "ff00d277e2684b482c00b1bce78cdbe50361853d159b2708e09ddd119fa6c465",
+      "git_blob": "e23bb4224084ca8612fe52c8fc757e8bfa2b03e9"
+    },
+    {
+      "name": "NODE-TOOLCHAIN-READONLY.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-TOOLCHAIN-READONLY.json",
+      "bytes": 98826,
+      "sha256": "56244b5fd77599fb173e16055fe950d55653745475f45a2f3d75fd36623e77cc",
+      "git_blob": "a5f2f1554773ac4da0927117277f38b63d43e9d4"
+    },
+    {
+      "name": "copy_node_driver.py",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/copy_node_driver.py",
+      "bytes": 12505,
+      "sha256": "28d5af45ee64ad5faba47659edd0f22b3e9d60133f4ac747ee1341682f94bdca",
+      "git_blob": "56eecba28925ecd02611d64d4400eeda5e723fab"
+    },
+    {
+      "name": "browser_node_receive.mjs",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser_node_receive.mjs",
+      "bytes": 25344,
+      "sha256": "38e64c722323a7237812fc4d9ba49243502f7ed49fdcbdbed459c318e0f7b4d8",
+      "git_blob": "73342804daaf01c1b6594361fe65a9ebfbfc8c8c"
+    },
+    {
+      "name": "browser_node_receive_v2.mjs",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser_node_receive_v2.mjs",
+      "bytes": 25514,
+      "sha256": "218e34993be08a5dcc6ed05b88202cbd02bbeaf35bc43fcf91ef969a62c1acf9",
+      "git_blob": "18e4f9adb26f1c89b7cecfdf142077a17d93418b"
+    },
+    {
+      "name": "NODE-DRIVER-COPY.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-DRIVER-COPY.json",
+      "bytes": 309215,
+      "sha256": "6639dfe4826e68d3d020585773d8a33c97e33c017dea31888b73fd26392ee097",
+      "git_blob": "90ff28cf3d4b92ad504c589b428ce37eaa7e71f4"
+    },
+    {
+      "name": "NODE-COPY-COMMAND.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-COPY-COMMAND.json",
+      "bytes": 270,
+      "sha256": "f3d11c428e597ccbb2f60bd596a56584270a6a98f5ef91de52476e233b531220",
+      "git_blob": "633babd2bde861abf5c0b9da4f927e5798bdaafc"
+    },
+    {
+      "name": "node-copy.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-copy.stdout",
+      "bytes": 271,
+      "sha256": "c9b05294d305f9923b2ccfca75069c3d5306676020eaf68f2daa8faf5969ac72",
+      "git_blob": "d2da366d04b87be20b544ed9806fe52aab9fa3e2"
+    },
+    {
+      "name": "node-copy.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-copy.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "node_adapter_syntax.py",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node_adapter_syntax.py",
+      "bytes": 5076,
+      "sha256": "d62a2bbdce63ecfc7a4705b3066fb3dd9c10c146bf7cfdb5c69dfe42e5f46a15",
+      "git_blob": "90c76ee08845256c6286f5359f89e32430acf6d7"
+    },
+    {
+      "name": "NODE-ADAPTER-SYNTAX.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-ADAPTER-SYNTAX.json",
+      "bytes": 9435,
+      "sha256": "43650cbd109e7a743d4ebecd3f333076d82a6699f869c61c2e882510463df043",
+      "git_blob": "79f31988fc86aa514c366c5733c66bede97a0dab"
+    },
+    {
+      "name": "node-syntax.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-syntax.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "node-syntax.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-syntax.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "node-mtime.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-mtime.stdout",
+      "bytes": 126,
+      "sha256": "d683a6c3cf323ab230550335d22f5cf65e2553e79248e4f199995b982a7080cf",
+      "git_blob": "b9dc4fd01ed777489b2046424dd9b8ca3658a810"
+    },
+    {
+      "name": "node-mtime.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-mtime.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "node-adapter-review.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-adapter-review.stdout",
+      "bytes": 281,
+      "sha256": "5aac5249882a948903bd7c8e1ed0c640bd13d036fc339ec9abce199f55af9de6",
+      "git_blob": "cc291b674e58866c27e88e21619e6368621457b8"
+    },
+    {
+      "name": "node-adapter-review.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-adapter-review.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "NODE-OPERATION-HISTORY.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-OPERATION-HISTORY.json",
+      "bytes": 32402,
+      "sha256": "1d2903e08ae95158438bd9daf2f62ffc7882f49fe45f49d518a51bac57c87aa9",
+      "git_blob": "a89e33940a6b7d6acbf08ef40ce527e8c0e861a7"
+    },
+    {
+      "name": "NODE-STATIC-REVIEWS.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-STATIC-REVIEWS.json",
+      "bytes": 16041,
+      "sha256": "6817e5d96f0bfbd0fcf954d59248ff72711da6d18cab7efab9d45739c6332172",
+      "git_blob": "ed653253af3b2474b3c5d8d4ac7a2574248a0f85"
+    },
+    {
+      "name": "seal_linux_evidence.py",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/seal_linux_evidence.py",
+      "bytes": 6994,
+      "sha256": "1b2e9674ff4b0c3e0554b958f63e9e5a2f215ca3af55efdfbea8cbca85fb671b",
+      "git_blob": "924148efdca3802ec40d5d071c1795c0a2ea419e"
+    },
+    {
+      "name": "browser-node-original/RECEIVING.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/RECEIVING.json",
+      "bytes": 937022,
+      "sha256": "b8fa882865b7481e64ff7577db24087e369c51e08ea97e58f4c3ba3384713b61",
+      "git_blob": "4fe7a5f25e0137e238beb2dfc6404c83f7344518"
+    },
+    {
+      "name": "ORIGINAL-NODE-GATE.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/ORIGINAL-NODE-GATE.json",
+      "bytes": 5323,
+      "sha256": "2fd3ee235ec9c87692bd84168d5cdfb594baf925441fbecb622e64eebe5579f8",
+      "git_blob": "d5d2da6db8fccdc548f2cd55e3c8cfe59c46b498"
+    },
+    {
+      "name": "ORIGINAL-NODE-BROWSER-COMMAND.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/ORIGINAL-NODE-BROWSER-COMMAND.json",
+      "bytes": 271,
+      "sha256": "52002f12d4247cb303b49d2bcb9d42d0ae8c20125772e5149665c578a0a010ef",
+      "git_blob": "460649b837460eb7a5adba265c125a5cb1f251fc"
+    },
+    {
+      "name": "original-node-browser.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-node-browser.stdout",
+      "bytes": 366,
+      "sha256": "1aa7e070db8c284257d00e6b089a9e57df052d114f848cc7a2d6bc517f71bee8",
+      "git_blob": "71ccda1f59cc0e8877544f8060722f72210b4afb"
+    },
+    {
+      "name": "original-node-browser.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-node-browser.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "browser-node-original/embedded-alias.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/embedded-alias.json",
+      "bytes": 1670,
+      "sha256": "1a8e412466315150b750475242d2ff4d14f0e242a4ba49c50c16333edd0804e7",
+      "git_blob": "0dfd3ed41d92630777309ef8cc6a4ebc291cbab3"
+    },
+    {
+      "name": "browser-node-original/complete-alias.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/complete-alias.json",
+      "bytes": 607,
+      "sha256": "18e3c052e81a35c1c0ed5b3db4f4f40ea43acde99eb46cb737a103c56ac3256a",
+      "git_blob": "aa8dddab936d0e70c46600f12cce7bd509f08264"
+    },
+    {
+      "name": "browser-node-original/from-priority.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/from-priority.json",
+      "bytes": 649,
+      "sha256": "0b7ad6e19e0b3830bef5006bcca2ac15ad1dc75afa249173ca278bd2b2aa47f4",
+      "git_blob": "7b1b251601c86dd8941b278908ebf2ef7979a1e5"
+    },
+    {
+      "name": "browser-node-original/downloads/embedded-alias.ics",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/downloads/embedded-alias.ics",
+      "bytes": 400,
+      "sha256": "1c68f9008c0cdc154ba1385a8ee4c5835ed65e182ab2cc71494663823b372abd",
+      "git_blob": "9e6712cca9c379c9a5bbaa1a1472625f54da46d0"
+    },
+    {
+      "name": "browser-node-original/original-embedded-preview-desktop.png",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/original-embedded-preview-desktop.png",
+      "bytes": 190934,
+      "sha256": "42b3e2c253d65af48d074bdecf87490d060093d4f7336e6c05c57dac5e119be5",
+      "git_blob": "f92e70b7d43c5a035abed27f176f54835eb6f7a5"
+    },
+    {
+      "name": "browser-node-candidate/RECEIVING.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/RECEIVING.json",
+      "bytes": 938592,
+      "sha256": "2fdaf029d5518edf022c5d9fd1aaebf5d6d054fe75f00bb4f880042272d3f048",
+      "git_blob": "dd44a456bcacd901cd848bc19d1991c1ca9cdf14"
+    },
+    {
+      "name": "BUILD-candidate.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/BUILD-candidate.json",
+      "bytes": 19126,
+      "sha256": "5b2d2dd1abf17e6e4e3c8a5736bce7c8e562a9ac35341bdc78467eb9aa41972d",
+      "git_blob": "b3072479fc7b04d3735487ac49e5f32669c21853"
+    },
+    {
+      "name": "CANDIDATE-BUILD-COMMAND.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/CANDIDATE-BUILD-COMMAND.json",
+      "bytes": 297,
+      "sha256": "1c5df935b72605d8027f76a63898e2e053c4ef8596e9dbb888f8bb36744ed0ea",
+      "git_blob": "625075d627cd21fc0d8a205b6d0483bea684f819"
+    },
+    {
+      "name": "candidate-build.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/candidate-build.stdout",
+      "bytes": 41,
+      "sha256": "9d866df74a14ce4a0587a5d9cd20e6839efacd0e801fa338b0f25a23b726759e",
+      "git_blob": "1a92b06c493fd717bf7e2c4626da4c20e23efc36"
+    },
+    {
+      "name": "candidate-build.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/candidate-build.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "build-candidate/tsc.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-candidate/tsc.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "build-candidate/tsc.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-candidate/tsc.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "build-candidate/vite.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-candidate/vite.stdout",
+      "bytes": 634,
+      "sha256": "8f6728db8537e0b853564b77361fb1b601cf4a492cc4508c22d54ef1341cbddc",
+      "git_blob": "25191f6e6ccc174022351da4105fb1328c7e64ec"
+    },
+    {
+      "name": "build-candidate/vite.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-candidate/vite.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "CANDIDATE-NODE-BROWSER-COMMAND.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/CANDIDATE-NODE-BROWSER-COMMAND.json",
+      "bytes": 272,
+      "sha256": "4e1dc3ed23b41496186f63bd88b7fc6bd88f2b61ecbc124f3828b0e7a595626a",
+      "git_blob": "aa6e4e3a342e3c5ca571d717b911627260e50244"
+    },
+    {
+      "name": "candidate-node-browser.stdout",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/candidate-node-browser.stdout",
+      "bytes": 366,
+      "sha256": "31ecc0c5eb70c0d14536dee4f5014cb063da8d9cf84d2501970e268d698be07c",
+      "git_blob": "322b8d8e558a7abbde8b4c2eef6f8b8ff5b28dd1"
+    },
+    {
+      "name": "candidate-node-browser.stderr",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/candidate-node-browser.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "name": "browser-node-candidate/embedded-alias.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/embedded-alias.json",
+      "bytes": 1926,
+      "sha256": "8be8f7e45a41ef5eb37a406b6031656baea7279cc09714ab3ffd033895d2fde0",
+      "git_blob": "790adc008537a4b4f2f58f8194b71e16beb2dce7"
+    },
+    {
+      "name": "browser-node-candidate/complete-alias.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/complete-alias.json",
+      "bytes": 607,
+      "sha256": "e77abec23cfa39710332c3b34303a0217881197c57ecb6eae17f07b992d13dd5",
+      "git_blob": "fdd2a805319bc20e9bcfe2759bad07201e99e9cf"
+    },
+    {
+      "name": "browser-node-candidate/from-priority.json",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/from-priority.json",
+      "bytes": 649,
+      "sha256": "2da5bd2d8fec816675a75f8f4c55e69a8c2083c2155d0d07ea7652fda71018ef",
+      "git_blob": "89bac9644937a7efe7e38d1b885b2734583d434a"
+    },
+    {
+      "name": "browser-node-candidate/downloads/embedded-alias.ics",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/downloads/embedded-alias.ics",
+      "bytes": 400,
+      "sha256": "8648f44a37e64f8b029d911fa7779f49f1f161698cf5defb20a618723511df7d",
+      "git_blob": "31516e3f60375bc2584329ac38372abb33bdeea8"
+    },
+    {
+      "name": "browser-node-candidate/candidate-embedded-preview-desktop.png",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/candidate-embedded-preview-desktop.png",
+      "bytes": 189976,
+      "sha256": "e5ece62e62c4c74686b6eacb27f9190c13c14c9ff9adac5805c86c2cd9789472",
+      "git_blob": "fcdb52d29030a6eb6d0fd45b9e5b44b6f2bdcf22"
+    },
+    {
+      "name": "browser-node-candidate/candidate-embedded-saved-narrow.png",
+      "original_path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/candidate-embedded-saved-narrow.png",
+      "bytes": 142088,
+      "sha256": "a8b8d984e1d8136f0d8b074b823b11a0b10a9b6761e9f022c36a387bc3be18a5",
+      "git_blob": "f84de478f9e6251c28802d1954dfb2d6b46588f2"
+    }
+  ],
+  "limits": [
+    "This is byte custody, not new application qualification.",
+    "The driver uses admitted native paths and is not a portable general extraction tool.",
+    "Remote Git identity and native full identity jointly bind exact wrapper bytes; decompressed native envelopes are compared directly.",
+    "No recorded original_path is written or extracted.",
+    "Previous Python failure, original semantic negatives and transport timeout history are preserved."
+  ],
+  "files": {
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/TRANSPORT-INDEX.json": {
+      "bytes": 7008,
+      "sha256": "7d77c3581cb9b7472f841f8535fb79bc14def770f5441f872fd740d3c0714ed6",
+      "git_blob": "9cce8ecdf3d69934330c7f47a29481cc0a040823",
+      "mtime_ns": "1791911070927827155",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/INDEX.json": {
+      "bytes": 8742,
+      "sha256": "829a7f7282fd3a35ae6209fedc838e5735d5fa4d926b239a24e8e4a39ad6f998",
+      "git_blob": "bdcf1373f6001ab31617773b90cea15c9909105a",
+      "mtime_ns": "1791910675762592413",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/syntax-review-1.transport.json": {
+      "bytes": 592746,
+      "sha256": "2b1fd07bd0ee98da89255909c690eb78575ba07051e27c93748052eba20a6967",
+      "git_blob": "54cfc5435c490a9c4d6fac3cb52a949d4aa2ac06",
+      "mtime_ns": "1791911070753942339",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/syntax-review-1.json": {
+      "bytes": 851735,
+      "sha256": "ca1a76848e33d6eec1a63e34284c1cc99695b5b331e22a30550da631c3d92432",
+      "git_blob": "8e5adc53188e274ee3ed07547df36ad4de3fdd3a",
+      "mtime_ns": "1791910675456578112",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-review-qtw10pxc-vhvphrhu/REVIEW-INPUT.json": {
+      "bytes": 602969,
+      "sha256": "1caab1bce0e775ac0bb99e3fb440b5e34fabf9cee0b35f5b4b99718ebaab0d66",
+      "git_blob": "d6c7a54a225f93a508d0c57df7e4f0f770bdc010",
+      "mtime_ns": "1791906654294126435",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-review-qtw10pxc-vhvphrhu/review.py": {
+      "bytes": 6471,
+      "sha256": "dc6a5667b1e854ea571deb581968e2b19b45b148b2a468a120c2a10677c57ae7",
+      "git_blob": "4b9226850ad7330b8fb21647ef7fba6c2943a08e",
+      "mtime_ns": "1791906654540125153",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-review-qtw10pxc-vhvphrhu/RECEIVING.json": {
+      "bytes": 27011,
+      "sha256": "2b72ad7271cf931f4af47a49ad9500a4cd4df731f16c303ac10661298815b49f",
+      "git_blob": "baeda79915c1813fcf20c1499cc3cf20f5bcfd59",
+      "mtime_ns": "1791906995569735258",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-review-qtw10pxc-vhvphrhu/review.stdout": {
+      "bytes": 360,
+      "sha256": "d928fd99cc8dbba7812721ff783981d35c0ab5db7fd4061c84e68a80c9e01112",
+      "git_blob": "fe852799961205a977c625cba6a0363a8612cdba",
+      "mtime_ns": "1791906995569735258",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-review-qtw10pxc-vhvphrhu/review.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791906995521179629",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/preparation-python-held-1.transport.json": {
+      "bytes": 580560,
+      "sha256": "bcbc9c679a0a8ab4955e7c01572cc942b9948104fd46ac44c58ef3c779020793",
+      "git_blob": "77801838a069a615995ee8df5ce9aec29fd60506",
+      "mtime_ns": "1791911070788068802",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/preparation-python-held-1.json": {
+      "bytes": 803092,
+      "sha256": "4d6e957f51fb256daba470004b56c14f5983139baaeeda43b2da119868b08e06",
+      "git_blob": "df71c425db0f981d3129ed16e4e1c467fffcfee5",
+      "mtime_ns": "1791910675465606448",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/INPUT.json": {
+      "bytes": 526660,
+      "sha256": "6c3ad3a3fffcadcfd4548ef3f75413b681df47030dba1bf8d87d0867a671ae04",
+      "git_blob": "98a434fe34dd6e175a64d0396d079cadf6f779b7",
+      "mtime_ns": "1791907139868400474",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/CONTRACT.json": {
+      "bytes": 8999,
+      "sha256": "d24524692c814cad86260a8f528bcabc087846fdec7863b106c306507459f610",
+      "git_blob": "6b410f82313611ec9d1a81d0c53a835ac76a03f1",
+      "mtime_ns": "1791907139874843332",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/stage_build.py": {
+      "bytes": 23375,
+      "sha256": "b58dcd567ec7d37b185878ac9cb6e9afe9c4852d50afa677da02d0eab7627311",
+      "git_blob": "d519828d86e84d364e270dcac49c19dfd36f8012",
+      "mtime_ns": "1791907139874908351",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser_receive.py": {
+      "bytes": 25615,
+      "sha256": "dbb7ba8df41cdc78f80bc474d05c464b204fed7cbe92d44dcd42e30609ec1ed1",
+      "git_blob": "85d200eb1266a942b6d9ae95cd64e1642c419690",
+      "mtime_ns": "1791907139874981027",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/STAGED-SOURCE.json": {
+      "bytes": 15730,
+      "sha256": "9fcda80835df03ddcaa3a6631350829a379e17722f85955081e29094f2d39f21",
+      "git_blob": "0a35388bed70597a868b7a6ff102da7720d81e66",
+      "mtime_ns": "1791907197114347771",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/preparation-python-held-2.transport.json": {
+      "bytes": 415454,
+      "sha256": "ac9ec6163fd3ca435ef7bb0b613d93620c08db8fd659afcf2807f5928af6aacd",
+      "git_blob": "d26b4c729468ae0b440c94b5c2b2aba6ff106fcc",
+      "mtime_ns": "1791911070818523875",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/preparation-python-held-2.json": {
+      "bytes": 1196678,
+      "sha256": "70cba751b436128f359e2ba6bdc73b43c2d704b3c081525f43eddb345c7cdace",
+      "git_blob": "2372ccfb16c5408be8bde9be6c6593b7ce410c59",
+      "mtime_ns": "1791910675479625623",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/DEPENDENCIES.json": {
+      "bytes": 426047,
+      "sha256": "9dd092aac2798a30231cec3c6e6eb4ee39264a3cce2f9e21430abbcaf449e57e",
+      "git_blob": "2d3a3fb0cebefc9cc50353e9b32e57e7c9859016",
+      "mtime_ns": "1791907196848013434",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/STAGE-ATTEMPT.json": {
+      "bytes": 982,
+      "sha256": "419e2d58a118072779f14785ae6c1482a763e7651a749e631111b72be82c6e34",
+      "git_blob": "4632a4c9e1bfe53ee53f38ca55699bc8430edaa3",
+      "mtime_ns": "1791907197114492713",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/STAGE-COMMAND.json": {
+      "bytes": 280,
+      "sha256": "97c323b8b7b2ea6c06e8f5da80157f87e50e27842dcafdb2e1764912c8580017",
+      "git_blob": "eef25dfc6042388713f378eb74fac5c4f0eab4f9",
+      "mtime_ns": "1791907197122807169",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/stage.stdout": {
+      "bytes": 37,
+      "sha256": "46a0d87756b9f49d3e072748f24e43bbe9579c14b02c4bf6c848145a7f847633",
+      "git_blob": "9a8739ecbe97bf6612727a749468ecfbd7d05907",
+      "mtime_ns": "1791907197114492713",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/stage.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791907195799152324",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/BUILD-original.json": {
+      "bytes": 18579,
+      "sha256": "fa064e2e37cf2daee61fed9c19a63cd3ccec3dbad9a4c2d6be99ef3406c8ec6b",
+      "git_blob": "13fb483166b8367246679c61a9bd04cb91e7a911",
+      "mtime_ns": "1791907247735817132",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/ORIGINAL-BUILD-COMMAND.json": {
+      "bytes": 296,
+      "sha256": "7cd37dd9a13fc2380e6cd2bb1270a11dc42b6d5be727927a692d3199ce307dfc",
+      "git_blob": "7ea21b4168e02029023ac3682f357c1dae7693a3",
+      "mtime_ns": "1791907247744179733",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-build.stdout": {
+      "bytes": 40,
+      "sha256": "9a2ed1c5b6130fc3b4ac823f14af7fd9baaf3b580466e6b22c59be8c432ddece",
+      "git_blob": "ee25ccb45dd4b72dd1ddd001a6ddb3e9a56c0054",
+      "mtime_ns": "1791907247735817132",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-build.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791907245887895401",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-original/tsc.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791907246129894159",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-original/tsc.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791907246129894159",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-original/vite.stdout": {
+      "bytes": 634,
+      "sha256": "c7cd70cd360b73d4b63634d501f9a5d24c5d5bd6b417ef8237e10ea69164da13",
+      "git_blob": "18615b8b1c10a6ae39aea96d938f6cdeaeaeb30e",
+      "mtime_ns": "1791907247510887076",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-original/vite.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791907247095889204",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-original/RECEIVING.json": {
+      "bytes": 42786,
+      "sha256": "ba9e5895250375013451a31f04a74a0ba6f0dc598278110359149550c3920ce9",
+      "git_blob": "63d567971b2ed16ee705f46708385aa08fc605ca",
+      "mtime_ns": "1791907306013806155",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/ORIGINAL-BROWSER-COMMAND.json": {
+      "bytes": 285,
+      "sha256": "738dedfbcb5266405e7fa1adcc145e04ffac1565238a4ec13880d8f7e4f60122",
+      "git_blob": "632c172dfab730010a9514dac337c6590a07dd59",
+      "mtime_ns": "1791907306034027765",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-browser.stdout": {
+      "bytes": 403,
+      "sha256": "5c99af1711df643ad3be9f81422c1e5052bf04a80e5a6fb54857ceefd9826bf6",
+      "git_blob": "206620193206a983eb1a7fabd792eb915059d918",
+      "mtime_ns": "1791907306013806155",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-browser.stderr": {
+      "bytes": 2507,
+      "sha256": "1046a8d9174e275c47a95af5cc23f5ddcc41a22676c3cc8e3dda95d8a46df6ad",
+      "git_blob": "abaaf97acbaa3c9a9b9a1157e3afa9fdfbe54f11",
+      "mtime_ns": "1791907306017586973",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/OPERATION-HISTORY.json": {
+      "bytes": 51358,
+      "sha256": "d761840cbdba5e315e21ad42fe7def1e6b7406878d37b8428810ae370d0980b3",
+      "git_blob": "6c4973ce3206d1bd904fcde2dfa627ee4fb26e4e",
+      "mtime_ns": "1791907742938350482",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/STATIC-REVIEWS.json": {
+      "bytes": 15131,
+      "sha256": "d66135f34e873b94df5c40d7f41d2b7fc5b15a94c3fb96a458c2f08384bef432",
+      "git_blob": "d72fe5cd15250d16bbbb79fcc32ca4b438dd88b1",
+      "mtime_ns": "1791907744734341568",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/ORIGINAL-READONLY-PREFLIGHT.json": {
+      "bytes": 39723,
+      "sha256": "bd854fead0d432a0c338246883c09f36394d4f7de42f4b802d8a6e3ee2ec0eef",
+      "git_blob": "33ee48086bf0075be0b0fec1b65c6fb7a16b0b76",
+      "mtime_ns": "1791910655012697198",
+      "mode": 436
+    },
+    "/home/jacob/.commander-tp-2/hamon-team-20261013-1bkvjx8k/delivery/RETURNBY-LINUX-PARTIAL-RETAINED-DATA.json": {
+      "bytes": 291229,
+      "sha256": "41bafbbd3c85b914142c4e5581636de7e3642dfea68ffb2c3792e8c8ad81c8be",
+      "git_blob": "9d8018390c8e3a4b470ec2104d24e5537a092d09",
+      "mtime_ns": "1791908196458115260",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/preparation-python-held-3.transport.json": {
+      "bytes": 11027,
+      "sha256": "37f60918f1b05052174dd1197c56992dde7711f0cef826a71e990523b2923585",
+      "git_blob": "27fd5a998fb115c1a47c5838aaf001577d21cbfd",
+      "mtime_ns": "1791911070823942155",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/preparation-python-held-3.json": {
+      "bytes": 18873,
+      "sha256": "576b44b94aff2d19560e14dff4e3b6ffb8affc02eeccc29fcd08f793ce0d4a07",
+      "git_blob": "6413994ad019c4270b1ba14a68075bb866b484bb",
+      "mtime_ns": "1791910675488811386",
+      "mode": 436
+    },
+    "/home/jacob/.commander-tp-2/hamon-team-20261013-1bkvjx8k/delivery/receive_returnby_linux_partial_20261013.py": {
+      "bytes": 13398,
+      "sha256": "2d0e3b984ed6599ffceeac4f5f00b4a751ef513247ea59f891de976d1b8de4b4",
+      "git_blob": "ec4c474a2325733c7efdb4f1501bc1bff307790c",
+      "mtime_ns": "1791908146926345485",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/node-adapter-1.transport.json": {
+      "bytes": 290610,
+      "sha256": "aae3945a3a09caa1e0518f56e64cb015c5fa3a9e77cec06db17f89c2e260355b",
+      "git_blob": "49cba59f2285a9eea0186ab30d1bbd3198a0325b",
+      "mtime_ns": "1791911070839795656",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/node-adapter-1.json": {
+      "bytes": 741077,
+      "sha256": "6d858c89c56f9e75984cb43564c6c7ef5c6576ae08bc60a7c22f19b8b0355ce0",
+      "git_blob": "cd611d8d7c2597a0cd1473102869e190a9a4dff2",
+      "mtime_ns": "1791910675493042469",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-BROWSER-PROFILE.json": {
+      "bytes": 6716,
+      "sha256": "ff00d277e2684b482c00b1bce78cdbe50361853d159b2708e09ddd119fa6c465",
+      "git_blob": "e23bb4224084ca8612fe52c8fc757e8bfa2b03e9",
+      "mtime_ns": "1791909134413398947",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-TOOLCHAIN-READONLY.json": {
+      "bytes": 98826,
+      "sha256": "56244b5fd77599fb173e16055fe950d55653745475f45a2f3d75fd36623e77cc",
+      "git_blob": "a5f2f1554773ac4da0927117277f38b63d43e9d4",
+      "mtime_ns": "1791907808822150880",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/copy_node_driver.py": {
+      "bytes": 12505,
+      "sha256": "28d5af45ee64ad5faba47659edd0f22b3e9d60133f4ac747ee1341682f94bdca",
+      "git_blob": "56eecba28925ecd02611d64d4400eeda5e723fab",
+      "mtime_ns": "1791909136169390019",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser_node_receive.mjs": {
+      "bytes": 25344,
+      "sha256": "38e64c722323a7237812fc4d9ba49243502f7ed49fdcbdbed459c318e0f7b4d8",
+      "git_blob": "73342804daaf01c1b6594361fe65a9ebfbfc8c8c",
+      "mtime_ns": "1791909137865381396",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser_node_receive_v2.mjs": {
+      "bytes": 25514,
+      "sha256": "218e34993be08a5dcc6ed05b88202cbd02bbeaf35bc43fcf91ef969a62c1acf9",
+      "git_blob": "18e4f9adb26f1c89b7cecfdf142077a17d93418b",
+      "mtime_ns": "1791909408484005497",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-DRIVER-COPY.json": {
+      "bytes": 309215,
+      "sha256": "6639dfe4826e68d3d020585773d8a33c97e33c017dea31888b73fd26392ee097",
+      "git_blob": "90ff28cf3d4b92ad504c589b428ce37eaa7e71f4",
+      "mtime_ns": "1791909706120873504",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-COPY-COMMAND.json": {
+      "bytes": 270,
+      "sha256": "f3d11c428e597ccbb2f60bd596a56584270a6a98f5ef91de52476e233b531220",
+      "git_blob": "633babd2bde861abf5c0b9da4f927e5798bdaafc",
+      "mtime_ns": "1791909706127624797",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-copy.stdout": {
+      "bytes": 271,
+      "sha256": "c9b05294d305f9923b2ccfca75069c3d5306676020eaf68f2daa8faf5969ac72",
+      "git_blob": "d2da366d04b87be20b544ed9806fe52aab9fa3e2",
+      "mtime_ns": "1791909706120873504",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-copy.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791909705857493570",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node_adapter_syntax.py": {
+      "bytes": 5076,
+      "sha256": "d62a2bbdce63ecfc7a4705b3066fb3dd9c10c146bf7cfdb5c69dfe42e5f46a15",
+      "git_blob": "90c76ee08845256c6286f5359f89e32430acf6d7",
+      "mtime_ns": "1791909410429995605",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-ADAPTER-SYNTAX.json": {
+      "bytes": 9435,
+      "sha256": "43650cbd109e7a743d4ebecd3f333076d82a6699f869c61c2e882510463df043",
+      "git_blob": "79f31988fc86aa514c366c5733c66bede97a0dab",
+      "mtime_ns": "1791909645748689681",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-syntax.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791909645517800351",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-syntax.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791909645517800351",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-mtime.stdout": {
+      "bytes": 126,
+      "sha256": "d683a6c3cf323ab230550335d22f5cf65e2553e79248e4f199995b982a7080cf",
+      "git_blob": "b9dc4fd01ed777489b2046424dd9b8ca3658a810",
+      "mtime_ns": "1791909645708799380",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-mtime.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791909645632799766",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-adapter-review.stdout": {
+      "bytes": 281,
+      "sha256": "5aac5249882a948903bd7c8e1ed0c640bd13d036fc339ec9abce199f55af9de6",
+      "git_blob": "cc291b674e58866c27e88e21619e6368621457b8",
+      "mtime_ns": "1791909645748689681",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/node-adapter-review.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791909645486800509",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-OPERATION-HISTORY.json": {
+      "bytes": 32402,
+      "sha256": "1d2903e08ae95158438bd9daf2f62ffc7882f49fe45f49d518a51bac57c87aa9",
+      "git_blob": "a89e33940a6b7d6acbf08ef40ce527e8c0e861a7",
+      "mtime_ns": "1791910501645471711",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/NODE-STATIC-REVIEWS.json": {
+      "bytes": 16041,
+      "sha256": "6817e5d96f0bfbd0fcf954d59248ff72711da6d18cab7efab9d45739c6332172",
+      "git_blob": "ed653253af3b2474b3c5d8d4ac7a2574248a0f85",
+      "mtime_ns": "1791910499858480734",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/seal_linux_evidence.py": {
+      "bytes": 6994,
+      "sha256": "1b2e9674ff4b0c3e0554b958f63e9e5a2f215ca3af55efdfbea8cbca85fb671b",
+      "git_blob": "924148efdca3802ec40d5d071c1795c0a2ea419e",
+      "mtime_ns": "1791910656794688200",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/original-node-browser-1.transport.json": {
+      "bytes": 403863,
+      "sha256": "2d82680692fac19d0e430acc872be762d2cf702be3b2d6dc9729d69322625678",
+      "git_blob": "d6f00453d2e41ed01975aa5bf92d60344c3f80c8",
+      "mtime_ns": "1791911070867112074",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/original-node-browser-1.json": {
+      "bytes": 1250325,
+      "sha256": "3d05db5ff4d1a18724522b1ba7a9e9ef260abb0d5bae4921b7dbd4158cfb46be",
+      "git_blob": "ffa43afb0585eb3fc21ba1099b83b2ff3655a970",
+      "mtime_ns": "1791910675503866521",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/RECEIVING.json": {
+      "bytes": 937022,
+      "sha256": "b8fa882865b7481e64ff7577db24087e369c51e08ea97e58f4c3ba3384713b61",
+      "git_blob": "4fe7a5f25e0137e238beb2dfc6404c83f7344518",
+      "mtime_ns": "1791909775619138883",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/original-node-browser-2.transport.json": {
+      "bytes": 254014,
+      "sha256": "9949976a2ca8f9ef36be5393e6f934c0cdcdf676637bf58e60cc118ab97234c5",
+      "git_blob": "95104f6e49027db3fcae74e2bd4797d90c769148",
+      "mtime_ns": "1791911070880680819",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/original-node-browser-2.json": {
+      "bytes": 271617,
+      "sha256": "65bbebcdd60a8c7e6f337acf5b7ccf0b6f128af52ea1eae7db671456eafaa4c8",
+      "git_blob": "f1f79802ac41e8119155cee95509c4b32d1ea0f2",
+      "mtime_ns": "1791910675532565587",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/ORIGINAL-NODE-GATE.json": {
+      "bytes": 5323,
+      "sha256": "2fd3ee235ec9c87692bd84168d5cdfb594baf925441fbecb622e64eebe5579f8",
+      "git_blob": "d5d2da6db8fccdc548f2cd55e3c8cfe59c46b498",
+      "mtime_ns": "1791909903491347043",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/ORIGINAL-NODE-BROWSER-COMMAND.json": {
+      "bytes": 271,
+      "sha256": "52002f12d4247cb303b49d2bcb9d42d0ae8c20125772e5149665c578a0a010ef",
+      "git_blob": "460649b837460eb7a5adba265c125a5cb1f251fc",
+      "mtime_ns": "1791909775649905535",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-node-browser.stdout": {
+      "bytes": 366,
+      "sha256": "1aa7e070db8c284257d00e6b089a9e57df052d114f848cc7a2d6bc517f71bee8",
+      "git_blob": "71ccda1f59cc0e8877544f8060722f72210b4afb",
+      "mtime_ns": "1791909775627138843",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/original-node-browser.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791909770171166582",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/embedded-alias.json": {
+      "bytes": 1670,
+      "sha256": "1a8e412466315150b750475242d2ff4d14f0e242a4ba49c50c16333edd0804e7",
+      "git_blob": "0dfd3ed41d92630777309ef8cc6a4ebc291cbab3",
+      "mtime_ns": "1791909772731217552",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/complete-alias.json": {
+      "bytes": 607,
+      "sha256": "18e3c052e81a35c1c0ed5b3db4f4f40ea43acde99eb46cb737a103c56ac3256a",
+      "git_blob": "aa8dddab936d0e70c46600f12cce7bd509f08264",
+      "mtime_ns": "1791909774094146637",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/from-priority.json": {
+      "bytes": 649,
+      "sha256": "0b7ad6e19e0b3830bef5006bcca2ac15ad1dc75afa249173ca278bd2b2aa47f4",
+      "git_blob": "7b1b251601c86dd8941b278908ebf2ef7979a1e5",
+      "mtime_ns": "1791909775455139717",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/downloads/embedded-alias.ics": {
+      "bytes": 400,
+      "sha256": "1c68f9008c0cdc154ba1385a8ee4c5835ed65e182ab2cc71494663823b372abd",
+      "git_blob": "9e6712cca9c379c9a5bbaa1a1472625f54da46d0",
+      "mtime_ns": "1791909772727153587",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-original/original-embedded-preview-desktop.png": {
+      "bytes": 190934,
+      "sha256": "42b3e2c253d65af48d074bdecf87490d060093d4f7336e6c05c57dac5e119be5",
+      "git_blob": "f92e70b7d43c5a035abed27f176f54835eb6f7a5",
+      "mtime_ns": "1791909772073156912",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/candidate-node-browser-1.transport.json": {
+      "bytes": 406072,
+      "sha256": "2c95d68542d5381da2823607cc03bf58a56c083b5de2ceb093efc326db25c0de",
+      "git_blob": "b5d6db50f884bb29d748e41f810f41f8957e97dd",
+      "mtime_ns": "1791911070905275551",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/candidate-node-browser-1.json": {
+      "bytes": 1252420,
+      "sha256": "308212400bfe49215e2c6dba9f5b5980d7171e8a02a73c68b6b262e5ae8014c5",
+      "git_blob": "8a0e7eaa9dc82fd770760667349ae15905e69e86",
+      "mtime_ns": "1791910675540158693",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/RECEIVING.json": {
+      "bytes": 938592,
+      "sha256": "2fdaf029d5518edf022c5d9fd1aaebf5d6d054fe75f00bb4f880042272d3f048",
+      "git_blob": "dd44a456bcacd901cd848bc19d1991c1ca9cdf14",
+      "mtime_ns": "1791910193785026400",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/candidate-node-browser-2.transport.json": {
+      "bytes": 442076,
+      "sha256": "75516fdcda151bab49d84ce92f4b4392b7e748969c377b581949ee6ee799aa4c",
+      "git_blob": "51ec41640e83f88aefeae30a63dbf08766bbdb43",
+      "mtime_ns": "1791911070924407213",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/candidate-node-browser-2.json": {
+      "bytes": 483381,
+      "sha256": "eb2fb70a5f40588f00d3a5ed2aa28c13d4ad026cd4c7c956bfc2c932f43670b6",
+      "git_blob": "e9b550c6e1c2e6f68a3b4835623d92089ac757d6",
+      "mtime_ns": "1791910675761221487",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/BUILD-candidate.json": {
+      "bytes": 19126,
+      "sha256": "5b2d2dd1abf17e6e4e3c8a5736bce7c8e562a9ac35341bdc78467eb9aa41972d",
+      "git_blob": "b3072479fc7b04d3735487ac49e5f32669c21853",
+      "mtime_ns": "1791910129455302724",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/CANDIDATE-BUILD-COMMAND.json": {
+      "bytes": 297,
+      "sha256": "1c5df935b72605d8027f76a63898e2e053c4ef8596e9dbb888f8bb36744ed0ea",
+      "git_blob": "625075d627cd21fc0d8a205b6d0483bea684f819",
+      "mtime_ns": "1791910129464074695",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/candidate-build.stdout": {
+      "bytes": 41,
+      "sha256": "9d866df74a14ce4a0587a5d9cd20e6839efacd0e801fa338b0f25a23b726759e",
+      "git_blob": "1a92b06c493fd717bf7e2c4626da4c20e23efc36",
+      "mtime_ns": "1791910129455351263",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/candidate-build.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791910127244362429",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-candidate/tsc.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791910127945358889",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-candidate/tsc.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791910127945358889",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-candidate/vite.stdout": {
+      "bytes": 634,
+      "sha256": "8f6728db8537e0b853564b77361fb1b601cf4a492cc4508c22d54ef1341cbddc",
+      "git_blob": "25191f6e6ccc174022351da4105fb1328c7e64ec",
+      "mtime_ns": "1791910129241352344",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/build-candidate/vite.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791910128812354510",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/CANDIDATE-NODE-BROWSER-COMMAND.json": {
+      "bytes": 272,
+      "sha256": "4e1dc3ed23b41496186f63bd88b7fc6bd88f2b61ecbc124f3828b0e7a595626a",
+      "git_blob": "aa6e4e3a342e3c5ca571d717b911627260e50244",
+      "mtime_ns": "1791910193811611661",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/candidate-node-browser.stdout": {
+      "bytes": 366,
+      "sha256": "31ecc0c5eb70c0d14536dee4f5014cb063da8d9cf84d2501970e268d698be07c",
+      "git_blob": "322b8d8e558a7abbde8b4c2eef6f8b8ff5b28dd1",
+      "mtime_ns": "1791910193795026349",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/candidate-node-browser.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": "1791910187566057805",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/embedded-alias.json": {
+      "bytes": 1926,
+      "sha256": "8be8f7e45a41ef5eb37a406b6031656baea7279cc09714ab3ffd033895d2fde0",
+      "git_blob": "790adc008537a4b4f2f58f8194b71e16beb2dce7",
+      "mtime_ns": "1791910190634042312",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/complete-alias.json": {
+      "bytes": 607,
+      "sha256": "e77abec23cfa39710332c3b34303a0217881197c57ecb6eae17f07b992d13dd5",
+      "git_blob": "fdd2a805319bc20e9bcfe2759bad07201e99e9cf",
+      "mtime_ns": "1791910192120034808",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/from-priority.json": {
+      "bytes": 649,
+      "sha256": "2da5bd2d8fec816675a75f8f4c55e69a8c2083c2155d0d07ea7652fda71018ef",
+      "git_blob": "89bac9644937a7efe7e38d1b885b2734583d434a",
+      "mtime_ns": "1791910193611027278",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/downloads/embedded-alias.ics": {
+      "bytes": 400,
+      "sha256": "8648f44a37e64f8b029d911fa7779f49f1f161698cf5defb20a618723511df7d",
+      "git_blob": "31516e3f60375bc2584329ac38372abb33bdeea8",
+      "mtime_ns": "1791910190510042938",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/candidate-embedded-preview-desktop.png": {
+      "bytes": 189976,
+      "sha256": "e5ece62e62c4c74686b6eacb27f9190c13c14c9ff9adac5805c86c2cd9789472",
+      "git_blob": "fcdb52d29030a6eb6d0fd45b9e5b44b6f2bdcf22",
+      "mtime_ns": "1791910189851046266",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/browser-node-candidate/candidate-embedded-saved-narrow.png": {
+      "bytes": 142088,
+      "sha256": "a8b8d984e1d8136f0d8b074b823b11a0b10a9b6761e9f022c36a387bc3be18a5",
+      "git_blob": "f84de478f9e6251c28802d1954dfb2d6b46588f2",
+      "mtime_ns": "1791910190633042317",
+      "mode": 436
+    },
+    "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/TRANSPORT-HISTORY.json": {
+      "bytes": 2213,
+      "sha256": "2673349bd75e1a5daf4002832dee990aff46872fa1828e81307a1a9757ffc47e",
+      "git_blob": "b4e5f3ec98864537cec8b893a18fe75c48d566af",
+      "mtime_ns": "1791911066507681878",
+      "mode": 436
+    },
+    "/home/jacob/.commander-tp-2/hamon-team-20261013-1bkvjx8k/delivery/RETURNBY-LINUX-NODE-RETAINED-DATA.json": {
+      "bytes": 236496,
+      "sha256": "cd4b53be5e24b585eeafb9ffdb7792f788e00a7a8980e8d8be9308e05a336f95",
+      "git_blob": "17696a56bc5c0b58bae8134a5c974e68f492c852",
+      "mtime_ns": "1791910777335452345",
+      "mode": 436
+    },
+    "/home/jacob/.commander-tp-2/hamon-team-20261013-1bkvjx8k/delivery/receive_returnby_linux_node_data_20261013.py": {
+      "bytes": 28159,
+      "sha256": "3b5548c3e23b6c2007f3ba977601e4274cd778612ca1895b732c6e6388c7c14c",
+      "git_blob": "ade7430003269c7b744b35db7e95332475f40bf0",
+      "mtime_ns": "1791910745688239297",
+      "mode": 436
+    }
+  },
+  "passed_checks": 313,
+  "failed_checks": 0,
+  "finished_at": "2026-10-13T17:21:37.922643+00:00"
+}

@@ -1,0 +1,153 @@
+{
+  "format": "returnby-gzip-transport-index-v1",
+  "native_index": {
+    "name": "INDEX.json",
+    "bytes": 8742,
+    "sha256": "829a7f7282fd3a35ae6209fedc838e5735d5fa4d926b239a24e8e4a39ad6f998",
+    "git_blob": "bdcf1373f6001ab31617773b90cea15c9909105a"
+  },
+  "scope": "Deterministic gzip+Base64 wrappers around unchanged native file envelopes; original source/build/browser receipts and all80 exact native members retain their identities. No product execution.",
+  "decode": "base64.b64decode(content, validate=True), then gzip.decompress; require decompressed bytes/SHA256/Git match original. Native file envelope files[].content then decode with base64.b64decode(...,validate=True).",
+  "transport_history": {
+    "bytes": 2213,
+    "sha256": "2673349bd75e1a5daf4002832dee990aff46872fa1828e81307a1a9757ffc47e",
+    "git_blob": "b4e5f3ec98864537cec8b893a18fe75c48d566af"
+  },
+  "wrappers": [
+    {
+      "name": "syntax-review-1.transport.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/syntax-review-1.transport.json",
+      "bytes": 592746,
+      "sha256": "2b1fd07bd0ee98da89255909c690eb78575ba07051e27c93748052eba20a6967",
+      "git_blob": "54cfc5435c490a9c4d6fac3cb52a949d4aa2ac06",
+      "original": {
+        "name": "syntax-review-1.json",
+        "bytes": 851735,
+        "sha256": "ca1a76848e33d6eec1a63e34284c1cc99695b5b331e22a30550da631c3d92432",
+        "git_blob": "8e5adc53188e274ee3ed07547df36ad4de3fdd3a",
+        "files": 5
+      },
+      "decompression_roundtrip_verified": true
+    },
+    {
+      "name": "preparation-python-held-1.transport.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/preparation-python-held-1.transport.json",
+      "bytes": 580560,
+      "sha256": "bcbc9c679a0a8ab4955e7c01572cc942b9948104fd46ac44c58ef3c779020793",
+      "git_blob": "77801838a069a615995ee8df5ce9aec29fd60506",
+      "original": {
+        "name": "preparation-python-held-1.json",
+        "bytes": 803092,
+        "sha256": "4d6e957f51fb256daba470004b56c14f5983139baaeeda43b2da119868b08e06",
+        "git_blob": "df71c425db0f981d3129ed16e4e1c467fffcfee5",
+        "files": 5
+      },
+      "decompression_roundtrip_verified": true
+    },
+    {
+      "name": "preparation-python-held-2.transport.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/preparation-python-held-2.transport.json",
+      "bytes": 415454,
+      "sha256": "ac9ec6163fd3ca435ef7bb0b613d93620c08db8fd659afcf2807f5928af6aacd",
+      "git_blob": "d26b4c729468ae0b440c94b5c2b2aba6ff106fcc",
+      "original": {
+        "name": "preparation-python-held-2.json",
+        "bytes": 1196678,
+        "sha256": "70cba751b436128f359e2ba6bdc73b43c2d704b3c081525f43eddb345c7cdace",
+        "git_blob": "2372ccfb16c5408be8bde9be6c6593b7ce410c59",
+        "files": 21
+      },
+      "decompression_roundtrip_verified": true
+    },
+    {
+      "name": "preparation-python-held-3.transport.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/preparation-python-held-3.transport.json",
+      "bytes": 11027,
+      "sha256": "37f60918f1b05052174dd1197c56992dde7711f0cef826a71e990523b2923585",
+      "git_blob": "27fd5a998fb115c1a47c5838aaf001577d21cbfd",
+      "original": {
+        "name": "preparation-python-held-3.json",
+        "bytes": 18873,
+        "sha256": "576b44b94aff2d19560e14dff4e3b6ffb8affc02eeccc29fcd08f793ce0d4a07",
+        "git_blob": "6413994ad019c4270b1ba14a68075bb866b484bb",
+        "files": 1
+      },
+      "decompression_roundtrip_verified": true
+    },
+    {
+      "name": "node-adapter-1.transport.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/node-adapter-1.transport.json",
+      "bytes": 290610,
+      "sha256": "aae3945a3a09caa1e0518f56e64cb015c5fa3a9e77cec06db17f89c2e260355b",
+      "git_blob": "49cba59f2285a9eea0186ab30d1bbd3198a0325b",
+      "original": {
+        "name": "node-adapter-1.json",
+        "bytes": 741077,
+        "sha256": "6d858c89c56f9e75984cb43564c6c7ef5c6576ae08bc60a7c22f19b8b0355ce0",
+        "git_blob": "cd611d8d7c2597a0cd1473102869e190a9a4dff2",
+        "files": 20
+      },
+      "decompression_roundtrip_verified": true
+    },
+    {
+      "name": "original-node-browser-1.transport.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/original-node-browser-1.transport.json",
+      "bytes": 403863,
+      "sha256": "2d82680692fac19d0e430acc872be762d2cf702be3b2d6dc9729d69322625678",
+      "git_blob": "d6f00453d2e41ed01975aa5bf92d60344c3f80c8",
+      "original": {
+        "name": "original-node-browser-1.json",
+        "bytes": 1250325,
+        "sha256": "3d05db5ff4d1a18724522b1ba7a9e9ef260abb0d5bae4921b7dbd4158cfb46be",
+        "git_blob": "ffa43afb0585eb3fc21ba1099b83b2ff3655a970",
+        "files": 1
+      },
+      "decompression_roundtrip_verified": true
+    },
+    {
+      "name": "original-node-browser-2.transport.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/original-node-browser-2.transport.json",
+      "bytes": 254014,
+      "sha256": "9949976a2ca8f9ef36be5393e6f934c0cdcdf676637bf58e60cc118ab97234c5",
+      "git_blob": "95104f6e49027db3fcae74e2bd4797d90c769148",
+      "original": {
+        "name": "original-node-browser-2.json",
+        "bytes": 271617,
+        "sha256": "65bbebcdd60a8c7e6f337acf5b7ccf0b6f128af52ea1eae7db671456eafaa4c8",
+        "git_blob": "f1f79802ac41e8119155cee95509c4b32d1ea0f2",
+        "files": 9
+      },
+      "decompression_roundtrip_verified": true
+    },
+    {
+      "name": "candidate-node-browser-1.transport.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/candidate-node-browser-1.transport.json",
+      "bytes": 406072,
+      "sha256": "2c95d68542d5381da2823607cc03bf58a56c083b5de2ceb093efc326db25c0de",
+      "git_blob": "b5d6db50f884bb29d748e41f810f41f8957e97dd",
+      "original": {
+        "name": "candidate-node-browser-1.json",
+        "bytes": 1252420,
+        "sha256": "308212400bfe49215e2c6dba9f5b5980d7171e8a02a73c68b6b262e5ae8014c5",
+        "git_blob": "8a0e7eaa9dc82fd770760667349ae15905e69e86",
+        "files": 1
+      },
+      "decompression_roundtrip_verified": true
+    },
+    {
+      "name": "candidate-node-browser-2.transport.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/transport-packets/candidate-node-browser-2.transport.json",
+      "bytes": 442076,
+      "sha256": "75516fdcda151bab49d84ce92f4b4392b7e748969c377b581949ee6ee799aa4c",
+      "git_blob": "51ec41640e83f88aefeae30a63dbf08766bbdb43",
+      "original": {
+        "name": "candidate-node-browser-2.json",
+        "bytes": 483381,
+        "sha256": "eb2fb70a5f40588f00d3a5ed2aa28c13d4ad026cd4c7c956bfc2c932f43670b6",
+        "git_blob": "e9b550c6e1c2e6f68a3b4835623d92089ac757d6",
+        "files": 17
+      },
+      "decompression_roundtrip_verified": true
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "format": "returnby-linux-evidence-index-v1",
+  "created_at": "2026-10-13T16:57:55.450867+00:00",
+  "reservation": "https://github.com/Jacob-Met/returnby/issues/66#issuecomment-6148695060",
+  "scope": "Exact retained original and candidate Linux direct builds and affected main-page browser flow. Initial Python driver failure retained. No new product execution by sealing. Historical Windows held packet stays separate.",
+  "source": {
+    "original": "7a271cfbc27e6c79a889b90920a700fdbf638e22",
+    "candidate": "f2ad8039ddef8f783bccf491847d7b95854f92e1"
+  },
+  "outcome": {
+    "original": {
+      "checks": 92,
+      "passed": 81,
+      "expected_semantic_failures": 11,
+      "completed_cases": 3
+    },
+    "candidate": {
+      "checks": 93,
+      "passed": 93,
+      "failed": 0,
+      "completed_cases": 3
+    },
+    "python_browser_attempt": {
+      "completed_cases": 0,
+      "failure": "Missing distro Node Playwright CLI; original build successful; full receiving not accepted"
+    }
+  },
+  "limits": [
+    "No full Vitest or standalone parser course; checklist build inclusion is not checklist user-flow qualification.",
+    "Manual merchant entry is explicit; no merchant-edit policy recalculation claim.",
+    "Observed page/context request filtering is not an OS-wide Chromium network audit.",
+    "No installed adoption, source edit, install, sandbox weakening or Actions.",
+    "Application source is represented by immutable INPUT and exact source rows; copied dependency payloads excluded, full byte/mode/alias manifests retained.",
+    "Nanosecond timestamps are decimal strings in these envelopes; original native member JSON bytes remain unchanged."
+  ],
+  "packets": [
+    {
+      "name": "syntax-review-1.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/syntax-review-1.json",
+      "bytes": 851735,
+      "sha256": "ca1a76848e33d6eec1a63e34284c1cc99695b5b331e22a30550da631c3d92432",
+      "git_blob": "8e5adc53188e274ee3ed07547df36ad4de3fdd3a",
+      "files": 5,
+      "native_roundtrip_verified": true,
+      "members": [
+        "syntax-review/REVIEW-INPUT.json",
+        "syntax-review/review.py",
+        "syntax-review/RECEIVING.json",
+        "syntax-review/review.stdout",
+        "syntax-review/review.stderr"
+      ]
+    },
+    {
+      "name": "preparation-python-held-1.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/preparation-python-held-1.json",
+      "bytes": 803092,
+      "sha256": "4d6e957f51fb256daba470004b56c14f5983139baaeeda43b2da119868b08e06",
+      "git_blob": "df71c425db0f981d3129ed16e4e1c467fffcfee5",
+      "files": 5,
+      "native_roundtrip_verified": true,
+      "members": [
+        "INPUT.json",
+        "CONTRACT.json",
+        "stage_build.py",
+        "browser_receive.py",
+        "STAGED-SOURCE.json"
+      ]
+    },
+    {
+      "name": "preparation-python-held-2.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/preparation-python-held-2.json",
+      "bytes": 1196678,
+      "sha256": "70cba751b436128f359e2ba6bdc73b43c2d704b3c081525f43eddb345c7cdace",
+      "git_blob": "2372ccfb16c5408be8bde9be6c6593b7ce410c59",
+      "files": 21,
+      "native_roundtrip_verified": true,
+      "members": [
+        "DEPENDENCIES.json",
+        "STAGE-ATTEMPT.json",
+        "STAGE-COMMAND.json",
+        "stage.stdout",
+        "stage.stderr",
+        "BUILD-original.json",
+        "ORIGINAL-BUILD-COMMAND.json",
+        "original-build.stdout",
+        "original-build.stderr",
+        "build-original/tsc.stdout",
+        "build-original/tsc.stderr",
+        "build-original/vite.stdout",
+        "build-original/vite.stderr",
+        "browser-original/RECEIVING.json",
+        "ORIGINAL-BROWSER-COMMAND.json",
+        "original-browser.stdout",
+        "original-browser.stderr",
+        "OPERATION-HISTORY.json",
+        "STATIC-REVIEWS.json",
+        "ORIGINAL-READONLY-PREFLIGHT.json",
+        "independent-partial/RETURNBY-LINUX-PARTIAL-RETAINED-DATA.json"
+      ]
+    },
+    {
+      "name": "preparation-python-held-3.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/preparation-python-held-3.json",
+      "bytes": 18873,
+      "sha256": "576b44b94aff2d19560e14dff4e3b6ffb8affc02eeccc29fcd08f793ce0d4a07",
+      "git_blob": "6413994ad019c4270b1ba14a68075bb866b484bb",
+      "files": 1,
+      "native_roundtrip_verified": true,
+      "members": [
+        "independent-partial/receive_returnby_linux_partial_20261013.py"
+      ]
+    },
+    {
+      "name": "node-adapter-1.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/node-adapter-1.json",
+      "bytes": 741077,
+      "sha256": "6d858c89c56f9e75984cb43564c6c7ef5c6576ae08bc60a7c22f19b8b0355ce0",
+      "git_blob": "cd611d8d7c2597a0cd1473102869e190a9a4dff2",
+      "files": 20,
+      "native_roundtrip_verified": true,
+      "members": [
+        "NODE-BROWSER-PROFILE.json",
+        "NODE-TOOLCHAIN-READONLY.json",
+        "copy_node_driver.py",
+        "browser_node_receive.mjs",
+        "browser_node_receive_v2.mjs",
+        "NODE-DRIVER-COPY.json",
+        "NODE-COPY-COMMAND.json",
+        "node-copy.stdout",
+        "node-copy.stderr",
+        "node_adapter_syntax.py",
+        "NODE-ADAPTER-SYNTAX.json",
+        "node-syntax.stdout",
+        "node-syntax.stderr",
+        "node-mtime.stdout",
+        "node-mtime.stderr",
+        "node-adapter-review.stdout",
+        "node-adapter-review.stderr",
+        "NODE-OPERATION-HISTORY.json",
+        "NODE-STATIC-REVIEWS.json",
+        "seal_linux_evidence.py"
+      ]
+    },
+    {
+      "name": "original-node-browser-1.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/original-node-browser-1.json",
+      "bytes": 1250325,
+      "sha256": "3d05db5ff4d1a18724522b1ba7a9e9ef260abb0d5bae4921b7dbd4158cfb46be",
+      "git_blob": "ffa43afb0585eb3fc21ba1099b83b2ff3655a970",
+      "files": 1,
+      "native_roundtrip_verified": true,
+      "members": [
+        "browser-node-original/RECEIVING.json"
+      ]
+    },
+    {
+      "name": "original-node-browser-2.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/original-node-browser-2.json",
+      "bytes": 271617,
+      "sha256": "65bbebcdd60a8c7e6f337acf5b7ccf0b6f128af52ea1eae7db671456eafaa4c8",
+      "git_blob": "f1f79802ac41e8119155cee95509c4b32d1ea0f2",
+      "files": 9,
+      "native_roundtrip_verified": true,
+      "members": [
+        "ORIGINAL-NODE-GATE.json",
+        "ORIGINAL-NODE-BROWSER-COMMAND.json",
+        "original-node-browser.stdout",
+        "original-node-browser.stderr",
+        "browser-node-original/embedded-alias.json",
+        "browser-node-original/complete-alias.json",
+        "browser-node-original/from-priority.json",
+        "browser-node-original/downloads/embedded-alias.ics",
+        "browser-node-original/original-embedded-preview-desktop.png"
+      ]
+    },
+    {
+      "name": "candidate-node-browser-1.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/candidate-node-browser-1.json",
+      "bytes": 1252420,
+      "sha256": "308212400bfe49215e2c6dba9f5b5980d7171e8a02a73c68b6b262e5ae8014c5",
+      "git_blob": "8a0e7eaa9dc82fd770760667349ae15905e69e86",
+      "files": 1,
+      "native_roundtrip_verified": true,
+      "members": [
+        "browser-node-candidate/RECEIVING.json"
+      ]
+    },
+    {
+      "name": "candidate-node-browser-2.json",
+      "path": "/home/jacob/hamon-returnby-linux-qtw10pxc-62h26e6o/evidence-packets/candidate-node-browser-2.json",
+      "bytes": 483381,
+      "sha256": "eb2fb70a5f40588f00d3a5ed2aa28c13d4ad026cd4c7c956bfc2c932f43670b6",
+      "git_blob": "e9b550c6e1c2e6f68a3b4835623d92089ac757d6",
+      "files": 17,
+      "native_roundtrip_verified": true,
+      "members": [
+        "BUILD-candidate.json",
+        "CANDIDATE-BUILD-COMMAND.json",
+        "candidate-build.stdout",
+        "candidate-build.stderr",
+        "build-candidate/tsc.stdout",
+        "build-candidate/tsc.stderr",
+        "build-candidate/vite.stdout",
+        "build-candidate/vite.stderr",
+        "CANDIDATE-NODE-BROWSER-COMMAND.json",
+        "candidate-node-browser.stdout",
+        "candidate-node-browser.stderr",
+        "browser-node-candidate/embedded-alias.json",
+        "browser-node-candidate/complete-alias.json",
+        "browser-node-candidate/from-priority.json",
+        "browser-node-candidate/downloads/embedded-alias.ics",
+        "browser-node-candidate/candidate-embedded-preview-desktop.png",
+        "browser-node-candidate/candidate-embedded-saved-narrow.png"
+      ]
+    }
+  ],
+  "selected_file_count": 80
+}

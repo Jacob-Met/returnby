@@ -1,0 +1,173 @@
+{
+  "format": "returnby-merchant-browser-contract-linux-v1",
+  "reservation": "https://github.com/Jacob-Met/returnby/issues/66#issuecomment-6148695060",
+  "repository": "Jacob-Met/returnby",
+  "original": {
+    "commit": "7a271cfbc27e6c79a889b90920a700fdbf638e22",
+    "tree": "c53ca326af314176e1367b6585e876ed3e560a21",
+    "parser_blob": "6a59607db8418e20daf783f0738ba600dd16cf05"
+  },
+  "candidate": {
+    "commit": "f2ad8039ddef8f783bccf491847d7b95854f92e1",
+    "tree": "80a4535a69ca36be41598051945e1dd4b2aba7bd",
+    "parser_blob": "4eeb1b43b5f427bd9fc8f226b4ef24b93fb29a83"
+  },
+  "scope": "Separate original-first native Linux direct unchanged tsc --noEmit then vite build, followed by affected main-page browser flow only. Same source identities and three product fixtures as the held Windows contract. No standalone parser/full Vitest course, source edit, checklist-flow, installed adoption or #8/#10/#20 integration. Windows preparation and unresolved MSI mkdir retain their historical scope.",
+  "device": {
+    "id": "cadafaf3-4d0b-4c4f-a0d3-34a95d2cec90",
+    "hostname": "hamon-thinkpad",
+    "user": "jacob",
+    "uid": 1000,
+    "python": "3.14.4",
+    "node": "22.22.1",
+    "playwright": "1.55.0+ds",
+    "chrome_path": "/snap/bin/chromium",
+    "chrome_version": "153.0.8010.47",
+    "libc": "glibc 2.43",
+    "source": "Observed actual route identity/existing Commons receipt, native package census, exact-lock dependency gate and installed snap metadata; browser has not yet been launched.",
+    "node_path": "/usr/bin/node"
+  },
+  "dependencies": {
+    "source": "/home/jacob/hamon-hearth-22f7a2204a66-returnby/source/node_modules",
+    "copy": "Fresh owned node_modules; copy only admitted regular bytes and recreate exactly the seven observed internal .bin symlinks. Never execute/write/install shared dependencies. Before/copied/source_after regular byte-and-mode manifests and alias manifests must each match. Original executable modes are preserved only on fresh owned copied files. Direct owned TypeScript/Vite entry points are invoked through existing /usr/bin/node; aliases are preserved but not invoked.",
+    "observed_files": 735,
+    "observed_bytes": 91349554,
+    "applicable_packages": 38,
+    "package_admission": "Every Linux-x64 source-lock package, including both GNU and musl optional bindings, matches installed package version and hidden-lock version/resolved/integrity.",
+    "hidden_lock_sha256": "2766db1c41d4e9aacbf54f1112af15f28216e957367dd3a0ddb7188c6e7ae2d1",
+    "observed_regular_manifest_sha256": "8ead6318cad26ba083c94a19bbf9723ee5690d74f0620dc24f800337d37c14fb",
+    "symlink_admission": "Only these exact relative aliases are admitted. Each resolves within the corresponding node_modules to an admitted regular file in both shared and owned copies. No other filesystem redirect is admitted.",
+    "aliases": [
+      {
+        "path": ".bin/nanoid",
+        "target": "../nanoid/bin/nanoid.cjs"
+      },
+      {
+        "path": ".bin/rolldown",
+        "target": "../rolldown/bin/cli.mjs"
+      },
+      {
+        "path": ".bin/tsc",
+        "target": "../typescript/bin/tsc"
+      },
+      {
+        "path": ".bin/tsserver",
+        "target": "../typescript/bin/tsserver"
+      },
+      {
+        "path": ".bin/vite",
+        "target": "../vite/bin/vite.js"
+      },
+      {
+        "path": ".bin/vitest",
+        "target": "../vitest/vitest.mjs"
+      },
+      {
+        "path": ".bin/why-is-node-running",
+        "target": "../why-is-node-running/cli.js"
+      }
+    ],
+    "observed_regular_manifest_note": "The earlier read-only manifest hash covers regular path/bytes/SHA256 only. The separate Linux stage additionally captures and preserves exact file modes; no mode outcome is implied before that stage."
+  },
+  "fixtures": [
+    {
+      "id": "embedded-alias",
+      "text": "Order confirmation\nContosocial\nOrder # RB1001\nOrder date: 2026-10-10\nOrder total: $42.50\nAuthored private memo: never store this pasted text.",
+      "preview": {
+        "merchant": "",
+        "orderDate": "2026-10-10",
+        "orderNo": "RB1001",
+        "total": "$42.50",
+        "days": 30,
+        "source": "default",
+        "highlighted": true
+      },
+      "manual_merchant": "Contosocial",
+      "saved": {
+        "merchant": "Contosocial",
+        "windowDays": 30,
+        "windowSource": "default"
+      },
+      "due": "2026-11-09",
+      "original_known_defect": {
+        "preview_merchant": "contoso",
+        "days": 15,
+        "source": "policy",
+        "highlighted": false,
+        "due": "2026-10-25"
+      },
+      "calendar_download": true
+    },
+    {
+      "id": "complete-alias",
+      "text": "Order confirmation\nContoso\nOrder # RB1002\nOrder date: 2026-10-10\nOrder total: $55.00",
+      "preview": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-10",
+        "orderNo": "RB1002",
+        "total": "$55.00",
+        "days": 15,
+        "source": "policy",
+        "highlighted": false
+      },
+      "manual_merchant": null,
+      "saved": {
+        "merchant": "contoso",
+        "windowDays": 15,
+        "windowSource": "policy"
+      },
+      "due": "2026-10-25",
+      "calendar_download": false
+    },
+    {
+      "id": "from-priority",
+      "text": "From: Tailspin Toys <orders@tailspin.example>\nContosocial\nOrder # RB1003\nOrder date: 2026-10-10\nOrder total: $66.00",
+      "preview": {
+        "merchant": "Tailspin Toys",
+        "orderDate": "2026-10-10",
+        "orderNo": "RB1003",
+        "total": "$66.00",
+        "days": 90,
+        "source": "policy",
+        "highlighted": false
+      },
+      "manual_merchant": null,
+      "saved": {
+        "merchant": "Tailspin Toys",
+        "windowDays": 90,
+        "windowSource": "policy"
+      },
+      "due": "2027-01-08",
+      "calendar_download": false
+    }
+  ],
+  "browser_plan": {
+    "order": [
+      "original",
+      "candidate"
+    ],
+    "isolation": "New browser per source and new context per fixture; separate ephemeral 127.0.0.1 origin, viewport1280x900, explicit UTC browser timezone, fresh task-owned TMPDIR/TMP/TEMP/profile/downloads under an owned nonhidden /home/jacob/hamon-returnby-linux-qtw10pxc-* child; no existing profile/storage.",
+    "network": "Allow only exact own loopback origin and abort/log other page/context HTTP(S) requests; no provider/mailbox calls. This is not an OS-wide Chromium network audit.",
+    "checks": "Before Save localStorage remains empty; exact preview fields and fallback/source labels; explicit manual merchant step; actual button Save, approved JSON whitelist and values, paste excluded, card deadline, reload exact saved JSON; embedded case actual ICS bytes/date/summary/UID bound to saved order. Desktop1280x900 and candidate embedded390x844 layout/screenshot checks only.",
+    "negative_attribution": "Same corrected semantic expectations on both sources. Preserve original wrong preview/policy/window/due as expected product failures; both unrelated controls must pass. An automation/build/lifecycle failure stops with retained evidence and is not called a product fix.",
+    "lifecycle": "All setup covered by try/finally. Explicit context/browser/Playwright/server closure; bind CDP browser PID to /proc/<pid>/stat starttime and retain os.pidfd_open handle, require pidfd exit readiness after close plus listener closure and joined server thread. Any required cleanup failure prevents receiver acceptance. No unowned process signal, profile cleanup, sandbox disablement, HOME/security/configuration change.",
+    "capacity": "Fresh >=2GiB home filesystem free before dependency copy, each source build and each browser course; bounded subprocess/Playwright timeouts and creation-only output paths.",
+    "expected_original_only_mismatch_names": [
+      "embedded-alias.preview.merchant",
+      "embedded-alias.preview.days",
+      "embedded-alias.preview.source",
+      "embedded-alias.preview.highlighted",
+      "embedded-alias.source_label",
+      "embedded-alias.saved.windowDays",
+      "embedded-alias.saved.windowSource",
+      "embedded-alias.card_due",
+      "embedded-alias.reload_card_due",
+      "embedded-alias.calendar.DTSTART;VALUE=DATE",
+      "embedded-alias.calendar.DTEND;VALUE=DATE"
+    ],
+    "expected_mismatch_attribution": "These eleven expected original mismatches are inferred from exact source, not yet native observations. Retain complete first original results; require both controls to pass and all cleanup/source/build/dependency gates to pass before candidate product receiving. Any automation/build/lifecycle error stops with evidence."
+  },
+  "known_boundary": "Manual merchant editing does not recalculate policy (#7 held). Candidate starts with default30 and explicit manual Contosocial entry preserves30/default. Do not claim parser extracted or learned Contosocial.",
+  "prior_windows_contract_git_blob": "837781b16a669c0eeb66b00e8901a2877c8696f4",
+  "prior_windows_held_commit": "9e88606752efcede9e17c98c8180ed74eaf8e253"
+}
