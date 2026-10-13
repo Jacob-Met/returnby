@@ -1,7 +1,7 @@
 # New-order deadline preview
 
 The existing order-email review now shows a calculated return-by date before
-**Save**. Select **Find details** or a sample, then check the date shown below the
+**Save**. Select **Find the deadline** or a sample, then check the date shown below the
 return-window field. Editing **Order date** or **Return window** updates that
 readout immediately. The keyboard focus stays in the field being edited.
 
