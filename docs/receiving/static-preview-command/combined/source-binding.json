@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "source_commit": "2592b340167ac87a9866582ad60f9aa40761d330",
+  "source_tree": "6eef8ae0d7186930d72828eeb312053ed087646b",
+  "source_files": 78,
+  "selected": [
+    "README.md",
+    "docs/INTAKE_DEADLINE_PREVIEW.md",
+    "src/intake-deadline.ts",
+    "src/main.ts",
+    "src/style.css"
+  ],
+  "dist_files": 10,
+  "raw_combined_receipt": {
+    "bytes": 69976,
+    "sha256": "58a0538880ee2f60eb96a30bfbc0d41074d226579059fc9b94520abb7101c6a0",
+    "git_blob": "c92ee011ea155e598dead8f4406317f006f4bc54"
+  },
+  "archive": {
+    "bytes": 464024,
+    "sha256": "d73df74c588e9387bab391b2cf2c731056a7b1e01feb4bc89bde79a2a829f06f",
+    "git_blob": "828186d706c4373b4682dc96229be16ea8e4bbcb"
+  },
+  "scope": "Read-only source and retained-built-asset binding; no product replay."
+}
