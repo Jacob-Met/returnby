@@ -1,0 +1,32 @@
+[
+  {
+    "name": "original",
+    "command": [
+      "node",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/tests/date-priority-composition.native.mjs",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/original/src/parse.ts",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/src/deadline.ts"
+    ],
+    "exit_code": 1,
+    "checks": 22,
+    "passed": 7,
+    "failed": 15,
+    "stdout_sha256": "84aa686e72d7b7904da53e55f749854984a22773e9814d20b9c6f1fd010d770c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "candidate",
+    "command": [
+      "node",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/tests/date-priority-composition.native.mjs",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/src/parse.ts",
+      "/dev/shm/hamon-returnby-datepriority-0d581b491497/source/src/deadline.ts"
+    ],
+    "exit_code": 0,
+    "checks": 22,
+    "passed": 22,
+    "failed": 0,
+    "stdout_sha256": "e3964aa97709a2c5fab280e1d87d177bb7de563d198a4ec9a639fbf036c133ad",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

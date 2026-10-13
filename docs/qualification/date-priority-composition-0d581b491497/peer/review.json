@@ -1,0 +1,51 @@
+{
+  "blind_oracle": {
+    "candidate_or_donor_tests_seen_during_authoring": false,
+    "cases": 28,
+    "freeze_sha256": "08546f55e99849b27dd234f2a7703f4f886e7de1b27e7f6953b4050ca71006d6",
+    "oracle_sha256": "3e0f4ac466bd67d8dd4f085a07bc3be1c26a1a4dc56bbbd653c9831952a077f2",
+    "receiver_sha256": "ea16800634172ff103eb56b4cafb84a8e505094b29d294814bd0bacc684b14a5"
+  },
+  "candidate": {
+    "bytes": 3403,
+    "git_blob": "84083e2dcc39b724ca6210ed40792406eb276d00",
+    "path": "src/parse.ts",
+    "sha256": "6fdc382d9d3172d71cf66fd86e1597ff38c28c31b6977bbad5e0c096d9ecb55a"
+  },
+  "created_at_utc": "2026-10-13T04:29:44.361721+00:00",
+  "decision": "ACCEPT",
+  "original": {
+    "bytes": 3176,
+    "path": "src/parse.ts",
+    "ref": "af2e4f5f460f6880bdfb4b271fe93fd8a92558f6",
+    "sha256": "b603f60a64fe77a50c527f18f852838248cbe9747d6f241ae19379a238f85fc1"
+  },
+  "production_findings": [
+    "The sole product delta is a five-line insertion at pickOrderDate after the existing validated date-hit scan; removing that exact insertion restores every byte of the original file.",
+    "The case-insensitive word-boundary Order date expression records the immediate date-start positions in the original text, so unrelated earlier delivery dates and partial words do not gain explicit priority.",
+    "Only positions already admitted by unchanged findDates can be selected, preserving exact month spellings and calendar validity. Invalid or unsupported explicit date strings cannot manufacture a date.",
+    "The existing ordered hit array supplies the first valid explicitly labeled occurrence; no chronological or regex-family reorder is introduced.",
+    "When no explicit hit exists, the original near-order and chronological fallbacks are byte-identical. Merchant, order-reference, total/subtotal, found fields and original-text index functions are untouched."
+  ],
+  "runtime": {
+    "all_original_and_candidate_date_hit_arrays_exact": true,
+    "both_actual_node_courses_exit_zero": true,
+    "candidate_passed": 28,
+    "candidate_receipt_sha256": "e311bf2b9bf2b814df47cb0d15b7bcee771a8207a6b33459d20772b6cc519299",
+    "candidate_receiver_exit": 0,
+    "candidate_total": 28,
+    "environment": "v24.19.0",
+    "original_passed": 13,
+    "original_receipt_sha256": "999e035106dbce50fa286bc610f13a9a21ff7d13071b2d4293e11d617bb624d8",
+    "original_receiver_exit": 1,
+    "original_wrong_complete_records": 15,
+    "source_oracle_and_loaded_source_copies_unchanged": true
+  },
+  "schema": "hamon.returnby.date-priority.independent-review.v1",
+  "scope": [
+    "Independent Node24 execution of exact source bytes loaded from a .mts copy, with manually authored synthetic order text and complete-record expectations.",
+    "The original 15 failures are actual wrong date selections; all original date-hit arrays already matched the oracle.",
+    "No donor tests were used as the oracle. No native Windows/browser/build result or hosted/adopted application claim is made by this receiver.",
+    "The other owner's earlier month-plus-order-label browser/build result remains tied to af2e4f5 and is not promoted to this composed source."
+  ]
+}

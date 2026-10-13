@@ -1,0 +1,802 @@
+{
+  "cases": [
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ],
+      "knownMerchants": [],
+      "name": "explicit-iso",
+      "reason": "Direct valid order label outranks earlier nearby delivery.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nOrder date: 2026-07-14\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ],
+      "knownMerchants": [],
+      "name": "explicit-month-first",
+      "reason": "Direct valid order label outranks earlier nearby delivery.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nOrder date: July 14th, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ],
+      "knownMerchants": [],
+      "name": "explicit-day-first",
+      "reason": "Direct valid order label outranks earlier nearby delivery.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nOrder date: 14 July 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ],
+      "knownMerchants": [],
+      "name": "explicit-us-slash",
+      "reason": "Direct valid order label outranks earlier nearby delivery.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nOrder date: 07/14/2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-09-04",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-09-09",
+          "index": 79
+        },
+        {
+          "date": "2026-09-04",
+          "index": 112
+        }
+      ],
+      "knownMerchants": [],
+      "name": "case-space-colon",
+      "reason": "Case, whitespace and optional colon are label syntax.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: September 9, 2026\noRdEr\tDaTe \n :\nSept. 4, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-09-04",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-09-09",
+          "index": 79
+        },
+        {
+          "date": "2026-09-04",
+          "index": 110
+        }
+      ],
+      "knownMerchants": [],
+      "name": "newline-no-colon",
+      "reason": "Case, whitespace and optional colon are label syntax.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: September 9, 2026\nOrder\n date\t\nSept. 4, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-09-04",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-09-09",
+          "index": 79
+        },
+        {
+          "date": "2026-09-04",
+          "index": 108
+        }
+      ],
+      "knownMerchants": [],
+      "name": "colon-no-gap",
+      "reason": "Case, whitespace and optional colon are label syntax.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: September 9, 2026\nORDER DATE:Sept. 4, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-12-31",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-12-31",
+          "index": 105
+        },
+        {
+          "date": "2026-01-02",
+          "index": 135
+        }
+      ],
+      "knownMerchants": [],
+      "name": "earliest-explicit-text-order",
+      "reason": "Original text occurrence, not chronological order.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nOrder date: December 31, 2026\nOrder date: Jan 2, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-12-20",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-12-20",
+          "index": 105
+        },
+        {
+          "date": "2026-03-03",
+          "index": 128
+        }
+      ],
+      "knownMerchants": [],
+      "name": "earliest-explicit-across-patterns",
+      "reason": "Original text order, not date-regex iteration order.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nOrder date: 2026-12-20\nOrder date: March 3, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 135
+        }
+      ],
+      "knownMerchants": [],
+      "name": "invalid-then-valid-explicit",
+      "reason": "Invalid calendar label cannot hide later valid explicit date.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nOrder date: February 30, 2026\nOrder date: 2026-07-14\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 133
+        }
+      ],
+      "knownMerchants": [],
+      "name": "unknown-month-then-valid-explicit",
+      "reason": "Unsupported month creates no date or priority.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nOrder date: Julian 12, 2026\nOrder date: 2026-07-14\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-08-01",
+          "index": 108
+        }
+      ],
+      "knownMerchants": [],
+      "name": "preorder-boundary",
+      "reason": "Non-direct label retains original near-order fallback.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nPreorder date: August 1, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-08-01",
+          "index": 124
+        }
+      ],
+      "knownMerchants": [],
+      "name": "intervening-words",
+      "reason": "Non-direct label retains original near-order fallback.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nOrder date: estimated delivery August 1, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-08-01",
+          "index": 104
+        }
+      ],
+      "knownMerchants": [],
+      "name": "joined-label",
+      "reason": "Non-direct label retains original near-order fallback.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: July 19, 2026\nOrderDate: August 1, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": false,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-14",
+          "index": 31
+        }
+      ],
+      "knownMerchants": [],
+      "name": "date-is-not-order-reference",
+      "reason": "Order-reference label repair remains intact.",
+      "text": "From: Cedar Market\nOrder date: 2026-07-14\nTotal: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [],
+      "knownMerchants": [],
+      "name": "unsupported-months",
+      "reason": "Month lookalikes never manufacture dates.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nOrder date: Julian 14, 2026\nOrder date: Septober 4, 2026\nOrder date: Smarch 2, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [],
+      "knownMerchants": [],
+      "name": "calendar-invalid-only",
+      "reason": "Calendar-invalid inputs retain no-date result.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nOrder date: February 29, 2026\nOrder date: April 31, 2026\nOrder date: 2026-02-30\nOrder date: 02/29/2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2024-02-29",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2024-03-03",
+          "index": 79
+        },
+        {
+          "date": "2024-02-29",
+          "index": 105
+        }
+      ],
+      "knownMerchants": [],
+      "name": "leap-date-priority",
+      "reason": "Valid leap date survives and takes explicit priority.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: March 3, 2024\nOrder date: February 29, 2024\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-08-09",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-08-09",
+          "index": 79
+        },
+        {
+          "date": "2026-08-02",
+          "index": 113
+        }
+      ],
+      "knownMerchants": [],
+      "name": "legacy-near-order",
+      "reason": "No explicit label preserves existing first near-order hit.",
+      "text": "From: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: August 9, 2026\nPurchase confirmed August 2, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-01-06",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-12-05",
+          "index": 10
+        },
+        {
+          "date": "2026-01-06",
+          "index": 37
+        }
+      ],
+      "knownMerchants": [],
+      "name": "legacy-chronological",
+      "reason": "No near-order hit preserves chronological fallback.",
+      "text": "Delivery: December 5, 2026\nWarranty: January 6, 2026\nFrom: Cedar Market\nOrder # CD-2026001\nTotal: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Larch",
+        "orderDate": "2026-10-04",
+        "orderNo": "LA-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-10-09",
+          "index": 60
+        },
+        {
+          "date": "2026-10-04",
+          "index": 88
+        }
+      ],
+      "knownMerchants": [],
+      "name": "domain-merchant",
+      "reason": "Complete record keeps domain merchant and explicit order ID.",
+      "text": "From: receipts@larch.example\nOrder id: LA-2026001\nDelivery: October 9, 2026\nOrder date: October 4, 2026\nSubtotal: $30.00\nTotal: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Birch Cart",
+        "orderDate": "2026-11-14",
+        "orderNo": "BC-2026001",
+        "total": "$2,345.67"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-11-19",
+          "index": 57
+        },
+        {
+          "date": "2026-11-14",
+          "index": 87
+        }
+      ],
+      "knownMerchants": [
+        "Birch Cart"
+      ],
+      "name": "known-merchant-total",
+      "reason": "Known merchant, subtotal exclusion and total whitespace normalization remain intact.",
+      "text": "Thank you from BIRCH CART\nOrder no. BC-2026001\nDelivery: November 19, 2026\nOrder date: 11/14/2026\nSubtotal: $2,000.00\nTotal: $ 2,345.67"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "",
+        "orderNo": "CD-2026001",
+        "total": ""
+      },
+      "expectedDates": [],
+      "knownMerchants": [],
+      "name": "subtotal-is-not-total",
+      "reason": "Subtotal-only remains missing total.",
+      "text": "From: Cedar Market\nOrder # CD-2026001\nSubtotal: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": true
+        },
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "$32.40"
+      },
+      "expectedDates": [],
+      "knownMerchants": [],
+      "name": "order-label-lookalikes",
+      "reason": "No partial no/number/id label match.",
+      "text": "Order note: ABCD-7777\nOrder nothing: EFGH-8888\nTotal: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        },
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": ""
+      },
+      "expectedDates": [],
+      "knownMerchants": [],
+      "name": "empty",
+      "reason": "Empty result keeps all found fields false.",
+      "text": ""
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-05-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-05-19",
+          "index": 92
+        },
+        {
+          "date": "2026-05-14",
+          "index": 117
+        }
+      ],
+      "knownMerchants": [],
+      "name": "unicode-original-indices",
+      "reason": "findDates indices remain positions in original JavaScript UTF-16 text.",
+      "text": "📦 Receipt λ\nFrom: \"Cedar Market\" <orders@cedar.example>\nOrder number: CD-2026001\nDelivery: May 19, 2026\nOrder date: May 14, 2026\nSubtotal: $30.00\nOrder total: $32.40"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": false,
+          "total": false
+        },
+        "merchant": "",
+        "orderDate": "2026-01-02",
+        "orderNo": "",
+        "total": ""
+      },
+      "expectedDates": [
+        {
+          "date": "2026-01-02",
+          "index": 19
+        },
+        {
+          "date": "2026-02-02",
+          "index": 35
+        },
+        {
+          "date": "2026-03-02",
+          "index": 52
+        },
+        {
+          "date": "2026-04-02",
+          "index": 66
+        },
+        {
+          "date": "2026-05-02",
+          "index": 80
+        },
+        {
+          "date": "2026-06-02",
+          "index": 92
+        },
+        {
+          "date": "2026-07-02",
+          "index": 105
+        },
+        {
+          "date": "2026-08-02",
+          "index": 118
+        },
+        {
+          "date": "2026-09-02",
+          "index": 133
+        },
+        {
+          "date": "2026-10-02",
+          "index": 151
+        },
+        {
+          "date": "2026-11-02",
+          "index": 167
+        },
+        {
+          "date": "2026-12-02",
+          "index": 184
+        }
+      ],
+      "knownMerchants": [],
+      "name": "full-month-spellings",
+      "reason": "All exact full month spellings retained.",
+      "text": "Calendar catalogue\nJanuary 2, 2026\nFebruary 2, 2026\nMarch 2, 2026\nApril 2, 2026\nMay 2, 2026\nJune 2, 2026\nJuly 2, 2026\nAugust 2, 2026\nSeptember 2, 2026\nOctober 2, 2026\nNovember 2, 2026\nDecember 2, 2026"
+    },
+    {
+      "expected": {
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": false,
+          "total": false
+        },
+        "merchant": "",
+        "orderDate": "2026-01-02",
+        "orderNo": "",
+        "total": ""
+      },
+      "expectedDates": [
+        {
+          "date": "2026-01-02",
+          "index": 19
+        },
+        {
+          "date": "2026-02-03",
+          "index": 32
+        },
+        {
+          "date": "2026-09-04",
+          "index": 46
+        },
+        {
+          "date": "2026-09-05",
+          "index": 59
+        },
+        {
+          "date": "2026-09-06",
+          "index": 71
+        }
+      ],
+      "knownMerchants": [],
+      "name": "supported-month-variants",
+      "reason": "Abbreviations, period, supported ordinal and day-first forms retained.",
+      "text": "Calendar catalogue\nJan. 2, 2026\nFeb 3rd, 2026\n4 Sept. 2026\nSep 5, 2026\nSept 6, 2026"
+    }
+  ],
+  "schema": "hamon.returnby.date-priority.oracle.v1"
+}

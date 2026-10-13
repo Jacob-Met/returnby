@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "kind": "independent-current-main-projection-and-guide-review",
+  "reviewer": "0d581b491497/consumer_worker",
+  "decision": "ACCEPT",
+  "repository": "Jacob-Met/returnby",
+  "publication_parent": "1883a078be5bbc1796818476ce3cb513e5ebf9db",
+  "publication_parent_tree": "571c8b004c73e22438a050057278bfcc29d74dc1",
+  "guide": {
+    "path": "docs/qualification/date-priority-composition-0d581b491497/README.md",
+    "bytes": 6146,
+    "sha256": "8cd244fb1d7c285fae91cf448f051c089be472336fc14650dafa23e85443b529"
+  },
+  "manifest": {
+    "path": "PUBLICATION-MANIFEST-MAIN.json",
+    "bytes": 13963,
+    "sha256": "8dae56941daede325f1271b45572bf761733dd99e285b9e821b666fa1e4a8489",
+    "verified_payloads": 50,
+    "payload_bytes": 360482,
+    "sha256_and_git_blob_failures": []
+  },
+  "source": {
+    "candidate_sha256": "6fdc382d9d3172d71cf66fd86e1597ff38c28c31b6977bbad5e0c096d9ecb55a",
+    "candidate_git_blob": "84083e2dcc39b724ca6210ed40792406eb276d00",
+    "original_main_sha256": "92672dc6e57a0907b1fc4baaae7422c0377026fa946429a594ead98cb537f749",
+    "original_main_git_blob": "6a59607db8418e20daf783f0738ba600dd16cf05",
+    "delta": "Exactly three existing month-token lines plus one reference-label line. Explicit-date priority, fallback, merchant, total, found fields and all remaining parser bytes stay exact.",
+    "unchanged_core_blob": "41ca82a8942dc111fa51a04396a16bcfaffa85c1",
+    "unchanged_deadline_sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+  },
+  "tree_projection": {
+    "actual_parent_tree_fetched": true,
+    "parent_tree_truncated": false,
+    "parent_leaves": 54,
+    "manifest_existing_paths": [
+      "src/parse.ts"
+    ],
+    "new_paths": 49,
+    "expected_projected_leaves": 103,
+    "base_tree_retains_other_leaves": 53,
+    "qualification": "This is a source projection review. The local source directory is deliberately partial; no claim that all53 collateral files were locally materialized. Publication readback must bind its complete Git tree to the parent and preserve those53 blobs/modes.",
+    "later_target": "Owner reports later main receiver/README changes. Eventual integration must preserve later unrelated target files; this receipt does not integrate main."
+  },
+  "evidence": {
+    "peer_exact_unchanged_files": 17,
+    "raw_author_stdout_and_stderr_hashes_verified": true,
+    "raw_course_counts_verified": [
+      {
+        "name": "original af2e author",
+        "checks": 22,
+        "passed": 7,
+        "failed": 15,
+        "exit_code": 1
+      },
+      {
+        "name": "candidate author",
+        "checks": 22,
+        "passed": 22,
+        "failed": 0,
+        "exit_code": 0
+      },
+      {
+        "name": "current-main labels",
+        "checks": 45,
+        "passed": 27,
+        "failed": 18,
+        "exit_code": 1
+      },
+      {
+        "name": "current-main combined",
+        "checks": 20,
+        "passed": 3,
+        "failed": 17,
+        "exit_code": 1
+      },
+      {
+        "name": "current-main months",
+        "checks": 106,
+        "passed": 57,
+        "failed": 49,
+        "exit_code": 1
+      },
+      {
+        "name": "candidate inherited labels",
+        "checks": 45,
+        "passed": 45,
+        "failed": 0,
+        "exit_code": 0
+      },
+      {
+        "name": "candidate inherited combined",
+        "checks": 20,
+        "passed": 20,
+        "failed": 0,
+        "exit_code": 0
+      },
+      {
+        "name": "candidate inherited months",
+        "checks": 106,
+        "passed": 106,
+        "failed": 0,
+        "exit_code": 0
+      }
+    ],
+    "existing_independent_receiving": {
+      "original_af2e": "13/28",
+      "candidate": "28/28",
+      "all_56_date_hit_arrays_match": true,
+      "source_review_sha256": "9fbaeedd820ca6f408d24f7123cb066696995945a95c7170604e29ccdb1c8b3a"
+    },
+    "new_runtime_runs_for_this_review": 0
+  },
+  "guide_findings": [
+    "Both negative baselines are clearly distinguished.",
+    "Main's74/build/five-browser and af2e348/build/eight-browser courses remain bound to their respective source pins, not promoted.",
+    "Maintained Vitest/build/browser/installed receiving on this exact composition is explicitly unrun.",
+    "Replay paths and explicit parser argument match the included receiver locations; independent replay retains expected source SHA and absent output directory.",
+    "The source offer retains current-main/full-stack owner adoption and the no-new-Actions constraint."
+  ],
+  "blocking_findings": []
+}
