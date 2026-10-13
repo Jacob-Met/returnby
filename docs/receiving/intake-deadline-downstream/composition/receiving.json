@@ -1,0 +1,2577 @@
+{
+  "schema": "returnby-preview-card-wrap-composition-v1",
+  "source": {
+    "repository": "Jacob-Met/returnby",
+    "commit": "2592b340167ac87a9866582ad60f9aa40761d330",
+    "tree": "6eef8ae0d7186930d72828eeb312053ed087646b",
+    "files": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b5688812f36338630c21eb5643318a55496ae09b",
+        "size": 409
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+        "size": 572
+      },
+      {
+        "path": ".gitignore",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b56df07f248fdfb406a35c411fafc91db47c9c95",
+        "size": 60
+      },
+      {
+        "path": "LICENSE",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "edb188254288b40f2895833e3647b7e0be34c962",
+        "size": 1070
+      },
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7a5069dc30eb43128337f24636a5d67519869175",
+        "size": 2731
+      },
+      {
+        "path": "data/policies.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+        "size": 449
+      },
+      {
+        "path": "devpost/checklist.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "318fc1035ad4314ae25fa829e152f5c03e883db5",
+        "size": 1551
+      },
+      {
+        "path": "devpost/prd.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "60614d01a9e955c5911b3283d01bc5329397a6a9",
+        "size": 2676
+      },
+      {
+        "path": "devpost/scope.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec",
+        "size": 2248
+      },
+      {
+        "path": "devpost/spec.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72",
+        "size": 2424
+      },
+      {
+        "path": "docs/BROWSER_ACCEPTANCE.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "df4c28d7712cc917e8da5dd2e6391d704b2826b4",
+        "size": 4135
+      },
+      {
+        "path": "docs/INTAKE_DEADLINE_PREVIEW.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8608e19a483d17732fb919d6bd8ef0d09259cd72",
+        "size": 4104
+      },
+      {
+        "path": "docs/TRIP_CHECKLIST.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "47f27eca777fbc84f5488236275d3850e09dff30",
+        "size": 2840
+      },
+      {
+        "path": "docs/policy-merchant-boundaries.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cac1eefc796c5f1ea30c6195bc36cf2ea1da5737",
+        "size": 10737
+      },
+      {
+        "path": "docs/qualification/policy-merchant-boundaries-20261013/receiving.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f2f40b02fca4ab1edb03f1a2e83e772001d34ef2",
+        "size": 220354
+      },
+      {
+        "path": "docs/receiving/intake-deadline/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2b4feb6521710288109da1c1a1ef359eb6b79ad9",
+        "size": 5120
+      },
+      {
+        "path": "docs/receiving/intake-deadline/candidate/build-0.stderr.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "size": 0
+      },
+      {
+        "path": "docs/receiving/intake-deadline/candidate/build-0.stdout.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "size": 0
+      },
+      {
+        "path": "docs/receiving/intake-deadline/candidate/build-1.stderr.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "size": 0
+      },
+      {
+        "path": "docs/receiving/intake-deadline/candidate/build-1.stdout.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0bc407bc67b22fd17b4a5001230b34c47cc8b439",
+        "size": 633
+      },
+      {
+        "path": "docs/receiving/intake-deadline/candidate/receiving.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b53e369963a516c434ddb3dab2a67cf74c0c2fc4",
+        "size": 29592
+      },
+      {
+        "path": "docs/receiving/intake-deadline/consumer-criteria.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f48c5a53a5969ec1e426fd30b0fa342981bd86b6",
+        "size": 2253
+      },
+      {
+        "path": "docs/receiving/intake-deadline/consumer-observer.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "af92c0d1fe633bc4fbd4a0bb294602a46dd23ddc",
+        "size": 10535
+      },
+      {
+        "path": "docs/receiving/intake-deadline/original/build-0.stderr.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "size": 0
+      },
+      {
+        "path": "docs/receiving/intake-deadline/original/build-0.stdout.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "size": 0
+      },
+      {
+        "path": "docs/receiving/intake-deadline/original/build-1.stderr.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "size": 0
+      },
+      {
+        "path": "docs/receiving/intake-deadline/original/build-1.stdout.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "24279f60b689d2222b66d6dd3c112b203f8ab691",
+        "size": 633
+      },
+      {
+        "path": "docs/receiving/intake-deadline/original/receiving.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f4141d504e5c42deb2c4849f7ba25f375382ac45",
+        "size": 26749
+      },
+      {
+        "path": "docs/receiving/intake-deadline/unit-observer.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a2f98d8686112451abbaafd17cdaba8dae2766f0",
+        "size": 4434
+      },
+      {
+        "path": "docs/receiving/intake-deadline/unit-receiving.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9df68133dbaa96873e27579544b4d3098858db79",
+        "size": 21232
+      },
+      {
+        "path": "docs/receiving/intake-deadline/unit.stderr.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "size": 0
+      },
+      {
+        "path": "docs/receiving/intake-deadline/unit.stdout.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7022df1443ee7fb8f238e567a827f8f402a53a09",
+        "size": 4469
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0f55e0f280faff3f0f73d1a1f065486bb089187f",
+        "size": 5483
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-browser.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "703266c5bf084e195afc6995351cc15522e77faf",
+        "size": 1279
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-commands.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e7a9e0f1890c73a1620bdb0abfea88b63b0d1863",
+        "size": 1906
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/browser-receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "30b984b1aa918ebb81e7e91f00873553e326ff81",
+        "size": 10922
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-preview.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "932f0596216a56b30c1ae17e32c7db820c78ca4a",
+        "size": 247265
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-returnby-trip-2026-10-10.html",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a02abb0c781b3fa5c114a1eb011c44ac54b88b75",
+        "size": 6831
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/independent-production-review.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a6c69ef12d1758d9344eaf0a80a1949ffadeecde",
+        "size": 2660
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/initial-native-run.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3df835c6ebe0d6f2dc7f74661f99cfd9d609d9d0",
+        "size": 6181
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/native-test-build.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3321dbf2194d05e4710fc6754c04f58639b966e6",
+        "size": 696
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "10e68ca17dee1825a95a394a1706123c778c8df9",
+        "size": 842
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-test.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d2e0da6e62f220f543095f43b6d1958cb9f806c6",
+        "size": 591
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-offline-file.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ffa8767b85ed992a0650fed4e329da2fdd3e72e3",
+        "size": 66311
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-returnby-trip-2026-10-10.html",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ec2d49ff8f22cb1d6cc6c68ac9bc6c32971aa7c3",
+        "size": 5782
+      },
+      {
+        "path": "docs/receiving/trip-checklist-81ba1ed0179c/source-freeze.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "419543fdce703062516a3d58ee210e7914fcbb44",
+        "size": 2437
+      },
+      {
+        "path": "index.html",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+        "size": 4455
+      },
+      {
+        "path": "package-lock.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+        "size": 35404
+      },
+      {
+        "path": "package.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "329b4b71fbb631662eec0405ced477134520c9a5",
+        "size": 313
+      },
+      {
+        "path": "public/captures/returnby-desktop.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d",
+        "size": 131379
+      },
+      {
+        "path": "public/captures/returnby-mobile.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c2ed83d29698fb5a47818c87d8f82944997c2bc4",
+        "size": 107642
+      },
+      {
+        "path": "public/favicon.svg",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+        "size": 238
+      },
+      {
+        "path": "skills-lock.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf",
+        "size": 1457
+      },
+      {
+        "path": "src/day-refresh.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "362aae5b5be7bf399174483327a2b15018edeca4",
+        "size": 1320
+      },
+      {
+        "path": "src/deadline.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+        "size": 837
+      },
+      {
+        "path": "src/ics.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+        "size": 1844
+      },
+      {
+        "path": "src/intake-deadline.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "66acad777780210c10fc2f62f0f985c9ec9c1357",
+        "size": 2176
+      },
+      {
+        "path": "src/main.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0ce65fa0406882a37f3ef679a887965fc2846da3",
+        "size": 7596
+      },
+      {
+        "path": "src/parse.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6a59607db8418e20daf783f0738ba600dd16cf05",
+        "size": 3284
+      },
+      {
+        "path": "src/policy.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "17000e74183e89f95633053aac0f73ab2f129ac6",
+        "size": 971
+      },
+      {
+        "path": "src/samples.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+        "size": 513
+      },
+      {
+        "path": "src/store.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "23cf906e26187ff28c94718111e69d9603c97fa8",
+        "size": 430
+      },
+      {
+        "path": "src/style.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "78050412ff8f0ef26bd98abe5354627751ede87e",
+        "size": 9211
+      },
+      {
+        "path": "src/trip-checklist-view.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+        "size": 7349
+      },
+      {
+        "path": "src/trip-checklist.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "be540de5163c0b66cda28296311b2ce02204e087",
+        "size": 8367
+      },
+      {
+        "path": "src/trip-checklist.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+        "size": 13299
+      },
+      {
+        "path": "tests/core.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "41ca82a8942dc111fa51a04396a16bcfaffa85c1",
+        "size": 4649
+      },
+      {
+        "path": "tests/day-refresh.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1d76fd6ef7364ae84f4775666768815211981ff6",
+        "size": 4830
+      },
+      {
+        "path": "tests/ics.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+        "size": 4526
+      },
+      {
+        "path": "tests/intake-deadline.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "89550b037c26e93569e6c12233058264628dc7a0",
+        "size": 5607
+      },
+      {
+        "path": "tests/policy-boundaries.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "faea01235435516b2b498845427bfa71c4e856e6",
+        "size": 2549
+      },
+      {
+        "path": "tests/trip-checklist.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe",
+        "size": 8753
+      },
+      {
+        "path": "tools/capture_returnby.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "969dc19689842fe6d8cdc874c5b6f4eed62c7816",
+        "size": 6787
+      },
+      {
+        "path": "tools/verify_day_refresh.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "94caac1360142a886c138b1ebf2e5698024121d0",
+        "size": 9996
+      },
+      {
+        "path": "tools/verify_trip_checklist.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4d222dcbb86b7958469ce3d8a6b3accdb500924d",
+        "size": 21848
+      },
+      {
+        "path": "trip-checklist.html",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f0286c5e6817c1656297c67489d4b796ddec4510",
+        "size": 4558
+      },
+      {
+        "path": "tsconfig.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+        "size": 273
+      },
+      {
+        "path": "vite.config.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+        "size": 355
+      }
+    ]
+  },
+  "started_utc": "2026-10-13T15:35:15Z",
+  "device": {
+    "node": "Mac.lan",
+    "uid": 501,
+    "python": "3.13.7"
+  },
+  "checks": [
+    {
+      "name": "complete published file set",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit .github/workflows/ci.yml",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit .github/workflows/pages.yml",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit .gitignore",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit LICENSE",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit README.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit data/policies.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit devpost/checklist.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit devpost/prd.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit devpost/scope.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit devpost/spec.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/BROWSER_ACCEPTANCE.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/INTAKE_DEADLINE_PREVIEW.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/TRIP_CHECKLIST.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/policy-merchant-boundaries.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/qualification/policy-merchant-boundaries-20261013/receiving.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/README.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/candidate/build-0.stderr.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/candidate/build-0.stdout.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/candidate/build-1.stderr.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/candidate/build-1.stdout.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/candidate/receiving.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/consumer-criteria.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/consumer-observer.py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/original/build-0.stderr.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/original/build-0.stdout.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/original/build-1.stderr.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/original/build-1.stdout.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/original/receiving.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/unit-observer.py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/unit-receiving.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/unit.stderr.log",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/intake-deadline/unit.stdout.log",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/README.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/baseline-browser.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/baseline-commands.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/browser-receipt.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/desktop-preview.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/desktop-returnby-trip-2026-10-10.html",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/independent-production-review.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/initial-native-run.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/native-test-build.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/npm-build.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/npm-test.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/phone-offline-file.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/phone-returnby-trip-2026-10-10.html",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit docs/receiving/trip-checklist-81ba1ed0179c/source-freeze.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit index.html",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit package-lock.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit package.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit public/captures/returnby-desktop.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit public/captures/returnby-mobile.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit public/favicon.svg",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit skills-lock.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/day-refresh.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/deadline.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/ics.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/intake-deadline.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/main.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/parse.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/policy.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/samples.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/store.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/style.css",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/trip-checklist-view.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/trip-checklist.css",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit src/trip-checklist.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit tests/core.test.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit tests/day-refresh.test.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit tests/ics.test.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit tests/intake-deadline.test.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit tests/policy-boundaries.test.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit tests/trip-checklist.test.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit tools/capture_returnby.py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit tools/verify_day_refresh.py",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit tools/verify_trip_checklist.mjs",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit trip-checklist.html",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit tsconfig.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "admit vite.config.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "build 1",
+      "pass": true,
+      "detail": {
+        "argv": [
+          "node",
+          "/private/var/tmp/hamon-dcac8b3b8755-returnby-intake-v1/node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "exit": 0,
+        "stdout": {
+          "path": "build-0.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "build-0.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "build 2",
+      "pass": true,
+      "detail": {
+        "argv": [
+          "node",
+          "/private/var/tmp/hamon-dcac8b3b8755-returnby-intake-v1/node_modules/vite/bin/vite.js",
+          "build"
+        ],
+        "exit": 0,
+        "stdout": {
+          "path": "build-1.stdout.txt",
+          "bytes": 633,
+          "sha256": "0a452fc4a9bdad88ceea334939ac6caef25c537f9829fb74dd5d12ed03186a52"
+        },
+        "stderr": {
+          "path": "build-1.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "1280 full store text",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 full reference text",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 document fits",
+      "pass": true,
+      "detail": {
+        "viewport": 1280,
+        "document": 1280,
+        "card": {
+          "x": 674,
+          "y": 752.25,
+          "width": 559,
+          "height": 354,
+          "top": 752.25,
+          "right": 1233,
+          "bottom": 1106.25,
+          "left": 674
+        },
+        "label": {
+          "x": 692,
+          "y": 765.25,
+          "width": 528,
+          "height": 201,
+          "top": 765.25,
+          "right": 1220,
+          "bottom": 966.25,
+          "left": 692
+        }
+      }
+    },
+    {
+      "name": "1280 label fits card",
+      "pass": true,
+      "detail": {
+        "viewport": 1280,
+        "document": 1280,
+        "card": {
+          "x": 674,
+          "y": 752.25,
+          "width": 559,
+          "height": 354,
+          "top": 752.25,
+          "right": 1233,
+          "bottom": 1106.25,
+          "left": 674
+        },
+        "label": {
+          "x": 692,
+          "y": 765.25,
+          "width": 528,
+          "height": 201,
+          "top": 765.25,
+          "right": 1220,
+          "bottom": 966.25,
+          "left": 692
+        }
+      }
+    },
+    {
+      "name": "1280 storage unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390 full store text",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390 full reference text",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390 document fits",
+      "pass": true,
+      "detail": {
+        "viewport": 390,
+        "document": 390,
+        "card": {
+          "x": 29,
+          "y": 1377.96875,
+          "width": 332,
+          "height": 433,
+          "top": 1377.96875,
+          "right": 361,
+          "bottom": 1810.96875,
+          "left": 29
+        },
+        "label": {
+          "x": 47,
+          "y": 1390.96875,
+          "width": 301,
+          "height": 280,
+          "top": 1390.96875,
+          "right": 348,
+          "bottom": 1670.96875,
+          "left": 47
+        }
+      }
+    },
+    {
+      "name": "390 label fits card",
+      "pass": true,
+      "detail": {
+        "viewport": 390,
+        "document": 390,
+        "card": {
+          "x": 29,
+          "y": 1377.96875,
+          "width": 332,
+          "height": 433,
+          "top": 1377.96875,
+          "right": 361,
+          "bottom": 1810.96875,
+          "left": 29
+        },
+        "label": {
+          "x": 47,
+          "y": 1390.96875,
+          "width": 301,
+          "height": 280,
+          "top": 1390.96875,
+          "right": 348,
+          "bottom": 1670.96875,
+          "left": 47
+        }
+      }
+    },
+    {
+      "name": "390 storage unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "preview present after CSS composition",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "preview updates beside wrapped saved card",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "preview retains long saved record",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "preview retained paste",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "preview retained focus",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390px preview fits",
+      "pass": true,
+      "detail": {
+        "x": 42,
+        "y": 686.4375,
+        "width": 187.234375,
+        "height": 12
+      }
+    },
+    {
+      "name": "Save preserves long original and adds review",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Save agrees with preview",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390px saved list fits",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no outside requests",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "no page errors",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "managed browser disconnected",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "/private/var/tmp/hamon-dcac8b3b8755-returnby-intake-v1/node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "exit": 0,
+      "stdout": {
+        "path": "build-0.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "build-0.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "node",
+        "/private/var/tmp/hamon-dcac8b3b8755-returnby-intake-v1/node_modules/vite/bin/vite.js",
+        "build"
+      ],
+      "exit": 0,
+      "stdout": {
+        "path": "build-1.stdout.txt",
+        "bytes": 633,
+        "sha256": "0a452fc4a9bdad88ceea334939ac6caef25c537f9829fb74dd5d12ed03186a52"
+      },
+      "stderr": {
+        "path": "build-1.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:49726/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:49726/assets/main-HEX2id1V.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:49726/assets/deadline-DzH3L3IB.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:49726/assets/main-DDZxEaiz.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:49726/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:49726/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:49726/assets/main-HEX2id1V.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:49726/assets/deadline-DzH3L3IB.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:49726/assets/main-DDZxEaiz.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:49726/favicon.svg",
+      "method": "GET"
+    }
+  ],
+  "page_errors": [],
+  "browser_disconnected": true,
+  "archive": {
+    "bytes": 657637,
+    "sha256": "b953a9c2abe374bb72b4e5f1552773ebc0e41749625997b11fbbb689af44d937"
+  },
+  "source_before": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha": "b5688812f36338630c21eb5643318a55496ae09b",
+      "bytes": 409,
+      "mode": 33188,
+      "mtime_ns": 1791905715941947820,
+      "inode": 148925311
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+      "bytes": 572,
+      "mode": 33188,
+      "mtime_ns": 1791905715942071757,
+      "inode": 148925312
+    },
+    {
+      "path": ".gitignore",
+      "sha": "b56df07f248fdfb406a35c411fafc91db47c9c95",
+      "bytes": 60,
+      "mode": 33188,
+      "mtime_ns": 1791905715942181979,
+      "inode": 148925313
+    },
+    {
+      "path": "LICENSE",
+      "sha": "edb188254288b40f2895833e3647b7e0be34c962",
+      "bytes": 1070,
+      "mode": 33188,
+      "mtime_ns": 1791905715942279820,
+      "inode": 148925314
+    },
+    {
+      "path": "README.md",
+      "sha": "7a5069dc30eb43128337f24636a5d67519869175",
+      "bytes": 2731,
+      "mode": 33188,
+      "mtime_ns": 1791905715942382455,
+      "inode": 148925315
+    },
+    {
+      "path": "data/policies.json",
+      "sha": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "bytes": 449,
+      "mode": 33188,
+      "mtime_ns": 1791905715942503724,
+      "inode": 148925317
+    },
+    {
+      "path": "devpost/checklist.md",
+      "sha": "318fc1035ad4314ae25fa829e152f5c03e883db5",
+      "bytes": 1551,
+      "mode": 33188,
+      "mtime_ns": 1791905715942647671,
+      "inode": 148925319
+    },
+    {
+      "path": "devpost/prd.md",
+      "sha": "60614d01a9e955c5911b3283d01bc5329397a6a9",
+      "bytes": 2676,
+      "mode": 33188,
+      "mtime_ns": 1791905715942740550,
+      "inode": 148925320
+    },
+    {
+      "path": "devpost/scope.md",
+      "sha": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec",
+      "bytes": 2248,
+      "mode": 33188,
+      "mtime_ns": 1791905715942832263,
+      "inode": 148925321
+    },
+    {
+      "path": "devpost/spec.md",
+      "sha": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72",
+      "bytes": 2424,
+      "mode": 33188,
+      "mtime_ns": 1791905715942928228,
+      "inode": 148925322
+    },
+    {
+      "path": "docs/BROWSER_ACCEPTANCE.md",
+      "sha": "df4c28d7712cc917e8da5dd2e6391d704b2826b4",
+      "bytes": 4135,
+      "mode": 33188,
+      "mtime_ns": 1791905715943081138,
+      "inode": 148925324
+    },
+    {
+      "path": "docs/INTAKE_DEADLINE_PREVIEW.md",
+      "sha": "8608e19a483d17732fb919d6bd8ef0d09259cd72",
+      "bytes": 4104,
+      "mode": 33188,
+      "mtime_ns": 1791905715943181229,
+      "inode": 148925325
+    },
+    {
+      "path": "docs/TRIP_CHECKLIST.md",
+      "sha": "47f27eca777fbc84f5488236275d3850e09dff30",
+      "bytes": 2840,
+      "mode": 33188,
+      "mtime_ns": 1791905715943277319,
+      "inode": 148925326
+    },
+    {
+      "path": "docs/policy-merchant-boundaries.md",
+      "sha": "cac1eefc796c5f1ea30c6195bc36cf2ea1da5737",
+      "bytes": 10737,
+      "mode": 33188,
+      "mtime_ns": 1791905715943503891,
+      "inode": 148925327
+    },
+    {
+      "path": "docs/qualification/policy-merchant-boundaries-20261013/receiving.json",
+      "sha": "f2f40b02fca4ab1edb03f1a2e83e772001d34ef2",
+      "bytes": 220354,
+      "mode": 33188,
+      "mtime_ns": 1791905715943816130,
+      "inode": 148925330
+    },
+    {
+      "path": "docs/receiving/intake-deadline/README.md",
+      "sha": "2b4feb6521710288109da1c1a1ef359eb6b79ad9",
+      "bytes": 5120,
+      "mode": 33188,
+      "mtime_ns": 1791905715944058127,
+      "inode": 148925333
+    },
+    {
+      "path": "docs/receiving/intake-deadline/candidate/build-0.stderr.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715944171975,
+      "inode": 148925335
+    },
+    {
+      "path": "docs/receiving/intake-deadline/candidate/build-0.stdout.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715944247680,
+      "inode": 148925336
+    },
+    {
+      "path": "docs/receiving/intake-deadline/candidate/build-1.stderr.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715944318882,
+      "inode": 148925337
+    },
+    {
+      "path": "docs/receiving/intake-deadline/candidate/build-1.stdout.txt",
+      "sha": "0bc407bc67b22fd17b4a5001230b34c47cc8b439",
+      "bytes": 633,
+      "mode": 33188,
+      "mtime_ns": 1791905715944442236,
+      "inode": 148925338
+    },
+    {
+      "path": "docs/receiving/intake-deadline/candidate/receiving.json",
+      "sha": "b53e369963a516c434ddb3dab2a67cf74c0c2fc4",
+      "bytes": 29592,
+      "mode": 33188,
+      "mtime_ns": 1791905715944568007,
+      "inode": 148925339
+    },
+    {
+      "path": "docs/receiving/intake-deadline/consumer-criteria.json",
+      "sha": "f48c5a53a5969ec1e426fd30b0fa342981bd86b6",
+      "bytes": 2253,
+      "mode": 33188,
+      "mtime_ns": 1791905715944665681,
+      "inode": 148925340
+    },
+    {
+      "path": "docs/receiving/intake-deadline/consumer-observer.py",
+      "sha": "af92c0d1fe633bc4fbd4a0bb294602a46dd23ddc",
+      "bytes": 10535,
+      "mode": 33188,
+      "mtime_ns": 1791905715944871576,
+      "inode": 148925341
+    },
+    {
+      "path": "docs/receiving/intake-deadline/original/build-0.stderr.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715944981214,
+      "inode": 148925343
+    },
+    {
+      "path": "docs/receiving/intake-deadline/original/build-0.stdout.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715945066173,
+      "inode": 148925344
+    },
+    {
+      "path": "docs/receiving/intake-deadline/original/build-1.stderr.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715945152716,
+      "inode": 148925345
+    },
+    {
+      "path": "docs/receiving/intake-deadline/original/build-1.stdout.txt",
+      "sha": "24279f60b689d2222b66d6dd3c112b203f8ab691",
+      "bytes": 633,
+      "mode": 33188,
+      "mtime_ns": 1791905715945257102,
+      "inode": 148925346
+    },
+    {
+      "path": "docs/receiving/intake-deadline/original/receiving.json",
+      "sha": "f4141d504e5c42deb2c4849f7ba25f375382ac45",
+      "bytes": 26749,
+      "mode": 33188,
+      "mtime_ns": 1791905715945363322,
+      "inode": 148925347
+    },
+    {
+      "path": "docs/receiving/intake-deadline/unit-observer.py",
+      "sha": "a2f98d8686112451abbaafd17cdaba8dae2766f0",
+      "bytes": 4434,
+      "mode": 33188,
+      "mtime_ns": 1791905715945463538,
+      "inode": 148925348
+    },
+    {
+      "path": "docs/receiving/intake-deadline/unit-receiving.json",
+      "sha": "9df68133dbaa96873e27579544b4d3098858db79",
+      "bytes": 21232,
+      "mode": 33188,
+      "mtime_ns": 1791905715945732840,
+      "inode": 148925349
+    },
+    {
+      "path": "docs/receiving/intake-deadline/unit.stderr.log",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715945787159,
+      "inode": 148925350
+    },
+    {
+      "path": "docs/receiving/intake-deadline/unit.stdout.log",
+      "sha": "7022df1443ee7fb8f238e567a827f8f402a53a09",
+      "bytes": 4469,
+      "mode": 33188,
+      "mtime_ns": 1791905715945990761,
+      "inode": 148925351
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/README.md",
+      "sha": "0f55e0f280faff3f0f73d1a1f065486bb089187f",
+      "bytes": 5483,
+      "mode": 33188,
+      "mtime_ns": 1791905715946172101,
+      "inode": 148925353
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-browser.json",
+      "sha": "703266c5bf084e195afc6995351cc15522e77faf",
+      "bytes": 1279,
+      "mode": 33188,
+      "mtime_ns": 1791905715946269817,
+      "inode": 148925354
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-commands.json",
+      "sha": "e7a9e0f1890c73a1620bdb0abfea88b63b0d1863",
+      "bytes": 1906,
+      "mode": 33188,
+      "mtime_ns": 1791905715946376329,
+      "inode": 148925355
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/browser-receipt.json",
+      "sha": "30b984b1aa918ebb81e7e91f00873553e326ff81",
+      "bytes": 10922,
+      "mode": 33188,
+      "mtime_ns": 1791905715946586851,
+      "inode": 148925356
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-preview.png",
+      "sha": "932f0596216a56b30c1ae17e32c7db820c78ca4a",
+      "bytes": 247265,
+      "mode": 33188,
+      "mtime_ns": 1791905715946803584,
+      "inode": 148925357
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-returnby-trip-2026-10-10.html",
+      "sha": "a02abb0c781b3fa5c114a1eb011c44ac54b88b75",
+      "bytes": 6831,
+      "mode": 33188,
+      "mtime_ns": 1791905715946944863,
+      "inode": 148925358
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/independent-production-review.json",
+      "sha": "a6c69ef12d1758d9344eaf0a80a1949ffadeecde",
+      "bytes": 2660,
+      "mode": 33188,
+      "mtime_ns": 1791905715947042537,
+      "inode": 148925359
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/initial-native-run.json",
+      "sha": "3df835c6ebe0d6f2dc7f74661f99cfd9d609d9d0",
+      "bytes": 6181,
+      "mode": 33188,
+      "mtime_ns": 1791905715947149757,
+      "inode": 148925360
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/native-test-build.json",
+      "sha": "3321dbf2194d05e4710fc6754c04f58639b966e6",
+      "bytes": 696,
+      "mode": 33188,
+      "mtime_ns": 1791905715947250683,
+      "inode": 148925361
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-build.txt",
+      "sha": "10e68ca17dee1825a95a394a1706123c778c8df9",
+      "bytes": 842,
+      "mode": 33188,
+      "mtime_ns": 1791905715947346689,
+      "inode": 148925362
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-test.txt",
+      "sha": "d2e0da6e62f220f543095f43b6d1958cb9f806c6",
+      "bytes": 591,
+      "mode": 33188,
+      "mtime_ns": 1791905715947535242,
+      "inode": 148925363
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-offline-file.png",
+      "sha": "ffa8767b85ed992a0650fed4e329da2fdd3e72e3",
+      "bytes": 66311,
+      "mode": 33188,
+      "mtime_ns": 1791905715947662181,
+      "inode": 148925364
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-returnby-trip-2026-10-10.html",
+      "sha": "ec2d49ff8f22cb1d6cc6c68ac9bc6c32971aa7c3",
+      "bytes": 5782,
+      "mode": 33188,
+      "mtime_ns": 1791905715947760605,
+      "inode": 148925365
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/source-freeze.json",
+      "sha": "419543fdce703062516a3d58ee210e7914fcbb44",
+      "bytes": 2437,
+      "mode": 33188,
+      "mtime_ns": 1791905715947967041,
+      "inode": 148925366
+    },
+    {
+      "path": "index.html",
+      "sha": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+      "bytes": 4455,
+      "mode": 33188,
+      "mtime_ns": 1791905715948062631,
+      "inode": 148925367
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "bytes": 35404,
+      "mode": 33188,
+      "mtime_ns": 1791905715948173937,
+      "inode": 148925368
+    },
+    {
+      "path": "package.json",
+      "sha": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "bytes": 313,
+      "mode": 33188,
+      "mtime_ns": 1791905715948258729,
+      "inode": 148925369
+    },
+    {
+      "path": "public/captures/returnby-desktop.png",
+      "sha": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d",
+      "bytes": 131379,
+      "mode": 33188,
+      "mtime_ns": 1791905715948493472,
+      "inode": 148925372
+    },
+    {
+      "path": "public/captures/returnby-mobile.png",
+      "sha": "c2ed83d29698fb5a47818c87d8f82944997c2bc4",
+      "bytes": 107642,
+      "mode": 33188,
+      "mtime_ns": 1791905715948648924,
+      "inode": 148925373
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+      "bytes": 238,
+      "mode": 33188,
+      "mtime_ns": 1791905715948830891,
+      "inode": 148925374
+    },
+    {
+      "path": "skills-lock.json",
+      "sha": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf",
+      "bytes": 1457,
+      "mode": 33188,
+      "mtime_ns": 1791905715948918309,
+      "inode": 148925375
+    },
+    {
+      "path": "src/day-refresh.ts",
+      "sha": "362aae5b5be7bf399174483327a2b15018edeca4",
+      "bytes": 1320,
+      "mode": 33188,
+      "mtime_ns": 1791905715949031616,
+      "inode": 148925377
+    },
+    {
+      "path": "src/deadline.ts",
+      "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "bytes": 837,
+      "mode": 33188,
+      "mtime_ns": 1791905715949109864,
+      "inode": 148925378
+    },
+    {
+      "path": "src/ics.ts",
+      "sha": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+      "bytes": 1844,
+      "mode": 33188,
+      "mtime_ns": 1791905715949185318,
+      "inode": 148925379
+    },
+    {
+      "path": "src/intake-deadline.ts",
+      "sha": "66acad777780210c10fc2f62f0f985c9ec9c1357",
+      "bytes": 2176,
+      "mode": 33188,
+      "mtime_ns": 1791905715949262190,
+      "inode": 148925380
+    },
+    {
+      "path": "src/main.ts",
+      "sha": "0ce65fa0406882a37f3ef679a887965fc2846da3",
+      "bytes": 7596,
+      "mode": 33188,
+      "mtime_ns": 1791905715949353110,
+      "inode": 148925381
+    },
+    {
+      "path": "src/parse.ts",
+      "sha": "6a59607db8418e20daf783f0738ba600dd16cf05",
+      "bytes": 3284,
+      "mode": 33188,
+      "mtime_ns": 1791905715949438111,
+      "inode": 148925382
+    },
+    {
+      "path": "src/policy.ts",
+      "sha": "17000e74183e89f95633053aac0f73ab2f129ac6",
+      "bytes": 971,
+      "mode": 33188,
+      "mtime_ns": 1791905715949516359,
+      "inode": 148925383
+    },
+    {
+      "path": "src/samples.ts",
+      "sha": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "bytes": 513,
+      "mode": 33188,
+      "mtime_ns": 1791905715949599942,
+      "inode": 148925384
+    },
+    {
+      "path": "src/store.ts",
+      "sha": "23cf906e26187ff28c94718111e69d9603c97fa8",
+      "bytes": 430,
+      "mode": 33188,
+      "mtime_ns": 1791905715949681483,
+      "inode": 148925385
+    },
+    {
+      "path": "src/style.css",
+      "sha": "78050412ff8f0ef26bd98abe5354627751ede87e",
+      "bytes": 9211,
+      "mode": 33188,
+      "mtime_ns": 1791905715949882084,
+      "inode": 148925386
+    },
+    {
+      "path": "src/trip-checklist-view.ts",
+      "sha": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+      "bytes": 7349,
+      "mode": 33188,
+      "mtime_ns": 1791905715949978549,
+      "inode": 148925387
+    },
+    {
+      "path": "src/trip-checklist.css",
+      "sha": "be540de5163c0b66cda28296311b2ce02204e087",
+      "bytes": 8367,
+      "mode": 33188,
+      "mtime_ns": 1791905715950170228,
+      "inode": 148925388
+    },
+    {
+      "path": "src/trip-checklist.ts",
+      "sha": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+      "bytes": 13299,
+      "mode": 33188,
+      "mtime_ns": 1791905715950267652,
+      "inode": 148925389
+    },
+    {
+      "path": "tests/core.test.ts",
+      "sha": "41ca82a8942dc111fa51a04396a16bcfaffa85c1",
+      "bytes": 4649,
+      "mode": 33188,
+      "mtime_ns": 1791905715950436695,
+      "inode": 148925391
+    },
+    {
+      "path": "tests/day-refresh.test.ts",
+      "sha": "1d76fd6ef7364ae84f4775666768815211981ff6",
+      "bytes": 4830,
+      "mode": 33188,
+      "mtime_ns": 1791905715950528324,
+      "inode": 148925392
+    },
+    {
+      "path": "tests/ics.test.ts",
+      "sha": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+      "bytes": 4526,
+      "mode": 33188,
+      "mtime_ns": 1791905715950618661,
+      "inode": 148925393
+    },
+    {
+      "path": "tests/intake-deadline.test.ts",
+      "sha": "89550b037c26e93569e6c12233058264628dc7a0",
+      "bytes": 5607,
+      "mode": 33188,
+      "mtime_ns": 1791905715950712374,
+      "inode": 148925394
+    },
+    {
+      "path": "tests/policy-boundaries.test.ts",
+      "sha": "faea01235435516b2b498845427bfa71c4e856e6",
+      "bytes": 2549,
+      "mode": 33188,
+      "mtime_ns": 1791905715950800293,
+      "inode": 148925395
+    },
+    {
+      "path": "tests/trip-checklist.test.ts",
+      "sha": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe",
+      "bytes": 8753,
+      "mode": 33188,
+      "mtime_ns": 1791905715951001435,
+      "inode": 148925396
+    },
+    {
+      "path": "tools/capture_returnby.py",
+      "sha": "969dc19689842fe6d8cdc874c5b6f4eed62c7816",
+      "bytes": 6787,
+      "mode": 33188,
+      "mtime_ns": 1791905715951130583,
+      "inode": 148925398
+    },
+    {
+      "path": "tools/verify_day_refresh.py",
+      "sha": "94caac1360142a886c138b1ebf2e5698024121d0",
+      "bytes": 9996,
+      "mode": 33188,
+      "mtime_ns": 1791905715951324055,
+      "inode": 148925399
+    },
+    {
+      "path": "tools/verify_trip_checklist.mjs",
+      "sha": "4d222dcbb86b7958469ce3d8a6b3accdb500924d",
+      "bytes": 21848,
+      "mode": 33188,
+      "mtime_ns": 1791905715951579099,
+      "inode": 148925400
+    },
+    {
+      "path": "trip-checklist.html",
+      "sha": "f0286c5e6817c1656297c67489d4b796ddec4510",
+      "bytes": 4558,
+      "mode": 33188,
+      "mtime_ns": 1791905715951750352,
+      "inode": 148925401
+    },
+    {
+      "path": "tsconfig.json",
+      "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "bytes": 273,
+      "mode": 33188,
+      "mtime_ns": 1791905715951863242,
+      "inode": 148925402
+    },
+    {
+      "path": "vite.config.ts",
+      "sha": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+      "bytes": 355,
+      "mode": 33188,
+      "mtime_ns": 1791905715951956955,
+      "inode": 148925403
+    }
+  ],
+  "origin": "http://127.0.0.1:49726",
+  "browser_version": "155.0.8059.40",
+  "saved_records": [
+    {
+      "id": "long-label-composition",
+      "merchant": "FictionalStoreMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
+      "orderNo": "REFERENCERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+      "total": "$42.50",
+      "orderDate": "2026-10-13",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-13T00:00:00.000Z"
+    },
+    {
+      "id": "dc7ded6f-8665-4714-ba37-d62beb106722",
+      "merchant": "Northwind Outfitters",
+      "orderNo": "NW-INTAKE-7001",
+      "total": "$42.50",
+      "orderDate": "2026-11-01",
+      "windowDays": 1,
+      "windowSource": "user",
+      "createdAt": "2026-10-13T15:35:18.898Z"
+    }
+  ],
+  "passed": true,
+  "source_after": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha": "b5688812f36338630c21eb5643318a55496ae09b",
+      "bytes": 409,
+      "mode": 33188,
+      "mtime_ns": 1791905715941947820,
+      "inode": 148925311
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a",
+      "bytes": 572,
+      "mode": 33188,
+      "mtime_ns": 1791905715942071757,
+      "inode": 148925312
+    },
+    {
+      "path": ".gitignore",
+      "sha": "b56df07f248fdfb406a35c411fafc91db47c9c95",
+      "bytes": 60,
+      "mode": 33188,
+      "mtime_ns": 1791905715942181979,
+      "inode": 148925313
+    },
+    {
+      "path": "LICENSE",
+      "sha": "edb188254288b40f2895833e3647b7e0be34c962",
+      "bytes": 1070,
+      "mode": 33188,
+      "mtime_ns": 1791905715942279820,
+      "inode": 148925314
+    },
+    {
+      "path": "README.md",
+      "sha": "7a5069dc30eb43128337f24636a5d67519869175",
+      "bytes": 2731,
+      "mode": 33188,
+      "mtime_ns": 1791905715942382455,
+      "inode": 148925315
+    },
+    {
+      "path": "data/policies.json",
+      "sha": "8492b1e041d03723b1eac74220afd3d4fe3d2834",
+      "bytes": 449,
+      "mode": 33188,
+      "mtime_ns": 1791905715942503724,
+      "inode": 148925317
+    },
+    {
+      "path": "devpost/checklist.md",
+      "sha": "318fc1035ad4314ae25fa829e152f5c03e883db5",
+      "bytes": 1551,
+      "mode": 33188,
+      "mtime_ns": 1791905715942647671,
+      "inode": 148925319
+    },
+    {
+      "path": "devpost/prd.md",
+      "sha": "60614d01a9e955c5911b3283d01bc5329397a6a9",
+      "bytes": 2676,
+      "mode": 33188,
+      "mtime_ns": 1791905715942740550,
+      "inode": 148925320
+    },
+    {
+      "path": "devpost/scope.md",
+      "sha": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec",
+      "bytes": 2248,
+      "mode": 33188,
+      "mtime_ns": 1791905715942832263,
+      "inode": 148925321
+    },
+    {
+      "path": "devpost/spec.md",
+      "sha": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72",
+      "bytes": 2424,
+      "mode": 33188,
+      "mtime_ns": 1791905715942928228,
+      "inode": 148925322
+    },
+    {
+      "path": "docs/BROWSER_ACCEPTANCE.md",
+      "sha": "df4c28d7712cc917e8da5dd2e6391d704b2826b4",
+      "bytes": 4135,
+      "mode": 33188,
+      "mtime_ns": 1791905715943081138,
+      "inode": 148925324
+    },
+    {
+      "path": "docs/INTAKE_DEADLINE_PREVIEW.md",
+      "sha": "8608e19a483d17732fb919d6bd8ef0d09259cd72",
+      "bytes": 4104,
+      "mode": 33188,
+      "mtime_ns": 1791905715943181229,
+      "inode": 148925325
+    },
+    {
+      "path": "docs/TRIP_CHECKLIST.md",
+      "sha": "47f27eca777fbc84f5488236275d3850e09dff30",
+      "bytes": 2840,
+      "mode": 33188,
+      "mtime_ns": 1791905715943277319,
+      "inode": 148925326
+    },
+    {
+      "path": "docs/policy-merchant-boundaries.md",
+      "sha": "cac1eefc796c5f1ea30c6195bc36cf2ea1da5737",
+      "bytes": 10737,
+      "mode": 33188,
+      "mtime_ns": 1791905715943503891,
+      "inode": 148925327
+    },
+    {
+      "path": "docs/qualification/policy-merchant-boundaries-20261013/receiving.json",
+      "sha": "f2f40b02fca4ab1edb03f1a2e83e772001d34ef2",
+      "bytes": 220354,
+      "mode": 33188,
+      "mtime_ns": 1791905715943816130,
+      "inode": 148925330
+    },
+    {
+      "path": "docs/receiving/intake-deadline/README.md",
+      "sha": "2b4feb6521710288109da1c1a1ef359eb6b79ad9",
+      "bytes": 5120,
+      "mode": 33188,
+      "mtime_ns": 1791905715944058127,
+      "inode": 148925333
+    },
+    {
+      "path": "docs/receiving/intake-deadline/candidate/build-0.stderr.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715944171975,
+      "inode": 148925335
+    },
+    {
+      "path": "docs/receiving/intake-deadline/candidate/build-0.stdout.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715944247680,
+      "inode": 148925336
+    },
+    {
+      "path": "docs/receiving/intake-deadline/candidate/build-1.stderr.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715944318882,
+      "inode": 148925337
+    },
+    {
+      "path": "docs/receiving/intake-deadline/candidate/build-1.stdout.txt",
+      "sha": "0bc407bc67b22fd17b4a5001230b34c47cc8b439",
+      "bytes": 633,
+      "mode": 33188,
+      "mtime_ns": 1791905715944442236,
+      "inode": 148925338
+    },
+    {
+      "path": "docs/receiving/intake-deadline/candidate/receiving.json",
+      "sha": "b53e369963a516c434ddb3dab2a67cf74c0c2fc4",
+      "bytes": 29592,
+      "mode": 33188,
+      "mtime_ns": 1791905715944568007,
+      "inode": 148925339
+    },
+    {
+      "path": "docs/receiving/intake-deadline/consumer-criteria.json",
+      "sha": "f48c5a53a5969ec1e426fd30b0fa342981bd86b6",
+      "bytes": 2253,
+      "mode": 33188,
+      "mtime_ns": 1791905715944665681,
+      "inode": 148925340
+    },
+    {
+      "path": "docs/receiving/intake-deadline/consumer-observer.py",
+      "sha": "af92c0d1fe633bc4fbd4a0bb294602a46dd23ddc",
+      "bytes": 10535,
+      "mode": 33188,
+      "mtime_ns": 1791905715944871576,
+      "inode": 148925341
+    },
+    {
+      "path": "docs/receiving/intake-deadline/original/build-0.stderr.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715944981214,
+      "inode": 148925343
+    },
+    {
+      "path": "docs/receiving/intake-deadline/original/build-0.stdout.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715945066173,
+      "inode": 148925344
+    },
+    {
+      "path": "docs/receiving/intake-deadline/original/build-1.stderr.txt",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715945152716,
+      "inode": 148925345
+    },
+    {
+      "path": "docs/receiving/intake-deadline/original/build-1.stdout.txt",
+      "sha": "24279f60b689d2222b66d6dd3c112b203f8ab691",
+      "bytes": 633,
+      "mode": 33188,
+      "mtime_ns": 1791905715945257102,
+      "inode": 148925346
+    },
+    {
+      "path": "docs/receiving/intake-deadline/original/receiving.json",
+      "sha": "f4141d504e5c42deb2c4849f7ba25f375382ac45",
+      "bytes": 26749,
+      "mode": 33188,
+      "mtime_ns": 1791905715945363322,
+      "inode": 148925347
+    },
+    {
+      "path": "docs/receiving/intake-deadline/unit-observer.py",
+      "sha": "a2f98d8686112451abbaafd17cdaba8dae2766f0",
+      "bytes": 4434,
+      "mode": 33188,
+      "mtime_ns": 1791905715945463538,
+      "inode": 148925348
+    },
+    {
+      "path": "docs/receiving/intake-deadline/unit-receiving.json",
+      "sha": "9df68133dbaa96873e27579544b4d3098858db79",
+      "bytes": 21232,
+      "mode": 33188,
+      "mtime_ns": 1791905715945732840,
+      "inode": 148925349
+    },
+    {
+      "path": "docs/receiving/intake-deadline/unit.stderr.log",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "mode": 33188,
+      "mtime_ns": 1791905715945787159,
+      "inode": 148925350
+    },
+    {
+      "path": "docs/receiving/intake-deadline/unit.stdout.log",
+      "sha": "7022df1443ee7fb8f238e567a827f8f402a53a09",
+      "bytes": 4469,
+      "mode": 33188,
+      "mtime_ns": 1791905715945990761,
+      "inode": 148925351
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/README.md",
+      "sha": "0f55e0f280faff3f0f73d1a1f065486bb089187f",
+      "bytes": 5483,
+      "mode": 33188,
+      "mtime_ns": 1791905715946172101,
+      "inode": 148925353
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-browser.json",
+      "sha": "703266c5bf084e195afc6995351cc15522e77faf",
+      "bytes": 1279,
+      "mode": 33188,
+      "mtime_ns": 1791905715946269817,
+      "inode": 148925354
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/baseline-commands.json",
+      "sha": "e7a9e0f1890c73a1620bdb0abfea88b63b0d1863",
+      "bytes": 1906,
+      "mode": 33188,
+      "mtime_ns": 1791905715946376329,
+      "inode": 148925355
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/browser-receipt.json",
+      "sha": "30b984b1aa918ebb81e7e91f00873553e326ff81",
+      "bytes": 10922,
+      "mode": 33188,
+      "mtime_ns": 1791905715946586851,
+      "inode": 148925356
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-preview.png",
+      "sha": "932f0596216a56b30c1ae17e32c7db820c78ca4a",
+      "bytes": 247265,
+      "mode": 33188,
+      "mtime_ns": 1791905715946803584,
+      "inode": 148925357
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/desktop-returnby-trip-2026-10-10.html",
+      "sha": "a02abb0c781b3fa5c114a1eb011c44ac54b88b75",
+      "bytes": 6831,
+      "mode": 33188,
+      "mtime_ns": 1791905715946944863,
+      "inode": 148925358
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/independent-production-review.json",
+      "sha": "a6c69ef12d1758d9344eaf0a80a1949ffadeecde",
+      "bytes": 2660,
+      "mode": 33188,
+      "mtime_ns": 1791905715947042537,
+      "inode": 148925359
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/initial-native-run.json",
+      "sha": "3df835c6ebe0d6f2dc7f74661f99cfd9d609d9d0",
+      "bytes": 6181,
+      "mode": 33188,
+      "mtime_ns": 1791905715947149757,
+      "inode": 148925360
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/native-test-build.json",
+      "sha": "3321dbf2194d05e4710fc6754c04f58639b966e6",
+      "bytes": 696,
+      "mode": 33188,
+      "mtime_ns": 1791905715947250683,
+      "inode": 148925361
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-build.txt",
+      "sha": "10e68ca17dee1825a95a394a1706123c778c8df9",
+      "bytes": 842,
+      "mode": 33188,
+      "mtime_ns": 1791905715947346689,
+      "inode": 148925362
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/npm-test.txt",
+      "sha": "d2e0da6e62f220f543095f43b6d1958cb9f806c6",
+      "bytes": 591,
+      "mode": 33188,
+      "mtime_ns": 1791905715947535242,
+      "inode": 148925363
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-offline-file.png",
+      "sha": "ffa8767b85ed992a0650fed4e329da2fdd3e72e3",
+      "bytes": 66311,
+      "mode": 33188,
+      "mtime_ns": 1791905715947662181,
+      "inode": 148925364
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/phone-returnby-trip-2026-10-10.html",
+      "sha": "ec2d49ff8f22cb1d6cc6c68ac9bc6c32971aa7c3",
+      "bytes": 5782,
+      "mode": 33188,
+      "mtime_ns": 1791905715947760605,
+      "inode": 148925365
+    },
+    {
+      "path": "docs/receiving/trip-checklist-81ba1ed0179c/source-freeze.json",
+      "sha": "419543fdce703062516a3d58ee210e7914fcbb44",
+      "bytes": 2437,
+      "mode": 33188,
+      "mtime_ns": 1791905715947967041,
+      "inode": 148925366
+    },
+    {
+      "path": "index.html",
+      "sha": "4743147d7bae94b597cc5d578d33ef56b65dc793",
+      "bytes": 4455,
+      "mode": 33188,
+      "mtime_ns": 1791905715948062631,
+      "inode": 148925367
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0",
+      "bytes": 35404,
+      "mode": 33188,
+      "mtime_ns": 1791905715948173937,
+      "inode": 148925368
+    },
+    {
+      "path": "package.json",
+      "sha": "329b4b71fbb631662eec0405ced477134520c9a5",
+      "bytes": 313,
+      "mode": 33188,
+      "mtime_ns": 1791905715948258729,
+      "inode": 148925369
+    },
+    {
+      "path": "public/captures/returnby-desktop.png",
+      "sha": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d",
+      "bytes": 131379,
+      "mode": 33188,
+      "mtime_ns": 1791905715948493472,
+      "inode": 148925372
+    },
+    {
+      "path": "public/captures/returnby-mobile.png",
+      "sha": "c2ed83d29698fb5a47818c87d8f82944997c2bc4",
+      "bytes": 107642,
+      "mode": 33188,
+      "mtime_ns": 1791905715948648924,
+      "inode": 148925373
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha": "2805d210d2571bbfe5468ac5b5743a703c6bb74b",
+      "bytes": 238,
+      "mode": 33188,
+      "mtime_ns": 1791905715948830891,
+      "inode": 148925374
+    },
+    {
+      "path": "skills-lock.json",
+      "sha": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf",
+      "bytes": 1457,
+      "mode": 33188,
+      "mtime_ns": 1791905715948918309,
+      "inode": 148925375
+    },
+    {
+      "path": "src/day-refresh.ts",
+      "sha": "362aae5b5be7bf399174483327a2b15018edeca4",
+      "bytes": 1320,
+      "mode": 33188,
+      "mtime_ns": 1791905715949031616,
+      "inode": 148925377
+    },
+    {
+      "path": "src/deadline.ts",
+      "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4",
+      "bytes": 837,
+      "mode": 33188,
+      "mtime_ns": 1791905715949109864,
+      "inode": 148925378
+    },
+    {
+      "path": "src/ics.ts",
+      "sha": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4",
+      "bytes": 1844,
+      "mode": 33188,
+      "mtime_ns": 1791905715949185318,
+      "inode": 148925379
+    },
+    {
+      "path": "src/intake-deadline.ts",
+      "sha": "66acad777780210c10fc2f62f0f985c9ec9c1357",
+      "bytes": 2176,
+      "mode": 33188,
+      "mtime_ns": 1791905715949262190,
+      "inode": 148925380
+    },
+    {
+      "path": "src/main.ts",
+      "sha": "0ce65fa0406882a37f3ef679a887965fc2846da3",
+      "bytes": 7596,
+      "mode": 33188,
+      "mtime_ns": 1791905715949353110,
+      "inode": 148925381
+    },
+    {
+      "path": "src/parse.ts",
+      "sha": "6a59607db8418e20daf783f0738ba600dd16cf05",
+      "bytes": 3284,
+      "mode": 33188,
+      "mtime_ns": 1791905715949438111,
+      "inode": 148925382
+    },
+    {
+      "path": "src/policy.ts",
+      "sha": "17000e74183e89f95633053aac0f73ab2f129ac6",
+      "bytes": 971,
+      "mode": 33188,
+      "mtime_ns": 1791905715949516359,
+      "inode": 148925383
+    },
+    {
+      "path": "src/samples.ts",
+      "sha": "cb510076e14da5b3a75edfc472466b93f19bfe94",
+      "bytes": 513,
+      "mode": 33188,
+      "mtime_ns": 1791905715949599942,
+      "inode": 148925384
+    },
+    {
+      "path": "src/store.ts",
+      "sha": "23cf906e26187ff28c94718111e69d9603c97fa8",
+      "bytes": 430,
+      "mode": 33188,
+      "mtime_ns": 1791905715949681483,
+      "inode": 148925385
+    },
+    {
+      "path": "src/style.css",
+      "sha": "78050412ff8f0ef26bd98abe5354627751ede87e",
+      "bytes": 9211,
+      "mode": 33188,
+      "mtime_ns": 1791905715949882084,
+      "inode": 148925386
+    },
+    {
+      "path": "src/trip-checklist-view.ts",
+      "sha": "b3f047bef90affc42774fcd1f6f04e5963a45fa7",
+      "bytes": 7349,
+      "mode": 33188,
+      "mtime_ns": 1791905715949978549,
+      "inode": 148925387
+    },
+    {
+      "path": "src/trip-checklist.css",
+      "sha": "be540de5163c0b66cda28296311b2ce02204e087",
+      "bytes": 8367,
+      "mode": 33188,
+      "mtime_ns": 1791905715950170228,
+      "inode": 148925388
+    },
+    {
+      "path": "src/trip-checklist.ts",
+      "sha": "a5b51cd778eb3753c8aa9f20e67cdf79f84ab4cf",
+      "bytes": 13299,
+      "mode": 33188,
+      "mtime_ns": 1791905715950267652,
+      "inode": 148925389
+    },
+    {
+      "path": "tests/core.test.ts",
+      "sha": "41ca82a8942dc111fa51a04396a16bcfaffa85c1",
+      "bytes": 4649,
+      "mode": 33188,
+      "mtime_ns": 1791905715950436695,
+      "inode": 148925391
+    },
+    {
+      "path": "tests/day-refresh.test.ts",
+      "sha": "1d76fd6ef7364ae84f4775666768815211981ff6",
+      "bytes": 4830,
+      "mode": 33188,
+      "mtime_ns": 1791905715950528324,
+      "inode": 148925392
+    },
+    {
+      "path": "tests/ics.test.ts",
+      "sha": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4",
+      "bytes": 4526,
+      "mode": 33188,
+      "mtime_ns": 1791905715950618661,
+      "inode": 148925393
+    },
+    {
+      "path": "tests/intake-deadline.test.ts",
+      "sha": "89550b037c26e93569e6c12233058264628dc7a0",
+      "bytes": 5607,
+      "mode": 33188,
+      "mtime_ns": 1791905715950712374,
+      "inode": 148925394
+    },
+    {
+      "path": "tests/policy-boundaries.test.ts",
+      "sha": "faea01235435516b2b498845427bfa71c4e856e6",
+      "bytes": 2549,
+      "mode": 33188,
+      "mtime_ns": 1791905715950800293,
+      "inode": 148925395
+    },
+    {
+      "path": "tests/trip-checklist.test.ts",
+      "sha": "5bdd819f4cf3dae90c11f51039493cbf98c39ebe",
+      "bytes": 8753,
+      "mode": 33188,
+      "mtime_ns": 1791905715951001435,
+      "inode": 148925396
+    },
+    {
+      "path": "tools/capture_returnby.py",
+      "sha": "969dc19689842fe6d8cdc874c5b6f4eed62c7816",
+      "bytes": 6787,
+      "mode": 33188,
+      "mtime_ns": 1791905715951130583,
+      "inode": 148925398
+    },
+    {
+      "path": "tools/verify_day_refresh.py",
+      "sha": "94caac1360142a886c138b1ebf2e5698024121d0",
+      "bytes": 9996,
+      "mode": 33188,
+      "mtime_ns": 1791905715951324055,
+      "inode": 148925399
+    },
+    {
+      "path": "tools/verify_trip_checklist.mjs",
+      "sha": "4d222dcbb86b7958469ce3d8a6b3accdb500924d",
+      "bytes": 21848,
+      "mode": 33188,
+      "mtime_ns": 1791905715951579099,
+      "inode": 148925400
+    },
+    {
+      "path": "trip-checklist.html",
+      "sha": "f0286c5e6817c1656297c67489d4b796ddec4510",
+      "bytes": 4558,
+      "mode": 33188,
+      "mtime_ns": 1791905715951750352,
+      "inode": 148925401
+    },
+    {
+      "path": "tsconfig.json",
+      "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a",
+      "bytes": 273,
+      "mode": 33188,
+      "mtime_ns": 1791905715951863242,
+      "inode": 148925402
+    },
+    {
+      "path": "vite.config.ts",
+      "sha": "dea38f9d09ffdc5a246436b4a974917419c5a675",
+      "bytes": 355,
+      "mode": 33188,
+      "mtime_ns": 1791905715951956955,
+      "inode": 148925403
+    }
+  ],
+  "source_preserved": true,
+  "observer_sha256": "71131a9513eae6547c1fda53c0186050d84726cb3a14fb7479a75562d40b2461",
+  "os_browser_exit_code": null,
+  "finished_utc": "2026-10-13T15:35:19Z"
+}
