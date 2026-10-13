@@ -1,0 +1,1451 @@
+{
+  "accepted": false,
+  "cases": [
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ],
+      "case": "explicit-iso",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ],
+      "case": "explicit-month-first",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ],
+      "case": "explicit-day-first",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ],
+      "case": "explicit-us-slash",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 105
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-09-09",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-09-09",
+          "index": 79
+        },
+        {
+          "date": "2026-09-04",
+          "index": 112
+        }
+      ],
+      "case": "case-space-colon",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-09-04",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-09-09",
+          "index": 79
+        },
+        {
+          "date": "2026-09-04",
+          "index": 112
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-09-09",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-09-09",
+          "index": 79
+        },
+        {
+          "date": "2026-09-04",
+          "index": 110
+        }
+      ],
+      "case": "newline-no-colon",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-09-04",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-09-09",
+          "index": 79
+        },
+        {
+          "date": "2026-09-04",
+          "index": 110
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-09-09",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-09-09",
+          "index": 79
+        },
+        {
+          "date": "2026-09-04",
+          "index": 108
+        }
+      ],
+      "case": "colon-no-gap",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-09-04",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-09-09",
+          "index": 79
+        },
+        {
+          "date": "2026-09-04",
+          "index": 108
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-12-31",
+          "index": 105
+        },
+        {
+          "date": "2026-01-02",
+          "index": 135
+        }
+      ],
+      "case": "earliest-explicit-text-order",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-12-31",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-12-31",
+          "index": 105
+        },
+        {
+          "date": "2026-01-02",
+          "index": 135
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-12-20",
+          "index": 105
+        },
+        {
+          "date": "2026-03-03",
+          "index": 128
+        }
+      ],
+      "case": "earliest-explicit-across-patterns",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-12-20",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-12-20",
+          "index": 105
+        },
+        {
+          "date": "2026-03-03",
+          "index": 128
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 135
+        }
+      ],
+      "case": "invalid-then-valid-explicit",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 135
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 133
+        }
+      ],
+      "case": "unknown-month-then-valid-explicit",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-07-14",
+          "index": 133
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-08-01",
+          "index": 108
+        }
+      ],
+      "case": "preorder-boundary",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-08-01",
+          "index": 108
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-08-01",
+          "index": 124
+        }
+      ],
+      "case": "intervening-words",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-08-01",
+          "index": 124
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-08-01",
+          "index": 104
+        }
+      ],
+      "case": "joined-label",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-19",
+          "index": 79
+        },
+        {
+          "date": "2026-08-01",
+          "index": 104
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": false,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-07-14",
+          "index": 31
+        }
+      ],
+      "case": "date-is-not-order-reference",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": false,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-07-14",
+        "orderNo": "",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-07-14",
+          "index": 31
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [],
+      "case": "unsupported-months",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": []
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [],
+      "case": "calendar-invalid-only",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": []
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2024-03-03",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2024-03-03",
+          "index": 79
+        },
+        {
+          "date": "2024-02-29",
+          "index": 105
+        }
+      ],
+      "case": "leap-date-priority",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2024-02-29",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2024-03-03",
+          "index": 79
+        },
+        {
+          "date": "2024-02-29",
+          "index": 105
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-08-09",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-08-09",
+          "index": 79
+        },
+        {
+          "date": "2026-08-02",
+          "index": 113
+        }
+      ],
+      "case": "legacy-near-order",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-08-09",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-08-09",
+          "index": 79
+        },
+        {
+          "date": "2026-08-02",
+          "index": 113
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-01-06",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-12-05",
+          "index": 10
+        },
+        {
+          "date": "2026-01-06",
+          "index": 37
+        }
+      ],
+      "case": "legacy-chronological",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-01-06",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-12-05",
+          "index": 10
+        },
+        {
+          "date": "2026-01-06",
+          "index": 37
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Larch",
+        "orderDate": "2026-10-09",
+        "orderNo": "LA-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-10-09",
+          "index": 60
+        },
+        {
+          "date": "2026-10-04",
+          "index": 88
+        }
+      ],
+      "case": "domain-merchant",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Larch",
+        "orderDate": "2026-10-04",
+        "orderNo": "LA-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-10-09",
+          "index": 60
+        },
+        {
+          "date": "2026-10-04",
+          "index": 88
+        }
+      ]
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Birch Cart",
+        "orderDate": "2026-11-19",
+        "orderNo": "BC-2026001",
+        "total": "$2,345.67"
+      },
+      "actualDates": [
+        {
+          "date": "2026-11-19",
+          "index": 57
+        },
+        {
+          "date": "2026-11-14",
+          "index": 87
+        }
+      ],
+      "case": "known-merchant-total",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Birch Cart",
+        "orderDate": "2026-11-14",
+        "orderNo": "BC-2026001",
+        "total": "$2,345.67"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-11-19",
+          "index": 57
+        },
+        {
+          "date": "2026-11-14",
+          "index": 87
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "",
+        "orderNo": "CD-2026001",
+        "total": ""
+      },
+      "actualDates": [],
+      "case": "subtotal-is-not-total",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": false,
+          "orderNo": true,
+          "total": false
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "",
+        "orderNo": "CD-2026001",
+        "total": ""
+      },
+      "expectedDates": []
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": true
+        },
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "$32.40"
+      },
+      "actualDates": [],
+      "case": "order-label-lookalikes",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": true
+        },
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": "$32.40"
+      },
+      "expectedDates": []
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        },
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": ""
+      },
+      "actualDates": [],
+      "case": "empty",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": false,
+          "orderDate": false,
+          "orderNo": false,
+          "total": false
+        },
+        "merchant": "",
+        "orderDate": "",
+        "orderNo": "",
+        "total": ""
+      },
+      "expectedDates": []
+    },
+    {
+      "accepted": false,
+      "actual": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-05-19",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "actualDates": [
+        {
+          "date": "2026-05-19",
+          "index": 92
+        },
+        {
+          "date": "2026-05-14",
+          "index": 117
+        }
+      ],
+      "case": "unicode-original-indices",
+      "errors": [
+        "complete parsed record differs"
+      ],
+      "expected": {
+        "found": {
+          "merchant": true,
+          "orderDate": true,
+          "orderNo": true,
+          "total": true
+        },
+        "merchant": "Cedar Market",
+        "orderDate": "2026-05-14",
+        "orderNo": "CD-2026001",
+        "total": "$32.40"
+      },
+      "expectedDates": [
+        {
+          "date": "2026-05-19",
+          "index": 92
+        },
+        {
+          "date": "2026-05-14",
+          "index": 117
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": false,
+          "total": false
+        },
+        "merchant": "",
+        "orderDate": "2026-01-02",
+        "orderNo": "",
+        "total": ""
+      },
+      "actualDates": [
+        {
+          "date": "2026-01-02",
+          "index": 19
+        },
+        {
+          "date": "2026-02-02",
+          "index": 35
+        },
+        {
+          "date": "2026-03-02",
+          "index": 52
+        },
+        {
+          "date": "2026-04-02",
+          "index": 66
+        },
+        {
+          "date": "2026-05-02",
+          "index": 80
+        },
+        {
+          "date": "2026-06-02",
+          "index": 92
+        },
+        {
+          "date": "2026-07-02",
+          "index": 105
+        },
+        {
+          "date": "2026-08-02",
+          "index": 118
+        },
+        {
+          "date": "2026-09-02",
+          "index": 133
+        },
+        {
+          "date": "2026-10-02",
+          "index": 151
+        },
+        {
+          "date": "2026-11-02",
+          "index": 167
+        },
+        {
+          "date": "2026-12-02",
+          "index": 184
+        }
+      ],
+      "case": "full-month-spellings",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": false,
+          "total": false
+        },
+        "merchant": "",
+        "orderDate": "2026-01-02",
+        "orderNo": "",
+        "total": ""
+      },
+      "expectedDates": [
+        {
+          "date": "2026-01-02",
+          "index": 19
+        },
+        {
+          "date": "2026-02-02",
+          "index": 35
+        },
+        {
+          "date": "2026-03-02",
+          "index": 52
+        },
+        {
+          "date": "2026-04-02",
+          "index": 66
+        },
+        {
+          "date": "2026-05-02",
+          "index": 80
+        },
+        {
+          "date": "2026-06-02",
+          "index": 92
+        },
+        {
+          "date": "2026-07-02",
+          "index": 105
+        },
+        {
+          "date": "2026-08-02",
+          "index": 118
+        },
+        {
+          "date": "2026-09-02",
+          "index": 133
+        },
+        {
+          "date": "2026-10-02",
+          "index": 151
+        },
+        {
+          "date": "2026-11-02",
+          "index": 167
+        },
+        {
+          "date": "2026-12-02",
+          "index": 184
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "actual": {
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": false,
+          "total": false
+        },
+        "merchant": "",
+        "orderDate": "2026-01-02",
+        "orderNo": "",
+        "total": ""
+      },
+      "actualDates": [
+        {
+          "date": "2026-01-02",
+          "index": 19
+        },
+        {
+          "date": "2026-02-03",
+          "index": 32
+        },
+        {
+          "date": "2026-09-04",
+          "index": 46
+        },
+        {
+          "date": "2026-09-05",
+          "index": 59
+        },
+        {
+          "date": "2026-09-06",
+          "index": 71
+        }
+      ],
+      "case": "supported-month-variants",
+      "errors": [],
+      "expected": {
+        "found": {
+          "merchant": false,
+          "orderDate": true,
+          "orderNo": false,
+          "total": false
+        },
+        "merchant": "",
+        "orderDate": "2026-01-02",
+        "orderNo": "",
+        "total": ""
+      },
+      "expectedDates": [
+        {
+          "date": "2026-01-02",
+          "index": 19
+        },
+        {
+          "date": "2026-02-03",
+          "index": 32
+        },
+        {
+          "date": "2026-09-04",
+          "index": 46
+        },
+        {
+          "date": "2026-09-05",
+          "index": 59
+        },
+        {
+          "date": "2026-09-06",
+          "index": 71
+        }
+      ]
+    }
+  ],
+  "command": [
+    "node",
+    "/dev/shm/hamon-returnby-datepriority-consumer-0d581b491497/original-course/receive.mjs",
+    "/dev/shm/hamon-returnby-datepriority-consumer-0d581b491497/original-course/received-parser.mts",
+    "/dev/shm/hamon-returnby-datepriority-consumer-0d581b491497/oracle.json"
+  ],
+  "created_at_utc": "2026-10-13T04:23:03.186926+00:00",
+  "driver_sha256": "4b0a273a156fcf85731e03117b3dd9baf7978b96ada7a290b3eac04bb47e416d",
+  "node": "v24.19.0",
+  "oracle_sha256": "3e0f4ac466bd67d8dd4f085a07bc3be1c26a1a4dc56bbbd653c9831952a077f2",
+  "passed": 13,
+  "receiver_sha256": "ea16800634172ff103eb56b4cafb84a8e505094b29d294814bd0bacc684b14a5",
+  "returncode": 0,
+  "schema": "hamon.returnby.date-priority.receiving.v1",
+  "scope": "Original authored synthetic order text; actual Node24 loads exact parser bytes through a .mts copy. No candidate/donor test oracle, browser/build, network, mail or live data.",
+  "source": "/dev/shm/hamon-returnby-datepriority-0d581b491497/original/src/parse.ts",
+  "source_oracle_and_loaded_copy_unchanged": true,
+  "source_sha256": "b603f60a64fe77a50c527f18f852838248cbe9747d6f241ae19379a238f85fc1",
+  "stderr_empty": true,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "a7932682fe22dced0634ee47a60b7a48ae5d6aa93d6dfb7ee6f8823e6e505ba7",
+  "total": 28
+}

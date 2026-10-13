@@ -1,0 +1,85 @@
+{
+  "files": [
+    {
+      "bytes": 888,
+      "path": "ORACLE-FREEZE.json",
+      "sha256": "08546f55e99849b27dd234f2a7703f4f886e7de1b27e7f6953b4050ca71006d6"
+    },
+    {
+      "bytes": 1848,
+      "path": "README.md",
+      "sha256": "a78d65915e5693bf85be475ee7fd5ccbdeed3d54f857af2ada1260e514bbeea2"
+    },
+    {
+      "bytes": 0,
+      "path": "candidate-course/node.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 8673,
+      "path": "candidate-course/node.stdout",
+      "sha256": "ddcb0ecb42d5c8665ee218a2bdc6acf5641af192ae40131fd59160e2edf4639f"
+    },
+    {
+      "bytes": 31065,
+      "path": "candidate-course/receipt.json",
+      "sha256": "e311bf2b9bf2b814df47cb0d15b7bcee771a8207a6b33459d20772b6cc519299"
+    },
+    {
+      "bytes": 551,
+      "path": "candidate-course/receive.mjs",
+      "sha256": "4b0a273a156fcf85731e03117b3dd9baf7978b96ada7a290b3eac04bb47e416d"
+    },
+    {
+      "bytes": 3403,
+      "path": "candidate-course/received-parser.mts",
+      "sha256": "6fdc382d9d3172d71cf66fd86e1597ff38c28c31b6977bbad5e0c096d9ecb55a"
+    },
+    {
+      "bytes": 22613,
+      "path": "oracle.json",
+      "sha256": "3e0f4ac466bd67d8dd4f085a07bc3be1c26a1a4dc56bbbd653c9831952a077f2"
+    },
+    {
+      "bytes": 0,
+      "path": "original-course/node.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 8673,
+      "path": "original-course/node.stdout",
+      "sha256": "a7932682fe22dced0634ee47a60b7a48ae5d6aa93d6dfb7ee6f8823e6e505ba7"
+    },
+    {
+      "bytes": 31801,
+      "path": "original-course/receipt.json",
+      "sha256": "999e035106dbce50fa286bc610f13a9a21ff7d13071b2d4293e11d617bb624d8"
+    },
+    {
+      "bytes": 551,
+      "path": "original-course/receive.mjs",
+      "sha256": "4b0a273a156fcf85731e03117b3dd9baf7978b96ada7a290b3eac04bb47e416d"
+    },
+    {
+      "bytes": 3176,
+      "path": "original-course/received-parser.mts",
+      "sha256": "b603f60a64fe77a50c527f18f852838248cbe9747d6f241ae19379a238f85fc1"
+    },
+    {
+      "bytes": 4702,
+      "path": "receive.py",
+      "sha256": "ea16800634172ff103eb56b4cafb84a8e505094b29d294814bd0bacc684b14a5"
+    },
+    {
+      "bytes": 3145,
+      "path": "review.json",
+      "sha256": "9fbaeedd820ca6f408d24f7123cb066696995945a95c7170604e29ccdb1c8b3a"
+    },
+    {
+      "bytes": 550,
+      "path": "source.diff",
+      "sha256": "238bab42816f84aab6d8e95f25f955aef046158a839b728ffc7b5fddb5a98416"
+    }
+  ],
+  "schema": "hamon.returnby.date-priority.evidence.v1"
+}
