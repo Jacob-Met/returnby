@@ -1,0 +1,49 @@
+
+ RUN  v5.0.3 /private/var/tmp/hamon-dcac8b3b8755-returnby-intake-v1/author-unit
+
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > previews 2026-10-03 plus 30 days before saving 1ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > previews 2024-02-28 plus 1 days before saving 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > previews 2026-01-31 plus 1 days before saving 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > previews 2026-12-31 plus 1 days before saving 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > previews 2026-10-03 plus 30.0 days before saving 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > previews 2026-10-03 plus 1e2 days before saving 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > keeps the existing date helper semantics for early years 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a date for "" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a date for "not a date" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a date for "2026-10-3" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a date for "2026-02-30" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a date for "2023-02-29" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a date for "2026-13-01" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a date for "0000-01-01" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a window for "" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a window for " " 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a window for "0" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a window for "-1" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a window for "1.5" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a window for "no days" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a window for "Infinity" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > does not invent a window for "9007199254740992" 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > shows a prompt when 9999-12-31 plus 1 has no supported preview 0ms
+ ✓ tests/intake-deadline.test.ts > new-order deadline preview > shows a prompt when 2026-10-03 plus 1000000000000000 has no supported preview 0ms
+ ✓ tests/intake-deadline.test.ts > review form binding > updates after date and window edits without changing either field 0ms
+ ✓ tests/intake-deadline.test.ts > review form binding > ignores unrelated edits and avoids repeated live-region writes 0ms
+ ✓ tests/intake-deadline.test.ts > review form binding > respects native input validity and allows a corrected preview 0ms
+ ✓ tests/intake-deadline.test.ts > review form binding > refreshes replacement reviews while keeping one listener per event 0ms
+ ✓ tests/core.test.ts > parse > reads date formats 2ms
+ ✓ tests/core.test.ts > parse > parses sample 1 1ms
+ ✓ tests/core.test.ts > parse > prefers date near "order" 0ms
+ ✓ tests/core.test.ts > parse > prefers an explicit order date over delivery near an order number 0ms
+ ✓ tests/core.test.ts > parse > matches explicit labels at original text offsets with case and whitespace variants 1ms
+ ✓ tests/core.test.ts > parse > retains date fallbacks when no valid date directly follows an explicit label 0ms
+ ✓ tests/core.test.ts > parse > leaves unknowns blank 0ms
+ ✓ tests/core.test.ts > parse > does not mistake a subtotal for the order total 0ms
+ ✓ tests/core.test.ts > parse > leaves total unknown when only embedded total labels exist 0ms
+ ✓ tests/core.test.ts > parse > preserves standalone labels, currency syntax and first-match behavior 0ms
+ ✓ tests/core.test.ts > deadline + policy > computes 9ms
+ ✓ tests/core.test.ts > ics > builds RFC5545 all-day event with 3-day alarm 0ms
+
+ Test Files  2 passed (2)
+      Tests  40 passed (40)
+   Start at  14:59:05
+   Duration  141ms (transform 59%, tests 22%, import 14%, worker 4%)
+

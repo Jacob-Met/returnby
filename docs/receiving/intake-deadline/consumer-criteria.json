@@ -1,0 +1,87 @@
+{
+  "schema": "returnby-intake-deadline-consumer-criteria-v1",
+  "original_commit": "7a271cfbc27e6c79a889b90920a700fdbf638e22",
+  "original_tree": "c53ca326af314176e1367b6585e876ed3e560a21",
+  "candidate_contract": {
+    "selector": "#intake-deadline",
+    "valid_prefix": "Calculated return-by date: ",
+    "date_prompt": "Enter a valid order date to preview the return-by date.",
+    "window_prompt": "positive whole"
+  },
+  "fixture": "From: Northwind Outfitters <orders@northwind.example>\nOrder date: 2026-10-13\nOrder # NW-INTAKE-7001\nOrder total: $42.50",
+  "ordinary_dates": [
+    {
+      "date": "2026-10-13",
+      "days": "30",
+      "due": "2026-11-12"
+    },
+    {
+      "date": "2024-01-31",
+      "days": "30",
+      "due": "2024-03-01"
+    },
+    {
+      "date": "2024-01-31",
+      "days": "1",
+      "due": "2024-02-01"
+    },
+    {
+      "date": "2026-12-31",
+      "days": "1",
+      "due": "2027-01-01"
+    },
+    {
+      "date": "2026-11-01",
+      "days": "1",
+      "due": "2026-11-02"
+    }
+  ],
+  "invalid_windows": [
+    "",
+    "0",
+    "-1",
+    "1.5",
+    "1000000000"
+  ],
+  "sample_due_dates": [
+    "2026-11-02",
+    "2026-10-13",
+    null
+  ],
+  "final_save": {
+    "date": "2026-10-14",
+    "days": "14",
+    "due": "2026-10-28",
+    "merchant": "Northwind Review",
+    "orderNo": "NW-INTAKE-7001-EDIT",
+    "total": "$52.75"
+  },
+  "conservation": [
+    "pasted confirmation unchanged until Save",
+    "all nonedited input strings conserved",
+    "review cannot write localStorage",
+    "preexisting saved record preserved",
+    "Save agrees with visible preview",
+    "source tracked bytes/modes/mtime/inodes preserved"
+  ],
+  "browser_scope": {
+    "timezone": "UTC",
+    "desktop": {
+      "width": 1280,
+      "height": 960
+    },
+    "narrow": {
+      "width": 390,
+      "height": 844
+    },
+    "fresh_context": true,
+    "no_shared_profile": true,
+    "requests": "owned loopback only"
+  },
+  "limits": [
+    "No arithmetic, parser, policy, Save validation, or storage semantics changed",
+    "No retailer policy accuracy or hosted deployment claim",
+    "Baseline records absent feature while retaining ordinary Save behavior",
+    "Browser close/disconnect does not establish an OS Chrome exit code"
+  ]
+}

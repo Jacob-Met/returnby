@@ -3,6 +3,7 @@ import { parse } from './parse';
 import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
 import { startDayRefresh } from './day-refresh';
+import { bindIntakeDeadline } from './intake-deadline';
 import { buildIcs } from './ics';
 import { load, save, type Order } from './store';
 import { samples } from './samples';
@@ -10,6 +11,7 @@ import { samples } from './samples';
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
+const refreshIntakeDeadline = bindIntakeDeadline(preview);
 const list = $<HTMLUListElement>('#list');
 let orders = load();
 let sampleIdx = 0;
@@ -33,10 +35,12 @@ function showPreview() {
     ${field('orderNo', 'Order #', p.orderNo, p.found.orderNo)}
     ${field('total', 'Total', p.total, p.found.total)}
     <label>Return window (days)<input name="windowDays" type="number" min="1" value="${pol.days}"></label>
+    <p class="src"><output id="intake-deadline" aria-live="polite" aria-atomic="true"></output></p>
     <p class="src" id="src">${pol.source === 'policy' ? 'Store rule from the local policy table; confirm with the retailer.' : 'No store match: editable 30-day fallback.'}</p>
     <button type="submit" class="button button-primary">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;
   preview.dataset.days = String(pol.days);
   preview.hidden = false;
+  refreshIntakeDeadline();
 }
 
 preview.addEventListener('submit', (e) => {
