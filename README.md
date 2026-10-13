@@ -15,7 +15,7 @@ npm run build
 npm run dev
 ```
 
-The optional Raider browser acceptance and desktop/phone captures run through `py -3 tools/capture_returnby.py` (requires Playwright and Chromium/Chrome). The sample orders use fictional merchants; the parser's policy table is a convenience, not a guarantee from any retailer. Users should confirm a deadline with the store's current terms.
+The optional browser receiver runs through `py -3 tools/capture_returnby.py` (requires Playwright and Chromium/Chrome). It can receive an existing build or URL and keeps its screenshots, downloaded calendar and result in a new evidence directory. See [browser acceptance](docs/BROWSER_ACCEPTANCE.md) for `--dist`, `--url`, browser selection and output instructions. The sample orders use fictional merchants; the parser's policy table is a convenience, not a guarantee from any retailer. Users should confirm a deadline with the store's current terms.
 
 ## Implementation
 
