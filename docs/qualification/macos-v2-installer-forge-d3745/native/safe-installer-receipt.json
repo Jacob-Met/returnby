@@ -1,0 +1,79 @@
+{
+  "scope": "Native Linux installer source controls. Only installation platform precondition is simulated; runtime/launcher children remain actual Linux. Test-parent and retained-checker child run normal/optimized; production launcher preserves its recorded -B invocation. Separate Mac runtime acceptance pending.",
+  "host": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4",
+  "pid": 3232882,
+  "before": {
+    "tools/received_preview/install_macos.py": {
+      "bytes": 12933,
+      "sha256": "a8190f86a0534348e1453aaabc661b1dca5788c64a1ba71fb73942bd0a0173d3",
+      "mode": 436
+    },
+    "tools/received_preview/serve_returnby.py": {
+      "bytes": 5744,
+      "sha256": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+      "mode": 436
+    },
+    "tests/received_preview/test_install_macos.py": {
+      "bytes": 17236,
+      "sha256": "37a0bfe70ff1a13ea6567afe323902eae992e0e6410b30b52b271c191f6dc656",
+      "mode": 436
+    },
+    "tools/received_preview/README.md": {
+      "bytes": 7738,
+      "sha256": "6be53fd3e71e4adef385a26429c192044b245d93f9b8c9ce8fba4c71701768f3",
+      "mode": 436
+    }
+  },
+  "after": {
+    "tools/received_preview/install_macos.py": {
+      "bytes": 12933,
+      "sha256": "a8190f86a0534348e1453aaabc661b1dca5788c64a1ba71fb73942bd0a0173d3",
+      "mode": 436
+    },
+    "tools/received_preview/serve_returnby.py": {
+      "bytes": 5744,
+      "sha256": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+      "mode": 436
+    },
+    "tests/received_preview/test_install_macos.py": {
+      "bytes": 17236,
+      "sha256": "37a0bfe70ff1a13ea6567afe323902eae992e0e6410b30b52b271c191f6dc656",
+      "mode": 436
+    },
+    "tools/received_preview/README.md": {
+      "bytes": 7738,
+      "sha256": "6be53fd3e71e4adef385a26429c192044b245d93f9b8c9ce8fba4c71701768f3",
+      "mode": 436
+    }
+  },
+  "sourceUnchanged": true,
+  "archiveSha256After": "816e8d09fbecc27ffeb189aa3c889e48e5bc81f352ccc5b75f5cb9bd64badd71",
+  "courses": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/jacob/hamon/receiving/forge-d3745ea0f44f-returnby-v2/safe/tests/received_preview/test_install_macos.py"
+      ],
+      "pid": 3232950,
+      "exitCode": 0,
+      "elapsedSeconds": 0.8990515468176454,
+      "stdout": "{\"host\": \"linux\", \"python\": \"3.14.4\", \"nativeMac\": false, \"platformPreconditionSimulated\": true}\n",
+      "stderr": "test_admitted_runtime_bytes_are_reused_after_source_changes (__main__.ReceivedMacEntry.test_admitted_runtime_bytes_are_reused_after_source_changes) ... ok\ntest_all_assets_and_source_identity_remain_exact (__main__.ReceivedMacEntry.test_all_assets_and_source_identity_remain_exact) ... ok\ntest_bad_adjacent_runtime_refuses_before_mkdir_then_corrected_retry_succeeds (__main__.ReceivedMacEntry.test_bad_adjacent_runtime_refuses_before_mkdir_then_corrected_retry_succeeds) ... ok\ntest_changed_archive_is_refused_before_destination_creation (__main__.ReceivedMacEntry.test_changed_archive_is_refused_before_destination_creation) ... ok\ntest_changed_asset_refuses_check_and_server (__main__.ReceivedMacEntry.test_changed_asset_refuses_check_and_server) ... ok\ntest_eof_stops_foreground_server (__main__.ReceivedMacEntry.test_eof_stops_foreground_server) ... ok\ntest_existing_destination_is_never_overwritten (__main__.ReceivedMacEntry.test_existing_destination_is_never_overwritten) ... ok\ntest_launcher_forwards_unexpected_arguments (__main__.ReceivedMacEntry.test_launcher_forwards_unexpected_arguments) ... ok\ntest_non_object_receipt_is_a_controlled_cli_refusal (__main__.ReceivedMacEntry.test_non_object_receipt_is_a_controlled_cli_refusal) ... ok\ntest_occupied_port_is_preserved (__main__.ReceivedMacEntry.test_occupied_port_is_preserved) ... ok\ntest_original_custody_and_installed_runtime_roles_are_exact (__main__.ReceivedMacEntry.test_original_custody_and_installed_runtime_roles_are_exact) ... ok\ntest_payload_write_failure_retains_partial_copy_without_launcher (__main__.ReceivedMacEntry.test_payload_write_failure_retains_partial_copy_without_launcher) ... ok\ntest_relocated_unicode_copy_serves_exact_assets_then_enter_stops (__main__.ReceivedMacEntry.test_relocated_unicode_copy_serves_exact_assets_then_enter_stops) ... /usr/lib/python3.14/tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 404: 'Not Found'>\n  _warnings.warn(self.warn_message, ResourceWarning)\nok\ntest_retained_installer_recovers_into_another_new_destination (__main__.ReceivedMacEntry.test_retained_installer_recovers_into_another_new_destination) ... ok\ntest_self_check_refuses_each_changed_runtime_custody_copy (__main__.ReceivedMacEntry.test_self_check_refuses_each_changed_runtime_custody_copy) ... ok\ntest_self_check_refuses_runtime_role_tampering_and_v1_receipt (__main__.ReceivedMacEntry.test_self_check_refuses_runtime_role_tampering_and_v1_receipt) ... ok\ntest_symlinked_asset_refuses_check_and_server (__main__.ReceivedMacEntry.test_symlinked_asset_refuses_check_and_server) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.819s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "-O",
+        "/home/jacob/hamon/receiving/forge-d3745ea0f44f-returnby-v2/safe/tests/received_preview/test_install_macos.py"
+      ],
+      "pid": 3232979,
+      "exitCode": 1,
+      "elapsedSeconds": 1.7110065459273756,
+      "stdout": "{\"host\": \"linux\", \"python\": \"3.14.4\", \"nativeMac\": false, \"platformPreconditionSimulated\": true}\n",
+      "stderr": "test_admitted_runtime_bytes_are_reused_after_source_changes (__main__.ReceivedMacEntry.test_admitted_runtime_bytes_are_reused_after_source_changes) ... ok\ntest_all_assets_and_source_identity_remain_exact (__main__.ReceivedMacEntry.test_all_assets_and_source_identity_remain_exact) ... ok\ntest_bad_adjacent_runtime_refuses_before_mkdir_then_corrected_retry_succeeds (__main__.ReceivedMacEntry.test_bad_adjacent_runtime_refuses_before_mkdir_then_corrected_retry_succeeds) ... ok\ntest_changed_archive_is_refused_before_destination_creation (__main__.ReceivedMacEntry.test_changed_archive_is_refused_before_destination_creation) ... ok\ntest_changed_asset_refuses_check_and_server (__main__.ReceivedMacEntry.test_changed_asset_refuses_check_and_server) ... ok\ntest_eof_stops_foreground_server (__main__.ReceivedMacEntry.test_eof_stops_foreground_server) ... ok\ntest_existing_destination_is_never_overwritten (__main__.ReceivedMacEntry.test_existing_destination_is_never_overwritten) ... ok\ntest_launcher_forwards_unexpected_arguments (__main__.ReceivedMacEntry.test_launcher_forwards_unexpected_arguments) ... ok\ntest_non_object_receipt_is_a_controlled_cli_refusal (__main__.ReceivedMacEntry.test_non_object_receipt_is_a_controlled_cli_refusal) ... ok\ntest_occupied_port_is_preserved (__main__.ReceivedMacEntry.test_occupied_port_is_preserved) ... ERROR\ntest_original_custody_and_installed_runtime_roles_are_exact (__main__.ReceivedMacEntry.test_original_custody_and_installed_runtime_roles_are_exact) ... ok\ntest_payload_write_failure_retains_partial_copy_without_launcher (__main__.ReceivedMacEntry.test_payload_write_failure_retains_partial_copy_without_launcher) ... ok\ntest_relocated_unicode_copy_serves_exact_assets_then_enter_stops (__main__.ReceivedMacEntry.test_relocated_unicode_copy_serves_exact_assets_then_enter_stops) ... /usr/lib/python3.14/tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 404: 'Not Found'>\n  _warnings.warn(self.warn_message, ResourceWarning)\nok\ntest_retained_installer_recovers_into_another_new_destination (__main__.ReceivedMacEntry.test_retained_installer_recovers_into_another_new_destination) ... ok\ntest_self_check_refuses_each_changed_runtime_custody_copy (__main__.ReceivedMacEntry.test_self_check_refuses_each_changed_runtime_custody_copy) ... ok\ntest_self_check_refuses_runtime_role_tampering_and_v1_receipt (__main__.ReceivedMacEntry.test_self_check_refuses_runtime_role_tampering_and_v1_receipt) ... ok\ntest_symlinked_asset_refuses_check_and_server (__main__.ReceivedMacEntry.test_symlinked_asset_refuses_check_and_server) ... ok\n\n======================================================================\nERROR: test_occupied_port_is_preserved (__main__.ReceivedMacEntry.test_occupied_port_is_preserved)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/jacob/hamon/receiving/forge-d3745ea0f44f-returnby-v2/safe/tests/received_preview/test_install_macos.py\", line 134, in test_occupied_port_is_preserved\n    owner.bind((\"127.0.0.1\", 8769))\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 98] Address already in use\n\n----------------------------------------------------------------------\nRan 17 tests in 1.302s\n\nFAILED (errors=1)\n"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "returnby-v2-installer-source-manifest-v1",
+  "parent": "1b12282de73e50a8f699c9ed03840a81ddd3d17f",
+  "parentTree": "1cb4dcc9ed716575cd8d996d7d969f7bc89c9e6e",
+  "inheritedRuntime": {
+    "path": "tools/received_preview/serve_returnby.py",
+    "sha256": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+    "gitBlob": "ce0a57ec4f94834b8db3670ccf479e02f279a04d"
+  },
+  "files": {
+    "tools/received_preview/install_macos.py": {
+      "bytes": 12933,
+      "sha256": "a8190f86a0534348e1453aaabc661b1dca5788c64a1ba71fb73942bd0a0173d3",
+      "gitBlob": "a5c42ed32268c381e6b8122dd15b1650f71da648"
+    },
+    "tests/received_preview/test_install_macos.py": {
+      "bytes": 18264,
+      "sha256": "10efc1668db98c38d5315fa6c4dab13b1b9b38b050b22cb64e3ebc42e4d7eaf7",
+      "gitBlob": "b5383520edf134ea7977655d4dbce3f53f304d84"
+    },
+    "tools/received_preview/README.md": {
+      "bytes": 8372,
+      "sha256": "409bba627751441bc2682bc2ce796a96b67dc70e53d678dbcaedcb9f8f978f64",
+      "gitBlob": "54206d38bff73a0904c0e30ad65b02449a81a00a"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/safe-installer-receipt.json": {
+      "bytes": 8912,
+      "sha256": "4e6e35726124bd46678bee7c39c0f1e936222d7fa03be3b4b97371c7c2e65f35",
+      "gitBlob": "6d834d5ee772548ba9d4649986b7ac9a1a166881"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/final-installer-receipt.json": {
+      "bytes": 16446,
+      "sha256": "d70632660c593f4c23b8f87b9ba9c12b38595b7e17805e537e87ad281d056f2c",
+      "gitBlob": "eb01608addc26b115012b51c88a0505576cdb5de"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/draft-installer-receipt.json": {
+      "bytes": 3930,
+      "sha256": "4dfedf0b2b5011164166e21470d763155454b767f4b8777b313f7554a1c1d482",
+      "gitBlob": "f671aabdc20d6933d0d1c34c78c71578d55bc4aa"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/receive_final_installer.py": {
+      "bytes": 3874,
+      "sha256": "f5275e548da14a07fd64e2d7133b128bd705483bf11f3cd763aee9f1ea859e27",
+      "gitBlob": "3a3e3bf44d6b4cf7febd4df819a0a64b79adbfcd"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/receive_safe_installer.py": {
+      "bytes": 2639,
+      "sha256": "26de7f74e32069966e145fc5c6cf458c7415d1917cdeb6d83e3f5d0ba6ce58d2",
+      "gitBlob": "bbfe453ffb444f4e0145db8d88539a65d29810e9"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/receive_draft_installer.py": {
+      "bytes": 2169,
+      "sha256": "2a1cf22c97812e6859d33e88b703ecb5a576def5456e40236a55910e3db57d42",
+      "gitBlob": "6020de4d8e76b5845ef1d65372abbaf7d689961f"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/receive_guide_correction.py": {
+      "bytes": 2248,
+      "sha256": "f4890ef93cb215aa76faeedd803cddef47c574b9239549545d9b27dd92599168",
+      "gitBlob": "5c5cd254de403c7f08c4015f6a885f5ea0d4a0fd"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/final-guide-receipt.json": {
+      "bytes": 2969,
+      "sha256": "4cb933753403c237c2ebfe4e35b54cb34bad49515ce3c08c37a65681f54f300c",
+      "gitBlob": "876eb7a29610bafdcd893584c76e347dd6de5716"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/independent/protocol-draft-review.json": {
+      "bytes": 2544,
+      "sha256": "c6e6c914c8cf347f3b91e7a24e05d70b0de73c320dce7ca07310ddb974989151",
+      "gitBlob": "157d4bb12a67f8a3defdae4c90a5cd04abee0b35"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/independent/final-source-review.json": {
+      "bytes": 6071,
+      "sha256": "deaa49ab10330b3aafdd827d849f64b669c3ab98b26397137b02d548dde9eeaf",
+      "gitBlob": "1f4746e117df34168746acdfd720c3be7251bdd8"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/README.md": {
+      "bytes": 6915,
+      "sha256": "eec23361cc5410ad478dfef09832ce846c5ff9e8af96862721207fd8e24045f6",
+      "gitBlob": "ad48795a3e8d02a2afeadcafd9a7bef5fb57de48"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/draft-input.json": {
+      "bytes": 52951,
+      "sha256": "0b28b1caf0cd415119ed0e3dd3a76c8736752be97ce09b9c9b841d54a759b879",
+      "gitBlob": "84f67567261a4f2ab78704991acc0c230cdfc93a"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/safe-input.json": {
+      "bytes": 45394,
+      "sha256": "7f0566fd75503677599abcd4dcaddd07804ed7178e8b371c11983d4691d63309",
+      "gitBlob": "3ffba4ffe00fbd01cb7c5c4a0814229c9209611e"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/final-input.json": {
+      "bytes": 53673,
+      "sha256": "2fbd39e2da48bc63a0bfb7bb06a0aadde83f4bee79cc1ee2689499ca47c278ae",
+      "gitBlob": "684c235c3d59ce5e8ceb9c35987391a4f2983a13"
+    },
+    "docs/qualification/macos-v2-installer-forge-d3745/native/final-guide-correction.json": {
+      "bytes": 8747,
+      "sha256": "3ba9795f06d7d5e92e6e45f9ec219303f1ef7da72e50fa913ec56e9968ba9898",
+      "gitBlob": "2ca0f0c0be0c405b4e0696d8a5f3c3d6da6844c4"
+    }
+  }
+}
