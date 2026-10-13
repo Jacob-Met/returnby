@@ -1,0 +1,20 @@
+{
+  "format": "returnby-runtime-build-manual-static-review-v1",
+  "status": "manual static approval; no Python syntax check, source staging, build or browser execution",
+  "reviewed_git_blob": "ab3ac85199faa51039e93bf477aaba3404c0e306",
+  "bytes": 19728,
+  "browser_interface_git_blob": "a6830407fe4af938a523fb8df491119d32ff0608",
+  "findings": [
+    "Exact 27/28 source projections derive from immutable INPUT 6dfc8145, 29 decoded Git identities; maintained TypeScript tests are compiler input only.",
+    "Create-only stage stays in the reconciled original Jacob MSI Runtime child; current hostname/user/Python and clean Node environment required.",
+    "Shared dependencies are read only; admitted 36 package metadata checks, 748 regular files/62943799 bytes, and before/copied/source_after equality precede staged acceptance.",
+    "Build invokes direct owned TypeScript --noEmit and Vite build through pinned existing Node; no npm install, Vitest, browser, or source mutation.",
+    "Bounded subprocess timeout preserves inconclusive attribution and does not claim descendant cleanup.",
+    "Source bytes/Git identity/mtime, shared and copied original dependency bytes, and immutable intake manifests gate final acceptance; Vite cache additions restricted to owned .vite-temp.",
+    "Both configured HTML outputs required; browser v3 requires complete BUILD.accepted and manifests_unchanged plus exact INPUT/STAGED pins.",
+    "v2 raw-stream pin loop could escape final receipt on read failure; v3 moves it inside preservation try, recording preservation_exception and accepted false before saving receipt."
+  ],
+  "scope_delta": true,
+  "execution_hold": "Original selected MSI disconnected; earlier mkdir physical outcome unknown. Alternate Veria route is not the admitted Jacob receiver and has insufficient capacity.",
+  "scope_delta_detail": "Full string equality after only declared version-title and raw-stream loop indentation/comment corrections; no Python execution."
+}

@@ -1,0 +1,168 @@
+{
+  "format": "returnby.held-receiving-packet.v1",
+  "status": "HELD; final drafts manually reviewed, never executed",
+  "repository": "Jacob-Met/returnby",
+  "source_parent": "f2ad8039ddef8f783bccf491847d7b95854f92e1",
+  "source_tree": "80a4535a69ca36be41598051945e1dd4b2aba7bd",
+  "source_leaves_preserved": 81,
+  "reservation": "https://github.com/Jacob-Met/returnby/issues/66#issuecomment-6146015582",
+  "files": [
+    {
+      "path": "README.md",
+      "git_blob": "9db5e4de10d7f7904e98b21f796e31a7cccab29a",
+      "bytes": 11514,
+      "mode": "100644"
+    },
+    {
+      "path": "CONTRACT.json",
+      "git_blob": "837781b16a669c0eeb66b00e8901a2877c8696f4",
+      "bytes": 5297,
+      "mode": "100644"
+    },
+    {
+      "path": "INPUT.json",
+      "git_blob": "6dfc8145a8b2f442424f036a733d1938b1977462",
+      "bytes": 526645,
+      "mode": "100644"
+    },
+    {
+      "path": "prepare_build.py",
+      "git_blob": "ab3ac85199faa51039e93bf477aaba3404c0e306",
+      "bytes": 19728,
+      "mode": "100644"
+    },
+    {
+      "path": "receive_browser.py",
+      "git_blob": "a6830407fe4af938a523fb8df491119d32ff0608",
+      "bytes": 24059,
+      "mode": "100644"
+    },
+    {
+      "path": "transport-uncertainty.json",
+      "git_blob": "4cf9d08dad1b13d5414a83ac2e3a25275bd649fa",
+      "bytes": 5868,
+      "mode": "100644"
+    },
+    {
+      "path": "transport-offline.json",
+      "git_blob": "a2394b86988cb309f37900fe2964fc89f5e1c0b7",
+      "bytes": 1377,
+      "mode": "100644"
+    },
+    {
+      "path": "alternate-route.json",
+      "git_blob": "bc8209f5f928a45861c480a844e961b16a0c8ee6",
+      "bytes": 5883,
+      "mode": "100644"
+    },
+    {
+      "path": "native-preflight.json",
+      "git_blob": "d56991fe21c83a4ad9655f77b5d304196d3402d9",
+      "bytes": 26847,
+      "mode": "100644"
+    },
+    {
+      "path": "reviews/source.json",
+      "git_blob": "c278833d3e3b0b17f0bf77c7f57a096526300c21",
+      "bytes": 2358,
+      "mode": "100644"
+    },
+    {
+      "path": "reviews/runtime.json",
+      "git_blob": "a26506236f2b6543ac7145075673395457fd28ac",
+      "bytes": 1985,
+      "mode": "100644"
+    },
+    {
+      "path": "reviews/delivery.json",
+      "git_blob": "51c6113177e71c737a085fd81228166d0bebfae2",
+      "bytes": 12327,
+      "mode": "100644"
+    },
+    {
+      "path": "history/browser-v1.py",
+      "git_blob": "f29e3e24dce7e0dcd1c4ca4d3bb7d73bfe04c4fa",
+      "bytes": 13308,
+      "mode": "100644"
+    },
+    {
+      "path": "history/browser-v2.py",
+      "git_blob": "35c4ddf803b123550001e98bb4647f3fc22c5adb",
+      "bytes": 23626,
+      "mode": "100644"
+    },
+    {
+      "path": "history/build-v1.py",
+      "git_blob": "1a8aba434d6b811cfe2c69522eeee5c1fa8f1518",
+      "bytes": 19268,
+      "mode": "100644"
+    },
+    {
+      "path": "history/build-v2.py",
+      "git_blob": "a54b27423eaddbf556a75090b28e218828d230b6",
+      "bytes": 19693,
+      "mode": "100644"
+    },
+    {
+      "path": "history/delivery-review-v1.json",
+      "git_blob": "2aa994bc960f44eaff6c6d06c911d88bac8b7242",
+      "bytes": 11046,
+      "mode": "100644"
+    },
+    {
+      "path": "history/source-contract-initial.json",
+      "git_blob": "7afd0fdc88d3d2b03264cd652e2ca5285db0565c",
+      "bytes": 1736,
+      "mode": "100644"
+    },
+    {
+      "path": "history/source-contract-corrected.json",
+      "git_blob": "a3f826c7e93b3f1a7488c2c9393db73214cc9712",
+      "bytes": 2131,
+      "mode": "100644"
+    },
+    {
+      "path": "review-only-native.json",
+      "git_blob": "9fec126350dc338b0582ae337869d7660d0bea1b",
+      "bytes": 824186,
+      "mode": "100644"
+    },
+    {
+      "path": "thinkpad-path-observation.json",
+      "git_blob": "f8109fdea5c4e10cfaff87b1ee9d0352f8119c65",
+      "bytes": 4420,
+      "mode": "100644"
+    },
+    {
+      "path": "history/native-review-transfer-rejected.json",
+      "git_blob": "45fed59672b81e97c881206796a8ed0a8ff15f5f",
+      "bytes": 824186,
+      "mode": "100644"
+    },
+    {
+      "path": "history/native-transfer-diagnosis.json",
+      "git_blob": "994a72dcb6c3a228c32c5bbe2b18fa0baaf0f7da",
+      "bytes": 1420,
+      "mode": "100644"
+    }
+  ],
+  "manifest_scope": "Lists the other twenty-three packet files. Every member is ASCII text; INPUT and native-review envelopes carry Base64 bodies. Git blobs identify exact bytes. Historical rejected transfer is explicitly excluded from accepted native evidence.",
+  "qualification": {
+    "manual_static_review": true,
+    "historical_native_preflight": true,
+    "linux_python_syntax": {
+      "python": "3.14.4",
+      "exact_final_scripts_compiled_without_execution": 2,
+      "source_bodies_hash_verified": 29,
+      "data_syntax_checks": "52/52",
+      "native_packet": "9fec126350dc338b0582ae337869d7660d0bea1b"
+    },
+    "windows_driver_execution": false,
+    "source_staging": false,
+    "dependency_copy": false,
+    "direct_builds": false,
+    "browser_course": false,
+    "installed_adoption": false
+  },
+  "pending": "Original Jacob MSI create-only scratch request has unknown physical directory/process outcome. The listed alternate MSI route is not the admitted environment. Same-filesystem ThinkPad read currently finds the optional contract path absent; this is not historical never-written proof. Recover/reconcile the original MSI identity before Windows receiving."
+}

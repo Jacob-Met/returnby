@@ -1,0 +1,20 @@
+{
+  "format": "returnby-transport-addendum-v1",
+  "observed_by": "2026-10-13 13:59:52 UTC",
+  "scope": "read-only ping of original Jacob MSI, no command retry",
+  "prior_uncertainty_git_blob": "4cf9d08dad1b13d5414a83ac2e3a25275bd649fa",
+  "deviceId": "edc358ed-5ad6-4036-b7aa-8667bf0e14e0",
+  "tool_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "This Desktop Commander device has no live connection and cannot receive commands right now. Restart the terminal running it, then try again. [device: MSI (edc358ed-5ad6-4036-b7aa-8667bf0e14e0)]\nOther online devices:\n- MSI (id: 9ea77fe9-bb87-46e0-a5a8-8b3e25f6ff7e, last seen 58s ago)\n- hamon-thinkpad (id: d55b2499-5e82-4805-819a-d0d7ddea1efe, last seen 2m ago)\n- hamon-thinkpad (id: cadafaf3-4d0b-4c4f-a0d3-34a95d2cec90, last seen 3m ago)\n- Mac.lan (id: 1ba59ba0-d800-4a16-8da6-963afed2c12a, last seen 4m ago)\n- Mac.lan (id: 0e3d582f-e25b-44b2-8418-9639fc4e4e33, last seen 4m ago)\n\nManage devices: https://mcp.desktopcommander.app/\nYou can view, add, or revoke devices there."
+      }
+    ],
+    "structuredContent": {
+      "error_code": "INVALID_ARGUMENT"
+    },
+    "isError": true
+  },
+  "conclusion": "Selected Jacob MSI has no live connection now. Earlier scratch-directory creation physical outcome remains unknown. No source staging, dependency copy, build, or browser run began."
+}

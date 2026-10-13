@@ -1,0 +1,52 @@
+{
+  "schema": "returnby.browser-source-contract-review.v1",
+  "reviewer": "Source qtw10pxc",
+  "source": "f2ad8039ddef8f783bccf491847d7b95854f92e1",
+  "base": "7a271cfbc27e6c79a889b90920a700fdbf638e22",
+  "checks": [
+    {
+      "check": "exact single original fallback span",
+      "ok": true
+    },
+    {
+      "check": "candidate is only fallback replacement",
+      "ok": true
+    },
+    {
+      "check": "From-priority prefix unchanged",
+      "ok": true
+    },
+    {
+      "check": "nonmerchant parser suffix unchanged",
+      "ok": true
+    },
+    {
+      "check": "local static stylesheet has no imports or URLs",
+      "ok": true
+    },
+    {
+      "check": "UI uses actual exported parser and lookup",
+      "ok": true
+    },
+    {
+      "check": "saved record key remains local returnby.v1",
+      "ok": true
+    },
+    {
+      "check": "CI excludes issue/comment and non-main branch events",
+      "ok": true
+    },
+    {
+      "check": "Pages only main push",
+      "ok": true
+    }
+  ],
+  "scope": "Static byte/contract review performed in tool orchestration JavaScript; no native product execution, source edit, build or browser claim.",
+  "findings": [
+    "Unknown no-header merchant stays blank/highlighted and receives existing30-daydefault; manually entered merchant is user confirmation.",
+    "Source computes preview policy once and keeps selected days/source on submit. Editing-merchant recalculation belongs to held issue7.",
+    "Accepted fields alone are persisted in localStorage; tests must distinguish data from original pasted fictional body/sender.",
+    "Production builder has both main and checklist entries; browser receiving of main flow does not qualify unvisited checklist/calendar paths."
+  ],
+  "receiverCorrection": "The initial pure-JavaScript comparison passed replacement source as a String.replace replacement string; its literal $& token was expanded by JavaScript and yielded a false comparison. The corrected comparison uses a replacement callback, preserving candidate bytes literally. No source file or product was run or changed. The initial8/9 result is retained separately."
+}

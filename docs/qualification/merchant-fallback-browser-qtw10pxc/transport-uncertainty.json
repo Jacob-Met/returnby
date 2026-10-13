@@ -1,0 +1,120 @@
+{
+  "format": "returnby-receiving-transport-uncertainty-v1",
+  "status": "No product source copy, dependency copy, build or browser execution has occurred.",
+  "reservation": "https://github.com/Jacob-Met/returnby/issues/66#issuecomment-6146015582",
+  "drafts": {
+    "contract": {
+      "git_blob": "837781b16a669c0eeb66b00e8901a2877c8696f4",
+      "bytes": 5297,
+      "readback": "full controller string exact"
+    },
+    "browser_receiver": {
+      "git_blob": "f29e3e24dce7e0dcd1c4ca4d3bb7d73bfe04c4fa",
+      "bytes": 13308,
+      "status": "UNEXECUTED DRAFT; no staging/build driver yet; peer static review pending",
+      "readback": "full controller string exact"
+    }
+  },
+  "scratch_creation": {
+    "device": "edc358ed-5ad6-4036-b7aa-8667bf0e14e0",
+    "operation": "remote_desktop_commander.start_process",
+    "command": "@'\nimport json,tempfile,datetime\nfrom pathlib import Path\nbase=Path(r'C:\\Users\\jacob\\hamon-team-20261013-fongo8ab\\runtime')\nroot=Path(tempfile.mkdtemp(prefix='returnby-merchant-browser-',dir=base))\nprint(json.dumps({'root':str(root),'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'ReturnBy issue66 comment6146015582 isolated receiving preparation; no product execution'}))\n\n'@ | & 'C:\\Python314\\python.exe' -",
+    "shell": "powershell.exe expected from immediately preceding completed operations",
+    "purpose": "create one uniquely named empty Runtime scratch directory",
+    "returned_pid": null,
+    "exact_submission_time_utc": null,
+    "time_bounds": {
+      "after": "2026-10-13T12:33:15.810Z latest captured successful device ping",
+      "before": "2026-10-13T13:00:23.415112Z subsequent ping-call creation"
+    },
+    "outcome": "Transport timed out without PID or native output. Directory creation and process terminal state remain UNKNOWN. Original mutation has not been retried.",
+    "tool_result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "tool call error: tool call failed for `codex_apps/remote_desktop_commander.start_process`\n\nCaused by:\n    Mcp error: -32603: MCP request timed out"
+        }
+      ],
+      "isError": true
+    }
+  },
+  "msi_ping": {
+    "call_id": "699f5ce6-d688-4aa6-b2cc-d4865df1b697",
+    "final": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Remote tool call 699f5ce6-d688-4aa6-b2cc-d4865df1b697 (ping) failed: Timeout - no response from device"
+        }
+      ],
+      "structuredContent": {
+        "call_id": "699f5ce6-d688-4aa6-b2cc-d4865df1b697",
+        "tool_name": "ping",
+        "status": "failed",
+        "device_id": "edc358ed-5ad6-4036-b7aa-8667bf0e14e0",
+        "created_at": "2026-10-13T13:00:23.415112+00:00",
+        "completed_at": "2026-10-13T13:02:23.435135+00:00",
+        "retry_original": false,
+        "error": "Timeout - no response from device",
+        "error_code": "INVALID_ARGUMENT"
+      },
+      "isError": true
+    }
+  },
+  "msi_read_only_reconciliation": {
+    "call_id": "18612ac0-41b2-407d-83a3-1bd713e5d0fc",
+    "path": "C:\\Users\\jacob\\hamon-team-20261013-fongo8ab\\runtime",
+    "operation": "list_directory depth1; no shell/mutation",
+    "final": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Remote tool call 18612ac0-41b2-407d-83a3-1bd713e5d0fc (list_directory) failed: Timeout - no response from device"
+        }
+      ],
+      "structuredContent": {
+        "call_id": "18612ac0-41b2-407d-83a3-1bd713e5d0fc",
+        "tool_name": "list_directory",
+        "status": "failed",
+        "device_id": "edc358ed-5ad6-4036-b7aa-8667bf0e14e0",
+        "created_at": "2026-10-13T13:05:26.684007+00:00",
+        "completed_at": "2026-10-13T13:07:27.396505+00:00",
+        "retry_original": false,
+        "error": "Timeout - no response from device",
+        "error_code": "INVALID_ARGUMENT"
+      },
+      "isError": true
+    },
+    "conclusion": "Transport timeout supplied no directory contents; original creation remains unknown."
+  },
+  "thinkpad_contract_text_write": {
+    "device": "d55b2499-5e82-4805-819a-d0d7ddea1efe",
+    "call_id": "d55dd0d2-9025-44c3-9dbd-6c4fb553eac3",
+    "path": "/home/jacob/.commander-tp-2/hamon-runtime-spire-posix-fongo8ab-70xm5rdr/returnby_browser_contract_20261013.json",
+    "content_git_blob": "837781b16a669c0eeb66b00e8901a2877c8696f4",
+    "purpose": "Only a draft text file in the existing Runtime directory, not an alternative product environment",
+    "final": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Remote tool call d55dd0d2-9025-44c3-9dbd-6c4fb553eac3 (write_file) failed: Timeout - no response from device"
+        }
+      ],
+      "structuredContent": {
+        "call_id": "d55dd0d2-9025-44c3-9dbd-6c4fb553eac3",
+        "tool_name": "write_file",
+        "status": "failed",
+        "device_id": "d55b2499-5e82-4805-819a-d0d7ddea1efe",
+        "created_at": "2026-10-13T13:18:28.790484+00:00",
+        "completed_at": "2026-10-13T13:20:28.853036+00:00",
+        "retry_original": false,
+        "error": "Timeout - no response from device",
+        "error_code": "INVALID_ARGUMENT"
+      },
+      "isError": true
+    },
+    "conclusion": "Terminal tool status failed due to no-response timeout; actual remote file-write outcome UNKNOWN. Not retried. The subsequent receiver write was never issued."
+  },
+  "preservation": "Existing sources, installed applications, other workers' dependencies and profiles were not edited; no owned product/server/browser process was launched. No process success, shutdown, file absence or native result is inferred from missing responses.",
+  "next_required": "Read-only reconciliation of the uncertain Runtime directory and optional ThinkPad draft path on the exact recovered identities before further native mutations; verify frozen bytes and new receiver review before execution."
+}

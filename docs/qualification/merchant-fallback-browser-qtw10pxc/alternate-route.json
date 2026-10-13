@@ -1,0 +1,68 @@
+{
+  "format": "returnby-runtime-alternate-route-reconciliation-v1",
+  "scope": "Read-only identity/path inspection. No application source execution, file creation, installation, configuration or access change.",
+  "prior_uncertainty_git_blob": "4cf9d08dad1b13d5414a83ac2e3a25275bd649fa",
+  "selected_route_disconnect_git_blob": "a2394b86988cb309f37900fe2964fc89f5e1c0b7",
+  "route_id": "9ea77fe9-bb87-46e0-a5a8-8b3e25f6ff7e",
+  "ping": {
+    "content": [
+      {
+        "type": "text",
+        "text": "pong 2026-10-13T14:10:31.242Z"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: MSI (9ea77fe9-bb87-46e0-a5a8-8b3e25f6ff7e)]"
+      }
+    ],
+    "isError": false
+  },
+  "config_observed_subset": {
+    "source": "get_config structuredContent.config",
+    "defaultShell": "powershell.exe",
+    "platform": "win32",
+    "node_version": "24.19.0",
+    "node_path": "C:\\Program Files\\nodejs\\node.exe",
+    "python_version": "3.11.9",
+    "note": "Configuration was inspected; no configuration write was made."
+  },
+  "submitted_command": "@'\nimport json,socket,getpass,sys,shutil\nfrom pathlib import Path\nbase=Path(r'C:\\Users\\jacob\\hamon-team-20261013-fongo8ab\\runtime')\npaths=[base,Path(r'C:\\Users\\jacob'),Path(r'C:\\Python314\\python.exe'),Path(r'C:\\Users\\jacob\\hamon-returnby-completion-checklist-3dcb83a1\\node_modules')]\nfacts={'scope':'read-only existing-route identity and uncertain scratch reconciliation','hostname':socket.gethostname(),'user':getpass.getuser(),'python':sys.version,'executable':sys.executable,'free_c':shutil.disk_usage('C:\\\\').free,'paths':[],'matching_scratch':[]}\nfor p in paths:\n try: facts['paths'].append({'path':str(p),'exists':p.exists(),'is_dir':p.is_dir(),'is_file':p.is_file()})\n except Exception as e: facts['paths'].append({'path':str(p),'error':repr(e)})\nif base.is_dir():\n for p in sorted(base.glob('returnby-*')):\n  try: facts['matching_scratch'].append({'path':str(p),'is_dir':p.is_dir(),'ctime_ns':p.stat().st_ctime_ns,'mtime_ns':p.stat().st_mtime_ns,'children':[x.name for x in p.iterdir()] if p.is_dir() else None})\n  except Exception as e: facts['matching_scratch'].append({'path':str(p),'error':repr(e)})\nprint(json.dumps(facts,indent=2))\n'@ | python -I -B -",
+  "start_tool_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Process started with PID 13864 (shell: powershell.exe)\nInitial output:\n{\r\n  \"scope\": \"read-only existing-route identity and uncertain scratch reconciliation\",\r\n  \"hostname\": \"MSI\",\r\n  \"user\": \"Veria\",\r\n  \"python\": \"3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]\",\r\n  \"executable\": \"C:\\\\Users\\\\Veria\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python311\\\\python.exe\",\r\n  \"free_c\": 19288064,\r\n  \"paths\": [\r\n    {\r\n      \"path\": \"C:\\\\Users\\\\jacob\\\\hamon-team-20261013-fongo8ab\\\\runtime\",\r\n      \"exists\": false,\r\n      \"is_dir\": false,\r\n      \"is_file\": false\r\n    },\r\n    {\r\n      \"path\": \"C:\\\\Users\\\\jacob\",\r\n      \"exists\": true,\r\n      \"is_dir\": true,\r\n      \"is_file\": false\r\n    },\r\n    {\r\n      \"path\": \"C:\\\\Python314\\\\python.exe\",\r\n      \"exists\": false,\r\n      \"is_dir\": false,\r\n      \"is_file\": false\r\n    },\r\n    {\r\n      \"path\": \"C:\\\\Users\\\\jacob\\\\hamon-returnby-completion-checklist-3dcb83a1\\\\node_modules\",\r\n      \"exists\": false,\r\n      \"is_dir\": false,\r\n      \"is_file\": false\r\n    }\r\n  ],\r\n  \"matching_scratch\": []\r\n}\r\n"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: MSI (9ea77fe9-bb87-46e0-a5a8-8b3e25f6ff7e)]"
+      }
+    ],
+    "isError": false
+  },
+  "completed_tool_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[Reading 36 new lines (total: 36 lines)]\n\n{\r\n  \"scope\": \"read-only existing-route identity and uncertain scratch reconciliation\",\r\n  \"hostname\": \"MSI\",\r\n  \"user\": \"Veria\",\r\n  \"python\": \"3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]\",\r\n  \"executable\": \"C:\\\\Users\\\\Veria\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python311\\\\python.exe\",\r\n  \"free_c\": 19288064,\r\n  \"paths\": [\r\n    {\r\n      \"path\": \"C:\\\\Users\\\\jacob\\\\hamon-team-20261013-fongo8ab\\\\runtime\",\r\n      \"exists\": false,\r\n      \"is_dir\": false,\r\n      \"is_file\": false\r\n    },\r\n    {\r\n      \"path\": \"C:\\\\Users\\\\jacob\",\r\n      \"exists\": true,\r\n      \"is_dir\": true,\r\n      \"is_file\": false\r\n    },\r\n    {\r\n      \"path\": \"C:\\\\Python314\\\\python.exe\",\r\n      \"exists\": false,\r\n      \"is_dir\": false,\r\n      \"is_file\": false\r\n    },\r\n    {\r\n      \"path\": \"C:\\\\Users\\\\jacob\\\\hamon-returnby-completion-checklist-3dcb83a1\\\\node_modules\",\r\n      \"exists\": false,\r\n      \"is_dir\": false,\r\n      \"is_file\": false\r\n    }\r\n  ],\r\n  \"matching_scratch\": []\r\n}\r\n\n\u2705 Process completed with exit code 0 (runtime: 0.81s)"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: MSI (9ea77fe9-bb87-46e0-a5a8-8b3e25f6ff7e)]"
+      }
+    ],
+    "isError": false
+  },
+  "observed_summary": {
+    "hostname": "MSI",
+    "user": "Veria",
+    "python": "3.11.9",
+    "free_c_bytes": 19288064,
+    "jacob_runtime_parent_present": false,
+    "admitted_dependency_directory_present": false,
+    "python314_present": false,
+    "pid": 13864,
+    "exit_code": 0
+  },
+  "conclusion": "This route did not expose the selected Jacob Runtime directory or toolchain and has insufficient capacity. It was not admitted as the same receiving environment. No inference resolves whether the earlier mkdir happened on selected route edc358ed; that outcome remains unknown."
+}

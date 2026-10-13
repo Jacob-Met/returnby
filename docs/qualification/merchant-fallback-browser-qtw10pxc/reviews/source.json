@@ -1,0 +1,36 @@
+{
+  "format": "returnby.source.manual-receiver-review.v1",
+  "status": "ACCEPTED FOR HELD PREPARATION; UNEXECUTED",
+  "reviewer": "Source qtw10pxc",
+  "final_build": {
+    "git_blob": "ab3ac85199faa51039e93bf477aaba3404c0e306",
+    "bytes": 19728
+  },
+  "final_browser": {
+    "git_blob": "a6830407fe4af938a523fb8df491119d32ff0608",
+    "bytes": 24059
+  },
+  "input": {
+    "git_blob": "6dfc8145a8b2f442424f036a733d1938b1977462",
+    "original_files": 27,
+    "candidate_files": 28,
+    "unique_bodies": 29
+  },
+  "scope": "Manual full-source review and controller string comparisons only. No Python parsing, native syntax check, staging, build, browser course or lifecycle execution.",
+  "findings": [
+    "Browser v1 early server construction lacked full cleanup coverage and cleanup exceptions did not all gate acceptance; retained as superseded/unexecuted.",
+    "Browser v2 preserves functional cases and corrects lifecycle ownership; nullable resources and required cleanup gates checked manually.",
+    "Browser v3 requires complete accepted STAGED/BUILD records, manifests_unchanged, exact input/stage pin linkage, decoded immutable source bodies, actual source bytes/mtime, dependency packet pin/equality and actual dist identity.",
+    "Source building pins immutable input/contract, exact 27/28 projections, existing 36-package closure and create-only owned copies. Direct tsc/Vite only; no test or install command.",
+    "Final build v3 records raw command streams even on timeout and contains stream-pin exceptions in the preservation failure boundary before saving rejected BUILD.",
+    "Final source/dependency/manifests and both configured HTML outputs gate accepted build. The browser honors accepted rather than selecting only successful subfields.",
+    "Timeout attribution is limited to direct Node-child cleanup. Original semantic failures are distinct from receiver_complete; the same three fictional cases remain frozen.",
+    "No actual readiness of source copy, dependency hashes, builds, browser automation or cleanup is inferred from static review."
+  ],
+  "correction_history": {
+    "browser_v1": "f29e3e24dce7e0dcd1c4ca4d3bb7d73bfe04c4fa",
+    "browser_v2": "35c4ddf803b123550001e98bb4647f3fc22c5adb",
+    "build_v1": "1a8aba434d6b811cfe2c69522eeee5c1fa8f1518",
+    "build_v2": "a54b27423eaddbf556a75090b28e218828d230b6"
+  }
+}

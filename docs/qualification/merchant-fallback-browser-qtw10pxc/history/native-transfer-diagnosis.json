@@ -1,0 +1,31 @@
+{
+  "format": "returnby-native-evidence-transfer-diagnosis-v1",
+  "scope": "Controller transfer identity refusal, not a native syntax/product failure; no native rerun",
+  "native_expected": {
+    "git_blob": "9fec126350dc338b0582ae337869d7660d0bea1b",
+    "bytes": 824186,
+    "sha256": "69540b4928f7f1f40574f890dacdbca292715ce409345f399dd617ef319ec55d"
+  },
+  "first_transfer": {
+    "git_blob": "45fed59672b81e97c881206796a8ed0a8ff15f5f",
+    "accepted_as_native_evidence": false,
+    "cause": "Controller parsed the native JSON and JSON.stringify reserialized mtime_ns integers above JavaScript's exact integer range. Five metadata timestamps rounded; Base64 native members were unchanged. Git identity comparison refused this transfer."
+  },
+  "native_mtime_ns_as_decimal_strings": [
+    "1791902270482794644",
+    "1791902369547344963",
+    "1791902425367083951",
+    "1791902425367083951",
+    "1791902425319084176"
+  ],
+  "first_transfer_mtime_ns_as_decimal_strings": [
+    "1791902270482794800",
+    "1791902369547345000",
+    "1791902425367084000",
+    "1791902425367084000",
+    "1791902425319084300"
+  ],
+  "correction": "Preserved fetched native text directly, restoring only the read tool's omitted terminal newline. No JSON numeric parse/serialization on the bytes sent for publication.",
+  "corrected_git_blob": "9fec126350dc338b0582ae337869d7660d0bea1b",
+  "corrected_full_string_readback_exact": true
+}

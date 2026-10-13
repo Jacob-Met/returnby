@@ -1,0 +1,157 @@
+{
+  "format": "returnby-issue66-independent-static-review-v2",
+  "reviewer": "Delivery",
+  "reviewed_at_utc": "2026-10-13",
+  "status": "ACCEPTED FOR A HELD UNEXECUTED RECEIVING HANDOFF",
+  "method": "Manual source and schema review plus controller-only exact string/path/mode/blob comparisons. No Python syntax execution or product execution.",
+  "repository": "Jacob-Met/returnby",
+  "reservation": "https://github.com/Jacob-Met/returnby/issues/66#issuecomment-6146015582",
+  "pins": {
+    "contract": "837781b16a669c0eeb66b00e8901a2877c8696f4",
+    "input": "6dfc8145a8b2f442424f036a733d1938b1977462",
+    "build_current": "ab3ac85199faa51039e93bf477aaba3404c0e306",
+    "browser_current": "a6830407fe4af938a523fb8df491119d32ff0608",
+    "build_historical": "1a8aba434d6b811cfe2c69522eeee5c1fa8f1518",
+    "browser_historical_v1": "f29e3e24dce7e0dcd1c4ca4d3bb7d73bfe04c4fa",
+    "browser_historical_v2": "35c4ddf803b123550001e98bb4647f3fc22c5adb",
+    "historical_transport_uncertainty": "4cf9d08dad1b13d5414a83ac2e3a25275bd649fa",
+    "build_historical_v2": "a54b27423eaddbf556a75090b28e218828d230b6"
+  },
+  "source_projection_review": {
+    "original": {
+      "commit": "7a271cfbc27e6c79a889b90920a700fdbf638e22",
+      "tree": "c53ca326af314176e1367b6585e876ed3e560a21",
+      "truncated": false,
+      "exact_projection": true,
+      "files": 27
+    },
+    "candidate": {
+      "commit": "f2ad8039ddef8f783bccf491847d7b95854f92e1",
+      "tree": "80a4535a69ca36be41598051945e1dd4b2aba7bd",
+      "truncated": false,
+      "exact_projection": true,
+      "files": 28
+    },
+    "observation": "Each immutable input path, mode and blob matches its own complete nontruncated remote tree. These are build projections, not complete repository exports. Five maintained test modules are included for typechecking; no test course is authorized by this artifact. Existing public screenshots are historical source assets, not new receiving outputs.",
+    "body_boundary": "No native source files have been staged by this review. The future staging driver decodes and verifies all 29 input body Git identities before writing."
+  },
+  "reviewed_build_contract": [
+    "Restricts intake to Windows, hostname MSI, user jacob, Python 3.14.3 and reconciled direct returnby-* child of the reserved Runtime root; later invokes explicit Node executable and requires v24.14.0.",
+    "Rejects redirected ancestors/reparse files, noncanonical relative paths, unexpected Node injection environment and existing stage/build targets; uses create-only file writes.",
+    "Requires exact immutable INPUT and CONTRACT Git identities; validates all 29 body identities, 27 original and 28 candidate file projections, source paths and modes.",
+    "Checks all 36 Windows-x64 applicable lock-package version/resolved/integrity metadata records. It does not independently re-verify published npm tarball integrity.",
+    "Copies 748 regular dependency files totaling 62943799 bytes into the owned parent node_modules; before/copied/shared-after inventories must be identical. No shared dependency writes or package installation.",
+    "Stages exact source bytes and records modification times; both direct builds preserve source and immutable manifest identities.",
+    "Runs only explicit Node tsc --noEmit then Vite build, with capacity gate and bounded timeouts; both configured HTML outputs are required. No npm scripts, standalone parser/Vitest course or checklist UI course.",
+    "Owned dependency originals must remain unchanged; only .vite-temp additions are admitted. Shared dependency inventory is rechecked after each build.",
+    "Failure records retain exceptions and available command streams. The current raw-stream pin sweep is inside preservation exception handling, so a pin failure rejects acceptance and preserves the held BUILD receipt. Timeout attribution is limited to the direct Node child being killed and reaped; descendant termination is unestablished and requires a hold.",
+    "Preflight/create-only failures deliberately use tool stderr rather than overwrite old JSON receipts. No failure is silently converted to accepted."
+  ],
+  "reviewed_browser_contract": [
+    "Requires exact INPUT/CONTRACT, accepted complete STAGED-SOURCE and BUILD records, unchanged manifests, and BUILD input/staging/dependency manifest identities before launching.",
+    "Requires two zero-exit build commands and accepted dependency preservation, rechecks exact staged source bodies/Git identities/mtime, and compares actual dist assets to the bound accepted build.",
+    "Same three fictional original/candidate fixtures and corrected semantic expectations; manual merchant entry does not imply policy recalculation or parser extraction.",
+    "Real proposed UI Save, approved localStorage key whitelist and values, paste exclusion, reload equality, card deadlines, and actual embedded-case ICS download with independent Python date arithmetic.",
+    "Own ephemeral loopback server, new browser per source and new context per fixture. Page/context request routing logs and blocks foreign origins; this is not an OS-wide Chrome network audit.",
+    "All live resource setup is covered by one try/finally with nullable resources. Constructed-only servers are closed without shutdown; shutdown requires a started serving thread.",
+    "Explicit context, browser, Playwright, server and handle cleanup gates acceptance. Retained own browser process handle exit, server-thread stop and listener closure are required.",
+    "Postflight source, build-asset and binding-manifest checks gate acceptance. Failed setup, cleanup or postflight prevents receiver_complete/product_pass.",
+    "Original expected semantic failures intentionally produce product_pass false/exit 1. A future caller must inspect the complete receipt and exact known failures, preserving passing controls, before proceeding to candidate; do not blindly chain browser commands with &&."
+  ],
+  "correction_history": [
+    {
+      "reviewer": "Delivery",
+      "type": "manual static review of unexecuted draft",
+      "driver_blob": "f29e3e24dce7e0dcd1c4ca4d3bb7d73bfe04c4fa",
+      "contract_blob": "837781b16a669c0eeb66b00e8901a2877c8696f4",
+      "status": "HOLD FOR RECEIVER CORRECTIONS",
+      "no_native_execution": true,
+      "findings": [
+        {
+          "kind": "blocking",
+          "id": "setup_cleanup_coverage",
+          "evidence": "server ThreadingHTTPServer construction, thread.start, assets inventory and kernel32 setup all occur before the outer try/finally.",
+          "impact": "An inventory/kernel setup exception after server startup can bypass cleanup and final receipt.",
+          "required": "Cover resource setup with outer try/finally and nullable server/thread/kernel/browser state."
+        },
+        {
+          "kind": "blocking",
+          "id": "cleanup_acceptance_gate",
+          "evidence": "finally captures exceptions for browser_close/playwright_stop/server_shutdown/server_close, but product_pass only checks receiver_error/failed/completed_cases; these operation errors need not produce failed checks.",
+          "impact": "An automation cleanup failure can coexist with a reported product_pass.",
+          "required": "Gate overall acceptance on required cleanup completion as well as process handle/thread/listener checks."
+        },
+        {
+          "kind": "caller_prerequisite",
+          "id": "source_build_binding",
+          "evidence": "Browser driver sets receipt source label from CONTRACT and hashes DIST before/after; it does not itself compare source bytes or asset hashes to an executed build manifest.",
+          "required": "A future reviewed caller must verify source/dependency/build identities before launching this browser driver; keep complete execution approval pending caller or add explicit manifest gate."
+        }
+      ],
+      "accepted_semantics": [
+        "Three fictional fixtures and same corrected oracle for original/candidate.",
+        "Explicit merchant entry does not imply policy recalculation or parser extraction.",
+        "Actual UI save/reload and approved localStorage whitelist.",
+        "Actual ICS download checked using independent Python date arithmetic and saved UUID/title.",
+        "Fresh browser/context loopback-only observed page request handling and narrowed network attribution.",
+        "No install/full parser/Vitest/checklist-flow or installed acceptance claim."
+      ],
+      "limitations": "No syntax execution, native build, browser run, artifact output or lifecycle success observed. Transport uncertainty remains with Runtime."
+    },
+    {
+      "driver": "35c4ddf803b123550001e98bb4647f3fc22c5adb",
+      "status": "HISTORICAL HOLD",
+      "finding": "Lifecycle corrections were acceptable, but browser did not require complete BUILD.accepted. Both command exits could be zero while the builder rejected missing trip-checklist.html, and the browser's index.html-only check could still launch.",
+      "resolution": "Current v3 requires stage/build accepted plus manifest preservation and exact build input/staging pins."
+    },
+    {
+      "driver": "1a8aba434d6b811cfe2c69522eeee5c1fa8f1518",
+      "status": "HISTORICAL SUPERSEDED",
+      "finding": "Timeout raw streams existed but normal pin statements could be skipped.",
+      "resolution": "Current build v2 pins retained streams in finally without changing acceptance or direct-child-only timeout attribution."
+    },
+    {
+      "driver": "a54b27423eaddbf556a75090b28e218828d230b6",
+      "status": "HISTORICAL SUPERSEDED",
+      "finding": "Runtime caught that an unreadable raw stream could raise while the new finally sweep was outside the preservation try, preventing BUILD receipt saving.",
+      "resolution": "Build v3 moves the same sweep into the preservation try. A pin exception now records preservation_exception, rejects accepted, and proceeds to the held BUILD receipt. Only title/comment/indentation span changed."
+    }
+  ],
+  "exact_delta_comparisons": {
+    "build": {
+      "original_blob": "1a8aba434d6b811cfe2c69522eeee5c1fa8f1518",
+      "candidate_blob": "a54b27423eaddbf556a75090b28e218828d230b6",
+      "title_and_raw_stream_pin_addition_only": true,
+      "addition_occurrences": 1,
+      "native_execution": false
+    },
+    "browser": {
+      "old_blob": "35c4ddf803b123550001e98bb4647f3fc22c5adb",
+      "new_blob": "a6830407fe4af938a523fb8df491119d32ff0608",
+      "only_declared_gate_and_version_delta": true,
+      "gate_occurrences": 1,
+      "native_execution": false
+    },
+    "browser_fixture_and_assertion_section_v2_to_v3_unchanged": true,
+    "build_v3": {
+      "old_blob": "a54b27423eaddbf556a75090b28e218828d230b6",
+      "new_blob": "ab3ac85199faa51039e93bf477aaba3404c0e306",
+      "only_title_comment_and_existing_sweep_into_preservation_try": true,
+      "sweep_occurrences": 1,
+      "native_execution": false,
+      "comparison_note": "Initial controller comparison used the prior comment text and did not match; the exact v3 comment/indentation span above restores v2. No Python executed."
+    }
+  },
+  "execution_boundary": {
+    "native_source_or_dependency_staging": false,
+    "syntax_or_test_execution": false,
+    "native_build": false,
+    "browser_or_calendar_output": false,
+    "actual_lifecycle_success": false,
+    "installed_or_default_adoption": false,
+    "route_state": "Runtime reports original MSI offline. Earlier create-only MSI scratch and ThinkPad contract-text write have unknown physical outcomes and must not be retried as though absent. Its later read-only alternate endpoint observation found Veria/Python 3.11.9/Node 24.19, 19.3 MB free and no admitted Jacob root/dependencies/Python314; this is not the admitted environment.",
+    "resumption": "Reconcile exact admitted host/root and unknown earlier operations read-only; establish current environment/capacity/dependency prerequisites before any new mutation or process. Runtime owns execution; this review does not authorize switching to an unrelated host.",
+    "ownership": "Source offer and issue66 owner retained. Merchant-edit attribution/recalculation #7, integration #8/#10/#20, installed copies, source/default/Pages/PR changes remain outside this receiving course."
+  },
+  "supersedes_review_blob": "2aa994bc960f44eaff6c6d06c911d88bac8b7242"
+}

@@ -1,0 +1,34 @@
+{
+  "format": "returnby-thinkpad-current-path-observation-v1",
+  "prior_uncertainty_git_blob": "4cf9d08dad1b13d5414a83ac2e3a25275bd649fa",
+  "route_id": "cadafaf3-4d0b-4c4f-a0d3-34a95d2cec90",
+  "scope": "Read-only current-path observation on identity-verified same Jacob evidence view; no retry of the earlier write.",
+  "submitted_python": "import os,sys,json,pwd,platform,hashlib,shutil\nfrom pathlib import Path\nroot=Path('/home/jacob/.commander-tp-2/hamon-runtime-spire-posix-fongo8ab-70xm5rdr')\npaths=[root/'returnby_browser_contract_20261013.json',root/'commons-status-remaining-8pxucgli/RECEIVING.json']\nresult={'scope':'read-only reconciliation of previously uncertain review-contract write; no product execution','host':platform.node(),'uid':os.getuid(),'user':pwd.getpwuid(os.getuid()).pw_name,'python':sys.version,'executable':sys.executable,'cwd':os.getcwd(),'root_exists':root.is_dir(),'free':shutil.disk_usage(root if root.exists() else '/').free,'files':[]}\nfor p in paths:\n row={'path':str(p),'exists':p.exists()}\n if p.is_file():\n  b=p.read_bytes()\n  row.update(bytes=len(b),sha256=hashlib.sha256(b).hexdigest(),git_blob=hashlib.sha1(b'blob '+str(len(b)).encode()+b'\\0'+b).hexdigest(),mtime_ns=p.stat().st_mtime_ns)\n result['files'].append(row)\nprint(json.dumps(result,indent=2))",
+  "start": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Process started with PID 3967013 (shell: /bin/bash)\nInitial output:\n{\n  \"scope\": \"read-only reconciliation of previously uncertain review-contract write; no product execution\",\n  \"host\": \"hamon-thinkpad\",\n  \"uid\": 1000,\n  \"user\": \"jacob\",\n  \"python\": \"3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]\",\n  \"executable\": \"/usr/bin/python3\",\n  \"cwd\": \"/home/jacob/.local/lib/node_modules/@wonderwhy-er/desktop-commander/dist\",\n  \"root_exists\": true,\n  \"free\": 15354744832,\n  \"files\": [\n    {\n      \"path\": \"/home/jacob/.commander-tp-2/hamon-runtime-spire-posix-fongo8ab-70xm5rdr/returnby_browser_contract_20261013.json\",\n      \"exists\": false\n    },\n    {\n      \"path\": \"/home/jacob/.commander-tp-2/hamon-runtime-spire-posix-fongo8ab-70xm5rdr/commons-status-remaining-8pxucgli/RECEIVING.json\",\n      \"exists\": true,\n      \"bytes\": 93219,\n      \"sha256\": \"55494d203beddd865668379f3ce624d90849528d5274e4b7431b94874974babc\",\n      \"git_blob\": \"eee06878690f5916cfe591683ddf649b92054c75\",\n      \"mtime_ns\": 1791893197045734200\n    }\n  ]\n}\n"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: hamon-thinkpad (cadafaf3-4d0b-4c4f-a0d3-34a95d2cec90)]"
+      }
+    ],
+    "isError": false
+  },
+  "completed": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[Reading 26 new lines (total: 26 lines)]\n\n{\n  \"scope\": \"read-only reconciliation of previously uncertain review-contract write; no product execution\",\n  \"host\": \"hamon-thinkpad\",\n  \"uid\": 1000,\n  \"user\": \"jacob\",\n  \"python\": \"3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]\",\n  \"executable\": \"/usr/bin/python3\",\n  \"cwd\": \"/home/jacob/.local/lib/node_modules/@wonderwhy-er/desktop-commander/dist\",\n  \"root_exists\": true,\n  \"free\": 15354744832,\n  \"files\": [\n    {\n      \"path\": \"/home/jacob/.commander-tp-2/hamon-runtime-spire-posix-fongo8ab-70xm5rdr/returnby_browser_contract_20261013.json\",\n      \"exists\": false\n    },\n    {\n      \"path\": \"/home/jacob/.commander-tp-2/hamon-runtime-spire-posix-fongo8ab-70xm5rdr/commons-status-remaining-8pxucgli/RECEIVING.json\",\n      \"exists\": true,\n      \"bytes\": 93219,\n      \"sha256\": \"55494d203beddd865668379f3ce624d90849528d5274e4b7431b94874974babc\",\n      \"git_blob\": \"eee06878690f5916cfe591683ddf649b92054c75\",\n      \"mtime_ns\": 1791893197045734200\n    }\n  ]\n}\n\n\u2705 Process completed with exit code 0 (runtime: 0.08s)"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: hamon-thinkpad (cadafaf3-4d0b-4c4f-a0d3-34a95d2cec90)]"
+      }
+    ],
+    "isError": false
+  },
+  "conclusion": "The exact earlier ReturnBy contract path is currently absent. The existing Runtime directory and earlier Commons RECEIVING.json match exact prior byte/Git identities. This observation does not establish that the historical timed-out write never occurred; the original MSI mkdir outcome remains unknown."
+}

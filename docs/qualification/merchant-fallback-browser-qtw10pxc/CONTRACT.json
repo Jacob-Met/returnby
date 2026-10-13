@@ -1,0 +1,116 @@
+{
+  "format": "returnby-merchant-browser-contract-v1",
+  "reservation": "https://github.com/Jacob-Met/returnby/issues/66#issuecomment-6146015582",
+  "repository": "Jacob-Met/returnby",
+  "original": {
+    "commit": "7a271cfbc27e6c79a889b90920a700fdbf638e22",
+    "tree": "c53ca326af314176e1367b6585e876ed3e560a21",
+    "parser_blob": "6a59607db8418e20daf783f0738ba600dd16cf05"
+  },
+  "candidate": {
+    "commit": "f2ad8039ddef8f783bccf491847d7b95854f92e1",
+    "tree": "80a4535a69ca36be41598051945e1dd4b2aba7bd",
+    "parser_blob": "4eeb1b43b5f427bd9fc8f226b4ef24b93fb29a83"
+  },
+  "scope": "Direct unchanged tsc --noEmit then vite build for each source; affected main-page browser flow only. No standalone parser/full Vitest course, source edit, checklist-flow, installed adoption or #8/#10/#20 integration.",
+  "device": {
+    "id": "edc358ed-5ad6-4036-b7aa-8667bf0e14e0",
+    "hostname": "MSI",
+    "user": "jacob",
+    "python": "3.14.3",
+    "node": "24.14.0",
+    "playwright": "1.61.0",
+    "chrome_path": "C:\\Users\\jacob\\.cache\\puppeteer\\chrome\\win64-153.0.8010.36\\chrome-win64\\chrome.exe"
+  },
+  "dependencies": {
+    "source": "C:\\Users\\jacob\\hamon-returnby-completion-checklist-3dcb83a1\\node_modules",
+    "copy": "Fresh owned node_modules, no shared execution/write/install; each regular file before/copy/after hash equal;36 Windows-x64 applicable package versions and lock integrity/resolved entries match exact source lock.",
+    "observed_files": 748,
+    "observed_bytes": 62943799
+  },
+  "fixtures": [
+    {
+      "id": "embedded-alias",
+      "text": "Order confirmation\nContosocial\nOrder # RB1001\nOrder date: 2026-10-10\nOrder total: $42.50\nAuthored private memo: never store this pasted text.",
+      "preview": {
+        "merchant": "",
+        "orderDate": "2026-10-10",
+        "orderNo": "RB1001",
+        "total": "$42.50",
+        "days": 30,
+        "source": "default",
+        "highlighted": true
+      },
+      "manual_merchant": "Contosocial",
+      "saved": {
+        "merchant": "Contosocial",
+        "windowDays": 30,
+        "windowSource": "default"
+      },
+      "due": "2026-11-09",
+      "original_known_defect": {
+        "preview_merchant": "contoso",
+        "days": 15,
+        "source": "policy",
+        "highlighted": false,
+        "due": "2026-10-25"
+      },
+      "calendar_download": true
+    },
+    {
+      "id": "complete-alias",
+      "text": "Order confirmation\nContoso\nOrder # RB1002\nOrder date: 2026-10-10\nOrder total: $55.00",
+      "preview": {
+        "merchant": "contoso",
+        "orderDate": "2026-10-10",
+        "orderNo": "RB1002",
+        "total": "$55.00",
+        "days": 15,
+        "source": "policy",
+        "highlighted": false
+      },
+      "manual_merchant": null,
+      "saved": {
+        "merchant": "contoso",
+        "windowDays": 15,
+        "windowSource": "policy"
+      },
+      "due": "2026-10-25",
+      "calendar_download": false
+    },
+    {
+      "id": "from-priority",
+      "text": "From: Tailspin Toys <orders@tailspin.example>\nContosocial\nOrder # RB1003\nOrder date: 2026-10-10\nOrder total: $66.00",
+      "preview": {
+        "merchant": "Tailspin Toys",
+        "orderDate": "2026-10-10",
+        "orderNo": "RB1003",
+        "total": "$66.00",
+        "days": 90,
+        "source": "policy",
+        "highlighted": false
+      },
+      "manual_merchant": null,
+      "saved": {
+        "merchant": "Tailspin Toys",
+        "windowDays": 90,
+        "windowSource": "policy"
+      },
+      "due": "2027-01-08",
+      "calendar_download": false
+    }
+  ],
+  "browser_plan": {
+    "order": [
+      "original",
+      "candidate"
+    ],
+    "isolation": "New browser per source, new context per fixture; source-specific ephemeral127.0.0.1 port, task-owned TMP/profile/downloads, no existing profile/storage.",
+    "network": "Allow only exact own loopback origin, abort/log all other HTTP(S) requests; no provider/mailbox calls. Record console/page/server request evidence.",
+    "checks": "Before Save localStorage remains empty; exact preview fields and fallback/source labels; explicit manual merchant step; actual button Save, approved JSON whitelist and values, paste excluded, card deadline, reload exact saved JSON; embedded case actual ICS bytes/date/summary/UID bound to saved order. Desktop1280x900 and candidate embedded390x844 layout/screenshot checks only.",
+    "negative_attribution": "Same corrected semantic expectations on both sources. Preserve original wrong preview/policy/window/due as expected product failures; both unrelated controls must pass. An automation/build/lifecycle failure stops with retained evidence and is not called a product fix.",
+    "lifecycle": "Explicit browser/context/server close in finally; capture own browser process identity and owned server address; verify captured browser handle exited and listener no longer accepts connections. No killing unowned processes.",
+    "capacity": "Fresh >=2GiB C:free before copy/build/browser; bounded subprocess timeouts and creation-only output paths."
+  },
+  "known_boundary": "Manual merchant editing does not recalculate policy (#7 held). Candidate starts with default30 and explicit manual Contosocial entry preserves30/default. Do not claim parser extracted or learned Contosocial."
+}
