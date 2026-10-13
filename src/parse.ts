@@ -44,6 +44,11 @@ export function findDates(text: string): Hit[] {
 function pickOrderDate(text: string): string {
   const hits = findDates(text);
   if (!hits.length) return '';
+  const explicitDates = new Set(
+    [...text.matchAll(/\border\s+date\s*:?\s*/gi)].map((m) => m.index + m[0].length),
+  );
+  const explicit = hits.find((h) => explicitDates.has(h.index));
+  if (explicit) return explicit.date;
   const lower = text.toLowerCase();
   for (const h of hits) {
     const before = lower.slice(Math.max(0, h.index - 40), h.index);
@@ -69,7 +74,7 @@ export function parse(text: string, knownMerchants: string[] = []): Parsed {
   const merchant = pickMerchant(text, knownMerchants);
   const orderDate = pickOrderDate(text);
   const no = /order\s*(?:#|number|no\.?|id)\s*:?\s*#?\s*([A-Z0-9][A-Z0-9-]{3,})/i.exec(text);
-  const tot = /(?:order\s+)?total\s*:?\s*([$€£]\s?\d[\d,]*(?:\.\d{2})?)/i.exec(text);
+  const tot = /\b(?:order\s+)?total\s*:?\s*([$€£]\s?\d[\d,]*(?:\.\d{2})?)/i.exec(text);
   const orderNo = no ? no[1] : '';
   const total = tot ? tot[1].replace(/\s/g, '') : '';
   return {
