@@ -1,0 +1,37 @@
+{
+  "schema": "hamon.preview-receiver-independent-cases/1",
+  "candidateSeen": false,
+  "cases": [
+    {
+      "id": "intact_unicode",
+      "setup": "Small valid sealed preview ZIP with nested UTF-8 names and a harmless VERIFY.py execution tripwire; new output under spaces/Unicode.",
+      "expect": "Complete admission; owned child readiness before GET; exact homepage/assets; actual child exit; full source/archive/extracted conservation; tripwire absent."
+    },
+    {
+      "id": "wrong_archive_digest",
+      "setup": "Valid ZIP bytes with deliberately wrong caller-supplied SHA256.",
+      "expect": "Refusal before output directory or server creation; no HTTP; original unchanged."
+    },
+    {
+      "id": "altered_payload",
+      "setup": "ZIP whose caller SHA matches but one harmless payload differs from its retained manifest identity.",
+      "expect": "Refusal before output directory/server; no ZIP verifier execution; original unchanged."
+    },
+    {
+      "id": "unsafe_or_ambiguous_membership",
+      "setup": "Otherwise valid ZIP carrying duplicate or unsafe relative member identity, with matching outer digest.",
+      "expect": "Explicit admission refusal before filesystem extraction; no output or server; no path outside owned root touched."
+    },
+    {
+      "id": "occupied_listener",
+      "setup": "Independently owned loopback sentinel listener on selected port; valid source ZIP.",
+      "expect": "Receiver refuses without issuing any GET to sentinel; sentinel request count remains zero and listener remains owned/alive; only receiver child reaped; created receipt truthful."
+    },
+    {
+      "id": "occupied_destination",
+      "setup": "Valid source ZIP and pre-existing output directory containing a sentinel file.",
+      "expect": "Refusal without replacing/deleting sentinel or starting server; exact original archive and destination witness preserved."
+    }
+  ],
+  "limits": "No broad security fuzzing, payload execution, browser, build or product replay. CLI and final schema binding pending root."
+}

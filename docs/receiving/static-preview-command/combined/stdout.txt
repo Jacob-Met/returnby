@@ -1,0 +1,1 @@
+{"passed": true, "receipt": "/private/var/tmp/hamon-dcac8b3b8755-returnby-receiver-v1/combined-receiving/receiving.json", "http_responses": 11, "error": null}

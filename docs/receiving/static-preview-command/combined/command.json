@@ -1,0 +1,74 @@
+{
+  "schema": "returnby.preview-receiver-actual-command/1",
+  "started": 1791910086.592342,
+  "finished": 1791910086.844688,
+  "argv": [
+    "/usr/local/bin/python3",
+    "-I",
+    "-B",
+    "/private/var/tmp/hamon-dcac8b3b8755-returnby-receiver-v1/tools/receive_static_preview.py",
+    "--archive",
+    "/private/var/tmp/hamon-dcac8b3b8755-returnby-combined-delivery-v1/returnby-intake-and-long-cards-6eef8ae0-v1.zip",
+    "--sha256",
+    "d73df74c588e9387bab391b2cf2c731056a7b1e01feb4bc89bde79a2a829f06f",
+    "--output",
+    "/private/var/tmp/hamon-dcac8b3b8755-returnby-receiver-v1/combined-receiving",
+    "--port",
+    "8799"
+  ],
+  "child_pid": 44665,
+  "returncode": 0,
+  "before": {
+    "tool": {
+      "bytes": 13114,
+      "sha256": "beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac",
+      "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3",
+      "mtime_ns": 1791909295374234870,
+      "mode": 33188,
+      "inode": 149020080
+    },
+    "packet": {
+      "bytes": 464024,
+      "sha256": "d73df74c588e9387bab391b2cf2c731056a7b1e01feb4bc89bde79a2a829f06f",
+      "git_blob": "828186d706c4373b4682dc96229be16ea8e4bbcb",
+      "mtime_ns": 1791908616531316134,
+      "mode": 33188,
+      "inode": 148999582
+    }
+  },
+  "after": {
+    "tool": {
+      "bytes": 13114,
+      "sha256": "beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac",
+      "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3",
+      "mtime_ns": 1791909295374234870,
+      "mode": 33188,
+      "inode": 149020080
+    },
+    "packet": {
+      "bytes": 464024,
+      "sha256": "d73df74c588e9387bab391b2cf2c731056a7b1e01feb4bc89bde79a2a829f06f",
+      "git_blob": "828186d706c4373b4682dc96229be16ea8e4bbcb",
+      "mtime_ns": 1791908616531316134,
+      "mode": 33188,
+      "inode": 148999582
+    }
+  },
+  "inputs_preserved": true,
+  "stdout": {
+    "bytes": 159,
+    "sha256": "ef7d37d9862ec2dc5a2452b7ec4dd3f05d0a8dcb4221257d5a5722c09a60b412",
+    "git_blob": "f9598c53fd6b2be3b0b9cdf29b067effed797c42",
+    "mtime_ns": 1791910086793234957,
+    "mode": 33188,
+    "inode": 149038690
+  },
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "mtime_ns": 1791910086592471198,
+    "mode": 33188,
+    "inode": 149038691
+  }
+}

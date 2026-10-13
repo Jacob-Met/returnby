@@ -1,0 +1,139 @@
+{
+  "schema": "returnby.static-preview-receiving/1",
+  "passed": true,
+  "archive": "C:\\Users\\Veria\\AppData\\Local\\Temp\\hamon-dcac8b3b8755-preview74-independent-scgz0_1r\\intact_unicode\\synthetic archive \u03a9.zip",
+  "archive_before": {
+    "bytes": 1667,
+    "sha256": "f4f6e995e21b863678b860c066cee77028efae4d143ad3939ae4f26854a39204",
+    "git_blob": "5cb3dfce6e1d62b425bb9284a2d49f33205aa958",
+    "mode": 33206,
+    "mtime_ns": 1791912175667396800,
+    "inode": 1125899908363004
+  },
+  "archive_members": 5,
+  "manifest_payloads": 4,
+  "product_tree": "ffffffffffffffffffffffffffffffffffffffff",
+  "http": [
+    {
+      "path": "/",
+      "member": "preview/index.html",
+      "status": 200,
+      "bytes": 93,
+      "sha256": "bc8b41f67f76f04f2918bbb615c7b9c13aaa8cacd560acef0ca152ff88d0f255",
+      "git_blob": "d79c1e42b4c0e84c71cce5cfbb271b704055e2b6"
+    },
+    {
+      "path": "/assets/caf%C3%A9%201.txt",
+      "member": "preview/assets/caf\u00e9 1.txt",
+      "status": 200,
+      "bytes": 36,
+      "sha256": "b876c20d23d2bf94fcac0333381a0b69826cf85d34410abc52023dd45214a5a7",
+      "git_blob": "ba55778622c16b77c125a3abf1106ccb5c1166c9"
+    },
+    {
+      "path": "/assets/plain.css",
+      "member": "preview/assets/plain.css",
+      "status": 200,
+      "bytes": 25,
+      "sha256": "3f876ff1240fb2b6e442980f352b6ca1f70e0b8cb0de7b9370d6a1b89e4f1c9c",
+      "git_blob": "8c7d132e20c8e5f6ae80a19e7b350431c93e0b3b"
+    },
+    {
+      "path": "/index.html",
+      "member": "preview/index.html",
+      "status": 200,
+      "bytes": 93,
+      "sha256": "bc8b41f67f76f04f2918bbb615c7b9c13aaa8cacd560acef0ca152ff88d0f255",
+      "git_blob": "d79c1e42b4c0e84c71cce5cfbb271b704055e2b6"
+    }
+  ],
+  "scope": "Archive integrity and loopback HTTP bytes only; no packaged code, browser, build or install.",
+  "started_unix": 1791912176.1168804,
+  "server": {
+    "argv": [
+      "C:\\Users\\Veria\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-I",
+      "-B",
+      "-u",
+      "C:\\Users\\Veria\\AppData\\Local\\Temp\\hamon-dcac8b3b8755-preview74-independent-scgz0_1r\\receive_static_preview.py",
+      "--serve-directory",
+      "C:\\Users\\Veria\\AppData\\Local\\Temp\\hamon-dcac8b3b8755-preview74-independent-scgz0_1r\\intact_unicode\\new preview \u6771\u4eac space\\package\\preview",
+      "--port",
+      "53609",
+      "--ready-token",
+      "3bb9f09379714d40b24e54641f8db0fa"
+    ],
+    "pid": 28528,
+    "port": 53609,
+    "ready": true,
+    "returncode": 0
+  },
+  "archive_after": {
+    "bytes": 1667,
+    "sha256": "f4f6e995e21b863678b860c066cee77028efae4d143ad3939ae4f26854a39204",
+    "git_blob": "5cb3dfce6e1d62b425bb9284a2d49f33205aa958",
+    "mode": 33206,
+    "mtime_ns": 1791912175667396800,
+    "inode": 1125899908363004
+  },
+  "extracted_files_preserved": 5,
+  "extracted_identity": {
+    "MANIFEST.json": {
+      "bytes": 837,
+      "sha256": "a6f45414e78e64d4564e537994c206aa2867df0409af010da316df72d36e352c",
+      "git_blob": "515adad29d827e141a86d98847b8b01bccbeb917",
+      "mode": 33206,
+      "mtime_ns": 1791912176122608700,
+      "inode": 562949954941712
+    },
+    "VERIFY.py": {
+      "bytes": 94,
+      "sha256": "4264b096f65dd03fce5d97974952f62c587eb2544f62b5947a070ecce6abee14",
+      "git_blob": "e6824aef1371bd33ad40ad741c0610e3adc86e62",
+      "mode": 33206,
+      "mtime_ns": 1791912176121609800,
+      "inode": 562949954941711
+    },
+    "preview/assets/caf\u00e9 1.txt": {
+      "bytes": 36,
+      "sha256": "b876c20d23d2bf94fcac0333381a0b69826cf85d34410abc52023dd45214a5a7",
+      "git_blob": "ba55778622c16b77c125a3abf1106ccb5c1166c9",
+      "mode": 33206,
+      "mtime_ns": 1791912176119883000,
+      "inode": 562949954941709
+    },
+    "preview/assets/plain.css": {
+      "bytes": 25,
+      "sha256": "3f876ff1240fb2b6e442980f352b6ca1f70e0b8cb0de7b9370d6a1b89e4f1c9c",
+      "git_blob": "8c7d132e20c8e5f6ae80a19e7b350431c93e0b3b",
+      "mode": 33206,
+      "mtime_ns": 1791912176120559000,
+      "inode": 562949954941710
+    },
+    "preview/index.html": {
+      "bytes": 93,
+      "sha256": "bc8b41f67f76f04f2918bbb615c7b9c13aaa8cacd560acef0ca152ff88d0f255",
+      "git_blob": "d79c1e42b4c0e84c71cce5cfbb271b704055e2b6",
+      "mode": 33206,
+      "mtime_ns": 1791912176117883100,
+      "inode": 562949954941707
+    }
+  },
+  "archive_preserved": true,
+  "finished_unix": 1791912176.8313339,
+  "observer": {
+    "bytes": 13114,
+    "sha256": "beb836cc29bd3f44a8a6995cd98cc853e9844c2862f2cfe6dbe173a4f235ecac",
+    "git_blob": "2d30a8a10014f8d21e5d34febc1f446e36fceba3"
+  },
+  "server.stdout": {
+    "bytes": 76,
+    "sha256": "2c0fa9386346122794fde9dda63ab692c2430d7063e8f213de03ac15c3f9c568",
+    "git_blob": "5c3ae5fbf35c77b20217356125f6773654367edd"
+  },
+  "server.stderr": {
+    "bytes": 294,
+    "sha256": "8bec00a5db4a8fd29c206dcf2dfa49c2b10b9b4282a1bdf9660f5078f8b55c4f",
+    "git_blob": "96e1da6bc6af25d91f1ff10dd95ced7044f12c30"
+  }
+}

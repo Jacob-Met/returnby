@@ -1,0 +1,11 @@
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET /assets/deadline-DzH3L3IB.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET /assets/main-DDZxEaiz.css HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET /assets/main-HEX2id1V.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET /assets/tripChecklist-CmK7SEMW.css HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET /assets/tripChecklist-DwME05Y-.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET /captures/returnby-desktop.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET /captures/returnby-mobile.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET /favicon.svg HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:48:06] "GET /trip-checklist.html HTTP/1.1" 200 -
