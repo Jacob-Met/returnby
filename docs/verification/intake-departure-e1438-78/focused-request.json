@@ -1,0 +1,88 @@
+{
+  "schema": "returnby.intake-departure.focused-request/1",
+  "status": "PREPARED_UNRUN",
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "--test",
+    "tests/intake-departure.native.mjs"
+  ],
+  "cwd": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/source",
+  "output": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/focused-v1",
+  "timeout_seconds": 20,
+  "expected_groups": [
+    "blank intake and a blank default manual review stay unarmed",
+    "pasted whitespace, line breaks, Unicode and markup count literally and can be cleared",
+    "each visible reviewed field guards its literal value independently",
+    "hidden stale review fields do not guard an otherwise blank intake",
+    "the return-window comparison uses the current literal baseline and tolerates no control",
+    "one dynamic listener follows repeated events, successful clear and retained failed-save contents",
+    "replaced controls are read fresh and a retained callback rechecks contents synchronously",
+    "binding, refresh and departure preserve all field objects, values, focus and selection"
+  ],
+  "source_files": [
+    {
+      "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/source/src/intake-departure.ts",
+      "bytes": 1576,
+      "sha256": "6d259bf2bc54e23b1ca5dc6665940b18889d14cf8761970652e2ec2deb98f8a3",
+      "git_blob": "d7b8deb2356b93408daec2035bd194e50ca5b06b"
+    },
+    {
+      "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/source/src/main.ts",
+      "bytes": 7778,
+      "sha256": "f35a59128bd8f6a43a7156a75aca37c5f5115e2ab7093b721450b69177921a7d",
+      "git_blob": "a03c5de57cd19c0ed61087af2a100dabe34b8209"
+    },
+    {
+      "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/source/tests/intake-departure.native.mjs",
+      "bytes": 9852,
+      "sha256": "c6cf8345246594b592afb777b3ab195ccd9b80bd66ab7ae69e82fd9969efb44a",
+      "git_blob": "b524b275e1658d81f812348c8421e78a0e9a133c"
+    },
+    {
+      "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/source/docs/INTAKE_DEPARTURE.md",
+      "bytes": 3458,
+      "sha256": "9eb32439b632455197cd97b44f73660d5ba7dfe6e2bb94f1261ffad4c4d73e13",
+      "git_blob": "6dbb6383b18210f7f0d12fa62fdbd61202c55a1d"
+    },
+    {
+      "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/source/package.json",
+      "bytes": 313,
+      "sha256": "4406e8b0ba63f9f150eaba818e032162b3a9b9b89ff5055c7fe09344eadab95c",
+      "git_blob": "329b4b71fbb631662eec0405ced477134520c9a5"
+    }
+  ],
+  "independent_key": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/independent-departure-key.json",
+    "bytes": 9931,
+    "sha256": "93f85cfa3f9e19352319780e80c39aa5b1d78cc88db11e9efc5ac6c08b2afa95",
+    "git_blob": "69c407f3eb21593c7c2fcecebfe491933e816819"
+  },
+  "contract": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/CONTRACT.md",
+    "bytes": 5589,
+    "sha256": "42ae423198544b5fc6aeb0e56192356d5e6bd7deeb51eca097ab2943d1f28424",
+    "git_blob": "55665a5aa52f7f9adb00c8cc8e52d09642b60d08"
+  },
+  "capture_source": {
+    "path": "/workspace/scratch/e1438c9d058f/money-comparison-navigation-native/capture_process.py",
+    "bytes": 7969,
+    "sha256": "48ea98257bce2198e7e0f3009cb8c3ed09f9a017dbae2777e01b86e7ab2fc2d0",
+    "git_blob": "3a59961b07f97d66ff23955739f4fbf1d687135b"
+  },
+  "capture_argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-B",
+    "/workspace/scratch/e1438c9d058f/money-comparison-navigation-native/capture_process.py",
+    "--cwd",
+    "/workspace/scratch/e1438c9d058f/returnby-intake-departure/source",
+    "--out",
+    "/workspace/scratch/e1438c9d058f/returnby-intake-departure/focused-v1",
+    "--timeout",
+    "20",
+    "--",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "--test",
+    "tests/intake-departure.native.mjs"
+  ],
+  "qualification": "One controlled Node24 course importing only the actual standalone TypeScript guard, no browser/application execution, full Vite build, TypeScript compiler or npm installation."
+}

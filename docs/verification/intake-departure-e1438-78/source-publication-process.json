@@ -1,0 +1,13 @@
+{
+  "request": {
+    "cmd": "python -B returnby-intake-departure/receive-publication.py",
+    "max_output_tokens": 2200
+  },
+  "response": {
+    "chunk_id": "b89d87",
+    "wall_time_seconds": 0.000024236,
+    "exit_code": 0,
+    "original_token_count": 397,
+    "output": "{\"status\": \"RECEIVED_ISOLATED_SOURCE_OFFER_NOT_ADOPTED\", \"repository\": \"Jacob-Met/returnby\", \"issue\": 78, \"branch\": \"estate/e1438-intake-departure-78\", \"parent\": \"f5709e5b6ae1f8d8790e011fc775d808aeeb323e\", \"commit\": \"6e88e5da44e0ab2320c4edf61e135cc456fe51a1\", \"tree\": \"45fe5b937ab6553c005e596cebfa92b4c5f6ae33\", \"files\": [{\"path\": \"src/intake-departure.ts\", \"bytes\": 1576, \"sha256\": \"6d259bf2bc54e23b1ca5dc6665940b18889d14cf8761970652e2ec2deb98f8a3\", \"git_blob\": \"d7b8deb2356b93408daec2035bd194e50ca5b06b\"}, {\"path\": \"src/main.ts\", \"bytes\": 7778, \"sha256\": \"f35a59128bd8f6a43a7156a75aca37c5f5115e2ab7093b721450b69177921a7d\", \"git_blob\": \"a03c5de57cd19c0ed61087af2a100dabe34b8209\"}, {\"path\": \"tests/intake-departure.native.mjs\", \"bytes\": 9852, \"sha256\": \"c6cf8345246594b592afb777b3ab195ccd9b80bd66ab7ae69e82fd9969efb44a\", \"git_blob\": \"b524b275e1658d81f812348c8421e78a0e9a133c\"}, {\"path\": \"docs/INTAKE_DEPARTURE.md\", \"bytes\": 3562, \"sha256\": \"4e3beefdce57eb3cbf94b6c9b3ded4b89251528a703b05b6b6f9bfa0bce9900b\", \"git_blob\": \"3f62a2ff28b0ab32e1c81eef72b57c443e49e787\"}], \"full_leaves\": 271, \"prior_leaves\": 268, \"preserved\": 267, \"current_main\": \"f5709e5b6ae1f8d8790e011fc775d808aeeb323e\", \"guide_url\": \"https://github.com/Jacob-Met/returnby/blob/6e88e5da44e0ab2320c4edf61e135cc456fe51a1/docs/INTAKE_DEPARTURE.md\", \"qualification\": \"All four whole fresh source bodies and complete intrinsic tree received. No PR, default branch, owner ref, Pages or workflow modification was performed. Controlled eight-group result remains distinct from native/browser and current-owner-stack integration.\"}\n"
+  }
+}

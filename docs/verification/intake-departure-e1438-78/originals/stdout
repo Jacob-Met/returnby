@@ -1,0 +1,16 @@
+✔ blank intake and a blank default manual review stay unarmed (2.17015ms)
+✔ pasted whitespace, line breaks, Unicode and markup count literally and can be cleared (0.493957ms)
+✔ each visible reviewed field guards its literal value independently (0.407445ms)
+✔ hidden stale review fields do not guard an otherwise blank intake (0.19872ms)
+✔ the return-window comparison uses the current literal baseline and tolerates no control (1.162086ms)
+✔ one dynamic listener follows repeated events, successful clear and retained failed-save contents (0.284219ms)
+✔ replaced controls are read fresh and a retained callback rechecks contents synchronously (0.276247ms)
+✔ binding, refresh and departure preserve all field objects, values, focus and selection (0.290259ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 107.102554

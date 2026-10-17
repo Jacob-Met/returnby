@@ -1,0 +1,14 @@
+{
+  "request": {
+    "cmd": "python -B - <<'PY'\nfrom pathlib import Path\nimport hashlib,json,subprocess\nr=Path('returnby-intake-departure').resolve();p=r/'focused-request.json';assert hashlib.sha256(p.read_bytes()).hexdigest()=='183c95f8ecae62365f0a67b37d887c202d67c894bdd0b20d58bda4b5cccc60ca';q=json.loads(p.read_bytes());rows=q['source_files']+[q['independent_key'],q['contract'],q['capture_source']]\ndef check():\n for row in rows:\n  b=Path(row['path']).read_bytes();assert len(b)==row['bytes'] and hashlib.sha256(b).hexdigest()==row['sha256'],row['path']\ncheck();assert not Path(q['output']).exists();result=subprocess.run(q['capture_argv']);check();raise SystemExit(result.returncode)\nPY",
+    "yield_time_ms": 1000,
+    "max_output_tokens": 2200
+  },
+  "response": {
+    "chunk_id": "3683f1",
+    "wall_time_seconds": 0.194460526,
+    "exit_code": 0,
+    "original_token_count": 235,
+    "output": "{\n  \"argv\": [\n    \"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node\",\n    \"--test\",\n    \"tests/intake-departure.native.mjs\"\n  ],\n  \"cwd\": \"/workspace/scratch/e1438c9d058f/returnby-intake-departure/source\",\n  \"descendants_observed\": false,\n  \"elapsed_seconds\": 0.2156735780008603,\n  \"finished_utc\": \"2026-10-17T15:35:35.399009+00:00\",\n  \"observer_errors\": [],\n  \"output\": \"/workspace/scratch/e1438c9d058f/returnby-intake-departure/focused-v1\",\n  \"pid\": 7,\n  \"python\": \"3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]\",\n  \"returncode\": 0,\n  \"schema\": \"hamon.process-capture/1\",\n  \"started_utc\": \"2026-10-17T15:35:35.181714+00:00\",\n  \"state\": \"exited\",\n  \"stderr\": {\n    \"bytes\": 0,\n    \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"\n  },\n  \"stdout\": {\n    \"bytes\": 889,\n    \"sha256\": \"799d3a840ca79ad0d2d474e194e7dc8aa1a07c529aa580ad3f8978902d44912d\"\n  },\n  \"timeout_seconds\": 20.0\n}\n"
+  }
+}

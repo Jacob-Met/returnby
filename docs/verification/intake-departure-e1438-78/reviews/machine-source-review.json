@@ -1,0 +1,32 @@
+{
+  "status": "ACCEPT_RETURNBY78_SOURCE_EIGHT_GROUP_REQUEST_AND_ISOLATED_PLAN",
+  "findings": [],
+  "source_paths": 4,
+  "main_full_inverses": 4,
+  "guide_precapture_inverses": 1,
+  "watched_inputs": 8,
+  "groups": 8,
+  "key": {
+    "bytes": 9931,
+    "sha256": "93f85cfa3f9e19352319780e80c39aa5b1d78cc88db11e9efc5ac6c08b2afa95",
+    "git_blob": "69c407f3eb21593c7c2fcecebfe491933e816819"
+  },
+  "request": {
+    "bytes": 4177,
+    "sha256": "183c95f8ecae62365f0a67b37d887c202d67c894bdd0b20d58bda4b5cccc60ca",
+    "git_blob": "fa45a0d3bdb71f2ab21271e941c84ed05e22188d"
+  },
+  "prior_leaves": 268,
+  "leaves": 271,
+  "preserved": 267,
+  "tree": "1c082f68312c48a2b402cead6c69a8948d7bfda7",
+  "read_only_maintained_tree_application": true,
+  "manual_read": [
+    "Complete 39-line literal predicate, dynamic listener and synchronous callback recheck",
+    "Complete current main and original HTML: exactly import, bind and two post-existing-operation refresh additions",
+    "All eight actual-module groups, traps, duplicate-registration observations and retained/replaced control cases",
+    "Full guide and pre-capture scope clarification; no global-side-effect or real browser guarantee",
+    "Eight-group capture/helper request and unchanged package; isolated source offer keeps owner/main/Pages/Actions holds"
+  ],
+  "qualification": "Source and request accepted before the sole controlled Node invocation. No candidate/test/application/browser module executed in this reader. No npm, build, compiler, hosted site or native receiving claimed; current-stack composition remains with original owners."
+}

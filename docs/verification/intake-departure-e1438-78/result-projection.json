@@ -1,0 +1,37 @@
+{
+  "status": "PROJECTED_ORIGINAL_EIGHT_PASS_GUIDE",
+  "before": "Validation status: the source and eight-group request are prepared for independent review; the focused course has not run.",
+  "after": "Validation status: the sole controlled cloud course passed all eight groups on the first run, with no skips and empty stderr. An independent source review covered the module, tests and all four additive main integration lines.",
+  "captured_guide": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/result-projection-history/source/docs/INTAKE_DEPARTURE.md",
+    "bytes": 3458,
+    "sha256": "9eb32439b632455197cd97b44f73660d5ba7dfe6e2bb94f1261ffad4c4d73e13",
+    "git_blob": "6dbb6383b18210f7f0d12fa62fdbd61202c55a1d"
+  },
+  "final_guide": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/source/docs/INTAKE_DEPARTURE.md",
+    "bytes": 3562,
+    "sha256": "4e3beefdce57eb3cbf94b6c9b3ded4b89251528a703b05b6b6f9bfa0bce9900b",
+    "git_blob": "3f62a2ff28b0ab32e1c81eef72b57c443e49e787"
+  },
+  "captured_request": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/focused-request.json",
+    "bytes": 4177,
+    "sha256": "183c95f8ecae62365f0a67b37d887c202d67c894bdd0b20d58bda4b5cccc60ca",
+    "git_blob": "fa45a0d3bdb71f2ab21271e941c84ed05e22188d"
+  },
+  "final_plan": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/publication-plan.json",
+    "bytes": 2431,
+    "sha256": "e6eeec43892c4fb0575c4ef1e49229a6ccc884d7b3ac14554ed01e1da63fe04a",
+    "git_blob": "0e461cd38a81e13e06f681aea6ffcf32cadf4790"
+  },
+  "expected_tree": "45fe5b937ab6553c005e596cebfa92b4c5f6ae33",
+  "original_capture": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/focused-capture-start.json",
+    "bytes": 1951,
+    "sha256": "deb8062bead8d433816128bae81ae2b5e658a9bb4434221009236e6713bb278a",
+    "git_blob": "a76c7012f69bf9ed15e4aec9659704bb28d97e5d"
+  },
+  "qualification": "One prose span only after the single original eight-group pass. Executable/test/key bytes unchanged; original prepared request and captured guide remain exact. No product repeat, browser, full app or owner-stack integration claim."
+}

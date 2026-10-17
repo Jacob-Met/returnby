@@ -1,0 +1,26 @@
+{
+  "status": "CLARIFIED_UNRUN_GUIDE_ONLY",
+  "before": "The fixture makes field writes and external side effects fail.",
+  "after": "The fixture rejects field writes and access to the supplied window's storage, clipboard, timer and network properties.",
+  "reason": "Distinguish controlled supplied-window property traps from an assertion about every possible global side effect.",
+  "original_guide": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/pre-capture-guide-history/source/docs/INTAKE_DEPARTURE.md",
+    "bytes": 3402,
+    "sha256": "d13fba2d921a6e8fcbbfa60e94ee664517a76aba48a929186c3dc6bcabc441fa",
+    "git_blob": "8e033043c3230e8a838a2e3d0abbaa8cd30875db"
+  },
+  "current_guide": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/source/docs/INTAKE_DEPARTURE.md",
+    "bytes": 3458,
+    "sha256": "9eb32439b632455197cd97b44f73660d5ba7dfe6e2bb94f1261ffad4c4d73e13",
+    "git_blob": "6dbb6383b18210f7f0d12fa62fdbd61202c55a1d"
+  },
+  "current_request": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/focused-request.json",
+    "bytes": 4177,
+    "sha256": "183c95f8ecae62365f0a67b37d887c202d67c894bdd0b20d58bda4b5cccc60ca",
+    "git_blob": "fa45a0d3bdb71f2ab21271e941c84ed05e22188d"
+  },
+  "expected_tree": "1c082f68312c48a2b402cead6c69a8948d7bfda7",
+  "production_and_tests": "Unchanged; no selected course has run."
+}

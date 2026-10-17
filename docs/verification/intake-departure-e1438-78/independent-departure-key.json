@@ -1,0 +1,372 @@
+{
+  "schema": "returnby.intake-departure.independent-key/1",
+  "status": "FROZEN_BEFORE_CANDIDATE_EXPOSURE",
+  "contract": {
+    "path": "/workspace/scratch/e1438c9d058f/returnby-intake-departure/CONTRACT.md",
+    "bytes": 5589,
+    "sha256": "42ae423198544b5fc6aeb0e56192356d5e6bd7deeb51eca097ab2943d1f28424"
+  },
+  "basis": "Complete contract only; no candidate implementation, test or product imported or invoked. Literal expected states authored independently.",
+  "cases": [
+    {
+      "name": "blank_and_default_manual_preview",
+      "observations": [
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": false,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "30",
+            "baseline_days": "30"
+          },
+          "armed": false
+        },
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "30",
+            "baseline_days": "30"
+          },
+          "armed": false
+        },
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": null,
+            "baseline_days": "30"
+          },
+          "armed": false
+        }
+      ]
+    },
+    {
+      "name": "literal_paste_never_trimmed",
+      "observations": [
+        {
+          "state": {
+            "paste": " ",
+            "preview_visible": false,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "30",
+            "baseline_days": "30"
+          },
+          "armed": true
+        },
+        {
+          "state": {
+            "paste": "\n",
+            "preview_visible": false,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "30",
+            "baseline_days": "30"
+          },
+          "armed": true
+        },
+        {
+          "state": {
+            "paste": "雪 é",
+            "preview_visible": false,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "30",
+            "baseline_days": "30"
+          },
+          "armed": true
+        },
+        {
+          "state": {
+            "paste": "<script>x</script>",
+            "preview_visible": false,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "30",
+            "baseline_days": "30"
+          },
+          "armed": true
+        }
+      ],
+      "clear_to": {
+        "state": {
+          "paste": "",
+          "preview_visible": false,
+          "merchant": "",
+          "orderDate": "",
+          "orderNo": "",
+          "total": "",
+          "windowDays": "30",
+          "baseline_days": "30"
+        },
+        "armed": false
+      }
+    },
+    {
+      "name": "each_visible_reviewed_field_independently",
+      "observations": [
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": " ",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "30",
+            "baseline_days": "30"
+          },
+          "armed": true
+        },
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "invalid",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "30",
+            "baseline_days": "30"
+          },
+          "armed": true
+        },
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "<雪>",
+            "total": "",
+            "windowDays": "30",
+            "baseline_days": "30"
+          },
+          "armed": true
+        },
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "0",
+            "windowDays": "30",
+            "baseline_days": "30"
+          },
+          "armed": true
+        }
+      ]
+    },
+    {
+      "name": "hidden_stale_review_ignored",
+      "observations": [
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": false,
+            "merchant": "stale",
+            "orderDate": "x",
+            "orderNo": "x",
+            "total": "0",
+            "windowDays": "",
+            "baseline_days": "30"
+          },
+          "armed": false
+        },
+        {
+          "state": {
+            "paste": " ",
+            "preview_visible": false,
+            "merchant": "stale",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "",
+            "baseline_days": "30"
+          },
+          "armed": true
+        }
+      ]
+    },
+    {
+      "name": "window_baseline_is_literal_and_current",
+      "observations": [
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "",
+            "baseline_days": "30"
+          },
+          "armed": true
+        },
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "0",
+            "baseline_days": "30"
+          },
+          "armed": true
+        },
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "030",
+            "baseline_days": "30"
+          },
+          "armed": true
+        },
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "invalid",
+            "baseline_days": "30"
+          },
+          "armed": true
+        },
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": "14",
+            "baseline_days": "14"
+          },
+          "armed": false
+        },
+        {
+          "state": {
+            "paste": "",
+            "preview_visible": true,
+            "merchant": "",
+            "orderDate": "",
+            "orderNo": "",
+            "total": "",
+            "windowDays": null,
+            "baseline_days": "14"
+          },
+          "armed": false
+        }
+      ]
+    },
+    {
+      "name": "dynamic_unique_listener_and_clear",
+      "steps": [
+        {
+          "action": "bind_clean",
+          "beforeunload_listeners": 0
+        },
+        {
+          "action": "paste_x_input",
+          "beforeunload_listeners": 1
+        },
+        {
+          "action": "repeat_refresh_input_change",
+          "beforeunload_listeners": 1
+        },
+        {
+          "action": "clear_paste_change",
+          "beforeunload_listeners": 0
+        },
+        {
+          "action": "visible_field_x_refresh",
+          "beforeunload_listeners": 1
+        },
+        {
+          "action": "successful_save_clear_then_refresh",
+          "beforeunload_listeners": 0
+        },
+        {
+          "action": "visible_field_x_refresh_then_failed_save_no_clear",
+          "beforeunload_listeners": 1
+        }
+      ]
+    },
+    {
+      "name": "replacement_fields_and_callback_recheck",
+      "steps": [
+        {
+          "action": "visible_current_field_x_refresh",
+          "beforeunload_listeners": 1
+        },
+        {
+          "action": "replace_visible_fields_with_all_blank_default_then_refresh",
+          "beforeunload_listeners": 0
+        },
+        {
+          "action": "edit_detached_old_field_then_refresh",
+          "beforeunload_listeners": 0
+        },
+        {
+          "action": "current_paste_x_input",
+          "beforeunload_listeners": 1
+        },
+        {
+          "action": "clear_current_fields_without_event_then_invoke_retained_listener",
+          "preventDefault_calls": 0,
+          "returnValue_writes": 0
+        },
+        {
+          "action": "current_visible_total_0_then_invoke_listener",
+          "preventDefault_calls": 1,
+          "returnValue_value": ""
+        }
+      ]
+    },
+    {
+      "name": "observation_is_read_only",
+      "assertions": [
+        "Every field value, dataset baseline, node structure, focus and selection stays exact through predicate/refresh/callback.",
+        "No parsing, storage access, clipboard access, network, filesystem, timers or form submission.",
+        "Only event listener registration/removal and dirty beforeunload event cancellation are permitted writes.",
+        "Controlled event cancellation establishes no actual browser prompt or guaranteed prevention."
+      ]
+    }
+  ],
+  "groups": 8,
+  "qualification": "Field-key labels describe current visible controls semantically, not a required implementation API. Hidden stale values never arm unless paste independently does; missing window contributes nothing. Owner integration and hosted/native receiving remain separate."
+}
