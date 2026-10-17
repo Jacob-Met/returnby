@@ -4,6 +4,7 @@ import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
 import { startDayRefresh } from './day-refresh';
 import { bindIntakeDeadline } from './intake-deadline';
+import { bindIntakeDeparture } from './intake-departure';
 import { buildIcs } from './ics';
 import { load, save, type Order } from './store';
 import { samples } from './samples';
@@ -12,6 +13,7 @@ const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const refreshIntakeDeadline = bindIntakeDeadline(preview);
+const refreshIntakeDeparture = bindIntakeDeparture(paste, preview);
 const list = $<HTMLUListElement>('#list');
 let orders = load();
 let sampleIdx = 0;
@@ -41,6 +43,7 @@ function showPreview() {
   preview.dataset.days = String(pol.days);
   preview.hidden = false;
   refreshIntakeDeadline();
+  refreshIntakeDeparture();
 }
 
 preview.addEventListener('submit', (e) => {
@@ -56,6 +59,7 @@ preview.addEventListener('submit', (e) => {
     createdAt: new Date().toISOString(),
   });
   save(orders); preview.hidden = true; paste.value = ''; render();
+  refreshIntakeDeparture();
 });
 
 function render() {
