@@ -1,0 +1,53 @@
+{
+  "schema": "returnby-independent-installer-protocol-review-v1",
+  "candidate": {
+    "bytes": 12621,
+    "sha256": "4960848b7d09e85e197811f97866cc69240f7754f22ffce32e36c51208259a5e"
+  },
+  "baseline": {
+    "bytes": 10757,
+    "gitBlob": "7ffb8bf79142f5e67c8899f60c2ea7637ef191b8"
+  },
+  "status": "Protocol and source review accepted conditionally; not final runtime or native installer acceptance",
+  "reviewed": [
+    "Full source and exact V1→V2 diff",
+    "Original archive and original-server pin preserved",
+    "Adjacent regular replacement runtime admitted and bounded before exclusive destination mkdir",
+    "Same admitted runtime bytes written to installed root and beside retained recovery installer",
+    "Original server relocated to recovery/original-serve_returnby.py without modifying archive",
+    "V2 receipt original/installed role hashes and self-check exact files",
+    "Fresh recovery destination and retained runtime adjacency",
+    "Launcher written last; partial destinations honestly documented",
+    "Guide removes incorrect unchanged-server claim"
+  ],
+  "pending": [
+    "Root accepted final runtime pin/size replacing failed draft387eed",
+    "Guide bounded startup wait wording if selected",
+    "Focused author controls including bad adjacent runtime before destination creation, recovery to second new destination, role tampering and V1 receipt refusal",
+    "Native Mac install/launch/stop/reopen acceptance is root-owned"
+  ],
+  "reviewerMacCommands": 0,
+  "reviewerMacPortUse": false,
+  "sourceEdits": false,
+  "maintainedTest": {
+    "bytes": 16099,
+    "sha256": "9a747f3492bcb5ff62bf0a00cb775e4600424e437396e51d04b108e15957f047",
+    "testMethods": 16,
+    "inheritedTestBodies": 9,
+    "inheritedBodiesAstEqualToPublishedV1": true,
+    "newMethods": 7,
+    "review": "Read all methods; exact test bytes and inherited AST bodies authenticated. Not executed by this reviewer."
+  },
+  "guideLiteralChecks": {
+    "actualLineBreaks": true,
+    "recoveryCommandContinuation": true,
+    "newDestinationInstruction": true,
+    "originalRuntimeCustodyPath": true,
+    "partialCopyInstruction": true
+  },
+  "observations": [
+    "Root is evaluating Darwin non-reuse bounded startup waiting; final generated guide/readiness budgets must match the eventual behavior.",
+    "V2 runtime constant387eed is explicitly an unaccepted draft placeholder, not an accepted runtime."
+  ],
+  "scope": "Independent read-only cloud source and test review. No filesystem install, server launch, Mac command or port use."
+}

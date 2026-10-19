@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-B",
+    "/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/tests/received_preview/test_linux_server_restart.py",
+    "ForegroundRestarts.test_existing_listener_keeps_its_port"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"platform\": \"darwin\", \"python\": \"3.13.7\", \"source\": \"/Users/me/Applications/ReturnBy-Completion-d3745-83abbe9a/serve_returnby.py\", \"sourceSha256\": \"7fa92cf4a00072c714e7367feb09fb7f7e2eaa39cf62c9bbef180b303b6191a2\"}\n",
+  "stderr": "test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.244s\n\nOK\n",
+  "source_sha256": "7fa92cf4a00072c714e7367feb09fb7f7e2eaa39cf62c9bbef180b303b6191a2"
+}

@@ -1,0 +1,32 @@
+{
+  "source_sha256": "387eedac9dd5fc671d7919068566738f8ea152486180f97c479acdffd13f084b",
+  "test_sha256": "ceb8d01234e42a35437db5e4f2bf12b48a02561ea33f021638370ebd29ea8bd1",
+  "scope": "Candidate-only added child optimization propagation and both loopback/wildcard existing listener hosts; all client traffic stays loopback and ports are private ephemeral tests. Earlier original/candidate receipt preserved separately.",
+  "courses": [
+    {
+      "optimized_server_children": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/tests/received_preview/test_linux_server_restart.py"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"platform\": \"darwin\", \"python\": \"3.13.7\", \"source\": \"/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/tools/received_preview/serve_returnby.py\", \"sourceSha256\": \"387eedac9dd5fc671d7919068566738f8ea152486180f97c479acdffd13f084b\"}\n",
+      "stderr": "test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) ... \n  test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) (host='0.0.0.0', reuse_address=False) ... FAIL\n  test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) (host='0.0.0.0', reuse_address=True) ... FAIL\ntest_immediate_restart_after_http_and_enter (__main__.ForegroundRestarts.test_immediate_restart_after_http_and_enter) ... ok\ntest_immediate_restart_after_http_and_eof (__main__.ForegroundRestarts.test_immediate_restart_after_http_and_eof) ... ok\ntest_second_live_copy_refuses (__main__.ForegroundRestarts.test_second_live_copy_refuses) ... ok\n\n======================================================================\nFAIL: test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) (host='0.0.0.0', reuse_address=False)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/tests/received_preview/test_linux_server_restart.py\", line 132, in test_existing_listener_keeps_its_port\n    self.assertEqual(child.returncode, 1)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 0 != 1\n\n======================================================================\nFAIL: test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) (host='0.0.0.0', reuse_address=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/tests/received_preview/test_linux_server_restart.py\", line 132, in test_existing_listener_keeps_its_port\n    self.assertEqual(child.returncode, 1)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 0 != 1\n\n----------------------------------------------------------------------\nRan 4 tests in 1.459s\n\nFAILED (failures=2)\n"
+    },
+    {
+      "optimized_server_children": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-O",
+        "/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/tests/received_preview/test_linux_server_restart.py"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"platform\": \"darwin\", \"python\": \"3.13.7\", \"source\": \"/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/tools/received_preview/serve_returnby.py\", \"sourceSha256\": \"387eedac9dd5fc671d7919068566738f8ea152486180f97c479acdffd13f084b\"}\n",
+      "stderr": "test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) ... \n  test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) (host='0.0.0.0', reuse_address=False) ... FAIL\n  test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) (host='0.0.0.0', reuse_address=True) ... FAIL\ntest_immediate_restart_after_http_and_enter (__main__.ForegroundRestarts.test_immediate_restart_after_http_and_enter) ... ok\ntest_immediate_restart_after_http_and_eof (__main__.ForegroundRestarts.test_immediate_restart_after_http_and_eof) ... ok\ntest_second_live_copy_refuses (__main__.ForegroundRestarts.test_second_live_copy_refuses) ... ok\n\n======================================================================\nFAIL: test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) (host='0.0.0.0', reuse_address=False)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/tests/received_preview/test_linux_server_restart.py\", line 132, in test_existing_listener_keeps_its_port\n    self.assertEqual(child.returncode, 1)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 0 != 1\n\n======================================================================\nFAIL: test_existing_listener_keeps_its_port (__main__.ForegroundRestarts.test_existing_listener_keeps_its_port) (host='0.0.0.0', reuse_address=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/me/hamon/receiving/root-d3745-returnby-install/restart-repair/tests/received_preview/test_linux_server_restart.py\", line 132, in test_existing_listener_keeps_its_port\n    self.assertEqual(child.returncode, 1)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 0 != 1\n\n----------------------------------------------------------------------\nRan 4 tests in 1.543s\n\nFAILED (failures=2)\n"
+    }
+  ],
+  "source_unchanged": true,
+  "passed": false
+}

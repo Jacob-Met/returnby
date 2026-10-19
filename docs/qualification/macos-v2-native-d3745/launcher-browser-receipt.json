@@ -1,0 +1,598 @@
+{
+  "host": "Mac.lan",
+  "uid": 501,
+  "python": "3.13.7",
+  "playwright": "1.55.0",
+  "runtime": "/Users/me/hamon-returnby-choices-9785663a4318/py-runtime",
+  "application": "/Users/me/Applications/ReturnBy-Completion-V2-d3745-83abbe9a",
+  "before": {
+    "ASSETS.json": {
+      "bytes": 1550,
+      "sha256": "5bf81ba20fd4c12732661f0008c09ca71095176d72b373b04f4767c73fb75a83",
+      "mode": 420
+    },
+    "INSTALLATION.json": {
+      "bytes": 666,
+      "sha256": "13a70cf3c167d8ce18aac24496574bb0846217fb73f657a679f4b738dbe5fb9c",
+      "mode": 420
+    },
+    "PROVENANCE.json": {
+      "bytes": 3075,
+      "sha256": "f4f8eb942bc54d475fc975b97ff6a929a7199704cd56273cd9cad4d38c9e30df",
+      "mode": 420
+    },
+    "START-HERE.md": {
+      "bytes": 3665,
+      "sha256": "d8c7aee63d964af3c1a26d254f8a745f11d7c6cdb9d6f0cf93f2e9e71a4c60d9",
+      "mode": 420
+    },
+    "Start ReturnBy.command": {
+      "bytes": 146,
+      "sha256": "d2a8458dc91f6d2ce0f23fd9b59d4db707ea8d41a95dd3e9bb5f8f345ffc1d4f",
+      "mode": 493
+    },
+    "app/assets/completion-CUPmr2N_.js": {
+      "bytes": 2501,
+      "sha256": "284e97a0150f8cfb47bca0158ae19091092ff64eb562531b7c7fce3e7f432252",
+      "mode": 420
+    },
+    "app/assets/main-BEB6O3K1.js": {
+      "bytes": 32776,
+      "sha256": "ee637cd31beb2f7ce1fa2f1dcd18a46fc526b99c6925593475451f9158adeb32",
+      "mode": 420
+    },
+    "app/assets/main-DyfoWuUQ.css": {
+      "bytes": 13266,
+      "sha256": "fce677467ab31b3972043ec9ae213766b6c94430f820b0c5684274c233ebe7f7",
+      "mode": 420
+    },
+    "app/assets/tripChecklist-C6JvDI32.js": {
+      "bytes": 16860,
+      "sha256": "444002e85156bcafa3b4913c9c9af7886fe18baeb1a7b5ce26dfb36b59909cc4",
+      "mode": 420
+    },
+    "app/assets/tripChecklist-CmK7SEMW.css": {
+      "bytes": 8320,
+      "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8",
+      "mode": 420
+    },
+    "app/captures/returnby-desktop.png": {
+      "bytes": 131379,
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+      "mode": 420
+    },
+    "app/captures/returnby-mobile.png": {
+      "bytes": 107642,
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+      "mode": 420
+    },
+    "app/favicon.svg": {
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+      "mode": 420
+    },
+    "app/index.html": {
+      "bytes": 10454,
+      "sha256": "cdd0fef694b0b79d7fce5a50497212e8121cf330872e0c78febfbc4648c741b9",
+      "mode": 420
+    },
+    "app/trip-checklist.html": {
+      "bytes": 4740,
+      "sha256": "7cb1a820ca82628300da2b2ecbe380b3ab303b254b779b5ece1f4bb6b9d19fa8",
+      "mode": 420
+    },
+    "recovery/install_macos.py": {
+      "bytes": 12933,
+      "sha256": "a8190f86a0534348e1453aaabc661b1dca5788c64a1ba71fb73942bd0a0173d3",
+      "mode": 420
+    },
+    "recovery/original-START-HERE.md": {
+      "bytes": 2304,
+      "sha256": "54d7bfdffc866cbf933e4c19b66ffd122e2a19ced363c9e0252faee8aaa05c66",
+      "mode": 420
+    },
+    "recovery/original-serve_returnby.py": {
+      "bytes": 3931,
+      "sha256": "7fa92cf4a00072c714e7367feb09fb7f7e2eaa39cf62c9bbef180b303b6191a2",
+      "mode": 420
+    },
+    "recovery/received-build.zip": {
+      "bytes": 260719,
+      "sha256": "816e8d09fbecc27ffeb189aa3c889e48e5bc81f352ccc5b75f5cb9bd64badd71",
+      "mode": 420
+    },
+    "recovery/serve_returnby.py": {
+      "bytes": 5744,
+      "sha256": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+      "mode": 420
+    },
+    "serve_returnby.py": {
+      "bytes": 5744,
+      "sha256": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+      "mode": 420
+    }
+  },
+  "checks": [
+    {
+      "name": "installed runtime is accepted source",
+      "actual": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+      "expected": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2"
+    },
+    {
+      "name": "HTTP asset assets/completion-CUPmr2N_.js",
+      "actual": "284e97a0150f8cfb47bca0158ae19091092ff64eb562531b7c7fce3e7f432252",
+      "expected": "284e97a0150f8cfb47bca0158ae19091092ff64eb562531b7c7fce3e7f432252"
+    },
+    {
+      "name": "no-store assets/completion-CUPmr2N_.js",
+      "actual": "no-store",
+      "expected": "no-store"
+    },
+    {
+      "name": "HTTP asset assets/main-BEB6O3K1.js",
+      "actual": "ee637cd31beb2f7ce1fa2f1dcd18a46fc526b99c6925593475451f9158adeb32",
+      "expected": "ee637cd31beb2f7ce1fa2f1dcd18a46fc526b99c6925593475451f9158adeb32"
+    },
+    {
+      "name": "no-store assets/main-BEB6O3K1.js",
+      "actual": "no-store",
+      "expected": "no-store"
+    },
+    {
+      "name": "HTTP asset assets/main-DyfoWuUQ.css",
+      "actual": "fce677467ab31b3972043ec9ae213766b6c94430f820b0c5684274c233ebe7f7",
+      "expected": "fce677467ab31b3972043ec9ae213766b6c94430f820b0c5684274c233ebe7f7"
+    },
+    {
+      "name": "no-store assets/main-DyfoWuUQ.css",
+      "actual": "no-store",
+      "expected": "no-store"
+    },
+    {
+      "name": "HTTP asset assets/tripChecklist-C6JvDI32.js",
+      "actual": "444002e85156bcafa3b4913c9c9af7886fe18baeb1a7b5ce26dfb36b59909cc4",
+      "expected": "444002e85156bcafa3b4913c9c9af7886fe18baeb1a7b5ce26dfb36b59909cc4"
+    },
+    {
+      "name": "no-store assets/tripChecklist-C6JvDI32.js",
+      "actual": "no-store",
+      "expected": "no-store"
+    },
+    {
+      "name": "HTTP asset assets/tripChecklist-CmK7SEMW.css",
+      "actual": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8",
+      "expected": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8"
+    },
+    {
+      "name": "no-store assets/tripChecklist-CmK7SEMW.css",
+      "actual": "no-store",
+      "expected": "no-store"
+    },
+    {
+      "name": "HTTP asset captures/returnby-desktop.png",
+      "actual": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+      "expected": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+    },
+    {
+      "name": "no-store captures/returnby-desktop.png",
+      "actual": "no-store",
+      "expected": "no-store"
+    },
+    {
+      "name": "HTTP asset captures/returnby-mobile.png",
+      "actual": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+      "expected": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+    },
+    {
+      "name": "no-store captures/returnby-mobile.png",
+      "actual": "no-store",
+      "expected": "no-store"
+    },
+    {
+      "name": "HTTP asset favicon.svg",
+      "actual": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+      "expected": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "name": "no-store favicon.svg",
+      "actual": "no-store",
+      "expected": "no-store"
+    },
+    {
+      "name": "HTTP asset index.html",
+      "actual": "cdd0fef694b0b79d7fce5a50497212e8121cf330872e0c78febfbc4648c741b9",
+      "expected": "cdd0fef694b0b79d7fce5a50497212e8121cf330872e0c78febfbc4648c741b9"
+    },
+    {
+      "name": "no-store index.html",
+      "actual": "no-store",
+      "expected": "no-store"
+    },
+    {
+      "name": "HTTP asset trip-checklist.html",
+      "actual": "7cb1a820ca82628300da2b2ecbe380b3ab303b254b779b5ece1f4bb6b9d19fa8",
+      "expected": "7cb1a820ca82628300da2b2ecbe380b3ab303b254b779b5ece1f4bb6b9d19fa8"
+    },
+    {
+      "name": "no-store trip-checklist.html",
+      "actual": "no-store",
+      "expected": "no-store"
+    },
+    {
+      "name": "second installed launcher refuses promptly",
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "second launcher reports occupied origin",
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "checklist HTTP",
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "name": "checklist title",
+      "actual": "ReturnBy \u00b7 Return-trip checklist",
+      "expected": "ReturnBy \u00b7 Return-trip checklist"
+    },
+    {
+      "name": "fresh profile has no stored returns",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "empty checklist has no order checkboxes",
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "empty preview disabled",
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "empty download disabled",
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "checklist no horizontal overflow",
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "backlink returns to tracker",
+      "actual": "ReturnBy - The Return Desk",
+      "expected": "ReturnBy - The Return Desk"
+    },
+    {
+      "name": "empty tracker remains unmodified",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "name": "no page errors",
+      "actual": [],
+      "expected": []
+    },
+    {
+      "name": "page requests stay in admitted local scope",
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "browser disconnected after owned context close",
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "foreground stops on EOF",
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "recognized bounded startup message",
+      "actual": "Waiting up to 60 seconds for the local address to become available. Press Ctrl+C to cancel.",
+      "expected": "Waiting up to 60 seconds for the local address to become available. Press Ctrl+C to cancel."
+    },
+    {
+      "name": "actual reopened launcher serves complete pinned tracker",
+      "actual": {
+        "bytes": 10454,
+        "sha256": "cdd0fef694b0b79d7fce5a50497212e8121cf330872e0c78febfbc4648c741b9"
+      },
+      "expected": {
+        "bytes": 10454,
+        "sha256": "cdd0fef694b0b79d7fce5a50497212e8121cf330872e0c78febfbc4648c741b9"
+      }
+    },
+    {
+      "name": "foreground stops on Enter",
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "installed checker after use",
+      "actual": 0,
+      "expected": 0
+    }
+  ],
+  "page_errors": [],
+  "page_requests": [
+    {
+      "url": "http://127.0.0.1:8769/trip-checklist.html",
+      "allowed": true
+    },
+    {
+      "url": "http://127.0.0.1:8769/assets/tripChecklist-C6JvDI32.js",
+      "allowed": true
+    },
+    {
+      "url": "http://127.0.0.1:8769/assets/completion-CUPmr2N_.js",
+      "allowed": true
+    },
+    {
+      "url": "http://127.0.0.1:8769/assets/tripChecklist-CmK7SEMW.css",
+      "allowed": true
+    },
+    {
+      "url": "http://127.0.0.1:8769/favicon.svg",
+      "allowed": true
+    },
+    {
+      "url": "http://127.0.0.1:8769/index.html",
+      "allowed": true
+    },
+    {
+      "url": "http://127.0.0.1:8769/assets/main-BEB6O3K1.js",
+      "allowed": true
+    },
+    {
+      "url": "http://127.0.0.1:8769/assets/completion-CUPmr2N_.js",
+      "allowed": true
+    },
+    {
+      "url": "http://127.0.0.1:8769/assets/main-DyfoWuUQ.css",
+      "allowed": true
+    }
+  ],
+  "source_commit": "7eb25c1013807e8a6f9f8e4bb374344b8801908e",
+  "children": [
+    {
+      "pid": 96508,
+      "readiness_seconds": 0.052,
+      "startup_lines": [
+        "Tracker: http://127.0.0.1:8769/index.html",
+        "Trip checklist: http://127.0.0.1:8769/trip-checklist.html",
+        "Open a URL manually. Press Enter here when finished."
+      ],
+      "exit": 0,
+      "stdout": [
+        "Tracker: http://127.0.0.1:8769/index.html",
+        "Trip checklist: http://127.0.0.1:8769/trip-checklist.html",
+        "Open a URL manually. Press Enter here when finished."
+      ],
+      "stderr": []
+    },
+    {
+      "pid": 96561,
+      "readiness_seconds": 30.038,
+      "startup_lines": [
+        "Waiting up to 60 seconds for the local address to become available. Press Ctrl+C to cancel.",
+        "Tracker: http://127.0.0.1:8769/index.html",
+        "Trip checklist: http://127.0.0.1:8769/trip-checklist.html",
+        "Open a URL manually. Press Enter here when finished."
+      ],
+      "exit": 0,
+      "stdout": [
+        "Waiting up to 60 seconds for the local address to become available. Press Ctrl+C to cancel.",
+        "Tracker: http://127.0.0.1:8769/index.html",
+        "Trip checklist: http://127.0.0.1:8769/trip-checklist.html",
+        "Open a URL manually. Press Enter here when finished."
+      ],
+      "stderr": []
+    }
+  ],
+  "http_assets": [
+    {
+      "path": "assets/completion-CUPmr2N_.js",
+      "bytes": 2501,
+      "sha256": "284e97a0150f8cfb47bca0158ae19091092ff64eb562531b7c7fce3e7f432252",
+      "status": 200
+    },
+    {
+      "path": "assets/main-BEB6O3K1.js",
+      "bytes": 32776,
+      "sha256": "ee637cd31beb2f7ce1fa2f1dcd18a46fc526b99c6925593475451f9158adeb32",
+      "status": 200
+    },
+    {
+      "path": "assets/main-DyfoWuUQ.css",
+      "bytes": 13266,
+      "sha256": "fce677467ab31b3972043ec9ae213766b6c94430f820b0c5684274c233ebe7f7",
+      "status": 200
+    },
+    {
+      "path": "assets/tripChecklist-C6JvDI32.js",
+      "bytes": 16860,
+      "sha256": "444002e85156bcafa3b4913c9c9af7886fe18baeb1a7b5ce26dfb36b59909cc4",
+      "status": 200
+    },
+    {
+      "path": "assets/tripChecklist-CmK7SEMW.css",
+      "bytes": 8320,
+      "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8",
+      "status": 200
+    },
+    {
+      "path": "captures/returnby-desktop.png",
+      "bytes": 131379,
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+      "status": 200
+    },
+    {
+      "path": "captures/returnby-mobile.png",
+      "bytes": 107642,
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+      "status": 200
+    },
+    {
+      "path": "favicon.svg",
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+      "status": 200
+    },
+    {
+      "path": "index.html",
+      "bytes": 10454,
+      "sha256": "cdd0fef694b0b79d7fce5a50497212e8121cf330872e0c78febfbc4648c741b9",
+      "status": 200
+    },
+    {
+      "path": "trip-checklist.html",
+      "bytes": 4740,
+      "sha256": "7cb1a820ca82628300da2b2ecbe380b3ab303b254b779b5ece1f4bb6b9d19fa8",
+      "status": 200
+    }
+  ],
+  "occupied_attempt": {
+    "exit": 1,
+    "stdout": "",
+    "stderr": "ReturnBy could not bind 127.0.0.1:8769: [Errno 48] Address already in use\n"
+  },
+  "chrome": "155.0.8059.40",
+  "empty_state": "",
+  "layout": {
+    "viewport": 390,
+    "width": 390
+  },
+  "installation_check": {
+    "exit_code": 0,
+    "stdout": "{\n  \"schema\": \"returnby-macos-received-preview-check-v2\",\n  \"accepted\": true,\n  \"destination\": \"/Users/me/Applications/ReturnBy-Completion-V2-d3745-83abbe9a\",\n  \"sourceCommit\": \"83abbe9a00a5169354df25c734c00340ae73ae43\",\n  \"sourceTree\": \"cfd56ce9960f08c4f5983d5a7a3ca054373f34c8\",\n  \"archiveSha256\": \"816e8d09fbecc27ffeb189aa3c889e48e5bc81f352ccc5b75f5cb9bd64badd71\",\n  \"assetsVerified\": 10,\n  \"originalServerSha256\": \"7fa92cf4a00072c714e7367feb09fb7f7e2eaa39cf62c9bbef180b303b6191a2\",\n  \"installedServerSha256\": \"d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2\",\n  \"origin\": \"http://127.0.0.1:8769\",\n  \"python\": \"/usr/local/bin/python3\"\n}\n",
+    "stderr": ""
+  },
+  "passed": true,
+  "after": {
+    "ASSETS.json": {
+      "bytes": 1550,
+      "sha256": "5bf81ba20fd4c12732661f0008c09ca71095176d72b373b04f4767c73fb75a83",
+      "mode": 420
+    },
+    "INSTALLATION.json": {
+      "bytes": 666,
+      "sha256": "13a70cf3c167d8ce18aac24496574bb0846217fb73f657a679f4b738dbe5fb9c",
+      "mode": 420
+    },
+    "PROVENANCE.json": {
+      "bytes": 3075,
+      "sha256": "f4f8eb942bc54d475fc975b97ff6a929a7199704cd56273cd9cad4d38c9e30df",
+      "mode": 420
+    },
+    "START-HERE.md": {
+      "bytes": 3665,
+      "sha256": "d8c7aee63d964af3c1a26d254f8a745f11d7c6cdb9d6f0cf93f2e9e71a4c60d9",
+      "mode": 420
+    },
+    "Start ReturnBy.command": {
+      "bytes": 146,
+      "sha256": "d2a8458dc91f6d2ce0f23fd9b59d4db707ea8d41a95dd3e9bb5f8f345ffc1d4f",
+      "mode": 493
+    },
+    "app/assets/completion-CUPmr2N_.js": {
+      "bytes": 2501,
+      "sha256": "284e97a0150f8cfb47bca0158ae19091092ff64eb562531b7c7fce3e7f432252",
+      "mode": 420
+    },
+    "app/assets/main-BEB6O3K1.js": {
+      "bytes": 32776,
+      "sha256": "ee637cd31beb2f7ce1fa2f1dcd18a46fc526b99c6925593475451f9158adeb32",
+      "mode": 420
+    },
+    "app/assets/main-DyfoWuUQ.css": {
+      "bytes": 13266,
+      "sha256": "fce677467ab31b3972043ec9ae213766b6c94430f820b0c5684274c233ebe7f7",
+      "mode": 420
+    },
+    "app/assets/tripChecklist-C6JvDI32.js": {
+      "bytes": 16860,
+      "sha256": "444002e85156bcafa3b4913c9c9af7886fe18baeb1a7b5ce26dfb36b59909cc4",
+      "mode": 420
+    },
+    "app/assets/tripChecklist-CmK7SEMW.css": {
+      "bytes": 8320,
+      "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8",
+      "mode": 420
+    },
+    "app/captures/returnby-desktop.png": {
+      "bytes": 131379,
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+      "mode": 420
+    },
+    "app/captures/returnby-mobile.png": {
+      "bytes": 107642,
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+      "mode": 420
+    },
+    "app/favicon.svg": {
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+      "mode": 420
+    },
+    "app/index.html": {
+      "bytes": 10454,
+      "sha256": "cdd0fef694b0b79d7fce5a50497212e8121cf330872e0c78febfbc4648c741b9",
+      "mode": 420
+    },
+    "app/trip-checklist.html": {
+      "bytes": 4740,
+      "sha256": "7cb1a820ca82628300da2b2ecbe380b3ab303b254b779b5ece1f4bb6b9d19fa8",
+      "mode": 420
+    },
+    "recovery/install_macos.py": {
+      "bytes": 12933,
+      "sha256": "a8190f86a0534348e1453aaabc661b1dca5788c64a1ba71fb73942bd0a0173d3",
+      "mode": 420
+    },
+    "recovery/original-START-HERE.md": {
+      "bytes": 2304,
+      "sha256": "54d7bfdffc866cbf933e4c19b66ffd122e2a19ced363c9e0252faee8aaa05c66",
+      "mode": 420
+    },
+    "recovery/original-serve_returnby.py": {
+      "bytes": 3931,
+      "sha256": "7fa92cf4a00072c714e7367feb09fb7f7e2eaa39cf62c9bbef180b303b6191a2",
+      "mode": 420
+    },
+    "recovery/received-build.zip": {
+      "bytes": 260719,
+      "sha256": "816e8d09fbecc27ffeb189aa3c889e48e5bc81f352ccc5b75f5cb9bd64badd71",
+      "mode": 420
+    },
+    "recovery/serve_returnby.py": {
+      "bytes": 5744,
+      "sha256": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+      "mode": 420
+    },
+    "serve_returnby.py": {
+      "bytes": 5744,
+      "sha256": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2",
+      "mode": 420
+    }
+  },
+  "source_unchanged": true,
+  "screenshots": [
+    {
+      "path": "checklist-390.png",
+      "bytes": 98152,
+      "sha256": "bca303bd786f18222d7cc1766be9c26d924a46d79621edff3d4b770a39f419dc"
+    },
+    {
+      "path": "tracker-after-backlink.png",
+      "bytes": 147495,
+      "sha256": "2b0a47e008e5e2beedbee34ecf20c18cb73dcf084d2ef1386a37bbfc704c5ad3"
+    }
+  ]
+}
