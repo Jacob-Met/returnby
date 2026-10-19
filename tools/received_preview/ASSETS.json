@@ -1,0 +1,52 @@
+[
+  {
+    "path": "assets/completion-CUPmr2N_.js",
+    "bytes": 2501,
+    "sha256": "284e97a0150f8cfb47bca0158ae19091092ff64eb562531b7c7fce3e7f432252"
+  },
+  {
+    "path": "assets/main-BEB6O3K1.js",
+    "bytes": 32776,
+    "sha256": "ee637cd31beb2f7ce1fa2f1dcd18a46fc526b99c6925593475451f9158adeb32"
+  },
+  {
+    "path": "assets/main-DyfoWuUQ.css",
+    "bytes": 13266,
+    "sha256": "fce677467ab31b3972043ec9ae213766b6c94430f820b0c5684274c233ebe7f7"
+  },
+  {
+    "path": "assets/tripChecklist-C6JvDI32.js",
+    "bytes": 16860,
+    "sha256": "444002e85156bcafa3b4913c9c9af7886fe18baeb1a7b5ce26dfb36b59909cc4"
+  },
+  {
+    "path": "assets/tripChecklist-CmK7SEMW.css",
+    "bytes": 8320,
+    "sha256": "b3392f62bf0bd39f4fdd62e44f10214916d0aad6d20f420d2bc3f0a248ce3da8"
+  },
+  {
+    "path": "captures/returnby-desktop.png",
+    "bytes": 131379,
+    "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+  },
+  {
+    "path": "captures/returnby-mobile.png",
+    "bytes": 107642,
+    "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+  },
+  {
+    "path": "favicon.svg",
+    "bytes": 238,
+    "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+  },
+  {
+    "path": "index.html",
+    "bytes": 10454,
+    "sha256": "cdd0fef694b0b79d7fce5a50497212e8121cf330872e0c78febfbc4648c741b9"
+  },
+  {
+    "path": "trip-checklist.html",
+    "bytes": 4740,
+    "sha256": "7cb1a820ca82628300da2b2ecbe380b3ab303b254b779b5ece1f4bb6b9d19fa8"
+  }
+]

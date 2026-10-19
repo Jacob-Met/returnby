@@ -1,0 +1,65 @@
+{
+  "scope": "Draft installer-only controls; runtime 387eed is unaccepted on Darwin; no runtime lifecycle or Mac acceptance",
+  "host": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4",
+  "pid": 3215159,
+  "before": {
+    "tools/received_preview/install_macos.py": {
+      "bytes": 12621,
+      "sha256": "4960848b7d09e85e197811f97866cc69240f7754f22ffce32e36c51208259a5e",
+      "mode": 436
+    },
+    "baseline-install_macos.py": {
+      "bytes": 10757,
+      "sha256": "9eef80145eb5bd490599994ca242d5c64d564898b6b627f5011f517cf818c9c5",
+      "mode": 436
+    },
+    "tools/received_preview/serve_returnby.py": {
+      "bytes": 4078,
+      "sha256": "387eedac9dd5fc671d7919068566738f8ea152486180f97c479acdffd13f084b",
+      "mode": 436
+    },
+    "tests/received_preview/test_install_macos.py": {
+      "bytes": 16099,
+      "sha256": "9a747f3492bcb5ff62bf0a00cb775e4600424e437396e51d04b108e15957f047",
+      "mode": 436
+    },
+    "tools/received_preview/README.md": {
+      "bytes": 7294,
+      "sha256": "b27ea3a18c018608879e763f9e9cb6ff12fc1a2e6b4d8873135dce5e13e6dda1",
+      "mode": 436
+    }
+  },
+  "after": {
+    "tools/received_preview/install_macos.py": {
+      "bytes": 12621,
+      "sha256": "4960848b7d09e85e197811f97866cc69240f7754f22ffce32e36c51208259a5e",
+      "mode": 436
+    },
+    "baseline-install_macos.py": {
+      "bytes": 10757,
+      "sha256": "9eef80145eb5bd490599994ca242d5c64d564898b6b627f5011f517cf818c9c5",
+      "mode": 436
+    },
+    "tools/received_preview/serve_returnby.py": {
+      "bytes": 4078,
+      "sha256": "387eedac9dd5fc671d7919068566738f8ea152486180f97c479acdffd13f084b",
+      "mode": 436
+    },
+    "tests/received_preview/test_install_macos.py": {
+      "bytes": 16099,
+      "sha256": "9a747f3492bcb5ff62bf0a00cb775e4600424e437396e51d04b108e15957f047",
+      "mode": 436
+    },
+    "tools/received_preview/README.md": {
+      "bytes": 7294,
+      "sha256": "b27ea3a18c018608879e763f9e9cb6ff12fc1a2e6b4d8873135dce5e13e6dda1",
+      "mode": 436
+    }
+  },
+  "testsRun": 10,
+  "failures": 0,
+  "errors": 0,
+  "log": "test_admitted_runtime_bytes_are_reused_after_source_changes (returnby_v2_draft_tests.ReceivedMacEntry.test_admitted_runtime_bytes_are_reused_after_source_changes) ... ok\ntest_all_assets_and_source_identity_remain_exact (returnby_v2_draft_tests.ReceivedMacEntry.test_all_assets_and_source_identity_remain_exact) ... ok\ntest_bad_adjacent_runtime_refuses_before_mkdir_then_corrected_retry_succeeds (returnby_v2_draft_tests.ReceivedMacEntry.test_bad_adjacent_runtime_refuses_before_mkdir_then_corrected_retry_succeeds) ... ok\ntest_changed_archive_is_refused_before_destination_creation (returnby_v2_draft_tests.ReceivedMacEntry.test_changed_archive_is_refused_before_destination_creation) ... ok\ntest_existing_destination_is_never_overwritten (returnby_v2_draft_tests.ReceivedMacEntry.test_existing_destination_is_never_overwritten) ... ok\ntest_original_custody_and_installed_runtime_roles_are_exact (returnby_v2_draft_tests.ReceivedMacEntry.test_original_custody_and_installed_runtime_roles_are_exact) ... ok\ntest_payload_write_failure_retains_partial_copy_without_launcher (returnby_v2_draft_tests.ReceivedMacEntry.test_payload_write_failure_retains_partial_copy_without_launcher) ... ok\ntest_retained_installer_recovers_into_another_new_destination (returnby_v2_draft_tests.ReceivedMacEntry.test_retained_installer_recovers_into_another_new_destination) ... ok\ntest_self_check_refuses_each_changed_runtime_custody_copy (returnby_v2_draft_tests.ReceivedMacEntry.test_self_check_refuses_each_changed_runtime_custody_copy) ... ok\ntest_self_check_refuses_runtime_role_tampering_and_v1_receipt (returnby_v2_draft_tests.ReceivedMacEntry.test_self_check_refuses_runtime_role_tampering_and_v1_receipt) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.160s\n\nOK\n",
+  "sourceUnchanged": true
+}

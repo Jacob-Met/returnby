@@ -1,0 +1,113 @@
+{
+  "schema": "hamon.anvil.returnby-v2-installer-independent-review.v2",
+  "at_utc": "2026-10-13T06:09:09.359264+00:00",
+  "accepted": true,
+  "scope": "Independent read-only protocol/source/maintained-test/guide review and saved author-native receipt inspection. No installer/server/browser execution by this reviewer, no Mac port use or changes to original installed copy.",
+  "final_source": {
+    "tools/received_preview/install_macos.py": {
+      "bytes": 12933,
+      "sha256": "a8190f86a0534348e1453aaabc661b1dca5788c64a1ba71fb73942bd0a0173d3"
+    },
+    "tests/received_preview/test_install_macos.py": {
+      "bytes": 18264,
+      "sha256": "10efc1668db98c38d5315fa6c4dab13b1b9b38b050b22cb64e3ebc42e4d7eaf7"
+    },
+    "tools/received_preview/serve_returnby.py": {
+      "bytes": 5744,
+      "sha256": "d2bbfaa4440d639bf20e37bc9b0fc3e20d01c643609f1af11d49a57b27e37ac2"
+    },
+    "tools/received_preview/README.md": {
+      "bytes": 8372,
+      "sha256": "409bba627751441bc2682bc2ce796a96b67dc70e53d678dbcaedcb9f8f978f64"
+    }
+  },
+  "reviewed_protocol": [
+    "Exact original archive admitted with original asset/runtime identities retained.",
+    "Adjacent regular replacement runtime admitted before destination mkdir; the same verified captured bytes populate root and recovery runtime copies.",
+    "Original runtime retained separately; receipt records originalServerSha256 and installedServerSha256 with V2 schema.",
+    "Self-check covers archive, all ten assets, original runtime, both repaired runtime copies, launcher, guide and retained installer.",
+    "Retained installer and archive plus adjacent admitted runtime can create another new recovery destination.",
+    "Exclusive new destination only; existing copies are not rewritten; partial failure remains explicit and launcher is written last.",
+    "V1 receipt refusal is deliberate; original V1 checkers/copies remain independent.",
+    "Non-object receipt values produce controlled CLI refusal; retained checker child receives optimization when the maintained test runs with -O.",
+    "Runtime pin is final bounded non-reuse Darwin policy d2bbfaa4, not the rejected reuse-enabled 387eed candidate.",
+    "Generated guide and corrected README explain bounded macOS wait and Ctrl-C cancellation; recovery shell continuation is exactly one backslash."
+  ],
+  "maintained_controls": {
+    "methods": 17,
+    "coverage": "Original nine retained controls plus malformed/missing/symlinked/wrong runtime admission and explicit retry, captured-byte reuse, custody roles, tamper/V1 refusal, retained recovery, partial write/no launcher and fresh-path recovery, non-object receipt CLI refusal.",
+    "fixture_review": "Linux incumbent fixture enables SO_REUSEADDR only to admit its own prior TIME_WAIT while port reuse remains disabled. Darwin fixture retains non-reuse bounded setup with reachable/uncertain endpoint refusal. Generalized runtime controls separately cover loopback and wildcard incumbents with reuse off/on. HTTPError response is explicitly closed.",
+    "launcher_scope": "Production launcher retains recorded Python -B invocation; installer parent/checker -O and separate true-child-O foreground controls are distinct."
+  },
+  "author_native_receipt": {
+    "path": "/dev/shm/forge-d3745/returnby-v2-evidence/final-installer-receipt.json",
+    "bytes": 16446,
+    "sha256": "d70632660c593f4c23b8f87b9ba9c12b38595b7e17805e537e87ad281d056f2c",
+    "host": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4",
+    "pid": 3245082,
+    "courses": [
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/jacob/hamon/receiving/forge-d3745ea0f44f-returnby-v2/final/tests/received_preview/test_install_macos.py"
+        ],
+        "pid": 3245158,
+        "exit_code": 0,
+        "methods": 17
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "-B",
+          "-O",
+          "/home/jacob/hamon/receiving/forge-d3745ea0f44f-returnby-v2/final/tests/received_preview/test_install_macos.py"
+        ],
+        "pid": 3245275,
+        "exit_code": 0,
+        "methods": 17
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/jacob/hamon/receiving/forge-d3745ea0f44f-returnby-v2/final/tests/received_preview/test_foreground_restarts.py"
+        ],
+        "pid": 3245311,
+        "exit_code": 0,
+        "methods": 4
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "-B",
+          "-O",
+          "/home/jacob/hamon/receiving/forge-d3745ea0f44f-returnby-v2/final/tests/received_preview/test_foreground_restarts.py"
+        ],
+        "pid": 3245343,
+        "exit_code": 0,
+        "methods": 4
+      }
+    ],
+    "five_course_inputs_unchanged": true,
+    "fourteen_received_files_unchanged": true,
+    "archive_sha256": "816e8d09fbecc27ffeb189aa3c889e48e5bc81f352ccc5b75f5cb9bd64badd71",
+    "nativeMac": false,
+    "platformPreconditionSimulated": true
+  },
+  "documentation_correction": {
+    "receipt_keeps_pre_correction_readme": {
+      "bytes": 8374,
+      "sha256": "4c575c31e055c3ec5391b57e83cb04cb504104a1eb05682e56eed2298293ff82",
+      "mode": 436
+    },
+    "current_readme": {
+      "bytes": 8372,
+      "sha256": "409bba627751441bc2682bc2ce796a96b67dc70e53d678dbcaedcb9f8f978f64"
+    },
+    "change": "Two prose/shell characters removed after native run: duplicate continuation backslash and unnecessary apostrophe escape. Product installer/runtime/test bytes unchanged. Corrected command read and bash -n accepted; no command executed."
+  },
+  "prior_failures_preserved": "Earlier safe-runtime normal17/optimized16 plus test-fixture EADDRINUSE receipt remains separate. Rejected Darwin reuse-enabled runtime evidence remains separate. Neither is relabeled as a final successful run.",
+  "remaining_boundary": "Actual final V2 installation, foreground launcher/browser receiving and retained recovery on Mac belong to root and require their own native receipts; Linux installer-platform simulation is not native Mac acceptance."
+}
