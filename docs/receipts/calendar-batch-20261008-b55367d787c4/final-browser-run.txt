@@ -1,0 +1,34 @@
+{
+  "browser": "153.0.8010.0",
+  "checks": {
+    "baseline": {
+      "savedReturns": 2,
+      "individualExportControls": 2,
+      "batchExportControls": 0,
+      "downloadedEvents": 1
+    },
+    "filtered_selection_keyboard_unicode_single_event_identity_and_no_writes": true,
+    "empty_selection_select_all_cancel_escape_and_focus": true,
+    "real_second_tab_edit_refusal_reload_review_and_stable_uid": true,
+    "second_tab_removal_refused_and_unrelated_addition_retained": true,
+    "read_failure_at_open_and_download_preserves_selection_and_retries": true,
+    "phone_width_and_touch_selection_download": true,
+    "invalid_dates_and_duplicate_ids_are_visible_and_cannot_be_selected": true,
+    "timezones": [
+      {
+        "timezoneId": "America/Los_Angeles",
+        "events": 2,
+        "leapAndYearEndDates": "pass"
+      },
+      {
+        "timezoneId": "Pacific/Kiritimati",
+        "events": 2,
+        "leapAndYearEndDates": "pass"
+      }
+    ]
+  },
+  "errors": [],
+  "externalRequests": [],
+  "failure": null,
+  "buildIndexSha256": "a97721384a355b9cf58ee805284846de92b32f90f550b579f637d417e252e2f2"
+}

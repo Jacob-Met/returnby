@@ -1,0 +1,16 @@
+{"transferred_files_verified":10,"receiving_commit":"fbd48a6e63d1b071de10e4e40d875184fa461141"}
+node:internal/fs/promises:636
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/tmp/playwright-artifacts-hTDRwB/f3e62b37-6bb9-47e8-be78-6b86c81d4712'
+    at async open (node:internal/fs/promises:636:25)
+    at async readFile (node:internal/fs/promises:1235:14)
+    at async file:///tmp/returnby-edit-965d2e86e979/check_edit_browser.mjs:108:15 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/tmp/playwright-artifacts-hTDRwB/f3e62b37-6bb9-47e8-be78-6b86c81d4712'
+}
+
+Node.js v22.22.1

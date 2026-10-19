@@ -1,32 +1,69 @@
 import './style.css';
+import './edit.css';
+import './calendar-batch.css';
 import { parse } from './parse';
 import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
 import { buildIcs } from './ics';
 import { load, save, type Order } from './store';
 import { samples } from './samples';
+import { bindOrderEditor } from './edit-ui';
+import { bindCalendarBatch } from './calendar-batch-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const list = $<HTMLUListElement>('#list');
 const storageError = $<HTMLParagraphElement>('#storage-error');
-let orders = load();
+const storageRetry = $<HTMLButtonElement>('#storage-retry');
+let orders: Order[] = [];
+let loadFailed = false;
 let sampleIdx = 0;
 let filterMode: 'all' | 'due' | 'expired' = 'all';
 
-function persistOrders(next: Order[]): boolean {
+const loadError = "Couldn't load saved returns. Try loading again before saving, or clear saved returns to start over.";
+
+function showStorageError(message: string) {
+  storageError.textContent = message;
+  storageError.hidden = false;
+  storageRetry.hidden = !loadFailed;
+  storageError.focus();
+}
+
+function clearStorageError() {
+  storageError.textContent = '';
+  storageError.hidden = true;
+  storageRetry.hidden = true;
+}
+
+function reloadOrders() {
+  try {
+    orders = load();
+  } catch {
+    loadFailed = true;
+    showStorageError(loadError);
+    render();
+    return;
+  }
+  loadFailed = false;
+  clearStorageError();
+  render();
+}
+
+function persistOrders(next: Order[], reset = false): boolean {
+  if (loadFailed && !reset) {
+    showStorageError(loadError);
+    return false;
+  }
   try {
     save(next);
   } catch {
-    storageError.textContent = "Couldn't save this change in your browser. Check storage availability and try again.";
-    storageError.hidden = false;
-    storageError.focus();
+    showStorageError("Couldn't save this change in your browser. Check storage availability and try again.");
     return false;
   }
   orders = next;
-  storageError.textContent = '';
-  storageError.hidden = true;
+  loadFailed = false;
+  clearStorageError();
   return true;
 }
 
@@ -73,15 +110,21 @@ preview.addEventListener('submit', (e) => {
 });
 
 function render() {
+  if (loadFailed) {
+    for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
+    list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
+    return;
+  }
   const all=orders.map(o=>{const due=dueDate(o.orderDate,o.windowDays),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);
   $('#tracked-count').textContent=String(all.length);$('#soon-count').textContent=String(all.filter(r=>r.left>=0&&r.left<=7).length);$('#expired-count').textContent=String(all.filter(r=>r.left<0).length);
   for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
   const rows=all.filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
   if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
 }
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
+  if (t.dataset.edit !== undefined) orderEditor.open(t.dataset.edit);
   if (t.dataset.del) { if (persistOrders(orders.filter((o) => o.id !== t.dataset.del))) render(); }
   if (t.dataset.ics) {
     const o = orders.find((x) => x.id === t.dataset.ics)!;
@@ -95,5 +138,13 @@ list.addEventListener('click', (e) => {
 $('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);
 paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
 $('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
-$('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?') && persistOrders([])) render(); });
-render();
+$('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?') && persistOrders([], true)) render(); });
+storageRetry.addEventListener('click', reloadOrders);
+const orderEditor = bindOrderEditor({
+  getOrders: () => orders,
+  read: load,
+  commit: next => { if (!persistOrders(next)) return false; render(); return true; },
+  refresh: reloadOrders,
+});
+bindCalendarBatch({ read: load, filter: () => filterMode });
+reloadOrders();
