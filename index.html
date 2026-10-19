@@ -3,6 +3,42 @@
 <header class="topbar"><a class="brand" href="#top" aria-label="ReturnBy home"><span class="brand-mark">R/</span><span><strong>RETURNBY</strong><small>THE RETURN DESK</small></span></a><div class="local-chip"><i></i><span>LOCAL ONLY / NO INBOX CONNECTION</span></div></header>
 <main id="top"><section class="hero"><div class="hero-copy"><p class="eyebrow">ORDER IN / DEADLINE OUT</p><h1>Keep the window<br /><em>on your side.</em></h1><p class="sub">Paste a real confirmation. ReturnBy extracts order details, checks merchant policy and gives you a date to act on. Review every field, save multiple deadlines and export a real calendar reminder - no AI or account required.</p><div class="hero-notes"><span>01 / PASTE</span><span>02 / REVIEW</span><span>03 / REMEMBER</span></div></div><aside class="hero-ticket"><span class="ticket-kicker">RETURN WINDOW</span><strong>30 <i>DAYS</i></strong><span>DEFAULT WHEN A STORE IS UNKNOWN</span><div class="ticket-line"></div><span>RULE-BASED / EDITABLE / LOCAL</span></aside></section>
 <section class="desk-grid" aria-label="Return deadline workspace"><article class="intake-panel"><header class="panel-heading"><p class="eyebrow">01 / START WITH THE ORDER</p><h2>Paste a confirmation.</h2><p>Only details you approve are saved. The original email stays in this text box until you clear it.</p></header><label class="input-label" for="paste">ORDER EMAIL / CONFIRMATION</label><textarea id="paste" rows="9" placeholder="Paste the order confirmation text here..."></textarea><div class="action-row"><button id="find" class="button button-primary">Find the deadline</button><a href="#" id="sample" class="button button-link">Load a fictional example</a></div><div class="privacy-note"><span class="privacy-icon">LOCAL</span><p>No inbox access. No upload. Parsing and calendar export run in this browser.</p></div><form id="preview" class="preview-card" hidden aria-live="polite"></form><p id="storage-error" class="warn" role="alert" tabindex="-1" hidden></p><button id="storage-retry" type="button" class="button button-link" hidden>Retry loading saved returns</button></article><aside class="ledger-panel"><header class="panel-heading"><p class="eyebrow">02 / YOUR ACTIVE TRACKER</p><h2>Return windows.</h2><p>Deadlines are recalculated each day and sorted by what needs attention first.</p></header><div class="summary-grid"><div><span>TRACKED</span><strong id="tracked-count">0</strong></div><div><span>DUE IN 7 DAYS</span><strong id="soon-count">0</strong></div><div><span>OVERDUE</span><strong id="expired-count">0</strong></div></div><div class="filter-row" role="group" aria-label="Filter return dates"><button id="filter-all" class="filter active" type="button" aria-pressed="true">All</button><button id="filter-due" class="filter" type="button" aria-pressed="false">Due soon</button><button id="filter-expired" class="filter" type="button" aria-pressed="false">Expired</button></div><p id="edit-feedback" class="edit-feedback" role="status" aria-live="polite"></p><div class="calendar-toolbar"><button id="calendar-open" class="button button-primary" type="button">Export several reminders</button><p id="calendar-feedback" role="status" aria-live="polite"></p></div><ul id="list" aria-live="polite"></ul><p class="list-note">Saved items stay in this browser's local storage. Use the calendar button for an .ics reminder.</p></aside></section>
+<details id="deadline-overview">
+  <summary id="deadline-overview-open">Plan around saved return deadlines</summary>
+  <div class="overview-body">
+    <p class="overview-intro">See which saved deadlines fall together before planning a return trip. This read-only view includes every saved return, regardless of the tracker filter. It does not change return windows or confirm a retailer's policy.</p>
+    <div class="overview-controls" aria-label="Choose the deadline month">
+      <label for="overview-month">Deadline month <input id="overview-month" type="month" min="1000-01" max="9999-12" /></label>
+      <button id="overview-month-previous" class="button button-link" type="button">Previous month</button>
+      <button id="overview-month-next" class="button button-link" type="button">Next month</button>
+      <button id="overview-today" class="button button-link" type="button">Today</button>
+      <button id="overview-refresh" class="button button-primary" type="button">Refresh saved deadlines</button>
+    </div>
+    <p id="overview-error" role="alert" hidden></p>
+    <p id="overview-snapshot" aria-live="polite"></p>
+    <div id="overview-content" hidden>
+      <div class="overview-layout">
+        <section class="overview-calendar" aria-labelledby="overview-month-title">
+          <h3 id="overview-month-title"></h3>
+          <p id="overview-month-summary"></p>
+          <div class="overview-weekdays" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+          <div id="overview-days" role="group" aria-labelledby="overview-month-title" aria-describedby="overview-keyboard-help"></div>
+          <p id="overview-keyboard-help" class="overview-help">The lower number on each day is its saved-return count. Select a day to read its records. Arrow keys move within this month; Home and End move to the Monday and Sunday of the current week. Today's date is underlined.</p>
+        </section>
+        <section class="overview-selection" aria-labelledby="overview-selected-title">
+          <h3 id="overview-selected-title"></h3>
+          <p id="overview-selected-summary" aria-live="polite"></p>
+          <ol id="overview-records"></ol>
+          <nav id="overview-record-pagination" aria-label="Selected-day saved records" hidden>
+            <button id="overview-record-previous" class="button button-link" type="button">Previous records</button>
+            <span id="overview-record-page" aria-live="polite"></span>
+            <button id="overview-record-next" class="button button-link" type="button">Next records</button>
+          </nav>
+        </section>
+      </div>
+    </div>
+  </div>
+</details>
 <section class="backup-panel" aria-labelledby="backup-heading">
   <details>
     <summary id="backup-heading">Back up or restore saved returns</summary>
@@ -53,4 +89,4 @@
 <p>The original email and order total are excluded. Existing reminder IDs are retained; your calendar app decides how to handle an event you have imported before. Download again after editing a deadline.</p>
 <div class="calendar-dialog-actions"><button id="calendar-download" class="button button-primary" type="submit" disabled>Download selected reminders</button><button id="calendar-cancel" class="button button-link" type="button">Cancel</button></div>
 </form></dialog>
-<script type="module" src="/src/main.ts"></script></body></html>
+<script type="module" src="/src/main.ts"></script><script type="module" src="/src/deadline-overview-entry.ts"></script></body></html>
