@@ -1,0 +1,55 @@
+{
+  "schema": "returnby.owned-temporary-profile-cleanup.v1",
+  "reason": "ENOSPC during new handoff documentation write after all product receiving completed",
+  "before_free_bytes": 130543616,
+  "profiles": [
+    {
+      "path": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/browser-pr22-actions/profile",
+      "synthetic_review_only": true,
+      "recorded_check_counts": [
+        4,
+        0
+      ],
+      "no_matching_active_process": true,
+      "logical_file_bytes": 8524237,
+      "removed": true
+    },
+    {
+      "path": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/browser-pr22-day-before-focus/profile",
+      "synthetic_review_only": true,
+      "recorded_check_counts": [
+        0,
+        2
+      ],
+      "no_matching_active_process": true,
+      "logical_file_bytes": 8500750,
+      "removed": true
+    },
+    {
+      "path": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/browser-pr22-day-focus-focus/profile",
+      "synthetic_review_only": true,
+      "recorded_check_counts": [
+        2,
+        0
+      ],
+      "no_matching_active_process": true,
+      "logical_file_bytes": 8500730,
+      "removed": true
+    },
+    {
+      "path": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/browser-pr22-day-focus-actions/profile",
+      "synthetic_review_only": true,
+      "recorded_check_counts": [
+        4,
+        0
+      ],
+      "no_matching_active_process": true,
+      "logical_file_bytes": 8530168,
+      "removed": true
+    }
+  ],
+  "other_paths_removed": false,
+  "partial_failed_document_exists": false,
+  "after_free_bytes": 142168064,
+  "completed_utc": "2026-10-08T13:42:05.942893+00:00"
+}

@@ -1,0 +1,29 @@
+--- a/tests/helpers/storage-fixture.mjs
++++ b/tests/helpers/storage-fixture.mjs
+@@ -4,7 +4,16 @@
+   const elements = new Map();
+   let value = JSON.stringify(initial), failures = 0, serial = 0, allowClear = true;
+   const attempts = [];
+-  const document = { activeElement: null, querySelector: selector => elements.get(selector.slice(1)) };
++  // Storage cases are synchronous; receive lifecycle listener registration
++  // without starting real midnight timers. Day changes have their own native
++  // tests and real-browser receiving.
++  const window = Object.assign(new EventTarget(), {
++    setTimeout: () => 1,
++    clearTimeout() {},
++  });
++  const document = Object.assign(new EventTarget(), {
++    activeElement: null, querySelector: selector => elements.get(selector.slice(1)),
++  });
+   class Element {
+     constructor(id, tag) {
+       this.id = id; this.value = ''; this.innerHTML = ''; this.textContent = '';
+@@ -37,7 +46,7 @@
+     return elements.get(id).listeners.get(type)({ preventDefault() {}, target: { dataset } });
+   }
+   return {
+-    globals: { document, localStorage, FormData, crypto: { randomUUID: () => `order-${++serial}` },
++    globals: { window, document, localStorage, FormData, crypto: { randomUUID: () => `order-${++serial}` },
+       confirm: () => allowClear, alert() { throw Error('Unexpected blocking alert'); } },
+     elements, attempts, persisted: () => clone(JSON.parse(value)),
+     failNext(n = 1) { failures = n; }, confirm(next) { allowClear = next; },

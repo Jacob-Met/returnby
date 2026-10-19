@@ -1,0 +1,93 @@
+{
+  "schema": "returnby.pr22.packaging-observations.v1",
+  "qualification_affected": false,
+  "documentation_write_failures": [
+    {
+      "path": "/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/HANDOFF.md",
+      "observed_message": "ENOSPC: no space left on device",
+      "record_type": "transcript observation; exact later native error and cleanup are separate files"
+    },
+    {
+      "path": "/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/HANDOFF-v2.md",
+      "observed_message": "ENOSPC: no space left on device",
+      "record_type": "transcript observation; exact later native error and cleanup are separate files"
+    },
+    {
+      "path": "/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/documentation-write-observation.json",
+      "observed_message": "ENOSPC: no space left on device",
+      "record_type": "transcript observation; exact later native error and cleanup are separate files"
+    },
+    {
+      "path": "/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/freeze-review.py",
+      "observed_message": "ENOSPC: no space left on device",
+      "record_type": "transcript observation; exact later native error and cleanup are separate files"
+    }
+  ],
+  "failed_script_launch": {
+    "note": "The missing freeze script was mistakenly launched after its failed documentation write. Its exact empty stdout and missing-file stderr are retained separately; no product code ran."
+  },
+  "read_timeouts": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "MCP error -32001: Request timed out [device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "structuredContent": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "MCP error -32001: Request timed out [device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "structuredContent": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "MCP error -32001: Request timed out [device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+          }
+        ],
+        "structuredContent": {
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    }
+  ],
+  "heredoc_failed_before_python_execution": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Process started with PID 71651 (shell: /bin/zsh)\nInitial output:\nzsh:1: can't create temp file for here document: no space left on device\n"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+      }
+    ],
+    "isError": false
+  },
+  "resolution": "Read-only Python -c succeeded without a temporary file, then all 34 native text files were fetched and matched their native identities.",
+  "native_profile_cleanup": "Only the four completed synthetic profiles created by this PR22 review were removed after checking completed receipts and no matching active process. Earlier frozen profiles, source, logs, builds and screenshots were retained.",
+  "last_native_custody_utc": "2026-10-08T13:57:40.575548+00:00",
+  "github_mutations": false
+}

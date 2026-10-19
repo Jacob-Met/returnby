@@ -1,0 +1,32 @@
+
+> returnby@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22-day-focus
+
+ ✓ tests/ics.test.ts (12 tests) 31ms
+ ✓ tests/day-refresh.test.ts (10 tests) 30ms
+ ✓ tests/edit.test.ts (34 tests) 15ms
+ ✓ tests/calendar-batch.test.ts (32 tests) 82ms
+ ✓ tests/edit-ui.test.mjs (7 tests) 122ms
+ ✓ tests/core.test.ts (9 tests) 9ms
+ ✓ tests/combined-receiving.test.mjs (3 tests) 333ms
+   ✓ corrected subtotal and reviewed attribution survive refused save, download, and fresh restore 319ms
+ ✓ tests/order-search-ui.test.mjs (8 tests) 375ms
+   ✓ existing urgency controls keep deadline order and global counts without changing saved bytes 352ms
+ ✓ tests/stale-actions.test.mjs (6 tests) 213ms
+ ✓ tests/order-search.test.ts (22 tests) 43ms
+ ✓ tests/submitted-policy.test.mjs (9 tests) 166ms
+ ✓ tests/storage.test.mjs (6 tests) 180ms
+ ✓ tests/backup-ui.test.mjs (19 tests) 749ms
+   ✓ preview and cancel preserve storage, native tracker, and an unsaved email draft 347ms
+ ✓ tests/loading.test.mjs (11 tests) 219ms
+ ✓ tests/backup.test.ts (53 tests) 1075ms
+   ✓ an accepted near-limit backup can be exported again using compact JSON 497ms
+
+ Test Files  15 passed (15)
+      Tests  241 passed (241)
+   Start at  06:27:21
+   Duration  1.75s (tests 71%, transform 18%, import 9%, worker 2%)
+

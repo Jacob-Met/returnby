@@ -1,0 +1,11 @@
+--- a/independent_search_actions.mjs
++++ b/independent_search_actions.mjs
+@@ -48,7 +48,7 @@
+  await check('clear-review-retains-query-and-later-save-repopulates-it',async()=>{const p=await page();try{
+   await query(p,'two');assert.deepEqual(await ids(p),['later']);await fillDraft(p,'Basket new shop','TWO-NEW');
+   p.once('dialog',d=>d.dismiss());await p.click('#clear');assert.deepEqual(await saved(p),records);assert.deepEqual(await ids(p),['later']);assert.equal(await p.$eval('#order-search',n=>n.value),'two');assert.equal(await p.$eval('#preview',n=>n.hidden),false);assert.equal(await p.evaluate(()=>window.writes.length),0);
+-  p.once('dialog',d=>d.accept());await p.click('#clear');assert.deepEqual(await saved(p),[]);assert.deepEqual(await ids(p),[]);assert.equal(await p.$eval('#order-search',n=>n.value),'two');assert.equal(await p.$eval('#filter-due',n=>n.getAttribute('aria-pressed')),'true');assert.match(await p.$eval('#order-search-status',n=>n.textContent),/0 of 0/);
++  p.once('dialog',d=>d.accept());await p.click('#clear');assert.deepEqual(await saved(p),[]);assert.deepEqual(await ids(p),[]);assert.equal(await p.$eval('#order-search',n=>n.value),'two');assert.equal(await p.$eval('#filter-due',n=>n.getAttribute('aria-pressed')),'true');assert.match(await p.$eval('#search-status',n=>n.textContent),/0 of 0/);
+   await submit(p);const current=await saved(p);assert.equal(current.length,1);assert.equal(current[0].orderNo,'TWO-NEW');assert(!records.some(r=>r.id===current[0].id));assert.deepEqual(await ids(p),[current[0].id]);assert.equal(await p.$eval('#order-search',n=>n.value),'two');assert.equal(await p.evaluate(()=>window.writes.length),2);
+   return {cancelledClearWrites:0,approvedClearScope:records.map(r=>r.id),queryRetained:true,newId:current[0].id,totalStorageWrites:2};
+  }finally{await p.close();}});

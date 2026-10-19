@@ -1,0 +1,73 @@
+{
+  "schema": "returnby.pr22-independent-native.v1",
+  "label": "pr20",
+  "published_commit": "7829e56e57ef91dfe8edd5853fd68d6c7890fac0",
+  "published_tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+  "native_capture_tree": "96e0128979e92b6a5966236becd595d976a96873",
+  "runs": [
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr20",
+      "exit_code": 0,
+      "started_at": "2026-10-08T13:15:15.381010+00:00",
+      "completed_at": "2026-10-08T13:15:17.266070+00:00",
+      "stdout_sha256": "086f976d15025e9ea67585db9dbe456678fe6f687b981276a5d70d97ccdecc55",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_drift": []
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/private/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr20",
+      "exit_code": 0,
+      "started_at": "2026-10-08T13:15:17.268733+00:00",
+      "completed_at": "2026-10-08T13:15:18.224426+00:00",
+      "stdout_sha256": "87277d6d25060615ca48dd1cff6eba8374aca654e7e74a58b763683782f21eb9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_drift": []
+    }
+  ],
+  "build": [
+    {
+      "path": "dist/assets/index-41FLtvzD.css",
+      "bytes": 12785,
+      "sha256": "a3053cd7be8fec4c15594b2931b3b9c5fb9988f413c6f7f76eac43638bbbf3a0"
+    },
+    {
+      "path": "dist/assets/index-B_BGqvdA.js",
+      "bytes": 30622,
+      "sha256": "654a1a34dd6fc37f143457f1dc79d87c6454826e63a4290bdb2bf12c330528fd"
+    },
+    {
+      "path": "dist/captures/returnby-desktop.png",
+      "bytes": 131379,
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7"
+    },
+    {
+      "path": "dist/captures/returnby-mobile.png",
+      "bytes": 107642,
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69"
+    },
+    {
+      "path": "dist/favicon.svg",
+      "bytes": 238,
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 9994,
+      "sha256": "d1500263e0d5d9d765d7d9b7a06d536db3bbac29ed663d75c4ce8eb304b3ad7c"
+    }
+  ],
+  "source_drift": [],
+  "runtime": {
+    "node": "v26.3.0",
+    "npm": "11.16.0"
+  }
+}

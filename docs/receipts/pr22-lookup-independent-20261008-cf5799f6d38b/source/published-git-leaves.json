@@ -1,0 +1,2846 @@
+{
+  "pr20": {
+    "tree": "b28e7b706fe67fd4b34111badd581c6bdd2ed4a7",
+    "truncated": false,
+    "leaves": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b5688812f36338630c21eb5643318a55496ae09b"
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a"
+      },
+      {
+        "path": ".gitignore",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b56df07f248fdfb406a35c411fafc91db47c9c95"
+      },
+      {
+        "path": "LICENSE",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "edb188254288b40f2895833e3647b7e0be34c962"
+      },
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b44321c4757c528cf8bf421ae6497790395c7c14"
+      },
+      {
+        "path": "data/policies.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8492b1e041d03723b1eac74220afd3d4fe3d2834"
+      },
+      {
+        "path": "devpost/checklist.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "318fc1035ad4314ae25fa829e152f5c03e883db5"
+      },
+      {
+        "path": "devpost/prd.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "60614d01a9e955c5911b3283d01bc5329397a6a9"
+      },
+      {
+        "path": "devpost/scope.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec"
+      },
+      {
+        "path": "devpost/spec.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a41e7d66a803f470f8c6506074fd0af2195e6e69"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/baseline-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b36298e53cc33688bd4dd8de17c307e9c1349a1b"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/baseline-execution.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4817776a108b39a286ecb9b67f07a6a24d488eda"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/baseline-tests.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "21f623ab7c54ee5236830fb522928492353bf9f0"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser-first.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5bfd9af628230a5d91808a528f117bfb7dd274b8"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/browser-receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5bfd9af628230a5d91808a528f117bfb7dd274b8"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/calendar-during-backup-write-refusal.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3ad955918b22711e392047e3a481a06b80f22126"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/combined-approved-backup.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f97d63a8f24f319fa78c6af2ae8193aaa7360628"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/desktop-replacement-review.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3ca313bca0c096d79e511068ca5f57f21b79c7c5"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/phone-restored-calendar.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "74598a046f793733c205d55f22274703270f2000"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/replacement-reviewed-reminder.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "eec35db7be40fdc083640062f35151f3c8247052"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/restored-selected-reminders.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6038acc57928c343a6234824cabf0d659aaa29ed"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/valid-subset-after-boundary-backup.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2799f67c69a34d3389dc37e5593c1027a7b66d42"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/composed-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "76b374ffd8660b401b8c0bec068ecc1b8068ca64"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/composed-execution.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7efe0a3ca6440b6f1f5d242a144b673af664ee98"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/composed-tests.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "25abe12d9f9678fd69736657c3e3f26900226cd8"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/independent-review/REVIEW.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ebd7dacf06cf062daf0e139af7a826f29c209260"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/independent-review/artifact-hashes.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8358e07fb807e3fcbc645d97eabb0670f3f6ed40"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/independent-review/source-review.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "28eaabfc18e2d9cb2b0f39cf10a167628678d5ad"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/composition-source.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3f45d192a2fa2916456d131adf7cbc4f8b11c3a5"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/dependency-reuse.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f2083f663915888d2ff94f6c7fe080153508a2b6"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/final-source-readback.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "65e8651fb016027ecc7bd33b6deb01a1e129a25a"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/integration-seams.patch",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4b2957d70d1a8073d72e2541180911f6e407f7c3"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/integrator-tree.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ce148857184476fbb52537621282d198f5cad311"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/materialization.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e2473b1e3322e0c6cc20ed75b144aa59183edaac"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/ownership-source.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0e2d160c4f0ead2663f0d8eb51e2ca9110b193db"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/owner-receiving-note.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7832fd9c9961436d17f81ffacd263f9b2be2398b"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/provenance.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d3bb5b4f2192c31ef19b59fa4d777f749874324b"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "40c7c562d6299a40a1dc7cb13bbd5adc2b8f0c64"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/baseline-build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9e8db3c39f9fe997ecd24969b6837c94d5adc5c8"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/baseline-tests.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d6243c2e0fbcc622478dcac507e1a40000b65918"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/browser-receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "71581c5e61b2480d620a283ae747088bd079de8f"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/desktop-calendar.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e31d3dab03e94289e5462aeaa3ca239062521f55"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/phone-calendar.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "84653b8daf5d54db9bb7daa42f1e1e23d736fc94"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/selected-reminders.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "77de9f0a6ed6cb6a4f809967965e9b9e8a8dc64b"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/final-browser-run.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "71581c5e61b2480d620a283ae747088bd079de8f"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/final-build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "612f0cf518cff1633b19ee6e8b29bffa998a65e6"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/final-native-tests.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "59507439725205ee46739f52558bb72841303c79"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/REVIEW.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7aad85a59d6f2feec27752eedbda9c3a3a310bf7"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/artifact-hashes.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "98ab9a9a211a88826a69c0382ac3e9274f0766f0"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-recovered-reminder.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "67300277c185de9f207d041e3aa113ccd1aa351b"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-review.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9d1f11b7dfa3c652c95cbfb4fe06904b3a3ccfb6"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-review.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ba9249bdd60c6443b05c47cbc1a2d5a6643a93f0"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-review.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6ea5576ea78b1cbb237a32a6e7c19586b6a5ebab"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/model-review.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "92473cdc451c8ae9ad50f321326e105b7a419832"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/model-review.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a10e29e737f008ecb4dc5c1eceb1048b14454209"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/model-review.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "581e0468d9c28a9c7558010311b80b8652793251"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/provenance.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "85614fda37227bdb87338cc0292fba705363b19d"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/pr14-source-tree.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "be379fb534dd6a720bcd28a4b74e2b882f42d21d"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/receiving-route.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3382a7c1d3137f77544caf58b91428ff0fcee2db"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/empty-selection-harness/browser-smoke.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b1829583d6f8e4b3eb29e0efb1bdde5f1a11f96b"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/empty-selection-harness/receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "407169c58b030f510655a6426d554b50686a6bb9"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/empty-selection-harness/run.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "23577eb720fe46fae56101dab27041d8842dfa66"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/initial-dialog-focus/calendar-batch-ui.ts.source",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6827724fb06ee98b8a08746e685aa0813f32ac8b"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/initial-dialog-focus/phone-before.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7d739dc729d955d0a8ae371d431c1ad0b06c4e7c"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/initial-dialog-focus/receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4b7440dbafafb4bca3d40d79d84e217b95773c06"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "910ae5cbd181959d116b837256e2379f9387a9cd"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/calendar-batch-ui.ts.source",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "448cc8e7328cabb756aab39b96e303c67829d44a"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/stale-build-browser-receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "631acc76e186361ba4da768a13ac2d3ecbd3ad4a"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/stale-build-browser-run.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "51d4390493b6a96b22cbb3ae9367fcfaf373c685"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/source-and-verification.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "921f48188388ade61070a65bf04068caa2086ac0"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3006f103fa996da48ed379a74f487b5470f36e36"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/artifact-hashes.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6adef7ba3be280cfcb4e585ca5b08c6742f5f0f3"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-ordinary-and-import-retry-backup.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ddd6b2baaaec63536d685f14bb8435d73e3443fa"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-ordinary-and-import-retry-reminders.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "526a80b7d1f65bd3f808648f914f4d645f99a82e"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-reviewed-remove-backup.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0c678e25eb8e080a503b9866e5f88c031c62dead"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-stale-save-backup.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5fec9f0eaa5bd129c5574dbc6815b1b7d57c9b60"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-stale-save-reminders.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ad11921c655e7a019247186120e6cc823401907e"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/browser-receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f068b9406fdf71dd7bd6c86e3f4bb8db7787fa40"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/phone-calendar-after-stale-save.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "931c2ea68b0eb73f053b347f00a77e4f830a807d"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/phone-refused-stale-remove.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4fd276ba3c9213f8c333f9f50a4d695e3b26de1c"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/reviewed-replacement-before-remove.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "08f37891533752713fd204bc8d2f93c2714f8a25"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/saved-reminder-during-action-write-refusal.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "05c4a65cde81d4a21aa9a87cfd2f0215750c458a"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/baseline-owner-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "af94886e20ca4ce985df540df93878d65ccf6825"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/baseline-owner-browser/results.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d0339b4ee66d124d4f97f228bb8f23d50c2ec209"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/combined-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "789e4ac69f3d85d9209093b992d16d957e2494bb"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/combined-native.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1251da5d72f6d3fe905625229b7d7cf8b4640f9a"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/composed-owner-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8bed3d06f13a11af6d189ad209a762a46d810677"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/composed-owner-browser/changed-return-phone.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "15eaa823c06d0be93146d6713776a5b8a67be5e7"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/composed-owner-browser/results.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "17b684ea2b9176b72a804aab8cd6c043d9eed1d2"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/native-execution.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3d7bc4839cef123e033ae65334056ab8f8d82689"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/owner-browser-execution.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b6fe6f57019b18a0c1403b43924556ef35970b63"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/independent-review/REVIEW.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "62297f871546f27e141a77c91e7fe5652cd55751"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/independent-review/artifact-hashes.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1e26f178a1db7cc49beb83be8d3142ed7c313fbd"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/independent-review/source-review.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5293395fa0ab466d8c73e77fb0debb616fe425a5"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/final-source-readback.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "416e14440482475546cd022157701d7a32e99b5a"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/ordinary-actions-on-composition.patch",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ada73705ecdefac86f6291ccc19906ebb8c81737"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/pr16-remote-tree.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "777cae8dae95761b207190f6c000e6d4715dfcc5"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/pr16-source-verification.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1aa9f71a7b2580bba7b07daaeabb67cc0c6a0d25"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/source.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7ca1b77ca6c5f797e76358fcccb699756959e6f3"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/owner-receiving-note.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7c002a7ff000ff2c1788a4e5529b227891bee431"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/provenance.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ccc727dc8fb30f84b4e2c658824d5d25d77b21e2"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/rejected/first-receiver.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2a0052675e2f38bfe4b8d204b9ff8eb6a181196a"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/rejected/first-receiver.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ce5f854fc0b973eac82a96ea3c7ca2b1fae231de"
+      },
+      {
+        "path": "docs/receipts/portable-backup-20261008.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "79da05c458df0f3250d8b457ebb9f6e1fadba5cc"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "633c2f04637f28d37d9b1e3a30a6c57842ee0643"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cc2a3193f8c6494e1bc969cd276d6750ca7fab6b"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/backup-composition-overlap.patch",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f9a5d7fa8c84eb58474122237475d5063858ac89"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/browser-initial-download-failure.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "df02d7eaf83855dad74e3d9e059bf4bfda29137f"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/browser-runner.mjs.source",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cea9f0a8c955ea50cf7450060459f263f1118f5b"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/browser-transfer-manifest.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ff63bffbba8f67e4b2c8f70c884023085c9e26bb"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "be3b3219d3eec3c986d0780f72920f484272e0be"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/composition-build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7228217c16a1de842b4ef8b860b91d3f3c36c51e"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/composition-inputs.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8fd1e851a8d385b34f12bd1b6f49d1c0413c94c8"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/composition-native-tests.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2f875781dd36deb630466c008f5d4fd62fd4f363"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/final-browser-results.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "28e3ed43f076e4276cfebd4c16b2f185bfc913a1"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/final-browser-run.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ecfd83914966a2c3a6d88ff13c919981c3a81e57"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5c18952754e6aee1ef78919b0b1129bdd3137f88"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/VERIFICATION.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "92278920ad246c65b33e09cb1e1defaa117247da"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/edit-peer.test.ts.source",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "fa82d16ca84abb376d0069faacfd0d7a604c6770"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/files.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "76e13ef136e5b4fec32461dfa6879033583fc0ca"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/fixed-source-custody.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "811bd021f1815175489c1a5bc816278278742491"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/peer-fixed.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "dea308f0ffa2b7dd0825b22723532eca5fa39b2c"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/peer-original.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cc5354c8d35b74c08689f0ed74d10f58b5d0f19c"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/source-custody.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "86793962d019184a1611592f5c0e67cf647b61f8"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/initial-build-failure.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bf918e7e75e612c9880fe16d29758b50e5309948"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/native-tests.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bd14afcc59d38180b310b4c0e41e9f843b241579"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e41608f1f51e1c14d231c443afb3c5a04148ed2c"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/after-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "55ed64e0d81655cae7d3b3c49d70c45c8cf23f02"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/changed-return-phone.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5237725102b1074a922b626a80fea61ca0048736"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/results.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8c2f42ca85916b2346d6486d6a7f48690a4f5b0a"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/baseline-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "07c51b5984d13ad8527769690252a78d631dc1a1"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/before-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c149da0b7db00079f9d3539ce42142bb51dbbda8"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/before.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "dd622b9fd0307f869a6a1f215d948df84dc231e6"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/before/results.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "22d70b50998c9fdece6e50c310ce04ddbc7d3987"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/files.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1b0565bbcb7f6cda5ded82ce210f687c6f7f9b8c"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/final-native-tests.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "62b1ffe469f564315124c80a6af3dc7ae2744177"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/qualified-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4b9fc430d849a89827ad00ca5a429c162f5b7c64"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/source-and-runtime.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "17a7737b1b230a962a1fbc0e70b856cfe86b2d89"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/unchanged-editor-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e7878c2f1eaecc1fc0133f2ab6e07bb74b1156ef"
+      },
+      {
+        "path": "index.html",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d8b6074d2602fc8417e0e8ba5da1f064e64a5925"
+      },
+      {
+        "path": "package-lock.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0"
+      },
+      {
+        "path": "package.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "329b4b71fbb631662eec0405ced477134520c9a5"
+      },
+      {
+        "path": "public/captures/returnby-desktop.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d"
+      },
+      {
+        "path": "public/captures/returnby-mobile.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c2ed83d29698fb5a47818c87d8f82944997c2bc4"
+      },
+      {
+        "path": "public/favicon.svg",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2805d210d2571bbfe5468ac5b5743a703c6bb74b"
+      },
+      {
+        "path": "skills-lock.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf"
+      },
+      {
+        "path": "src/backup-ui.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "366341e5d5215809bca6d8f32f130336b0ea3be4"
+      },
+      {
+        "path": "src/backup.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bc60d09bf8af57ec56a3b3766559c8829d8a859b"
+      },
+      {
+        "path": "src/backup.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bdd86ce50c723abf8f1d305d4fdf63353510eba8"
+      },
+      {
+        "path": "src/calendar-batch-ui.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f14427126feb325861ceb08783877c97cfc92e4d"
+      },
+      {
+        "path": "src/calendar-batch.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6a9849585c528bd82d8d40d66d2816e7f25bc327"
+      },
+      {
+        "path": "src/calendar-batch.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "520469648c1177f010edf04fa5f779d900e2431f"
+      },
+      {
+        "path": "src/deadline.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4"
+      },
+      {
+        "path": "src/edit-ui.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab"
+      },
+      {
+        "path": "src/edit.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "68691310feaf885d68876d77e25821f44683c4ae"
+      },
+      {
+        "path": "src/edit.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "15ffab3eb7cb4ea365474c2aa50706264e888645"
+      },
+      {
+        "path": "src/ics.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "58c873a116ed6b265864cb3e7d5b0dd27fd81544"
+      },
+      {
+        "path": "src/main.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9eaa6c1f66d93c8ab7b9c9614ce5940b5aa11b13"
+      },
+      {
+        "path": "src/parse.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "dd15787cbbb4373a1e594c781f3a6d2d5cec15db"
+      },
+      {
+        "path": "src/policy.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "38d8d03e30d1054b7447618afa7e49d5b4655c5d"
+      },
+      {
+        "path": "src/samples.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cb510076e14da5b3a75edfc472466b93f19bfe94"
+      },
+      {
+        "path": "src/store.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3"
+      },
+      {
+        "path": "src/style.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d4e76b0ae4264b2ee426472ad2926690029ba3fb"
+      },
+      {
+        "path": "tests/backup-ui.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cb5862290d369067cf6eb3500b062d2222c1317b"
+      },
+      {
+        "path": "tests/backup.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "16f2e34707efb6edc86c322c01d3a050e7430c64"
+      },
+      {
+        "path": "tests/calendar-batch.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9fc37a60e9021117038aa4c32044f2b2ee51b621"
+      },
+      {
+        "path": "tests/combined-receiving.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7ac4fba9052a937c4f4289816a796f035b337084"
+      },
+      {
+        "path": "tests/core.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "71035c9da7171237d023a529daf718777d238249"
+      },
+      {
+        "path": "tests/edit-ui.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "02ade0a572291bb54d01e9fa6444a61f342575b0"
+      },
+      {
+        "path": "tests/edit.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "92508d1715f6c437a6c7b0f654193fed32c7f285"
+      },
+      {
+        "path": "tests/helpers/loading-cases.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "27be19826740cd1a2efdff90c9f3cd3c57c48099"
+      },
+      {
+        "path": "tests/helpers/loading-fixture.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e0efc199de4f8595c9ea601179709030decb81ab"
+      },
+      {
+        "path": "tests/helpers/storage-cases.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ac797cdc364cdae4b7af1e78a0d04ca968f2a6e0"
+      },
+      {
+        "path": "tests/helpers/storage-fixture.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b808f12d34896ed4f30742a629b46163b123882f"
+      },
+      {
+        "path": "tests/helpers/submitted-policy-cases.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "636e4c81cc10647b28f729d1a1389ee38f7b1dfa"
+      },
+      {
+        "path": "tests/ics.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4"
+      },
+      {
+        "path": "tests/loading.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "333cd255c4b9b29ec5363813436720b284d08770"
+      },
+      {
+        "path": "tests/stale-actions.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bf036f3b3f99be16fb480f0584850861f4678903"
+      },
+      {
+        "path": "tests/storage.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "88e594569829f41bc12895c2a86396949a569abf"
+      },
+      {
+        "path": "tests/submitted-policy.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f0bcf51272b0042d9e1436ddb54eecfdb1f48a51"
+      },
+      {
+        "path": "tools/capture_returnby.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "367403bf3c393731cee650912789add1f3b46297"
+      },
+      {
+        "path": "tools/check_actions_backup_calendar_receiving.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a21e1044ad24a14a3f4459fff49e571efb4d817c"
+      },
+      {
+        "path": "tools/check_backup_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "53426d86f005e3d5b9853c5909d7f3d5bbe2f703"
+      },
+      {
+        "path": "tools/check_calendar_backup_receiving.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3429c8da623484399699a31dfb9127c1a28746c3"
+      },
+      {
+        "path": "tools/check_calendar_batch_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a9d017d186e574ec2b6c04a5dc3c5e46c14af1c4"
+      },
+      {
+        "path": "tools/check_edit_backup_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f4b0529172621ae51bb20f86a36a27b408974551"
+      },
+      {
+        "path": "tools/check_edit_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3a2b901cb584292c7a103233842e3edafc57e7b5"
+      },
+      {
+        "path": "tools/check_stale_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c3a8bf8434777052910ec63c9f30b52b43d21981"
+      },
+      {
+        "path": "tsconfig.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a"
+      },
+      {
+        "path": "vite.config.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "041854f74501ecbb719e93f24f73e471596ab572"
+      }
+    ]
+  },
+  "pr22": {
+    "tree": "7330138b474d68f2f28e1660c70a6a3587499747",
+    "truncated": false,
+    "leaves": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b5688812f36338630c21eb5643318a55496ae09b"
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a"
+      },
+      {
+        "path": ".gitignore",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b56df07f248fdfb406a35c411fafc91db47c9c95"
+      },
+      {
+        "path": "LICENSE",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "edb188254288b40f2895833e3647b7e0be34c962"
+      },
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5136c38b206159b39f5c10c7f40c9720ccf5c041"
+      },
+      {
+        "path": "data/policies.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8492b1e041d03723b1eac74220afd3d4fe3d2834"
+      },
+      {
+        "path": "devpost/checklist.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "318fc1035ad4314ae25fa829e152f5c03e883db5"
+      },
+      {
+        "path": "devpost/prd.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "60614d01a9e955c5911b3283d01bc5329397a6a9"
+      },
+      {
+        "path": "devpost/scope.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec"
+      },
+      {
+        "path": "devpost/spec.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a41e7d66a803f470f8c6506074fd0af2195e6e69"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/baseline-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b36298e53cc33688bd4dd8de17c307e9c1349a1b"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/baseline-execution.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4817776a108b39a286ecb9b67f07a6a24d488eda"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/baseline-tests.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "21f623ab7c54ee5236830fb522928492353bf9f0"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser-first.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5bfd9af628230a5d91808a528f117bfb7dd274b8"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/browser-receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5bfd9af628230a5d91808a528f117bfb7dd274b8"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/calendar-during-backup-write-refusal.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3ad955918b22711e392047e3a481a06b80f22126"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/combined-approved-backup.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f97d63a8f24f319fa78c6af2ae8193aaa7360628"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/desktop-replacement-review.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3ca313bca0c096d79e511068ca5f57f21b79c7c5"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/phone-restored-calendar.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "74598a046f793733c205d55f22274703270f2000"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/replacement-reviewed-reminder.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "eec35db7be40fdc083640062f35151f3c8247052"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/restored-selected-reminders.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6038acc57928c343a6234824cabf0d659aaa29ed"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/browser/valid-subset-after-boundary-backup.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2799f67c69a34d3389dc37e5593c1027a7b66d42"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/composed-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "76b374ffd8660b401b8c0bec068ecc1b8068ca64"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/composed-execution.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7efe0a3ca6440b6f1f5d242a144b673af664ee98"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/composed-tests.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "25abe12d9f9678fd69736657c3e3f26900226cd8"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/independent-review/REVIEW.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ebd7dacf06cf062daf0e139af7a826f29c209260"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/independent-review/artifact-hashes.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8358e07fb807e3fcbc645d97eabb0670f3f6ed40"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/independent-review/source-review.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "28eaabfc18e2d9cb2b0f39cf10a167628678d5ad"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/composition-source.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3f45d192a2fa2916456d131adf7cbc4f8b11c3a5"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/dependency-reuse.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f2083f663915888d2ff94f6c7fe080153508a2b6"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/final-source-readback.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "65e8651fb016027ecc7bd33b6deb01a1e129a25a"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/integration-seams.patch",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4b2957d70d1a8073d72e2541180911f6e407f7c3"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/integrator-tree.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ce148857184476fbb52537621282d198f5cad311"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/materialization.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e2473b1e3322e0c6cc20ed75b144aa59183edaac"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/inputs/ownership-source.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0e2d160c4f0ead2663f0d8eb51e2ca9110b193db"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/owner-receiving-note.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7832fd9c9961436d17f81ffacd263f9b2be2398b"
+      },
+      {
+        "path": "docs/receipts/calendar-backup-receiving-20261008-b55367d787c4/provenance.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d3bb5b4f2192c31ef19b59fa4d777f749874324b"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "40c7c562d6299a40a1dc7cb13bbd5adc2b8f0c64"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/baseline-build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9e8db3c39f9fe997ecd24969b6837c94d5adc5c8"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/baseline-tests.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d6243c2e0fbcc622478dcac507e1a40000b65918"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/browser-receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "71581c5e61b2480d620a283ae747088bd079de8f"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/desktop-calendar.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e31d3dab03e94289e5462aeaa3ca239062521f55"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/phone-calendar.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "84653b8daf5d54db9bb7daa42f1e1e23d736fc94"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/browser-final/selected-reminders.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "77de9f0a6ed6cb6a4f809967965e9b9e8a8dc64b"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/final-browser-run.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "71581c5e61b2480d620a283ae747088bd079de8f"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/final-build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "612f0cf518cff1633b19ee6e8b29bffa998a65e6"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/final-native-tests.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "59507439725205ee46739f52558bb72841303c79"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/REVIEW.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7aad85a59d6f2feec27752eedbda9c3a3a310bf7"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/artifact-hashes.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "98ab9a9a211a88826a69c0382ac3e9274f0766f0"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-recovered-reminder.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "67300277c185de9f207d041e3aa113ccd1aa351b"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-review.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9d1f11b7dfa3c652c95cbfb4fe06904b3a3ccfb6"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-review.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ba9249bdd60c6443b05c47cbc1a2d5a6643a93f0"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/browser-review.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6ea5576ea78b1cbb237a32a6e7c19586b6a5ebab"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/model-review.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "92473cdc451c8ae9ad50f321326e105b7a419832"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/model-review.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a10e29e737f008ecb4dc5c1eceb1048b14454209"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/model-review.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "581e0468d9c28a9c7558010311b80b8652793251"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/independent-review/provenance.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "85614fda37227bdb87338cc0292fba705363b19d"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/pr14-source-tree.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "be379fb534dd6a720bcd28a4b74e2b882f42d21d"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/receiving-route.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3382a7c1d3137f77544caf58b91428ff0fcee2db"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/empty-selection-harness/browser-smoke.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b1829583d6f8e4b3eb29e0efb1bdde5f1a11f96b"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/empty-selection-harness/receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "407169c58b030f510655a6426d554b50686a6bb9"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/empty-selection-harness/run.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "23577eb720fe46fae56101dab27041d8842dfa66"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/initial-dialog-focus/calendar-batch-ui.ts.source",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6827724fb06ee98b8a08746e685aa0813f32ac8b"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/initial-dialog-focus/phone-before.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7d739dc729d955d0a8ae371d431c1ad0b06c4e7c"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/initial-dialog-focus/receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4b7440dbafafb4bca3d40d79d84e217b95773c06"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "910ae5cbd181959d116b837256e2379f9387a9cd"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/calendar-batch-ui.ts.source",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "448cc8e7328cabb756aab39b96e303c67829d44a"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/stale-build-browser-receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "631acc76e186361ba4da768a13ac2d3ecbd3ad4a"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/rejected/noniterable-nodelist/stale-build-browser-run.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "51d4390493b6a96b22cbb3ae9367fcfaf373c685"
+      },
+      {
+        "path": "docs/receipts/calendar-batch-20261008-b55367d787c4/source-and-verification.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "921f48188388ade61070a65bf04068caa2086ac0"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3006f103fa996da48ed379a74f487b5470f36e36"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/artifact-hashes.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6adef7ba3be280cfcb4e585ca5b08c6742f5f0f3"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-ordinary-and-import-retry-backup.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ddd6b2baaaec63536d685f14bb8435d73e3443fa"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-ordinary-and-import-retry-reminders.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "526a80b7d1f65bd3f808648f914f4d645f99a82e"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-reviewed-remove-backup.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0c678e25eb8e080a503b9866e5f88c031c62dead"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-stale-save-backup.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5fec9f0eaa5bd129c5574dbc6815b1b7d57c9b60"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/after-stale-save-reminders.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ad11921c655e7a019247186120e6cc823401907e"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/browser-receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f068b9406fdf71dd7bd6c86e3f4bb8db7787fa40"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/phone-calendar-after-stale-save.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "931c2ea68b0eb73f053b347f00a77e4f830a807d"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/phone-refused-stale-remove.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4fd276ba3c9213f8c333f9f50a4d695e3b26de1c"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/reviewed-replacement-before-remove.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "08f37891533752713fd204bc8d2f93c2714f8a25"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/browser/saved-reminder-during-action-write-refusal.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "05c4a65cde81d4a21aa9a87cfd2f0215750c458a"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/baseline-owner-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "af94886e20ca4ce985df540df93878d65ccf6825"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/baseline-owner-browser/results.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d0339b4ee66d124d4f97f228bb8f23d50c2ec209"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/combined-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "789e4ac69f3d85d9209093b992d16d957e2494bb"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/combined-native.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1251da5d72f6d3fe905625229b7d7cf8b4640f9a"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/composed-owner-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8bed3d06f13a11af6d189ad209a762a46d810677"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/composed-owner-browser/changed-return-phone.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "15eaa823c06d0be93146d6713776a5b8a67be5e7"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/composed-owner-browser/results.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "17b684ea2b9176b72a804aab8cd6c043d9eed1d2"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/native-execution.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3d7bc4839cef123e033ae65334056ab8f8d82689"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/execution/owner-browser-execution.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b6fe6f57019b18a0c1403b43924556ef35970b63"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/independent-review/REVIEW.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "62297f871546f27e141a77c91e7fe5652cd55751"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/independent-review/artifact-hashes.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1e26f178a1db7cc49beb83be8d3142ed7c313fbd"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/independent-review/source-review.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5293395fa0ab466d8c73e77fb0debb616fe425a5"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/final-source-readback.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "416e14440482475546cd022157701d7a32e99b5a"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/ordinary-actions-on-composition.patch",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ada73705ecdefac86f6291ccc19906ebb8c81737"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/pr16-remote-tree.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "777cae8dae95761b207190f6c000e6d4715dfcc5"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/pr16-source-verification.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1aa9f71a7b2580bba7b07daaeabb67cc0c6a0d25"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/inputs/source.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7ca1b77ca6c5f797e76358fcccb699756959e6f3"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/owner-receiving-note.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7c002a7ff000ff2c1788a4e5529b227891bee431"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/provenance.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ccc727dc8fb30f84b4e2c658824d5d25d77b21e2"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/rejected/first-receiver.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2a0052675e2f38bfe4b8d204b9ff8eb6a181196a"
+      },
+      {
+        "path": "docs/receipts/ordinary-actions-receiving-20261008-b55367d787c4/rejected/first-receiver.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ce5f854fc0b973eac82a96ea3c7ca2b1fae231de"
+      },
+      {
+        "path": "docs/receipts/portable-backup-20261008.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "79da05c458df0f3250d8b457ebb9f6e1fadba5cc"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "633c2f04637f28d37d9b1e3a30a6c57842ee0643"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cc2a3193f8c6494e1bc969cd276d6750ca7fab6b"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/backup-composition-overlap.patch",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f9a5d7fa8c84eb58474122237475d5063858ac89"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/browser-initial-download-failure.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "df02d7eaf83855dad74e3d9e059bf4bfda29137f"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/browser-runner.mjs.source",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cea9f0a8c955ea50cf7450060459f263f1118f5b"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/browser-transfer-manifest.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ff63bffbba8f67e4b2c8f70c884023085c9e26bb"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "be3b3219d3eec3c986d0780f72920f484272e0be"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/composition-build.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7228217c16a1de842b4ef8b860b91d3f3c36c51e"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/composition-inputs.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8fd1e851a8d385b34f12bd1b6f49d1c0413c94c8"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/composition-native-tests.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2f875781dd36deb630466c008f5d4fd62fd4f363"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/final-browser-results.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "28e3ed43f076e4276cfebd4c16b2f185bfc913a1"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/final-browser-run.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ecfd83914966a2c3a6d88ff13c919981c3a81e57"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5c18952754e6aee1ef78919b0b1129bdd3137f88"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/VERIFICATION.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "92278920ad246c65b33e09cb1e1defaa117247da"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/edit-peer.test.ts.source",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "fa82d16ca84abb376d0069faacfd0d7a604c6770"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/files.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "76e13ef136e5b4fec32461dfa6879033583fc0ca"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/fixed-source-custody.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "811bd021f1815175489c1a5bc816278278742491"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/peer-fixed.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "dea308f0ffa2b7dd0825b22723532eca5fa39b2c"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/peer-original.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cc5354c8d35b74c08689f0ed74d10f58b5d0f19c"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/independent/source-custody.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "86793962d019184a1611592f5c0e67cf647b61f8"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/initial-build-failure.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bf918e7e75e612c9880fe16d29758b50e5309948"
+      },
+      {
+        "path": "docs/receipts/saved-order-edit-20261008/native-tests.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bd14afcc59d38180b310b4c0e41e9f843b241579"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6574dccd14d6da48f1848c9bd35469ffbee980b2"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/baseline-build-manifest.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "77bdaa2cbf9d48dc7611d11ade8a5d85ae20e1c9"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/baseline-custody.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8d2021931cb9f216735aa7ac07898f342fa3513d"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/baseline-lookup-witness.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "93ce8eaaeb17b7662b950f2ed428d7210cc9babb"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/baseline-lookup-witness.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "94f219213187c4c375f35ec651e478d9fa420425"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/baseline-native.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1d1af7178b545047258aa981dc869756951635ab"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/baseline-owned-cache-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e626f121c6c3dd91eeba0d56017025c3d3970c10"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/baseline-owned-cache-native.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9e9eeded55e312828bca9b008e1989ee2c08b2e1"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/baseline-owned-cache-tests.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9288e4738fd9ae305cd0174bec79a29ee4f4468d"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/baseline-tests.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "99c4343e0d3c32a40aa99eb6989ddff51493c573"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/candidate-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6c0f59766894c3cc118475e828e06e36683acf8a"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/candidate-native.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9e5c8f33405669bebe31f3d50075f15bac90cff1"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/candidate-source-freeze.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8cc44e2589a4964241d1231c3508715a2bb2606f"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/candidate-tests.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2175c87dbdbb67919c75a8e0252261b986c60842"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/r1-optional-order-number.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "55f897a9f5399079c739739cf656096498c12329"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/r1-optional-order-number.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "007929f62821071eb52de97161ba7bccf97c08a0"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/r2-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cfa7c5442dbc57fd3f683d299d5a4c930a71f5dc"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/r2-native.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "91973b835ced2b4a989bf811956f68eb390fea5d"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/r2-tests.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "da9a5d13f0be47eb622e533020d8f3a57c149b0f"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/author/scope-comment-6059410633.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c45d0a0ebb6a480b56e35b40787ed0a72459362c"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/mac/all-orders-backup.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7e3fd16674622d99ffb89fd26e27d4ff13889c33"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/mac/browser-result.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "95761196bcc78e0445c33f18c72adeeeb333c120"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/mac/files.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4493eca76243baa993ec39c9c25d2dac01c7704b"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/mac/mac-browser-qualification.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e41cadd3b726d237a0fe0791c3ea6d26ae475f62"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/mac/mac-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "95761196bcc78e0445c33f18c72adeeeb333c120"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/mac/mac-default-launch.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b41768ee1708572c241653f7fca88a40c5118b5c"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/mac/mac-default-launch.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "71953137c99aa70d6d0477b79979003dd989dfc3"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/mac/mac-runtime-manifest.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c617a7eb11f716dc0de69e78a94a2cd562910388"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/mac/reviewed-all-reminders.ics",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c3e56961f67eba0ee8d535f5b79693dcc0963790"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/mac/saved-order-lookup-mobile.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ce77bead5a22d64ee7939688b2216f62dade1697"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/thinkpad/browser-guarded-native.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a6a5cea73a0f2b8395f63527bb3aa6723e183bba"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/thinkpad/browser-native.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b9cf10f6c0b8c92d9ea33ee01500c5a676967b78"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/thinkpad/browser-transfer-manifest.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6d46e47620514a1180d491b8b6f8842419e9ba44"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/thinkpad/first-result.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "38125614d0e9e0ed358a4e868966dac62056ce5a"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/thinkpad/guarded-result.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "77eeb1879a0d7da5d9ea37c3d38d47c005ae1b3e"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/thinkpad/native-browser-guarded-qualification.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3c0d35bcd847674352405939e81c702b631c8ce7"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/thinkpad/native-browser-qualification.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1e2069eb1de63ea1da8fb1058da625311172da8d"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/browser/thinkpad/native-transfer.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "67675b65f5517573886ff75f64cfbd982d8e1b52"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/files.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bdde1a64b9faba0fe627c89bbbde8199f581ad48"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/peer/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "494cd3c59d31733a0751044e30517462745f2953"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/peer/disposition.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "919f5ff00d993c08328482c52fe78c3e976029ee"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/peer/files.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "88222d43d3b66e67a0234a94360928f9fc04b189"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/peer/lookup-source.patch",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c9ef71cd6354f388a604a9ef8da1a7fa01791ad7"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/peer/preservation-proof.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "963cc4f0e4b97704a8c852c8d40aa27b9a2e8345"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/peer/remote-baseline.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "273e21432aa9f014ea429e21cd1f893df60150fe"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/peer/source-custody.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0b6c6b79bc5f9805ef1da42867d36c4ae4c485ed"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/peer/verify-custody.sh.source",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "234231152d24d7b84f1cb6d5809551027dc4413b"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/peer/verify-preservation.sh.source",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2c5c0c2c5fdeb309a705dea1391ed3a9eb941e0a"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/evidence/snapshots/r1-order-search.ts.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "48e12ac286768ff94c595a650842aefc8a9d3ce5"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/receipt.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a4402a9464a8d1a2a1a097bf5e9ab4dbb319db3d"
+      },
+      {
+        "path": "docs/receipts/saved-order-lookup-20261008-965d2e86e979/runtime-versions.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1bfaffdd2efef7cef5ac8c56ab37a2e4253098aa"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e41608f1f51e1c14d231c443afb3c5a04148ed2c"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/after-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "55ed64e0d81655cae7d3b3c49d70c45c8cf23f02"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/changed-return-phone.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5237725102b1074a922b626a80fea61ca0048736"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/after/results.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8c2f42ca85916b2346d6486d6a7f48690a4f5b0a"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/baseline-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "07c51b5984d13ad8527769690252a78d631dc1a1"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/before-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c149da0b7db00079f9d3539ce42142bb51dbbda8"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/before.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "dd622b9fd0307f869a6a1f215d948df84dc231e6"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/before/results.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "22d70b50998c9fdece6e50c310ce04ddbc7d3987"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/files.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1b0565bbcb7f6cda5ded82ce210f687c6f7f9b8c"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/final-native-tests.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "62b1ffe469f564315124c80a6af3dc7ae2744177"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/qualified-build.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4b9fc430d849a89827ad00ca5a429c162f5b7c64"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/source-and-runtime.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "17a7737b1b230a962a1fbc0e70b856cfe86b2d89"
+      },
+      {
+        "path": "docs/receipts/stale-actions-3e50c5ad22c5/unchanged-editor-browser.log",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e7878c2f1eaecc1fc0133f2ab6e07bb74b1156ef"
+      },
+      {
+        "path": "index.html",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "784afc64ae9293e8997f22433cf0d701cd3d29dc"
+      },
+      {
+        "path": "package-lock.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0"
+      },
+      {
+        "path": "package.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "329b4b71fbb631662eec0405ced477134520c9a5"
+      },
+      {
+        "path": "public/captures/returnby-desktop.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d"
+      },
+      {
+        "path": "public/captures/returnby-mobile.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c2ed83d29698fb5a47818c87d8f82944997c2bc4"
+      },
+      {
+        "path": "public/favicon.svg",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2805d210d2571bbfe5468ac5b5743a703c6bb74b"
+      },
+      {
+        "path": "skills-lock.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf"
+      },
+      {
+        "path": "src/backup-ui.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "366341e5d5215809bca6d8f32f130336b0ea3be4"
+      },
+      {
+        "path": "src/backup.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bc60d09bf8af57ec56a3b3766559c8829d8a859b"
+      },
+      {
+        "path": "src/backup.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bdd86ce50c723abf8f1d305d4fdf63353510eba8"
+      },
+      {
+        "path": "src/calendar-batch-ui.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f14427126feb325861ceb08783877c97cfc92e4d"
+      },
+      {
+        "path": "src/calendar-batch.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6a9849585c528bd82d8d40d66d2816e7f25bc327"
+      },
+      {
+        "path": "src/calendar-batch.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "520469648c1177f010edf04fa5f779d900e2431f"
+      },
+      {
+        "path": "src/deadline.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4"
+      },
+      {
+        "path": "src/edit-ui.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab"
+      },
+      {
+        "path": "src/edit.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "68691310feaf885d68876d77e25821f44683c4ae"
+      },
+      {
+        "path": "src/edit.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "15ffab3eb7cb4ea365474c2aa50706264e888645"
+      },
+      {
+        "path": "src/ics.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "58c873a116ed6b265864cb3e7d5b0dd27fd81544"
+      },
+      {
+        "path": "src/main.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "11d44fab103e1f6a1955299ed9180a61c9598190"
+      },
+      {
+        "path": "src/order-search.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7e643e21a95c70b420ef1cdcf200f53effeb1b79"
+      },
+      {
+        "path": "src/order-search.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "71a11b36924cae8268af6420d2270870763d0bce"
+      },
+      {
+        "path": "src/parse.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "dd15787cbbb4373a1e594c781f3a6d2d5cec15db"
+      },
+      {
+        "path": "src/policy.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "38d8d03e30d1054b7447618afa7e49d5b4655c5d"
+      },
+      {
+        "path": "src/samples.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cb510076e14da5b3a75edfc472466b93f19bfe94"
+      },
+      {
+        "path": "src/store.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3"
+      },
+      {
+        "path": "src/style.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d4e76b0ae4264b2ee426472ad2926690029ba3fb"
+      },
+      {
+        "path": "tests/backup-ui.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cb5862290d369067cf6eb3500b062d2222c1317b"
+      },
+      {
+        "path": "tests/backup.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "16f2e34707efb6edc86c322c01d3a050e7430c64"
+      },
+      {
+        "path": "tests/calendar-batch.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9fc37a60e9021117038aa4c32044f2b2ee51b621"
+      },
+      {
+        "path": "tests/combined-receiving.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7ac4fba9052a937c4f4289816a796f035b337084"
+      },
+      {
+        "path": "tests/core.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "71035c9da7171237d023a529daf718777d238249"
+      },
+      {
+        "path": "tests/edit-ui.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "02ade0a572291bb54d01e9fa6444a61f342575b0"
+      },
+      {
+        "path": "tests/edit.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "92508d1715f6c437a6c7b0f654193fed32c7f285"
+      },
+      {
+        "path": "tests/helpers/loading-cases.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "27be19826740cd1a2efdff90c9f3cd3c57c48099"
+      },
+      {
+        "path": "tests/helpers/loading-fixture.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e0efc199de4f8595c9ea601179709030decb81ab"
+      },
+      {
+        "path": "tests/helpers/storage-cases.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ac797cdc364cdae4b7af1e78a0d04ca968f2a6e0"
+      },
+      {
+        "path": "tests/helpers/storage-fixture.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b808f12d34896ed4f30742a629b46163b123882f"
+      },
+      {
+        "path": "tests/helpers/submitted-policy-cases.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "636e4c81cc10647b28f729d1a1389ee38f7b1dfa"
+      },
+      {
+        "path": "tests/ics.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4"
+      },
+      {
+        "path": "tests/loading.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "333cd255c4b9b29ec5363813436720b284d08770"
+      },
+      {
+        "path": "tests/order-search-ui.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e411f741194ea1f981068c0ffc7a393858744178"
+      },
+      {
+        "path": "tests/order-search.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1a85e51576f0e7d99f09708f8411794c94154e04"
+      },
+      {
+        "path": "tests/stale-actions.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bf036f3b3f99be16fb480f0584850861f4678903"
+      },
+      {
+        "path": "tests/storage.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "88e594569829f41bc12895c2a86396949a569abf"
+      },
+      {
+        "path": "tests/submitted-policy.test.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f0bcf51272b0042d9e1436ddb54eecfdb1f48a51"
+      },
+      {
+        "path": "tools/capture_returnby.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "367403bf3c393731cee650912789add1f3b46297"
+      },
+      {
+        "path": "tools/check_actions_backup_calendar_receiving.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a21e1044ad24a14a3f4459fff49e571efb4d817c"
+      },
+      {
+        "path": "tools/check_backup_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "53426d86f005e3d5b9853c5909d7f3d5bbe2f703"
+      },
+      {
+        "path": "tools/check_calendar_backup_receiving.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3429c8da623484399699a31dfb9127c1a28746c3"
+      },
+      {
+        "path": "tools/check_calendar_batch_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a9d017d186e574ec2b6c04a5dc3c5e46c14af1c4"
+      },
+      {
+        "path": "tools/check_edit_backup_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f4b0529172621ae51bb20f86a36a27b408974551"
+      },
+      {
+        "path": "tools/check_edit_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3a2b901cb584292c7a103233842e3edafc57e7b5"
+      },
+      {
+        "path": "tools/check_order_search_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9b5603ccabab72e2ed0b216c26079d7dab5e1a3c"
+      },
+      {
+        "path": "tools/check_stale_browser.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c3a8bf8434777052910ec63c9f30b52b43d21981"
+      },
+      {
+        "path": "tsconfig.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a"
+      },
+      {
+        "path": "vite.config.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "041854f74501ecbb719e93f24f73e471596ab572"
+      }
+    ]
+  },
+  "main391": {
+    "tree": "ab4534a2e1afdace5d27a6079012c776c0e66f70",
+    "truncated": false,
+    "leaves": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b5688812f36338630c21eb5643318a55496ae09b"
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a0b5ed32f62e4f9691180a01f579c95619bb290a"
+      },
+      {
+        "path": ".gitignore",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b56df07f248fdfb406a35c411fafc91db47c9c95"
+      },
+      {
+        "path": "LICENSE",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "edb188254288b40f2895833e3647b7e0be34c962"
+      },
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "40912b7928f64da0937e56ea5f9062d4a660b6d0"
+      },
+      {
+        "path": "data/policies.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8492b1e041d03723b1eac74220afd3d4fe3d2834"
+      },
+      {
+        "path": "devpost/checklist.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "318fc1035ad4314ae25fa829e152f5c03e883db5"
+      },
+      {
+        "path": "devpost/prd.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "60614d01a9e955c5911b3283d01bc5329397a6a9"
+      },
+      {
+        "path": "devpost/scope.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "11ebdf43b54bfa7a4fd2e20e4c3a5232526f59ec"
+      },
+      {
+        "path": "devpost/spec.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "05fe3f4dca2f01e9e6c5d923cc743899e7ab5a72"
+      },
+      {
+        "path": "index.html",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9a6c44071f47dfac5bf7bc82204c9b1b19c3b568"
+      },
+      {
+        "path": "package-lock.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "91bf5cbb9c68fe99ed4fd1bd475864573116e3f0"
+      },
+      {
+        "path": "package.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "329b4b71fbb631662eec0405ced477134520c9a5"
+      },
+      {
+        "path": "public/captures/returnby-desktop.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f454495fa31f3ef5ae0f7c3fbf724aa1764b243d"
+      },
+      {
+        "path": "public/captures/returnby-mobile.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c2ed83d29698fb5a47818c87d8f82944997c2bc4"
+      },
+      {
+        "path": "public/favicon.svg",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2805d210d2571bbfe5468ac5b5743a703c6bb74b"
+      },
+      {
+        "path": "skills-lock.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d6671c40e9ff485fa4f665b3e5d1cac5e99f5cdf"
+      },
+      {
+        "path": "src/day-refresh.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "362aae5b5be7bf399174483327a2b15018edeca4"
+      },
+      {
+        "path": "src/deadline.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4"
+      },
+      {
+        "path": "src/ics.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2b2b540cf58bab78b2aba84a70d748b6f9cd82b4"
+      },
+      {
+        "path": "src/main.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "798e5329fe9983e67b5832595605a49294f0a529"
+      },
+      {
+        "path": "src/parse.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "45dd377540c6ec9046604927a6e8803d19fe3b5b"
+      },
+      {
+        "path": "src/policy.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "38d8d03e30d1054b7447618afa7e49d5b4655c5d"
+      },
+      {
+        "path": "src/samples.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cb510076e14da5b3a75edfc472466b93f19bfe94"
+      },
+      {
+        "path": "src/store.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "23cf906e26187ff28c94718111e69d9603c97fa8"
+      },
+      {
+        "path": "src/style.css",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d4e76b0ae4264b2ee426472ad2926690029ba3fb"
+      },
+      {
+        "path": "tests/core.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "57e122956a04824da82185263ac460243de3548c"
+      },
+      {
+        "path": "tests/day-refresh.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1d76fd6ef7364ae84f4775666768815211981ff6"
+      },
+      {
+        "path": "tests/ics.test.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2321ed69acc7cdb91a2ef86d4d26ccc9f885c7b4"
+      },
+      {
+        "path": "tools/capture_returnby.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "367403bf3c393731cee650912789add1f3b46297"
+      },
+      {
+        "path": "tools/verify_day_refresh.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "94caac1360142a886c138b1ebf2e5698024121d0"
+      },
+      {
+        "path": "tsconfig.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "be856876c01575bdc4cc1c4ea0fbe7b6fb121d0a"
+      },
+      {
+        "path": "vite.config.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "041854f74501ecbb719e93f24f73e471596ab572"
+      }
+    ]
+  }
+}

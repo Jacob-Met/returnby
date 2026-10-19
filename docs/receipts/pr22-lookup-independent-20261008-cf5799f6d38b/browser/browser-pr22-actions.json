@@ -1,0 +1,150 @@
+{
+  "source": "/tmp/returnby-pr22-review-cf5799f6d38b-p3exbdk4/pr22",
+  "tree": "504129727145d535a53ca8dccbde1d98238868a2",
+  "fixture": "fictional saved records, fixed UTC clock; real production build and browser",
+  "checks": [
+    {
+      "name": "literal-query-finds-only-the-new-reviewed-save",
+      "pass": true,
+      "evidence": {
+        "newId": "cfd508f7-34a0-4b80-baa3-e06a269069d7",
+        "literalQueryMatches": 1,
+        "crossFieldQueryMatches": 0,
+        "savedRecords": 3,
+        "storageWrites": 1
+      }
+    },
+    {
+      "name": "clear-review-retains-query-and-later-save-repopulates-it",
+      "pass": true,
+      "evidence": {
+        "cancelledClearWrites": 0,
+        "approvedClearScope": [
+          "earlier",
+          "later"
+        ],
+        "queryRetained": true,
+        "newId": "f541f225-b841-4ec4-93a1-96645cf710ad",
+        "totalStorageWrites": 2
+      }
+    },
+    {
+      "name": "filtered-save-quota-refusal-retains-draft-and-retry-preserves-current-records",
+      "pass": true,
+      "evidence": {
+        "refusedWriteAttempts": 1,
+        "successfulWrites": 1,
+        "unseenAdditionPreserved": true,
+        "retainedSavedIds": [
+          "earlier",
+          "later",
+          "unseen"
+        ],
+        "newId": "2ac0101b-50b2-4d1e-a5ec-a3d6229e0f2a"
+      }
+    },
+    {
+      "name": "actual-app-has-no-runtime-errors-or-external-requests",
+      "pass": true,
+      "evidence": {
+        "appErrors": 0,
+        "externalRequests": 0
+      }
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "server": [
+    {
+      "path": "/",
+      "sha256": "2200a90f69d4baeaf19ee0f66483ad675fc9d61b603348af986811abe0fc9fbc",
+      "bytes": 10717
+    },
+    {
+      "path": "/assets/index-CdEnzE7q.js",
+      "sha256": "5935169192e95ed0faf1367398094142e2eed7595bbbb1cad824538ccb6d92a5",
+      "bytes": 31351
+    },
+    {
+      "path": "/assets/index-DBj441Ck.css",
+      "sha256": "5da0122a817b627264bff110d4591c80969dcc3bfeb71c59f787959566e7c99d",
+      "bytes": 13464
+    },
+    {
+      "path": "/favicon.svg",
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+      "bytes": 238
+    },
+    {
+      "path": "/",
+      "sha256": "2200a90f69d4baeaf19ee0f66483ad675fc9d61b603348af986811abe0fc9fbc",
+      "bytes": 10717
+    },
+    {
+      "path": "/assets/index-CdEnzE7q.js",
+      "sha256": "5935169192e95ed0faf1367398094142e2eed7595bbbb1cad824538ccb6d92a5",
+      "bytes": 31351
+    },
+    {
+      "path": "/assets/index-DBj441Ck.css",
+      "sha256": "5da0122a817b627264bff110d4591c80969dcc3bfeb71c59f787959566e7c99d",
+      "bytes": 13464
+    },
+    {
+      "path": "/",
+      "sha256": "2200a90f69d4baeaf19ee0f66483ad675fc9d61b603348af986811abe0fc9fbc",
+      "bytes": 10717
+    },
+    {
+      "path": "/assets/index-CdEnzE7q.js",
+      "sha256": "5935169192e95ed0faf1367398094142e2eed7595bbbb1cad824538ccb6d92a5",
+      "bytes": 31351
+    },
+    {
+      "path": "/assets/index-DBj441Ck.css",
+      "sha256": "5da0122a817b627264bff110d4591c80969dcc3bfeb71c59f787959566e7c99d",
+      "bytes": 13464
+    }
+  ],
+  "proxyRefusals": [
+    "http://clients2.google.com",
+    "www.gstatic.com:443",
+    "www.google.com:443",
+    "accounts.google.com:443",
+    "www.google.com:443",
+    "update.googleapis.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "content-autofill.googleapis.com:443",
+    "content-autofill.googleapis.com:443",
+    "content-autofill.googleapis.com:443",
+    "accounts.google.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "content-autofill.googleapis.com:443",
+    "content-autofill.googleapis.com:443",
+    "content-autofill.googleapis.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "content-autofill.googleapis.com:443",
+    "content-autofill.googleapis.com:443",
+    "content-autofill.googleapis.com:443",
+    "www.google.com:443",
+    "www.google.com:443",
+    "update.googleapis.com:443"
+  ],
+  "runtime": {
+    "node": "v26.3.0",
+    "chrome": "Chrome/154.0.8037.98",
+    "platform": "darwin",
+    "arch": "arm64",
+    "puppeteer": "25.12.0"
+  },
+  "passed": 4,
+  "failed": 0,
+  "receiver_sha256": "788d7f1d62bc47604f923df2b4f185c093446c50b39167181344f34303ce19f9"
+}
