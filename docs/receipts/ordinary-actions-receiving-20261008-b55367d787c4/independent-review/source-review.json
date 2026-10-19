@@ -1,0 +1,97 @@
+{
+  "scope": "Independent source-only review of PR16 ordinary-action seams on prior backup/editor/calendar receiving composition; no runtime test or current-main adoption claim",
+  "reviewed_owner_head": "480a99bd6de57ff04089975b34b43856da56fdf9",
+  "receiving_baseline": "49674969755b476aa05bc11d3d7d49892ae40779",
+  "main": {
+    "sha256": "7d2d2b1ff1c783e50230b5c8bc149d9ec4dcf80bae25689e38d3527ad7899dd3",
+    "git_blob": "9eaa6c1f66d93c8ab7b9c9614ce5940b5aa11b13"
+  },
+  "owner_main_git_blob": "a4e44abc441b6700d4e12b6d20c879f3aab106cf",
+  "owner_spans_exact": true,
+  "unchanged_src_files": [
+    {
+      "path": "src/backup-ui.ts",
+      "sha256": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+      "git_blob": "366341e5d5215809bca6d8f32f130336b0ea3be4"
+    },
+    {
+      "path": "src/backup.css",
+      "sha256": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+      "git_blob": "bc60d09bf8af57ec56a3b3766559c8829d8a859b"
+    },
+    {
+      "path": "src/backup.ts",
+      "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+      "git_blob": "bdd86ce50c723abf8f1d305d4fdf63353510eba8"
+    },
+    {
+      "path": "src/calendar-batch-ui.ts",
+      "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+      "git_blob": "f14427126feb325861ceb08783877c97cfc92e4d"
+    },
+    {
+      "path": "src/calendar-batch.css",
+      "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+      "git_blob": "6a9849585c528bd82d8d40d66d2816e7f25bc327"
+    },
+    {
+      "path": "src/calendar-batch.ts",
+      "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+      "git_blob": "520469648c1177f010edf04fa5f779d900e2431f"
+    },
+    {
+      "path": "src/deadline.ts",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53",
+      "git_blob": "bcef920c0f9846b789b1a0aa01b833c7d99ba5d4"
+    },
+    {
+      "path": "src/edit-ui.ts",
+      "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+      "git_blob": "d0ac0ec2ed3a6bad5ffe260ead78f63b16ec7eab"
+    },
+    {
+      "path": "src/edit.css",
+      "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+      "git_blob": "68691310feaf885d68876d77e25821f44683c4ae"
+    },
+    {
+      "path": "src/edit.ts",
+      "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+      "git_blob": "15ffab3eb7cb4ea365474c2aa50706264e888645"
+    },
+    {
+      "path": "src/ics.ts",
+      "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+      "git_blob": "58c873a116ed6b265864cb3e7d5b0dd27fd81544"
+    },
+    {
+      "path": "src/parse.ts",
+      "sha256": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243",
+      "git_blob": "dd15787cbbb4373a1e594c781f3a6d2d5cec15db"
+    },
+    {
+      "path": "src/policy.ts",
+      "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231",
+      "git_blob": "38d8d03e30d1054b7447618afa7e49d5b4655c5d"
+    },
+    {
+      "path": "src/samples.ts",
+      "sha256": "aab4707e24f225c523cb980becd7c1ea1dfa98143e171b09864649bdbff02d04",
+      "git_blob": "cb510076e14da5b3a75edfc472466b93f19bfe94"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf",
+      "git_blob": "c7333d076f851c4dbad6199eaebd6ca34f4abdb3"
+    },
+    {
+      "path": "src/style.css",
+      "sha256": "6927abde9efc74937ea5a1cc11171712a7a2ad8dab50950515ca193e203e9892",
+      "git_blob": "d4e76b0ae4264b2ee426472ad2926690029ba3fb"
+    }
+  ],
+  "patch_sha256": "76262c6539ac3b3e7a6cde5b721a2583f8acabab67649c7016ccd0db7dd84fe5",
+  "source_edits": false,
+  "runtime_runs": 0,
+  "decision": "accepted bounded source seam; no repair requested"
+}

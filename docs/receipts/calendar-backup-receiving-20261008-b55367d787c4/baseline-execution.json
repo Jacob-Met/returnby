@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "label": "baseline-tests",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit": 0,
+      "outputSha256": "5eec27683540ef18ea9124838575b23565d78ba97fbbda6d8c57e9ffb0374cb3"
+    },
+    {
+      "label": "baseline-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exit": 0,
+      "outputSha256": "65d156ba5b7323b3404973537ba420481298188d29e9ec189a10deb4c3f0b893"
+    }
+  ],
+  "dependency_view": "Top-level symlinks into existing owned dependencies; candidate cache paths remain local",
+  "dependency_source": "/workspace/scratch/b55367d787c4/production/returnby/node_modules"
+}

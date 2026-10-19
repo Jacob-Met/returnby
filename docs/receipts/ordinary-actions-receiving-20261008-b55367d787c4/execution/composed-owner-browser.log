@@ -1,0 +1,13 @@
+✔ saving a new reviewed order from a stale tab retains another tab’s corrections and additions (783.340672ms)
+✔ removing a still-current return keeps unseen additions and does not resurrect another removed order (658.626807ms)
+✔ a return changed since it was displayed must be reviewed before a new Remove attempt (675.988206ms)
+✔ an unreadable latest tracker blocks a new save and retains its draft through loading retry (640.533422ms)
+✔ retrying a failed new-order write rereads additions made after the failed attempt (728.505892ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3860.726161

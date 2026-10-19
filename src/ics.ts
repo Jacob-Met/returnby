@@ -24,17 +24,31 @@ function fold(line: string): string {
   return output;
 }
 
-export function buildIcs(o: { id: string; merchant: string; orderNo?: string; due: string }, stamp = new Date()): string {
+export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string };
+
+function eventLines(o: CalendarReminder, ts: string): string[] {
   const d = o.due.replace(/-/g, '');
   const end = new Date(+o.due.slice(0, 4), +o.due.slice(5, 7) - 1, +o.due.slice(8, 10) + 1);
   const e = `${end.getFullYear()}${String(end.getMonth() + 1).padStart(2, '0')}${String(end.getDate()).padStart(2, '0')}`;
-  const ts = stamp.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
   const title = esc(`Return deadline: ${o.merchant || 'order'}${o.orderNo ? ' #' + o.orderNo : ''}`);
   return [
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
     'BEGIN:VEVENT', `UID:${esc(o.id)}@returnby`, `DTSTAMP:${ts}`,
     `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${e}`, `SUMMARY:${title}`,
     'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`, 'TRIGGER:-P3D', 'END:VALARM',
-    'END:VEVENT', 'END:VCALENDAR', '',
+    'END:VEVENT',
+  ];
+}
+
+/** Serialize already reviewed reminders with one calendar envelope. */
+export function buildIcsCalendar(reminders: readonly CalendarReminder[], stamp = new Date()): string {
+  const ts = stamp.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  return [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
+    ...reminders.flatMap(reminder => eventLines(reminder, ts)),
+    'END:VCALENDAR', '',
   ].map(fold).join('\r\n');
+}
+
+export function buildIcs(o: CalendarReminder, stamp = new Date()): string {
+  return buildIcsCalendar([o], stamp);
 }

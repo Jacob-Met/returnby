@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ReturnBy//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:historical-fallback@returnby
+DTSTAMP:20261008T123456Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:Return deadline: Fictional Café 家 <img src="https://invalid.test
+ /receipt"> #HISTORY
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Return deadline: Fictional Café 家 <img src="https://invalid.
+ test/receipt"> #HISTORY
+TRIGGER:-P3D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,169 @@
+{
+  "schema": "returnby.saved-order-edit.receiving.v1",
+  "recorded_at": "2026-10-08 07:42:14 UTC",
+  "repository": "Jacob-Met/returnby",
+  "coordination_issue": 11,
+  "source": {
+    "parent_commit": "fbd48a6e63d1b071de10e4e40d875184fa461141",
+    "parent_tree": "9cfc35df2bedb3acd52855051040842202a9a187",
+    "stack_base": "fix/storage-load-preservation-20261008",
+    "local_source_baseline": "caf559a900ecaf3502907d70955c880ec4f27aa8",
+    "reviewed_application": "f912dbe26874172556824ace922c685af28b0e3a",
+    "baseline_text_blobs_verified": 35,
+    "omitted_unchanged_local_assets": [
+      "public/captures/returnby-desktop.png",
+      "public/captures/returnby-mobile.png"
+    ],
+    "publication_preserves_assets": "Existing remote base-tree blobs remain unchanged.",
+    "sha256": {
+      "README.md": "8b784dfb894a6623525e45d919c6042eab0cd397e5d00945a30a2ddb994d3978",
+      "index.html": "e8e33734ba822c77c9efa8f98009c5cdd5429d8eda85b98159f30cd576fa3ffe",
+      "src/main.ts": "95d2c57966e79f6b65fa0a04abcdec17477e1f08af3525ca059e8117cdf76bed",
+      "src/edit.ts": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482",
+      "src/edit-ui.ts": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6",
+      "src/edit.css": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42",
+      "tests/edit.test.ts": "0d9913a63ba1c3d5bae71f789be37deb82ab05bdf29dc7d569a959e173d54d93",
+      "tests/edit-ui.test.mjs": "09604be0f7a3c6845341f3f8145c3033c488326939616aa84b4f4cc90140e0af",
+      "tools/check_edit_browser.mjs": "89abbf79dfe75678bd132c0ef7bafabef0e30663b57623f63b94a9320e7dfe82",
+      "tools/check_edit_backup_browser.mjs": "b6c2d98977d68dc1555e9ec53833edca7d5feb1bd07bb8d1e89866bcfcb985b0"
+    }
+  },
+  "native": {
+    "node": "24.19.0",
+    "typescript": "5.9.3",
+    "vitest": "5.0.3",
+    "vite": "8.3.3",
+    "baseline_tests": 32,
+    "final_tests": 73,
+    "final_test_files": 6,
+    "typescript_and_vite_build": "pass"
+  },
+  "independent_review": {
+    "original_candidate": "7ca9e0f928a40b85cb468720f3ed532b21f3a3ac",
+    "original_passed": 5,
+    "original_failed": 1,
+    "fixed_candidate": "f912dbe26874172556824ace922c685af28b0e3a",
+    "fixed_passed": 6,
+    "fixed_failed": 0,
+    "unchanged_test_sha256": "72c33b117c0b0bf40fe2bed2c34f4391408549a217ff31ca51df9a30b535ef87",
+    "received_manifest_sha256": "fdb3d70eaaa694c5a4140b272245d7a80394ca676ad30015e34f4aefa54faa33",
+    "disposition": "accepted; all eight peer evidence files verified on receipt"
+  },
+  "browser": {
+    "component": "hamon-thinkpad",
+    "node": "22.22.1",
+    "chromium": "153.0.8010.47",
+    "isolation": "Loopback static server, task-owned directories, fresh Playwright contexts, fictional orders, browser/server closed after run.",
+    "transferred_files_verified": 17,
+    "archive_sha256": "cf2c4ab24ce948e9dd9e067f605ddd7800127731ddd72d5ece6205c23c2c5717",
+    "four_harness_runtime_seconds": 57,
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "results": {
+      "final-editor": {
+        "status": "pass",
+        "browser": "153.0.8010.47",
+        "observed": {
+          "baseline": {
+            "saved_orders": 1,
+            "edit_actions": 0,
+            "calendar_actions": 1,
+            "remove_actions": 1
+          },
+          "review_cancel_escape_no_writes": true,
+          "corrected_record_stable_identity_and_calendar_uid": true,
+          "unrelated_record_and_new_order_draft_preserved": true,
+          "invalid_values_refused_before_write": true,
+          "read_write_refusal_keeps_bytes_and_draft_then_retries": true,
+          "concurrent_unrelated_addition_preserved": true,
+          "concurrent_changed_or_removed_target_refused": true,
+          "phone_dialog_and_literal_markup_text": true,
+          "phone_horizontal_overflow": false,
+          "browser_errors": [],
+          "external_requests": []
+        }
+      },
+      "combined-editor": {
+        "status": "pass",
+        "browser": "153.0.8010.47",
+        "observed": {
+          "review_cancel_escape_no_writes": true,
+          "corrected_record_stable_identity_and_calendar_uid": true,
+          "unrelated_record_and_new_order_draft_preserved": true,
+          "invalid_values_refused_before_write": true,
+          "read_write_refusal_keeps_bytes_and_draft_then_retries": true,
+          "concurrent_unrelated_addition_preserved": true,
+          "concurrent_changed_or_removed_target_refused": true,
+          "phone_dialog_and_literal_markup_text": true,
+          "phone_horizontal_overflow": false,
+          "browser_errors": [],
+          "external_requests": []
+        }
+      },
+      "combined-backup": {
+        "native_saved_sources": [
+          "policy",
+          "default",
+          "user"
+        ],
+        "round_trip_exact": true,
+        "cancel_unchanged": true,
+        "repeated_import_skipped": 3,
+        "conflict_and_incompatible_files_unchanged": true,
+        "oversized_file_unchanged": true,
+        "changed_other_tab_requires_fresh_review": true,
+        "quota_failure_preserves_bytes_and_draft_then_retries": true,
+        "serialization_failure_preserves_bytes_then_retries": true,
+        "imported_html_is_text": true,
+        "preview_pagination": [
+          25,
+          1
+        ],
+        "mobile_horizontal_overflow": false,
+        "final_orders": 7,
+        "browser_errors": [],
+        "external_requests": []
+      },
+      "edit-backup-handoff": {
+        "status": "pass",
+        "observed": {
+          "restored_historical_order_edit_export_restore_exact": true,
+          "staged_import_requires_review_after_edit_and_preserves_both": true,
+          "old_backup_conflict_keeps_corrected_order_and_new_order_draft": true
+        },
+        "browser_errors": []
+      }
+    }
+  },
+  "composition": {
+    "backup_pr": 10,
+    "backup_commit": "2ff4f9406ac05e72456a6fb425f5d6499520234f",
+    "backup_parent": "43a11d9f66ca2d8cb7902f8ed1bcae2ac0962fbf",
+    "editor_local": "f912dbe26874172556824ace922c685af28b0e3a",
+    "local_composition": "d4d991e19a0bb9bd527a15afceed483b7f9bacdc",
+    "native_tests": 145,
+    "test_files": 8,
+    "build": "pass",
+    "backup_source_blobs_verified": 11,
+    "scope": "Independent additive receiving qualification only; #8 owner retains its broader source integration and parser composition."
+  },
+  "negative_evidence": [
+    "Initial candidate build rejected NodeList spread under the existing DOM library settings; Array.from fixed this without a tsconfig change.",
+    "Independent unchanged test rejected a year-10000 calendar end; the editor now checks the exclusive next-day event end before admitting a deadline.",
+    "The first browser run reached calendar download, then could not read snap-confined /tmp output. A task-owned shared download directory resolved the environment issue."
+  ],
+  "limits": [
+    "Optimistic saved-target comparison is not a transaction across simultaneous writes in different browser tabs.",
+    "Existing downloaded calendar files do not update automatically; the editor preserves the order UID for a new download.",
+    "Historical source labels are retained as saved data; no retailer policy verification is claimed.",
+    "Source, native and isolated browser receiving are verified. No installed-site deployment, live customer use or production-benefit measurement is claimed."
+  ]
+}

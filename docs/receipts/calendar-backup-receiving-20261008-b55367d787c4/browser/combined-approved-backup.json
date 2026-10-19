@@ -1,0 +1,27 @@
+{
+  "schema": "returnby.backup",
+  "version": 1,
+  "exportedAt": "2026-10-08T12:34:56.000Z",
+  "orders": [
+    {
+      "id": "8f7de6a9-e837-41d8-8857-bf20b36ddcd8",
+      "merchant": "Contoso Electronics",
+      "orderNo": "CT-48130",
+      "total": "$55.00",
+      "orderDate": "2026-10-03",
+      "windowDays": 15,
+      "windowSource": "policy",
+      "createdAt": "2026-10-08T12:34:56.000Z"
+    },
+    {
+      "id": "historical-fallback",
+      "merchant": "Fictional Café 家 <img src=\"https://invalid.test/receipt\">",
+      "orderNo": "HISTORY",
+      "total": "$22.00",
+      "orderDate": "2026-10-03",
+      "windowDays": 45,
+      "windowSource": "default",
+      "createdAt": "2026-10-01T12:00:00Z"
+    }
+  ]
+}

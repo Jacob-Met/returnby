@@ -1,0 +1,184 @@
+{
+  "status": "pass",
+  "source_freeze": "d457628a3def47f71bab58f9285fe64173ea1624",
+  "source_tree": "debb013d11b8a9fddc620522192c3c8939c84c76",
+  "actual_checkout_head": "d457628a3def47f71bab58f9285fe64173ea1624",
+  "browser_version": "153.0.8010.0",
+  "checks": {
+    "baseline": {
+      "backupControl": true,
+      "calendarBatchControl": false,
+      "savedEditor": false
+    },
+    "parsed_review_saved_edited_backup_restored_and_touch_calendar": {
+      "exactOrders": 2,
+      "parserTotal": "$55.00",
+      "historicalFallbackDays": 45,
+      "events": 2,
+      "calendarWrites": 0,
+      "receivingTouch": "Chromium emulation, no physical phone"
+    },
+    "real_second_tab_remove_restore_changes_selected_identity": {
+      "conflictBlockedOriginal": true,
+      "restoredRecords": 2,
+      "staleDownloadAllocations": 0,
+      "explicitReloadRetainedOnlySelectedIdentity": true,
+      "unchangedUid": "historical-fallback@returnby",
+      "reviewedDue": "2026-12-09",
+      "calendarWrites": 0
+    },
+    "staged_import_calendar_noop_edit_freshness_and_failed_write_retry": {
+      "calendarKeptImportPlan": true,
+      "editRequiredAnotherImportReview": true,
+      "oldBackupConflictPreservedCorrection": true,
+      "failedWriteAttempts": 1,
+      "failedWriteAccepted": 0,
+      "calendarDuringRefusalUsedOnlySavedRows": true,
+      "recoveredAdditionCount": 1
+    },
+    "backup_admission_preserved_calendar_explains_narrower_date_boundary": {
+      "backupRecordsPreserved": 2,
+      "visiblyUnselectableEndOverflow": 1,
+      "exportedValidSubset": 1,
+      "calendarWrites": 0
+    }
+  },
+  "application_errors": [],
+  "external_requests": [],
+  "source_sha256": [
+    {
+      "path": "index.html",
+      "sha256": "7f78e7be40a59f572a7e4f1614b85231e48e25bdc725239531a4ff09d4257f9a"
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "f3f4cdf23b6b5bdf1f564ed2fedbfa67d24e49343fc7ef6a2ca24d1ffcaadd07"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf"
+    },
+    {
+      "path": "src/parse.ts",
+      "sha256": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243"
+    },
+    {
+      "path": "src/deadline.ts",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "path": "src/ics.ts",
+      "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523"
+    },
+    {
+      "path": "src/backup.ts",
+      "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a"
+    },
+    {
+      "path": "src/backup-ui.ts",
+      "sha256": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600"
+    },
+    {
+      "path": "src/backup.css",
+      "sha256": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594"
+    },
+    {
+      "path": "src/edit.ts",
+      "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482"
+    },
+    {
+      "path": "src/edit-ui.ts",
+      "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6"
+    },
+    {
+      "path": "src/edit.css",
+      "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42"
+    },
+    {
+      "path": "src/calendar-batch.ts",
+      "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d"
+    },
+    {
+      "path": "src/calendar-batch-ui.ts",
+      "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886"
+    },
+    {
+      "path": "src/calendar-batch.css",
+      "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55"
+    }
+  ],
+  "build_files": [
+    {
+      "path": "assets/index-41FLtvzD.css",
+      "sha256": "a3053cd7be8fec4c15594b2931b3b9c5fb9988f413c6f7f76eac43638bbbf3a0",
+      "bytes": 12785
+    },
+    {
+      "path": "assets/index-CVrnzwEi.js",
+      "sha256": "dad80af455feb7b4f7bd9fcf0ef002518b6925ddf6b560f4271bd2dadc2ec467",
+      "bytes": 30234
+    },
+    {
+      "path": "captures/returnby-desktop.png",
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+      "bytes": 131379
+    },
+    {
+      "path": "captures/returnby-mobile.png",
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+      "bytes": 107642
+    },
+    {
+      "path": "favicon.svg",
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+      "bytes": 238
+    },
+    {
+      "path": "index.html",
+      "sha256": "184ffe6cfc2b2137206e3f5a9c4c058bf32995b3dd1ba7f37d836cef2dd8ba1d",
+      "bytes": 9994
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "combined-approved-backup.json",
+      "suggestedFilename": "returnby-backup-2026-10-08.json",
+      "bytes": 724,
+      "sha256": "1248bcf7ae91eb0ceb0536f5ef770563056b172627d2641ae6eab912e9614258"
+    },
+    {
+      "path": "phone-restored-calendar.png",
+      "bytes": 73001,
+      "sha256": "00c840e72b9af7e18549b97e7692042eb501a4a35dba9b35b901de58392faf05"
+    },
+    {
+      "path": "restored-selected-reminders.ics",
+      "suggestedFilename": "returnby-reminders-2026-10-08.ics",
+      "bytes": 820,
+      "sha256": "e55eeeeae3d8ef964c3d52c304477229799a60a5f22c803e6aa1ae448be86575"
+    },
+    {
+      "path": "desktop-replacement-review.png",
+      "bytes": 183815,
+      "sha256": "c2b3bf7d9b9d1f21da31b5c7e75243ce6052376bcd40e61554efe283cb8a2eff"
+    },
+    {
+      "path": "replacement-reviewed-reminder.ics",
+      "suggestedFilename": "returnby-reminders-2026-10-08.ics",
+      "bytes": 429,
+      "sha256": "cef2229a99a5e0a5c35b067630ee7cf403debf184b21b53e3e52680639a58ad3"
+    },
+    {
+      "path": "calendar-during-backup-write-refusal.ics",
+      "suggestedFilename": "returnby-reminders-2026-10-08.ics",
+      "bytes": 489,
+      "sha256": "f373b39821ebbcbdb19a34b8afc52ca224c3022be7dfa90994a91c1511785db5"
+    },
+    {
+      "path": "valid-subset-after-boundary-backup.ics",
+      "suggestedFilename": "returnby-reminders-2026-10-08.ics",
+      "bytes": 409,
+      "sha256": "831cc018dad18049e8949663be9d66ce09d2427290dadaaa5281643828f41ad7"
+    }
+  ]
+}

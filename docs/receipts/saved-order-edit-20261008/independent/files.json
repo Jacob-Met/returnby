@@ -1,0 +1,37 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 4173,
+    "sha256": "62cc05a521ca00d591c4d96d53d2d03ff718be5dd04baf3f245d35601d1de118"
+  },
+  {
+    "path": "VERIFICATION.json",
+    "bytes": 1770,
+    "sha256": "3f5f5b756380ba1453116c329beb6cd7f18239923de2b7ff9e16ce4e2bc2778b"
+  },
+  {
+    "path": "edit-peer.test.ts.source",
+    "bytes": 5654,
+    "sha256": "72c33b117c0b0bf40fe2bed2c34f4391408549a217ff31ca51df9a30b535ef87"
+  },
+  {
+    "path": "fixed-source-custody.json",
+    "bytes": 8145,
+    "sha256": "fa6ceb2f8dfccb98c900406f8b09d0ab349fcaeda4eb3cd883887cb5237aec80"
+  },
+  {
+    "path": "peer-fixed.log",
+    "bytes": 243,
+    "sha256": "d223234cd353b54366ca6d1e34c60201167d50ce5eaaab99ab5cb85ffcdad677"
+  },
+  {
+    "path": "peer-original.log",
+    "bytes": 1646,
+    "sha256": "3d3eda8fc50c8b79830315b8b2aa8e855a9310d966ec0947d619fe476ab9929f"
+  },
+  {
+    "path": "source-custody.json",
+    "bytes": 1625,
+    "sha256": "d828982b98abce812fe277aed09135d2e5f23cbb13a2a44e982b7eea41af46d8"
+  }
+]

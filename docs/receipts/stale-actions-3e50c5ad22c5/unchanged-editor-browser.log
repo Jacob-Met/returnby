@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "browser": "153.0.8010.0",
+  "observed": {
+    "review_cancel_escape_no_writes": true,
+    "corrected_record_stable_identity_and_calendar_uid": true,
+    "unrelated_record_and_new_order_draft_preserved": true,
+    "invalid_values_refused_before_write": true,
+    "read_write_refusal_keeps_bytes_and_draft_then_retries": true,
+    "concurrent_unrelated_addition_preserved": true,
+    "concurrent_changed_or_removed_target_refused": true,
+    "phone_dialog_and_literal_markup_text": true,
+    "phone_horizontal_overflow": false,
+    "browser_errors": [],
+    "external_requests": []
+  }
+}

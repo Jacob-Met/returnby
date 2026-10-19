@@ -1,0 +1,37 @@
+{
+  "schema": "returnby.backup",
+  "version": 1,
+  "exportedAt": "2026-10-08T12:34:56.000Z",
+  "orders": [
+    {
+      "id": "actions-historical",
+      "merchant": "Fictional Café",
+      "orderNo": "EDITED-HISTORY",
+      "total": "$22.00",
+      "orderDate": "2026-10-10",
+      "windowDays": 45,
+      "windowSource": "default",
+      "createdAt": "2026-10-01T12:00:00Z"
+    },
+    {
+      "id": "actions-restored",
+      "merchant": "Fictional receiving shop",
+      "orderNo": "NEW-FROM-BACKUP",
+      "total": "$18.00",
+      "orderDate": "2026-10-01",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-10-01T12:00:00Z"
+    },
+    {
+      "id": "9429e6cf-0c0c-4921-80e7-b7c7b594f1dd",
+      "merchant": "Contoso Electronics",
+      "orderNo": "LOCAL-SAVE",
+      "total": "$55.00",
+      "orderDate": "2026-10-03",
+      "windowDays": 15,
+      "windowSource": "policy",
+      "createdAt": "2026-10-08T12:34:56.000Z"
+    }
+  ]
+}

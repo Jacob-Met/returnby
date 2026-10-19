@@ -1,0 +1,13 @@
+
+> returnby@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /workspace/scratch/3e50c5ad22c5/production/returnby-stale-receiver
+
+
+ Test Files  7 passed (7)
+      Tests  79 passed (79)
+   Start at  17:45:36
+   Duration  380ms (transform 53%, tests 26%, import 18%, worker 3%)
+

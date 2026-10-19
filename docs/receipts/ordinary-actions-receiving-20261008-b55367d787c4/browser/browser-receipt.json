@@ -1,0 +1,351 @@
+{
+  "status": "pass",
+  "source_freeze": "50cf9e6efd8a7c92f664ddc09aaf7f9a47c41a8f",
+  "source_tree": "0ea163db4637c50dd68be33d6015daa5dc94e522",
+  "actual_checkout_head": "50cf9e6efd8a7c92f664ddc09aaf7f9a47c41a8f",
+  "browser_version": "153.0.8010.0",
+  "checks": {
+    "backup_editor_changes_survive_stale_save_and_touch_calendar": {
+      "before": [
+        {
+          "id": "actions-historical",
+          "merchant": "Fictional Café",
+          "orderNo": "EDITED-HISTORY",
+          "total": "$22.00",
+          "orderDate": "2026-10-10",
+          "windowDays": 45,
+          "windowSource": "default",
+          "createdAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "actions-restored",
+          "merchant": "Fictional receiving shop",
+          "orderNo": "NEW-FROM-BACKUP",
+          "total": "$18.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "after": [
+        {
+          "id": "actions-historical",
+          "merchant": "Fictional Café",
+          "orderNo": "EDITED-HISTORY",
+          "total": "$22.00",
+          "orderDate": "2026-10-10",
+          "windowDays": 45,
+          "windowSource": "default",
+          "createdAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "actions-restored",
+          "merchant": "Fictional receiving shop",
+          "orderNo": "NEW-FROM-BACKUP",
+          "total": "$18.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "9429e6cf-0c0c-4921-80e7-b7c7b594f1dd",
+          "merchant": "Contoso Electronics",
+          "orderNo": "LOCAL-SAVE",
+          "total": "$55.00",
+          "orderDate": "2026-10-03",
+          "windowDays": 15,
+          "windowSource": "policy",
+          "createdAt": "2026-10-08T12:34:56.000Z"
+        }
+      ],
+      "deletedIdentityNotRevived": "actions-removed",
+      "preservedFallbackDays": 45,
+      "selectedEvents": 2,
+      "calendarWrites": 0,
+      "mobile": "390px Chromium with touch emulation; no physical phone"
+    },
+    "restored_selected_identity_requires_calendar_and_remove_review": {
+      "currentBeforeRefusal": [
+        {
+          "id": "actions-historical",
+          "merchant": "Fictional Café",
+          "orderNo": "RESTORED-HISTORY",
+          "total": "$18.00",
+          "orderDate": "2026-10-10",
+          "windowDays": 60,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "actions-restored",
+          "merchant": "Fictional receiving shop",
+          "orderNo": "NEW-FROM-BACKUP",
+          "total": "$18.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "staleCalendarAllocations": 0,
+      "staleRemoveWrites": 0,
+      "draftRetained": true,
+      "currentCalendarUid": "actions-historical@returnby",
+      "reviewedDue": "2026-12-09",
+      "deliberateSecondRemovePreserved": [
+        "actions-restored"
+      ]
+    },
+    "failures_preserve_both_drafts_and_each_retry_rereads_backup_restores": {
+      "latestReadFailureWrites": 0,
+      "loadingGuardImportWrites": 0,
+      "explicitReloadRetainedBothDrafts": true,
+      "refusedWriteAttempts": 1,
+      "refusedWritesAccepted": 0,
+      "readOnlyCalendarDuringRefusal": true,
+      "freshOrdersBeforeRetry": [
+        {
+          "id": "retry-base",
+          "merchant": "Fictional receiving shop",
+          "orderNo": "retry-base",
+          "total": "$18.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "retry-remote-one",
+          "merchant": "Fictional receiving shop",
+          "orderNo": "retry-remote-one",
+          "total": "$18.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "retry-remote-two",
+          "merchant": "Fictional receiving shop",
+          "orderNo": "retry-remote-two",
+          "total": "$18.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "ordinaryRetryExactlyOnce": true,
+      "stagedImportRequiredFreshReview": true,
+      "finalRecords": [
+        {
+          "id": "retry-base",
+          "merchant": "Fictional receiving shop",
+          "orderNo": "retry-base",
+          "total": "$18.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "retry-remote-one",
+          "merchant": "Fictional receiving shop",
+          "orderNo": "retry-remote-one",
+          "total": "$18.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "retry-remote-two",
+          "merchant": "Fictional receiving shop",
+          "orderNo": "retry-remote-two",
+          "total": "$18.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        },
+        {
+          "id": "7cec03b1-25a4-45e3-80aa-84d6d69ce15b",
+          "merchant": "Contoso Electronics",
+          "orderNo": "LOCAL-RETRY",
+          "total": "$55.00",
+          "orderDate": "2026-10-03",
+          "windowDays": 15,
+          "windowSource": "policy",
+          "createdAt": "2026-10-08T12:34:56.000Z"
+        },
+        {
+          "id": "retry-staged-import",
+          "merchant": "Fictional receiving shop",
+          "orderNo": "retry-staged-import",
+          "total": "$18.00",
+          "orderDate": "2026-10-01",
+          "windowDays": 30,
+          "windowSource": "user",
+          "createdAt": "2026-10-01T12:00:00Z"
+        }
+      ],
+      "recoveredCalendarEvents": 5
+    }
+  },
+  "application_errors": [],
+  "external_requests": [],
+  "source_sha256": [
+    {
+      "path": "index.html",
+      "sha256": "7f78e7be40a59f572a7e4f1614b85231e48e25bdc725239531a4ff09d4257f9a"
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "7d2d2b1ff1c783e50230b5c8bc149d9ec4dcf80bae25689e38d3527ad7899dd3"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "bf4feede4a35f38598ca8f039c0d90dcb6513c82b9ed649d4c70d6fcb52c55cf"
+    },
+    {
+      "path": "src/parse.ts",
+      "sha256": "39de8ccca54a3a6593c9d4a97c099b537f592d63fa284ecc55169d9199738243"
+    },
+    {
+      "path": "src/policy.ts",
+      "sha256": "b550163df1913967c5392aca34ef33cc101db72a02afe0090a82bb0f230ee231"
+    },
+    {
+      "path": "src/deadline.ts",
+      "sha256": "1feb8c93250fd9052e1d4ae9e289bb9ec0304b108f94f5620bde2f81bd24af53"
+    },
+    {
+      "path": "src/ics.ts",
+      "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523"
+    },
+    {
+      "path": "src/backup.ts",
+      "sha256": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a"
+    },
+    {
+      "path": "src/backup-ui.ts",
+      "sha256": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600"
+    },
+    {
+      "path": "src/backup.css",
+      "sha256": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594"
+    },
+    {
+      "path": "src/edit.ts",
+      "sha256": "31f4717a82c938cfe9db3727601dd37cedea8177c9f4c562e854b3490214e482"
+    },
+    {
+      "path": "src/edit-ui.ts",
+      "sha256": "d0cdd25a016b4f0146de5047f78e1ec998e6bf1fcc83746ea8675195d83a28c6"
+    },
+    {
+      "path": "src/edit.css",
+      "sha256": "6cda95d6d56e2707225c132ffcd865b63199bf56b4f8977300fd0ece78998f42"
+    },
+    {
+      "path": "src/calendar-batch.ts",
+      "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d"
+    },
+    {
+      "path": "src/calendar-batch-ui.ts",
+      "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886"
+    },
+    {
+      "path": "src/calendar-batch.css",
+      "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55"
+    }
+  ],
+  "build_files": [
+    {
+      "path": "assets/index-41FLtvzD.css",
+      "sha256": "a3053cd7be8fec4c15594b2931b3b9c5fb9988f413c6f7f76eac43638bbbf3a0",
+      "bytes": 12785
+    },
+    {
+      "path": "assets/index-B_BGqvdA.js",
+      "sha256": "654a1a34dd6fc37f143457f1dc79d87c6454826e63a4290bdb2bf12c330528fd",
+      "bytes": 30622
+    },
+    {
+      "path": "captures/returnby-desktop.png",
+      "sha256": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+      "bytes": 131379
+    },
+    {
+      "path": "captures/returnby-mobile.png",
+      "sha256": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+      "bytes": 107642
+    },
+    {
+      "path": "favicon.svg",
+      "sha256": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+      "bytes": 238
+    },
+    {
+      "path": "index.html",
+      "sha256": "d1500263e0d5d9d765d7d9b7a06d536db3bbac29ed663d75c4ce8eb304b3ad7c",
+      "bytes": 9994
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "after-stale-save-backup.json",
+      "suggestedFilename": "returnby-backup-2026-10-08.json",
+      "bytes": 966,
+      "sha256": "22914419c8ae4fb2fed4062f17a58bc2f6ffd7b6e8231a611cc22c536a7895a1"
+    },
+    {
+      "path": "phone-calendar-after-stale-save.png",
+      "bytes": 72219,
+      "sha256": "3566bc8565ec334f0774550be62b65a630061101594730ad26141d8cb4051bc7"
+    },
+    {
+      "path": "after-stale-save-reminders.ics",
+      "suggestedFilename": "returnby-reminders-2026-10-08.ics",
+      "bytes": 741,
+      "sha256": "68273dac3d185dd3d2e70a08741fea33a5e652bb92bad351619a3f9d5c80fd87"
+    },
+    {
+      "path": "phone-refused-stale-remove.png",
+      "bytes": 221985,
+      "sha256": "3bca253d21e98dd2126f31e095a0f16d274084a5212623a27521c3729504f648"
+    },
+    {
+      "path": "reviewed-replacement-before-remove.ics",
+      "suggestedFilename": "returnby-reminders-2026-10-08.ics",
+      "bytes": 410,
+      "sha256": "954b5759bd597f4e05ad2d021ee6311c0420eae1c9f53dd3a4d767921b45a4a8"
+    },
+    {
+      "path": "after-reviewed-remove-backup.json",
+      "suggestedFilename": "returnby-backup-2026-10-08.json",
+      "bytes": 393,
+      "sha256": "85260ca3eb8ef3515e045382b5c9318564f6817827d14f94241df5f5bd04f11d"
+    },
+    {
+      "path": "saved-reminder-during-action-write-refusal.ics",
+      "suggestedFilename": "returnby-reminders-2026-10-08.ics",
+      "bytes": 408,
+      "sha256": "1bc3da33e61b9049c1e4877f080eb3786990df5135cd6c5b35b76ce99436b2cf"
+    },
+    {
+      "path": "after-ordinary-and-import-retry-backup.json",
+      "suggestedFilename": "returnby-backup-2026-10-08.json",
+      "bytes": 1532,
+      "sha256": "84e1b3dc70227673bb08dd82b502515461e0e5564336452cd6ebcc7df845f5d9"
+    },
+    {
+      "path": "after-ordinary-and-import-retry-reminders.ics",
+      "suggestedFilename": "returnby-reminders-2026-10-08.ics",
+      "bytes": 1765,
+      "sha256": "e54c5ee393f7a893854a3e92a0cf29abe18cd3a116c4f982f7507a6215bd536b"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+diff --git a/src/main.ts b/src/main.ts
+index b1d85b0..9eaa6c1 100644
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -69,6 +69,37 @@ function persistOrders(next: Order[], reset = false): boolean {
+   return true;
+ }
+ 
++// Ordinary actions must start with the current saved list. A tab's displayed
++// cards may predate another tab's save, edit, removal or import.
++function readCurrentOrders(): Order[] | null {
++  if (loadFailed) {
++    showStorageError(loadError);
++    return null;
++  }
++  try {
++    return load();
++  } catch {
++    loadFailed = true;
++    showStorageError(loadError);
++    render();
++    return null;
++  }
++}
++
++function removeOrder(id: string) {
++  const displayed = orders.filter(order => order.id === id);
++  const current = readCurrentOrders();
++  if (!current) return;
++  const saved = current.filter(order => order.id === id);
++  if (displayed.length !== 1 || saved.length !== 1 || JSON.stringify(displayed[0]) !== JSON.stringify(saved[0])) {
++    orders = current;
++    render();
++    showStorageError('This saved return changed or could not be selected. Review the refreshed tracker before removing it.');
++    return;
++  }
++  if (persistOrders(current.filter(order => order.id !== id))) render();
++}
++
+ const h = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+ 
+ function showPreview() {
+@@ -101,7 +132,9 @@ preview.addEventListener('submit', (e) => {
+   const days = Number(f.get('windowDays')) || 30;
+   const merchant = String(f.get('merchant') || '');
+   const pol = lookup(merchant);
+-  const next: Order[] = [...orders, {
++  const current = readCurrentOrders();
++  if (!current) return;
++  const next: Order[] = [...current, {
+     id: crypto.randomUUID(), merchant, orderNo: String(f.get('orderNo') || ''),
+     total: String(f.get('total') || ''), orderDate, windowDays: days,
+     windowSource: days === pol.days ? pol.source : 'user',
+@@ -127,7 +160,7 @@ function render() {
+ list.addEventListener('click', (e) => {
+   const t = e.target as HTMLElement;
+   if (t.dataset.edit !== undefined) orderEditor.open(t.dataset.edit);
+-  if (t.dataset.del) { if (persistOrders(orders.filter((o) => o.id !== t.dataset.del))) render(); }
++  if (t.dataset.del) removeOrder(t.dataset.del);
+   if (t.dataset.ics) {
+     const o = orders.find((x) => x.id === t.dataset.ics)!;
+     const blob = new Blob([buildIcs({ ...o, due: dueDate(o.orderDate, o.windowDays) })], { type: 'text/calendar' });

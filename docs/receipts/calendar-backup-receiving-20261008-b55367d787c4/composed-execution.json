@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "label": "composed-tests",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit": 0,
+      "outputSha256": "ab04c27b1ff693e6a5f7818c6fcc5f35d4d4e1507cee21d75ac9fda9de2f6beb"
+    },
+    {
+      "label": "composed-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exit": 0,
+      "outputSha256": "5a4efc3c650f525adbc85224a82597800cff56fe9432f36a9ff694440cb0bd7a"
+    }
+  ]
+}

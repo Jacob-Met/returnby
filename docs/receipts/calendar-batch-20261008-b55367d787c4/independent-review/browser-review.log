@@ -1,0 +1,4 @@
+PASS refresh refusal and explicit recovery lifecycle
+PASS download refusal, new ambiguity, and explicit recovered download
+PASS emulated touch review and actual file download
+{"passed":3,"failure":false}

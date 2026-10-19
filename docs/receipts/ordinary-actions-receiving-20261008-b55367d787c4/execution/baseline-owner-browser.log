@@ -1,0 +1,149 @@
+✖ saving a new reviewed order from a stale tab retains another tab’s corrections and additions (877.709034ms)
+✖ removing a still-current return keeps unseen additions and does not resurrect another removed order (744.841779ms)
+✖ a return changed since it was displayed must be reviewed before a new Remove attempt (511.030496ms)
+✖ an unreadable latest tracker blocks a new save and retains its draft through loading retry (570.103775ms)
+✖ retrying a failed new-order write rereads additions made after the failed attempt (712.729651ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3833.519136
+
+✖ failing tests:
+
+test at tools/check_stale_browser.mjs:70:1
+✖ saving a new reviewed order from a stale tab retains another tab’s corrections and additions (877.709034ms)
+  AssertionError [ERR_ASSERTION]: a stale new-order save must not discard a newly saved return
+  
+  2 !== 3
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/b55367d787c4/production/receiving-actions/candidate/tools/check_stale_browser.mjs:79:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools/check_stale_browser.mjs:89:1
+✖ removing a still-current return keeps unseen additions and does not resurrect another removed order (744.841779ms)
+  AssertionError [ERR_ASSERTION]: Remove acts on the freshly saved tracker
+  + actual - expected
+  
+    [
+      {
+  +     createdAt: '2026-10-08T09:24:48.001Z',
+  +     id: '8f772938-ac41-4fcd-838f-f083e471fe28',
+  -     createdAt: '2026-10-08T09:24:48.166Z',
+  -     id: 'c5256fc8-6069-4ab2-9d35-181b3303ecbc',
+        merchant: 'Fictional Marsh Supplies',
+        orderDate: '2026-10-01',
+  +     orderNo: 'REMOVE-ELSEWHERE',
+  -     orderNo: 'KEEP-REMOTE',
+        total: '$12.00',
+        windowDays: 30,
+        windowSource: 'default'
+      }
+    ]
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/b55367d787c4/production/receiving-actions/candidate/tools/check_stale_browser.mjs:99:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { id: '8f772938-ac41-4fcd-838f-f083e471fe28', merchant: 'Fictional Marsh Supplies', orderNo: 'REMOVE-ELSEWHERE', total: '$12.00', orderDate: '2026-10-01', windowDays: 30, windowSource: 'default', createdAt: '2026-10-08T09:24:48.001Z' } ],
+    expected: [ { id: 'c5256fc8-6069-4ab2-9d35-181b3303ecbc', merchant: 'Fictional Marsh Supplies', orderNo: 'KEEP-REMOTE', total: '$12.00', orderDate: '2026-10-01', windowDays: 30, windowSource: 'default', createdAt: '2026-10-08T09:24:48.166Z' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools/check_stale_browser.mjs:105:1
+✖ a return changed since it was displayed must be reviewed before a new Remove attempt (511.030496ms)
+  AssertionError [ERR_ASSERTION]: a stale Remove cannot erase an unreviewed correction
+  + actual - expected
+  
+  + []
+  - [
+  -   {
+  -     createdAt: '2026-10-08T09:24:48.467Z',
+  -     id: 'bfa9d897-357d-4ce2-9327-760c5b191d18',
+  -     merchant: 'Fictional Marsh Supplies',
+  -     orderDate: '2026-10-01',
+  -     orderNo: 'CORRECTED-ELSEWHERE',
+  -     total: '$12.00',
+  -     windowDays: 45,
+  -     windowSource: 'user'
+  -   }
+  - ]
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/b55367d787c4/production/receiving-actions/candidate/tools/check_stale_browser.mjs:113:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ { id: 'bfa9d897-357d-4ce2-9327-760c5b191d18', merchant: 'Fictional Marsh Supplies', orderNo: 'CORRECTED-ELSEWHERE', total: '$12.00', orderDate: '2026-10-01', windowDays: 45, windowSource: 'user', createdAt: '2026-10-08T09:24:48.467Z' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools/check_stale_browser.mjs:126:1
+✖ an unreadable latest tracker blocks a new save and retains its draft through loading retry (570.103775ms)
+  AssertionError [ERR_ASSERTION]: failed current-state read must not become permission to overwrite it
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        createdAt: '2026-10-08T09:24:48.969Z',
+        id: 'acf51d80-8d90-4e05-8e8d-c3bf63ea4734',
+        merchant: 'Fictional Marsh Supplies',
+  ...
+      {
+  +     createdAt: '2026-10-08T09:24:49.300Z',
+  +     id: 'b409e1fa-8a4e-46a1-b559-397a664da8c6',
+  -     createdAt: '2026-10-08T09:24:49.284Z',
+  -     id: 'b08f107e-66d7-4acc-925e-e1b49dec0cc4',
+        merchant: 'Fictional Marsh Supplies',
+        orderDate: '2026-10-01',
+  +     orderNo: 'LOCAL-RETRY',
+  -     orderNo: 'REMOTE-KEEP',
+        total: '$12.00',
+        windowDays: 30,
+        windowSource: 'default'
+      }
+    ]
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/b55367d787c4/production/receiving-actions/candidate/tools/check_stale_browser.mjs:138:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { id: 'acf51d80-8d90-4e05-8e8d-c3bf63ea4734', merchant: 'Fictional Marsh Supplies', orderNo: 'ORIGINAL', total: '$12.00', orderDate: '2026-10-01', windowDays: 30, windowSource: 'default', createdAt: '2026-10-08T09:24:48.969Z' }, { id: 'b409e1fa-8a4e-46a1-b559-397a664da8c6', merchant: 'Fictional Marsh Supplies', orderNo: 'LOCAL-RETRY', total: '$12.00', orderDate: '2026-10-01', windowDays: 30, windowSource: 'default', createdAt: '2026-10-08T09:24:49.300Z' } ],
+    expected: [ { id: 'acf51d80-8d90-4e05-8e8d-c3bf63ea4734', merchant: 'Fictional Marsh Supplies', orderNo: 'ORIGINAL', total: '$12.00', orderDate: '2026-10-01', windowDays: 30, windowSource: 'default', createdAt: '2026-10-08T09:24:48.969Z' }, { id: 'b08f107e-66d7-4acc-925e-e1b49dec0cc4', merchant: 'Fictional Marsh Supplies', orderNo: 'REMOTE-KEEP', total: '$12.00', orderDate: '2026-10-01', windowDays: 30, windowSource: 'default', createdAt: '2026-10-08T09:24:49.284Z' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools/check_stale_browser.mjs:152:1
+✖ retrying a failed new-order write rereads additions made after the failed attempt (712.729651ms)
+  AssertionError [ERR_ASSERTION]: retry must preserve orders saved while the write was unavailable
+  
+  2 !== 4
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/b55367d787c4/production/receiving-actions/candidate/tools/check_stale_browser.mjs:171:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
