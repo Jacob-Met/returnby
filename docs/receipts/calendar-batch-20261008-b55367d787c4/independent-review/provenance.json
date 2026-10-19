@@ -1,0 +1,76 @@
+{
+  "reviewer": "estate-b55367d787c4 / engine",
+  "implementation_commit": "1973a2230a8292fd487a87f9fdde02dba068649d",
+  "implementation_tree": "cc2674728fff2781cd3d6c8e5902f38dc4197c64",
+  "receiving_baseline": "0ee7edf58e958e00d21c70b3ef56e5dadcfdc15d",
+  "evidence_head_observed": "0e0b5e411b3c3c588254cab6978dbb6110c3d90b",
+  "source_files_after_review": [
+    {
+      "path": "README.md",
+      "sha256": "0b3de415e7e14178096ab13325c74a912f5c9d0fe73255d4e6775cd20b89ddef",
+      "git_blob": "f40978fca44d2a673718a39936b34a7d3afd1a5a"
+    },
+    {
+      "path": "index.html",
+      "sha256": "164a1f31e37856d665b84bb175af379865e7da6fd88653571709ea6ea77d54e5",
+      "git_blob": "cded3f5f76089c8b90ab7f6d79831cb6b30efc2c"
+    },
+    {
+      "path": "src/calendar-batch-ui.ts",
+      "sha256": "8fd7bcaeb1e0b43cf213dd361847c74737f77a3ebed06b7fe81eb83a441d3886",
+      "git_blob": "f14427126feb325861ceb08783877c97cfc92e4d"
+    },
+    {
+      "path": "src/calendar-batch.css",
+      "sha256": "3520ffca18673a9e5f11df9a95c96a6ae271ba341a7bec7486f6c7399fe12b55",
+      "git_blob": "6a9849585c528bd82d8d40d66d2816e7f25bc327"
+    },
+    {
+      "path": "src/calendar-batch.ts",
+      "sha256": "db453335f8c9fa0a0441a633a85a7ded13829ef0286ef5979cb114646f6aa82d",
+      "git_blob": "520469648c1177f010edf04fa5f779d900e2431f"
+    },
+    {
+      "path": "src/ics.ts",
+      "sha256": "9f33048614be3fb7d8353f06f3096572f213c9872dd5f472f698ac7791217523",
+      "git_blob": "58c873a116ed6b265864cb3e7d5b0dd27fd81544"
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "23ded8d3268bb4ba0387b46e8502a0123ae413e2d1fb9b4d680ce2dbeab379f2",
+      "git_blob": "9ecc9c8e5645a5e0736d5f79fb5503d371adb8a0"
+    },
+    {
+      "path": "tests/calendar-batch.test.ts",
+      "sha256": "2d56ce7116e265e0053a5c83cbd076cb44bab3dd658b779114b45eb211819af0",
+      "git_blob": "9fc37a60e9021117038aa4c32044f2b2ee51b621"
+    },
+    {
+      "path": "tools/check_calendar_batch_browser.mjs",
+      "sha256": "e02f1c1552eb9cc7890adb37072c1b89f23fa277986e4aa4e2bed9d85b32b24d",
+      "git_blob": "a9d017d186e574ec2b6c04a5dc3c5e46c14af1c4"
+    }
+  ],
+  "production_checkout_clean_after_review": true,
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "model-review.mjs"
+      ],
+      "cwd": "/workspace/scratch/b55367d787c4/engine/returnby-review",
+      "exit": 0,
+      "log": "model-review.log"
+    },
+    {
+      "argv": [
+        "node",
+        "browser-review.mjs"
+      ],
+      "cwd": "/workspace/scratch/b55367d787c4/engine/returnby-review",
+      "exit": 0,
+      "log": "browser-review.log"
+    }
+  ],
+  "chromium_sha256": "53a15d6c3a3d27dfb54c4ba60278b1683136f70cf1e67e989da7dfbd3d451ef0"
+}

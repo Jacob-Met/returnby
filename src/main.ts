@@ -1,5 +1,6 @@
 import './style.css';
 import './edit.css';
+import './calendar-batch.css';
 import { parse } from './parse';
 import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
@@ -7,6 +8,7 @@ import { buildIcs } from './ics';
 import { load, save, type Order } from './store';
 import { samples } from './samples';
 import { bindOrderEditor } from './edit-ui';
+import { bindCalendarBatch } from './calendar-batch-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
@@ -144,4 +146,5 @@ const orderEditor = bindOrderEditor({
   commit: next => { if (!persistOrders(next)) return false; render(); return true; },
   refresh: reloadOrders,
 });
+bindCalendarBatch({ read: load, filter: () => filterMode });
 reloadOrders();

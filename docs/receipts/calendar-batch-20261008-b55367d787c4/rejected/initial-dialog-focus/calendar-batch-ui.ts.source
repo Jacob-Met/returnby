@@ -1,0 +1,153 @@
+import { CalendarBatchError, calendarRows, initialCalendarSelection, planCalendarBatch, type CalendarFilter, type CalendarRow } from './calendar-batch';
+import type { Order } from './store';
+
+type CalendarOptions = {
+  read(): Order[];
+  filter(): CalendarFilter;
+  download?(content: string, filename: string): void;
+};
+
+function downloadCalendar(content: string, filename: string) {
+  const url = URL.createObjectURL(new Blob([content], { type: 'text/calendar;charset=utf-8' }));
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.append(anchor);
+  try { anchor.click(); }
+  finally {
+    anchor.remove();
+    // Keep the object alive until the browser has received the download gesture.
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+}
+
+export function bindCalendarBatch(options: CalendarOptions) {
+  const get = <T extends HTMLElement>(id: string) => document.querySelector<T>(`#${id}`)!;
+  const dialog = get<HTMLDialogElement>('calendar-dialog');
+  const choices = get<HTMLDivElement>('calendar-choices');
+  const message = get<HTMLParagraphElement>('calendar-message');
+  const summary = get<HTMLParagraphElement>('calendar-summary');
+  const download = get<HTMLButtonElement>('calendar-download');
+  const feedback = get<HTMLParagraphElement>('calendar-feedback');
+  let rows: CalendarRow[] = [];
+  let selected = new Set<string>();
+  let loaded = false;
+
+  function showMessage(text: string, focus = false) {
+    message.textContent = text;
+    message.hidden = !text;
+    if (focus) message.focus();
+  }
+
+  function updateSummary() {
+    const picked = rows.filter(row => !row.problem && selected.has(row.order.id));
+    const count = picked.length;
+    const expired = picked.filter(row => row.left! < 0).length;
+    summary.textContent = count
+      ? `${count} ${count === 1 ? 'reminder' : 'reminders'} selected · ${picked[0].due}${count > 1 ? ` to ${picked[count - 1].due}` : ''}.${expired ? ` ${expired} ${expired === 1 ? 'deadline is' : 'deadlines are'} already past due.` : ''}`
+      : 'No reminders selected.';
+    download.disabled = !loaded || !count;
+    get<HTMLButtonElement>('calendar-select-all').disabled = !loaded || !rows.some(row => !row.problem);
+    get<HTMLButtonElement>('calendar-select-none').disabled = !loaded || !count;
+  }
+
+  function renderChoices() {
+    choices.replaceChildren();
+    if (!rows.length) {
+      const empty = document.createElement('p');
+      empty.textContent = 'There are no saved returns to export.';
+      choices.append(empty);
+      return;
+    }
+    for (const [index, row] of rows.entries()) {
+      const label = document.createElement('label');
+      label.className = 'calendar-choice';
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.checked = !row.problem && selected.has(row.order.id);
+      checkbox.disabled = Boolean(row.problem);
+      checkbox.dataset.calendarIndex = String(index);
+      const text = document.createElement('span');
+      const name = document.createElement('strong');
+      name.textContent = `${row.order.merchant || 'Unknown store'}${row.order.orderNo ? ` #${row.order.orderNo}` : ''}`;
+      const detail = document.createElement('span');
+      detail.className = row.problem ? 'calendar-invalid' : 'calendar-due';
+      detail.textContent = row.problem ?? `Return by ${row.due}${row.left! < 0 ? ' · Past due' : ''}`;
+      text.append(name, detail);
+      label.append(checkbox, text);
+      choices.append(label);
+    }
+  }
+
+  function loadSelection(keepSelection = false) {
+    try {
+      const next = calendarRows(options.read());
+      const valid = new Set(next.filter(row => !row.problem).map(row => row.order.id));
+      selected = new Set(keepSelection
+        ? [...selected].filter(id => valid.has(id))
+        : initialCalendarSelection(next, options.filter()));
+      rows = next;
+      loaded = true;
+      renderChoices();
+      const invalid = rows.filter(row => row.problem).length;
+      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates before downloading.' : `Initial selection follows the tracker's ${options.filter() === 'due' ? 'Due soon' : options.filter() === 'expired' ? 'Expired' : 'All'} filter. You can change any checkbox below.`}${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}`;
+      showMessage('');
+    } catch (error) {
+      loaded = false;
+      for (const checkbox of choices.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')) checkbox.disabled = true;
+      showMessage(error instanceof CalendarBatchError ? error.message
+        : "Couldn't read saved returns for calendar export. Your selection is kept. Try Reload saved returns when storage is available.", true);
+    }
+    updateSummary();
+  }
+
+  choices.addEventListener('change', event => {
+    const input = event.target as HTMLInputElement;
+    const index = Number(input.dataset.calendarIndex);
+    if (input.type !== 'checkbox' || input.dataset.calendarIndex === undefined || !Number.isInteger(index)) return;
+    const row = rows[index];
+    if (!row || row.problem || !loaded) return;
+    if (input.checked) selected.add(row.order.id); else selected.delete(row.order.id);
+    showMessage('');
+    updateSummary();
+  });
+  get('calendar-select-all').addEventListener('click', () => {
+    selected = new Set(rows.filter(row => !row.problem).map(row => row.order.id));
+    renderChoices(); updateSummary(); showMessage('');
+  });
+  get('calendar-select-none').addEventListener('click', () => {
+    selected.clear(); renderChoices(); updateSummary(); showMessage('');
+  });
+  get('calendar-reload').addEventListener('click', () => loadSelection(loaded || rows.length > 0));
+  get('calendar-cancel').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => get('calendar-open').focus());
+  get('calendar-form').addEventListener('submit', event => {
+    event.preventDefault();
+    if (!loaded || !selected.size) return;
+    let current: Order[];
+    try { current = options.read(); }
+    catch {
+      showMessage("Couldn't read saved returns. Nothing was downloaded. Your selection is kept; try again when storage is available.", true);
+      return;
+    }
+    try {
+      const plan = planCalendarBatch(current, rows, [...selected]);
+      (options.download ?? downloadCalendar)(plan.content, plan.filename);
+      feedback.textContent = `Calendar file prepared with ${plan.count} ${plan.count === 1 ? 'reminder' : 'reminders'}. Open the downloaded .ics file in your calendar app to import it.`;
+      dialog.close();
+    } catch (error) {
+      showMessage(error instanceof Error ? error.message : 'The calendar file could not be prepared. Try again.', true);
+    }
+  });
+
+  function open() {
+    rows = []; selected.clear(); loaded = false;
+    choices.replaceChildren();
+    feedback.textContent = '';
+    dialog.showModal();
+    loadSelection();
+    if (loaded) get('calendar-cancel').focus();
+  }
+  get('calendar-open').addEventListener('click', open);
+  return { open };
+}
