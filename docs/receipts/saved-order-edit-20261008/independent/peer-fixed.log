@@ -1,0 +1,9 @@
+
+ RUN  v5.0.3 /workspace/scratch/965d2e86e979/agents/verification/returnby-review/fixed-snapshot
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  16:35:53
+   Duration  193ms (transform 68%, import 17%, tests 11%, worker 4%)
+

@@ -1,0 +1,38 @@
+{
+  "reviewer": "estate-b55367d787c4 / engine",
+  "browser": "153.0.8010.0",
+  "node": "v24.19.0",
+  "sourceAndBuildReadOnly": true,
+  "implementation": "1973a2230a8292fd487a87f9fdde02dba068649d",
+  "buildHashes": {
+    "dist/assets/index-BUdaVmKH.js": "2f0f1738b624afae71a353795693bc2703f218a980558ae4deeaffd46ba6488c",
+    "dist/assets/index-D1H1qp7z.js": "e7c9aa43e73fd4c65e8543d8c4c438c933547c1995f4c888fd6ff8d02b35ec09",
+    "dist/assets/index-DLpVnxDn.css": "92bc23cf88bd2d72177615e26a13b4a7491f09799eea50a25574f160650eadbe",
+    "dist/captures/returnby-desktop.png": "56da8da0a30e6d69531ced02314158e3d3e89802b6e502f2dd5f2143e34edaa7",
+    "dist/captures/returnby-mobile.png": "45cc4cff40678620da80ba2f0ec380dc0e1a2989e3d0c35e3b8677927f757f69",
+    "dist/favicon.svg": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+    "dist/index.html": "a97721384a355b9cf58ee805284846de92b32f90f550b579f637d417e252e2f2"
+  },
+  "checks": [
+    {
+      "name": "Refresh read failure disables stale choices; explicit recovery retains only the edited selected identity",
+      "result": "pass"
+    },
+    {
+      "name": "Download allocation refusal retains review; retry rereads and refuses new identity ambiguity; fresh explicit choice downloads once",
+      "result": "pass",
+      "downloadCount": 1,
+      "appStorageWrites": 0
+    },
+    {
+      "name": "390 px emulated touch activates review, selection and actual browser download",
+      "result": "pass",
+      "physicalDeviceTested": false,
+      "hasTouch": true,
+      "appStorageWrites": 0
+    }
+  ],
+  "pageErrors": [],
+  "externalRequests": [],
+  "failure": null
+}

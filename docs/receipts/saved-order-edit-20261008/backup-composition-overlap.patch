@@ -1,0 +1,107 @@
+diff --git a/README.md b/README.md
+index a3164e0..39232eb 100644
+--- a/README.md
++++ b/README.md
+@@ -6,6 +6,16 @@ ReturnBy turns an order-confirmation email into a reviewable return deadline and
+ 
+ The original pasted email is not sent or persisted. The user must review and save fields; only merchant, order number, total, order date, return-window days and timestamps are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
+ 
++## Move or back up your tracker
++
++Open **Back up or restore saved returns** below the tracker and choose **Download backup**. Keep the downloaded JSON file private: it contains the saved order details, original saved IDs, creation times and return-window source labels. The exporter copies only the approved Order fields; it does not read the paste box or export unrelated stored properties. A backup is an ordinary unencrypted file. Clearing browser storage does not delete files you downloaded.
++
++In the receiving browser, choose that file to see a preview before any orders are saved. New IDs are added, matching copies are skipped, and an ID with different saved fields blocks the whole import. **Cancel import** leaves the tracker unchanged. Return windows and `windowSource` labels are preserved, so importing does not reinterpret an older order using today's local policy table. These labels are historical file data, not verified current retailer policy. Existing drafts in the paste/review form stay available.
++
++The importer checks the entire versioned document before showing a plan. Unsupported versions, unknown fields, duplicate IDs within one file, invalid dates/windows, and malformed records are refused without writes. Files may be at most 5 MiB and contain at most 10,000 orders; the resulting tracker also stays within that count and must remain exportable within the 5 MiB byte limit. A near-limit export uses compact JSON when indentation would exceed the limit. Normalization or combining two individually valid files may exceed the limit; such an import is refused before any write. Text fields may be up to 4,096 characters and IDs up to 128 characters. Dates must use a four-digit year from 1000 through 9999, and the return window must end within that range. Creation/export timestamps require an explicit timezone. Optional empty order numbers and totals are normalized to empty strings.
++
++The preview is recalculated against readable browser storage before committing. If saved orders changed since review, the updated plan requires another Import click. Storage failures preserve the preview for retry. This does not add continuous cross-tab synchronization or a transaction spanning simultaneous writes from different tabs; avoid editing the tracker in another tab during import. The existing tracker controls and single-order calendar export keep their behavior.
++
+ ## Correct a saved return
+ 
+ Choose **Edit details** on a saved order. The separate editor keeps the original saved deadline visible beside the proposed deadline while you correct the store, date, return window, order number or total. **Save changes** replaces that one reviewed order; **Cancel** or Escape leaves it untouched. The original ID and creation time remain, so its calendar UID stays the same. Download a new calendar reminder after saving if needed; files already imported into a calendar do not change automatically.
+@@ -31,6 +41,7 @@ The optional Raider browser acceptance and desktop/phone captures run through `p
+ - `src/policy.ts` / `data/policies.json`: merchant lookup with an editable 30-day fallback.
+ - `src/deadline.ts`: date arithmetic and urgency states.
+ - `src/store.ts`: local-only persistence of approved fields.
++- `src/backup.ts` / `src/backup-ui.ts`: versioned backup validation, duplicate/conflict planning and reviewed import/download controls.
+ - `src/ics.ts`: calendar reminder generation.
+ 
+ The app is browser-only; no AI runs in the page. The Devpost Learn planning documents are not completed interview output and are not represented as such.
+diff --git a/index.html b/index.html
+index e8f54ca..5bbc9b8 100644
+--- a/index.html
++++ b/index.html
+@@ -3,6 +3,23 @@
+ <header class="topbar"><a class="brand" href="#top" aria-label="ReturnBy home"><span class="brand-mark">R/</span><span><strong>RETURNBY</strong><small>THE RETURN DESK</small></span></a><div class="local-chip"><i></i><span>LOCAL ONLY / NO INBOX CONNECTION</span></div></header>
+ <main id="top"><section class="hero"><div class="hero-copy"><p class="eyebrow">ORDER IN / DEADLINE OUT</p><h1>Keep the window<br /><em>on your side.</em></h1><p class="sub">Paste a real confirmation. ReturnBy extracts order details, checks merchant policy and gives you a date to act on. Review every field, save multiple deadlines and export a real calendar reminder - no AI or account required.</p><div class="hero-notes"><span>01 / PASTE</span><span>02 / REVIEW</span><span>03 / REMEMBER</span></div></div><aside class="hero-ticket"><span class="ticket-kicker">RETURN WINDOW</span><strong>30 <i>DAYS</i></strong><span>DEFAULT WHEN A STORE IS UNKNOWN</span><div class="ticket-line"></div><span>RULE-BASED / EDITABLE / LOCAL</span></aside></section>
+ <section class="desk-grid" aria-label="Return deadline workspace"><article class="intake-panel"><header class="panel-heading"><p class="eyebrow">01 / START WITH THE ORDER</p><h2>Paste a confirmation.</h2><p>Only details you approve are saved. The original email stays in this text box until you clear it.</p></header><label class="input-label" for="paste">ORDER EMAIL / CONFIRMATION</label><textarea id="paste" rows="9" placeholder="Paste the order confirmation text here..."></textarea><div class="action-row"><button id="find" class="button button-primary">Find the deadline</button><a href="#" id="sample" class="button button-link">Load a fictional example</a></div><div class="privacy-note"><span class="privacy-icon">LOCAL</span><p>No inbox access. No upload. Parsing and calendar export run in this browser.</p></div><form id="preview" class="preview-card" hidden aria-live="polite"></form><p id="storage-error" class="warn" role="alert" tabindex="-1" hidden></p><button id="storage-retry" type="button" class="button button-link" hidden>Retry loading saved returns</button></article><aside class="ledger-panel"><header class="panel-heading"><p class="eyebrow">02 / YOUR ACTIVE TRACKER</p><h2>Return windows.</h2><p>Deadlines are recalculated each day and sorted by what needs attention first.</p></header><div class="summary-grid"><div><span>TRACKED</span><strong id="tracked-count">0</strong></div><div><span>DUE IN 7 DAYS</span><strong id="soon-count">0</strong></div><div><span>OVERDUE</span><strong id="expired-count">0</strong></div></div><div class="filter-row" role="group" aria-label="Filter return dates"><button id="filter-all" class="filter active" type="button" aria-pressed="true">All</button><button id="filter-due" class="filter" type="button" aria-pressed="false">Due soon</button><button id="filter-expired" class="filter" type="button" aria-pressed="false">Expired</button></div><p id="edit-feedback" class="edit-feedback" role="status" aria-live="polite"></p><ul id="list" aria-live="polite"></ul><p class="list-note">Saved items stay in this browser's local storage. Use the calendar button for an .ics reminder.</p></aside></section>
++<section class="backup-panel" aria-labelledby="backup-heading">
++  <details>
++    <summary id="backup-heading">Back up or restore saved returns</summary>
++    <p>Move your tracker to another browser, or keep a copy before clearing storage. A backup contains saved order details and return-window labels. Keep the file private; the original pasted email is excluded.</p>
++    <div class="action-row"><button id="backup-export" type="button" class="button button-primary">Download backup</button></div>
++    <label class="input-label" for="backup-file">Choose a ReturnBy backup to preview</label>
++    <input id="backup-file" type="file" accept=".json,application/json" aria-describedby="backup-limits" />
++    <p id="backup-limits" class="list-note">Up to 5 MiB and 10,000 orders. Import adds new saved IDs, skips matching copies and refuses conflicting IDs. Return windows and policy labels are restored as saved; confirm current terms with the retailer.</p>
++    <p id="backup-message" role="status" aria-live="polite" hidden></p>
++    <div id="backup-preview" hidden>
++      <h3 id="backup-summary" tabindex="-1"></h3>
++      <ul id="backup-rows"></ul>
++      <div class="action-row"><button id="backup-previous" type="button" class="button button-link" disabled>Previous</button><span id="backup-page" aria-live="polite"></span><button id="backup-next" type="button" class="button button-link" disabled>Next</button></div>
++      <div class="action-row"><button id="backup-apply" type="button" class="button button-primary" disabled>Import orders</button><button id="backup-cancel" type="button" class="button button-link">Cancel import</button></div>
++    </div>
++  </details>
++</section>
+ <section class="method-strip" aria-label="How ReturnBy works"><article><span>01</span><h3>Rules, not guesses.</h3><p>A parser extracts four fields. Missing values are highlighted so you can correct them before saving.</p></article><article><span>02</span><h3>Policy with a fallback.</h3><p>Known stores use the local policy table. Unknown stores are clearly marked with an editable 30-day default.</p></article><article><span>03</span><h3>Keep control.</h3><p>Each saved deadline can be exported as a calendar event with a three-day reminder or removed from the tracker.</p></article></section></main>
+ <footer class="footer"><p><strong>PRIVATE BY DESIGN.</strong> The pasted email is not stored or sent. Only reviewed order fields you save persist on this device.</p><button id="clear" class="button button-link">Clear saved returns</button></footer></div><dialog id="edit-dialog" class="edit-dialog" aria-labelledby="edit-title" aria-describedby="edit-intro">
+   <h2 id="edit-title">Edit saved return</h2>
+diff --git a/src/main.ts b/src/main.ts
+index 5fb1fdd..e8ed433 100644
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -1,12 +1,14 @@
+ import './style.css';
++import './backup.css';
+ import './edit.css';
+ import { parse } from './parse';
+ import { lookup, knownMerchants } from './policy';
+ import { dueDate, daysLeft, status, todayISO } from './deadline';
+ import { buildIcs } from './ics';
+-import { load, save, type Order } from './store';
++import { load, read, save, type Order } from './store';
+ import { samples } from './samples';
+ import { bindOrderEditor } from './edit-ui';
++import { bindBackup } from './backup-ui';
+ 
+ const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
+ const paste = $<HTMLTextAreaElement>('#paste');
+@@ -118,7 +120,7 @@ function render() {
+   for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
+   const rows=all.filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
+   if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match this filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
+-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?'30-DAY FALLBACK':`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
++  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+ }
+ list.addEventListener('click', (e) => {
+   const t = e.target as HTMLElement;
+@@ -138,6 +140,7 @@ paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey |
+ $('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
+ $('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?') && persistOrders([], true)) render(); });
+ storageRetry.addEventListener('click', reloadOrders);
++bindBackup({ read, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
+ const orderEditor = bindOrderEditor({
+   getOrders: () => orders,
+   read: load,
+diff --git a/src/store.ts b/src/store.ts
+index 371d25a..43305f8 100644
+--- a/src/store.ts
++++ b/src/store.ts
+@@ -3,6 +3,8 @@ export type Order = {
+   orderDate: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
+ };
+ const KEY = 'returnby.v1';
++// Backup/restore must distinguish unreadable storage from an empty tracker.
++export const read = (): unknown => JSON.parse(localStorage.getItem(KEY) || '[]');
+ const isOrder = (value: unknown): value is Order => {
+   if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
+   const o = value as Record<string, unknown>;

@@ -1,0 +1,100 @@
+import { readFileSync } from 'node:fs';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { editDraft, EditConflict, EditError, planEdit, previewEdit, sourceDescription } from '../src/edit';
+import { bindOrderEditor } from '../src/edit-ui';
+import { buildIcs } from '../src/ics';
+import { load, save } from '../src/store';
+import { storageFixture, storedOrder } from './helpers/storage-fixture.mjs';
+
+afterEach(() => vi.unstubAllGlobals());
+
+describe('independent saved-return receiving', () => {
+  it('round-trips exactly one correction with latest unrelated and unknown stored data intact', () => {
+    const original = { ...storedOrder('saved'), extra: { nested: ['retained', 4], imported: true } };
+    const latestOther = { ...storedOrder('other'), total: '$901', backupMetadata: { v: 9 } };
+    const current = [latestOther, original, storedOrder('newly-imported')];
+    let storage = JSON.stringify(current);
+    const before = storage;
+    vi.stubGlobal('localStorage', { getItem: () => storage, setItem: (_, value) => { storage = value; } });
+    const result = planEdit(load(), structuredClone(original), { ...editDraft(original), orderDate: '2026-10-02' });
+    save(result.next);
+    const loaded = load();
+    expect(loaded[0]).toEqual(latestOther);
+    expect(loaded[2]).toEqual(current[2]);
+    expect(loaded[1]).toEqual({ ...original, orderDate: '2026-10-02' });
+    expect(JSON.stringify(current)).toBe(before);
+  });
+
+  it('holds changes only to unknown saved metadata and refuses ambiguous identity without mutation', () => {
+    const original = { ...storedOrder('saved'), audit: { value: 1 } };
+    const changed = { ...original, audit: { value: 2 } };
+    const draft = { ...editDraft(original), total: '$99' };
+    const raw = JSON.stringify(changed);
+    expect(() => planEdit([changed], original, draft)).toThrow(EditConflict);
+    expect(JSON.stringify(changed)).toBe(raw);
+    expect(() => planEdit([original, structuredClone(original)], original, draft)).toThrow(EditConflict);
+  });
+
+  it('preserves a historic non-current fallback and calendar identity through an unrelated correction', () => {
+    const original = { ...storedOrder('saved'), merchant: 'Unlisted Historical Shop', windowDays: 45,
+                       windowSource: 'default' as const };
+    const before = buildIcs({ ...original, due: '2026-11-15' }, new Date('2026-10-08T00:00:00Z'));
+    const plan = previewEdit(original, { ...editDraft(original), orderDate: '2026-10-02', orderNo: '' });
+    expect(plan.order.windowSource).toBe('default');
+    expect(plan.order.windowDays).toBe(45);
+    expect(sourceDescription(plan.order)).toContain('Saved fallback · 45 days');
+    const after = buildIcs({ ...plan.order, due: plan.due }, new Date('2026-10-08T00:00:00Z'));
+    expect(after.match(/^UID:.*$/m)?.[0]).toBe(before.match(/^UID:.*$/m)?.[0]);
+  });
+
+  it('does not mutate frozen caller records and reports unchanged review as no write', () => {
+    const original = Object.freeze(storedOrder('frozen'));
+    const current = Object.freeze([original]);
+    const unchanged = planEdit(current as unknown as typeof original[], original, editDraft(original));
+    expect(unchanged.changed).toBe(false);
+    expect(unchanged.next).toBe(current);
+    const correction = planEdit(current as unknown as typeof original[], original,
+      { ...editDraft(original), total: '$19' });
+    expect(correction.order.id).toBe(original.id);
+    expect(correction.order.createdAt).toBe(original.createdAt);
+    expect(original.total).toBe('$8.00');
+  });
+
+  it('keeps every accepted extreme date exportable as eight-digit calendar date values', () => {
+    const original = storedOrder('boundary');
+    const draft = { ...editDraft(original), orderDate: '9999-12-30', windowDays: '1' };
+    let preview;
+    try { preview = previewEdit(original, draft); }
+    catch (error) { expect(error).toBeInstanceOf(EditError); return; }
+    const calendar = buildIcs({ ...preview.order, due: preview.due }, new Date('2026-10-08T00:00:00Z'));
+    const dateRows = calendar.split('\r\n').filter(row => /^DT(?:START|END);VALUE=DATE:/.test(row));
+    expect(dateRows).toHaveLength(2);
+    for (const row of dateRows) expect(row, calendar).toMatch(/^DT(?:START|END);VALUE=DATE:\d{8}$/);
+  });
+
+  it('retains an immutable opening snapshot when caller metadata changes before submit', () => {
+    const original = { ...storedOrder('saved'), extra: { revision: 1 } };
+    const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+    const fixture = storageFixture(html, [original]);
+    fixture.globals.document.querySelectorAll = () => [];
+    for (const element of fixture.elements.values()) {
+      element.removeAttribute = key => { delete element.attributes[key]; };
+    }
+    const element = id => fixture.elements.get(id);
+    element('edit-dialog').showModal = () => {};
+    element('edit-dialog').close = () => { element('edit-dialog').listeners.get('close')(); };
+    for (const [key, value] of Object.entries(fixture.globals)) vi.stubGlobal(key, value);
+    let writes = 0, refreshes = 0;
+    const editor = bindOrderEditor({ getOrders: () => [original], read: () => [original],
+      commit: () => { writes++; return true; }, refresh: () => { refreshes++; } });
+    editor.open('saved');
+    original.extra.revision = 2;
+    element('edit-total').value = '$91';
+    element('edit-form').listeners.get('submit')({ preventDefault() {} });
+    expect(writes).toBe(0);
+    expect(refreshes).toBe(1);
+    expect(element('edit-total').value).toBe('$91');
+    expect(element('edit-message').textContent).toContain('changed while');
+  });
+});
+
