@@ -1,5 +1,11 @@
 # ReturnBy
 
+## Current downloadable build — paper-receipt purchases
+
+[Download ReturnBy](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-manual-1a76717-browser.zip) · [source, launch steps, checksum and limitations](./downloads/ReturnBy-2026-11-10-manual-1a76717.md)
+
+Adds direct manual purchase entry alongside email import, saved deadlines and reminder exports. Extract, run the Python3 launcher, then open http://127.0.0.1:8769/. Linux/Chrome exercised; Windows/macOS launchers packaged.
+
 ## Current downloadable browser preview — desk-first return tracker (November 10, 2026)
 
 **[Download ReturnBy v0.2.0 ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/ReturnBy-v0.2.0-browser.zip)** · [Actual desktop screenshot](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/desk-first-desktop.png) · [Actual phone screenshot](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/desk-first-phone.png) · [Package notes](https://github.com/Jacob-Met/returnby/blob/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/RELEASE_NOTES.md).
@@ -9,7 +15,7 @@ This build puts working order intake and saved deadlines in the first desktop vi
 Extract the ZIP, install Python 3, launch Start ReturnBy.cmd (Windows), Start ReturnBy.command (macOS) or ./Start ReturnBy.sh (Linux), and open http://127.0.0.1:8769. The ZIP was downloaded back from GitHub, checksum-verified, extracted and exercised in actual Chrome with fictional reviewed/saved orders at desktop and phone sizes. Source builds passed 480 unit tests plus five Chrome stale-tab tests. Linux/Chrome was exercised; Windows and macOS launchers are included but not separately tested. Confirm retailer return windows yourself. This is a versioned downloadable preview branch, **not a formal GitHub Release** or hosted service.
 
 
-## Current downloadable build — cross-tab-safe ReturnBy (2026-11-10)
+## Previous downloadable build — cross-tab-safe ReturnBy (2026-11-10)
 
 **[Download the standalone ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-af06bb7-browser.zip)** — [source pin, checksum, launch steps and testing](./downloads/ReturnBy-2026-11-10-af06bb7-browser.md).
 
