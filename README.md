@@ -1,6 +1,12 @@
 # ReturnBy
 
-## Download the current browser preview — 2026-11-10
+## Download the multi-confirmation browser preview — 2026-11-10
+
+**[Download the new multi-confirmation ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/c908f9c8176554afa1aba8c672ad07042156d637/downloads/returnby-browser-2026-11-10-batch-intake.zip)** — [package checksum and launch notes](https://github.com/Jacob-Met/returnby/tree/c908f9c8176554afa1aba8c672ad07042156d637/downloads). SHA-256: `23a77516a3c75ffc0a22b1951be6f92613e1e1e76e575ecda161a7263df3d86c`.
+
+This build adds review and local saving of up to 20 pasted or UTF-8 text-file order confirmations together, while retaining individual editing, backups, calendar exports, the trip checklist and deadline planning. Extract the ZIP, run `START-WINDOWS.cmd` or `./start-mac-linux.sh` (Node.js 20+), and visit `http://127.0.0.1:8787/`. The compiled package needs no npm install. It was checked after a clean extraction and then downloaded back from GitHub byte-for-byte; the six actual Chrome receiving groups passed on desktop and phone. Source: [merged PR #85](https://github.com/Jacob-Met/returnby/pull/85). This is a versioned distribution, not a formal GitHub Release.
+
+## Previous single-confirmation browser preview — 2026-11-10
 
 **[Download the verified ReturnBy browser ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/a637cd465c26e2d6a4729a7e07e162f70e9f2b83/downloads/returnby-browser-2026-11-10.zip)** — [distribution record and launch details](https://github.com/Jacob-Met/returnby/tree/a637cd465c26e2d6a4729a7e07e162f70e9f2b83/downloads).
 
