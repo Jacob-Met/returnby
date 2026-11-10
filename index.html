@@ -64,13 +64,14 @@
     <div class="edit-fields">
       <label for="edit-merchant">Store<input id="edit-merchant" name="merchant" type="text" maxlength="4096" autocomplete="off"></label>
       <label for="edit-order-date">Order date<input id="edit-order-date" name="orderDate" type="date" min="1000-01-01" max="9999-12-31" required></label>
+      <label for="edit-window-start-date">Confirmed return clock starts (optional)<input id="edit-window-start-date" name="windowStartDate" type="date" min="1000-01-01" max="9999-12-31"></label>
       <label for="edit-window-days">Return window (days)<input id="edit-window-days" name="windowDays" type="number" min="1" max="3700000" step="1" required></label>
       <label for="edit-order-no">Order number<input id="edit-order-no" name="orderNo" type="text" maxlength="4096" autocomplete="off"></label>
       <label for="edit-total">Total<input id="edit-total" name="total" type="text" maxlength="4096" autocomplete="off"></label>
     </div>
     <dl class="edit-dates">
       <div><dt>SAVED DEADLINE</dt><dd id="edit-current-deadline"></dd></div>
-      <div><dt>PROPOSED DEADLINE</dt><dd><output id="edit-proposed-deadline" for="edit-order-date edit-window-days" aria-live="polite"></output></dd></div>
+      <div><dt>PROPOSED DEADLINE</dt><dd><output id="edit-proposed-deadline" for="edit-order-date edit-window-start-date edit-window-days" aria-live="polite"></output></dd></div>
     </dl>
     <p id="edit-source" class="edit-source"></p>
     <p id="edit-message" class="edit-message" role="status" tabindex="-1" hidden></p>

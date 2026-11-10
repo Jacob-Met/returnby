@@ -1,6 +1,6 @@
 export type Order = {
   id: string; merchant: string; orderNo?: string; total?: string;
-  orderDate: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
+  orderDate: string; windowStartDate?: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
 };
 const KEY = 'returnby.v1';
 const isOrder = (value: unknown): value is Order => {
@@ -9,6 +9,7 @@ const isOrder = (value: unknown): value is Order => {
   return ['id', 'merchant', 'orderDate', 'createdAt'].every((key) => typeof o[key] === 'string')
     && typeof o.windowDays === 'number' && Number.isFinite(o.windowDays)
     && (o.windowSource === 'policy' || o.windowSource === 'default' || o.windowSource === 'user')
+    && (o.windowStartDate === undefined || typeof o.windowStartDate === 'string')
     && (o.orderNo === undefined || typeof o.orderNo === 'string')
     && (o.total === undefined || typeof o.total === 'string');
 };

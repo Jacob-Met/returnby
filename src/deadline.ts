@@ -13,6 +13,12 @@ export function dueDate(orderDate: string, days: number): string {
   return fmt(d);
 }
 
+export type ReturnClock = { orderDate: string; windowStartDate?: string; windowDays: number };
+
+/** Only a deliberately saved start date overrides the original order date. */
+export const returnClockStart = (order: ReturnClock): string => order.windowStartDate || order.orderDate;
+export const returnDueDate = (order: ReturnClock): string => dueDate(returnClockStart(order), order.windowDays);
+
 export function daysLeft(due: string, today: string): number {
   const ms = toDate(due).getTime() - toDate(today).getTime();
   return Math.round(ms / 86_400_000);

@@ -1,9 +1,9 @@
-import { dueDate } from './deadline';
+import { dueDate, returnDueDate } from './deadline';
 import type { Order } from './store';
 
 export const MAX_BACKUP_BYTES = 5 * 1024 * 1024;
 export const MAX_BACKUP_ORDERS = 10_000;
-const ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowDays', 'windowSource', 'createdAt'] as const;
+const ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowStartDate', 'windowDays', 'windowSource', 'createdAt'] as const;
 const encoder = new TextEncoder();
 // Ordinary ISO export timestamps are always 24 bytes. Use the same envelope
 // when checking portability without changing any saved record timestamps.
@@ -48,8 +48,9 @@ function order(value: unknown, index: number, strict: boolean): Order {
   const id = text(row.id, `${label} ID`, 128);
   if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(id)) throw new BackupError(`${label} has an invalid ID.`);
   if (!isDate(row.orderDate)) throw new BackupError(`${label} has an invalid order date.`);
+  if (row.windowStartDate !== undefined && !isDate(row.windowStartDate)) throw new BackupError(`${label} has an invalid confirmed return-clock start date.`);
   if (!Number.isSafeInteger(row.windowDays) || (row.windowDays as number) < 1 || (row.windowDays as number) > 3_700_000 ||
-      !isDate(dueDate(row.orderDate, row.windowDays as number))) throw new BackupError(`${label} has an invalid return window.`);
+      !isDate(returnDueDate({ orderDate: row.orderDate, windowStartDate: row.windowStartDate as string | undefined, windowDays: row.windowDays as number }))) throw new BackupError(`${label} has an invalid return window.`);
   if (!['policy', 'default', 'user'].includes(row.windowSource as string)) throw new BackupError(`${label} has an invalid window source.`);
   // Always construct the approved shape. Additional local properties, including
   // an accidentally retained email, can never be serialized by export.
@@ -59,6 +60,7 @@ function order(value: unknown, index: number, strict: boolean): Order {
     orderNo: row.orderNo === undefined ? '' : text(row.orderNo, `${label} number`),
     total: row.total === undefined ? '' : text(row.total, `${label} total`),
     orderDate: row.orderDate,
+    ...(row.windowStartDate === undefined ? {} : { windowStartDate: row.windowStartDate }),
     windowDays: row.windowDays as number,
     windowSource: row.windowSource as Order['windowSource'],
     createdAt: timestamp(row.createdAt, `${label} creation time`),

@@ -1,5 +1,5 @@
 import './trip-checklist.css';
-import { dueDate, todayISO } from './deadline';
+import { dueDate, returnDueDate, todayISO } from './deadline';
 import {
   assertSnapshotCurrent, buildChecklistHtml, CHECKLIST_SHEET_CSS, createChecklist,
   readSavedOrders, renderChecklist, SAVED_ORDERS_KEY, sourceLabel,
@@ -79,7 +79,7 @@ function addOrderOption(order: SavedSnapshot['orders'][number]): void {
   ref.textContent = 'Order ' + (order.orderNo || 'number not recorded') + (order.total ? ' · ' + order.total : '');
   const date = document.createElement('span');
   date.className = 'choice-date';
-  date.textContent = 'Calculated deadline · ' + dueDate(order.orderDate, order.windowDays);
+  date.textContent = 'Calculated deadline · ' + returnDueDate(order);
   const source = document.createElement('span');
   source.className = 'choice-source';
   source.textContent = sourceLabel(order.windowSource) + ' · ' + order.windowDays + ' days';
@@ -104,7 +104,7 @@ function refresh(): void {
   readMessage.classList.remove('error');
   try {
     snapshot = readSavedOrders(savedReader);
-    const ordered = [...snapshot.orders].sort((a, b) => dueDate(a.orderDate, a.windowDays).localeCompare(dueDate(b.orderDate, b.windowDays)));
+    const ordered = [...snapshot.orders].sort((a, b) => returnDueDate(a).localeCompare(returnDueDate(b)));
     ordered.forEach(addOrderOption);
     readMessage.textContent = ordered.length
       ? ordered.length + (ordered.length === 1 ? ' saved order ready to choose.' : ' saved orders ready to choose.')

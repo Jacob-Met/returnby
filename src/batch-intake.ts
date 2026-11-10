@@ -14,6 +14,7 @@ export type DraftFields = {
   orderNo: string;
   total: string;
   orderDate: string;
+  windowStartDate?: string;
   windowDays: string;
 };
 export type BatchDraft = {
@@ -95,11 +96,18 @@ export function validateDraft(draft: BatchDraft): Omit<Order, 'id' | 'createdAt'
   if (!isSupportedDate(fields.orderDate)) {
     throw new BatchIntakeError('Choose a real order date supported by this tracker (years 1000–9999).', 'orderDate', draft.id);
   }
+  if (fields.windowStartDate !== undefined && typeof fields.windowStartDate !== 'string') {
+    throw new BatchIntakeError('Choose a valid confirmed return-clock start date.', 'windowStartDate', draft.id);
+  }
+  const windowStartDate = fields.windowStartDate?.trim() ?? '';
+  if (windowStartDate && !isSupportedDate(windowStartDate)) {
+    throw new BatchIntakeError('Choose a real confirmed return-clock start date (or leave blank to count from the order date).', 'windowStartDate', draft.id);
+  }
   const windowDays = Number(fields.windowDays);
   let supportedWindow = false;
   if (fields.windowDays.trim() && Number.isSafeInteger(windowDays) && windowDays > 0) {
     try {
-      const due = dueDate(fields.orderDate, windowDays);
+      const due = dueDate(windowStartDate || fields.orderDate, windowDays);
       supportedWindow = isSupportedDate(due) && isSupportedDate(dueDate(due, 1));
     } catch { /* An out-of-range native date is an unreviewable window. */ }
   }
@@ -109,7 +117,7 @@ export function validateDraft(draft: BatchDraft): Omit<Order, 'id' | 'createdAt'
   const policy = lookup(fields.merchant);
   return {
     merchant: fields.merchant, orderNo: fields.orderNo, total: fields.total,
-    orderDate: fields.orderDate, windowDays,
+    orderDate: fields.orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays,
     windowSource: windowDays === policy.days ? policy.source : 'user',
   };
 }

@@ -7,6 +7,7 @@ export type EditDraft = {
   orderNo: string;
   total: string;
   orderDate: string;
+  windowStartDate?: string;
   windowDays: string;
 };
 
@@ -24,6 +25,7 @@ export function editDraft(order: Order): EditDraft {
     orderNo: order.orderNo ?? '',
     total: order.total ?? '',
     orderDate: order.orderDate,
+    windowStartDate: order.windowStartDate ?? '',
     windowDays: String(order.windowDays),
   };
 }
@@ -46,7 +48,11 @@ export function previewEdit(original: Order, draft: EditDraft): { order: Order; 
   if (!/^\d+$/.test(draft.windowDays) || !Number.isSafeInteger(days) || days < 1 || days > 3_700_000) {
     throw new EditError('Enter a return window as a positive whole number of days.', 'windowDays');
   }
-  const due = dueDate(draft.orderDate, days);
+  const start = draft.windowStartDate?.trim() ?? '';
+  if (start && !isCalendarDate(start)) {
+    throw new EditError('Choose a real return-clock start date (years 1000 to 9999), or leave it blank to count from the order date.', 'windowStartDate');
+  }
+  const due = dueDate(start || draft.orderDate, days);
   if (!isCalendarDate(due)) {
     throw new EditError('The return window must end within the year 9999.', 'windowDays');
   }
@@ -60,6 +66,9 @@ export function previewEdit(original: Order, draft: EditDraft): { order: Order; 
     ? original.windowSource
     : days === policy.days ? policy.source : 'user';
   const order: Order = { ...original, merchant: draft.merchant, orderDate: draft.orderDate, windowDays: days, windowSource };
+  // Clearing the override restores historical order-date-based behavior.
+  if (start) order.windowStartDate = start;
+  else delete order.windowStartDate;
   if (draft.orderNo !== (original.orderNo ?? '')) order.orderNo = draft.orderNo;
   if (draft.total !== (original.total ?? '')) order.total = draft.total;
   return { order, due };
@@ -83,7 +92,8 @@ export function planEdit(current: Order[], original: Order, draft: EditDraft) {
 }
 
 export function sourceDescription(order: Order): string {
-  if (order.windowSource === 'policy') return `Local store rule · ${order.windowDays} days. Confirm with the retailer.`;
-  if (order.windowSource === 'default') return `Saved fallback · ${order.windowDays} days. Confirm with the retailer.`;
-  return `Your return window · ${order.windowDays} days.`;
+  const clock = order.windowStartDate ? ' Clock begins ' + order.windowStartDate + ' (confirmed by you).' : ' Clock begins on the order date.';
+  if (order.windowSource === 'policy') return `Local store rule · ${order.windowDays} days. Confirm with the retailer.${clock}`;
+  if (order.windowSource === 'default') return `Saved fallback · ${order.windowDays} days. Confirm with the retailer.${clock}`;
+  return `Your return window · ${order.windowDays} days.${clock}`;
 }

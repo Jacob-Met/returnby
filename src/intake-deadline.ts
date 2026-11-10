@@ -14,13 +14,14 @@ function isCalendarDate(value: string): boolean {
 }
 
 /** Preview only: the existing Save handler and date calculation keep their own semantics. */
-export function intakeDeadlineText(orderDate: string, windowDays: string): string {
+export function intakeDeadlineText(orderDate: string, windowDays: string, windowStartDate = ''): string {
   if (!isCalendarDate(orderDate)) return DATE_PROMPT;
   const days = Number(windowDays);
   if (!windowDays.trim() || !Number.isSafeInteger(days) || days < 1) return WINDOW_PROMPT;
-  const due = dueDate(orderDate, days);
+  if (windowStartDate && !isCalendarDate(windowStartDate)) return 'Enter a valid confirmed return-clock start date, or leave it blank to count from the order date.';
+  const due = dueDate(windowStartDate || orderDate, days);
   if (!isCalendarDate(due)) return RANGE_PROMPT;
-  return 'Calculated return-by date: ' + due;
+  return 'Calculated return-by date: ' + due + (windowStartDate ? ' · starts ' + windowStartDate + ' (confirmed by you)' : '');
 }
 
 /** Bind once to the stable form; refresh after its fields are replaced by a new review. */
@@ -29,13 +30,14 @@ export function bindIntakeDeadline(form: HTMLFormElement): () => void {
     const output = form.querySelector<HTMLOutputElement>('#intake-deadline');
     const date = form.querySelector<HTMLInputElement>('[name="orderDate"]');
     const days = form.querySelector<HTMLInputElement>('[name="windowDays"]');
+    const clock = form.querySelector<HTMLInputElement>('[name="windowStartDate"]');
     if (!output || !date || !days) return;
-    const message = intakeDeadlineText(date.validity.valid ? date.value : '', days.validity.valid ? days.value : '');
+    const message = intakeDeadlineText(date.validity.valid ? date.value : '', days.validity.valid ? days.value : '', clock && !clock.validity.valid ? 'invalid' : clock?.value ?? '');
     if (output.textContent !== message) output.textContent = message;
   };
   const changed = (event: Event) => {
     const name = (event.target as HTMLInputElement | null)?.name;
-    if (name === 'orderDate' || name === 'windowDays') refresh();
+    if (name === 'orderDate' || name === 'windowDays' || name === 'windowStartDate') refresh();
   };
   form.addEventListener('input', changed);
   form.addEventListener('change', changed);
