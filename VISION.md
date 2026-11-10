@@ -12,11 +12,12 @@ These are inspected public product descriptions, not accounts exercised by this 
 
 ## Ranked gaps
 
-1. Complete a return or keep decision and distinguish closed history from active deadlines (existing lifecycle contributor; coordinate before changing).
-2. Confirm the actual start of a return window, including delivery-based windows (existing contributor; current manual entry clearly counts from purchase).
-3. Make missing or ambiguous receipt evidence understandable; no shipping date should masquerade as purchase date (existing parser contributor).
-4. Reduce installation friction and consolidate the many historical download links into one current versioned release.
-5. Item-level partial returns remain active work. Refund follow-up now records shopper-entered expected amounts, next-check dates and notes; it does not verify merchant processing or bank receipt.
+1. A returning phone user still reaches the saved-order search only after the intake form (Quartz observed it below the first viewport at 390px). Bring existing saved deadlines and actions into the returning shopper's first screen.
+2. Complete a return or keep decision and distinguish closed history from active deadlines (existing lifecycle contributor; coordinate before changing).
+3. Confirm the actual start of a return window, including delivery-based windows (existing contributor; current manual entry clearly counts from purchase).
+4. Make missing or ambiguous receipt evidence understandable; no shipping date should masquerade as purchase date (existing parser contributor).
+5. Reduce installation friction and consolidate the many historical download links into one current versioned release.
+6. Item-level partial returns remain active work. Refund follow-up now records shopper-entered expected amounts, next-check dates and notes; it does not verify merchant processing or bank receipt.
 
 ## Current build and improvement
 
@@ -33,3 +34,10 @@ The existing trip page now keeps an editable plan across visits: planned date, s
 For shoppers who have handed goods back but still need to check the money, the existing desk now keeps an explicit awaiting/received refund record on a purchase. Amounts include the currency as entered; they are never inferred from the whole-order total, so a partial return can be followed without closing the remaining deadline. A visible outstanding count links to a compact ledger; received records can be reopened. Existing backups carry the same notes and detect changed refund state as a conflict. Storage failure retains the draft and stale cross-tab edits cannot overwrite newer work.
 
 ReturnQueen https://returnqueen.com/ was inspected again on 2026-11-10: its published service tracks a return from pickup to refund. ReturnBy offers a local shopper record, not that logistics or payment verification. Excellent here means reopening the desk identifies the merchant, expected amount and next action immediately, and another browser restored from backup retains that work. No notification is sent by the follow-up date. Independent judgment belongs to returnby-refund-judge-tern84b2, not the producer tests.
+
+
+## Finding a trip order in a full tracker, 2026-11-10
+
+The trip planner now finds orders by store or receipt number without changing the saved trip. Search results report their count; selected orders outside the search remain selected and are counted explicitly. Selection and Continue packing are available before the list, including when nothing matches.
+
+Producer astra-cedar-7f2 changed the existing planner. Independent judge astra-quartz-9d3 reproduced the original failure with 24 purchases: receipt Q-123 was the 16th choice and had to be found again after tracker search. In actual 390px and desktop Chrome, the changed app finds it directly, keeps a hidden selected order while another is chosen, downloads both with packing notes, and restores the trip after reload. Keyboard-only navigation reaches packing without a focus dead end. The verdict accepts this specific workflow improvement, not the entire app as category-leading. Returning-phone tracker placement remains the top observed gap.

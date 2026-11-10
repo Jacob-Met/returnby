@@ -30,9 +30,17 @@
           <label class="date-label" for="trip-date">PLANNED TRIP DATE</label>
           <input id="trip-date" name="trip-date" type="date" min="1000-01-01" max="9999-12-31" required>
           <p class="field-note">We’ll compare this date with each saved return window. Confirm current instructions with the store.</p>
+          <div class="trip-search">
+            <label for="trip-search">Find an order for this trip</label>
+            <div class="trip-search-field"><input id="trip-search" type="search" placeholder="Store or receipt number" autocomplete="off" aria-describedby="trip-search-results"><button id="trip-search-clear" class="text-button" type="button" hidden>Clear search</button></div>
+            <p id="trip-search-results" role="status" aria-live="polite" aria-atomic="true"></p>
+          </div>
+          <div class="trip-selection-actions">
+            <div class="selection-row"><p id="selection-summary" aria-live="polite" aria-atomic="true">0 orders selected</p><button id="clear-selection" class="text-button" type="button" disabled>Clear all selections</button></div>
+            <a id="pack-selected" class="primary-button packing-jump" href="#packing-title" hidden>Continue packing <span aria-hidden="true">↓</span></a>
+          </div>
+          <p id="trip-search-empty" class="search-empty" hidden>No orders match. Try another store or receipt number, or clear the search.</p>
           <fieldset class="order-fieldset"><legend class="sr-only">Choose orders for this trip</legend><div id="order-options" class="order-options"></div></fieldset>
-          <div class="selection-row"><p id="selection-summary" aria-live="polite">0 orders selected</p><button id="clear-selection" class="text-button" type="button" disabled>Clear selection</button></div>
-          <a id="pack-selected" class="primary-button packing-jump" href="#packing-title" hidden>Continue packing <span aria-hidden="true">↓</span></a>
         </form>
         <p class="privacy-note">Your trip is saved in this browser separately from your orders. Notes appear in downloaded sheets. A tracker backup can carry this trip to another browser.</p>
       </section>
