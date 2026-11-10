@@ -7,7 +7,7 @@ type CalendarOptions = {
   download?(content: string, filename: string): void;
 };
 
-function downloadCalendar(content: string, filename: string) {
+export function downloadCalendar(content: string, filename: string) {
   const url = URL.createObjectURL(new Blob([content], { type: 'text/calendar;charset=utf-8' }));
   const anchor = document.createElement('a');
   anchor.href = url;

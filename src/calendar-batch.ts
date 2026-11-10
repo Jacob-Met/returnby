@@ -104,3 +104,15 @@ export function planCalendarBatch(
   if (encoder.encode(content).byteLength > MAX_CALENDAR_BYTES) throw sizeError();
   return { content, count: reminders.length, reminders, filename: `returnby-reminders-${stamp.toISOString().slice(0, 10)}.ics` };
 }
+
+/** Single-card downloads share the reviewed batch path, including freshness,
+ * date validity and event-size admission. Other cards may change independently.
+ */
+export function planSingleCalendar(current: readonly Order[], reviewed: Order, stamp = new Date()) {
+  const matches = current.filter(order => order.id === reviewed.id);
+  if (matches.length !== 1) {
+    throw new CalendarBatchError('This saved return changed or was removed. Review the refreshed tracker before downloading.');
+  }
+  const plan = planCalendarBatch(matches, calendarRows([reviewed]), [reviewed.id], stamp);
+  return { ...plan, filename: `return-${(reviewed.merchant || 'order').replace(/\W+/g, '-')}.ics` };
+}
