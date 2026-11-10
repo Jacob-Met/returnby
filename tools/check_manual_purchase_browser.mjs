@@ -11,6 +11,8 @@ const browser=await chromium.launch({executablePath:'/usr/local/bin/google-chrom
 const results=[];
 try {
 for(const width of [1440,390]){
+ const start=width===390?'2026-11-14':'';
+ const due=start?'2026-11-28':'2026-11-24';
  const context=await browser.newContext({viewport:{width,height:900},acceptDownloads:true});
  const page=await context.newPage();
  for(let attempt=0;;attempt++){try {await page.goto(url);break;}catch(e){if(attempt>15)throw e;await new Promise(r=>setTimeout(r,100));}}
@@ -26,7 +28,8 @@ for(const width of [1440,390]){
  await form.locator('[name=windowDays]').fill('14');
  await form.locator('[name=orderNo]').fill('PAPER-414');
  await form.locator('[name=total]').fill('£42.50');
- assert.equal(await page.locator('#manual-deadline').innerText(),'Return by 2026-11-24');
+ await form.locator('[name=windowStartDate]').fill(start);
+ assert.equal(await page.locator('#manual-deadline').innerText(),'Return by '+due);
  await page.locator('#manual-close').click();
  assert.equal(await page.locator('#paste').inputValue(),'Private email draft waiting for review');
  await page.locator('#manual-open').click();
@@ -42,19 +45,23 @@ for(const width of [1440,390]){
  assert.equal(await page.locator('#manual-dialog').evaluate(e=>e.open),false);
  assert.equal(await page.locator('#paste').inputValue(),'Private email draft waiting for review');
  let stored=await page.evaluate(()=>JSON.parse(localStorage.getItem('returnby.v1')));
- assert.equal(stored.length,1);assert.equal(stored[0].windowSource,'user');assert.equal(stored[0].total,'£42.50');
+ assert.equal(stored[0].windowStartDate || '',start);assert.equal(stored.length,1);assert.equal(stored[0].windowSource,'user');assert.equal(stored[0].total,'£42.50');
  assert.equal(JSON.stringify(stored).includes('Private email'),false);
  await page.locator('#paste').fill('');
  await page.reload();
  assert.match(await page.locator('#list').innerText(),/Paper & Pine/);
  const download=page.waitForEvent('download');await page.locator('[data-ics]').click();
  const receipt=await download;const ics=await readFile(await receipt.path(),'utf8');
- assert.match(ics,/20261124/);assert.match(ics,/PAPER-414/);
+ assert.ok(ics.includes(due.replaceAll('-','')));assert.match(ics,/PAPER-414/);
+ await page.locator('#backup-heading').click();
+ const backupDownload=page.waitForEvent('download');await page.locator('#backup-export').click();
+ const backup=JSON.parse(await readFile(await (await backupDownload).path(),'utf8'));
+ assert.equal(backup.orders[0].windowStartDate || '',start);
  await page.locator('#list').scrollIntoViewIfNeeded();
  await page.screenshot({path:output+'/saved-'+width+'.png'});
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
  assert.deepEqual(errors,[]);
- results.push({width,manualReview:true,closeResume:true,writeRefusalRetry:true,persistedReload:true,calendarDeadline:'2026-11-24',separateEmailDraft:true,noOverflow:true});
+ results.push({width,manualReview:true,closeResume:true,writeRefusalRetry:true,persistedReload:true,calendarDeadline:due,confirmedStart:start,separateEmailDraft:true,noOverflow:true});
  await context.close();
 }
 await writeFile(output+'/result.json',JSON.stringify(results,null,2));

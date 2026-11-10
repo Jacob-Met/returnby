@@ -15,7 +15,7 @@ export function bindManualPurchase(options: { read: () => Order[] | null; commit
   const form = document.querySelector<HTMLFormElement>('#manual-form')!;
   const error = document.querySelector<HTMLParagraphElement>('#manual-error')!;
   const deadline = document.querySelector<HTMLParagraphElement>('#manual-deadline')!;
-  const draft = (): EditDraft => Object.fromEntries(['merchant', 'orderDate', 'windowDays', 'orderNo', 'total'].map(name => [name, String(new FormData(form).get(name) ?? '')])) as EditDraft;
+  const draft = (): EditDraft => Object.fromEntries(['merchant', 'orderDate', 'windowStartDate', 'windowDays', 'orderNo', 'total'].map(name => [name, String(new FormData(form).get(name) ?? '')])) as EditDraft;
   const refresh = () => {
     error.hidden = true;
     try { deadline.textContent = 'Return by ' + manualPurchase(draft(), 'preview', '2000-01-01T00:00:00Z').due; }
