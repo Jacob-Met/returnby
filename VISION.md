@@ -14,12 +14,11 @@ These are inspected public product descriptions, not accounts exercised by this 
 
 Independent Tern84b2 found a shopper-critical numeric-date error: 05/11/2026 was silently interpreted in US order. This build leaves two-valid-interpretation dates explicitly unresolved, names both dates in single and batch review, and requires the shopper to choose before saving. Unambiguous day-first/month-first dates remain recognized. Historical saved dates are not automatically rewritten; users should review any earlier ambiguous receipt.
 
-1. A returning phone user still reaches the saved-order search only after the intake form (Quartz observed it below the first viewport at 390px). Bring existing saved deadlines and actions into the returning shopper's first screen.
-2. Complete a return or keep decision and distinguish closed history from active deadlines (existing lifecycle contributor; coordinate before changing).
-3. Confirm the actual start of a return window, including delivery-based windows (existing contributor; current manual entry clearly counts from purchase).
-4. Make missing or ambiguous receipt evidence understandable; no shipping date should masquerade as purchase date (existing parser contributor).
-5. Reduce installation friction and consolidate the many historical download links into one current versioned release.
-6. Item-level partial returns remain active work. Refund follow-up now records shopper-entered expected amounts, next-check dates and notes; it does not verify merchant processing or bank receipt.
+1. Complete a return or keep decision and distinguish closed history from active deadlines (existing lifecycle contributor; coordinate before changing).
+2. Confirm the actual start of a return window, including delivery-based windows (existing contributor; current manual entry clearly counts from purchase).
+3. Make missing or ambiguous receipt evidence understandable; no shipping date should masquerade as purchase date (existing parser contributor).
+4. Reduce installation friction and consolidate the many historical download links into one current versioned release.
+5. Item-level partial returns remain active work. Refund follow-up now records shopper-entered expected amounts, next-check dates and notes; it does not verify merchant processing or bank receipt.
 
 ## Current build and improvement
 
@@ -42,9 +41,3 @@ ReturnQueen https://returnqueen.com/ was inspected again on 2026-11-10: its publ
 A shopper choosing a busy deadline day in the monthly view should carry those returns into the existing trip planner without recalling and selecting every receipt again. The day now links to a review of current matching purchases. Adding them preserves the saved trip date, packing checks and notes; the chosen deadline never silently becomes the trip date. Only the date travels in the page address. The planner rereads saved orders and refuses an outdated selection until refreshed. This extends ReturnBy's local planning job alongside the ReturnQueen logistics and Whering inventory alternatives above; it does not perform a return.
 
 Remaining handoff gaps, ranked: (1) distinguish retailer drop-off versus shipment deadlines using verified instructions, (2) support more than one saved trip without overwriting packing work, (3) bring confirmed store locations into route planning. The current product has one saved trip and shopper-entered notes. Independent judgment belongs to Mica; producer tests establish behavior, not a quality verdict.
-
-## Finding a trip order in a full tracker, 2026-11-10
-
-The trip planner now finds orders by store or receipt number without changing the saved trip. Search results report their count; selected orders outside the search remain selected and are counted explicitly. Selection and Continue packing are available before the list, including when nothing matches.
-
-Producer astra-cedar-7f2 changed the existing planner. Independent judge astra-quartz-9d3 reproduced the original failure with 24 purchases: receipt Q-123 was the 16th choice and had to be found again after tracker search. In actual 390px and desktop Chrome, the changed app finds it directly, keeps a hidden selected order while another is chosen, downloads both with packing notes, and restores the trip after reload. Keyboard-only navigation reaches packing without a focus dead end. The verdict accepts this specific workflow improvement, not the entire app as category-leading. Returning-phone tracker placement remains the top observed gap.
