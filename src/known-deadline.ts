@@ -22,6 +22,7 @@ export function bindKnownDeadlines(): void {
     const form = document.querySelector<HTMLFormElement>('form#' + id);
     if (!form) continue;
     const days = form.elements.namedItem('windowDays') as HTMLInputElement;
+    const fixed = form.elements.namedItem('fixedDeadline') as HTMLInputElement;
     const purchase = form.elements.namedItem('orderDate') as HTMLInputElement;
     const start = form.elements.namedItem('windowStartDate') as HTMLInputElement;
     const section = document.createElement('details');
@@ -31,14 +32,16 @@ export function bindKnownDeadlines(): void {
     const date = section.querySelector('input')!;
     const apply = section.querySelector('button')!;
     const message = section.querySelector('p[role]')!;
-    let active = false;
+    let active = Boolean(fixed.value);
+    const sync = () => { active=Boolean(fixed.value); date.value=fixed.value; section.open=active; if(active) calculate(); };
     function calculate(): boolean {
       try {
         const clock = start.value || purchase.value;
         const value = windowDaysFromDeadline(clock, date.value);
         days.value = String(value);
+        fixed.value = date.value;
         date.removeAttribute('aria-invalid');
-        message.textContent = 'Return by ' + date.value + ': ' + value + ' days from ' + clock + '. Saved as a day window. Changing the start here keeps this date; editing days releases it. On a future visit, reapply the date before changing the start.';
+        message.textContent = 'Return by ' + date.value + ': ' + value + ' days from ' + clock + '. This exact date stays fixed after saving and reopening. Changing the clock keeps it; entering days switches to a duration rule.';
         return true;
       } catch (error) {
         date.setAttribute('aria-invalid', 'true');
@@ -49,12 +52,12 @@ export function bindKnownDeadlines(): void {
     apply.addEventListener('click', () => {
       active = calculate();
       if (active) days.dispatchEvent(new Event('input', { bubbles: true }));
-      else date.focus();
+      else { days.value = ''; days.dispatchEvent(new Event('input', {bubbles:true})); date.focus(); }
     });
     // Capture runs before the existing form preview listeners.
     form.addEventListener('input', event => {
       if (event.target === days && event.isTrusted) {
-        active = false;
+        active = false; fixed.value = '';
         message.textContent = 'Using the day window you entered. Choose Use this return-by date to apply the date again.';
       } else if (active && (event.target === purchase || event.target === start || event.target === date)) {
         if (!calculate()) days.value = '';
@@ -62,6 +65,8 @@ export function bindKnownDeadlines(): void {
     }, true);
     const clear = () => { active = false; date.value = ''; message.textContent = ''; date.removeAttribute('aria-invalid'); section.open = false; };
     form.addEventListener('reset', clear);
-    form.closest('dialog')?.addEventListener('close', clear);
+    form.addEventListener('returnby-edit-loaded', sync);
+    sync();
+    form.closest('dialog')?.addEventListener('close', () => { if(id==='edit-form') clear(); });
   }
 }

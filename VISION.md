@@ -1,5 +1,10 @@
 # ReturnBy — a private return desk
 
+## Explicit retailer deadlines — current improvement
+
+A confirmed return-by date now retains its meaning after saving, reopening, changing the clock start or restoring a backup. The actual prior phone course turned December31 into January7 after a clock correction; the new model stores that explicit date and recalculates the duration to keep December31. Entering a new day count intentionally releases the fixed date. Saved/proposed preview remains visible. Existing duration-only records remain durations; no historical date intent is guessed. Tracker, calendar, trip and CSV distinguish fixed dates confirmed by the shopper. Backups carry and validate that provenance. Earlier app versions may reject the new backup field; restore using this version or newer. Independent product judgment remains separate from producer tests.
+
+
 ReturnBy is for people who need to remember return deadlines across stores, including purchases on paper receipts, without connecting their inbox. Success is a reviewed purchase that can be found next week, acted on before its deadline, and carried into a calendar or a printable trip list.
 
 ## Current named-trip candidate and independent continuity verdict

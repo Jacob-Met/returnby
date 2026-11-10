@@ -26,7 +26,7 @@ function fold(line: string): string {
 
 const timestamp = (date: Date) => date.toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
 
-export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string; confirmedStartDate?: string; alertAt?: string | null };
+export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string; confirmedStartDate?: string; fixedDeadline?: string; alertAt?: string | null };
 
 function eventLines(o: CalendarReminder, ts: string): string[] {
   const d = o.due.replace(/-/g, '');
@@ -37,7 +37,7 @@ function eventLines(o: CalendarReminder, ts: string): string[] {
   return [
     'BEGIN:VEVENT', `UID:${esc(o.id)}@returnby`, `DTSTAMP:${ts}`,
     `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${e}`, `SUMMARY:${title}`,
-    ...(o.confirmedStartDate ? [`DESCRIPTION:${esc('Return clock starts ' + o.confirmedStartDate + ' (user-confirmed; retailer policy not verified).')}`] : []),
+    ...(o.fixedDeadline ? [`DESCRIPTION:${esc('Fixed return-by date '+o.fixedDeadline+' (confirmed by you; retailer policy not verified).')}`] : o.confirmedStartDate ? [`DESCRIPTION:${esc('Return clock starts ' + o.confirmedStartDate + ' (user-confirmed; retailer policy not verified).')}`] : []),
     ...(o.alertAt === null ? [] : ['BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`,
       o.alertAt ? `TRIGGER;VALUE=DATE-TIME:${timestamp(new Date(o.alertAt))}` : 'TRIGGER:-P3D', 'END:VALARM']),
     'END:VEVENT',

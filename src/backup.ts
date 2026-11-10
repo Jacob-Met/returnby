@@ -8,7 +8,7 @@ import type { TripPlan } from './trip-plan';
 
 export const MAX_BACKUP_BYTES = 5 * 1024 * 1024;
 export const MAX_BACKUP_ORDERS = 10_000;
-const ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowStartDate', 'windowDays', 'windowSource', 'createdAt', ...REFUND_KEYS] as const;
+const ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowStartDate', 'fixedDeadline', 'windowDays', 'windowSource', 'createdAt', ...REFUND_KEYS] as const;
 const encoder = new TextEncoder();
 // Ordinary ISO export timestamps are always 24 bytes. Use the same envelope
 // when checking portability without changing any saved record timestamps.
@@ -54,6 +54,7 @@ function order(value: unknown, index: number, strict: boolean): Order {
   if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(id)) throw new BackupError(`${label} has an invalid ID.`);
   if (!isDate(row.orderDate)) throw new BackupError(`${label} has an invalid order date.`);
   if (row.windowStartDate !== undefined && !isDate(row.windowStartDate)) throw new BackupError(`${label} has an invalid confirmed return-clock start date.`);
+  if (row.fixedDeadline !== undefined && (!isDate(row.fixedDeadline) || row.fixedDeadline >= '9999-12-31' || row.fixedDeadline !== returnDueDate({orderDate:row.orderDate, windowStartDate:row.windowStartDate as string|undefined, windowDays:row.windowDays as number}))) throw new BackupError(label + ' has an inconsistent confirmed deadline.');
   if (!Number.isSafeInteger(row.windowDays) || (row.windowDays as number) < 1 || (row.windowDays as number) > 3_700_000 ||
       !isDate(returnDueDate({ orderDate: row.orderDate, windowStartDate: row.windowStartDate as string | undefined, windowDays: row.windowDays as number }))) throw new BackupError(`${label} has an invalid return window.`);
   if (!['policy', 'default', 'user'].includes(row.windowSource as string)) throw new BackupError(`${label} has an invalid window source.`);
@@ -68,6 +69,7 @@ function order(value: unknown, index: number, strict: boolean): Order {
     total: row.total === undefined ? '' : text(row.total, `${label} total`),
     orderDate: row.orderDate,
     ...(row.windowStartDate === undefined ? {} : { windowStartDate: row.windowStartDate }),
+    ...(row.fixedDeadline === undefined ? {} : {fixedDeadline:row.fixedDeadline as string}),
     windowDays: row.windowDays as number,
     windowSource: row.windowSource as Order['windowSource'],
     createdAt: timestamp(row.createdAt, `${label} creation time`),
