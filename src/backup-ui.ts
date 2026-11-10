@@ -1,5 +1,5 @@
 import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackup, planImport, type ImportPlan } from './backup';
-import { dueDate } from './deadline';
+import { returnDueDate } from './deadline';
 import type { Order } from './store';
 
 type Tracker = { read: () => unknown; commit: (orders: Order[]) => boolean };
@@ -47,7 +47,7 @@ export function bindBackup(tracker: Tracker) {
       const o = row.order;
       const action = row.action === 'add' ? 'Add' : row.action === 'skip' ? 'Already saved' : 'Conflict';
       const source = o.windowSource === 'policy' ? 'saved store policy' : o.windowSource === 'default' ? 'saved fallback' : 'your saved rule';
-      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ordered ${o.orderDate}, return by ${dueDate(o.orderDate, o.windowDays)} (${o.windowDays} days; ${source})${row.changedFields.length ? `. Different fields: ${row.changedFields.join(', ')}.` : ''}`;
+      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ordered ${o.orderDate}, return by ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})${row.changedFields.length ? `. Different fields: ${row.changedFields.join(', ')}.` : ''}`;
       return li;
     }));
     get('backup-page').textContent = preview.rows.length ? `${start + 1}–${Math.min(start + PAGE_SIZE, preview.rows.length)} of ${preview.rows.length} orders` : 'No orders in this backup';
