@@ -2,15 +2,15 @@
 
 A local return desk for remembering purchase deadlines, preparing a return trip, and following an outstanding refund. Review the dates and store policy before saving. Your purchase records stay in your browser.
 
-## Named-trip release 0.5.0
+## Receipt-review release 0.6.1
 
-**[Download packages, checksums and the actual walkthrough](https://github.com/Jacob-Met/returnby/releases/tag/returnby-named-trips-2026-11-10-dc8bdc7)** — save separate errands, reopen their dates and packing notes, and carry named copies through a reviewed backup.
+**[Download packages and checksums](https://github.com/Jacob-Met/returnby/releases/tag/returnby-policy-review-2026-11-10-f95eb64)** — review explicit receipt terms, keep uncertain delivery-based purchases pending, and confirm the applicable return window before a deadline is saved.
 
-[Linux amd64](https://github.com/Jacob-Met/returnby/releases/download/returnby-named-trips-2026-11-10-dc8bdc7/ReturnBy-v0.5.0-linux-amd64.tar.gz) · [macOS Intel](https://github.com/Jacob-Met/returnby/releases/download/returnby-named-trips-2026-11-10-dc8bdc7/ReturnBy-v0.5.0-darwin-amd64.zip) · [macOS Apple Silicon](https://github.com/Jacob-Met/returnby/releases/download/returnby-named-trips-2026-11-10-dc8bdc7/ReturnBy-v0.5.0-darwin-arm64.zip) · [Windows amd64](https://github.com/Jacob-Met/returnby/releases/download/returnby-named-trips-2026-11-10-dc8bdc7/ReturnBy-v0.5.0-windows-amd64.zip) · [Python3 browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-named-trips-2026-11-10-dc8bdc7/ReturnBy-v0.5.0-browser.zip)
+[Linux amd64](https://github.com/Jacob-Met/returnby/releases/download/returnby-policy-review-2026-11-10-f95eb64/ReturnBy-v0.6.1-linux-amd64.tar.gz) · [macOS Intel](https://github.com/Jacob-Met/returnby/releases/download/returnby-policy-review-2026-11-10-f95eb64/ReturnBy-v0.6.1-darwin-amd64.zip) · [macOS Apple Silicon](https://github.com/Jacob-Met/returnby/releases/download/returnby-policy-review-2026-11-10-f95eb64/ReturnBy-v0.6.1-darwin-arm64.zip) · [Windows amd64](https://github.com/Jacob-Met/returnby/releases/download/returnby-policy-review-2026-11-10-f95eb64/ReturnBy-v0.6.1-windows-amd64.zip) · [Python3 browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-policy-review-2026-11-10-f95eb64/ReturnBy-v0.6.1-browser.zip)
 
-Extract the matching native archive and run ReturnBy (or its included platform launcher). The runtime and app are bundled. Keep the same browser profile and http://127.0.0.1:8769 address to retain saved work. Linux/Chrome was exercised from the actual GitHub download; macOS/Windows binaries are crosscompiled and unsigned, with no platform execution claim.
+Extract the matching native archive and run ReturnBy (or its included platform launcher). The runtime and app are bundled. Keep the same browser profile and http://127.0.0.1:8769 address to retain saved work. macOS/Windows binaries are crosscompiled and unsigned, with no platform execution claim.
 
-This exact [dc8bdc7 source](https://github.com/Jacob-Met/returnby/commit/dc8bdc7d0586285a31fead9e95050792337a4067) includes the saved-first phone desk, pending purchase collection, batch delivery handoff, reviewed backup differences, trip receipt search and named plans. It predates later receipt-policy work. [Release coverage and limits](docs/named-trip-release/README.md). Earlier builds remain in the historical release notes below.
+The exact [f95eb649 source](https://github.com/Jacob-Met/returnby/commit/f95eb649c2438f71f8a38d96dbb795057d6862d0) is cumulative with the saved-first phone desk, reviewed pending collection, named trips, fixed-date intent and purchase history. Ordinary “returned within 21 days after delivery” wording requires a confirmed delivery clock. Conflicting standard and sale-item windows remain visible and blank for explicit review, including after pending reload and resume. Purchase-field recognition is labelled separately from policy review. English receipt extraction is bounded assistance: check the merchant terms and choose the policy that applies to your purchase.
 
 ## Your next return
 
@@ -23,7 +23,7 @@ This exact [dc8bdc7 source](https://github.com/Jacob-Met/returnby/commit/dc8bdc7
 
 Calendar files must be imported into your calendar. Check that app's notification settings. Imported entries are snapshots: ReturnBy cannot update or cancel them when a purchase changes. A follow-up date recorded in ReturnBy does not itself send a notification.
 
-The known-return-by-date helper in this release calculates a day window from the confirmed clock. Reopening and changing that clock can change the saved deadline; review the proposed date before saving. Later development adds durable fixed-date intent and is not silently included in this source-pinned ZIP.
+A confirmed fixed return-by date remains distinct from a day-window policy. Review the proposed deadline and clock basis before saving.
 
 ## What stays local
 
@@ -35,13 +35,13 @@ ReturnBy records your decisions. It does not arrange pickup, verify retailer eli
 
 ## Actual release verification
 
-Source dc8bdc7 passed 610 tests and the production build on fleet. The producer downloaded the formal Linux asset, verified its checksum and executed it with no installed runtime on PATH. The separate judge astra-kestrel-b6a904df3c used that actual entrypoint with unfamiliar purchases at desktop1440 and phone390: two errands, reload, cancelled replacement, changed-deadline recheck, printable HTML, real backup transfer and a renamed-copy conflict passed. The original phone navigation mistake and corrected follow-through remain preserved; no failed receipt is relabeled green.
+Source f95eb649 passed the production build; the policy change passed 691 automated tests on fleet workers and an actual Chrome pending/reload/resume course. A separate reviewer accepted unfamiliar returned/unworn wording, conflicting standard/sale terms, blank-window persistence, explicit date validation, privacy and 390px phone pixels. Independent reviewer astra-nami downloaded the published Linux archive, matched its checksum and source version, and ran the bundled launcher with PATH=/nonexistent. In a fresh 390px Chrome context, two pending purchases survived reload; the conditional window stayed blank, a date-only save was rejected, and an explicit 7-day choice with November 12 delivery saved November 19 while preserving the November 5 order date and the other pending purchase. No original receipt text was stored. [Independent receiving evidence and limits](docs/receipt-policy-release/independent/JUDGMENT.md).
 
-[Independent judgment and ranked gaps](docs/named-trip-release/independent/JUDGMENT.md) · [Running executable matched to downloaded archive](docs/named-trip-release/independent/provenance.json) · [Short actual trip walkthrough](https://github.com/Jacob-Met/returnby/releases/download/returnby-named-trips-2026-11-10-dc8bdc7/ReturnBy-named-trips-dc8bdc7.mp4)
-
-This is scoped acceptance, not whole-product parity or evidence of real-world returns/adoption. Native Linux was executed; macOS/Windows were crosscompiled. The clip shows fictional purchases in the actual packaged app, slowed to half speed with captions above the application.
+Linux SHA256: `3a64e83f5293a2f1077d3cd9353668d48277e6105c7261090d688d78e726d98b`. Browser ZIP SHA256: `bdbba701f9f2f6407091c1aeb59d1d5fe166255e374f1b317b15c1620496ad85`. The release includes checksums for every platform.
 
 ## Earlier source-pinned work
+
+The [named-trip 0.5.0 release record](README-named-trips-2026-11-10.md) preserves its exact source, independent downloaded-use judgment and actual walkthrough.
 
 The [independently used phone-desk0.4.0 release](docs/named-trip-release/earlier-phone-desk-README.md) retains its source, walkthrough and exact Tern judgment. The [batch-to-pending package](downloads/returnby-batch-pending-0c12cba/README.md) and [historical releases](README-history-2026-11-10.md) remain available. They are separate source pins, not additional unverified capabilities silently added to this build.
 
