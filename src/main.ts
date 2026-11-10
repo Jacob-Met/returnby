@@ -162,7 +162,7 @@ function showPreview() {
     <label>Return clock starts (optional; date you confirmed with retailer, such as delivery)<input name="windowStartDate" type="date" min="1000-01-01" max="9999-12-31"></label>
     ${field('orderNo', 'Order #', p.orderNo, p.found.orderNo)}
     ${field('total', 'Total', p.total, p.found.total)}
-    <label>Return window (days)<input name="windowDays" type="number" min="1" value="${pol.days}"></label>
+    <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${pol.days}"></label>
     <p class="src"><output id="intake-deadline" aria-live="polite" aria-atomic="true"></output></p>
     <p class="src" id="src">${pol.source === 'policy' ? 'Store rule from the local policy table; confirm with the retailer.' : 'No store match: editable 30-day fallback.'}</p>
     <button type="submit" class="button button-primary">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;
@@ -177,7 +177,7 @@ preview.addEventListener('submit', (e) => {
   const f = new FormData(preview);
   const orderDate = String(f.get('orderDate') || '');
   if (!orderDate) { (preview.querySelector('[name=orderDate]') as HTMLInputElement).focus(); return; }
-  const days = Number(f.get('windowDays')) || 30;
+  const days = Number(f.get('windowDays'));
   const windowStartDate = String(f.get('windowStartDate') || '');
   const clockStart = windowStartDate || orderDate;
   const validDate = (value: string) => isSupportedDate(value) && Number(value.slice(0,4)) >= 1000;
