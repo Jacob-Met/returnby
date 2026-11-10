@@ -7,6 +7,7 @@ import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
 import { startDayRefresh } from './day-refresh';
 import { bindIntakeDeadline } from './intake-deadline';
+import { bindIntakeDeparture } from './intake-departure';
 import { planSingleCalendar } from './calendar-batch';
 import { load, read, save, type Order } from './store';
 import { samples } from './samples';
@@ -18,6 +19,7 @@ const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const refreshIntakeDeadline = bindIntakeDeadline(preview);
+const refreshIntakeDeparture = bindIntakeDeparture(paste, preview);
 const search = $<HTMLInputElement>('#return-search');
 const searchClear = $<HTMLButtonElement>('#search-clear');
 const list = $<HTMLUListElement>('#list');
@@ -129,6 +131,7 @@ function showPreview() {
   preview.dataset.days = String(pol.days);
   preview.hidden = false;
   refreshIntakeDeadline();
+  refreshIntakeDeparture();
 }
 
 preview.addEventListener('submit', (e) => {
@@ -148,7 +151,7 @@ preview.addEventListener('submit', (e) => {
     createdAt: new Date().toISOString(),
   }];
   if (!persistOrders(next)) return;
-  preview.hidden = true; paste.value = ''; render();
+  preview.hidden = true; paste.value = ''; refreshIntakeDeparture(); render();
 });
 
 function render() {
