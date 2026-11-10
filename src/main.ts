@@ -1,3 +1,4 @@
+import { bindIntakeDeparture } from './intake-departure';
 import { bindRefunds, renderRefunds } from './refund-ui';
 import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
 import { reviewDuplicateIntake } from './duplicate-intake';
@@ -27,6 +28,7 @@ const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const refreshIntakeDeadline = bindIntakeDeadline(preview);
+const refreshIntakeDeparture = bindIntakeDeparture(paste, preview);
 const search = $<HTMLInputElement>('#return-search');
 const searchClear = $<HTMLButtonElement>('#search-clear');
 const list = $<HTMLUListElement>('#list');
@@ -172,6 +174,7 @@ function showPreview() {
   preview.hidden = false;
   refreshIntakeDeadline();
   refreshPreviewPolicy();
+  refreshIntakeDeparture();
 }
 
 preview.addEventListener('submit', (e) => {
@@ -210,7 +213,7 @@ preview.addEventListener('submit', (e) => {
     createdAt: new Date().toISOString(),
   }];
   if (!persistOrders(next)) return;
-  preview.hidden = true; paste.value = ''; render();
+  preview.hidden = true; paste.value = ''; refreshIntakeDeparture(); render();
 });
 
 function render() {
