@@ -1,3 +1,5 @@
+**Current cumulative pending-workspace download:** [ReturnBy 0.4.0 browser ZIP](downloads/returnby-pending-2a74d30/ReturnBy-v0.4.0-browser.zip) — multiple pending purchases, portable recovery, current backup choices and delivery confirmation. [Use and verification](downloads/returnby-pending-2a74d30/README.md).
+
 # ReturnBy
 
 ## Current GitHub Release — spreadsheet handoff from the return desk
