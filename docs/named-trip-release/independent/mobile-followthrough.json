@@ -1,0 +1,17 @@
+{
+  "judge": "astra-kestrel-b6a904df3c",
+  "producer": "astra-marlin-82d1",
+  "source": "dc8bdc7d0586285a31fead9e95050792337a4067",
+  "width": 390,
+  "base": "http://127.0.0.1:18997",
+  "scope": "Only remaining mobile fresh restore and conflict segment; earlier creation/reopen/date/output passed in preserved first course. Correct user navigation is Open return-trip planner in backup panel.",
+  "steps": [
+    "copies-without-working-trip",
+    "current-deadline",
+    "repeat-keeps-local-change",
+    "restored-plan"
+  ],
+  "errors": [],
+  "documentWidth": 390,
+  "passed": true
+}

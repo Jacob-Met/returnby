@@ -2,9 +2,21 @@
 
 ReturnBy is for shoppers who need to remember return deadlines across stores, including paper receipts, without connecting an inbox. A useful outcome is a reviewed purchase that can be found next week, acted on in time, and carried into a calendar or a return trip. The product must keep the date basis clear and preserve the shopper's work through interruption.
 
+## Latest independent named-trip judgment — actual released app
+
+Judge astra-kestrel-b6a904df3c ACCEPTED the scoped named-errand improvement in the actual GitHub-downloaded Linux release dc8bdc7. An unfamiliar two-store journey retained separate selections, dates and packing notes through reload and cancelled replacement. Reopening an old copy used a shortened current deadline and cleared the obsolete instructions check, while the saved copy remained unchanged. The actual printable sheet and version4 backup carried the correct current facts; fresh restore kept the working trip separate and a repeated import preserved a locally renamed same-ID copy. Desktop1440 and phone390 were exercised; no physical phone or macOS/Windows execution is claimed. [Full judgment, original failed navigation course, corrected follow-through, actual images and executable provenance](docs/named-trip-release/independent/JUDGMENT.md).
+
+The judge compared actual desktop/phone screens with Cultured Code's official Things imagery. The named list is useful, with the errand name and attached Open/Rename actions leading each row. This is scoped acceptance; the broader experience remains less direct. Ranked remaining gaps: (1) identify the active working errand clearly after opening a copy; (2) shorten repeated instructions and reduce phone travel from selection to packing; (3) unify tracker/trip typography, colors and controls; (4) judge copy archival or replacement against actual repeated use. No new ReturnBy task is opened after the mandate archive instruction; these findings remain preserved for a later authorized continuation.
+
+Separate pending-review continuity and downloaded b16 judgments remain [preserved](docs/intake-continuity-judgment/README.md#follow-up-independent-courses). The named-trip release includes current desk/pending/trip-search work at its exact source pin, not subsequent receipt-policy changes.
+
 ## Current delivered state
 
-[ReturnBy 0.4.0](https://github.com/Jacob-Met/returnby/releases/tag/returnby-desk-2026-11-10) is the current phone-desk release, pinned to [f388430](https://github.com/Jacob-Met/returnby/commit/f38843003426b0b6d49ab733f11c39a8d576421e). [The README](README.md) has one primary download, launch steps, its real desktop walkthrough and platform limits.
+[Named-trip0.5.0](https://github.com/Jacob-Met/returnby/releases/tag/returnby-named-trips-2026-11-10-dc8bdc7) is pinned to source dc8bdc7. The maintained native packages bundle the runtime; Linux was executed after actual download, while macOS/Windows are crosscompiled only. A Python3 browser ZIP remains available. It composes the phone desk, batch pending handoff, trip search and separate named errands. Backup version4 is used when named copies exist, with older versions1–3 readable. It predates subsequent receipt-policy or fixed-date-intent changes. [Downloads and limits](README.md).
+
+## Earlier phone-desk judgment
+
+[ReturnBy 0.4.0](https://github.com/Jacob-Met/returnby/releases/tag/returnby-desk-2026-11-10) is the earlier independently judged phone-desk release, pinned to [f388430](https://github.com/Jacob-Met/returnby/commit/f38843003426b0b6d49ab733f11c39a8d576421e). [The README](README.md) has one primary download, launch steps, its real desktop walkthrough and platform limits.
 
 It provides reviewed manual/email intake, confirmed return clocks, saved-purchase search, calendar/CSV export, one editable prepared trip, several pending deliveries and shopper-recorded refunds. JSON version 3 backups carry saved purchases, reviewed pending fields and an optional prepared trip for separate restoration. This release's known-date helper stores a duration, not durable fixed-date intent.
 
