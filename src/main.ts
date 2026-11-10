@@ -40,17 +40,19 @@ const pendingDesk=$<HTMLElement>('#pending-desk');
 let pendingId:string|null=null,pendingToken:string|null=null;
 function refreshPendingDelivery(){
  try{
+  const expanded=pendingDesk.querySelector('details')?.open ?? !window.matchMedia('(max-width: 760px)').matches;
   const saved=readPending(localStorage);pendingDesk.replaceChildren();pendingDesk.hidden=!saved.rows.length;
   if(!saved.rows.length){$('#pending-backup-note').hidden=true;return;}
-  const heading=document.createElement('h2');heading.textContent='Awaiting delivery ('+saved.rows.length+')';pendingDesk.append(heading);
-  const note=document.createElement('p');note.textContent='Keep each purchase here until you confirm delivery. No deadline or reminder has been created.';pendingDesk.append(note);
+  const collection=document.createElement('details');collection.open=expanded;
+  const heading=document.createElement('summary');heading.textContent='Awaiting delivery ('+saved.rows.length+') — review purchases';collection.append(heading);pendingDesk.append(collection);
+  const note=document.createElement('p');note.textContent='Keep each purchase here until you confirm delivery. No deadline or reminder has been created.';collection.append(note);
   for(const row of saved.rows){
    const line=document.createElement('div');line.className='pending-purchase';
    const label=document.createElement('p');label.textContent=(row.fields.merchant||'Purchase')+(row.fields.orderNo?' #'+row.fields.orderNo:'')+' · ordered '+(row.fields.orderDate||'date to review');line.append(label);
    const resume=document.createElement('button');resume.type='button';resume.className='button button-primary';resume.textContent='Review delivery';
    resume.onclick=()=>{const latest=readPending(localStorage);const item=latest.rows.find(x=>x.id===row.id);if(!item){refreshPendingDelivery();return;}if(showPreview(item.fields)){deskNavigation.openIntake();pendingId=item.id;pendingToken=latest.token;preview.scrollIntoView({block:'start'});preview.querySelector<HTMLInputElement>('[name=windowStartDate]')?.focus();}};
    const remove=document.createElement('button');remove.type='button';remove.className='button button-link';remove.textContent='Discard pending purchase';remove.onclick=()=>{if(!window.confirm('Discard pending review for '+(row.fields.merchant||'this purchase')+'? Saved deadlines will stay.'))return;try{const latest=readPending(localStorage);if(JSON.stringify(latest.rows.find(x=>x.id===row.id))!==JSON.stringify(row))throw Error('This pending purchase changed. Review the refreshed details before discarding.');writePending(localStorage,latest.rows.filter(x=>x.id!==row.id),latest.token);refreshPendingDelivery();}catch(e){showStorageError(e instanceof Error?e.message:'Could not remove pending purchase.');}};
-   line.append(resume,remove);pendingDesk.append(line);
+   line.append(resume,remove);collection.append(line);
   }
   $('#pending-backup-note').hidden=!saved.rows.length;
   $('#pending-backup-note').textContent='Your backup includes these reviewed pending purchases. They still need delivery confirmation before a deadline is created.';

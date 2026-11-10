@@ -95,3 +95,8 @@
 
 .pending-desk>h2{font-family:Georgia,serif;font-weight:400}.pending-purchase button{font-family:inherit;letter-spacing:normal}.pending-purchase .button-link{color:inherit}
 .csv-toolbar{margin:14px 0;padding:12px 0;border-top:1px solid var(--line,#d8d3c5)}.csv-toolbar .button{font-family:inherit;font-size:.95rem;letter-spacing:normal;min-height:44px;white-space:normal}.csv-toolbar .list-note{margin:8px 0;line-height:1.45}
+
+/* Pending purchases remain discoverable without displacing active deadlines. */
+.pending-desk>details>summary{cursor:pointer;min-height:44px;display:list-item;padding:12px 4px;font-weight:600;font-size:1rem;line-height:1.4}
+.pending-desk>details>p{font-size:1rem;line-height:1.5;max-width:65ch}
+@media(max-width:760px){.pending-desk{margin:8px 0 12px;padding:0;border-top:1px solid var(--line,#d8d3c5)}.pending-desk>details>summary{font-size:.9rem}}
