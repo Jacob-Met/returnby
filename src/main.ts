@@ -119,6 +119,33 @@ function removeOrder(id: string) {
 
 const h = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
+function refreshPreviewPolicy() {
+  const merchant = preview.querySelector<HTMLInputElement>('[name=merchant]');
+  const windowDays = preview.querySelector<HTMLInputElement>('[name=windowDays]');
+  const chip = preview.querySelector<HTMLElement>('.policy-chip');
+  const source = preview.querySelector<HTMLElement>('#src');
+  if (!merchant || !windowDays || !chip || !source) return;
+  const days = Number(windowDays.value);
+  const policy = lookup(merchant.value);
+  if (!Number.isSafeInteger(days) || days < 1) {
+    chip.textContent = 'CHECK RETURN WINDOW';
+    source.textContent = 'Enter a whole number of days before saving this return.';
+  } else if (days !== policy.days) {
+    chip.textContent = `YOUR RULE / ${days} DAYS`;
+    source.textContent = `Your entered ${days}-day window; confirm this rule with the retailer.`;
+  } else {
+    chip.textContent = policy.source === 'policy' ? 'STORE MATCH' : `${policy.days}-DAY FALLBACK`;
+    source.textContent = policy.source === 'policy'
+      ? 'Store rule from the local policy table; confirm with the retailer.'
+      : `No store match: editable ${policy.days}-day fallback.`;
+  }
+}
+
+preview.addEventListener('input', (event) => {
+  const field = event.target as HTMLInputElement;
+  if (field.name === 'merchant' || field.name === 'windowDays') refreshPreviewPolicy();
+});
+
 function showPreview() {
   const p = parse(paste.value, knownMerchants);
   const pol = lookup(p.merchant);
@@ -142,6 +169,7 @@ function showPreview() {
   preview.dataset.days = String(pol.days);
   preview.hidden = false;
   refreshIntakeDeadline();
+  refreshPreviewPolicy();
 }
 
 preview.addEventListener('submit', (e) => {
