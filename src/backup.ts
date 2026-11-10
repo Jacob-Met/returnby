@@ -1,3 +1,4 @@
+import { REFUND_KEYS, hasValidRefund } from './refund';
 import { dueDate, returnDueDate } from './deadline';
 import type { Order } from './store';
 import { parsePortableTrip, TripBackupError } from './trip-backup';
@@ -5,7 +6,7 @@ import type { TripPlan } from './trip-plan';
 
 export const MAX_BACKUP_BYTES = 5 * 1024 * 1024;
 export const MAX_BACKUP_ORDERS = 10_000;
-const ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowStartDate', 'windowDays', 'windowSource', 'createdAt'] as const;
+const ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowStartDate', 'windowDays', 'windowSource', 'createdAt', ...REFUND_KEYS] as const;
 const encoder = new TextEncoder();
 // Ordinary ISO export timestamps are always 24 bytes. Use the same envelope
 // when checking portability without changing any saved record timestamps.
@@ -54,10 +55,12 @@ function order(value: unknown, index: number, strict: boolean): Order {
   if (!Number.isSafeInteger(row.windowDays) || (row.windowDays as number) < 1 || (row.windowDays as number) > 3_700_000 ||
       !isDate(returnDueDate({ orderDate: row.orderDate, windowStartDate: row.windowStartDate as string | undefined, windowDays: row.windowDays as number }))) throw new BackupError(`${label} has an invalid return window.`);
   if (!['policy', 'default', 'user'].includes(row.windowSource as string)) throw new BackupError(`${label} has an invalid window source.`);
+  if (!hasValidRefund(row)) throw new BackupError(label + ' has invalid refund follow-up details.');
   // Always construct the approved shape. Additional local properties, including
   // an accidentally retained email, can never be serialized by export.
   return {
     id,
+    ...(row.refundState === undefined ? {} : {refundState:row.refundState as Order['refundState'],refundAmount:row.refundAmount as string,refundFollowUpDate:row.refundFollowUpDate as string,refundNote:row.refundNote as string,refundUpdatedAt:row.refundUpdatedAt as string}),
     merchant: text(row.merchant, `${label} store`),
     orderNo: row.orderNo === undefined ? '' : text(row.orderNo, `${label} number`),
     total: row.total === undefined ? '' : text(row.total, `${label} total`),
