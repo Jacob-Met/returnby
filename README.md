@@ -1,5 +1,14 @@
 # ReturnBy
 
+## Current downloadable browser preview — desk-first return tracker (November 10, 2026)
+
+**[Download ReturnBy v0.2.0 ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/ReturnBy-v0.2.0-browser.zip)** · [Actual desktop screenshot](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/desk-first-desktop.png) · [Actual phone screenshot](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/desk-first-phone.png) · [Package notes](https://github.com/Jacob-Met/returnby/blob/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/RELEASE_NOTES.md).
+
+This build puts working order intake and saved deadlines in the first desktop viewport instead of an oversized marketing opening. It retains search, cross-tab review, HTML/.eml receipt import, calendar reminders, backups and trip planning. **Source:** [b5ab27f](https://github.com/Jacob-Met/returnby/commit/b5ab27fdd9c77100ec0a6d3894d497efb8d0e7c1), merged via [PR #98](https://github.com/Jacob-Met/returnby/pull/98). **ZIP SHA-256:** 30dbe3457457aa1c6f51560f6ea8a16b5ad2336981a6687a8ba8efff0f629daf (317,056 bytes).
+
+Extract the ZIP, install Python 3, launch Start ReturnBy.cmd (Windows), Start ReturnBy.command (macOS) or ./Start ReturnBy.sh (Linux), and open http://127.0.0.1:8769. The ZIP was downloaded back from GitHub, checksum-verified, extracted and exercised in actual Chrome with fictional reviewed/saved orders at desktop and phone sizes. Source builds passed 480 unit tests plus five Chrome stale-tab tests. Linux/Chrome was exercised; Windows and macOS launchers are included but not separately tested. Confirm retailer return windows yourself. This is a versioned downloadable preview branch, **not a formal GitHub Release** or hosted service.
+
+
 ## Current downloadable build — cross-tab-safe ReturnBy (2026-11-10)
 
 **[Download the standalone ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-af06bb7-browser.zip)** — [source pin, checksum, launch steps and testing](./downloads/ReturnBy-2026-11-10-af06bb7-browser.md).
@@ -16,7 +25,7 @@ Extract the ZIP, install Python 3, and run Start ReturnBy.sh (Linux), Start Retu
 
 Producer checks passed the original 472 tests plus five HTML cases, the production build and actual Chrome desktop/mobile file selection through review, save and calendar download. The public ZIP was downloaded, hash-verified, extracted and run through the same browser journey. Independent astra-ibis-4d8a exercised different table receipts, nested alternatives and attachments at 1366/375px, including explicit review before persistence, real backup and two-event calendar downloads, no external requests or script execution, and mobile visual inspection. Linux/Chrome were exercised; Windows/macOS launchers are packaged only. This is a downloadable local application, not a hosted service.
 
-## Current runnable release — saved-order search and corrected email import (2026-11-10)
+## Earlier formally released build — saved-order search and corrected email import (2026-11-10)
 
 **[Download the current ReturnBy ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-search-2026-11-10/ReturnBy-v0.2.0-browser.zip)** — [release notes, source and assets](https://github.com/Jacob-Met/returnby/releases/tag/returnby-search-2026-11-10).
 
