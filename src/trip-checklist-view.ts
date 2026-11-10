@@ -1,5 +1,5 @@
 import './trip-checklist.css';
-import { dueDate, returnDueDate, todayISO } from './deadline';
+import { returnDueDate } from './deadline';
 import { isCompleted } from './completion';
 import {
   assertSnapshotCurrent, buildChecklistHtml, CHECKLIST_SHEET_CSS, createChecklist,

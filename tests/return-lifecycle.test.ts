@@ -1,3 +1,5 @@
+import { alignTripPlan, emptyTripPlan, planOrder } from '../src/trip-plan';
+import { captureRemoval, planUndoRemoval } from '../src/removal-undo';
 import { expect, test } from 'vitest';
 import { completionLabel, hasValidCompletion, planCompletion } from '../src/completion';
 import { exportBackup, parseBackup, planImport } from '../src/backup';
@@ -67,7 +69,8 @@ test('a confirmed delivery clock survives finishing, portable history and reopen
   const before = planSingleCalendar([delivered], delivered, now).content;
   expect(before).toContain('20261120');
   const activeBackup = exportBackup([delivered], now);
-  expect(JSON.parse(activeBackup).version).toBe(2);
+  // Mainline v1 exports already include confirmed clocks; keep that compatibility.
+  expect(JSON.parse(activeBackup).version).toBe(1);
   expect(parseBackup(activeBackup)[0].windowStartDate).toBe('2026-11-06');
   const closed = planCompletion([delivered], delivered, 'returned', now);
   const portable = parseBackup(exportBackup(closed.next, now));
@@ -77,4 +80,24 @@ test('a confirmed delivery clock survives finishing, portable history and reopen
   expect(calendarRows(portable, '2026-11-10')).toEqual([]);
   const reopened = planCompletion(portable, portable[0], 'reopen', now);
   expect(planSingleCalendar(reopened.next, reopened.order, now).content).toBe(before);
+});
+
+test('finishing retires a saved trip selection but preserves packing notes through removal undo and reopening', () => {
+  const original = order('trip-coat');
+  const entry = { ...planOrder(original), packed: true, notes: 'Bring the QR code to the service desk.' };
+  const trip = { ...emptyTripPlan('2026-11-11'), orders: [entry] };
+  const closed = planCompletion([original], original, 'returned', now).order;
+  const aligned = alignTripPlan(trip, parseSavedOrders(JSON.stringify([closed])));
+  expect(aligned.plan.orders[0]).toMatchObject({ selected: false, packed: true, notes: entry.notes });
+  expect(aligned.unavailable).toHaveLength(1);
+  const removal = captureRemoval(closed, 0);
+  const restored = planUndoRemoval([], removal);
+  expect(restored.kind).toBe('restore');
+  if (restored.kind !== 'restore') throw new Error('Expected an actual restored record');
+  expect(restored.order).toEqual(closed);
+  expect(calendarRows(restored.orders, '2026-11-10')).toEqual([]);
+  const reopened = planCompletion(restored.orders, restored.order, 'reopen', now);
+  const ready = alignTripPlan(aligned.plan, parseSavedOrders(JSON.stringify(reopened.next)));
+  expect(ready.unavailable).toEqual([]);
+  expect(ready.plan.orders[0]).toMatchObject({ selected: false, packed: true, notes: entry.notes });
 });

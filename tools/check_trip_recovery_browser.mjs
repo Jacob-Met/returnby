@@ -41,7 +41,7 @@ try {
   const orders=JSON.parse(trackerRaw);
   const pine=orders.find(o=>o.merchant==='Pine & Loom'), book=orders.find(o=>o.merchant==='Kestrel Books');
   assert.equal(orders.length,3);
-  await page.locator('a[href="./trip-checklist.html"]').click();
+  await page.getByRole('link',{name:'Prepare a return-trip checklist →',exact:true}).click();
   await page.locator('.order-choice input[value="'+pine.id+'"]').check();
   await page.locator('.order-choice input[value="'+book.id+'"]').check();
   await page.locator('#trip-date').fill('2026-11-14');

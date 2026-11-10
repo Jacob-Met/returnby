@@ -2,6 +2,8 @@ import { parseOrderItems } from './order-items';
 import { dueDate, returnDueDate } from './deadline';
 import type { Order } from './store';
 import { hasValidCompletion } from './completion';
+import { parsePortableTrip, TripBackupError } from './trip-backup';
+import type { TripPlan } from './trip-plan';
 
 export const MAX_BACKUP_BYTES = 5 * 1024 * 1024;
 export const MAX_BACKUP_ORDERS = 10_000;
@@ -88,10 +90,13 @@ function orders(value: unknown, strict = true, version: 1 | 2 | 3 | 4 = 4): Orde
   });
 }
 
-function document(rows: Order[], exportedAt: string) {
-  // Keep open-only backups readable by older versions. A completed record must
-  // never be imported by an older reader as an ordinary active deadline.
-  return { schema: 'returnby.backup', version: rows.some(row => row.items !== undefined) ? 4 : rows.some(row => row.completionKind !== undefined) ? 3 : rows.some(row => row.completedAt !== undefined || row.windowStartDate !== undefined) ? 2 : 1, exportedAt, orders: rows };
+function document(rows: Order[], exportedAt: string, trip?: TripPlan | null) {
+  // Version 1 already shipped confirmed clocks. Version 2 adds prepared trips
+  // and accepts legacy completed timestamps; explicit outcomes require v3.
+  // Older readers must reject an outcome rather than reopen it as active.
+  return { schema: 'returnby.backup',
+    version: rows.some(row => row.items !== undefined) ? 4 : rows.some(row => row.completionKind !== undefined) ? 3 : trip || rows.some(row => row.completedAt !== undefined) ? 2 : 1,
+    exportedAt, orders: rows, ...(trip ? {trip} : {}) };
 }
 
 function fits(output: string) { return encoder.encode(output).byteLength <= MAX_BACKUP_BYTES; }
@@ -100,8 +105,8 @@ function portable(rows: Order[], message: string) {
   if (!fits(JSON.stringify(document(rows, SIZE_TIMESTAMP)) + '\n')) throw new BackupError(message);
 }
 
-export function exportBackup(current: unknown, now = new Date()): string {
-  const doc = document(orders(current, false), now.toISOString());
+export function exportBackup(current: unknown, now = new Date(), trip?: TripPlan | null): string {
+  const doc = document(orders(current, false), now.toISOString(), trip ? parsePortableTrip(trip) : null);
   let output = JSON.stringify(doc, null, 2) + '\n';
   // Formatting must not make an otherwise portable tracker impossible to
   // back up again after restoration.
@@ -110,17 +115,24 @@ export function exportBackup(current: unknown, now = new Date()): string {
   return output;
 }
 
-export function parseBackup(input: string): Order[] {
+export function parseBackupDocument(input: string): {orders: Order[]; trip: TripPlan | null} {
   if (encoder.encode(input).byteLength > MAX_BACKUP_BYTES) throw new BackupError('Choose a backup no larger than 5 MiB.');
   let parsed: unknown;
   try { parsed = JSON.parse(input); } catch { throw new BackupError('This file is not valid JSON. Choose a ReturnBy backup.'); }
   const doc = object(parsed, 'Backup');
   if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2 && doc.version !== 3 && doc.version !== 4)) throw new BackupError('This backup format or version is not supported.');
-  onlyKeys(doc, ['schema', 'version', 'exportedAt', 'orders'], 'Backup');
+  onlyKeys(doc, doc.version === 1 ? ['schema', 'version', 'exportedAt', 'orders'] : ['schema', 'version', 'exportedAt', 'orders', 'trip'], 'Backup');
   timestamp(doc.exportedAt, 'Backup export time');
   const rows = orders(doc.orders, true, doc.version);
   portable(rows, 'The normalized saved details would exceed the 5 MiB backup limit.');
-  return rows;
+  const trip = doc.trip === undefined ? null : parsePortableTrip(doc.trip);
+  if (!fits(JSON.stringify(document(rows, SIZE_TIMESTAMP, trip)) + '\n')) throw new BackupError('The normalized trip and orders exceed the 5 MiB backup limit.');
+  return {orders:rows, trip};
+}
+
+export function parseBackup(input: string): Order[] {
+  try { return parseBackupDocument(input).orders; }
+  catch(error) { if(error instanceof TripBackupError)throw new BackupError(error.message);throw error; }
 }
 
 export type ImportRow = { order: Order; action: 'add' | 'skip' | 'conflict'; changedFields: string[] };

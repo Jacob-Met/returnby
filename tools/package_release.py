@@ -15,16 +15,20 @@ SERVER = """#!/usr/bin/env python3
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-import sys
+import sys, os
 
 folder = Path(__file__).resolve().parent
 host, port = "127.0.0.1", 8769
 try:
+    port = int(os.environ.get("RETURNBY_PORT", "8769"))
+    if not 1 <= port <= 65535:
+        raise ValueError("RETURNBY_PORT must be between 1 and 65535")
     server = ThreadingHTTPServer((host, port), partial(SimpleHTTPRequestHandler, directory=str(folder)))
-except OSError as error:
-    print("ReturnBy cannot start on http://127.0.0.1:8769 (port in use or unavailable):", error, file=sys.stderr)
+except (OSError, ValueError) as error:
+    print(f"ReturnBy cannot start on http://127.0.0.1:{port}:", error, file=sys.stderr)
+    print("If the port is busy, set RETURNBY_PORT to a free port and start again.", file=sys.stderr)
     sys.exit(2)
-print("ReturnBy running at http://127.0.0.1:8769", flush=True)
+print(f"ReturnBy running at http://127.0.0.1:{port}", flush=True)
 print("Open this address in your browser; press Ctrl+C to stop.", flush=True)
 try:
     server.serve_forever()
@@ -68,6 +72,9 @@ def main():
         "macOS: double-click Start ReturnBy.command, or run python3 serve_returnby.py.\n"
         "Linux: run ./Start ReturnBy.sh, or python3 serve_returnby.py.\n"
         "Then open http://127.0.0.1:8769 in your browser; press Ctrl+C to stop.\n"
+        "If 8769 is busy, choose a free port with RETURNBY_PORT (e.g. 18769).\n"
+        "Linux/macOS: RETURNBY_PORT=18769 python3 serve_returnby.py\n"
+        "Windows Command Prompt: set RETURNBY_PORT=18769, then py -3 serve_returnby.py.\n"
         "The launcher binds only to 127.0.0.1. Keep the same port/browser profile:\n"
         "reviewed orders are saved in that browser's local storage for this origin.\n"
         "Do not open index.html directly by file:// because the module assets need HTTP.\n\n"
@@ -76,7 +83,8 @@ def main():
         "Finish returned or kept orders into History; reopen with the original deadline.\n"
         "Use version 0.3.0 or later with History; older apps cannot interpret its markers.\n"
         "Pasted emails are not uploaded or retained by the app. Downloaded backups\n"
-        "contain order details and are unencrypted; keep those files private.\n"
+        "contain order details, saved trips and private packing notes. Backups are\n"
+        "unencrypted; keep those files private.\n"
         "Merchant rules are reference estimates, not verified current return policies.\n"
         "Calendar reminders are file exports, not live subscriptions.\n\n"
         "Source: https://github.com/Jacob-Met/returnby/commit/" + source + "\n"

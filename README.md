@@ -1,6 +1,8 @@
 # ReturnBy
 
-## Current downloadable build — confirmed return-window start
+ReturnBy is a private return desk for purchases across stores, including paper receipts. Add an order manually or import its confirmation, review the retailer's terms, save the deadline, and keep a useful record of what happened. Raw receipt text stays in the current browser tab; only reviewed fields are saved locally.
+
+## Latest published download — confirmed return-window start
 
 **[Download source-pinned ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-clock-92baeb9-browser.zip)** · [launch instructions, checksum and tested limitations](./downloads/ReturnBy-2026-11-10-clock-92baeb9.md) · [actual desktop screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-desktop.png) · [actual phone screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-mobile.png).
 
@@ -27,15 +29,19 @@ Extract the ZIP, install Python 3, launch Start ReturnBy.cmd (Windows), Start Re
 
 The integrated source includes the desk-first layout, manual purchase entry and an optional **Return clock starts** date confirmed by the user, such as a delivery date. Leaving that date blank counts from the order date. These fields do not verify a retailer's policy or delivery records.
 
-The 0.3.0 source also adds Returned/Kept History and reopening. Its combined downloadable package is being prepared; the published packages above must not be assumed to contain these new lifecycle features. Independent desktop/phone judgment accepted the lifecycle and History corrections at dba47a3. The later combined layout and confirmed-clock integration is undergoing its own final checks.
+The 0.3.0 source also adds Returned/Kept History and reopening, removal undo, and saved trip plans. Its combined downloadable package is being prepared; the published packages above must not be assumed to contain these new lifecycle features. Independent desktop/phone judgment accepted the lifecycle and History corrections at dba47a3. The later combined layout and confirmed-clock integration is undergoing its own final checks.
 
 See [the product standard and maintained ranked gap list](VISION.md). [Historical releases, checksums and launch notes](docs/RELEASE_HISTORY.md) remain available.
+
+## Earlier released HTML-receipt walkthrough
 
 [Watch the silent HTML-receipt walkthrough (MP4)](https://github.com/Jacob-Met/returnby/releases/download/returnby-html-receipt-2026-11-10/ReturnBy-HTML-receipt-walkthrough.mp4) · [Recording scope and reproduction](./docs/html-receipt-walkthrough/README.md)
 
 The actual released app now has a captioned, fictional-sample walkthrough: HTML-only email → review and correct the return window → explicit Save → find the order → download a calendar reminder and backup. This clip demonstrates this pinned release, not the newer builds above.
 
 [Download the browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-html-receipt-2026-11-10/ReturnBy-v0.2.0-browser.zip) · [release notes and exact source ZIP](https://github.com/Jacob-Met/returnby/releases/tag/returnby-html-receipt-2026-11-10)
+
+## Finish a return and keep its history
 
 Choose **Finish return** on an active order, then **Returned it** or **Kept it**. The review shows the selected order before saving. **Cancel** and Escape preserve both the order and an unsaved new-order draft.
 
@@ -57,7 +63,7 @@ The pure MIME-reader tests are `tests/eml.test.ts`; the production Chrome file-p
 
 ## Privacy
 
-The original pasted email is not sent or persisted. The user must review and save fields; reviewed order fields and trip plans you create are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
+The original pasted email is not sent or persisted. The user must review and save fields; reviewed order details, confirmed return-clock starts, completion outcomes and timestamps, and trip plans you create stay in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the order list removes saved order records from this device; order backups do not include trip plans.
 
 ## Export several calendar reminders
 
@@ -256,3 +262,9 @@ From the intake panel, open **Review several order confirmations together**. Add
 ## Find a saved return
 
 Use **Find a saved return** above the tracker to search a store name or order number. Matching ignores case and surrounding spaces and works together with All, Due soon, and Expired. Clear search restores the current date filter. Search does not change saved records, the deadline overview, or calendar selection; the calendar dialog continues to follow the date filter and lets you review every selection.
+
+## Carry a prepared trip to another browser
+
+Download backup now includes the saved trip date, selected orders, packing checks and notes. Keep the file private. In the receiving browser, choose the backup, review and import its orders, then choose Restore trip. If that browser already has a different trip, confirm its replacement explicitly; importing orders alone never overwrites the trip. Old order-only backups still work and leave the saved trip untouched.
+
+Changed order facts require checking store instructions again. Notes for unavailable orders remain recoverable but those orders are not selected. A failed trip save leaves the reviewed file open for retry. This is an explicit file transfer, not account synchronization.

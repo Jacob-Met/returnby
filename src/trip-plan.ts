@@ -1,3 +1,4 @@
+import { isCompleted } from './completion';
 import { todayISO } from './deadline';
 import { isSupportedDate, type SavedSnapshot, type TripPacking } from './trip-checklist';
 import type { Order } from './store';
@@ -75,7 +76,7 @@ export function readTripPlan(reader: StorageReader): { plan: TripPlan | null; ra
 export function alignTripPlan(plan: TripPlan, snapshot: SavedSnapshot): {
   plan: TripPlan; changed: string[]; unavailable: PlannedOrder[];
 } {
-  const current = new Map(snapshot.orders.map(order => [order.id, order]));
+  const current = new Map(snapshot.orders.filter(order => !isCompleted(order)).map(order => [order.id, order]));
   const changed: string[] = [];
   const unavailable: PlannedOrder[] = [];
   const orders = plan.orders.map(entry => {
