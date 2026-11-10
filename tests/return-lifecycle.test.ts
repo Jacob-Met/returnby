@@ -1,3 +1,4 @@
+import { ordersForDeadline } from '../src/trip-deadline-handoff';
 import { planRefund } from '../src/refund';
 import { createSavedReturnsCsv } from '../src/saved-returns-csv';
 import { alignTripPlan, emptyTripPlan, planOrder } from '../src/trip-plan';
@@ -115,6 +116,8 @@ test('finishing and reopening retain the refund follow-up, and CSV identifies Hi
   expect(restored.refundNote).toBe(pending.refundNote);
   expect(restored.refundState).toBe('awaiting');
   expect(restored.completionKind).toBe('returned');
+  expect(ordersForDeadline([pending], '2026-12-01')).toHaveLength(1);
+  expect(ordersForDeadline([restored], '2026-12-01')).toEqual([]);
   const csv=createSavedReturnsCsv([restored]).content;
   expect(csv).toContain('"Return status","Finished at"');
   expect(csv).toContain('"Returned","2026-11-10T13:00:00.000Z"');
