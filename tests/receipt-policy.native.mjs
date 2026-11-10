@@ -6,6 +6,16 @@ try{
 const p=await browser.newPage({viewport:{width:390,height:844}});
 const url=process.env.RETURNBY_URL || 'http://127.0.0.1:18918';
 await p.goto(url+'/batch-intake.html');
+await p.locator('#batch-paste').fill('Store: Birch\nOrder #B4412\nOrder date: November 4, 2026\nItems may be returned within 21 days after delivery. Awaiting delivery.');
+await p.locator('#batch-add').click();
+assert.equal(await p.locator('[name=windowDays]').inputValue(),'21');
+assert.equal(await p.getByRole('button',{name:'Keep purchase pending delivery'}).count(),1);
+assert.match(await p.locator('[data-draft]').innerText(),/Confirm return clock start \(required\)/);
+await p.locator('.batch-reviewed input').click();
+assert.equal(await p.locator('.batch-reviewed input').isChecked(),false);
+assert.match(await p.locator('#batch-error').innerText(),/Confirm the return-clock start/);
+await p.reload();
+
 await p.locator('#batch-paste').fill('Store: Meadow Clothing\nOrder #MC5718\nOrder date: November 2, 2026\nTotal: $118.00\nReturns accepted within 30 days of delivery. Sale items must be returned within 14 days.\nPRIVATE-RECEIPT-NOT-RETAINED');
 await p.locator('#batch-add').click();
 assert.equal(await p.locator('[name=windowDays]').inputValue(),'');

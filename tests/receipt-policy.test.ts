@@ -58,3 +58,10 @@ test('both general and sale exception remain visible', () => {
  const row=appendConfirmations([],[{label:'sale',text:'Store: Meadow\nOrder date: November 1, 2026\n'+text}],()=> 'sale')[0];
  expect(row.fields.windowDays).toBe('');
 });
+
+test('recognized returned duration cannot be saved against order date for pending delivery',()=>{
+ const row=appendConfirmations([],[{label:'pending',text:'Store: Birch\nOrder date: November 4, 2026\nItems may be returned within 21 days after delivery. Awaiting delivery.'}],()=> 'pending')[0];
+ expect(row.fields.windowDays).toBe('21');
+ expect(()=>validateDraft(row)).toThrow(/delivery/);
+ row.fields.windowStartDate='2026-11-10';expect(validateDraft(row).windowStartDate).toBe('2026-11-10');
+});

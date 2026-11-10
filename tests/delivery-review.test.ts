@@ -11,3 +11,10 @@ it.each([
 it('does not confirm a mentioned delivery date',()=>expect(deliveryReview('Delivered: November 8, 2026\nReturn within 30 days of delivery.')).toEqual({required:true,date:'2026-11-08'}));
 it('keeps conflicting delivery dates unresolved',()=>expect(deliveryReview('Delivered: November 8, 2026\nDelivered: November 9, 2026\nReturn within 30 days of delivery.').date).toBeUndefined());
 it('does not treat ordinary shipping estimates as a return clock',()=>expect(deliveryReview('Delivery within 3 days. Return within 30 days of purchase.').required).toBe(false));
+
+it.each([
+'Items may be returned within 21 days after delivery. Awaiting delivery.',
+'Unworn goods may be returned within 21 days after delivery.',
+'Returning items is allowed within 14 days of delivery.',
+'Items are returnable within 14 days from delivery.'
+])('return inflections require delivery confirmation: %s',text=>expect(deliveryReview(text)).toEqual({required:true}));
