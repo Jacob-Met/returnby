@@ -1,5 +1,15 @@
 # ReturnBy
 
+## Current runnable release — HTML receipt import and saved-return search
+
+[Download the browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-html-receipt-2026-11-10/ReturnBy-v0.2.0-browser.zip) · [release notes and exact source ZIP](https://github.com/Jacob-Met/returnby/releases/tag/returnby-html-receipt-2026-11-10)
+
+This release adds readable HTML-only exported email receipts to the existing review/save workflow and includes store/order-number search. Authored plain text takes precedence; HTML is parsed as data without loading images, links, stylesheets or scripts. Review every field: CSS layout and image-only receipts are not interpreted.
+
+Extract the ZIP, install Python 3, and run Start ReturnBy.sh (Linux), Start ReturnBy.command (macOS), or Start ReturnBy.cmd (Windows), then open http://127.0.0.1:8769/. Source: 43d56fe5379fa3d658a6093f3303d1ed5ad721b6, merged PR #95. SHA-256: 1feaf0cd6d4698323c00b7bf17d385a1dc1052b987ea6fbdc28d52a7620e4699.
+
+Producer checks passed the original 472 tests plus five HTML cases, the production build and actual Chrome desktop/mobile file selection through review, save and calendar download. The public ZIP was downloaded, hash-verified, extracted and run through the same browser journey. Independent astra-ibis-4d8a exercised different table receipts, nested alternatives and attachments at 1366/375px, including explicit review before persistence, real backup and two-event calendar downloads, no external requests or script execution, and mobile visual inspection. Linux/Chrome were exercised; Windows/macOS launchers are packaged only. This is a downloadable local application, not a hosted service.
+
 ## Current runnable release — saved-order search and corrected email import (2026-11-10)
 
 **[Download the current ReturnBy ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-search-2026-11-10/ReturnBy-v0.2.0-browser.zip)** — [release notes, source and assets](https://github.com/Jacob-Met/returnby/releases/tag/returnby-search-2026-11-10).
