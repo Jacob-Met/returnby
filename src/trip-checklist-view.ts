@@ -1,3 +1,4 @@
+import { bindTripLibrary } from './trip-library-ui';
 import { bindTripDeadlineHandoff } from './trip-deadline-handoff-ui';
 import './trip-checklist.css';
 import { returnDueDate } from './deadline';
@@ -338,7 +339,7 @@ keepPlan.addEventListener('click', () => {
   catch { planMessage('Browser storage is unavailable. This trip is still open in this tab.', true); }
 });
 el<HTMLButtonElement>('new-trip').addEventListener('click', () => {
-  if ((plan.orders.length || !planReadable) && !window.confirm('Start a new trip? This replaces the saved trip, its packing checks and notes. Your saved orders stay unchanged.')) return;
+  if ((plan.orders.length || !planReadable) && !window.confirm('Start a new trip? This replaces the working trip, its checks and notes. Save a separate named copy first if you need to keep them. Your saved orders stay unchanged.')) return;
   try { planRaw = planStorage.getItem(TRIP_PLAN_KEY); planReadable = true; }
   catch { planReadable = false; }
   plan = emptyTripPlan();
@@ -401,3 +402,21 @@ refreshDeadlineHandoff = bindTripDeadlineHandoff({
   },
 });
 loadPlan();
+
+bindTripLibrary({
+  current: () => plan,
+  open: saved => {
+    const latest = readSavedOrders(savedReader);
+    const aligned = alignTripPlan(saved, latest);
+    const nextRaw = saveTripPlan(planStorage, aligned.plan, planRaw);
+    plan = aligned.plan;
+    planRaw = nextRaw;
+    planReadable = true;
+    unsaved = false;
+    tripDate.value = plan.tripDate;
+    retrySave.hidden = true; reloadPlan.hidden = true; keepPlan.hidden = true;
+    refresh();
+    if (aligned.changed.length) showNotice('Saved details changed for ' + aligned.changed.join(', ') + '. Review current deadlines and check the store instructions again; your notes are kept.');
+    planMessage('Named plan opened as your working trip. Changes here do not alter its saved copy.');
+  },
+});
