@@ -1,0 +1,24 @@
+[
+  {
+    "width": 1440,
+    "pendingClockSurvivesReload": true,
+    "emptyResumeNoPrompt": true,
+    "cancelResumeKeepsRaw": true,
+    "acceptedResumeClearsOtherRaw": true,
+    "cancelResumeKeepsCorrections": true,
+    "noPrematureTrackerWrite": true,
+    "savedDeadline": "2026-11-20",
+    "pendingRemovedAfterSave": true
+  },
+  {
+    "width": 390,
+    "pendingClockSurvivesReload": true,
+    "emptyResumeNoPrompt": true,
+    "cancelResumeKeepsRaw": true,
+    "acceptedResumeClearsOtherRaw": true,
+    "cancelResumeKeepsCorrections": true,
+    "noPrematureTrackerWrite": true,
+    "savedDeadline": "2026-11-20",
+    "pendingRemovedAfterSave": true
+  }
+]
