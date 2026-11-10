@@ -196,7 +196,42 @@ searchClear.addEventListener('click', () => { search.value = ''; render(); searc
 $('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);
 paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
 $('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
-$('#clear').addEventListener('click', () => { if (confirm('Delete all saved returns?') && persistOrders([], true)) render(); });
+// Clearing all returns must not erase orders another tab saved while a destructive
+// confirmation was open. Unlike normal edits, this action has no selected record
+// to detect a stale view, so compare the complete saved state on both sides.
+function clearAllTrackedOrders() {
+  let snapshot: string | null;
+  try {
+    snapshot = localStorage.getItem('returnby.v1');
+  } catch {
+    showStorageError("Couldn't check saved returns before clearing. Nothing was deleted.");
+    return;
+  }
+  if (!loadFailed) {
+    const current = readCurrentOrders();
+    if (!current) return;
+    if (JSON.stringify(current) !== JSON.stringify(orders)) {
+      orders = current;
+      render();
+      showStorageError('Saved returns changed in another tab. Review the refreshed tracker before clearing.');
+      return;
+    }
+  }
+  if (!confirm('Delete all saved returns?')) return;
+  try {
+    if (localStorage.getItem('returnby.v1') !== snapshot) {
+      reloadOrders();
+      showStorageError('Saved returns changed while you were confirming. Nothing was deleted; review the refreshed tracker.');
+      return;
+    }
+  } catch {
+    showStorageError("Couldn't recheck saved returns. Nothing was deleted; try again when browser storage is available.");
+    return;
+  }
+  // Reset remains available for a genuinely unreadable store, as before.
+  if (persistOrders([], true)) render();
+}
+$('#clear').addEventListener('click', clearAllTrackedOrders);
 storageRetry.addEventListener('click', reloadOrders);
 bindBackup({ read, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
 const orderEditor = bindOrderEditor({
