@@ -4,6 +4,7 @@ export function storageFixture(html, initial = []) {
   const elements = new Map();
   let value = JSON.stringify(initial), failures = 0, serial = 0, allowClear = true;
   const attempts = [];
+  let tripValue = null, tripFailures = 0;
   // Browser event registration is real within this fixture, but time does not
   // advance implicitly. The separate day-refresh suite tests midnight timing.
   const listeners = new Map();
@@ -61,8 +62,9 @@ export function storageFixture(html, initial = []) {
   const preview = elements.get('preview');
   preview.dataset = { source: 'default', days: '30' };
   const localStorage = {
-    getItem(key) { if (key !== 'returnby.v1') throw Error('Unexpected storage key'); return value; },
+    getItem(key) { if (key === 'returnby.trip-plan.v1') return tripValue; if (key !== 'returnby.v1') throw Error('Unexpected storage key'); return value; },
     setItem(key, next) {
+      if (key === 'returnby.trip-plan.v1') { if(tripFailures>0){tripFailures--;throw Error('Synthetic trip storage refusal');} tripValue=next;return; }
       if (key !== 'returnby.v1') throw Error('Unexpected storage key');
       attempts.push(JSON.parse(next));
       if (failures > 0) { failures--; throw Error('Synthetic storage refusal before write'); }
@@ -76,6 +78,7 @@ export function storageFixture(html, initial = []) {
   return {
     globals: { document, window, localStorage, FormData, crypto: { randomUUID: () => `order-${++serial}` },
       confirm: () => allowClear, alert() { throw Error('Unexpected blocking alert'); } },
+    setTrip(next) { tripValue=next===null?null:JSON.stringify(next); }, tripRaw:()=>tripValue, failTrip(n=1){tripFailures=n;},
     elements, attempts, persisted: () => clone(JSON.parse(value)),
     failNext(n = 1) { failures = n; }, confirm(next) { allowClear = next; },
     draft(orderNo = 'NEXT') {

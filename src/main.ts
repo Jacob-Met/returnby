@@ -1,4 +1,10 @@
 import { deliveryReview } from './delivery-review';
+import { bindKnownDeadlines } from './known-deadline';
+import './known-deadline.css';
+import { bindIntakeDeparture } from './intake-departure';
+import { bindRefunds, renderRefunds } from './refund-ui';
+import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
+import { reviewDuplicateIntake } from './duplicate-intake';
 import './style.css';
 import './backup.css';
 import './edit.css';
@@ -19,7 +25,7 @@ import { bindManualPurchase } from './manual-purchase';
 import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
-import { bindCalendarBatch, downloadCalendar } from './calendar-batch-ui';
+import { bindCalendarBatch } from './calendar-batch-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
@@ -40,6 +46,7 @@ pendingDelivery.addEventListener('click', () => {
   try { const raw = localStorage.getItem('returnby.pending-delivery'); if(raw) showPreview(JSON.parse(raw)); }
   catch { showStorageError('Could not open the pending purchase.'); }
 });
+const refreshIntakeDeparture = bindIntakeDeparture(paste, preview);
 const search = $<HTMLInputElement>('#return-search');
 const searchClear = $<HTMLButtonElement>('#search-clear');
 const list = $<HTMLUListElement>('#list');
@@ -134,6 +141,33 @@ function removeOrder(id: string) {
 
 const h = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
+function refreshPreviewPolicy() {
+  const merchant = preview.querySelector<HTMLInputElement>('[name=merchant]');
+  const windowDays = preview.querySelector<HTMLInputElement>('[name=windowDays]');
+  const chip = preview.querySelector<HTMLElement>('.policy-chip');
+  const source = preview.querySelector<HTMLElement>('#src');
+  if (!merchant || !windowDays || !chip || !source) return;
+  const days = Number(windowDays.value);
+  const policy = lookup(merchant.value);
+  if (!Number.isSafeInteger(days) || days < 1) {
+    chip.textContent = 'CHECK RETURN WINDOW';
+    source.textContent = 'Enter a whole number of days before saving this return.';
+  } else if (days !== policy.days) {
+    chip.textContent = `YOUR RULE / ${days} DAYS`;
+    source.textContent = `Your entered ${days}-day window; confirm this rule with the retailer.`;
+  } else {
+    chip.textContent = policy.source === 'policy' ? 'STORE MATCH' : `${policy.days}-DAY FALLBACK`;
+    source.textContent = policy.source === 'policy'
+      ? 'Store rule from the local policy table; confirm with the retailer.'
+      : `No store match: editable ${policy.days}-day fallback.`;
+  }
+}
+
+preview.addEventListener('input', (event) => {
+  const field = event.target as HTMLInputElement;
+  if (field.name === 'merchant' || field.name === 'windowDays') refreshPreviewPolicy();
+});
+
 function showPreview(restored?: Record<string, string>) {
   const p = restored ? { merchant: restored.merchant, orderDate: restored.orderDate, orderNo: restored.orderNo, total: restored.total, found: {merchant:true,orderDate:true,orderNo:true,total:true} } : parse(paste.value, knownMerchants);
   const pol = lookup(p.merchant);
@@ -154,7 +188,7 @@ function showPreview(restored?: Record<string, string>) {
     <label>${delivery.required ? 'Confirm return clock start (required to save a deadline)' : 'Return clock starts (optional; date you confirmed with retailer, such as delivery)'}<input name="windowStartDate" ${delivery.required ? 'required' : ''} type="date" min="1000-01-01" max="9999-12-31"></label>
     ${field('orderNo', 'Order #', p.orderNo, p.found.orderNo)}
     ${field('total', 'Total', p.total, p.found.total)}
-    <label>Return window (days)<input name="windowDays" type="number" min="1" value="${restored?.windowDays || pol.days}"></label>
+    <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${restored?.windowDays || pol.days}"></label>
     <p class="src"><output id="intake-deadline" aria-live="polite" aria-atomic="true"></output></p>
     <p class="src" id="src">${pol.source === 'policy' ? 'Store rule from the local policy table; confirm with the retailer.' : 'No store match: editable 30-day fallback.'}</p>
     ${delivery.required ? '<button type="button" class="button button-link" id="save-pending-delivery">Keep purchase pending delivery</button><p class="review-note">No deadline or reminders until you confirm delivery. Pending purchases stay in this browser and are not included in return backups.</p>' : ''}<button type="submit" class="button button-primary">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;
@@ -167,6 +201,8 @@ function showPreview(restored?: Record<string, string>) {
     try { localStorage.setItem('returnby.pending-delivery', JSON.stringify(fields)); refreshPendingDelivery(); preview.hidden = true; paste.value = ''; }
     catch { showStorageError('Could not keep this pending purchase. Your form is still here.'); }
   });
+  refreshPreviewPolicy();
+  refreshIntakeDeparture();
 }
 
 preview.addEventListener('submit', (e) => {
@@ -174,7 +210,7 @@ preview.addEventListener('submit', (e) => {
   const f = new FormData(preview);
   const orderDate = String(f.get('orderDate') || '');
   if (!orderDate) { (preview.querySelector('[name=orderDate]') as HTMLInputElement).focus(); return; }
-  const days = Number(f.get('windowDays')) || 30;
+  const days = Number(f.get('windowDays'));
   const windowStartDate = String(f.get('windowStartDate') || '');
   if (preview.dataset.deliveryReview === 'yes' && !windowStartDate) { preview.querySelector<HTMLInputElement>('[name=windowStartDate]')?.reportValidity(); return; }
   const clockStart = windowStartDate || orderDate;
@@ -190,7 +226,14 @@ preview.addEventListener('submit', (e) => {
   }
   const merchant = String(f.get('merchant') || '');
   const pol = lookup(merchant);
-  const current = readCurrentOrders();
+  let current: Order[] | null;
+  try {
+    current = reviewDuplicateIntake({ merchant, orderNo: String(f.get('orderNo') || '') }, readCurrentOrders, message => window.confirm(message));
+  } catch (error) {
+    const hint = preview.querySelector<HTMLOutputElement>('#intake-deadline');
+    if (hint) hint.textContent = error instanceof Error ? error.message : 'Your draft is kept. Review saved returns before trying again.';
+    return;
+  }
   if (!current) return;
   const next: Order[] = [...current, {
     id: crypto.randomUUID(), merchant, orderNo: String(f.get('orderNo') || ''),
@@ -200,10 +243,11 @@ preview.addEventListener('submit', (e) => {
   }];
   if (!persistOrders(next)) return;
   if(preview.dataset.pendingResume === 'yes') { try { localStorage.removeItem('returnby.pending-delivery'); refreshPendingDelivery(); } catch { showStorageError('Return saved, but pending draft could not be cleared.'); } }
-  preview.hidden = true; paste.value = ''; render();
+  preview.hidden = true; paste.value = ''; refreshIntakeDeparture(); render();
 });
 
 function render() {
+  renderRefunds(orders, loadFailed);
   if (loadFailed) {
     for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
@@ -217,7 +261,7 @@ function render() {
   const rows=all.filter(r=>!query || [r.o.merchant,r.o.orderNo].some(value=>(value ?? "").toLocaleLowerCase().includes(query))).filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
   $('#search-results').textContent = query ? rows.length + ' of ' + all.length + ' saved returns match this search and date filter.' : '';
   if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match. Clear the search or choose another date filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)} · CLOCK ${h(o.windowStartDate || o.orderDate)}${o.windowStartDate ? ' (confirmed by you)' : ' (order date)'}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)} · CLOCK ${h(o.windowStartDate || o.orderDate)}${o.windowStartDate ? ' (confirmed by you)' : ' (order date)'}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-refund="${h(o.id)}">${o.refundState ? 'Review refund' : 'Track a refund'}</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
 }
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
@@ -232,8 +276,9 @@ list.addEventListener('click', (e) => {
     const current = readCurrentOrders();
     if (!current) return;
     try {
-      const plan = planSingleCalendar(current, displayed[0]);
-      downloadCalendar(plan.content, plan.filename);
+      // Retain the card's freshness check before opening the shared alert review.
+      planSingleCalendar(current, displayed[0]);
+      calendarExporter.openSingle(displayed[0]);
       clearStorageError();
     } catch (error) {
       orders = current;
@@ -293,13 +338,14 @@ const orderEditor = bindOrderEditor({
   refresh: reloadOrders,
 });
 bindManualPurchase({ read: readCurrentOrders, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
-bindCalendarBatch({ read: load, filter: () => filterMode });
+const calendarExporter = bindCalendarBatch({ read: load, filter: () => filterMode });
 const removalUndo = bindRemovalUndo({
   read: readCurrentOrders,
   commit: next => { if (!persistOrders(next)) return false; render(); return true; },
   refresh: current => { orders = current; render(); },
   focusTracker: () => $('#filter-' + filterMode).focus(),
 });
+bindRefunds({ commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
 bindTabSync({ refresh: reloadOrders });
 reloadOrders();
 
@@ -316,3 +362,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRe
     .find(button => button.dataset[action] === id);
   (next ?? $<HTMLButtonElement>('#filter-' + filterMode)).focus({ preventScroll: true });
 });
+
+bindSavedReturnsCsv(read);
+
+bindKnownDeadlines();

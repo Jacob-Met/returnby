@@ -1,3 +1,4 @@
+import { bindTripDeadlineHandoff } from './trip-deadline-handoff-ui';
 import './trip-checklist.css';
 import { returnDueDate } from './deadline';
 import {
@@ -110,6 +111,7 @@ function selectionChanged(save = true): void {
   retirePreview();
   renderPacking();
   if (save) persist();
+  refreshDeadlineHandoff();
 }
 function renderPacking(): void {
   packing.replaceChildren();
@@ -221,6 +223,7 @@ function addOrderOption(order: SavedSnapshot['orders'][number]): void {
   });
   options.append(label);
 }
+let refreshDeadlineHandoff = () => {};
 function refresh(): void {
   snapshot = null;
   selected.clear();
@@ -253,6 +256,7 @@ function refresh(): void {
     readMessage.classList.add('error');
     packing.replaceChildren();
   }
+  refreshDeadlineHandoff();
 }
 function loadPlan(): void {
   try {
@@ -338,4 +342,17 @@ window.addEventListener('storage', event => {
 window.addEventListener('focus', () => { validateCurrent(); });
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') validateCurrent(); });
 window.addEventListener('beforeunload', event => { if (unsaved) { event.preventDefault(); event.returnValue = ''; } });
+refreshDeadlineHandoff = bindTripDeadlineHandoff({
+  getSnapshot: () => snapshot,
+  validate: validateCurrent,
+  selected,
+  add: ids => {
+    for (const id of ids) { selected.add(id); entryFor(id).selected = true; }
+    options.querySelectorAll<HTMLInputElement>('input').forEach(input => {
+      input.checked = selected.has(input.value);
+      input.closest('label')?.classList.toggle('chosen', input.checked);
+    });
+    selectionChanged();
+  },
+});
 loadPlan();

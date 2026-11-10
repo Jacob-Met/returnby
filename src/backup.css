@@ -17,3 +17,12 @@
 #backup-rows li { margin: .65rem 0; line-height: 1.5; overflow-wrap: anywhere; }
 #backup-page { font-size: .875rem; }
 @media (max-width: 600px) { .backup-panel { padding: 1rem; } }
+
+#backup-trip {border-top:1px solid var(--line,#d7d3c7);margin:1.25rem 0;padding-top:1rem}
+#backup-trip h3 {font:1.35rem Georgia,serif;margin:.25rem 0 .7rem}
+#backup-trip-orders {padding-left:1.25rem;max-height:18rem;overflow:auto}
+#backup-trip-orders li {white-space:pre-wrap;overflow-wrap:anywhere;font-size:.875rem;line-height:1.55;margin:.7rem 0}
+#backup-trip-replace-label {display:block;margin:1rem 0;line-height:1.5}
+#backup-trip-replace-label[hidden] {display:none}
+#backup-trip-replace {margin-right:.5rem}
+#backup-trip-restore {min-height:44px;padding:.7rem 1rem;background:#315b4d;color:white;border:0;margin:.5rem .75rem .5rem 0;cursor:pointer}

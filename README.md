@@ -1,5 +1,12 @@
 # ReturnBy
 
+## Current source-pinned download — preserved email review
+
+[Download ReturnBy browser ZIP](./downloads/returnby-intake-613f15f/ReturnBy-613f15f-browser.zip) · [source, launch instructions, checksum and limits](./downloads/returnby-intake-613f15f/README.md) · [desktop](./downloads/returnby-intake-613f15f/review-1440.png) · [phone](./downloads/returnby-intake-613f15f/review-390.png).
+
+Merged source613f15f adds unsaved email-review departure protection and includes current manual purchases, portable prepared trips, refund follow-up and CSV export. Extract and run the included Python3 launcher. Actual packaged Linux/Chrome entrypoint exercised at desktop and phone sizes. Browser departure warnings let you cancel leaving and retain your review; this does not provide crash recovery. Independent audience judgment is tracked separately.
+
+
 ## Current downloadable build — confirmed return-window start
 
 **[Download source-pinned ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-clock-92baeb9-browser.zip)** · [launch instructions, checksum and tested limitations](./downloads/ReturnBy-2026-11-10-clock-92baeb9.md) · [actual desktop screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-desktop.png) · [actual phone screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-mobile.png).
@@ -71,7 +78,7 @@ Unzip the package, install Node.js 20+ if necessary, run `START-WINDOWS.cmd` on 
 
 **Previous version:** [ReturnBy v0.2.0 browser ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/9cd8d0d5f2fd8ba32a0525db65e292cae92ccdcf/downloads/v0.2.0/ReturnBy-v0.2.0-browser.zip), built from [b1c32488](https://github.com/Jacob-Met/returnby/commit/b1c32488f1d198a5461abf61bf98467ff99bba55). That historical package has **Python 3** launchers and uses port **8769**; it predates the new calendar freshness fix. Both downloads are on versioned GitHub distribution branches because the connected GitHub integration cannot create formal Releases.
 
-ReturnBy turns an order-confirmation email into a reviewable return deadline and a calendar reminder. The visitor supplies the email text; the browser runs the repository's real rule-based parser, merchant-policy lookup, date calculation, status logic and RFC 5545 export. It is a multi-order tracker, not a canned result: correct extracted fields, override a return window, save several deadlines, filter the list and export a three-day alarm for any order.
+ReturnBy turns an order-confirmation email into a reviewable return deadline and a calendar reminder. The visitor supplies the email text; the browser runs the repository's real rule-based parser, merchant-policy lookup, date calculation, status logic and RFC 5545 export. It is a multi-order tracker, not a canned result: correct extracted fields, override a return window, save several deadlines, filter the list and review a useful upcoming calendar alert for any order.
 
 ## Import exported email confirmations locally
 
@@ -96,7 +103,7 @@ Cancel and Escape leave the saved tracker and new-order draft intact.
 
 **Download selected reminders** creates one local `.ics` file containing one all-day
 event per selected order, sorted by deadline and then saved identity. Each event retains
-the existing per-order calendar UID and three-day display alarm. The file includes the
+the existing per-order calendar UID. Choose an alert lead time and local hour, or no alert. Exact alert times are reviewed before download; elapsed lead times use a visible fifteen-minute catch-up and past deadlines receive no alarm. The file includes the
 merchant, order number and deadline; it excludes the order total and original email.
 Open the downloaded file in your calendar application to import it. The receiving calendar
 decides how to handle an already imported UID; this is a file export, not a subscription.
@@ -112,8 +119,7 @@ transaction across browser tabs.
 Invalid dates/windows and duplicate or unsupported calendar identities remain visible with
 an explanation and cannot be selected. Other valid returns can still be exported. The dialog
 supports up to 2,000 saved records, with 4,096-character limits on exported fields and a
-4 MiB calendar limit; oversized selections must be reduced. Existing single-order reminders
-continue to use the same calendar serialization.
+4 MiB calendar limit; oversized selections must be reduced. Single-order reminders open the same alert review and use the same calendar serialization. See [upcoming alert behavior and independent judgment](docs/calendar-alerts/README.md).
 
 The native tests cover exact event identity/text, fixed dates, Unicode folding, selection,
 stale-record refusal and output admission. A separate optional real-browser receiver is
@@ -282,3 +288,26 @@ From the intake panel, open **Review several order confirmations together**. Add
 ## Find a saved return
 
 Use **Find a saved return** above the tracker to search a store name or order number. Matching ignores case and surrounding spaces and works together with All, Due soon, and Expired. Clear search restores the current date filter. Search does not change saved records, the deadline overview, or calendar selection; the calendar dialog continues to follow the date filter and lets you review every selection.
+
+## Carry a prepared trip to another browser
+
+Download backup now includes the saved trip date, selected orders, packing checks and notes. Keep the file private. In the receiving browser, choose the backup, review and import its orders, then choose Restore trip. If that browser already has a different trip, confirm its replacement explicitly; importing orders alone never overwrites the trip. Old order-only backups still work and leave the saved trip untouched.
+
+Changed order facts require checking store instructions again. Notes for unavailable orders remain recoverable but those orders are not selected. A failed trip save leaves the reviewed file open for retry. This is an explicit file transfer, not account synchronization.
+
+## Spreadsheet export
+
+Open **Export or restore saved returns**, then **Download all saved returns as CSV**.
+The file contains every currently saved purchase, regardless of tracker filters, with
+its saved amount, order number, return window, confirmed clock start and calculated
+deadline. It reads storage again on each click. Original emails and trip notes are
+excluded. Formula-like cells receive a leading apostrophe; the completion message
+reports that protection. Import order-number columns as text to preserve leading
+zeros. CSV is for spreadsheet review; use the JSON backup for exact restoration.
+This adapts the existing CSV contribution in PR #25 to current confirmed clocks.
+
+## Enter a known return-by date
+
+In manual purchase entry or Edit details, open **Know the exact return-by date?**, enter the date you checked with the retailer, and select **Use this return-by date**. ReturnBy calculates the day window from the purchase date or your confirmed clock start. While that helper is applied in the open form, changing the clock start recalculates days to keep the chosen date. Editing days directly returns to a day window. Review the proposed deadline before saving.
+
+The saved record remains a day window, so future edits to its clock start can change the deadline; use the helper again to retain a retailer-confirmed date. The date must be after the clock start. This does not verify return eligibility or hardcode holiday policies. The motivating example was Apple's dated US holiday return policy, inspected on November 10, 2026 at https://www.apple.com/shop/help/returns_refund; eligibility and exclusions remain the shopper's responsibility.

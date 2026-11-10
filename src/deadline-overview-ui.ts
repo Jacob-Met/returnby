@@ -35,6 +35,7 @@ export function bindDeadlineOverview({
   const selectedTitle = element('overview-selected-title');
   const selectedSummary = element('overview-selected-summary');
   const records = element<HTMLOListElement>('overview-records');
+  const tripLink = panel.querySelector<HTMLAnchorElement>('#overview-trip-link');
   const pager = element('overview-record-pagination');
   const previousPage = element<HTMLButtonElement>('overview-record-previous');
   const nextPage = element<HTMLButtonElement>('overview-record-next');
@@ -61,6 +62,11 @@ export function bindDeadlineOverview({
     selectedTitle.dataset.date = selected;
     selectedTitle.textContent = 'Saved returns due ' + selected;
     const count = selectedDay.records.length;
+    if (tripLink) {
+      tripLink.hidden = !count;
+      tripLink.href = './trip-checklist.html?deadline=' + encodeURIComponent(selected);
+      tripLink.textContent = 'Plan a trip for these ' + count + (count === 1 ? ' return →' : ' returns →');
+    }
     const pages = Math.max(1, Math.ceil(count / OVERVIEW_PAGE_SIZE));
     page = Math.min(Math.max(0, page), pages - 1);
     selectedSummary.textContent = count
