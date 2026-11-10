@@ -57,3 +57,14 @@ export function buildIcsCalendar(reminders: readonly CalendarReminder[], stamp =
 export function buildIcs(o: CalendarReminder, stamp = new Date()): string {
   return buildIcsCalendar([o], stamp);
 }
+
+/** A distinct timed event for checking a refund, separate from a return deadline. */
+export function buildRefundIcs(o: { id: string; merchant: string; orderNo?: string; amount?: string; at: string }, stamp = new Date()): string {
+  const title = esc(`Check refund: ${o.merchant || 'purchase'}${o.orderNo ? ' #' + o.orderNo : ''}`);
+  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT', `UID:${esc(o.id)}@refund.returnby`, `DTSTAMP:${timestamp(stamp)}`,
+    `DTSTART:${timestamp(new Date(o.at))}`, `DTEND:${timestamp(new Date(new Date(o.at).getTime() + 15 * 60_000))}`,
+    `SUMMARY:${title}`, `DESCRIPTION:${esc((o.amount ? 'Expected refund: ' + o.amount + '. ' : '') + 'Check your account or contact the store. This is your personal reminder; ReturnBy has not verified receipt of the refund. Remove this calendar entry if the refund arrives.')}`,
+    'CLASS:PRIVATE', 'TRANSP:TRANSPARENT', 'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`, 'TRIGGER:PT0S', 'END:VALARM',
+    'END:VEVENT', 'END:VCALENDAR', ''].map(fold).join('\r\n');
+}
