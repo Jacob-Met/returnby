@@ -1,5 +1,6 @@
 import { previewEdit, EditError, type EditDraft } from './edit';
 import type { Order } from './store';
+import { reviewPurchaseAddition } from './purchase-addition';
 
 export function manualPurchase(draft: EditDraft, id: string, createdAt: string) {
   if (!draft.merchant.trim()) throw new EditError('Enter the store name from your receipt.', 'merchant');
@@ -31,7 +32,9 @@ export function bindManualPurchase(options: { read: () => Order[] | null; commit
       const result = manualPurchase(draft(), crypto.randomUUID(), new Date().toISOString());
       const current = options.read();
       if (!current) throw new Error("Saved returns couldn't be read. Close this draft, retry loading saved returns, then reopen it.");
-      if (!options.commit([...current, result.order])) throw new Error("The purchase wasn't saved. Your draft is still here; check browser storage and try again.");
+      const addition = reviewPurchaseAddition(current, result.order, options.read, message => window.confirm(message));
+      if (!addition) return;
+      if (!options.commit(addition)) throw new Error("The purchase wasn't saved. Your draft is still here; check browser storage and try again.");
       form.reset(); refresh(); dialog.close();
       const feedback = document.querySelector('#edit-feedback');
       if (feedback) feedback.textContent = result.order.merchant + ' saved. Return by ' + result.due + '.';
