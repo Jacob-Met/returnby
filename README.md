@@ -171,3 +171,7 @@ receiving are reported separately. Production remains dependency-free; automated
 and its native receiving fixtures unchanged.
 
 This monthly overview originated in the reviewed PR #20 integration branch. The mainline integration preserves it alongside the trip checklist and newer deadline preview.
+
+## Review several confirmations
+
+Open **Review several order confirmations together** from the intake panel. Add pasted confirmations or local UTF-8 text files, correct each order, select the fields you reviewed, and inspect one final preview before saving the selection beside your existing orders. Raw confirmation text and unsaved drafts stay only in page memory. The page checks possible matching store/order numbers and refuses a changed or unreadable saved snapshot. See [the batch intake guide](docs/BATCH_INTAKE.md) for supported input, retry and concurrency limits.
