@@ -1,3 +1,5 @@
+import './receipt-policy.css';
+import { receiptPolicy } from './receipt-policy';
 import './batch-intake.css';
 import {
   appendConfirmations, validateDraft, prepareBatch, commitBatch,
@@ -114,6 +116,14 @@ function renderDrafts() {
       fields.append(label);
     }
     card.append(fields);
+    const policyEvidence = receiptPolicy(draft.text);
+    if (policyEvidence.passages.length) {
+      const evidence = element('section', undefined, 'receipt-policy-evidence');
+      evidence.setAttribute('aria-label', 'Receipt return terms');
+      evidence.append(element('h3', 'Return terms in this receipt'), element('p', policyEvidence.message));
+      policyEvidence.passages.forEach(passage => evidence.append(element('blockquote', passage)));
+      card.append(evidence);
+    }
     const original = element('details');
     original.append(element('summary', 'Read the original confirmation'), element('pre', draft.text));
     card.append(original);
