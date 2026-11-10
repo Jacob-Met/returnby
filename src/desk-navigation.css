@@ -1,0 +1,53 @@
+/* A phone is a return list first; intake is an explicit, reversible action. */
+.desk-grid > [hidden], .desk-intro-action > [hidden], .desk-back[hidden] { display: none !important; }
+.desk-back { margin: 0 0 18px; color: var(--copper); }
+#intake-title, #returns-title, #list .card { scroll-margin-top: 20px; }
+#intake-title:focus, #returns-title:focus { outline: none; }
+#list .card:focus { outline: 3px solid var(--copper); outline-offset: 3px; }
+.desk-feedback:empty { display: none; }
+.desk-feedback .warn { margin: 12px 0; padding: 12px 16px; border-left: 4px solid var(--danger); color: var(--danger); background: var(--white); font-size: 14px; line-height: 1.5; }
+.desk-intro-action #desk-add { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+@media (max-width: 900px) {
+  .desk-intro { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; }
+  .desk-kicker, .desk-intro[data-view="returns"] .desk-intro-action p { display: none; }
+  .desk-intro h1 { font-size: 32px; letter-spacing: -.03em; }
+  .desk-intro-action { display: block; }
+  .desk-intro[data-view="intake"] { display: block; }
+  .desk-intro[data-view="intake"] .desk-intro-action p { margin-top: 8px; }
+  .desk-intro-action #desk-add { background: var(--copper); color: white; padding: 10px 12px; text-decoration: none; white-space: nowrap; font-size: 11px; }
+  .desk-grid .ledger-panel { padding: 18px 16px; }
+  .ledger-panel > .panel-heading .eyebrow, .ledger-panel > .panel-heading > p:last-child { display: none; }
+  .desk-grid .ledger-panel .panel-heading h2 { font-size: 25px; }
+  .ledger-panel .summary-grid { display: flex; justify-content: space-between; gap: 12px; margin: 14px 0; padding-bottom: 14px; border-bottom: 1px solid #58716b; }
+  .ledger-panel .summary-grid div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; padding: 0; background: none; border: 0; }
+  .ledger-panel .summary-grid span { font-size: 9px; }
+  .ledger-panel .summary-grid strong { margin: 0; font-size: 23px; order: -1; }
+  .ledger-panel .filter-row { margin-bottom: 10px; }
+  .ledger-panel .filter { min-height: 44px; padding: 10px 13px; font-size: 11px; }
+  .tracker-search { margin: 0 0 10px; }
+  .tracker-search label { font-size: 12px; font-weight: 500; }
+  .tracker-search input { min-height: 44px; padding: 10px; font-size: 16px; }
+  #search-results:empty, #edit-feedback:empty, #calendar-feedback:empty { display: none; }
+  .calendar-toolbar { margin: 0 0 14px; }
+  .calendar-toolbar > .list-note { display: none; }
+  .calendar-toolbar #calendar-open { min-height: 44px; font-size: 11px; padding: 10px 12px; }
+  .ledger-panel .card { padding: 14px 12px; }
+  .ledger-panel .order-head strong { font-size: 22px; }
+  .ledger-panel .window-meta { font-size: 10px; line-height: 1.6; gap: 6px; }
+  .ledger-panel .source-tag, .ledger-panel .status-tag { font-size: 9px; }
+  .ledger-panel .order-foot { gap: 8px; }
+  .ledger-panel .return-by { font-size: 13px; }
+  .ledger-panel .days-left { font-size: 14px; }
+  .ledger-panel .order-actions { flex-wrap: wrap; gap: 8px; }
+  .ledger-panel .order-actions button { min-height: 44px; padding: 10px 9px; font-size: 10px; }
+  .ledger-panel .order-actions [data-ics] { flex-basis: 100%; text-align: left; }
+  .intake-panel .button { min-height: 44px; font-size: 11px; }
+  .intake-panel textarea, .preview-card input { font-size: 16px; }
+  .intake-panel .panel-heading > p:last-child { font-size: 13px; }
+}
+@media (max-width: 380px) {
+  .desk-intro h1 { font-size: 28px; }
+  .desk-intro-action #desk-add { font-size: 10px; padding: 10px; }
+  .ledger-panel .summary-grid { gap: 8px; }
+  .ledger-panel .summary-grid span { font-size: 8px; }
+}

@@ -10,7 +10,7 @@ export function manualPurchase(draft: EditDraft, id: string, createdAt: string) 
   return { ...result, order: { ...result.order, windowSource: 'user' as const } };
 }
 
-export function bindManualPurchase(options: { read: () => Order[] | null; commit: (next: Order[]) => boolean }) {
+export function bindManualPurchase(options: { read: () => Order[] | null; commit: (next: Order[]) => boolean; onSaved?: (order: Order) => void }) {
   const open = document.querySelector<HTMLButtonElement>('#manual-open');
   if (!open) return;
   const dialog = document.querySelector<HTMLDialogElement>('#manual-dialog')!;
@@ -38,6 +38,7 @@ export function bindManualPurchase(options: { read: () => Order[] | null; commit
       recovery.clear(); form.reset(); refresh(); dialog.close();
       const feedback = document.querySelector('#edit-feedback');
       if (feedback) feedback.textContent = result.order.merchant + ' saved. Return by ' + result.due + '.';
+      options.onSaved?.(result.order);
     } catch (cause) {
       error.textContent = cause instanceof Error ? cause.message : 'The purchase could not be saved.';
       error.hidden = false;

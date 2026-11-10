@@ -9,6 +9,8 @@ import { bindRefunds, renderRefunds } from './refund-ui';
 import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
 import { reviewDuplicateIntake } from './duplicate-intake';
 import './style.css';
+import './desk-navigation.css';
+import { bindDeskNavigation } from './desk-navigation';
 import './backup.css';
 import './edit.css';
 import './calendar-batch.css';
@@ -40,17 +42,19 @@ const pendingDesk=$<HTMLElement>('#pending-desk');
 let pendingId:string|null=null,pendingToken:string|null=null;
 function refreshPendingDelivery(){
  try{
+  const expanded=pendingDesk.querySelector('details')?.open ?? !window.matchMedia('(max-width: 760px)').matches;
   const saved=readPending(localStorage);pendingDesk.replaceChildren();pendingDesk.hidden=!saved.rows.length;
   if(!saved.rows.length){$('#pending-backup-note').hidden=true;return;}
-  const heading=document.createElement('h2');heading.textContent='Awaiting delivery ('+saved.rows.length+')';pendingDesk.append(heading);
-  const note=document.createElement('p');note.textContent='Keep each purchase here until you confirm delivery. No deadline or reminder has been created.';pendingDesk.append(note);
+  const collection=document.createElement('details');collection.open=expanded;
+  const heading=document.createElement('summary');heading.textContent='Awaiting delivery ('+saved.rows.length+') — review purchases';collection.append(heading);pendingDesk.append(collection);
+  const note=document.createElement('p');note.textContent='Keep each purchase here until you confirm delivery. No deadline or reminder has been created.';collection.append(note);
   for(const row of saved.rows){
    const line=document.createElement('div');line.className='pending-purchase';
    const label=document.createElement('p');label.textContent=(row.fields.merchant||'Purchase')+(row.fields.orderNo?' #'+row.fields.orderNo:'')+' · ordered '+(row.fields.orderDate||'date to review');line.append(label);
    const resume=document.createElement('button');resume.type='button';resume.className='button button-primary';resume.textContent='Review delivery';
-   resume.onclick=()=>{const latest=readPending(localStorage);const item=latest.rows.find(x=>x.id===row.id);if(!item){refreshPendingDelivery();return;}if(showPreview(item.fields)){pendingId=item.id;pendingToken=latest.token;preview.scrollIntoView({block:'start'});preview.querySelector<HTMLInputElement>('[name=windowStartDate]')?.focus();}};
+   resume.onclick=()=>{const latest=readPending(localStorage);const item=latest.rows.find(x=>x.id===row.id);if(!item){refreshPendingDelivery();return;}if(showPreview(item.fields)){deskNavigation.openIntake();pendingId=item.id;pendingToken=latest.token;preview.scrollIntoView({block:'start'});preview.querySelector<HTMLInputElement>('[name=windowStartDate]')?.focus();}};
    const remove=document.createElement('button');remove.type='button';remove.className='button button-link';remove.textContent='Discard pending purchase';remove.onclick=()=>{if(!window.confirm('Discard pending review for '+(row.fields.merchant||'this purchase')+'? Saved deadlines will stay.'))return;try{const latest=readPending(localStorage);if(JSON.stringify(latest.rows.find(x=>x.id===row.id))!==JSON.stringify(row))throw Error('This pending purchase changed. Review the refreshed details before discarding.');writePending(localStorage,latest.rows.filter(x=>x.id!==row.id),latest.token);refreshPendingDelivery();}catch(e){showStorageError(e instanceof Error?e.message:'Could not remove pending purchase.');}};
-   line.append(resume,remove);pendingDesk.append(line);
+   line.append(resume,remove);collection.append(line);
   }
   $('#pending-backup-note').hidden=!saved.rows.length;
   $('#pending-backup-note').textContent='Your backup includes these reviewed pending purchases. They still need delivery confirmation before a deadline is created.';
@@ -75,6 +79,7 @@ const reviewSignature = () => {
     .map(name => [name, fields.get(name) ?? '']));
 };
 let filterMode: 'all' | 'due' | 'expired' = 'all';
+const deskNavigation = bindDeskNavigation();
 
 const loadError = "Couldn't load saved returns. Try loading again before saving, or clear saved returns to start over.";
 
@@ -284,10 +289,19 @@ preview.addEventListener('submit', (e) => {
   if(pendingId){try{if(readPending(localStorage).token!==pendingToken)throw Error('Pending purchases changed. Reopen this purchase before confirming delivery.');}catch(e){showStorageError(e instanceof Error?e.message:'Could not check pending purchase.');return;}}
   if (!persistOrders(next)) return;
   if(pendingId){try{const saved=readPending(localStorage);writePending(localStorage,saved.rows.filter(x=>x.id!==pendingId),saved.token);pendingId=null;pendingToken=null;refreshPendingDelivery();}catch{showStorageError('Return saved, but pending review could not be cleared. It remains available; avoid saving it again.');}}
-  preview.hidden = true; paste.value = ''; refreshIntakeDeparture(); render();
+  preview.hidden = true; paste.value = ''; refreshIntakeDeparture(); revealSavedOrder(next[next.length - 1]);
 });
 
+function revealSavedOrder(order: Order) {
+  filterMode = 'all';
+  search.value = '';
+  render();
+  $('#edit-feedback').textContent = (order.merchant || 'Purchase') + ' saved. Return by ' + returnDueDate(order) + '.';
+  deskNavigation.saved(order.id);
+}
+
 function render() {
+  deskNavigation.update(orders.length, loadFailed);
   renderRefunds(orders, loadFailed);
   if (loadFailed) {
     for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
@@ -302,7 +316,7 @@ function render() {
   const rows=all.filter(r=>!query || [r.o.merchant,r.o.orderNo].some(value=>(value ?? "").toLocaleLowerCase().includes(query))).filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
   $('#search-results').textContent = query ? rows.length + ' of ' + all.length + ' saved returns match this search and date filter.' : '';
   if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match. Clear the search or choose another date filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)} · CLOCK ${h(o.windowStartDate || o.orderDate)}${o.windowStartDate ? ' (confirmed by you)' : ' (order date)'}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-refund="${h(o.id)}">${o.refundState ? 'Review refund' : 'Track a refund'}</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}" data-order-id="${h(o.id)}" tabindex="-1"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)} · CLOCK ${h(o.windowStartDate || o.orderDate)}${o.windowStartDate ? ' (confirmed by you)' : ' (order date)'}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-refund="${h(o.id)}">${o.refundState ? 'Review refund' : 'Track a refund'}</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
 }
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
@@ -385,7 +399,7 @@ const orderEditor = bindOrderEditor({
   commit: next => { if (!persistOrders(next)) return false; render(); return true; },
   refresh: reloadOrders,
 });
-bindManualPurchase({ read: readCurrentOrders, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
+bindManualPurchase({ read: readCurrentOrders, commit: next => { if (!persistOrders(next)) return false; render(); return true; }, onSaved: revealSavedOrder });
 const calendarExporter = bindCalendarBatch({ read: load, filter: () => filterMode });
 const removalUndo = bindRemovalUndo({
   read: readCurrentOrders,

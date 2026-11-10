@@ -22,7 +22,7 @@ try{
  await wait(1000);
 
  const base='From: Birch Trail\nOrder #: C-2100\nOrder date: November 10, 2026\nTotal: $42.00\n';
- const open=async text=>{await evaluate("document.getElementById('paste').value="+JSON.stringify(text)+";document.getElementById('find').click()");await wait(100);};
+ const open=async text=>{await evaluate("document.getElementById('desk-add')?.click()");await evaluate("document.getElementById('paste').value="+JSON.stringify(text)+";document.getElementById('find').click()");await wait(100);};
  await open(base+'Returns within 21 days after delivery.');
  assert.equal(await evaluate("document.querySelector('#preview [name=windowDays]').value"),'21');
  assert.match(await evaluate("document.querySelector('.receipt-policy-evidence').textContent"),/21 days/);
