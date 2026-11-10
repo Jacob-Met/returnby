@@ -10,6 +10,10 @@ Unzip the package, install Node.js 20+ if necessary, run `START-WINDOWS.cmd` on 
 
 ReturnBy turns an order-confirmation email into a reviewable return deadline and a calendar reminder. The visitor supplies the email text; the browser runs the repository's real rule-based parser, merchant-policy lookup, date calculation, status logic and RFC 5545 export. It is a multi-order tracker, not a canned result: correct extracted fields, override a return window, save several deadlines, filter the list and export a three-day alarm for any order.
 
+## Multiple order confirmations
+
+Open **Review several order confirmations together** from the main intake panel. Paste or select local text confirmations, review each parsed order independently, correct uncertain dates and return policies, and preview any possible duplicate identities before saving the selected set. The original confirmation text is held only in memory and is not persisted. The batch page reuses ReturnBy's existing parser and saved-record validation.
+
 ## Privacy
 
 The original pasted email is not sent or persisted. The user must review and save fields; only merchant, order number, total, order date, return-window days and timestamps are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
