@@ -37,6 +37,39 @@ let planReadable = true;
 let unsaved = false;
 let unavailable: PlannedOrder[] = [];
 const selected = new Set<string>();
+const tripSearch = el<HTMLInputElement>('trip-search');
+const clearSearch = el<HTMLButtonElement>('trip-search-clear');
+const searchResults = el<HTMLParagraphElement>('trip-search-results');
+const searchEmpty = el<HTMLParagraphElement>('trip-search-empty');
+const optionRows: { label: HTMLLabelElement; id: string; merchant: string; reference: string }[] = [];
+const searchable = (value: string) => value.trim().replace(/\s+/g, ' ').toLocaleLowerCase();
+
+// Filtering changes only which existing choices are visible. Selection, packing
+// notes and a prepared printable sheet belong to the trip, not the search.
+function filterOrderOptions(): void {
+  const query = searchable(tripSearch.value);
+  const referenceQuery = query.replace(/^#/, '');
+  let shown = 0;
+  let selectedShown = 0;
+  for (const row of optionRows) {
+    const matches = !query || row.merchant.includes(query)
+      || (!!referenceQuery && row.reference.includes(referenceQuery));
+    row.label.hidden = !matches;
+    if (matches) {
+      shown++;
+      if (selected.has(row.id)) selectedShown++;
+    }
+  }
+  clearSearch.hidden = tripSearch.value.length === 0;
+  searchResults.textContent = query
+    ? shown + ' of ' + optionRows.length + ' saved orders shown.'
+    : optionRows.length + (optionRows.length === 1 ? ' saved order.' : ' saved orders.');
+  searchEmpty.hidden = shown !== 0;
+  const elsewhere = selected.size - selectedShown;
+  summary.textContent = selected.size + (selected.size === 1 ? ' order selected' : ' orders selected')
+    + (elsewhere > 0 ? ' · ' + elsewhere + ' outside this search' : '');
+}
+
 const planStorage = {
   getItem: (key: string) => window.localStorage.getItem(key),
   setItem: (key: string, value: string) => window.localStorage.setItem(key, value),
@@ -104,7 +137,7 @@ function entryFor(id: string): PlannedOrder {
   return entry;
 }
 function selectionChanged(save = true): void {
-  summary.textContent = selected.size + (selected.size === 1 ? ' order selected' : ' orders selected');
+  filterOrderOptions();
   previewButton.disabled = stale || selected.size === 0;
   clearButton.disabled = selected.size === 0;
   el<HTMLAnchorElement>('pack-selected').hidden = selected.size === 0;
@@ -221,6 +254,7 @@ function addOrderOption(order: SavedSnapshot['orders'][number]): void {
     label.classList.toggle('chosen', check.checked);
     selectionChanged();
   });
+  optionRows.push({ label, id: order.id, merchant: searchable(order.merchant), reference: searchable(order.orderNo || '') });
   options.append(label);
 }
 let refreshDeadlineHandoff = () => {};
@@ -229,6 +263,7 @@ function refresh(): void {
   selected.clear();
   stale = false;
   options.replaceChildren();
+  optionRows.length = 0;
   form.hidden = true;
   retirePreview();
   showNotice('');
@@ -276,6 +311,16 @@ function loadPlan(): void {
   refresh();
 }
 el<HTMLButtonElement>('refresh-orders').addEventListener('click', refresh);
+tripSearch.addEventListener('input', filterOrderOptions);
+tripSearch.addEventListener('keydown', event => {
+  if (event.key === 'Enter') event.preventDefault();
+});
+clearSearch.addEventListener('click', () => {
+  tripSearch.value = '';
+  filterOrderOptions();
+  tripSearch.focus();
+});
+
 clearButton.addEventListener('click', () => {
   selected.clear();
   plan.orders.forEach(entry => { entry.selected = false; });
