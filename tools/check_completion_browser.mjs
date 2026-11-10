@@ -49,6 +49,12 @@ try {
   const lamp = await add('Juniper Home', 'LAMP-2077', '2026-10-01', 15);
   const shoes = await add('Harbor Footwear', 'SHOES-3510', '2026-11-01', 30);
   assert.equal(await page.locator('#tracked-count').innerText(), '3');
+  const plannedTrip = await context.newPage();
+  await plannedTrip.goto(new URL('trip-checklist.html', base).href);
+  await plannedTrip.locator('#order-options input[value="' + coat.id + '"]').check();
+  await plannedTrip.locator('#packing-planner textarea').fill('Bring the QR code to the service desk.');
+  await page.bringToFront();
+
   await page.locator('#paste').fill('UNSAVED SECOND ORDER — KEEP THIS TEXT');
   await page.locator('#find').click();
   await page.locator('#preview [name=merchant]').fill('Unsaved draft merchant');
@@ -71,6 +77,13 @@ try {
   assert.equal(await page.locator('#tracked-count').innerText(), '2');
   assert.equal(await page.locator('#completed-count').innerText(), '1');
   assert.equal((await saved()).find(row => row.id === coat.id).completionKind, 'returned');
+  await plannedTrip.reload();
+  assert.equal(await plannedTrip.locator('#order-options input[value="' + coat.id + '"]').count(), 0);
+  assert.match(await plannedTrip.locator('.unavailable-plan').innerText(), /Bring the QR code/);
+  await plannedTrip.close();
+  checks.push('Finishing removes an actual saved trip selection while keeping its packing notes');
+  await page.bringToFront();
+
   assert.deepEqual(await page.locator('#preview input').evaluateAll(inputs => inputs.map(input => ({ name: input.name, value: input.value }))), draft);
   assert(await page.locator('#preview').isVisible());
   assert.equal(await page.locator('#paste').inputValue(), 'UNSAVED SECOND ORDER — KEEP THIS TEXT');
@@ -87,6 +100,14 @@ try {
   assert.equal(await page.locator('#list [role=progressbar]').count(), 0);
   assert.match(await page.locator('#list').innerText(), /Returned/);
   assert.match(await page.locator('#list').innerText(), /Kept/);
+  const closedLamp = (await saved()).find(row => row.id === lamp.id);
+  await page.locator('[data-del="' + lamp.id + '"]').click();
+  assert.equal(await page.locator('#completed-count').innerText(), '1');
+  await page.locator('#undo-removal').click();
+  assert.equal(await page.locator('#completed-count').innerText(), '2');
+  assert.deepEqual((await saved()).find(row => row.id === lamp.id), closedLamp);
+  checks.push('Actual Remove and Undo restore a finished order without reopening its deadline');
+
   await page.screenshot({ path: resolve(output, 'history-desktop.png') });
   checks.push('Returned and kept leave all active urgency counts and render quiet History records');
   await page.locator('#return-search').fill('coat-1042');

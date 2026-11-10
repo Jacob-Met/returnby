@@ -1,5 +1,6 @@
 import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackup, planImport, type ImportPlan } from './backup';
-import { dueDate } from './deadline';
+import { returnDueDate } from './deadline';
+import { completionLabel } from './completion';
 import type { Order } from './store';
 
 type Tracker = { read: () => unknown; commit: (orders: Order[]) => boolean };
@@ -47,9 +48,9 @@ export function bindBackup(tracker: Tracker) {
       const o = row.order;
       const action = row.action === 'add' ? 'Add' : row.action === 'skip' ? 'Already saved' : 'Conflict';
       const source = o.windowSource === 'policy' ? 'saved store policy' : o.windowSource === 'default' ? 'saved fallback' : 'your saved rule';
-      const lifecycle = o.completedAt === undefined ? 'Open' : `Completed ${o.completedAt.slice(0, 10)}`;
-      const changed = row.changedFields.map(field => field === 'completedAt' ? 'completion status/date' : field);
-      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ${lifecycle}; ordered ${o.orderDate}, ${o.completedAt === undefined ? 'return by' : 'original return-by'} ${dueDate(o.orderDate, o.windowDays)} (${o.windowDays} days; ${source})${changed.length ? `. Different fields: ${changed.join(', ')}.` : ''}`;
+      const lifecycle = o.completedAt === undefined ? 'Open' : `${completionLabel(o)} ${o.completedAt.slice(0, 10)}`;
+      const changed = row.changedFields.map(field => field === 'completedAt' ? 'completion status/date' : field === 'completionKind' ? 'completion outcome' : field);
+      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ${lifecycle}; ordered ${o.orderDate}, ${o.completedAt === undefined ? 'return by' : 'original return-by'} ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})${changed.length ? `. Different fields: ${changed.join(', ')}.` : ''}`;
       return li;
     }));
     get('backup-page').textContent = preview.rows.length ? `${start + 1}–${Math.min(start + PAGE_SIZE, preview.rows.length)} of ${preview.rows.length} orders` : 'No orders in this backup';

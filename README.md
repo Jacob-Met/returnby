@@ -2,13 +2,21 @@
 
 ReturnBy is a private return desk for purchases across stores, including paper receipts. Add an order manually or import its confirmation, review the retailer's terms, save the deadline, and keep a useful record of what happened. Raw receipt text stays in the current browser tab; only reviewed fields are saved locally.
 
-## Latest published download — paper-receipt purchases
+## Latest published download — confirmed return-window start
 
-[Download ReturnBy](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-manual-1a76717-browser.zip) · [source, launch steps, checksum and limitations](./downloads/ReturnBy-2026-11-10-manual-1a76717.md)
+**[Download source-pinned ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-clock-92baeb9-browser.zip)** · [launch instructions, checksum and tested limitations](./downloads/ReturnBy-2026-11-10-clock-92baeb9.md) · [actual desktop screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-desktop.png) · [actual phone screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-mobile.png).
+
+Adds a **user-confirmed return-window start date** when a retailer counts from delivery rather than purchase. The same reviewed date now flows through saved orders, corrected deadlines, calendar reminders, backups, monthly planning, batch intake and trip sheets; older orders retain their order-date behavior. Includes manual-purchase entry, HTML/.eml receipts and saved-order search. Built from the merged [source commit 92baeb9](https://github.com/Jacob-Met/returnby/commit/92baeb99324ce60538bdefb3c36768fe419dfe43); independently exercised from its extracted ZIP in Chrome. **SHA-256:** f9c7a2b294a462e9263b52236740bc2cae40ce98e511ecf62227ccb5e5d89cb9.
+
+Extract the archive, run the local Python 3 launcher for your platform, and open http://127.0.0.1:8769/. All order data stays in your browser. Confirm retailer policy yourself. This is a downloadable local browser application, **not a hosted service or formal GitHub Release**.
+
+## Previous downloadable build — paper-receipt purchases
+
+[Download ReturnBy](https://github.com/Jacob-Met/returnby/releases/download/returnby-manual-2026-11-10/ReturnBy-2026-11-10-manual-1a76717-browser.zip) · [source, launch steps, checksum and limitations](./downloads/ReturnBy-2026-11-10-manual-1a76717.md)
 
 Adds direct manual purchase entry alongside email import, saved deadlines and reminder exports. Extract, run the Python3 launcher, then open http://127.0.0.1:8769/. Linux/Chrome exercised; Windows/macOS launchers packaged.
 
-## Published desk-first preview — November 10, 2026
+## Earlier downloadable browser preview — desk-first return tracker (November 10, 2026)
 
 **[Download ReturnBy v0.2.0 ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/ReturnBy-v0.2.0-browser.zip)** · [Actual desktop screenshot](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/desk-first-desktop.png) · [Actual phone screenshot](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/desk-first-phone.png) · [Package notes](https://github.com/Jacob-Met/returnby/blob/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/RELEASE_NOTES.md).
 
@@ -21,9 +29,17 @@ Extract the ZIP, install Python 3, launch Start ReturnBy.cmd (Windows), Start Re
 
 The integrated source includes the desk-first layout, manual purchase entry and an optional **Return clock starts** date confirmed by the user, such as a delivery date. Leaving that date blank counts from the order date. These fields do not verify a retailer's policy or delivery records.
 
-The 0.3.0 source also adds Returned/Kept History and reopening. Its combined downloadable package is being prepared; the published packages above must not be assumed to contain these new lifecycle features. Independent desktop/phone judgment accepted the lifecycle and History corrections at dba47a3. The later combined layout and confirmed-clock integration is undergoing its own final checks.
+The 0.3.0 source also adds Returned/Kept History and reopening, removal undo, and saved trip plans. Its combined downloadable package is being prepared; the published packages above must not be assumed to contain these new lifecycle features. Independent desktop/phone judgment accepted the lifecycle and History corrections at dba47a3. The later combined layout and confirmed-clock integration is undergoing its own final checks.
 
 See [the product standard and maintained ranked gap list](VISION.md). [Historical releases, checksums and launch notes](docs/RELEASE_HISTORY.md) remain available.
+
+## Earlier released HTML-receipt walkthrough
+
+[Watch the silent HTML-receipt walkthrough (MP4)](https://github.com/Jacob-Met/returnby/releases/download/returnby-html-receipt-2026-11-10/ReturnBy-HTML-receipt-walkthrough.mp4) · [Recording scope and reproduction](./docs/html-receipt-walkthrough/README.md)
+
+The actual released app now has a captioned, fictional-sample walkthrough: HTML-only email → review and correct the return window → explicit Save → find the order → download a calendar reminder and backup. This clip demonstrates this pinned release, not the newer builds above.
+
+[Download the browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-html-receipt-2026-11-10/ReturnBy-v0.2.0-browser.zip) · [release notes and exact source ZIP](https://github.com/Jacob-Met/returnby/releases/tag/returnby-html-receipt-2026-11-10)
 
 ## Finish a return and keep its history
 
@@ -47,7 +63,7 @@ The pure MIME-reader tests are `tests/eml.test.ts`; the production Chrome file-p
 
 ## Privacy
 
-The original pasted email is not sent or persisted. The user must review and save fields; only merchant, order number, total, order date, confirmed return-clock start when supplied, return-window days, recorded completion outcome and timestamps are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
+The original pasted email is not sent or persisted. The user must review and save fields; reviewed order details, confirmed return-clock starts, completion outcomes and timestamps, and trip plans you create stay in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the order list removes saved order records from this device; order backups do not include trip plans.
 
 ## Export several calendar reminders
 
@@ -105,6 +121,36 @@ The importer checks the entire versioned document before showing a plan. Unsuppo
 
 The preview is recalculated against readable browser storage before committing. If saved orders changed since review, the updated plan requires another Import click. Storage failures preserve the preview for retry. This does not add continuous cross-tab synchronization or a transaction spanning simultaneous writes from different tabs; avoid editing the tracker in another tab during import. The existing tracker controls and single-order calendar export keep their behavior.
 
+## Undo a removal
+
+After **Remove** succeeds, choose **Undo removal** in the tracker to restore that
+one return with its original reviewed details, saved ID and creation time. Your
+new-order draft stays in place. The current date filter remains selected, so a
+restored return may be outside the visible filter.
+
+The most recent successful removal is kept in this page's memory, with no short
+countdown. **Keep removed** discards that recovery; another successful removal,
+a successful confirmed **Clear saved returns**, or reloading/closing the page
+also ends it. A cancelled clear or a failed remove/save does not discard it.
+Undo does not change calendar files you already imported.
+
+Undo reads current saved returns and restores only the missing record, preserving
+newer unrelated changes. If an exact copy is already saved, it refreshes the
+tracker without writing a duplicate. A changed record with the same ID, or
+duplicate IDs, blocks Undo instead of overwriting saved data. The recovery stays
+available for retry or **Keep removed**. If browser storage fails, address the
+storage problem; use **Retry loading saved returns** when offered, then choose
+**Undo removal** again. Retrying a load does not discard the removed return.
+As with other tracker actions, this reread does not make simultaneous writes
+in separate tabs transactional.
+
+After building, `node tools/check_removal_undo_browser.mjs` checks the real
+controls with fictional returns and fresh browser profiles. Set
+`RETURNBY_PLAYWRIGHT` and `RETURNBY_CHROME` for an installed Playwright module
+and Chromium executable; `RETURNBY_BUILD` and `RETURNBY_UNDO_OUTPUT` select
+the build and receipt folders. The browser checks include keyboard recovery,
+draft retention, explicit storage retry, clear/reload lifetime and a 390px notice.
+
 ## Using more than one tab
 
 Saving a new reviewed order reads the latest saved tracker first, preserving
@@ -158,7 +204,7 @@ The app is browser-only; no AI runs in the page. The Devpost Learn planning docu
 
 ## Return-trip checklist
 
-From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. The page keeps the existing tracker unchanged; selections, paper check marks and notes are not saved. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
+From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. Your planned date, selected orders, packing checks and drop-off notes are saved in this browser, separately from the tracker. Reopening restores the editable trip with current order facts; orders no longer available are left out while their notes remain recoverable. Downloaded sheets contain your checked items and notes; marks added on paper do not update the app. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
 
 ## Reading long saved-order labels
 

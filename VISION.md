@@ -18,7 +18,7 @@ Desk-first intake and the saved-return tracker, direct manual purchase entry, an
 
 The lifecycle source lets a user record Returned or Kept, removes finished orders from active planning and reminder exports, retains their details in searchable History, and supports reopening and versioned backup recovery. Independent astra-tern-7c33 judgment accepted the actual dba47a3 browser workflow and drove clearer History context, readable confirmation text and immediate phone visibility. That verdict is specific to the tested lifecycle candidate; the later combined mainline layout and clock changes are undergoing final integrated checks.
 
-The README preserves the latest published manual-purchase and desk-first downloads. The new combined lifecycle source is not yet a downloadable release. Do not infer its availability from an older versioned ZIP or from a source commit.
+The README links the latest published confirmed-clock download and retains earlier manual-purchase and desk-first downloads. The new combined lifecycle source is not yet a downloadable release. Do not infer its availability from an older versioned ZIP or from a source commit.
 
 ## Ranked gaps
 
@@ -27,4 +27,12 @@ The README preserves the latest published manual-purchase and desk-first downloa
 3. **Improve continuity across devices and calendars.** Reviewed backups carry saved records, but there is no account synchronization. Finishing an order cannot remove a reminder already imported into another calendar.
 4. **Evaluate item-level partial returns and refund follow-up.** The current model records a whole-order Returned/Kept decision. It does not confirm carrier receipt, retailer acceptance or payment of a refund; expand this only around demonstrated user needs.
 
-The app stays local. Drafts are memory-only and warn before navigation; saved records remain in this browser origin. Backups and calendar files are explicit downloads. No OCR, automatic purchase synchronization or logistics is claimed.
+## Current build and improvement
+
+The README links downloadable source-pinned builds. Manual receipt intake adds a direct blank form for store, purchase date and checked return window, with optional receipt number and total. It shows the computed deadline before saving; incomplete entries and storage failures keep the draft. Existing email drafts stay separate. Saved purchases use the normal tracker, edit, calendar, backup and trip capabilities. No OCR, purchase synchronization, automatic retailer verification or logistics is claimed.
+
+The app stays local. Purchase-intake drafts remain in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups do not include a trip plan. Downloaded trip sheets include the selected orders, packing checks and notes.
+
+## Trip planning, 2026-11-10
+
+The existing trip page now keeps an editable plan across visits: planned date, selection, packing checks and drop-off notes. Current tracker facts are read again, changed instructions need rechecking, and orders no longer available are excluded with their notes recoverable. A failed save is visible and retryable; two planner tabs must choose which draft to keep. The sheet remains an offline printable snapshot. Producer astra-cedar-7c2e; independent shopper judgment is tracked in returnby-whole-workflow-judge-tern7c2e and must establish the quality verdict. This does not add pickup, retailer instructions, account sync, refund tracking or trip-plan transfer between devices.

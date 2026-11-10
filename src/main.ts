@@ -2,6 +2,9 @@ import './style.css';
 import './backup.css';
 import './edit.css';
 import './calendar-batch.css';
+import './removal-undo.css';
+import { captureRemoval } from './removal-undo';
+import { bindRemovalUndo } from './removal-undo-ui';
 import { parse } from './parse';
 import { lookup, knownMerchants } from './policy';
 import { dueDate, returnDueDate, daysLeft, status, todayISO } from './deadline';
@@ -108,7 +111,11 @@ function removeOrder(id: string) {
     showStorageError('This saved return changed or could not be selected. Review the refreshed tracker before removing it.');
     return;
   }
-  if (persistOrders(current.filter(order => order.id !== id))) render();
+  const removal = captureRemoval(saved[0], current.indexOf(saved[0]));
+  if (persistOrders(current.filter(order => order.id !== id))) {
+    render();
+    removalUndo.remember(removal);
+  }
 }
 
 const h = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
@@ -367,7 +374,7 @@ function clearAllTrackedOrders() {
     return;
   }
   // Reset remains available for a genuinely unreadable store, as before.
-  if (persistOrders([], true)) render();
+  if (persistOrders([], true)) { render(); removalUndo.clear(); }
 }
 $('#clear').addEventListener('click', clearAllTrackedOrders);
 storageRetry.addEventListener('click', reloadOrders);
@@ -380,6 +387,12 @@ const orderEditor = bindOrderEditor({
 });
 bindManualPurchase({ read: readCurrentOrders, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
 bindCalendarBatch({ read: load, filter: () => filterMode });
+const removalUndo = bindRemovalUndo({
+  read: readCurrentOrders,
+  commit: next => { if (!persistOrders(next)) return false; render(); return true; },
+  refresh: current => { orders = current; render(); },
+  focusTracker: () => $('#filter-' + filterMode).focus(),
+});
 bindTabSync({ refresh: reloadOrders });
 reloadOrders();
 
