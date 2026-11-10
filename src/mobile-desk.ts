@@ -10,9 +10,15 @@ function arrange() {
   const first = media?.matches && saved ? ledger : intake;
   const list = ledger.querySelector('#list');
   const calendar = ledger.querySelector('.calendar-toolbar');
+  const csv = ledger.querySelector('.csv-toolbar');
   if (list && calendar) {
-    if (media?.matches && saved && list.nextElementSibling !== calendar) list.after(calendar);
-    else if (!(media?.matches && saved) && list.previousElementSibling !== calendar) list.before(calendar);
+    if (media?.matches && saved && list.nextElementSibling !== (csv || calendar)) {
+      if (csv) list.after(csv, calendar);
+      else list.after(calendar);
+    } else if (!(media?.matches && saved) && list.previousElementSibling !== calendar) {
+      if (csv) list.before(csv, calendar);
+      else list.before(calendar);
+    }
   }
   grid.classList.toggle('has-saved-returns', saved);
   if (grid.firstElementChild === first) return;
