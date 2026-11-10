@@ -45,7 +45,7 @@ function refreshPendingDelivery() {
 }
 refreshPendingDelivery();
 pendingDelivery.addEventListener('click', () => {
-  try { const raw = localStorage.getItem('returnby.pending-delivery'); if(raw) showPreview(JSON.parse(raw)); }
+  try { const raw = localStorage.getItem('returnby.pending-delivery'); if(raw) { deskNavigation.openIntake(); showPreview(JSON.parse(raw)); } }
   catch { showStorageError('Could not open the pending purchase.'); }
 });
 const refreshIntakeDeparture = bindIntakeDeparture(paste, preview);
@@ -178,8 +178,11 @@ preview.addEventListener('input', (event) => {
 });
 
 function showPreview(restored?: Record<string, string>) {
-  if (!preview.hidden && reviewedIntake !== reviewSignature() &&
+  if (restored && (paste.value !== '' || !preview.hidden) &&
+      !window.confirm('Replace your current unsaved receipt and review with the pending purchase? Cancel to keep your current work.')) return;
+  if (!restored && !preview.hidden && reviewedIntake !== reviewSignature() &&
       !window.confirm('Replace your corrected review with details from the pasted receipt? Your unsaved corrections will be lost. Cancel to keep reviewing.')) return;
+  if (restored) paste.value = '';
   const p = restored ? { merchant: restored.merchant, orderDate: restored.orderDate, orderNo: restored.orderNo, total: restored.total, dateWarning: undefined, found: {merchant:true,orderDate:true,orderNo:true,total:true} } : parse(paste.value, knownMerchants);
   const pol = lookup(p.merchant);
   const delivery = restored ? {required:true} : deliveryReview(paste.value);
@@ -197,7 +200,7 @@ function showPreview(restored?: Record<string, string>) {
     ${nothing ? '<p class="warn">Could not read this one. Fill in the highlighted fields.</p>' : ''}
     ${field('merchant', 'Store', p.merchant, p.found.merchant)}
     ${field('orderDate', 'Order date', p.orderDate, p.found.orderDate, 'date')}
-    <label>${delivery.required ? 'Confirm return clock start (required to save a deadline)' : 'Return clock starts (optional; date you confirmed with retailer, such as delivery)'}<input name="windowStartDate" ${delivery.required ? 'required' : ''} type="date" min="1000-01-01" max="9999-12-31"></label>
+    <label>${delivery.required ? 'Confirm return clock start (required to save a deadline)' : 'Return clock starts (optional; date you confirmed with retailer, such as delivery)'}<input name="windowStartDate" ${delivery.required ? 'required' : ''} type="date" min="1000-01-01" max="9999-12-31" value="${h(restored?.windowStartDate || '')}"></label>
     ${field('orderNo', 'Order #', p.orderNo, p.found.orderNo)}
     ${field('total', 'Total', p.total, p.found.total)}
     <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${restored?.windowDays || pol.days}"></label>

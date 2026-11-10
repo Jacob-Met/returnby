@@ -50,6 +50,7 @@ export function bindDeskNavigation() {
   });
 
   return {
+    openIntake: showIntake,
     update(count: number, unavailable = false) {
       hasSaved = count > 0 || unavailable;
       if (!initialized) {

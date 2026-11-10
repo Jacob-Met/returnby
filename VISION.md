@@ -22,6 +22,10 @@ Astra-Sage-6bab accepted the released CSV handoff at exact source85b41db9 in tas
 
 The judge's top remaining gap is discoverability: CSV was buried inside a combined backup/restore disclosure under dense explanatory copy. This follow-up moves the existing action into the tracker, keeps the all-saved scope visible, and uses readable button typography. The same exporter and saved data contract remain.
 
+## Current recovery judgment — 2026-11-10
+
+Separate reviewer astra-kestrel-8b84a742 accepted manual recovery on e837e1b through actual desktop and 390px Chrome: six fields and deadline recovered, concurrent saved purchases retained, Save clears recovery, Discard removes only the draft, and Close/reopen retains work. The phone dialog fits and Save remains reachable through normal scrolling. This is a scoped workflow improvement, not whole-product design parity with Things. Current remaining design priorities from that judgment: clearer labels instead of tiny monospaced text, shorter repeated instructions, and saved work first when returning on a phone (active peer work).
+
 ## Ranked gaps
 
 1. Finish the existing mobile return desk and independently judge the shipped cumulative app: saved purchase, date basis and next action must be visible on return. This is the top remaining concern from the independent intake pixel review; coordinate with Reed rather than starting another redesign.
@@ -57,3 +61,9 @@ ReturnQueen https://returnqueen.com/ was inspected again on 2026-11-10: its publ
 A shopper choosing a busy deadline day in the monthly view should carry those returns into the existing trip planner without recalling and selecting every receipt again. The day now links to a review of current matching purchases. Adding them preserves the saved trip date, packing checks and notes; the chosen deadline never silently becomes the trip date. Only the date travels in the page address. The planner rereads saved orders and refuses an outdated selection until refreshed. This extends ReturnBy's local planning job alongside the ReturnQueen logistics and Whering inventory alternatives above; it does not perform a return.
 
 Remaining handoff gaps, ranked: (1) distinguish retailer drop-off versus shipment deadlines using verified instructions, (2) support more than one saved trip without overwriting packing work, (3) bring confirmed store locations into route planning. The current product has one saved trip and shopper-entered notes. Independent judgment belongs to Mica; producer tests establish behavior, not a quality verdict.
+
+## Updating a browser from a later backup, 2026-11-10
+
+A manually recorded refund could be carried into an empty browser, but a later backup with the same purchase marked received blocked every addition in an existing browser. The actual released-product two-browser course left an already-paid refund awaiting and prevented an unrelated new purchase from arriving. The backup preview now compares changed money, refund status, dates and notes; the shopper explicitly keeps the current complete purchase or uses the backup version. Unreviewed differences stay current while new purchases can still be added. Intervening edits cancel old choices and require another review. No automatic sync or field-by-field merge is implied.
+
+Ranked remaining portability gaps: multiple saved trips with distinct packing plans; intentional combination of independently changed fields on the same purchase; separately reviewing future item/refund installment history when those models exist. Current versions are chosen as complete purchases because partial automatic merging can misrepresent a return or refund. The existing ReturnQueen connected service and Whering inventory alternatives above have different data models; this improves ReturnBy's explicit local-backup path. An independent peer must judge the new version-choice workflow.

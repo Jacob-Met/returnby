@@ -10,6 +10,13 @@ Extract the ZIP, install Python 3 if needed, and run the included launcher for y
 
 Source: [6e6dca8](https://github.com/Jacob-Met/returnby/commit/6e6dca875a89b7bc80355325b7be34a956502a71). ZIP SHA-256: `a991c60d3c13a31f2e012df4ad15d42265ac3778f232f5f0d1639b5ea6285dcb`. The date helper saves a day window; future edits to the clock start require reapplying a known date. CSV is a review snapshot; JSON remains the restore format. Independent Sage accepted the original CSV handoff at85b41db9; this release addresses the judge’s discoverability finding. Independent review of the known-date helper and revised placement is tracked separately.
 
+## Independently verified recovery build — earlier source pin
+
+[Download ReturnBy](https://github.com/Jacob-Met/returnby/releases/download/returnby-manual-recovery-2026-11-10/ReturnBy-manual-recovery-e837e1b-browser.zip) · [launch steps, exact source and limitations](https://github.com/Jacob-Met/returnby/releases/tag/returnby-manual-recovery-2026-11-10).
+
+Unfinished manual receipt details survive reload in the same tab. Resume, review, then deliberately Save or Discard. Current saved purchases are preserved, including purchases added in another tab. Raw email remains unstored. Source e837e1bd630f685e33b8bcda9fc073071fdbc4b2; 554 tests and build passed; separate independent actual Chrome desktop/390px judgment accepted this workflow. Linux/Chrome exercised; Python 3 launchers for Windows/macOS packaged. SHA-256: 8685ef161367505b6f774cf7daaf8a878d19aa3b2229a04c32b984a0184d3703.
+
+
 ## Earlier source-pinned download — preserved email review
 
 [Download ReturnBy browser ZIP](./downloads/returnby-intake-613f15f/ReturnBy-613f15f-browser.zip) · [source, launch instructions, checksum and limits](./downloads/returnby-intake-613f15f/README.md) · [desktop](./downloads/returnby-intake-613f15f/review-1440.png) · [phone](./downloads/returnby-intake-613f15f/review-390.png).
