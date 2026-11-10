@@ -4,9 +4,9 @@ A local return desk for remembering purchase deadlines, preparing a return trip,
 
 ## Cumulative browser build
 
-**Latest cumulative browser build:** [ReturnBy 0.4.0 browser ZIP](downloads/returnby-pending-2a74d30/ReturnBy-v0.4.0-browser.zip) — multiple pending purchases, portable recovery, current backup choices and delivery confirmation. [Use and verification](downloads/returnby-pending-2a74d30/README.md).
+**Latest cumulative browser build:** [ReturnBy 0.4.0 browser ZIP](downloads/returnby-batch-pending-0c12cba/ReturnBy-v0.4.0-browser.zip) — batch-to-tracker pending purchases, individual delivery review, portable recovery and current backup choices. [Use and verification](downloads/returnby-batch-pending-0c12cba/README.md).
 
-This newer source pin includes the pending-purchase workspace. Its linked package notes describe its own verification and limitations. The separately published refund-reminder release below remains available with its actual download checks.
+This source pin includes batch handoff into the pending-purchase workspace. An independent reviewer downloaded this ZIP, verified its checksum, and used two pending purchases through reload and individual delivery confirmation in Chrome. Its linked package notes describe verification and remaining policy-recognition limitations. The separately published refund-reminder release below remains available with its actual download checks.
 
 ## Refund-reminder release 0.3.0
 
