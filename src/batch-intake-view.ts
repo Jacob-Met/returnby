@@ -244,7 +244,7 @@ discard.addEventListener('click', () => {
 function renderReview(current: BatchReview) {
   get('batch-final-summary').textContent = 'Add ' + current.orders.length + ' reviewed '
     + (current.orders.length === 1 ? 'order' : 'orders') + ' beside ' + current.existingCount
-    + ' already saved. Existing records will be retained.';
+    + ' already saved.';
   const fragment = document.createDocumentFragment();
   current.orders.forEach(order => {
     const article = element('article', undefined, 'batch-final-order');
