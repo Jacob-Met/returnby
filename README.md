@@ -1,5 +1,11 @@
 # ReturnBy
 
+## Download ReturnBy v0.2.0
+
+**[Download the runnable ReturnBy v0.2.0 browser ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/9cd8d0d5f2fd8ba32a0525db65e292cae92ccdcf/downloads/v0.2.0/ReturnBy-v0.2.0-browser.zip)** — [launch instructions, checksum and real screenshots](https://github.com/Jacob-Met/returnby/tree/9cd8d0d5f2fd8ba32a0525db65e292cae92ccdcf/downloads/v0.2.0).
+
+Extract the ZIP, run the included Windows, macOS or Linux launcher with Python 3 installed, and open `http://127.0.0.1:8769`. No Node/npm or account is needed to use the packaged app. Keep the same browser and local port to retain saved orders. The ZIP was built from [merged source `b1c32488`](https://github.com/Jacob-Met/returnby/commit/b1c32488f1d198a5461abf61bf98467ff99bba55), tested on Linux/Chrome, then independently downloaded and hash-verified; the Windows and macOS launcher scripts have not been tested on their respective platforms. This version is hosted as a binary download branch rather than a formal GitHub Release entry.
+
 ReturnBy turns an order-confirmation email into a reviewable return deadline and a calendar reminder. The visitor supplies the email text; the browser runs the repository's real rule-based parser, merchant-policy lookup, date calculation, status logic and RFC 5545 export. It is a multi-order tracker, not a canned result: correct extracted fields, override a return window, save several deadlines, filter the list and export a three-day alarm for any order.
 
 ## Privacy
