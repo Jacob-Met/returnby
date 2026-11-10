@@ -61,9 +61,13 @@ export function storageFixture(html, initial = []) {
   }
   const preview = elements.get('preview');
   preview.dataset = { source: 'default', days: '30' };
+  const pendingStorage = new Map();
+  const pendingKey = key => ['returnby.pending-deliveries','returnby.pending-delivery'].includes(key);
   const localStorage = {
-    getItem(key) { if (key === 'returnby.trip-plan.v1') return tripValue; if (key !== 'returnby.v1') throw Error('Unexpected storage key'); return value; },
+    removeItem(key) { if(pendingKey(key)){pendingStorage.delete(key);return;}throw Error('Unexpected storage key'); },
+    getItem(key) { if(pendingKey(key))return pendingStorage.get(key)??null; if (key === 'returnby.trip-plan.v1') return tripValue; if (key !== 'returnby.v1') throw Error('Unexpected storage key'); return value; },
     setItem(key, next) {
+      if(pendingKey(key)){pendingStorage.set(key,next);return;}
       if (key === 'returnby.trip-plan.v1') { if(tripFailures>0){tripFailures--;throw Error('Synthetic trip storage refusal');} tripValue=next;return; }
       if (key !== 'returnby.v1') throw Error('Unexpected storage key');
       attempts.push(JSON.parse(next));

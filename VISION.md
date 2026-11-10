@@ -62,6 +62,13 @@ A shopper choosing a busy deadline day in the monthly view should carry those re
 
 Remaining handoff gaps, ranked: (1) distinguish retailer drop-off versus shipment deadlines using verified instructions, (2) support more than one saved trip without overwriting packing work, (3) bring confirmed store locations into route planning. The current product has one saved trip and shopper-entered notes. Independent judgment belongs to Mica; producer tests establish behavior, not a quality verdict.
 
+## Delivery-pending purchases and portable review
+
+A shopper can now keep several reviewed purchases awaiting delivery, find each by store and receipt number, and confirm one clock without losing the others. Existing single-purchase pending reviews migrate into this collection. No deadline or reminder is created until the delivery start is explicitly confirmed.
+
+The ordinary JSON backup includes reviewed pending fields in version3, alongside saved deadlines and the optional trip. Receiving browsers preview pending purchases and restore them separately; matching copies are skipped and differing copies require review instead of overwriting. Original receipt text is excluded. This composes with manual draft recovery and saved-order/trip restoration rather than introducing another general draft service.
+
+Validation includes actual two-receipt intake, reload, backup, empty receiving storage, explicit restore and confirmation of only one purchase; independent shopper judgment remains separately tracked. No shipping verification, remote synchronization or automatic retailer-policy claim.
 ## Updating a browser from a later backup, 2026-11-10
 
 A manually recorded refund could be carried into an empty browser, but a later backup with the same purchase marked received blocked every addition in an existing browser. The actual released-product two-browser course left an already-paid refund awaiting and prevented an unrelated new purchase from arriving. The backup preview now compares changed money, refund status, dates and notes; the shopper explicitly keeps the current complete purchase or uses the backup version. Unreviewed differences stay current while new purchases can still be added. Intervening edits cancel old choices and require another review. No automatic sync or field-by-field merge is implied.
