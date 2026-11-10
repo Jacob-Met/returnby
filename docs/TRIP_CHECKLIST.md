@@ -1,30 +1,35 @@
-# Return-trip checklist
+# Plan and resume a return trip
 
-Open **Return-trip checklist** below the tracker’s saved-order list. The checklist reads the same browser origin’s reviewed orders. It does not read the pasted confirmation box or change the tracker.
+Open **Prepare a return-trip checklist** below the tracker’s saved-order list. The planner reads reviewed orders from the same browser and origin.
 
-1. Choose **Refresh saved orders** if you saved or changed orders in another tab.
-2. Select the orders you plan to take. Set the planned trip date.
-3. Choose **Preview trip** and review the order details, stored return-window source and calculated deadlines.
-4. Choose **Download printable HTML**. Open that file in a browser and use its Print command. The file has its own styles and works offline.
+1. Set your planned trip date and select the orders you are taking.
+2. Under **Pack for this trip**, tick off items, receipts and checked store instructions. Add drop-off or packing notes beside each order.
+3. Leave and reopen the planner when you need to: the date, selection, checks and notes are saved on this device.
+4. Choose **Preview printable trip** to review current order facts and your preparation.
+5. Choose **Download printable HTML**. Open the file offline in a browser, or print it. The file includes the checks and notes at download time.
 
-The paper sheet includes blank item/packaging, receipt and return-arrangement checks, plus space for handwritten notes. It does not record completion. Trip choices and notes are not persisted, and reloading the page starts a new selection.
+**Clear selection** leaves your packing notes available when you select an order again. **Start a new trip** replaces the saved trip after confirmation and leaves the tracker’s orders unchanged.
 
-## What the dates and amounts mean
+## Current facts when you return
 
-Deadline calculation uses the unchanged tracker functions and each order’s saved order date and window length. Each record retains **Saved policy window**, **Saved default window** or **User-adjusted window**. The planned trip date is compared with that calculated deadline, including dates after the deadline. Confirm current return instructions with the store.
+The trip date is separate from the calculated return deadline. Both are shown, including when your trip would fall after a saved deadline. ReturnBy uses the saved window; confirm the store’s current instructions.
 
-Amounts remain literal saved strings. There is no combined total, currency conversion or refund estimate. Missing optional details are marked **Not recorded**.
+Changing an order in the tracker retires any prepared sheet. **Refresh saved orders** keeps your selected current orders and packing notes, reads the latest facts, and clears an instructions check if the reviewed details changed. Orders no longer available are excluded from the trip; their notes remain visible under **Orders no longer available** until you remove them from the plan. Restoring such an order does not silently select it again.
 
-## Refresh and read errors
+Preview and download still read the saved order list again. If it changed since review, refresh and make another preview. The printable file is a snapshot; it does not update after you download it. Amounts are literal saved strings, not a refund estimate or a sum across currencies.
 
-The page keeps the exact saved-list bytes it loaded. Before previewing or downloading it checks the current saved list again. A change, removal or read-access failure prevents download until you explicitly refresh, reselect and preview. Cross-tab storage changes also mark the page stale. Refresh clears the current selection and preview.
+## Saving, privacy and recovery
 
-Malformed JSON, invalid record fields, duplicate identifiers, unsupported dates/windows and lists over 2 MiB or 2,000 records cause a read failure. No records are silently dropped, repaired or saved. Review the source orders in the tracker and refresh here; the checklist does not offer a destructive reset.
+The trip is saved separately from order records. The planner never writes the order store. Notes are optional and may contain private details; they appear in downloaded sheets. Order backup files contain orders only, not the trip plan. This is local browser storage, not account synchronization.
 
-The exported HTML contains only selected order facts and the planned/prepared dates. It contains no scripts, remote assets, full saved-list payload, order-creation timestamps or storage data. Anyone you share that file with can read its selected order details.
+A storage failure leaves the plan open in the tab and offers **Retry saving trip**. The UI reports a successful save only after the write succeeds, and warns before leaving with unsaved edits. If another planner tab saved a different trip, choose **Load saved trip** or **Keep this tab’s trip instead**. These are explicit overwrite choices, not an atomic multi-device transaction.
+
+Unreadable saved trip data is left unchanged until you explicitly start a new trip. Tracker read errors retain the draft and require another read. No retailer, inbox or external service is contacted.
 
 ## Verification
 
-Existing tests remain unchanged. Run **npm test** and **npm run build**; Vite builds both the original tracker and the checklist entry.
+Run npm test and npm run build. tests/trip-plan.test.ts covers recovery, changed and unavailable orders, conflicts, save failures and printable notes. The existing checklist arithmetic and output tests are retained.
 
-The focused suite is **tests/trip-checklist.test.ts**. The native browser receiver uses authored fictional orders, separate browser state, real download events and an offline reopening/print check. Its receipt records exact runtime and downloaded bytes; no live merchant calls or personal order data are needed.
+tools/check_trip_recovery_browser.mjs exercises the production build through real manual purchase entry, trip creation, reload, offline download, a second-tab edit/removal, concurrent planners, save failure/retry and a 390px phone. Set RETURNBY_PLAYWRIGHT to an installed Playwright module and RETURNBY_CHROME to Chrome. Optional TRIP_BUILD, TRIP_PORT and TRIP_EVIDENCE choose the build, loopback port and evidence destination.
+
+Producer: astra-cedar-7c2e on a Renpō fleet worker. Independent shopper judgment belongs to a separate task and is not implied by these producer checks.
