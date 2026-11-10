@@ -2,19 +2,21 @@ import {load,type Order} from './store';
 import {planRefund,type RefundDraft} from './refund';
 import {todayISO} from './deadline';
 import './refund.css';
+import { bindRefundCalendar } from './refund-calendar-ui';
 const h=(s:string)=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]!);
 export function renderRefunds(orders:Order[],failed=false){
  const pending=orders.filter(o=>o.refundState==='awaiting').sort((a,b)=>(a.refundFollowUpDate||'9999').localeCompare(b.refundFollowUpDate||'9999'));
  const received=orders.filter(o=>o.refundState==='received').sort((a,b)=>(b.refundUpdatedAt||'').localeCompare(a.refundUpdatedAt||''));
  const jump=document.querySelector<HTMLElement>('#refund-jump');if(jump){jump.hidden=failed||!pending.length;jump.textContent=String(pending.length)+' refund'+(pending.length===1?'':'s')+' awaiting your check →';}
  document.querySelector('#refund-count')!.textContent=failed?'Unavailable':String(pending.length);
- const row=(o:Order)=>{const d=o.refundFollowUpDate;return '<li class="refund-row"><div><strong>'+h(o.merchant||'Unknown store')+'</strong><span class="refund-order">'+h(o.orderNo?'Order '+o.orderNo:'Purchased '+o.orderDate)+'</span></div><div class="refund-details"><strong>'+h(o.refundAmount||'Amount not recorded')+'</strong><span>'+(o.refundState==='received'?'Received · last updated '+h(o.refundUpdatedAt!.slice(0,10)):d?((d<=todayISO()?'Follow up now · ':'Follow up · ')+h(d)):'No follow-up date set')+'</span></div>'+(o.refundNote?'<p class="refund-note">'+h(o.refundNote)+'</p>':'')+'<button type="button" class="button button-link" data-refund="'+h(o.id)+'">'+(o.refundState==='received'?'Review refund':'Review / mark received')+'</button></li>';};
+ const row=(o:Order)=>{const d=o.refundFollowUpDate;return '<li class="refund-row"><div><strong>'+h(o.merchant||'Unknown store')+'</strong><span class="refund-order">'+h(o.orderNo?'Order '+o.orderNo:'Purchased '+o.orderDate)+'</span></div><div class="refund-details"><strong>'+h(o.refundAmount||'Amount not recorded')+'</strong><span>'+(o.refundState==='received'?'Received · last updated '+h(o.refundUpdatedAt!.slice(0,10)):d?((d<=todayISO()?'Follow up now · ':'Follow up · ')+h(d)):'No follow-up date set')+'</span></div>'+(o.refundNote?'<p class="refund-note">'+h(o.refundNote)+'</p>':'')+'<div class="refund-actions"><button type="button" class="button button-link" data-refund="'+h(o.id)+'">'+(o.refundState==='received'?'Review refund':'Review / mark received')+'</button>'+(o.refundState==='awaiting'?'<button type="button" class="button button-link" data-refund-calendar="'+h(o.id)+'">Set refund reminder</button>':'')+'</div></li>';};
  document.querySelector('#refund-pending')!.innerHTML=failed?'<li>Load your saved purchases to see refunds.</li>':pending.length?pending.map(row).join(''):'<li class="refund-empty">No refunds awaiting your check. After returning an item, choose “Track a refund” on its purchase.</li>';
  document.querySelector('#refund-received')!.innerHTML=received.map(row).join('');
  (document.querySelector('#refund-history') as HTMLDetailsElement).hidden=!received.length||failed;
  document.querySelector('#refund-history-count')!.textContent=String(received.length);
 }
 export function bindRefunds(options:{commit:(next:Order[])=>boolean}){
+ bindRefundCalendar();
  const dialog=document.querySelector<HTMLDialogElement>('#refund-dialog')!,form=document.querySelector<HTMLFormElement>('#refund-form')!,error=document.querySelector<HTMLElement>('#refund-error')!;
  let original:Order|null=null,opener:HTMLElement|null=null;
  const field=(name:string)=>form.elements.namedItem(name) as HTMLInputElement;
