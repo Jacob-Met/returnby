@@ -15,7 +15,7 @@ function caption(text){const t=(Date.now()-start)/1000;if(previous)previous.end=
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 try{
  await page.goto(url);
- caption('FICTIONAL RECEIPT DEMONSTRATION\nA £126 purchase. One £37.80 item returned.');await pause(2200);
+ caption('Fictional receipt: £126 purchase, £37.80 item returned.');await pause(2200);
  await page.locator('#manual-open').click();
  const manual=page.locator('#manual-form');
  await manual.locator('[name=merchant]').fill('Northstar Outfitters');await pause(400);
@@ -23,12 +23,12 @@ try{
  await manual.locator('[name=windowDays]').fill('30');
  await manual.locator('[name=orderNo]').fill('DEMO-NS-481');
  await manual.locator('[name=total]').fill('£126.00');
- caption('Add the purchase from its receipt.\nCheck the date and return window before saving.');await pause(2400);
+ caption('Check the purchase date and return window, then save.');await pause(2400);
  await manual.locator('[type=submit]').click();
  await page.locator('#list').scrollIntoViewIfNeeded();await pause(1500);
  await page.locator('#list [data-refund]').click();
  const refund=page.locator('#refund-form');
- caption('Track the refund for the returned item.\nThe rest of this purchase keeps its return deadline.');
+ caption('Record the expected refund for the returned item.');
  await refund.locator('[name=amount]').fill('£37.80');await pause(600);
  await refund.locator('[name=followUpDate]').fill('2026-11-17');
  await refund.locator('[name=note]').fill('Blue overshirt only. Drop-off reference NS-481.');
@@ -36,10 +36,10 @@ try{
  await refund.locator('[type=submit]').click();
  await page.locator('#refunds').scrollIntoViewIfNeeded();
  assert.equal(await page.locator('#refund-count').innerText(),'1');
- caption('The refund stays in an awaiting queue with your next check date.\nThe amount is your record, not a merchant or bank confirmation.');await pause(3500);
+ caption('Keep the refund pending until you check your bank.');await pause(3500);
  await page.locator('#refund-pending [data-refund]').click();
  await refund.locator('[name=state]').selectOption('received');
- caption('After checking that the money arrived, mark it received.\nReturnBy does not check your bank or send a payment.');await pause(2500);
+ caption('Checked your bank? Mark the refund received.');await pause(2500);
  await refund.locator('[type=submit]').click();
  await page.locator('#refund-history summary').click();
  await page.locator('#refunds').scrollIntoViewIfNeeded();
@@ -47,7 +47,7 @@ try{
  assert.match(await page.locator('#refund-received').innerText(),/£37.80/);
  const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('returnby.v1')));
  assert.equal(saved[0].total,'£126.00');assert.equal(saved[0].refundState,'received');
- caption('The received refund and notes remain available to review or reopen.\nSaved refund details also travel in your ReturnBy backup.');await pause(3600);
+ caption('Your record only: ReturnBy does not verify bank payments.');await pause(3600);
  previous.end=(Date.now()-start)/1000;
  await page.screenshot({path:output+'/final-received.png'});
  await context.close();
