@@ -1,12 +1,18 @@
 # ReturnBy
 
-## Current runnable release — exported .eml confirmation import (2026-11-10)
+## Current runnable release — saved-order search and corrected email import (2026-11-10)
 
-**[Download ReturnBy with local .eml support](https://github.com/Jacob-Met/returnby/releases/download/returnby-eml-2026-11-10/ReturnBy-v0.2.0-browser.zip)** — [release notes and source pin](https://github.com/Jacob-Met/returnby/releases/tag/returnby-eml-2026-11-10).
+**[Download the current ReturnBy ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-search-2026-11-10/ReturnBy-v0.2.0-browser.zip)** — [release notes, source and assets](https://github.com/Jacob-Met/returnby/releases/tag/returnby-search-2026-11-10).
 
-This prerelease is built from [merged PR #87](https://github.com/Jacob-Met/returnby/pull/87), commit `dd21f4feadba23b3b48d58a13d4c4e66ee0ffe3b`. SHA-256: `957648cce351f8cd17f94e8a78a18bd690cc218b431b7bcc62f2749949cb2d18`. Extract the ZIP; with Python 3 installed, run `Start ReturnBy.cmd` (Windows), `Start ReturnBy.command` (macOS), or `./Start ReturnBy.sh` (Linux), then open `http://127.0.0.1:8769/`. The original message stays in browser memory and approved fields remain in local browser storage; no inbox connection or network upload is used.
+The current browser release is built from commit [7535b9c](https://github.com/Jacob-Met/returnby/commit/7535b9c15c1cd1abab850248561b3c3afa671401) and includes the corrected merchant/receipt parsing merged in [PR #89](https://github.com/Jacob-Met/returnby/pull/89), plus saved-return search. The actual GitHub ZIP was independently downloaded, run and checked with an unfamiliar synthetic exported email, including selection, save, reopened tracker and 390-pixel mobile layout. **ZIP SHA-256:** 440af93913849e6ebb998e76856c131fdb2d3ac97c125c289eedc4989557e54d.
 
-The Linux build passed 469 unit tests and the extracted distribution passed seven Chrome browser groups, including real `.eml` selection, approval and saving, plus HTML-only refusal. The downloadable ZIP was fetched from GitHub and matched the tested archive byte-for-byte. Windows and macOS launchers were packaged but not independently exercised. This is a versioned pre-release, not a live service.
+Extract the ZIP. With Python 3 installed, run Start ReturnBy.cmd on Windows, Start ReturnBy.command on macOS or ./Start ReturnBy.sh on Linux, then visit http://127.0.0.1:8769/. The ZIP is a local browser application, not a hosted service. No inbox connection or receipt upload is involved: the original email remains in the current page, and only reviewed fields are saved to this browser's local storage. Return windows are estimates you must check against retailer policy. Windows and macOS launchers are packaged but have not been independently exercised by this reviewer.
+
+Export the original order email as a plain-text .eml to import it. The local importer deliberately ignores attachments, including forwarded messages embedded as attached emails; paste the original confirmation text instead if necessary.
+
+## Earlier release — original .eml import before receipt fixes (2026-11-10)
+
+**[Historical ReturnBy v0.2.0 .eml ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-eml-2026-11-10/ReturnBy-v0.2.0-browser.zip)** — [source at dd21f4f](https://github.com/Jacob-Met/returnby/releases/tag/returnby-eml-2026-11-10). This prior package has SHA-256 957648cce351f8cd17f94e8a78a18bd690cc218b431b7bcc62f2749949cb2d18 and predates PR #89's corrected store-name and order-number recognition. Use the current release above rather than this historical ZIP for everyday tracking.
 
 ## Download the multi-confirmation browser preview — 2026-11-10
 
