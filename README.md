@@ -307,7 +307,7 @@ Changed order facts require checking store instructions again. Notes for unavail
 
 ## Spreadsheet export
 
-Open **Export or restore saved returns**, then **Download all saved returns as CSV**.
+Choose **Download all saved returns as CSV** directly above your saved-return list.
 The file contains every currently saved purchase, regardless of tracker filters, with
 its saved amount, order number, return window, confirmed clock start and calculated
 deadline. It reads storage again on each click. Original emails and trip notes are
