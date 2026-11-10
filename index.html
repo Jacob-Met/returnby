@@ -74,7 +74,7 @@
   </details>
 </section>
 </main>
-<footer class="footer"><p><strong>PRIVATE BY DESIGN.</strong> The pasted email is not stored or sent. Only reviewed order fields you save persist on this device.</p><button id="clear" class="button button-link">Clear saved returns</button></footer></div><dialog id="edit-dialog" class="edit-dialog" aria-labelledby="edit-title" aria-describedby="edit-intro">
+<footer class="footer"><p><strong>PRIVATE BY DESIGN.</strong> The pasted email is not stored or sent. Saved purchases stay on this device. Unfinished manual purchase details are recovered in this tab until you save or discard them.</p><button id="clear" class="button button-link">Clear saved returns</button></footer></div><dialog id="edit-dialog" class="edit-dialog" aria-labelledby="edit-title" aria-describedby="edit-intro">
   <h2 id="edit-title">Edit saved return</h2>
   <p id="edit-intro" class="edit-intro">Correct the details, review the new deadline, then save. Confirm the return window with the retailer.</p>
   <form id="edit-form" novalidate>
@@ -117,6 +117,8 @@
 <script type="module" src="/src/main.ts"></script><script type="module" src="/src/deadline-overview-entry.ts"></script><dialog id="manual-dialog" class="edit-dialog" aria-labelledby="manual-title">
     <form id="manual-form" novalidate>
       <h2 id="manual-title">Add a purchase from your receipt</h2>
+      <p id="manual-recovery" class="src" role="status"></p>
+      <button id="manual-discard" class="button button-link" type="button" hidden>Discard unfinished purchase</button>
       <p>No email needed. Enter the purchase date and the return window you checked with the store. Order number and total are optional.</p>
       <label>Store<input name="merchant" maxlength="4096" required autocomplete="organization"></label>
       <label>Purchase date<input name="orderDate" type="date" min="1000-01-01" max="9999-12-30" required></label>
@@ -128,7 +130,7 @@
       <p id="manual-deadline" class="edit-calendar-note" role="status" aria-live="polite">Enter a store, purchase date and return window to calculate the deadline.</p>
       <p id="manual-error" class="warn" role="alert" hidden></p>
       <div class="action-row"><button type="submit" class="button button-primary">Save purchase to tracker</button><button id="manual-close" type="button" class="button button-link">Close</button></div>
-      <p class="list-note">Nothing is saved until you choose Save. Closing keeps this draft until you reload or leave the page. Your email draft stays separate.</p>
+      <p class="list-note">Nothing is saved until you choose Save. Closing keeps this unfinished purchase in this tab. Reloading restores it; Save or Discard clears it. Your email draft stays separate.</p>
     </form></dialog><dialog id="refund-dialog" aria-labelledby="refund-title"><form id="refund-form" novalidate>
 <h2 id="refund-title">Track a refund</h2><p id="refund-purchase"></p>
 <p>Record the amount you expect after returning an item. Your purchase's deadline stays unchanged; this does not contact the store or check your bank.</p>
@@ -140,3 +142,4 @@
 <p id="refund-error" role="alert" tabindex="-1" hidden></p>
 <div class="action-row"><button class="button button-primary" type="submit">Save refund</button><button class="button button-link" id="refund-close" type="button">Close</button><button class="button button-link" id="refund-stop" type="button" hidden>Stop tracking refund</button></div>
 </form></dialog></body></html>
+
