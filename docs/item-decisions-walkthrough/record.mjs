@@ -3,6 +3,7 @@ import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
 import assert from 'node:assert/strict';
 
+const version=JSON.parse(await readFile(new URL('../../package.json',import.meta.url),'utf8')).version;
 const dir=process.env.RETURNBY_CAPTURE_DIR;
 const base=process.env.RETURNBY_CAPTURE_URL || 'http://127.0.0.1:18974';
 if(!dir)throw Error('Set RETURNBY_CAPTURE_DIR to a new directory');
@@ -21,7 +22,7 @@ const mark=text=>stages.push({time:(Date.now()-zero)/1000,text});
 const pause=ms=>page.waitForTimeout(ms);
 const move=async locator=>{await locator.scrollIntoViewIfNeeded();const r=await locator.boundingBox();assert(r);await page.mouse.move(r.x+r.width/2,r.y+r.height/2,{steps:12});};
 try {
- mark('FICTIONAL PURCHASE / Actual ReturnBy 0.4.0 / Silent walkthrough\nOne receipt can contain returned, kept and still-open items.');
+ mark('FICTIONAL PURCHASE / Actual ReturnBy '+version+' / Silent walkthrough\nOne receipt can contain returned, kept and still-open items.');
  await page.goto(base,{waitUntil:'networkidle'});
  await page.locator('#manual-open').click();
  for(const [name,value]of Object.entries({merchant:'Harbour Cloth & Home',orderDate:'2026-11-05',windowStartDate:'2026-11-08',windowDays:'30',orderNo:'HC-02481',total:'£128.00'})) {
@@ -51,10 +52,10 @@ try {
  mark('The trip sheet lists only what remains: one blue shirt.\nItems already returned or kept stay out of the packing list.');
  assert.match(await page.locator('#checklist-preview').innerText(),/1 × Linen shirt/);
  assert.doesNotMatch(await page.locator('#checklist-preview').innerText(),/Stoneware mug/);
- await pause(5000);
+ await pause(6000);
+ mark('Finish the remaining shirt in the return desk.\nEarlier returned and kept quantities stay recorded.');
  await page.goto(base,{waitUntil:'networkidle'});
  await page.locator('[data-finish]').click();
- mark('When the remaining shirt is handed back, finish the return.\nThis resolves the remainder and preserves earlier decisions.');
  await page.locator('#finish-form input[value=returned]').check();await pause(3500);
  await move(page.locator('#finish-form button[type=submit]'));await page.locator('#finish-form button[type=submit]').click();
  await page.locator('#filter-completed').click();
@@ -62,18 +63,21 @@ try {
  assert.match(await page.locator('#list').innerText(),/Returned & kept/);
  await page.locator('#list').scrollIntoViewIfNeeded();await pause(5200);
  if(!(await page.locator('#backup-export').isVisible()))await page.locator('details').filter({has:page.locator('#backup-export')}).locator('summary').first().click();
- await page.locator('#backup-export').scrollIntoViewIfNeeded();
- mark('Download an editable backup of the reviewed purchase and item decisions.\nThe same record can be restored and reviewed in another browser.');
+ await page.locator('#backup-export').evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));
+ await move(page.locator('#backup-export'));
+ mark('Download a backup of the purchase and item decisions.\nUse the file to restore this reviewed record in another browser.');
  await pause(3000);
  const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#backup-export').click()]);
  await download.saveAs(dir+'/sample-items-backup.json');
  const backup=JSON.parse(await readFile(dir+'/sample-items-backup.json','utf8'));
- assert.equal(backup.version,4);assert.equal(backup.orders[0].completionKind,'mixed');
+ assert.equal(backup.version,5);assert.equal(backup.orders[0].completionKind,'mixed');
  assert.equal(backup.orders[0].items[0].returned,2);assert.equal(backup.orders[0].items[1].kept,1);
  assert.deepEqual(errors,[]);
- await pause(3500);
+ mark('Downloaded '+download.suggestedFilename()+'\nThe file contains this purchase and its item decisions. Keep your backups private.');
+ if(await page.locator('#backup-message').isVisible())await page.locator('#backup-message').evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));
+ await pause(5500);
  const end=(Date.now()-zero)/1000;
- await writeFile(dir+'/capture.json',JSON.stringify({source,stages,end,errors,story:'partial-item-return',audio:'none',fictional:true},null,2));
+ await writeFile(dir+'/capture.json',JSON.stringify({source,version,stages,end,errors,story:'partial-item-return',audio:'none',fictional:true,align_caption_clock:true,downloaded_filename:download.suggestedFilename()},null,2));
  await context.close();
  console.log(JSON.stringify({source,video:await page.video().path(),end,stages:stages.length,errors}));
 } finally {await browser.close();server?.kill('SIGTERM');}

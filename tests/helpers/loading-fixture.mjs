@@ -5,8 +5,11 @@ export function loadingFixture(html, raw = null, readFailures = 0) {
   const app = storageFixture(html, []);
   let bytes = raw, readsLeft = readFailures, writesLeft = 0, reads = 0;
   const writes = [];
+  const extraStorage=app.globals.localStorage;
+  const pendingKey=key=>['returnby.pending-deliveries','returnby.pending-delivery','returnby.trip-library.v1'].includes(key);
   app.globals.localStorage = {
     getItem(key) {
+      if(pendingKey(key))return extraStorage.getItem(key);
       if (key === 'returnby.trip-plan.v1') return null;
       if (key !== 'returnby.v1') throw Error('Unexpected storage key');
       reads++;
@@ -14,6 +17,7 @@ export function loadingFixture(html, raw = null, readFailures = 0) {
       return bytes;
     },
     setItem(key, value) {
+      if(pendingKey(key))return extraStorage.setItem(key,value);
       if (key !== 'returnby.v1') throw Error('Unexpected storage key');
       writes.push(value);
       if (writesLeft > 0) { writesLeft--; throw Error('Authored storage write refusal'); }

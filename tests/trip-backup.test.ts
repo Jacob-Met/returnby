@@ -50,7 +50,7 @@ describe('portable prepared trips',()=>{
  it('restores closed history and packing notes without selecting a finished return',()=>{
   const closed:Order={...order,completionKind:'returned',completedAt:'2027-01-04T10:00:00.000Z'};
   const file=exportBackup([closed],new Date('2027-01-05T10:00:00Z'),trip());
-  expect(JSON.parse(file).version).toBe(3);
+  expect(JSON.parse(file).version).toBe(5);
   const restored=parseBackupDocument(file);
   expect(restored.orders).toEqual([closed]);
   const prepared=prepareTripRestore(restored.trip,restored.orders);

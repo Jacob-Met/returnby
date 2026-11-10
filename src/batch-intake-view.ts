@@ -1,3 +1,4 @@
+import { readPending, writePending } from './pending-delivery';
 import './batch-intake.css';
 import {
   appendConfirmations, validateDraft, prepareBatch, commitBatch,
@@ -86,7 +87,7 @@ function renderDrafts() {
     card.append(head);
     if (draft.dateWarning) card.append(element('p', draft.dateWarning, 'warn'));
     if (delivery.required) {
-      const warning = element('p', 'This receipt starts its return window at delivery. ' + (delivery.date ? 'Delivery date mentioned: ' + delivery.date + '. ' : 'No unambiguous delivered date was found. ') + 'Confirm the clock start and return window with the retailer before selecting this purchase. Leave it unselected if delivery is still pending; unsaved batch receipts are only kept while this page is open.', 'warn');
+      const warning = element('p', 'This receipt starts its return window at delivery. ' + (delivery.date ? 'Delivery date mentioned: ' + delivery.date + '. ' : 'No unambiguous delivered date was found. ') + 'Confirm the clock start and return window with the retailer before selecting this purchase. Awaiting delivery? Keep the reviewed purchase pending to resume later from the tracker, without a deadline or reminder.', 'warn');
       warning.setAttribute('role', 'status');
       card.append(warning);
     }
@@ -114,6 +115,23 @@ function renderDrafts() {
       fields.append(label);
     }
     card.append(fields);
+    if (delivery.required) {
+      const keep = element('button', 'Keep purchase pending delivery', 'batch-button quiet');
+      keep.type = 'button';
+      keep.dataset.keepPending = draft.id;
+      keep.addEventListener('click', () => {
+        try {
+          const current = readPending(localStorage);
+          const fields: Record<string,string> = {};
+          for (const key of ['merchant','orderDate','orderNo','total','windowStartDate','windowDays'] as const) fields[key] = draft.fields[key] ?? '';
+          writePending(localStorage, [...current.rows, {id:crypto.randomUUID(),updatedAt:new Date().toISOString(),fields}], current.token);
+          drafts = drafts.filter(item => item.id !== draft.id);
+          invalidate('Purchase kept pending delivery. Resume it from the tracker; no deadline or reminder was created.');
+          renderDrafts();
+        } catch(error) { showError(error); }
+      });
+      card.append(keep);
+    }
     const original = element('details');
     original.append(element('summary', 'Read the original confirmation'), element('pre', draft.text));
     card.append(original);

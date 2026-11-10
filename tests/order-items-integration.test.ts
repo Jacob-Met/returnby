@@ -19,7 +19,7 @@ const items: OrderItem[] = [
 test('partial item decisions remain portable, remindable and printable at the confirmed deadline', () => {
   const partial = planItemEdit([purchase], purchase, items, now).order;
   const backup = exportBackup([partial], now);
-  expect(JSON.parse(backup).version).toBe(4);
+  expect(JSON.parse(backup).version).toBe(5);
   const restored = parseBackup(backup);
   expect(restored[0]).toEqual(partial);
   expect(planImport(restored, parseBackup(backup))).toMatchObject({ added: 0, skipped: 1, conflicts: 0 });

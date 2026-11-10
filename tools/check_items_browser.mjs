@@ -72,7 +72,7 @@ try{
  const [backupDownload]=await Promise.all([page.waitForEvent('download'),page.locator('#backup-export').click()]);
  await backupDownload.saveAs(dir+'/partial-returnby.json');
  const backup=JSON.parse(await fs.readFile(dir+'/partial-returnby.json','utf8'));
- assert.equal(backup.version,4);assert.equal(backup.orders[0].refundAmount,'£28.00');assert.equal(backup.trip.orders[0].notes,'Take receipt and the one remaining blue shirt.');
+ assert.equal(backup.version,5);assert.equal(backup.orders[0].refundAmount,'£28.00');assert.equal(backup.trip.orders[0].notes,'Take receipt and the one remaining blue shirt.');
  await page.locator('[data-finish]').click();
  await page.locator('#finish-form input[value=returned]').check();
  await page.locator('#finish-form button[type=submit]').click();
@@ -132,6 +132,8 @@ try{
  await restore.locator('#backup-rows select[data-backup-choice]').selectOption('replace');
  await restore.locator('#backup-apply').click();
  const replaced=await restore.evaluate(()=>JSON.parse(localStorage.getItem('returnby.v1')));
+ assert.equal(await restore.locator('#filter-all').getAttribute('aria-pressed'),'true');
+ assert.equal(await restore.locator('#saved-returns').isVisible(),true);
  assert.equal(replaced[0].completedAt,undefined);assert.equal(replaced[0].items[0].returned,1);assert.equal(replaced[0].refundAmount,'£28.00');
  await passed('Reviewed backup differences explain item quantities and explicitly replace the complete chosen purchase');
 

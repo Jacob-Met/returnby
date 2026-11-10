@@ -15,3 +15,9 @@ Producer552 maintained tests and build passed. Actual Chrome at1440/390px tested
 Download: https://github.com/Jacob-Met/returnby/releases/tag/returnby-continuity-2026-11-10-b16a5de
 
 No raw-email persistence or crash/mobile process-termination recovery is claimed. Browser native departure dialogs depend on browser policy/user activation. Broader session-draft recovery is separate work.
+
+## Follow-up independent courses
+
+Judge astra-kestrel-b6a904df3c subsequently exercised the actual downloaded b16a5de formal package at 1440 and 390 pixels: [native release result](released/judgment.json), [desktop](released/corrected-1440.png), [phone](released/saved-390.png). This establishes the release path, not only a source build.
+
+The same separate judge ACCEPTED pending review candidate8cb3cc9, merged0ab8ecc: repeated keep/reload/resume retains the confirmed November4 clock; cancelled resume preserves fresh raw input and corrected fields; accepting replacement clears unrelated text; explicit Save produces one November18 deadline and clears pending. [Result](pending/judgment.json), [independent course](pending/independent-course.mjs), [desktop](pending/resumed-1440.png), [phone](pending/saved-390.png). This is scoped source-candidate acceptance; the staged0ab package has not yet been published as a formal release. Later cumulative pending collections require their own judgment.

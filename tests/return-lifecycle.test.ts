@@ -24,7 +24,7 @@ test.each(['returned', 'kept'] as const)('%s stays closed after backup, import a
   expect(closed.order).toMatchObject({ id: 'coat', completionKind: kind, completedAt: now.toISOString() });
   expect(completionLabel(closed.order)).toBe(kind === 'returned' ? 'Returned' : 'Kept');
   const backup = exportBackup(closed.next, now);
-  expect(JSON.parse(backup).version).toBe(3);
+  expect(JSON.parse(backup).version).toBe(5);
   const restored = planImport([], parseBackup(backup)).next;
   expect(restored).toEqual(closed.next);
   expect(calendarRows(restored, '2026-11-10').map(row => row.order.id)).toEqual(['boots']);

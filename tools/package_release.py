@@ -5,6 +5,7 @@ from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 import json
 import subprocess
 import sys
+sys.dont_write_bytecode = True
 
 ROOT = Path(__file__).resolve().parent.parent
 VERSION = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))["version"]
@@ -49,9 +50,14 @@ def put(archive, name, content, executable=False):
 
 
 def main():
-    if len(sys.argv) != 2:
-        sys.exit("Usage: python3 tools/package_release.py /existing/output/directory")
-    out = Path(sys.argv[1]).expanduser().resolve()
+    import argparse
+    from package_native import PLATFORMS
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("output", help="existing output directory")
+    parser.add_argument("--native", action="store_true", help="also build executables with the runtime and app embedded")
+    parser.add_argument("--platform", action="append", choices=PLATFORMS, help="native target; repeat for several")
+    args = parser.parse_args()
+    out = Path(args.output).expanduser().resolve()
     if not out.is_dir():
         sys.exit("Existing output directory required")
     if any(not (STATIC / name).is_file() for name in REQUIRED):
@@ -82,7 +88,7 @@ def main():
         "reminders, plan a month, and download offline printable return-trip checklists.\n"
         "Finish returned or kept orders into History; reopen with the original deadline.\n"
         "Track quantities as returned, kept or still open; partial purchases stay active.\n"
-        "Use version 0.4.0 or later after saving items; older apps cannot interpret\n"
+        "Use version 0.6.0 or later after saving items; older apps cannot interpret\n"
         "those quantities and mixed Returned & kept outcomes.\n"
         "Pasted emails are not uploaded or retained by the app. Downloaded backups\n"
         "contain order details, saved trips and private packing notes. Backups are\n"
@@ -104,7 +110,10 @@ def main():
     except Exception:
         archive.unlink(missing_ok=True)
         raise
-    print(json.dumps({"archive": str(archive), "source": source, "built_assets": len(files), "bytes": archive.stat().st_size}))
+    print(json.dumps({"archive": str(archive), "source": source, "built_assets": len(files), "bytes": archive.stat().st_size}), flush=True)
+    if args.native or args.platform:
+        from package_native import package_native
+        package_native(ROOT, STATIC, out, VERSION, source, args.platform or ["linux-amd64", "darwin-amd64", "darwin-arm64", "windows-amd64"])
 
 
 if __name__ == "__main__":
