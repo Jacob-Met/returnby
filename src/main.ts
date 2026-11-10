@@ -4,11 +4,12 @@ import './edit.css';
 import './calendar-batch.css';
 import { parse } from './parse';
 import { lookup, knownMerchants } from './policy';
-import { dueDate, daysLeft, status, todayISO } from './deadline';
+import { dueDate, returnDueDate, daysLeft, status, todayISO } from './deadline';
 import { startDayRefresh } from './day-refresh';
 import { bindTabSync } from './tab-sync';
 import { bindIntakeDeadline } from './intake-deadline';
 import { planSingleCalendar } from './calendar-batch';
+import { isSupportedDate } from './trip-checklist';
 import { load, read, save, type Order } from './store';
 import { bindManualPurchase } from './manual-purchase';
 import { samples } from './samples';
@@ -123,6 +124,7 @@ function showPreview() {
     ${nothing ? '<p class="warn">Could not read this one. Fill in the highlighted fields.</p>' : ''}
     ${field('merchant', 'Store', p.merchant, p.found.merchant)}
     ${field('orderDate', 'Order date', p.orderDate, p.found.orderDate, 'date')}
+    <label>Return clock starts (optional; date you confirmed with retailer, such as delivery)<input name="windowStartDate" type="date" min="1000-01-01" max="9999-12-31"></label>
     ${field('orderNo', 'Order #', p.orderNo, p.found.orderNo)}
     ${field('total', 'Total', p.total, p.found.total)}
     <label>Return window (days)<input name="windowDays" type="number" min="1" value="${pol.days}"></label>
@@ -140,13 +142,25 @@ preview.addEventListener('submit', (e) => {
   const orderDate = String(f.get('orderDate') || '');
   if (!orderDate) { (preview.querySelector('[name=orderDate]') as HTMLInputElement).focus(); return; }
   const days = Number(f.get('windowDays')) || 30;
+  const windowStartDate = String(f.get('windowStartDate') || '');
+  const clockStart = windowStartDate || orderDate;
+  const validDate = (value: string) => isSupportedDate(value) && Number(value.slice(0,4)) >= 1000;
+  if (!validDate(clockStart) || !validDate(orderDate) || !Number.isSafeInteger(days) || days < 1 ||
+      !validDate(dueDate(clockStart, days)) || !validDate(dueDate(dueDate(clockStart, days), 1))) {
+    const hint = preview.querySelector<HTMLOutputElement>('#intake-deadline');
+    if (hint) hint.textContent = 'Check the order date, confirmed return-clock start and window. The deadline must be a real supported date.';
+    const offending = !validDate(orderDate) ? 'orderDate'
+      : windowStartDate && !validDate(windowStartDate) ? 'windowStartDate' : 'windowDays';
+    preview.querySelector<HTMLInputElement>('[name="' + offending + '"]')?.focus();
+    return;
+  }
   const merchant = String(f.get('merchant') || '');
   const pol = lookup(merchant);
   const current = readCurrentOrders();
   if (!current) return;
   const next: Order[] = [...current, {
     id: crypto.randomUUID(), merchant, orderNo: String(f.get('orderNo') || ''),
-    total: String(f.get('total') || ''), orderDate, windowDays: days,
+    total: String(f.get('total') || ''), orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays: days,
     windowSource: days === pol.days ? pol.source : 'user',
     createdAt: new Date().toISOString(),
   }];
@@ -160,7 +174,7 @@ function render() {
     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
     return;
   }
-  const all=orders.map(o=>{const due=dueDate(o.orderDate,o.windowDays),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);
+  const all=orders.map(o=>{const due=returnDueDate(o),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);
   $('#tracked-count').textContent=String(all.length);$('#soon-count').textContent=String(all.filter(r=>r.left>=0&&r.left<=7).length);$('#expired-count').textContent=String(all.filter(r=>r.left<0).length);
   for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
   const query = search.value.trim().toLocaleLowerCase();
@@ -168,7 +182,7 @@ function render() {
   const rows=all.filter(r=>!query || [r.o.merchant,r.o.orderNo].some(value=>(value ?? "").toLocaleLowerCase().includes(query))).filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
   $('#search-results').textContent = query ? rows.length + ' of ' + all.length + ' saved returns match this search and date filter.' : '';
   if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match. Clear the search or choose another date filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)} · CLOCK ${h(o.windowStartDate || o.orderDate)}${o.windowStartDate ? ' (confirmed by you)' : ' (order date)'}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
 }
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;

@@ -1,4 +1,4 @@
-import { daysLeft, dueDate, todayISO } from './deadline';
+import { daysLeft, dueDate, returnDueDate, todayISO } from './deadline';
 import { buildIcsCalendar, type CalendarReminder } from './ics';
 import type { Order } from './store';
 
@@ -36,14 +36,17 @@ function reminder(order: Order): CalendarReminder {
   if (!isCalendarDate(order.orderDate)) {
     throw new CalendarBatchError('Correct the order date before exporting this return.');
   }
+  if (order.windowStartDate !== undefined && !isCalendarDate(order.windowStartDate)) {
+    throw new CalendarBatchError('Correct the confirmed return-clock start date before exporting this return.');
+  }
   if (!Number.isSafeInteger(order.windowDays) || order.windowDays < 1 || order.windowDays > 3_700_000) {
     throw new CalendarBatchError('Correct the return window to a positive whole number of days.');
   }
-  const due = dueDate(order.orderDate, order.windowDays);
+  const due = returnDueDate(order);
   if (!isCalendarDate(due) || !isCalendarDate(dueDate(due, 1))) {
     throw new CalendarBatchError('The calendar deadline must be before 9999-12-31.');
   }
-  return { id: order.id, merchant: order.merchant, orderNo: order.orderNo, due };
+  return { id: order.id, merchant: order.merchant, orderNo: order.orderNo, due, ...(order.windowStartDate ? {confirmedStartDate: order.windowStartDate} : {}) };
 }
 
 /** Freeze the reviewed fields. Invalid records remain visible but unselectable. */
@@ -71,7 +74,7 @@ export function initialCalendarSelection(rows: readonly CalendarRow[], filter: C
 }
 
 const fingerprint = (order: Order) => JSON.stringify([
-  order.id, order.merchant, order.orderNo ?? '', order.orderDate, order.windowDays,
+  order.id, order.merchant, order.orderNo ?? '', order.orderDate, order.windowStartDate ?? '', order.windowDays,
 ]);
 
 /** Recheck exactly the selected returns against storage before producing bytes. */

@@ -24,7 +24,7 @@ function fold(line: string): string {
   return output;
 }
 
-export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string };
+export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string; confirmedStartDate?: string };
 
 function eventLines(o: CalendarReminder, ts: string): string[] {
   const d = o.due.replace(/-/g, '');
@@ -35,6 +35,7 @@ function eventLines(o: CalendarReminder, ts: string): string[] {
   return [
     'BEGIN:VEVENT', `UID:${esc(o.id)}@returnby`, `DTSTAMP:${ts}`,
     `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${e}`, `SUMMARY:${title}`,
+    ...(o.confirmedStartDate ? [`DESCRIPTION:${esc('Return clock starts ' + o.confirmedStartDate + ' (user-confirmed; retailer policy not verified).')}`] : []),
     'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`, 'TRIGGER:-P3D', 'END:VALARM',
     'END:VEVENT',
   ];
