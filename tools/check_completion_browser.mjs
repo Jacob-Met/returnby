@@ -45,10 +45,17 @@ try {
     await page.locator('#finish-form button[type=submit]').click();
     assert(!(await page.locator('#finish-dialog').isVisible()), 'Accepted closure closes review');
   }
-  const coat = await add('North Coast Outfitters', 'COAT-1042', '2026-11-01', 12, '2026-11-03');
+  let coat = await add('North Coast Outfitters', 'COAT-1042', '2026-11-01', 12, '2026-11-03');
   const lamp = await add('Juniper Home', 'LAMP-2077', '2026-10-01', 15);
   const shoes = await add('Harbor Footwear', 'SHOES-3510', '2026-11-01', 30);
   assert.equal(await page.locator('#tracked-count').innerText(), '3');
+  await page.locator('[data-refund="' + coat.id + '"]').click();
+  await page.locator('#refund-form [name=amount]').fill('$42.25');
+  await page.locator('#refund-form [name=followUpDate]').fill('2026-11-22');
+  await page.locator('#refund-form [name=note]').fill('Private drop-off reference NC-778; check merchant processing.');
+  await page.locator('#refund-form button[type=submit]').click();
+  coat = (await saved()).find(row => row.id === coat.id);
+  assert.equal(await page.locator('#refund-count').innerText(), '1');
   const plannedTrip = await context.newPage();
   await plannedTrip.goto(new URL('trip-checklist.html', base).href);
   await plannedTrip.locator('#order-options input[value="' + coat.id + '"]').check();
@@ -81,7 +88,9 @@ try {
   assert.equal(await plannedTrip.locator('#order-options input[value="' + coat.id + '"]').count(), 0);
   assert.match(await plannedTrip.locator('.unavailable-plan').innerText(), /Bring the QR code/);
   await plannedTrip.close();
-  checks.push('Finishing removes an actual saved trip selection while keeping its packing notes');
+  assert.equal(await page.locator('#refund-count').innerText(), '1');
+  assert.equal((await saved()).find(row => row.id === coat.id).refundState, 'awaiting');
+  checks.push('Finishing removes an actual saved trip selection while keeping its packing notes and pending refund');
   await page.bringToFront();
 
   assert.deepEqual(await page.locator('#preview input').evaluateAll(inputs => inputs.map(input => ({ name: input.name, value: input.value }))), draft);
@@ -120,6 +129,15 @@ try {
 
 
   await page.locator('#backup-heading').click();
+  const csvEvent = page.waitForEvent('download');
+  await page.locator('#saved-returns-csv').click();
+  const csv = await csvEvent;
+  const csvText = await readFile(await csv.path(), 'utf8');
+  assert.match(csvText, /"Return status","Finished at"/);
+  assert.match(csvText, /"Returned"/);
+  assert.match(csvText, /"Kept"/);
+  assert(!csvText.includes('Private drop-off reference'));
+  checks.push('Actual CSV labels finished outcomes and excludes private refund notes');
   const backupEvent = page.waitForEvent('download');
   await page.locator('#backup-export').click();
   const backupDownload = await backupEvent;
@@ -169,7 +187,10 @@ try {
   assert.deepEqual(reopened, coat);
   const reminderEvent = page.waitForEvent('download');
   await page.locator('[data-ics="' + coat.id + '"]').click();
+  await page.locator('#calendar-dialog').waitFor({state:'visible'});
+  await page.locator('#calendar-download').click();
   const reminder = await reminderEvent;
+  assert.equal(await page.locator('#calendar-dialog').isVisible(), false);
   const reminderPath = resolve(output, 'reopened-return.ics');
   await reminder.saveAs(reminderPath);
   assert.match(await readFile(reminderPath, 'utf8'), /20261115/);

@@ -1,3 +1,6 @@
+import { bindIntakeDeparture } from './intake-departure';
+import { bindRefunds, renderRefunds } from './refund-ui';
+import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
 import { reviewDuplicateIntake } from './duplicate-intake';
 import './style.css';
 import './backup.css';
@@ -20,12 +23,13 @@ import { completionLabel, isCompleted, planCompletion, type CompletionAction } f
 import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
-import { bindCalendarBatch, downloadCalendar } from './calendar-batch-ui';
+import { bindCalendarBatch } from './calendar-batch-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const refreshIntakeDeadline = bindIntakeDeadline(preview);
+const refreshIntakeDeparture = bindIntakeDeparture(paste, preview);
 const search = $<HTMLInputElement>('#return-search');
 const searchClear = $<HTMLButtonElement>('#search-clear');
 const list = $<HTMLUListElement>('#list');
@@ -172,6 +176,7 @@ function showPreview() {
   preview.hidden = false;
   refreshIntakeDeadline();
   refreshPreviewPolicy();
+  refreshIntakeDeparture();
 }
 
 preview.addEventListener('submit', (e) => {
@@ -210,8 +215,12 @@ preview.addEventListener('submit', (e) => {
     createdAt: new Date().toISOString(),
   }];
   if (!persistOrders(next)) return;
-  preview.hidden = true; paste.value = ''; render();
+  preview.hidden = true; paste.value = ''; refreshIntakeDeparture(); render();
 });
+
+function refundAction(o: Order): string {
+  return '<button class="button button-link" data-refund="' + h(o.id) + '">' + (o.refundState ? 'Review refund' : 'Track a refund') + '</button>';
+}
 
 function historyCard(o: Order): string {
   const recorded = new Date(o.completedAt!).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
@@ -223,10 +232,11 @@ function historyCard(o: Order): string {
     + (o.total ? '<p class="history-amount">Order total <strong>' + h(o.total) + '</strong></p>' : '')
     + '<div class="order-actions"><button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>'
     + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button>'
-    + '<button class="button button-link" data-del="' + h(o.id) + '">Remove</button></div></li>';
+    + '<button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
 }
 
 function render() {
+  renderRefunds(orders, loadFailed);
   const showingHistory = filterMode === 'completed';
   $('#tracker-title').textContent = showingHistory ? 'History' : 'Active returns';
   $('#tracker-description').textContent = showingHistory
@@ -284,7 +294,7 @@ function render() {
       + '<div class="order-foot"><span class="return-by">RETURN BY ' + h(due) + '</span><strong class="days-left">' + count + '</strong></div>'
       + '<div class="order-actions"><button class="button button-primary" data-ics="' + h(o.id) + '">Add calendar reminder</button>'
       + '<button class="button button-link" data-finish="' + h(o.id) + '">Finish return</button>'
-      + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button></div></li>';
+      + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
   }).join('');
 }
 
@@ -356,8 +366,9 @@ list.addEventListener('click', (e) => {
     const current = readCurrentOrders();
     if (!current) return;
     try {
-      const plan = planSingleCalendar(current, displayed[0]);
-      downloadCalendar(plan.content, plan.filename);
+      // Retain the card's freshness check before opening the shared alert review.
+      planSingleCalendar(current, displayed[0]);
+      calendarExporter.openSingle(displayed[0]);
       clearStorageError();
     } catch (error) {
       orders = current;
@@ -422,13 +433,14 @@ const orderEditor = bindOrderEditor({
   refresh: reloadOrders,
 });
 bindManualPurchase({ read: readCurrentOrders, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
-bindCalendarBatch({ read: load, filter: () => filterMode });
+const calendarExporter = bindCalendarBatch({ read: load, filter: () => filterMode });
 const removalUndo = bindRemovalUndo({
   read: readCurrentOrders,
   commit: next => { if (!persistOrders(next)) return false; render(); return true; },
   refresh: current => { orders = current; render(); },
   focusTracker: () => $('#filter-' + filterMode).focus(),
 });
+bindRefunds({ commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
 bindTabSync({ refresh: reloadOrders });
 reloadOrders();
 
@@ -445,3 +457,5 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRe
     .find(button => button.dataset[action] === id);
   (next ?? $<HTMLButtonElement>('#filter-' + filterMode)).focus({ preventScroll: true });
 });
+
+bindSavedReturnsCsv(read);

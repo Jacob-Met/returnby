@@ -2,6 +2,7 @@ import { daysLeft, dueDate, returnDueDate, todayISO } from './deadline';
 import { buildIcsCalendar, type CalendarReminder } from './ics';
 import type { Order } from './store';
 import { isCompleted } from './completion';
+import { DEFAULT_ALERT_SETTINGS, localCalendarDate, planCalendarAlert, type CalendarAlertSettings } from './calendar-alert';
 
 export type CalendarFilter = 'all' | 'due' | 'expired' | 'completed';
 export type CalendarRow = {
@@ -12,6 +13,9 @@ export type CalendarRow = {
 };
 
 export class CalendarBatchError extends Error {}
+export class CalendarAlertExpiredError extends CalendarBatchError {
+  constructor() { super('An alert time or calendar day has passed while you reviewed. The times are refreshed; review them and download again.'); }
+}
 
 const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
 const encoder = new TextEncoder();
@@ -82,6 +86,7 @@ const fingerprint = (order: Order) => JSON.stringify([
 /** Recheck exactly the selected returns against storage before producing bytes. */
 export function planCalendarBatch(
   current: readonly Order[], reviewed: readonly CalendarRow[], selectedIds: readonly string[], stamp = new Date(),
+  alertSettings: CalendarAlertSettings = DEFAULT_ALERT_SETTINGS, reviewedAt = stamp,
 ) {
   if (!selectedIds.length) throw new CalendarBatchError('Select at least one return to download.');
   const selected = new Set(selectedIds);
@@ -89,7 +94,7 @@ export function planCalendarBatch(
   if (!Number.isFinite(stamp.getTime()) || stamp.getUTCFullYear() < 1000 || stamp.getUTCFullYear() > 9999) {
     throw new CalendarBatchError('The calendar timestamp could not be read.');
   }
-  const fresh = calendarRows(current, stamp.toISOString().slice(0, 10));
+  const fresh = calendarRows(current, localCalendarDate(stamp));
   for (const id of selected) {
     const before = reviewed.filter(row => row.order.id === id);
     const after = fresh.filter(row => row.order.id === id);
@@ -98,7 +103,12 @@ export function planCalendarBatch(
       throw new CalendarBatchError('A selected return changed or was removed. Reload saved returns and review the selection before downloading.');
     }
   }
-  const reminders = fresh.filter(row => selected.has(row.order.id)).map(row => reminder(row.order));
+  const reminders = fresh.filter(row => selected.has(row.order.id)).map(row => {
+    const value = reminder(row.order);
+    const alert = planCalendarAlert(value.due, alertSettings, reviewedAt);
+    if (alert.at && new Date(alert.at).getTime() <= stamp.getTime()) throw new CalendarAlertExpiredError();
+    return { ...value, alertAt: alert.at };
+  });
   // The title occurs in SUMMARY and the alarm DESCRIPTION. Escaping and line
   // folding cannot shorten these UTF-8 values, so reject a clearly oversized
   // selection before the serializer performs its per-character folding.
