@@ -1,0 +1,53 @@
+import {chromium} from '/tmp/astra-marlin-82d1/judge/node_modules/playwright/index.mjs';
+import assert from 'node:assert/strict';
+import {mkdir,writeFile} from 'node:fs/promises';
+const out='/tmp/astra-kestrel-b6a904df3c/returnby-pending-judge';
+await mkdir(out,{recursive:true});
+const report={judge:'astra-kestrel-b6a904df3c',source:'8cb3cc9329a6857607b0d5dcab860cb7fe576fc8',syntheticReceipt:true,courses:[]};
+const browser=await chromium.launch({executablePath:'/usr/local/bin/google-chrome',headless:true,args:['--no-sandbox']});
+try{
+ for(const width of [1440,390]){
+ const context=await browser.newContext({viewport:{width,height:900},timezoneId:'America/Los_Angeles'});
+ const page=await context.newPage();page.setDefaultTimeout(8000);
+ let confirms=0,acceptNext=false;
+ page.on('dialog',async d=>{assert.equal(d.type(),'confirm');confirms++;if(acceptNext){acceptNext=false;await d.accept();}else await d.dismiss();});
+ await page.goto('http://127.0.0.1:18992/');
+ await page.locator('#paste').fill('Order confirmation\nStore: Marlow Outdoor\nOrder #MO-9426\nOrder date: October 31, 2026\nTotal: $80.00\nYou have14 days from delivery to return this purchase.');
+ await page.locator('#find').click();
+ const fields={merchant:'Marlow Outdoor',orderDate:'2026-10-31',windowStartDate:'',orderNo:'MO-9426',total:'$80.00',windowDays:'14'};
+ for(const [name,value]of Object.entries(fields))await page.locator('#preview [name='+name+']').fill(value);
+ assert.equal(await page.locator('#preview [name=windowStartDate]').getAttribute('required'),'');
+ await page.locator('#save-pending-delivery').click();await page.reload();
+ await page.locator('#pending-delivery').click();assert.equal(confirms,0);
+ await page.locator('#preview [name=windowStartDate]').fill('2026-11-04');
+ await page.locator('#save-pending-delivery').click();await page.reload();
+ const pending=await page.evaluate(()=>JSON.parse(localStorage.getItem('returnby.pending-delivery')));
+ assert.equal(pending.windowStartDate,'2026-11-04');
+ const fresh='Fresh order still being entered - fictional unrelated purchase';
+ await page.locator('#paste').fill(fresh);
+ await page.locator('#pending-delivery').click();assert.equal(confirms,1);assert.equal(await page.locator('#paste').inputValue(),fresh);
+ await page.locator('#find').click();
+ await page.locator('#preview [name=merchant]').fill('Unrelated Store');
+ await page.locator('#preview [name=orderDate]').fill('2026-11-09');
+ const before=await page.locator('#preview input').evaluateAll(es=>Object.fromEntries(es.map(e=>[e.name,e.value])));
+ await page.locator('#pending-delivery').click();assert.equal(confirms,2);
+ assert.deepEqual(await page.locator('#preview input').evaluateAll(es=>Object.fromEntries(es.map(e=>[e.name,e.value]))),before);
+ acceptNext=true;await page.locator('#pending-delivery').click();assert.equal(confirms,3);
+ assert.equal(await page.locator('#paste').inputValue(),'');
+ const restored=await page.locator('#preview input').evaluateAll(es=>Object.fromEntries(es.map(e=>[e.name,e.value])));
+ assert.deepEqual(restored,{...fields,windowStartDate:'2026-11-04'});
+ await page.screenshot({path:out+'/resumed-'+width+'.png',fullPage:true});
+ await page.locator('#preview button[type=submit]').click();
+ assert.match(await page.locator('#list').innerText(),/Marlow Outdoor/);
+ assert.match(await page.locator('#list').innerText(),/2026-11-18/);
+ await page.reload();
+ const store=await page.evaluate(()=>JSON.parse(localStorage.getItem('returnby.v1')));
+ assert.equal(store.length,1);assert.equal(store[0].windowStartDate,'2026-11-04');
+ assert.equal(await page.evaluate(()=>localStorage.getItem('returnby.pending-delivery')),null);
+ await page.screenshot({path:out+'/saved-'+width+'.png',fullPage:true});
+ report.courses.push({width,keptClockThroughTwoResumes:true,rawAndCorrectedDraftCancelProtected:true,confirmedReplacementClearsUnrelatedPaste:true,storedDeadline:'2026-11-18',orderClock:'2026-11-04',oneSavedPurchase:true,pendingCleared:true,confirms});
+ await context.close();
+ }
+ report.verdict='ACCEPT: pending review retains confirmed date across repeated resume, does not silently overwrite a new draft, and becomes one correct saved deadline.';
+ await writeFile(out+'/judgment.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));
+}catch(e){report.error=String(e);await writeFile(out+'/failure.json',JSON.stringify(report,null,2));console.error(e);process.exitCode=1;}finally{await browser.close();}

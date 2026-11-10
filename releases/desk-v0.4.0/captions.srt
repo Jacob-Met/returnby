@@ -1,0 +1,23 @@
+1
+00:00:00,085 --> 00:00:02,814
+Fictional receipt: £126 purchase, £37.80 item returned.
+
+2
+00:00:02,814 --> 00:00:06,832
+Check the purchase date and return window, then save.
+
+3
+00:00:06,832 --> 00:00:09,922
+Record the expected refund for the returned item.
+
+4
+00:00:09,922 --> 00:00:13,453
+Keep the refund pending until you check your bank.
+
+5
+00:00:13,453 --> 00:00:16,044
+Checked your bank? Mark the refund received.
+
+6
+00:00:16,044 --> 00:00:19,645
+Your record only: ReturnBy does not verify bank payments.

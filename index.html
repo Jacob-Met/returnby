@@ -25,24 +25,33 @@
 </div>
 </header>
 <main id="top">
-<section class="desk-intro" aria-labelledby="desk-title">
+<section id="desk-intro" class="desk-intro" aria-labelledby="desk-title">
 <div class="desk-intro-title">
 <p class="desk-kicker">RETURNBY / YOUR LOCAL TRACKER</p>
 <h1 id="desk-title">Return deadlines</h1>
 </div>
 <div class="desk-intro-action">
 <p>Know what needs to go back, and when. Paste a confirmation to review its date; your saved returns stay in this browser.</p>
-<a href="#paste">Add an order <span aria-hidden="true">↘</span>
+<a id="desk-add" href="#paste" aria-controls="purchase-intake">Add purchase <span aria-hidden="true">+</span>
 </a>
 </div>
 </section>
 <a id="refund-jump" class="refund-jump" href="#refunds" hidden>
 </a>
-<section class="desk-grid" aria-label="Return deadline workspace">
-<article class="intake-panel">
+<div class="desk-feedback">
+<p id="storage-error" class="warn" role="alert" tabindex="-1" hidden>
+</p>
+<button id="storage-retry" type="button" class="button button-link" hidden>Retry loading saved returns</button>
+</div>
+<section id="pending-desk" class="pending-desk" aria-label="Purchases awaiting delivery" hidden>
+</section>
+<button id="pending-delivery" type="button" class="button button-link" hidden>Purchase pending delivery — resume review</button>
+<section id="desk-grid" class="desk-grid" aria-label="Return deadline workspace">
+<article id="purchase-intake" class="intake-panel" aria-labelledby="intake-title">
+<button id="desk-back" type="button" class="button button-link desk-back" aria-controls="saved-returns" hidden>← Your returns</button>
 <header class="panel-heading">
 <p class="eyebrow">ADD A RETURN</p>
-<h2>New confirmation</h2>
+<h2 id="intake-title" tabindex="-1">Add a purchase</h2>
 <p>Paste an order email to find a deadline. Check the store policy and edit any missing details before saving.</p>
 </header>
 <label class="input-label" for="paste">ORDER EMAIL / CONFIRMATION</label>
@@ -60,16 +69,12 @@
 <span class="privacy-icon">LOCAL</span>
 <p>No inbox access. No upload. Parsing and calendar export run in this browser.</p>
 </div>
-<button id="pending-delivery" type="button" class="button button-link" hidden>Purchase pending delivery — resume review</button>
 <form id="preview" class="preview-card" hidden aria-live="polite">
 </form>
-<p id="storage-error" class="warn" role="alert" tabindex="-1" hidden>
-</p>
-<button id="storage-retry" type="button" class="button button-link" hidden>Retry loading saved returns</button>
 </article>
-<aside id="tracker" class="ledger-panel" aria-labelledby="tracker-title">
+<aside id="saved-returns" class="ledger-panel" aria-labelledby="returns-title">
 <header class="panel-heading">
-<h2 id="tracker-title">Active returns</h2>
+<h2 id="returns-title" tabindex="-1"><span id="tracker-title">Active returns</span></h2>
 <p id="tracker-description">Your next deadlines, soonest first.</p>
 </header>
 <div id="tracker-summary" class="summary-grid">
@@ -127,6 +132,8 @@
 <p id="calendar-feedback" role="status" aria-live="polite">
 </p>
 </div>
+<ul id="list" aria-live="polite">
+</ul>
 <div class="csv-toolbar">
 <button id="saved-returns-csv" type="button" class="button button-secondary">Download all saved returns as CSV</button>
 <p class="list-note">All tracked returns, regardless of this search. Pending delivery drafts are excluded. Import order numbers as text to keep leading zeros. <a href="#backup-heading">Use JSON for backup and restore.</a>
@@ -134,8 +141,6 @@
 <p id="saved-csv-message" role="status" aria-live="polite" hidden>
 </p>
 </div>
-<ul id="list" aria-live="polite">
-</ul>
 <p class="list-note">Finished orders stay in History. Previously imported calendar reminders must be removed in your calendar app.</p>
 <p id="trip-link" class="list-note">
 <a href="./trip-checklist.html">Prepare a return-trip checklist →</a> · <a href="#refunds">Check outstanding refunds →</a>
@@ -217,17 +222,21 @@
 <section class="backup-panel" aria-labelledby="backup-heading">
   <details>
     <summary id="backup-heading">Export or restore saved returns</summary>
-    <p>Move your tracker to another browser, or keep a copy before clearing storage. A backup contains saved order details, return-window labels and your saved trip, including packing checks and private notes. Keep the file private; the original pasted email is excluded.</p>
+    <p>Move your tracker to another browser, or keep a copy before clearing storage. A backup contains saved order details, reviewed purchases awaiting delivery, return-window labels and your saved trip, including packing checks and private notes. Keep the file private; the original pasted email is excluded.</p>
     <p id="pending-backup-note" class="list-note" hidden>Your purchase pending delivery is kept only in this browser. This backup does not include that pending review.</p>
     <div class="action-row">
 <button id="backup-export" type="button" class="button button-primary">Download backup</button>
 </div>
 <label class="input-label" for="backup-file">Choose a ReturnBy backup to preview</label>
     <input id="backup-file" type="file" accept=".json,application/json" aria-describedby="backup-limits" />
-    <p id="backup-limits" class="list-note">Up to 5 MiB and 10,000 orders. Import adds new saved IDs, skips matching copies and refuses conflicting IDs. Restore a trip separately after reviewing its date, orders and notes. Return windows and policy labels are restored as saved; confirm current terms with the retailer.</p>
+    <p id="backup-limits" class="list-note">Up to 5 MiB and 10,000 orders. Import adds new purchases and skips matching copies. For different versions of the same purchase, compare current and backup values and choose which to keep. Unreviewed differences stay current. Restore a trip separately after reviewing its date, orders and notes. Return windows and policy labels are restored as saved; confirm current terms with the retailer.</p>
     <p id="backup-message" role="status" aria-live="polite" hidden>
 </p>
-    <div id="backup-preview" hidden>
+    <div id="backup-trip-library" hidden>
+</div>
+<section id="backup-pending" hidden>
+</section>
+<div id="backup-preview" hidden>
       <h3 id="backup-summary" tabindex="-1">
 </h3>
       <ul id="backup-rows">
@@ -432,7 +441,7 @@
 <label>Return reference or notes (optional)<textarea name="note" maxlength="2000" rows="3" placeholder="Returned the blue shirt. Drop-off reference, merchant promise, or next step.">
 </textarea>
 </label>
-<p class="list-note">The date is a note to check when you open ReturnBy. It does not send a notification. Refund notes are included in your backup.</p>
+<p class="list-note">The date is a note to check when you open ReturnBy. After saving, choose “Set refund reminder” to download a calendar reminder. ReturnBy itself does not send notifications. Refund notes are included in your backup.</p>
 <p id="refund-error" role="alert" tabindex="-1" hidden>
 </p>
 <div class="action-row">
@@ -442,6 +451,33 @@
 </div>
 </form>
 </dialog>
+<dialog id="refund-calendar-dialog" aria-labelledby="refund-calendar-title">
+<form id="refund-calendar-form" novalidate>
+    <p class="refund-calendar-kicker">OUTSTANDING REFUND</p>
+    <h2 id="refund-calendar-title" tabindex="-1">Remember to check the money</h2>
+    <p id="refund-calendar-purchase">
+</p>
+    <p id="refund-calendar-saved">
+</p>
+    <div class="refund-calendar-fields">
+      <label>Reminder date<input id="refund-calendar-date" type="date" required max="9999-12-30">
+</label>
+      <label>Time<input id="refund-calendar-time" type="time" required>
+</label>
+    </div>
+    <p id="refund-calendar-preview" role="status">
+</p>
+    <p id="refund-calendar-zone" class="refund-calendar-help">
+</p>
+    <p class="refund-calendar-help">The calendar entry includes this store, order number and expected amount. Your private refund notes stay here.</p>
+    <p class="refund-calendar-help">Download, then import the file into your calendar and check its notifications. ReturnBy does not send alerts. This is a one-time copy: receiving the refund here will not cancel a calendar entry.</p>
+    <p id="refund-calendar-error" role="alert" tabindex="-1" hidden>
+</p>
+    <div class="refund-calendar-actions">
+<button class="button button-primary" type="submit">Download refund reminder</button>
+<button id="refund-calendar-close" class="button button-link" type="button">Cancel</button>
+</div>
+  </form>
+</dialog>
 </body>
 </html>
-

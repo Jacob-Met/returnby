@@ -144,7 +144,7 @@ try {
   const backupPath = resolve(output, 'fictional-returns-backup.json');
   await backupDownload.saveAs(backupPath);
   const backup = JSON.parse(await readFile(backupPath, 'utf8'));
-  assert.equal(backup.version, 3);
+  assert.equal(backup.version, 5);
   assert.equal(backup.orders.filter(row => row.completedAt).length, 2);
   const restoredContext = await browser.newContext({ viewport: { width: 390, height: 844 }, acceptDownloads: true, timezoneId: 'America/Los_Angeles' });
   const restored = await restoredContext.newPage();
@@ -155,6 +155,9 @@ try {
   await restored.locator('#backup-apply').click();
   assert.equal(await restored.locator('#tracked-count').innerText(), '1');
   assert.equal(await restored.locator('#completed-count').innerText(), '2');
+  assert(await restored.locator('#desk-back').isVisible(), 'A restored phone purchase exposes Your returns navigation');
+  await restored.locator('#desk-back').click();
+  assert(await restored.locator('#saved-returns').isVisible(), 'Actual phone navigation opens the restored ledger');
   await restored.locator('#filter-completed').click();
   assert.equal(await restored.locator('#list .card').count(), 2);
   const firstHistory = await restored.locator('#list .card').first().boundingBox();
@@ -162,7 +165,7 @@ try {
   assert(!(await restored.locator('#calendar-open').isVisible()));
   assert(await restored.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await restored.screenshot({ path: resolve(output, 'history-mobile.png') });
-  checks.push('Actual downloaded v3 backup restores both outcomes in a fresh phone browser');
+  checks.push('Actual downloaded v5 backup restores both outcomes in a fresh phone browser');
 
   await page.locator('#filter-all').click();
   await page.locator('#calendar-open').click();

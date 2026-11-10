@@ -75,7 +75,8 @@ test('legacy active backups stay v1; completed v2 records survive approved proje
   expect(planImport([], parseBackup(output)).next).toEqual([active, done]);
   expect(() => parseBackup(backup([done], 1))).toThrow(/unsupported fields/);
   expect(() => parseBackup(backup([{ ...done, arbitraryStatus: 'open' }]))).toThrow(/unsupported fields/);
-  expect(() => parseBackup(backup([active], 4))).toThrow(/not supported/);
+  expect(() => parseBackup(backup([active], 4))).toThrow(/trip plans are not readable/);
+  expect(() => parseBackup(backup([active], 6))).toThrow(/not supported/);
 });
 
 test('same-ID completion or reopening differences block the complete import instead of rewriting status', () => {
