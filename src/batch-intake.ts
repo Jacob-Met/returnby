@@ -1,3 +1,4 @@
+import { receiptPolicy, receiptWindow } from './receipt-policy';
 import { purchaseIdentity as identity } from './purchase-identity';
 import { parse } from './parse';
 import { deliveryReview } from './delivery-review';
@@ -82,7 +83,7 @@ export function appendConfirmations(
       ...(parsed.dateWarning ? {dateWarning:parsed.dateWarning} : {}),
       fields: {
         merchant: parsed.merchant, orderNo: parsed.orderNo, total: parsed.total,
-        orderDate: parsed.orderDate, windowDays: String(policy.days),
+        orderDate: parsed.orderDate, windowDays: receiptWindow(input.text, policy.days),
       },
     };
   });
@@ -125,7 +126,7 @@ export function validateDraft(draft: BatchDraft): Omit<Order, 'id' | 'createdAt'
   return {
     merchant: fields.merchant, orderNo: fields.orderNo, total: fields.total,
     orderDate: fields.orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays,
-    windowSource: windowDays === policy.days ? policy.source : 'user',
+    windowSource: receiptPolicy(draft.text).passages.length ? 'user' : windowDays === policy.days ? policy.source : 'user',
   };
 }
 
