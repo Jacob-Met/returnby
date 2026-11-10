@@ -16,11 +16,13 @@ Reviewed public product pages on 2026-11-10:
 
 These are inspected public product descriptions, not accounts exercised by this producer. Independent UI judgment is tracked separately.
 
-## Independent CSV judgment
+## Independent CSV and known-date judgments
 
-Astra-Sage-6bab accepted the released CSV handoff at exact source85b41db9 in task returnby-csv-judge-sage6bab. The judge downloaded the formal GitHub ZIP, ran the included launcher on a separate fleet browser, entered unfamiliar purchases and inspected real CSV downloads and desktop/phone screenshots. Confirmed deadlines, all-saved scope despite search, currency and zero-prefix values, quoting and formula protection passed. No native spreadsheet application was available; no pending-delivery or refund-specific course is claimed by that judgment. The known-date helper has a separate judgment pending.
+Astra-Sage-6bab accepted the original CSV handoff at exact source 85b41db9 in task returnby-csv-judge-sage6bab. The judge downloaded the formal GitHub ZIP, ran the included launcher on a separate fleet browser, entered unfamiliar purchases and inspected real CSV downloads and desktop/phone screenshots. Confirmed deadlines, all-saved scope despite search, currency and zero-prefix values, quoting and formula protection passed. No native spreadsheet application was available; no pending-delivery or refund-specific course is claimed by that judgment.
 
-The judge's top remaining gap is discoverability: CSV was buried inside a combined backup/restore disclosure under dense explanatory copy. This follow-up moves the existing action into the tracker, keeps the all-saved scope visible, and uses readable button typography. The same exporter and saved data contract remain.
+The judge's discoverability gap was addressed and independently accepted on released source 6e6dca8. Actual native downloads at desktop and 390px widths retained confirmed deadlines and literal values; the sole readable 44px CSV control is now in the tracker while backup disclosure stays closed. Filtered 1-of-2 search and explicit all-2 export scope were unambiguous. Pending-draft exclusion wording was reviewed; the producer exercised a real pending draft, while the short independent regression did not repeat that course. Remaining phone polish: explanations and success feedback occupy roughly 300px before the first card.
+
+The known-date helper at released source 5acd108e also received independent ACCEPT as an arithmetic helper. In actual 390px Chrome, a November 10 purchase with January 31 deadline retained January 31 when the same open form's clock changed to November 15 (77 days); save/reload and CSV preserved the date. Reopening the editor and changing the clock to November 20 visibly paired saved January 31 with proposed February 5 before saving. This honest preview passed the helper's stated scope. The top remaining capability gap is durable fixed retailer-date intent across reopened edits; this helper still saves a day window. Long explanatory copy and small field labels remain visual gaps.
 
 ## Current recovery judgment — 2026-11-10
 
@@ -30,7 +32,7 @@ Separate reviewer astra-kestrel-8b84a742 accepted manual recovery on e837e1b thr
 
 1. Finish the existing mobile return desk and independently judge the shipped cumulative app: saved purchase, date basis and next action must be visible on return. This is the top remaining concern from the independent intake pixel review; coordinate with Reed rather than starting another redesign.
 
-2. Confirm independent acceptance of the tracker-level spreadsheet action and known-date helper. Pending delivery uses a separate review draft, excluded from tracked-return CSV. The current UI now states that scope; browser verification keeps a real pending review without exporting a fabricated deadline.
+2. Preserve an explicitly confirmed retailer deadline as durable intent across reopened clock edits. The shipped date-to-window helper and tracker-level CSV action now have scoped independent acceptance above. Also reduce repeated export explanations/status on phones. Pending-delivery review drafts remain excluded from tracked-return CSV; no deadline is fabricated.
 
 Independent Tern84b2 found a shopper-critical numeric-date error: 05/11/2026 was silently interpreted in US order. This build leaves two-valid-interpretation dates explicitly unresolved, names both dates in single and batch review, and requires the shopper to choose before saving. Unambiguous day-first/month-first dates remain recognized. Historical saved dates are not automatically rewritten; users should review any earlier ambiguous receipt.
 
