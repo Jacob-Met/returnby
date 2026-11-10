@@ -24,7 +24,9 @@ function fold(line: string): string {
   return output;
 }
 
-export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string; confirmedStartDate?: string };
+const timestamp = (date: Date) => date.toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
+
+export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string; confirmedStartDate?: string; alertAt?: string | null };
 
 function eventLines(o: CalendarReminder, ts: string): string[] {
   const d = o.due.replace(/-/g, '');
@@ -36,14 +38,15 @@ function eventLines(o: CalendarReminder, ts: string): string[] {
     'BEGIN:VEVENT', `UID:${esc(o.id)}@returnby`, `DTSTAMP:${ts}`,
     `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${e}`, `SUMMARY:${title}`,
     ...(o.confirmedStartDate ? [`DESCRIPTION:${esc('Return clock starts ' + o.confirmedStartDate + ' (user-confirmed; retailer policy not verified).')}`] : []),
-    'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`, 'TRIGGER:-P3D', 'END:VALARM',
+    ...(o.alertAt === null ? [] : ['BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`,
+      o.alertAt ? `TRIGGER;VALUE=DATE-TIME:${timestamp(new Date(o.alertAt))}` : 'TRIGGER:-P3D', 'END:VALARM']),
     'END:VEVENT',
   ];
 }
 
 /** Serialize already reviewed reminders with one calendar envelope. */
 export function buildIcsCalendar(reminders: readonly CalendarReminder[], stamp = new Date()): string {
-  const ts = stamp.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  const ts = timestamp(stamp);
   return [
     'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
     ...reminders.flatMap(reminder => eventLines(reminder, ts)),

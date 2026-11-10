@@ -40,11 +40,11 @@ test('shopper-entered refund follow-through is exportable without private notes'
 test('partial quantities and mixed history remain intelligible in a spreadsheet',()=>{
  const items=[{id:'shirt',name:'Linen, blue',quantity:3,returned:1,kept:1}];
  const partial=createSavedReturnsCsv([order({items})],at);
- expect(partial.content).toContain('"Active","","3","1","1","1","Linen, blue: 3 bought, 1 returned, 1 kept, 1 still open"');
+ expect(partial.content).toContain('"Active","","2026-11-10T12:00:00.000Z","3","1","1","1","Linen, blue: 3 bought, 1 returned, 1 kept, 1 still open"');
  const done=createSavedReturnsCsv([order({items:[{...items[0],returned:2}],completionKind:'mixed',completedAt:at.toISOString()})],at);
- expect(done.content).toContain('"Returned & kept","2026-11-10T12:00:00.000Z","3","2","1","0"');
+ expect(done.content).toContain('"Returned & kept","2026-11-10T12:00:00.000Z","2026-11-10T12:00:00.000Z","3","2","1","0"');
 });
 test('older purchases do not invent item counts in a CSV',()=>{
  const result=createSavedReturnsCsv([order()],at);
- expect(result.content).toContain('"Active","","","","","",""');
+ expect(result.content).toContain('"Active","","2026-11-10T12:00:00.000Z","","","","",""');
 });

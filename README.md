@@ -29,7 +29,7 @@ Extract the ZIP, install Python 3, launch Start ReturnBy.cmd (Windows), Start Re
 
 The integrated source includes the desk-first layout, manual purchase entry and an optional **Return clock starts** date confirmed by the user, such as a delivery date. Leaving that date blank counts from the order date. These fields do not verify a retailer's policy or delivery records.
 
-The 0.3.0 source also adds Returned/Kept History and reopening, removal undo, and saved trip plans. Its combined downloadable package is being prepared; the published packages above must not be assumed to contain these new lifecycle features. Independent desktop/phone judgment accepted the lifecycle and History corrections at dba47a3. The later combined layout and confirmed-clock integration is undergoing its own final checks.
+The 0.3.0 source also adds Returned/Kept History and reopening, removal undo, and saved trip plans. Its combined downloadable package is being prepared; the published packages above must not be assumed to contain these new lifecycle features. Independent desktop/phone judgment accepted the lifecycle and History corrections at dba47a3. The later combined layout, confirmed-clock, refund, CSV, calendar-alert and intake-continuity integration has passed 575 native tests, the production build and eleven real Chrome groups in Kestrel’s fleet run. Its versioned package is still being prepared.
 
 See [the product standard and maintained ranked gap list](VISION.md). [Historical releases, checksums and launch notes](docs/RELEASE_HISTORY.md) remain available.
 
@@ -53,6 +53,36 @@ Backups containing Returned/Kept outcomes use version 3. This app still imports 
 
 The closure planner re-reads storage immediately before saving and refuses a changed order. A storage error preserves the review for retry. These checks do not create a transaction between simultaneous browser writes.
 
+## Additional historical download records
+
+These records describe earlier builds, not the integrated lifecycle source awaiting release.
+
+This historical receipt-fix browser release was built from commit [7535b9c](https://github.com/Jacob-Met/returnby/commit/7535b9c15c1cd1abab850248561b3c3afa671401) and includes the corrected merchant/receipt parsing merged in [PR #89](https://github.com/Jacob-Met/returnby/pull/89), plus saved-return search. The actual GitHub ZIP was independently downloaded, run and checked with an unfamiliar synthetic exported email, including selection, save, reopened tracker and 390-pixel mobile layout. **ZIP SHA-256:** 440af93913849e6ebb998e76856c131fdb2d3ac97c125c289eedc4989557e54d.
+
+Extract the ZIP. With Python 3 installed, run Start ReturnBy.cmd on Windows, Start ReturnBy.command on macOS or ./Start ReturnBy.sh on Linux, then visit http://127.0.0.1:8769/. The ZIP is a local browser application, not a hosted service. No inbox connection or receipt upload is involved: the original email remains in the current page, and only reviewed fields are saved to this browser's local storage. Return windows are estimates you must check against retailer policy. Windows and macOS launchers are packaged but have not been independently exercised by this reviewer.
+
+Export the original order email as a plain-text .eml to import it. The local importer deliberately ignores attachments, including forwarded messages embedded as attached emails; paste the original confirmation text instead if necessary.
+
+## Earlier release — original .eml import before receipt fixes (2026-11-10)
+
+**[Historical ReturnBy v0.2.0 .eml ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-eml-2026-11-10/ReturnBy-v0.2.0-browser.zip)** — [source at dd21f4f](https://github.com/Jacob-Met/returnby/releases/tag/returnby-eml-2026-11-10). This prior package has SHA-256 957648cce351f8cd17f94e8a78a18bd690cc218b431b7bcc62f2749949cb2d18 and predates PR #89's corrected store-name and order-number recognition. This ZIP is historical; use the latest published download listed at the top.
+
+## Download the multi-confirmation browser preview — 2026-11-10
+
+**[Download the new multi-confirmation ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/c908f9c8176554afa1aba8c672ad07042156d637/downloads/returnby-browser-2026-11-10-batch-intake.zip)** — [package checksum and launch notes](https://github.com/Jacob-Met/returnby/tree/c908f9c8176554afa1aba8c672ad07042156d637/downloads). SHA-256: `23a77516a3c75ffc0a22b1951be6f92613e1e1e76e575ecda161a7263df3d86c`.
+
+This build adds review and local saving of up to 20 pasted or UTF-8 text-file order confirmations together, while retaining individual editing, backups, calendar exports, the trip checklist and deadline planning. Extract the ZIP, run `START-WINDOWS.cmd` or `./start-mac-linux.sh` (Node.js 20+), and visit `http://127.0.0.1:8787/`. The compiled package needs no npm install. It was checked after a clean extraction and then downloaded back from GitHub byte-for-byte; the six actual Chrome receiving groups passed on desktop and phone. Source: [merged PR #85](https://github.com/Jacob-Met/returnby/pull/85). This is a versioned distribution, not a formal GitHub Release.
+
+## Previous single-confirmation browser preview — 2026-11-10
+
+**[Download the verified ReturnBy browser ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/a637cd465c26e2d6a4729a7e07e162f70e9f2b83/downloads/returnby-browser-2026-11-10.zip)** — [distribution record and launch details](https://github.com/Jacob-Met/returnby/tree/a637cd465c26e2d6a4729a7e07e162f70e9f2b83/downloads).
+
+Unzip the package, install Node.js 20+ if necessary, run `START-WINDOWS.cmd` on Windows or `./start-mac-linux.sh` on macOS/Linux (or `node serve.mjs`), and open `http://127.0.0.1:8787/`. This is a loopback-only local app with compiled assets, no npm install or account required; saved returns stay in that browser profile. It includes the [single-reminder stale-deadline fix](https://github.com/Jacob-Met/returnby/pull/83), a file checksum manifest and a real Chrome screenshot with fictional orders. Its public ZIP was downloaded back and matched the tested archive byte-for-byte (SHA-256: `505ff5b7d6d6ca7a0163ede641f6da7fb56c3e4cde6c0915231ad0d915ef1de4`). The merged source is [abd33f98](https://github.com/Jacob-Met/returnby/commit/abd33f98a571e03e9c36d2ea0a27a392c823e275). Verified on Linux with Node 22 and Chrome 156; Windows/macOS launchers and other browsers were not independently exercised.
+
+**Previous version:** [ReturnBy v0.2.0 browser ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/9cd8d0d5f2fd8ba32a0525db65e292cae92ccdcf/downloads/v0.2.0/ReturnBy-v0.2.0-browser.zip), built from [b1c32488](https://github.com/Jacob-Met/returnby/commit/b1c32488f1d198a5461abf61bf98467ff99bba55). That historical package has **Python 3** launchers and uses port **8769**; it predates the new calendar freshness fix. Both downloads are on versioned GitHub distribution branches because the connected GitHub integration cannot create formal Releases.
+
+ReturnBy turns an order-confirmation email into a reviewable return deadline and a calendar reminder. The visitor supplies the email text; the browser runs the repository's real rule-based parser, merchant-policy lookup, date calculation, status logic and RFC 5545 export. It is a multi-order tracker, not a canned result: correct extracted fields, override a return window, save several deadlines, filter the list and review a useful upcoming calendar alert for any order.
+
 ## Import exported email confirmations locally
 
 Open **Review several order confirmations together** and choose one or more UTF-8 `.txt` or standard `.eml` messages. For exported `.eml` files, ReturnBy extracts the readable `text/plain` MIME body, including common base64 or quoted-printable encodings. For HTML-only messages it extracts readable text with an inert parser, without rendering markup, loading images/links, or executing scripts. Authored plain text takes precedence. Attachments and explicitly hidden HTML are excluded. CSS layout is not reproduced, so review extracted text and every field; forwarded threads or promotional copy can require corrections. Unsupported MIME structures and charsets produce a visible error.
@@ -63,7 +93,7 @@ The pure MIME-reader tests are `tests/eml.test.ts`; the production Chrome file-p
 
 ## Privacy
 
-The original pasted email is not sent or persisted. The user must review and save fields; reviewed order details, confirmed return-clock starts, completion outcomes and timestamps, and trip plans you create stay in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the order list removes saved order records from this device; order backups do not include trip plans.
+The original pasted email is not sent or persisted. The user must review and save fields; reviewed order details, confirmed return-clock starts, completion outcomes and timestamps, and trip plans you create stay in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the order list removes saved order records from this device; current order backups include trip plans for separately reviewed restoration.
 
 ## Export several calendar reminders
 
@@ -76,7 +106,7 @@ Cancel and Escape leave the saved tracker and new-order draft intact.
 
 **Download selected reminders** creates one local `.ics` file containing one all-day
 event per selected order, sorted by deadline and then saved identity. Each event retains
-the existing per-order calendar UID and three-day display alarm. The file includes the
+the existing per-order calendar UID. Choose an alert lead time and local hour, or no alert. Exact alert times are reviewed before download; elapsed lead times use a visible fifteen-minute catch-up and past deadlines receive no alarm. The file includes the
 merchant, order number and deadline; it excludes the order total and original email.
 Open the downloaded file in your calendar application to import it. The receiving calendar
 decides how to handle an already imported UID; this is a file export, not a subscription.
@@ -92,8 +122,7 @@ transaction across browser tabs.
 Invalid dates/windows and duplicate or unsupported calendar identities remain visible with
 an explanation and cannot be selected. Other valid returns can still be exported. The dialog
 supports up to 2,000 saved records, with 4,096-character limits on exported fields and a
-4 MiB calendar limit; oversized selections must be reduced. Existing single-order reminders
-continue to use the same calendar serialization.
+4 MiB calendar limit; oversized selections must be reduced. Single-order reminders open the same alert review and use the same calendar serialization. See [upcoming alert behavior and independent judgment](docs/calendar-alerts/README.md).
 
 The native tests cover exact event identity/text, fixed dates, Unicode folding, selection,
 stale-record refusal and output admission. A separate optional real-browser receiver is

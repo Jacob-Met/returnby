@@ -1,6 +1,7 @@
 import './order-items.css';
 import { bindItemEditor } from './order-items-ui';
 import { itemSummary } from './order-items';
+import { bindIntakeDeparture } from './intake-departure';
 import { bindRefunds, renderRefunds } from './refund-ui';
 import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
 import { reviewDuplicateIntake } from './duplicate-intake';
@@ -25,12 +26,13 @@ import { completionLabel, isCompleted, planCompletion, type CompletionAction } f
 import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
-import { bindCalendarBatch, downloadCalendar } from './calendar-batch-ui';
+import { bindCalendarBatch } from './calendar-batch-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const refreshIntakeDeadline = bindIntakeDeadline(preview);
+const refreshIntakeDeparture = bindIntakeDeparture(paste, preview);
 const search = $<HTMLInputElement>('#return-search');
 const searchClear = $<HTMLButtonElement>('#search-clear');
 const list = $<HTMLUListElement>('#list');
@@ -177,6 +179,7 @@ function showPreview() {
   preview.hidden = false;
   refreshIntakeDeadline();
   refreshPreviewPolicy();
+  refreshIntakeDeparture();
 }
 
 preview.addEventListener('submit', (e) => {
@@ -215,8 +218,12 @@ preview.addEventListener('submit', (e) => {
     createdAt: new Date().toISOString(),
   }];
   if (!persistOrders(next)) return;
-  preview.hidden = true; paste.value = ''; render();
+  preview.hidden = true; paste.value = ''; refreshIntakeDeparture(); render();
 });
+
+function refundAction(o: Order): string {
+  return '<button class="button button-link" data-refund="' + h(o.id) + '">' + (o.refundState ? 'Review refund' : 'Track a refund') + '</button>';
+}
 
 function historyCard(o: Order): string {
   const recorded = new Date(o.completedAt!).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
@@ -230,19 +237,19 @@ function historyCard(o: Order): string {
     + '<div class="order-actions">'
     + (o.items ? '<button class="button button-link" data-items="' + h(o.id) + '">Review item decisions</button>'
       : '<button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>')
-    + '<button class="button button-link" data-refund="' + h(o.id) + '">' + (o.refundState ? 'Review refund' : 'Track a refund') + '</button>'
+    + refundAction(o)
       + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button>'
     + '<button class="button button-link" data-del="' + h(o.id) + '">Remove</button></div></li>';
 }
 
 function render() {
+  renderRefunds(orders, loadFailed);
   const showingHistory = filterMode === 'completed';
   $('#tracker-title').textContent = showingHistory ? 'History' : 'Active returns';
   $('#tracker-description').textContent = showingHistory
     ? 'Returned and kept orders, newest first. Reopen an order to track its original deadline.'
     : 'Your next deadlines, soonest first.';
   for (const id of ['tracker-summary', 'calendar-toolbar', 'trip-link']) $('#' + id).hidden = showingHistory;
-  renderRefunds(orders, loadFailed);
   if (loadFailed) {
     for (const id of ['tracked-count', 'soon-count', 'expired-count', 'completed-count']) $('#' + id).textContent = '—';
     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
@@ -296,8 +303,7 @@ function render() {
       + '<div class="order-actions"><button class="button button-primary" data-items="' + h(o.id) + '">' + (o.items ? 'Review items' : 'Add items') + '</button>'
       + '<button class="button button-link" data-ics="' + h(o.id) + '">Add calendar reminder</button>'
       + '<button class="button button-link" data-finish="' + h(o.id) + '">Finish return</button>'
-      + '<button class="button button-link" data-refund="' + h(o.id) + '">' + (o.refundState ? 'Review refund' : 'Track a refund') + '</button>'
-      + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button></div></li>';
+      + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
   }).join('');
 }
 
@@ -373,8 +379,9 @@ list.addEventListener('click', (e) => {
     const current = readCurrentOrders();
     if (!current) return;
     try {
-      const plan = planSingleCalendar(current, displayed[0]);
-      downloadCalendar(plan.content, plan.filename);
+      // Retain the card's freshness check before opening the shared alert review.
+      planSingleCalendar(current, displayed[0]);
+      calendarExporter.openSingle(displayed[0]);
       clearStorageError();
     } catch (error) {
       orders = current;
@@ -445,7 +452,7 @@ const orderEditor = bindOrderEditor({
   refresh: reloadOrders,
 });
 bindManualPurchase({ read: readCurrentOrders, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
-bindCalendarBatch({ read: load, filter: () => filterMode });
+const calendarExporter = bindCalendarBatch({ read: load, filter: () => filterMode });
 const removalUndo = bindRemovalUndo({
   read: readCurrentOrders,
   commit: next => { if (!persistOrders(next)) return false; render(); return true; },

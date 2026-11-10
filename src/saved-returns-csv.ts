@@ -7,8 +7,8 @@ export const MAX_SAVED_CSV_BYTES = MAX_BACKUP_BYTES;
 export const SAVED_CSV_COLUMNS = Object.freeze([
   'Saved return ID', 'Store', 'Order number', 'Total (as entered)',
   'Order date', 'Return window (days)', 'Recorded window source',
-  'Return deadline', 'Clock starts', 'Clock basis', 'Refund status', 'Refund amount (as entered)', 'Refund follow-up date', 'Created at',
-  'Return status', 'Finished at', 'Items bought', 'Items returned', 'Items kept', 'Items still open', 'Item decisions',
+  'Return deadline', 'Clock starts', 'Clock basis', 'Refund status', 'Refund amount (as entered)', 'Refund follow-up date', 'Return status', 'Finished at', 'Created at',
+  'Items bought', 'Items returned', 'Items kept', 'Items still open', 'Item decisions',
 ] as const);
 
 export class SavedCsvError extends Error {}
@@ -59,8 +59,7 @@ export function createSavedReturnsCsv(current: unknown, exportedAt = new Date())
       order.id, order.merchant, order.orderNo ?? '', order.total ?? '',
       order.orderDate, order.windowDays, order.windowSource, due ?? '', returnClockStart(order) ?? '',
       order.windowStartDate ? 'Confirmed start date' : 'Order date',
-      order.refundState ?? '', order.refundAmount ?? '', order.refundFollowUpDate ?? '', order.createdAt,
-      isCompleted(order) ? completionLabel(order) : 'Active', order.completedAt ?? '',
+      order.refundState ?? '', order.refundAmount ?? '', order.refundFollowUpDate ?? '', isCompleted(order) ? completionLabel(order) : 'Active', order.completedAt ?? '', order.createdAt,
       quantities?.quantity ?? '', quantities?.returned ?? '', quantities?.kept ?? '', quantities?.open ?? '', itemDetails,
     ].map(cell).join(','));
   }

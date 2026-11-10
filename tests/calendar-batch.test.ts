@@ -30,7 +30,7 @@ describe('reviewed multi-return calendar', () => {
     for (const event of parsed) {
       expect(event.match(/DTSTAMP:20261008T123456Z/g)).toHaveLength(1);
       expect(event.match(/BEGIN:VALARM/g)).toHaveLength(1);
-      expect(event).toContain('TRIGGER:-P3D\r\n');
+      expect(event).toMatch(/TRIGGER;VALUE=DATE-TIME:\d{8}T\d{6}Z/);
     }
     expect(plan.content).not.toContain('$12.00');
     expect(plan.content).not.toContain('omit@returnby');

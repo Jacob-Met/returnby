@@ -1,3 +1,5 @@
+import { planRefund } from '../src/refund';
+import { createSavedReturnsCsv } from '../src/saved-returns-csv';
 import { alignTripPlan, emptyTripPlan, planOrder } from '../src/trip-plan';
 import { captureRemoval, planUndoRemoval } from '../src/removal-undo';
 import { expect, test } from 'vitest';
@@ -100,4 +102,26 @@ test('finishing retires a saved trip selection but preserves packing notes throu
   const ready = alignTripPlan(aligned.plan, parseSavedOrders(JSON.stringify(reopened.next)));
   expect(ready.unavailable).toEqual([]);
   expect(ready.plan.orders[0]).toMatchObject({ selected: false, packed: true, notes: entry.notes });
+});
+
+
+test('finishing and reopening retain the refund follow-up, and CSV identifies History', () => {
+  const pending: Order = {id:'refund-return',merchant:'Ternwear',orderNo:'T-400',total:'£90',
+    orderDate:'2026-11-01',windowDays:30,windowSource:'user',createdAt:'2026-11-01T12:00:00.000Z',
+    refundState:'awaiting',refundAmount:'£30',refundFollowUpDate:'2026-11-22',
+    refundNote:'Wool scarf returned; check merchant processing.',refundUpdatedAt:'2026-11-10T12:00:00.000Z'};
+  const closed=planCompletion([pending],pending,'returned',new Date('2026-11-10T13:00:00.000Z')).order;
+  const restored=parseBackup(exportBackup([closed]))[0];
+  expect(restored.refundNote).toBe(pending.refundNote);
+  expect(restored.refundState).toBe('awaiting');
+  expect(restored.completionKind).toBe('returned');
+  const csv=createSavedReturnsCsv([restored]).content;
+  expect(csv).toContain('"Return status","Finished at"');
+  expect(csv).toContain('"Returned","2026-11-10T13:00:00.000Z"');
+  expect(csv).not.toContain(pending.refundNote);
+  const received=planRefund([restored],restored,{state:'received',amount:'£30',followUpDate:'',note:'Confirmed in account.'})[0];
+  expect(received.completionKind).toBe('returned');
+  const reopened=planCompletion([received],received,'reopen').order;
+  expect(reopened.completedAt).toBeUndefined();
+  expect(reopened.refundState).toBe('received');
 });

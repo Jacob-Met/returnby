@@ -20,3 +20,11 @@
 #calendar-dialog button:disabled { opacity: .5; cursor: not-allowed; }
 #calendar-dialog :focus-visible { outline: 3px solid #96723e; outline-offset: 3px; }
 @media (max-width: 480px) { #calendar-form { padding: 18px; } #calendar-dialog h2 { font-size: 24px; } .calendar-dialog-actions > button { flex: 1 1 160px; } }
+
+.calendar-alert-controls { display: flex; gap: 16px; align-items: end; margin: 18px 0 6px; }
+.calendar-alert-controls label { display: grid; gap: 6px; font-size: 13px; font-weight: 700; }
+.calendar-alert-controls select, .calendar-alert-controls input { font: inherit; min-height: 42px; padding: 8px; border: 1px solid #929d8b; border-radius: 5px; color: inherit; background: #fffefa; }
+.calendar-alert-controls label:first-child { flex: 1; }
+#calendar-form .calendar-help { color: #526052; font-size: 12px; line-height: 1.5; margin: 8px 0; }
+.calendar-alert-preview { display: block; line-height: 1.55; font-size: 13px; margin-top: 7px; }
+.calendar-alert-attention { color: #923d24; }

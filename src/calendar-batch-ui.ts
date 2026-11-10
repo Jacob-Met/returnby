@@ -1,4 +1,5 @@
-import { CalendarBatchError, calendarRows, initialCalendarSelection, planCalendarBatch, type CalendarFilter, type CalendarRow } from './calendar-batch';
+import { CalendarBatchError, CalendarAlertExpiredError, calendarRows, initialCalendarSelection, planCalendarBatch, type CalendarFilter, type CalendarRow } from './calendar-batch';
+import { DEFAULT_ALERT_SETTINGS, describeCalendarAlert, localCalendarDate, planCalendarAlert, type CalendarAlertSettings } from './calendar-alert';
 import type { Order } from './store';
 
 type CalendarOptions = {
@@ -16,7 +17,6 @@ export function downloadCalendar(content: string, filename: string) {
   try { anchor.click(); }
   finally {
     anchor.remove();
-    // Keep the object alive until the browser has received the download gesture.
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 }
@@ -29,28 +29,44 @@ export function bindCalendarBatch(options: CalendarOptions) {
   const summary = get<HTMLParagraphElement>('calendar-summary');
   const download = get<HTMLButtonElement>('calendar-download');
   const feedback = get<HTMLParagraphElement>('calendar-feedback');
+  const days = get<HTMLSelectElement>('calendar-alert-days');
+  const time = get<HTMLInputElement>('calendar-alert-time');
   let rows: CalendarRow[] = [];
   let selected = new Set<string>();
   let loaded = false;
+  let singleId: string | null = null;
+  let returnFocus: HTMLElement | null = null;
+  let reviewedAt = new Date();
+  days.value = String(DEFAULT_ALERT_SETTINGS.daysBefore);
+  time.value = DEFAULT_ALERT_SETTINGS.time;
 
+  function settings(): CalendarAlertSettings {
+    return { daysBefore: days.value === 'none' ? null : Number(days.value) as 0 | 1 | 3 | 7, time: time.value };
+  }
   function showMessage(text: string, focus = false) {
     message.textContent = text;
     message.hidden = !text;
     if (focus) message.focus();
   }
-
   function updateSummary() {
     const picked = rows.filter(row => !row.problem && selected.has(row.order.id));
     const count = picked.length;
-    const expired = picked.filter(row => row.left! < 0).length;
+    let alarms = 0, catchUps = 0, valid = true;
+    try {
+      for (const row of picked) {
+        const alert = planCalendarAlert(row.due!, settings(), reviewedAt);
+        if (alert.at) alarms++;
+        if (alert.reason === 'catch-up') catchUps++;
+      }
+    } catch { valid = false; }
     summary.textContent = count
-      ? `${count} ${count === 1 ? 'reminder' : 'reminders'} selected · ${picked[0].due}${count > 1 ? ` to ${picked[count - 1].due}` : ''}.${expired ? ` ${expired} ${expired === 1 ? 'deadline is' : 'deadlines are'} already past due.` : ''}`
-      : 'No reminders selected.';
-    download.disabled = !loaded || !count;
+      ? `${count} ${count === 1 ? 'deadline' : 'deadlines'} selected · ${alarms} ${alarms === 1 ? 'alert' : 'alerts'}.${count > alarms ? ` ${count - alarms} calendar ${count - alarms === 1 ? 'entry has' : 'entries have'} no alert.` : ''}${catchUps ? ' Review the catch-up times and import promptly.' : ''}`
+      : 'No deadlines selected.';
+    download.disabled = !loaded || !count || !valid;
     get<HTMLButtonElement>('calendar-select-all').disabled = !loaded || !rows.some(row => !row.problem);
     get<HTMLButtonElement>('calendar-select-none').disabled = !loaded || !count;
+    time.disabled = days.value === 'none';
   }
-
   function renderChoices() {
     choices.replaceChildren();
     if (!rows.length) {
@@ -72,25 +88,41 @@ export function bindCalendarBatch(options: CalendarOptions) {
       name.textContent = `${row.order.merchant || 'Unknown store'}${row.order.orderNo ? ` #${row.order.orderNo}` : ''}`;
       const detail = document.createElement('span');
       detail.className = row.problem ? 'calendar-invalid' : 'calendar-due';
-      detail.textContent = row.problem ?? `Return by ${row.due} · clock starts ${row.order.windowStartDate || row.order.orderDate}${row.order.windowStartDate ? ' (confirmed by you)' : ' (order date)'}${row.left! < 0 ? ' · Past due' : ''}`;
+      detail.textContent = row.problem ?? `Return by ${row.due} · clock starts ${row.order.windowStartDate || row.order.orderDate}${row.order.windowStartDate ? ' (confirmed by you)' : ' (order date)'}`;
       text.append(name, detail);
+      if (!row.problem) {
+        const timing = document.createElement('span');
+        timing.className = 'calendar-alert-preview';
+        try {
+          const alert = planCalendarAlert(row.due!, settings(), reviewedAt);
+          timing.textContent = describeCalendarAlert(alert);
+          if (alert.reason !== 'scheduled' && alert.reason !== 'off') timing.classList.add('calendar-alert-attention');
+        } catch (error) { timing.textContent = error instanceof Error ? error.message : 'Choose an alert time.'; }
+        text.append(timing);
+      }
       label.append(checkbox, text);
       choices.append(label);
     }
   }
-
+  function refreshAlerts() {
+    reviewedAt = new Date();
+    rows = calendarRows(rows.map(row => row.order), localCalendarDate(reviewedAt));
+    renderChoices(); updateSummary();
+  }
   function loadSelection(keepSelection = false) {
     try {
-      const next = calendarRows(options.read());
+      const current = options.read();
+      const next = calendarRows(singleId ? current.filter(order => order.id === singleId) : current);
       const valid = new Set(next.filter(row => !row.problem).map(row => row.order.id));
       selected = new Set(keepSelection
         ? [...selected].filter(id => valid.has(id))
-        : initialCalendarSelection(next, options.filter()));
+        : singleId ? [...valid] : initialCalendarSelection(next, options.filter()));
       rows = next;
       loaded = true;
+      reviewedAt = new Date();
       renderChoices();
       const invalid = rows.filter(row => row.problem).length;
-      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates before downloading.' : `Initial selection follows the tracker's ${options.filter() === 'due' ? 'Due soon' : options.filter() === 'expired' ? 'Expired' : options.filter() === 'completed' ? 'Completed (none selected)' : 'Open'} filter. You can change any checkbox below.`} Completed returns are excluded.${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}`;
+      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates and alert times.' : singleId ? 'Review this deadline and its alert before downloading.' : 'Choose the returns to add to your calendar.'} Completed returns are excluded.${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}`;
       showMessage('');
     } catch (error) {
       loaded = false;
@@ -108,9 +140,10 @@ export function bindCalendarBatch(options: CalendarOptions) {
     const row = rows[index];
     if (!row || row.problem || !loaded) return;
     if (input.checked) selected.add(row.order.id); else selected.delete(row.order.id);
-    showMessage('');
-    updateSummary();
+    showMessage(''); updateSummary();
   });
+  for (const input of [days, time]) input.addEventListener('change', () => { refreshAlerts(); showMessage(''); });
+  get('calendar-refresh-alerts').addEventListener('click', () => { refreshAlerts(); showMessage('Alert times refreshed. Review them before downloading.'); });
   get('calendar-select-all').addEventListener('click', () => {
     selected = new Set(rows.filter(row => !row.problem).map(row => row.order.id));
     renderChoices(); updateSummary(); showMessage('');
@@ -120,7 +153,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
   });
   get('calendar-reload').addEventListener('click', () => loadSelection(loaded || rows.length > 0));
   get('calendar-cancel').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('close', () => get('calendar-open').focus());
+  dialog.addEventListener('close', () => (returnFocus?.isConnected ? returnFocus : get('calendar-open')).focus());
   get('calendar-form').addEventListener('submit', event => {
     event.preventDefault();
     if (!loaded || !selected.size) return;
@@ -131,23 +164,34 @@ export function bindCalendarBatch(options: CalendarOptions) {
       return;
     }
     try {
-      const plan = planCalendarBatch(current, rows, [...selected]);
-      (options.download ?? downloadCalendar)(plan.content, plan.filename);
-      feedback.textContent = `Calendar file prepared with ${plan.count} ${plan.count === 1 ? 'reminder' : 'reminders'}. Open the downloaded .ics file in your calendar app to import it.`;
+      const now = new Date();
+      if (localCalendarDate(now) !== localCalendarDate(reviewedAt)) throw new CalendarAlertExpiredError();
+      const plan = planCalendarBatch(current, rows, [...selected], now, settings(), reviewedAt);
+      const filename = singleId ? `return-${(rows[0].order.merchant || 'order').replace(/\W+/g, '-')}.ics` : plan.filename;
+      (options.download ?? downloadCalendar)(plan.content, filename);
+      const alertCount = plan.reminders.filter(row => row.alertAt).length;
+      feedback.textContent = `Calendar file prepared with ${plan.count} ${plan.count === 1 ? 'deadline' : 'deadlines'} and ${alertCount} ${alertCount === 1 ? 'alert' : 'alerts'}. ${alertCount ? 'Import the downloaded .ics file before the alert time. Check notifications in your calendar app; ReturnBy does not send them.' : 'Import the downloaded .ics file to add the deadline entries. No alerts were requested.'}`;
       dialog.close();
     } catch (error) {
+      if (error instanceof CalendarAlertExpiredError) refreshAlerts();
       showMessage(error instanceof Error ? error.message : 'The calendar file could not be prepared. Try again.', true);
     }
   });
 
-  function open() {
+  function open(single?: Order) {
+    returnFocus = document.activeElement as HTMLElement | null;
+    singleId = single?.id ?? null;
     rows = []; selected.clear(); loaded = false;
     choices.replaceChildren();
     feedback.textContent = '';
+    get('calendar-title').textContent = singleId ? 'Set a return reminder' : 'Set return reminders';
+    get('calendar-timezone').textContent = `Times shown in ${Intl.DateTimeFormat().resolvedOptions().timeZone}.`;
+    get('calendar-select-all').hidden = Boolean(singleId);
+    get('calendar-select-none').hidden = Boolean(singleId);
     dialog.showModal();
     loadSelection();
     if (loaded) get('calendar-title').focus();
   }
-  get('calendar-open').addEventListener('click', open);
-  return { open };
+  get('calendar-open').addEventListener('click', () => open());
+  return { open, openSingle: (order: Order) => open(order) };
 }
