@@ -1,0 +1,29 @@
+1
+00:00:00,085 --> 00:00:02,814
+FICTIONAL RECEIPT DEMONSTRATION
+A £126 purchase. One £37.80 item returned.
+
+2
+00:00:02,814 --> 00:00:06,832
+Add the purchase from its receipt.
+Check the date and return window before saving.
+
+3
+00:00:06,832 --> 00:00:09,922
+Track the refund for the returned item.
+The rest of this purchase keeps its return deadline.
+
+4
+00:00:09,922 --> 00:00:13,453
+The refund stays in an awaiting queue with your next check date.
+The amount is your record, not a merchant or bank confirmation.
+
+5
+00:00:13,453 --> 00:00:16,044
+After checking that the money arrived, mark it received.
+ReturnBy does not check your bank or send a payment.
+
+6
+00:00:16,044 --> 00:00:19,645
+The received refund and notes remain available to review or reopen.
+Saved refund details also travel in your ReturnBy backup.
