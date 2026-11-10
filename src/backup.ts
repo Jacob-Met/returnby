@@ -1,5 +1,7 @@
 import { dueDate, returnDueDate } from './deadline';
 import type { Order } from './store';
+import { parsePortableTrip, TripBackupError } from './trip-backup';
+import type { TripPlan } from './trip-plan';
 
 export const MAX_BACKUP_BYTES = 5 * 1024 * 1024;
 export const MAX_BACKUP_ORDERS = 10_000;
@@ -78,8 +80,8 @@ function orders(value: unknown, strict = true): Order[] {
   });
 }
 
-function document(rows: Order[], exportedAt: string) {
-  return { schema: 'returnby.backup', version: 1, exportedAt, orders: rows };
+function document(rows: Order[], exportedAt: string, trip?: TripPlan | null) {
+  return { schema: 'returnby.backup', version: trip ? 2 : 1, exportedAt, orders: rows, ...(trip ? {trip} : {}) };
 }
 
 function fits(output: string) { return encoder.encode(output).byteLength <= MAX_BACKUP_BYTES; }
@@ -88,8 +90,8 @@ function portable(rows: Order[], message: string) {
   if (!fits(JSON.stringify(document(rows, SIZE_TIMESTAMP)) + '\n')) throw new BackupError(message);
 }
 
-export function exportBackup(current: unknown, now = new Date()): string {
-  const doc = document(orders(current, false), now.toISOString());
+export function exportBackup(current: unknown, now = new Date(), trip?: TripPlan | null): string {
+  const doc = document(orders(current, false), now.toISOString(), trip ? parsePortableTrip(trip) : null);
   let output = JSON.stringify(doc, null, 2) + '\n';
   // Formatting must not make an otherwise portable tracker impossible to
   // back up again after restoration.
@@ -98,17 +100,24 @@ export function exportBackup(current: unknown, now = new Date()): string {
   return output;
 }
 
-export function parseBackup(input: string): Order[] {
+export function parseBackupDocument(input: string): {orders: Order[]; trip: TripPlan | null} {
   if (encoder.encode(input).byteLength > MAX_BACKUP_BYTES) throw new BackupError('Choose a backup no larger than 5 MiB.');
   let parsed: unknown;
   try { parsed = JSON.parse(input); } catch { throw new BackupError('This file is not valid JSON. Choose a ReturnBy backup.'); }
   const doc = object(parsed, 'Backup');
-  if (doc.schema !== 'returnby.backup' || doc.version !== 1) throw new BackupError('This backup format or version is not supported.');
-  onlyKeys(doc, ['schema', 'version', 'exportedAt', 'orders'], 'Backup');
+  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2)) throw new BackupError('This backup format or version is not supported.');
+  onlyKeys(doc, doc.version === 2 ? ['schema', 'version', 'exportedAt', 'orders', 'trip'] : ['schema', 'version', 'exportedAt', 'orders'], 'Backup');
   timestamp(doc.exportedAt, 'Backup export time');
   const rows = orders(doc.orders);
   portable(rows, 'The normalized saved details would exceed the 5 MiB backup limit.');
-  return rows;
+  const trip = doc.version === 2 ? parsePortableTrip(doc.trip) : null;
+  if (!fits(JSON.stringify(document(rows, SIZE_TIMESTAMP, trip)) + '\n')) throw new BackupError('The normalized trip and orders exceed the 5 MiB backup limit.');
+  return {orders:rows, trip};
+}
+
+export function parseBackup(input: string): Order[] {
+  try { return parseBackupDocument(input).orders; }
+  catch(error) { if(error instanceof TripBackupError)throw new BackupError(error.message);throw error; }
 }
 
 export type ImportRow = { order: Order; action: 'add' | 'skip' | 'conflict'; changedFields: string[] };

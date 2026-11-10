@@ -22,7 +22,7 @@ These are inspected public product descriptions, not accounts exercised by this 
 
 The README links downloadable source-pinned builds. Manual receipt intake adds a direct blank form for store, purchase date and checked return window, with optional receipt number and total. It shows the computed deadline before saving; incomplete entries and storage failures keep the draft. Existing email drafts stay separate. Saved purchases use the normal tracker, edit, calendar, backup and trip capabilities. No OCR, purchase synchronization, automatic retailer verification or logistics is claimed.
 
-The app stays local. Purchase-intake drafts remain in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups do not include a trip plan. Downloaded trip sheets include the selected orders, packing checks and notes.
+The app stays local. Purchase-intake drafts remain in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups include the saved trip for separately reviewed restoration. Downloaded trip sheets include the selected orders, packing checks and notes.
 
 ## Trip planning, 2026-11-10
 

@@ -282,3 +282,9 @@ From the intake panel, open **Review several order confirmations together**. Add
 ## Find a saved return
 
 Use **Find a saved return** above the tracker to search a store name or order number. Matching ignores case and surrounding spaces and works together with All, Due soon, and Expired. Clear search restores the current date filter. Search does not change saved records, the deadline overview, or calendar selection; the calendar dialog continues to follow the date filter and lets you review every selection.
+
+## Carry a prepared trip to another browser
+
+Download backup now includes the saved trip date, selected orders, packing checks and notes. Keep the file private. In the receiving browser, choose the backup, review and import its orders, then choose Restore trip. If that browser already has a different trip, confirm its replacement explicitly; importing orders alone never overwrites the trip. Old order-only backups still work and leave the saved trip untouched.
+
+Changed order facts require checking store instructions again. Notes for unavailable orders remain recoverable but those orders are not selected. A failed trip save leaves the reviewed file open for retry. This is an explicit file transfer, not account synchronization.
