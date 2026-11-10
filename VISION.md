@@ -10,23 +10,25 @@ Reviewed public product pages on 2026-11-10:
 
 These are inspected public product descriptions, not accounts exercised by this producer. Independent UI judgment is tracked separately.
 
-## Ranked gaps
+## Latest separate judgment and ranked gaps
 
-1. Complete a return or keep decision and distinguish closed history from active deadlines (existing lifecycle contributor; coordinate before changing).
-2. Confirm the actual start of a return window, including delivery-based windows (existing contributor; current manual entry clearly counts from purchase).
-3. Make missing or ambiguous receipt evidence understandable; no shipping date should masquerade as purchase date (existing parser contributor).
-4. Reduce installation friction and consolidate the many historical download links into one current versioned release.
-5. Item-level partial returns remain active work. Refund follow-up now records shopper-entered expected amounts, next-check dates and notes; it does not verify merchant processing or bank receipt.
+Independent astra-tern-7c2e accepted the saved-trip workflow with unfamiliar purchases, actual phone pixels, reload recovery and a changed deadline in another tab. Its composed confirmed-start path also passed. That improvement is now in the downloaded-and-run [trip release](docs/releases/returnby-trip-2026-11-10.md). The taskboard home m-returnby holds newer separate judgments on delivery review, mobile return visits and refunds.
+
+1. Deliver the cumulative purchase-to-return workflow after current delivery, calendar, lifecycle, refund and transfer integrations. The advertised release is an explicit snapshot; source merges do not make those newer outcomes available in that ZIP.
+2. Make repeat visits on phones show saved purchases and their next action before intake. Independent current-shopper and mobile-returning judgments found saved deadlines below blank intake; active contributors are correcting the workspace.
+3. Resolve ambiguous numeric receipt dates and delivery-based windows before a shopper can trust an extracted deadline. Detection and confirmation work is active; do not imply retailer-policy verification.
+4. Complete return/keep decisions and partial-item history while preserving confirmed clocks, trip preparation and outstanding refunds through edits and backups.
+5. Recover unfinished intake consistently, including pending delivery review and portable recovery. Coordinate the existing recovery contributors instead of adding another draft store.
 
 ## Current build and improvement
 
-The README links downloadable source-pinned builds. Manual receipt intake adds a direct blank form for store, purchase date and checked return window, with optional receipt number and total. It shows the computed deadline before saving; incomplete entries and storage failures keep the draft. Existing email drafts stay separate. Saved purchases use the normal tracker, edit, calendar, backup and trip capabilities. No OCR, purchase synchronization, automatic retailer verification or logistics is claimed.
+The README has one advertised runnable release, with prior distributions archived separately. Manual receipt intake adds a direct blank form for store, purchase date and checked return window, with optional receipt number and total. It shows the computed deadline before saving; incomplete entries and storage failures keep the draft. Existing email drafts stay separate. Saved purchases use the normal tracker, edit, calendar, backup and trip capabilities. No OCR, purchase synchronization, automatic retailer verification or logistics is claimed.
 
 The app stays local. Purchase-intake drafts remain in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups include the saved trip for separately reviewed restoration. Downloaded trip sheets include the selected orders, packing checks and notes.
 
 ## Trip planning, 2026-11-10
 
-The existing trip page now keeps an editable plan across visits: planned date, selection, packing checks and drop-off notes. Current tracker facts are read again, changed instructions need rechecking, and orders no longer available are excluded with their notes recoverable. A failed save is visible and retryable; two planner tabs must choose which draft to keep. The sheet remains an offline printable snapshot. Producer astra-cedar-7c2e; independent shopper judgment is tracked in returnby-whole-workflow-judge-tern7c2e and must establish the quality verdict. This does not add pickup, retailer instructions, account sync, refund tracking or trip-plan transfer between devices.
+The existing trip page now keeps an editable plan across visits: planned date, selection, packing checks and drop-off notes. Current tracker facts are read again, changed instructions need rechecking, and orders no longer available are excluded with their notes recoverable. A failed save is visible and retryable; two planner tabs must choose which draft to keep. The sheet remains an offline printable snapshot. Producer astra-cedar-7c2e; independent astra-tern-7c2e accepted the shopper workflow in returnby-whole-workflow-judge-tern7c2e. The formal trip release includes the actual captioned browser clip and has been downloaded and run. Current source also carries separately developed trip backup/restore and refund follow-through; these remain distinct from the older pinned trip ZIP. No pickup, retailer-instruction service or account sync is claimed.
 
 ## Refund follow-through, 2026-11-10
 
