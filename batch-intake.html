@@ -16,21 +16,21 @@
   <main>
     <section class="batch-heading">
       <p class="batch-eyebrow">ONE REVIEW / SEVERAL RETURN WINDOWS</p>
-      <h1>Bring your confirmations<br><em>to the same desk.</em></h1>
+      <h1>Bring your confirmations<br> <em>to the same desk.</em></h1>
       <p>Add confirmations, correct the extracted fields, and select the orders you have reviewed. You will see one final preview before anything is saved.</p>
       <a href="./index.html">← Back to the return tracker</a>
     </section>
     <div class="batch-layout">
       <aside class="batch-intake" aria-labelledby="batch-add-title">
         <p class="batch-eyebrow">01 / ADD CONFIRMATIONS</p>
-        <h2 id="batch-add-title">One at a time.<br>Or a few at once.</h2>
-        <label for="batch-paste">Paste one order confirmation</label>
-        <textarea id="batch-paste" rows="9" placeholder="Paste the plain text of an order confirmation…"></textarea>
-        <button id="batch-add" type="button" class="batch-button primary">Add pasted confirmation</button>
-        <div class="batch-divider"><span>OR</span></div>
-        <label for="batch-files">Choose local order confirmation files</label>
+        <h2 id="batch-add-title">Open a receipt.<br> Or paste the text.</h2>
+        <label for="batch-files">Import a saved email (.eml) or plain text (.txt)</label>
         <input id="batch-files" type="file" accept=".txt,.eml,text/plain,message/rfc822" multiple aria-describedby="batch-file-help">
-        <p id="batch-file-help" class="batch-help">UTF-8 .txt or exported .eml files, one confirmation per file. .eml imports only the plain-text message body, not HTML or attachments. Up to 20 confirmations, 100 KiB each and 1 MiB total. No PDFs or images.</p>
+        <p id="batch-file-help" class="batch-help">Choose up to 20 local confirmations, 100 KiB each and 1 MiB total. Imported .eml text is read from the plain-text body only; HTML and attachments are excluded. No PDFs or images.</p>
+        <div class="batch-divider"><span>OR PASTE</span></div>
+        <label for="batch-paste">Paste one order confirmation</label>
+        <textarea id="batch-paste" rows="6" placeholder="Paste the plain text of an order confirmation…"></textarea>
+        <button id="batch-add" type="button" class="batch-button primary">Add pasted confirmation</button>
         <p class="batch-privacy">Original text and unsaved corrections stay in this page’s memory. Leaving or reloading this page discards them. Only fields you review and save enter the tracker.</p>
         <button id="batch-discard" type="button" class="batch-button quiet" disabled>Discard this batch</button>
       </aside>
