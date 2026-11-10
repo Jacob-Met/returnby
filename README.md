@@ -2,7 +2,7 @@
 
 ## Current downloadable build — paper-receipt purchases
 
-[Download ReturnBy](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-manual-1a76717-browser.zip) · [source, launch steps, checksum and limitations](./downloads/ReturnBy-2026-11-10-manual-1a76717.md)
+[Download ReturnBy](https://github.com/Jacob-Met/returnby/releases/download/returnby-manual-2026-11-10/ReturnBy-2026-11-10-manual-1a76717-browser.zip) · [source, launch steps, checksum and limitations](./downloads/ReturnBy-2026-11-10-manual-1a76717.md)
 
 Adds direct manual purchase entry alongside email import, saved deadlines and reminder exports. Extract, run the Python3 launcher, then open http://127.0.0.1:8769/. Linux/Chrome exercised; Windows/macOS launchers packaged.
 
@@ -128,6 +128,36 @@ In the receiving browser, choose that file to see a preview before any orders ar
 The importer checks the entire versioned document before showing a plan. Unsupported versions, unknown fields, duplicate IDs within one file, invalid dates/windows, and malformed records are refused without writes. Files may be at most 5 MiB and contain at most 10,000 orders; the resulting tracker also stays within that count and must remain exportable within the 5 MiB byte limit. A near-limit export uses compact JSON when indentation would exceed the limit. Normalization or combining two individually valid files may exceed the limit; such an import is refused before any write. Text fields may be up to 4,096 characters and IDs up to 128 characters. Dates must use a four-digit year from 1000 through 9999, and the return window must end within that range. Creation/export timestamps require an explicit timezone. Optional empty order numbers and totals are normalized to empty strings.
 
 The preview is recalculated against readable browser storage before committing. If saved orders changed since review, the updated plan requires another Import click. Storage failures preserve the preview for retry. This does not add continuous cross-tab synchronization or a transaction spanning simultaneous writes from different tabs; avoid editing the tracker in another tab during import. The existing tracker controls and single-order calendar export keep their behavior.
+
+## Undo a removal
+
+After **Remove** succeeds, choose **Undo removal** in the tracker to restore that
+one return with its original reviewed details, saved ID and creation time. Your
+new-order draft stays in place. The current date filter remains selected, so a
+restored return may be outside the visible filter.
+
+The most recent successful removal is kept in this page's memory, with no short
+countdown. **Keep removed** discards that recovery; another successful removal,
+a successful confirmed **Clear saved returns**, or reloading/closing the page
+also ends it. A cancelled clear or a failed remove/save does not discard it.
+Undo does not change calendar files you already imported.
+
+Undo reads current saved returns and restores only the missing record, preserving
+newer unrelated changes. If an exact copy is already saved, it refreshes the
+tracker without writing a duplicate. A changed record with the same ID, or
+duplicate IDs, blocks Undo instead of overwriting saved data. The recovery stays
+available for retry or **Keep removed**. If browser storage fails, address the
+storage problem; use **Retry loading saved returns** when offered, then choose
+**Undo removal** again. Retrying a load does not discard the removed return.
+As with other tracker actions, this reread does not make simultaneous writes
+in separate tabs transactional.
+
+After building, `node tools/check_removal_undo_browser.mjs` checks the real
+controls with fictional returns and fresh browser profiles. Set
+`RETURNBY_PLAYWRIGHT` and `RETURNBY_CHROME` for an installed Playwright module
+and Chromium executable; `RETURNBY_BUILD` and `RETURNBY_UNDO_OUTPUT` select
+the build and receipt folders. The browser checks include keyboard recovery,
+draft retention, explicit storage retry, clear/reload lifetime and a 390px notice.
 
 ## Using more than one tab
 
