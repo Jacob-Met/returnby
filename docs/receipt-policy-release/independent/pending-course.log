@@ -1,0 +1,146 @@
+BATCH R/
+RETURNBY
+THE RETURN DESK
+LOCAL ONLY · NO UPLOAD
+
+ONE REVIEW / SEVERAL RETURN WINDOWS
+
+Bring your confirmations to the same desk.
+
+Add confirmations, correct the extracted fields, and select the orders you have reviewed. You will see one final preview before anything is saved.
+
+← Back to the return tracker
+
+01 / ADD CONFIRMATIONS
+
+Open a receipt. Or paste the text.
+Import a saved email (.eml) or plain text (.txt)
+
+Choose up to 20 local confirmations, 100 KiB each and 1 MiB total. Imported .eml uses its plain-text body when available, otherwise readable HTML text. Images, links, scripts and attachments are never loaded. Check extracted text and every proposed field. No PDFs or images.
+
+OR PASTE
+Paste one order confirmation
+Add pasted confirmation
+
+Original text and unsaved corrections stay in this page’s memory. Leaving or reloading this page discards them. Only fields you review and save enter the tracker.
+
+Discard this batch
+
+02 / CHECK EVERY ORDER
+
+Review the details.
+
+2 confirmations
+
+Check the store, purchase date and return window against your receipt and retailer. Confirm a delivery date separately when the return window starts at delivery.
+
+Confirmation added. Check its fields and select it when reviewed.
+
+CONFIRMATION 01
+
+Pasted confirmation 1
+
+4 of 4 purchase fields recognized · review the return terms separately
+
+Remove
+
+This receipt starts its return window at delivery. No unambiguous delivered date was found. Confirm the clock start and return window with the retailer before selecting this purchase. Awaiting delivery? Keep the reviewed purchase pending to resume later from the tracker, without a deadline or reminder.
+
+Store
+Order number
+Order date
+Confirm return clock start (required)
+Total (as entered)
+Return window (days)
+Return terms in this receipt
+
+The receipt mentions 21 days. Check that this rule applies to this purchase; the receipt text is not retailer verification.
+
+Items may be returned within 21 days after delivery.
+Keep purchase pending delivery
+Read the original confirmation
+I reviewed these fields. Include this order.
+
+CONFIRMATION 02
+
+Pasted confirmation 2
+
+4 of 4 purchase fields recognized · review the return terms separately
+
+Remove
+
+This receipt starts its return window at delivery. No unambiguous delivered date was found. Confirm the clock start and return window with the retailer before selecting this purchase. Awaiting delivery? Keep the reviewed purchase pending to resume later from the tracker, without a deadline or reminder.
+
+Store
+Order number
+Order date
+Confirm return clock start (required)
+Total (as entered)
+Return window (days)
+Return terms in this receipt
+
+This receipt has different or conditional return terms. Confirm which rule applies, then enter its calendar-day window. Label expiry, conditions and non-calendar-day terms need your confirmation.
+
+Our standard return period is 30 days after delivery.
+Sale items must be returned within 7 days of delivery.
+Keep purchase pending delivery
+Read the original confirmation
+I reviewed these fields. Include this order.
+
+No confirmations selected for saving.
+
+Review selection
+REVIEWED FIELDS ONLY. No inbox connection, account or automatic storage.
+Open the tracker →
+R/
+RETURNBY
+THE RETURN DESK
+LOCAL ONLY / NO INBOX CONNECTION
+Return deadlines
+
+Know what needs to go back, and when. Paste a confirmation to review its date; your saved returns stay in this browser.
+
+Awaiting delivery (2) — review purchases
+
+Keep each purchase here until you confirm delivery. No deadline or reminder has been created.
+
+Birch Outfitters #BIR-707 · ordered 2026-11-04
+
+Review delivery
+Discard pending purchase
+
+Maple Lighting #MAP-808 · ordered 2026-11-05
+
+Review delivery
+Discard pending purchase
+
+ADD A RETURN
+
+Add a purchase
+
+Paste an order email to find a deadline. Check the store policy and edit any missing details before saving.
+
+ORDER EMAIL / CONFIRMATION
+Find the deadline
+Enter a purchase manually
+Load a fictional example
+
+Review several order confirmations together →
+
+LOCAL
+
+No inbox access. No upload. Parsing and calendar export run in this browser.
+
+Refund follow-up
+
+0 awaiting your check
+
+Returned something? Keep the expected refund and your next check here. These are your notes, not confirmation from a merchant or bank. Track part of an order without changing its return deadline.
+
+No refunds awaiting your check. After returning an item, choose “Track a refund” on its purchase.
+Plan around saved return deadlines
+Export or restore saved returns
+
+PRIVATE BY DESIGN. The pasted email is not stored or sent. Saved purchases stay on this device. Unfinished manual purchase details are recovered in this tab until you save or discard them.
+
+Clear saved returns
