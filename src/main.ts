@@ -10,6 +10,7 @@ import { bindTabSync } from './tab-sync';
 import { bindIntakeDeadline } from './intake-deadline';
 import { planSingleCalendar } from './calendar-batch';
 import { load, read, save, type Order } from './store';
+import { bindManualPurchase } from './manual-purchase';
 import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
@@ -242,6 +243,7 @@ const orderEditor = bindOrderEditor({
   commit: next => { if (!persistOrders(next)) return false; render(); return true; },
   refresh: reloadOrders,
 });
+bindManualPurchase({ read: readCurrentOrders, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
 bindCalendarBatch({ read: load, filter: () => filterMode });
 bindTabSync({ refresh: reloadOrders });
 reloadOrders();
