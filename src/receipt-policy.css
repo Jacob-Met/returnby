@@ -1,0 +1,5 @@
+
+.receipt-policy-evidence{grid-column:1/-1;border-left:3px solid #a97935;padding:.4rem 1rem;margin:.5rem 0;color:var(--ink,#252820)}
+.receipt-policy-evidence h3{font-family:Georgia,serif;font-size:1.2rem;margin:.25rem 0}
+.receipt-policy-evidence p,.receipt-policy-evidence blockquote{font-family:inherit;font-size:1rem;line-height:1.5}
+.receipt-policy-evidence blockquote{margin:.6rem 0;padding:.5rem .7rem;background:rgba(170,130,70,.07);overflow-wrap:anywhere}

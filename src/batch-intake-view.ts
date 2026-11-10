@@ -1,3 +1,5 @@
+import './receipt-policy.css';
+import { receiptPolicy } from './receipt-policy';
 import { readPending, writePending } from './pending-delivery';
 import './batch-intake.css';
 import {
@@ -78,7 +80,7 @@ function renderDrafts() {
     const identity = element('div');
     identity.append(element('p', 'CONFIRMATION ' + String(index + 1).padStart(2, '0'), 'batch-card-kicker'));
     identity.append(element('h3', draft.label));
-    identity.append(element('p', Object.values(draft.found).filter(Boolean).length + ' of 4 fields recognized · check every field', 'batch-card-recognized'));
+    identity.append(element('p', Object.values(draft.found).filter(Boolean).length + ' of 4 purchase fields recognized · review the return terms separately', 'batch-card-recognized'));
     const remove = element('button', 'Remove', 'batch-remove');
     remove.type = 'button';
     remove.dataset.remove = draft.id;
@@ -115,6 +117,14 @@ function renderDrafts() {
       fields.append(label);
     }
     card.append(fields);
+    const policyEvidence = receiptPolicy(draft.text);
+    if (policyEvidence.passages.length) {
+      const evidence = element('section', undefined, 'receipt-policy-evidence');
+      evidence.setAttribute('aria-label', 'Receipt return terms');
+      evidence.append(element('h3', 'Return terms in this receipt'), element('p', policyEvidence.message));
+      policyEvidence.passages.forEach(passage => evidence.append(element('blockquote', passage)));
+      card.append(evidence);
+    }
     if (delivery.required) {
       const keep = element('button', 'Keep purchase pending delivery', 'batch-button quiet');
       keep.type = 'button';
