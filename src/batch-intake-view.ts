@@ -5,6 +5,7 @@ import {
   type BatchDraft, type BatchReview, type DraftFields,
 } from './batch-intake';
 import { dueDate } from './deadline';
+import { extractEmlPlainText } from './eml';
 
 const get = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const paste = get<HTMLTextAreaElement>('batch-paste');
@@ -184,26 +185,30 @@ files.addEventListener('change', async () => {
   if (!selected.length) return;
   const request = ++generation;
   reading = true;
-  status.textContent = 'Reading the selected local text files…';
+  status.textContent = 'Reading the selected local confirmation files…';
   errorBox.hidden = true;
   updateControls();
   try {
     if (drafts.length + selected.length > MAX_BATCH_ORDERS) throw new BatchIntakeError('Keep at most 20 confirmations in one batch.');
     for (const file of selected) {
-      if (!/\.txt$/i.test(file.name) || file.size > MAX_CONFIRMATION_BYTES) {
-        throw new BatchIntakeError('Choose .txt files no larger than 100 KiB each. No selected file was added.');
+      if (!/\.(txt|eml)$/i.test(file.name) || file.size > MAX_CONFIRMATION_BYTES) {
+        throw new BatchIntakeError('Choose .txt or .eml files no larger than 100 KiB each. No selected file was added.');
       }
     }
     const incoming = await Promise.all(selected.map(async file => {
       try {
-        return { label: file.name, text: new TextDecoder('utf-8', { fatal: true }).decode(await file.arrayBuffer()) };
-      } catch {
-        throw new BatchIntakeError(file.name + ' could not be read as UTF-8 text. No selected file was added.');
+        const bytes = new Uint8Array(await file.arrayBuffer());
+        const text = /\.eml$/i.test(file.name)
+          ? extractEmlPlainText(bytes)
+          : new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+        return { label: file.name, text };
+      } catch (error) {
+        throw new BatchIntakeError(file.name + ': ' + (error instanceof Error ? error.message : 'Could not read file') + ' No selected file was added.');
       }
     }));
     if (request !== generation) return;
     drafts = appendConfirmations(drafts, incoming);
-    invalidate(selected.length + ' local text ' + (selected.length === 1 ? 'file added.' : 'files added.') + ' Review each order before selecting it.');
+    invalidate(selected.length + ' local confirmation ' + (selected.length === 1 ? 'file added.' : 'files added.') + ' Review each order before selecting it.');
     renderDrafts();
   } catch (error) {
     if (request === generation) showError(error);

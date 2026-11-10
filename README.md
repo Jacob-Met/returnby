@@ -16,6 +16,14 @@ Unzip the package, install Node.js 20+ if necessary, run `START-WINDOWS.cmd` on 
 
 ReturnBy turns an order-confirmation email into a reviewable return deadline and a calendar reminder. The visitor supplies the email text; the browser runs the repository's real rule-based parser, merchant-policy lookup, date calculation, status logic and RFC 5545 export. It is a multi-order tracker, not a canned result: correct extracted fields, override a return window, save several deadlines, filter the list and export a three-day alarm for any order.
 
+## Import exported email confirmations locally
+
+Open **Review several order confirmations together** and choose one or more UTF-8 `.txt` or standard `.eml` messages. For exported `.eml` files, ReturnBy extracts the readable `text/plain` MIME body, including common base64 or quoted-printable encodings. It does not render HTML or inspect attachments, and it refuses HTML-only messages rather than extracting potentially misleading details. Unsupported MIME structures and charsets produce a visible error.
+
+All files are processed in the current browser tab and the raw email is not saved. The existing batch review requires you to correct and approve extracted store, order number, date and window before saving any fields. Each file is limited to 100 KiB, each batch to 20 confirmations and 1 MiB total. If one selected file cannot be read, none of the selected files is added. This is **not** an inbox connection or a general-purpose email/attachment parser.
+
+The pure MIME-reader tests are `tests/eml.test.ts`; the production Chrome file-picker course in `tools/verify_batch_intake.mjs` includes a real .eml save and an HTML-only all-or-nothing rejection.
+
 ## Privacy
 
 The original pasted email is not sent or persisted. The user must review and save fields; only merchant, order number, total, order date, return-window days and timestamps are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
