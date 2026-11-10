@@ -2,55 +2,58 @@
 
 A local return desk for remembering purchase deadlines, preparing a return trip, and following an outstanding refund. Review the dates and store policy before saving. Your purchase records stay in your browser.
 
-## Cumulative browser build
+## Download and open
 
-**Latest cumulative browser build:** [ReturnBy 0.4.0 browser ZIP](downloads/returnby-batch-pending-0c12cba/ReturnBy-v0.4.0-browser.zip) — batch-to-tracker pending purchases, individual delivery review, portable recovery and current backup choices. [Use and verification](downloads/returnby-batch-pending-0c12cba/README.md).
+**[Download ReturnBy 0.4.0](https://github.com/Jacob-Met/returnby/releases/download/returnby-desk-2026-11-10/ReturnBy-v0.4.0-browser.zip)**
 
-This source pin includes batch handoff into the pending-purchase workspace. An independent reviewer downloaded this ZIP, verified its checksum, and used two pending purchases through reload and individual delivery confirmation in Chrome. Its linked package notes describe verification and remaining policy-recognition limitations. The separately published refund-reminder release below remains available with its actual download checks.
-
-## Refund-reminder release 0.3.0
-
-**[Download ReturnBy-v0.3.0-browser.zip](https://github.com/Jacob-Met/returnby/releases/download/returnby-v0.3.0-refund-reminders/ReturnBy-v0.3.0-browser.zip)**
-
-[Release notes, checksums and real walkthrough](https://github.com/Jacob-Met/returnby/releases/tag/returnby-v0.3.0-refund-reminders) · [Exact source](https://github.com/Jacob-Met/returnby/commit/1dd2d64f686dc4f870bd6750bbe1aaf10572563d)
+[Release notes and checksums](https://github.com/Jacob-Met/returnby/releases/tag/returnby-desk-2026-11-10) · [22-second desktop walkthrough](https://github.com/Jacob-Met/returnby/releases/download/returnby-desk-2026-11-10/ReturnBy-refund-walkthrough.mp4) · [Exact application source](https://github.com/Jacob-Met/returnby/commit/f38843003426b0b6d49ab733f11c39a8d576421e)
 
 1. Extract the ZIP. You need Python 3 and a current browser.
-2. Run `python3 serve_returnby.py` from the extracted folder on Linux/macOS, or `py -3 serve_returnby.py` on Windows. Platform launcher files are also included.
+2. Run `python3 serve_returnby.py` from the extracted folder on Linux/macOS, or `py -3 serve_returnby.py` on Windows. The included `Start ReturnBy.sh`, `Start ReturnBy.command` and `Start ReturnBy.cmd` provide the same launch path.
 3. Open **http://127.0.0.1:8769**. Keep the same browser profile and address when you return.
 
-The launcher serves only your own computer. Do not open index.html directly. If the port is occupied, stop the other local ReturnBy copy first. Choosing a different port creates a separate browser storage location; use a backup to transfer saved work.
+The launcher serves only your own computer. Open the local address rather than the HTML file directly. If the port is occupied, stop the other local ReturnBy copy first. A different port uses separate browser storage; transfer saved work with a backup when changing it.
 
-Linux and Chrome were exercised from the actual downloaded ZIP by the producer and an independent reviewer. Windows/macOS launchers are included but have not been separately executed for this release. The app requires no Node/npm or account to use.
+Linux and Chrome were exercised from the downloaded package. macOS and Windows launcher files are included but were not separately executed for this release. No Node/npm or account is needed to use it.
 
 ## Your next return
 
-- **Add a purchase:** enter a paper receipt manually, paste an order confirmation, or review exported text/HTML email. Save only the fields you have checked.
-- **Confirm the clock:** use the purchase date, a confirmed delivery date, or a retailer-confirmed return-by date. Delivery-based wording requires review; ReturnBy does not verify retailer eligibility.
-- **Find and act:** search saved purchases, see upcoming deadlines, export calendar reminders, and prepare an editable return-trip checklist. You can return to a saved trip later or include it in a backup.
-- **Check the refund:** record the amount you expect after handing goods back. Choose **Set refund reminder**, review the local date/time and download its calendar event. Mark the refund received after checking for yourself.
-- **Keep a copy:** download an order/trip backup for recovery or transfer. CSV exports carry reviewed purchase and refund fields into a spreadsheet.
+- **Return to saved work.** On a phone, existing purchases lead the desk. **Add purchase** opens intake; returning to the list keeps your current review. Saving takes you to the purchase you just added.
+- **Add a purchase.** Enter a paper receipt manually, paste a confirmation, or review exported text/HTML email. Correct the proposed store, date and return window before saving. Dates such as 05/11/2026 require a choice when both day/month interpretations are valid.
+- **Wait for delivery.** Keep reviewed delivery-based purchases pending until you can confirm their return-clock start. Expand the pending count to choose a purchase; confirming one leaves the others intact.
+- **Find and act.** Search saved purchases, see upcoming deadlines, export calendar reminders, and prepare an editable return-trip checklist. CSV export below the saved list includes every saved purchase, even when the list is filtered.
+- **Check a refund.** Record the amount and currency you expect, a date to check again, and notes. Mark received after checking for yourself. A partial refund record does not close the remaining purchase deadline.
+- **Keep a copy.** Download a JSON backup for recovery or transfer. Review saved purchases, pending purchases and the optional prepared trip separately before restoring them.
 
-Calendar downloads must be imported into your calendar. Check that app's notification settings. Imported entries are snapshots, so ReturnBy cannot update or cancel them when a purchase or refund changes. Refund calendar entries include the store, receipt number and expected amount; private refund notes are excluded.
+Calendar files must be imported into your calendar. Check that app's notification settings. Imported entries are snapshots: ReturnBy cannot update or cancel them when a purchase changes. A follow-up date recorded in ReturnBy does not itself send a notification.
+
+The known-return-by-date helper in this release calculates a day window from the confirmed clock. Reopening and changing that clock can change the saved deadline; review the proposed date before saving. Later development adds durable fixed-date intent and is not silently included in this source-pinned ZIP.
 
 ## What stays local
 
-There is no inbox connection, upload or remote synchronization. Saved purchases, refund notes, protected intake reviews and trip work use this browser's storage. Email source is not retained. Clearing browser data can remove saved work.
+There is no inbox connection, upload or account synchronization. Saved purchases, refund notes, reviewed pending purchases and trip work use this browser's storage. Original email text is not retained in saved purchases or backups. Clearing browser data can remove saved work.
 
-Backups contain purchase details, refund notes and saved trip notes and are not encrypted. Some unfinished reviews remain only in the original browser and are not included in order backups. The app explains that exclusion before export. Keep downloaded backups private.
+Backups are unencrypted and can contain purchase details, refund notes, reviewed pending fields and private packing notes. Keep them private. This release writes version 3 backups; older builds may refuse them. Some unfinished input is local to its original browser or tab rather than part of the portable backup.
 
-ReturnBy records your decisions. It does not arrange pickup, verify a return policy, contact the merchant, confirm bank receipt, or run OCR.
+ReturnBy records your decisions. It does not arrange pickup, verify retailer eligibility, contact a merchant or confirm bank receipt.
 
-## This release was used
+## What changed in this build
 
-Source **1dd2d64** passed **589 tests** and the TypeScript/Vite production build on the HAMON estate. Producer astra-ibis-9c2f downloaded the published ZIP, checked SHA-256, ran the included launcher, entered a purchase and partial refund, and downloaded the real ICS in Chrome at 1440px and 390px.
+The phone desk now puts saved purchases before intake, retains a review while switching views, and focuses the correct purchase after saving. Several pending deliveries fit behind a count and review control. Numeric-date ambiguity requires an explicit choice, and partial refund follow-through stays with the purchase.
 
-Independent astra-tern-9c2f separately downloaded and ran the same artifact and accepted the scoped refund-reminder workflow using an unfamiliar A$46.25 refund and Adelaide time zone. The 08:15 local reminder exported as 21:45 UTC on the preceding day. Both courses checked private-note exclusion, past-time refusal and a second tab changing or receiving the refund during review. No external calendar notification was observed firing.
+Producer astra-kestrel-7c9e implemented phone navigation; astra-wren-52d1 implemented refunds/date handling, composed the current pending collection, packaged and published the build. The exact source passed 602 tests and the production build on estate compute.
 
-SHA-256: `48eb306ef2138f2df9bcb3eb281c05ae27850a49f3ca22a4b5bca9828c52f969`
+Independent astra-tern-84b2 downloaded the exact ZIP, verified its hash, ran its included Linux launcher, and used fresh Chrome desktop/390px phone sessions. The saved deadline remained in the first phone viewport with two pending purchases; choosing and confirming Arket retained Nordstrom. Ambiguous-date correction, manual/email save focus, draft return and refund persistence passed. The formal-release download was separately checked for byte parity with those exercised bytes. These are scoped workflow and UI improvements, not a claim of whole-product parity with established return services.
 
-![Refund reminder review on desktop](docs/refund-reminders/desktop.png)
+The linked walkthrough shows actual interactions on the extracted package with a fictional purchase and partial refund. It is a 21.6-second silent desktop video; the revised captions were independently judged for readability.
 
-[Phone review](docs/refund-reminders/phone.png) · [Verification details](docs/refund-reminders/README.md) · [Product brief](VISION.md)
+SHA-256: `67854ac3e1c440de812b23fe482ca1bba07a4d8853873baf64dac469ae6a17dc`
+
+## Other source-pinned work
+
+[Batch-to-pending browser package](downloads/returnby-batch-pending-0c12cba/README.md) has its own source, download and independent two-purchase course. It is a different source pin, not an extra feature silently added to the release above. Later mainline work and its remaining delivery gaps are described in [the product brief](VISION.md).
+
+[Earlier releases and development notes](README-history-2026-11-10.md) remain available with their original sources and verification limits.
 
 ## Build from source
 
@@ -61,6 +64,4 @@ npm run build
 npm run preview
 ```
 
-The maintained ZIP packager is `python3 tools/package_release.py /existing/output/directory`. Commit source first so the package identifies an exact revision. Browser checks live in `tools/` and require a separately available Playwright/Chrome installation.
-
-[Historical releases and earlier development notes](README-history-2026-11-10.md) are preserved for reference. Each archived release identifies its exact source and verification coverage.
+The maintained browser packager is `python3 tools/package_release.py /existing/output/directory`. Commit source first so the package identifies an exact revision. Browser checks in `tools/` use a separately installed Playwright/Chrome; estate checks run through Renpō rather than GitHub Actions.
