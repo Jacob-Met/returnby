@@ -41,3 +41,11 @@ ReturnQueen https://returnqueen.com/ was inspected again on 2026-11-10: its publ
 A shopper choosing a busy deadline day in the monthly view should carry those returns into the existing trip planner without recalling and selecting every receipt again. The day now links to a review of current matching purchases. Adding them preserves the saved trip date, packing checks and notes; the chosen deadline never silently becomes the trip date. Only the date travels in the page address. The planner rereads saved orders and refuses an outdated selection until refreshed. This extends ReturnBy's local planning job alongside the ReturnQueen logistics and Whering inventory alternatives above; it does not perform a return.
 
 Remaining handoff gaps, ranked: (1) distinguish retailer drop-off versus shipment deadlines using verified instructions, (2) support more than one saved trip without overwriting packing work, (3) bring confirmed store locations into route planning. The current product has one saved trip and shopper-entered notes. Independent judgment belongs to Mica; producer tests establish behavior, not a quality verdict.
+
+## Delivery-pending purchases and portable review
+
+A shopper can now keep several reviewed purchases awaiting delivery, find each by store and receipt number, and confirm one clock without losing the others. Existing single-purchase pending reviews migrate into this collection. No deadline or reminder is created until the delivery start is explicitly confirmed.
+
+The ordinary JSON backup includes reviewed pending fields in version3, alongside saved deadlines and the optional trip. Receiving browsers preview pending purchases and restore them separately; matching copies are skipped and differing copies require review instead of overwriting. Original receipt text is excluded. This composes with manual draft recovery and saved-order/trip restoration rather than introducing another general draft service.
+
+Validation includes actual two-receipt intake, reload, backup, empty receiving storage, explicit restore and confirmation of only one purchase; independent shopper judgment remains separately tracked. No shipping verification, remote synchronization or automatic retailer-policy claim.

@@ -1,3 +1,4 @@
+import {readPending,writePending,planPendingRestore,type PendingPurchase} from './pending-delivery';
 import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackupDocument, planImport, type ImportPlan } from './backup';
 import { returnDueDate } from './deadline';
 import type { Order } from './store';
@@ -18,6 +19,23 @@ export function bindBackup(tracker: Tracker) {
   const previous = get<HTMLButtonElement>('backup-previous');
   const next = get<HTMLButtonElement>('backup-next');
   let incoming: Order[] | null = null;
+  let incomingPending:PendingPurchase[]=[];
+  let pendingExpected:string|null=null;
+  const pendingPanel=get<HTMLElement>('backup-pending');
+  function showPending(){
+    pendingPanel.hidden=!incomingPending.length;
+    if(!incomingPending.length)return;
+    pendingPanel.replaceChildren();
+    const saved=readPending(localStorage);pendingExpected=saved.token;
+    const plan=planPendingRestore(saved.rows,incomingPending);
+    const title=document.createElement('h3');title.textContent='Purchases awaiting delivery';
+    const description=document.createElement('p');description.textContent=plan.additions.length+' to add; '+plan.conflicts.length+' with changed details. These have no deadline until delivery is confirmed.';
+    const list=document.createElement('ul');for(const row of incomingPending){const li=document.createElement('li');li.textContent=(row.fields.merchant||'Purchase')+(row.fields.orderNo?' #'+row.fields.orderNo:'')+' — ordered '+(row.fields.orderDate||'date to review');list.append(li);}
+    const restore=document.createElement('button');restore.type='button';restore.className='button';restore.textContent='Restore pending purchases';restore.disabled=!!plan.conflicts.length||!plan.additions.length;
+    restore.onclick=()=>{try{const now=readPending(localStorage);if(now.token!==pendingExpected){showPending();tell('Pending purchases changed. Review the refreshed list before restoring.',true);return;}const latest=planPendingRestore(now.rows,incomingPending);if(latest.conflicts.length)throw Error('Pending details differ. Review current pending purchases before restoring this file.');writePending(localStorage,latest.next,now.token);window.dispatchEvent(new Event('returnby-pending-changed'));showPending();tell('Pending purchases restored. Confirm delivery before creating their deadlines.');}catch(e){tell(errorText(e),true);}};
+    pendingPanel.append(title,description,list,restore);
+  }
+
   let preview: ImportPlan | null = null;
   let generation = 0;
   let page = 0;
@@ -94,6 +112,7 @@ export function bindBackup(tracker: Tracker) {
   function reset() {
     generation++;
     incoming = null;
+    incomingPending=[];pendingPanel.hidden=true;
     incomingTrip = null;
     tripPanel.hidden = true;
     preview = null;
@@ -128,7 +147,7 @@ export function bindBackup(tracker: Tracker) {
     renderPage();
     showTrip();
     if (plan.conflicts) tell('Nothing can be imported from this file while IDs conflict. Keep your current tracker and choose the matching backup, or cancel.', true);
-    else if (!plan.added) tell(incomingTrip?'All orders are already saved. Review the trip below before restoring it.':'Everything in this backup is already saved, or the backup is empty. Nothing will change.');
+    else if (!plan.added) tell(incomingPending.length?'Saved deadlines need no changes. Review the pending purchases below before restoring them.':incomingTrip?'All orders are already saved. Review the trip below before restoring it.':'Everything in this backup is already saved, or the backup is empty. Nothing will change.');
     else tell('Review the orders below, then choose Import. Existing saved orders will stay.');
     summary.focus();
   }
@@ -146,7 +165,9 @@ export function bindBackup(tracker: Tracker) {
       const parsed = parseBackupDocument(contents);
       incoming = parsed.orders;
       incomingTrip = parsed.trip;
+      incomingPending=parsed.pending||[];
       show(planImport(tracker.read(), incoming));
+      showPending();
     } catch (error) {
       if (ticket !== generation) return;
       reset();
@@ -174,7 +195,7 @@ export function bindBackup(tracker: Tracker) {
         tell("The backup wasn't imported because browser storage refused the change. Your preview is kept so you can try again.", true);
         return;
       }
-      if(incomingTrip)show(planImport(tracker.read(),incoming));else reset();
+      if(incomingTrip||incomingPending.length){show(planImport(tracker.read(),incoming));showPending();}else reset();
       tell(`Imported ${current.added} ${current.added === 1 ? 'order' : 'orders'}. Skipped ${current.skipped} already saved.${incomingTrip ? ' Now review and restore the trip below.' : ''}`);
     } catch (error) { tell(errorText(error), true); }
   });
@@ -184,7 +205,7 @@ export function bindBackup(tracker: Tracker) {
     try {
       const now = new Date();
       const trip = readTripPlan(localStorage).plan;
-      const content = exportBackup(tracker.read(), now, trip);
+      const content = exportBackup(tracker.read(), now, trip,readPending(localStorage).rows);
       url = URL.createObjectURL(new Blob([content], { type: 'application/json' }));
       const link = document.createElement('a');
       link.href = url;
