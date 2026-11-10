@@ -170,6 +170,7 @@ function showPreview() {
   preview.innerHTML = `
     <div class="review-head"><div><span>RULE ENGINE / REVIEW</span><strong>${foundCount} OF 4 FIELDS RECOGNIZED</strong></div><span class="policy-chip">${pol.source === 'policy' ? 'STORE MATCH' : '30-DAY FALLBACK'}</span></div>
     <p class="review-note">Amber fields need attention. Confirm or correct the details before saving.</p>
+    ${p.dateWarning ? '<p class="warn" role="status">'+h(p.dateWarning)+'</p>' : ''}
     ${nothing ? '<p class="warn">Could not read this one. Fill in the highlighted fields.</p>' : ''}
     ${field('merchant', 'Store', p.merchant, p.found.merchant)}
     ${field('orderDate', 'Order date', p.orderDate, p.found.orderDate, 'date')}
