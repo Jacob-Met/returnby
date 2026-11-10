@@ -32,7 +32,7 @@ ReturnBy turns an order-confirmation email into a reviewable return deadline and
 
 ## Import exported email confirmations locally
 
-Open **Review several order confirmations together** and choose one or more UTF-8 `.txt` or standard `.eml` messages. For exported `.eml` files, ReturnBy extracts the readable `text/plain` MIME body, including common base64 or quoted-printable encodings. It does not render HTML or inspect attachments, and it refuses HTML-only messages rather than extracting potentially misleading details. Unsupported MIME structures and charsets produce a visible error.
+Open **Review several order confirmations together** and choose one or more UTF-8 `.txt` or standard `.eml` messages. For exported `.eml` files, ReturnBy extracts the readable `text/plain` MIME body, including common base64 or quoted-printable encodings. For HTML-only messages it extracts readable text with an inert parser, without rendering markup, loading images/links, or executing scripts. Authored plain text takes precedence. Attachments and explicitly hidden HTML are excluded. CSS layout is not reproduced, so review extracted text and every field; forwarded threads or promotional copy can require corrections. Unsupported MIME structures and charsets produce a visible error.
 
 All files are processed in the current browser tab and the raw email is not saved. The existing batch review requires you to correct and approve extracted store, order number, date and window before saving any fields. Each file is limited to 100 KiB, each batch to 20 confirmations and 1 MiB total. If one selected file cannot be read, none of the selected files is added. This is **not** an inbox connection or a general-purpose email/attachment parser.
 

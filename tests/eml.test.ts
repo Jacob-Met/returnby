@@ -37,11 +37,10 @@ describe('exported .eml plain text import', () => {
     expect(extractEmlPlainText(bytes(email))).toBe('注文 #42');
   });
 
-  it('rejects HTML-only messages and disguised text attachments', () => {
-    expect(() => extractEmlPlainText(bytes(common + 'Content-Type: text/html\r\n\r\n<html>Wrong</html>')))
-      .toThrow(/No plain-text body/);
+  it('extracts HTML-only messages while rejecting disguised text attachments', () => {
+    expect(extractEmlPlainText(bytes(common + 'Content-Type: text/html\r\n\r\n<html>Receipt</html>'))).toBe('Receipt');
     expect(() => extractEmlPlainText(bytes(common + 'Content-Disposition: attachment\r\n\r\nOrder #1')))
-      .toThrow(/No plain-text body/);
+      .toThrow(/No readable email body/);
   });
 
   it('rejects malformed MIME instead of guessing from partial bytes', () => {

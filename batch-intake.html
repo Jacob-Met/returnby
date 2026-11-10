@@ -26,7 +26,7 @@
         <h2 id="batch-add-title">Open a receipt.<br> Or paste the text.</h2>
         <label for="batch-files">Import a saved email (.eml) or plain text (.txt)</label>
         <input id="batch-files" type="file" accept=".txt,.eml,text/plain,message/rfc822" multiple aria-describedby="batch-file-help">
-        <p id="batch-file-help" class="batch-help">Choose up to 20 local confirmations, 100 KiB each and 1 MiB total. Imported .eml text is read from the plain-text body only; HTML and attachments are excluded. No PDFs or images.</p>
+        <p id="batch-file-help" class="batch-help">Choose up to 20 local confirmations, 100 KiB each and 1 MiB total. Imported .eml uses its plain-text body when available, otherwise readable HTML text. Images, links, scripts and attachments are never loaded. Check extracted text and every proposed field. No PDFs or images.</p>
         <div class="batch-divider"><span>OR PASTE</span></div>
         <label for="batch-paste">Paste one order confirmation</label>
         <textarea id="batch-paste" rows="6" placeholder="Paste the plain text of an order confirmation…"></textarea>
