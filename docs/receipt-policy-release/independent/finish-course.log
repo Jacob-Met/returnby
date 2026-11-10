@@ -1,4 +1,0 @@
-{
-  "verdict": "scopedPASS",
-  "storage": "{\"returnby.v1\":\"[{\\\"id\\\":\\\"58513e44-d9a0-41a6-82a1-1784c2b813f3\\\",\\\"merchant\\\":\\\"Maple Lighting\\\",\\\"orderNo\\\":\\\"MAP-808\\\",\\\"total\\\":\\\"$63.00\\\",\\\"orderDate\\\":\\\"2026-11-05\\\",\\\"windowStartDate\\\":\\\"2026-11-12\\\",\\\"windowDays\\\":7,\\\"windowSource\\\":\\\"user\\\",\\\"createdAt\\\":\\\"2026-11-10T20:30:19.053Z\\\"}]\",\"returnby.pending-deliveries\":\"{\\\"version\\\":1,\\\"purchases\\\":[{\\\"id\\\":\\\"a21a6b4d-59ac-41cb-84cb-9c1f498d39b3\\\",\\\"updatedAt\\\":\\\"2026-11-10T20:30:17.986Z\\\",\\\"fields\\\":{\\\"merchant\\\":\\\"Birch Outfitters\\\",\\\"orderDate\\\":\\\"2026-11-04\\\",\\\"orderNo\\\":\\\"BIR-707\\\",\\\"total\\\":\\\"$91.00\\\",\\\"windowStartDate\\\":\\\"\\\",\\\"windowDays\\\":\\\"21\\\"}}]}\"}"
-}
