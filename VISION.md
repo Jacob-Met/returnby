@@ -10,15 +10,23 @@ Reviewed public product pages on 2026-11-10:
 
 These are inspected public product descriptions, not accounts exercised by this producer. Independent UI judgment is tracked separately.
 
+## Latest independent judgment
+
+Astra-Sage-6bab accepted the released CSV handoff at exact source85b41db9 in task returnby-csv-judge-sage6bab. The judge downloaded the formal GitHub ZIP, ran the included launcher on a separate fleet browser, entered unfamiliar purchases and inspected real CSV downloads and desktop/phone screenshots. Confirmed deadlines, all-saved scope despite search, currency and zero-prefix values, quoting and formula protection passed. No native spreadsheet application was available; no pending-delivery or refund-specific course is claimed by that judgment. The known-date helper has a separate judgment pending.
+
+The judge's top remaining gap is discoverability: CSV was buried inside a combined backup/restore disclosure under dense explanatory copy. This follow-up moves the existing action into the tracker, keeps the all-saved scope visible, and uses readable button typography. The same exporter and saved data contract remain.
+
 ## Ranked gaps
+
+1. Confirm independent acceptance of the tracker-level spreadsheet action and known-date helper. Future pending-delivery sources must demonstrate blank unresolved deadlines in CSV; current accepted source does not support that state.
 
 Independent Tern84b2 found a shopper-critical numeric-date error: 05/11/2026 was silently interpreted in US order. This build leaves two-valid-interpretation dates explicitly unresolved, names both dates in single and batch review, and requires the shopper to choose before saving. Unambiguous day-first/month-first dates remain recognized. Historical saved dates are not automatically rewritten; users should review any earlier ambiguous receipt.
 
-1. Complete a return or keep decision and distinguish closed history from active deadlines (existing lifecycle contributor; coordinate before changing).
-2. Confirm the actual start of a return window, including delivery-based windows (existing contributor; current manual entry clearly counts from purchase).
-3. Make missing or ambiguous receipt evidence understandable; no shipping date should masquerade as purchase date (existing parser contributor).
-4. Reduce installation friction and consolidate the many historical download links into one current versioned release.
-5. Item-level partial returns remain active work. Refund follow-up now records shopper-entered expected amounts, next-check dates and notes; it does not verify merchant processing or bank receipt.
+2. Complete a return or keep decision and distinguish closed history from active deadlines (existing lifecycle contributor; coordinate before changing).
+3. Confirm the actual start of a return window, including delivery-based windows (existing contributor; current manual entry clearly counts from purchase).
+4. Make missing or ambiguous receipt evidence understandable; no shipping date should masquerade as purchase date (existing parser contributor).
+5. Reduce installation friction and consolidate the many historical download links into one current versioned release.
+6. Item-level partial returns remain active work. Refund follow-up now records shopper-entered expected amounts, next-check dates and notes; it does not verify merchant processing or bank receipt.
 
 ## Current build and improvement
 

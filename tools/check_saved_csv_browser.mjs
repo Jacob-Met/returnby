@@ -19,7 +19,7 @@ for(const width of [1440,390]){
  await page.locator('#paste').fill('Private unsaved email');
  await page.locator('#return-search').fill('does not match');
  const before=await page.evaluate(()=>localStorage.getItem('returnby.v1'));
- await page.locator('#backup-heading').click();
+ assert.equal(await page.locator('#backup-heading').evaluate(e=>e.parentElement.open),false);
  await page.locator('#saved-returns-csv').scrollIntoViewIfNeeded();
  const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#saved-returns-csv').click()]);
  await download.saveAs(output+'/saved-'+width+'.csv');
