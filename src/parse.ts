@@ -65,6 +65,21 @@ function pickMerchant(text: string, known: string[]): string {
     const dom = /@([a-z0-9-]+)\./i.exec(from[1]);
     if (dom) return dom[1].charAt(0).toUpperCase() + dom[1].slice(1);
   }
+  // Exported .eml text supplies the *body*, not the From header. Accept only
+  // self-identifying store phrases; never infer an unrelated merchant from an
+  // arbitrary product/attachment mention. Every proposed field remains editable.
+  const bodyMerchant = [
+    /^\s*(?:merchant|store|retailer)\s*:\s*([^\r\n]{2,80})\s*$/im,
+    /^\s*(?:thank you|thanks) for (?:ordering|shopping) (?:from|with) ([^\r\n.!?]{2,80})[.!?]?\s*$/im,
+    /^\s*(?:thank you|thanks) for choosing ([^\r\n.!?]{2,80})[.!?]?\s*$/im,
+    /^\s*([^\r\n.!?]{2,80})\s+[—–-]\s+thanks for shopping with us[.!?]?\s*$/im,
+  ];
+  for (const [index, pattern] of bodyMerchant.entries()) {
+    const candidate = pattern.exec(text)?.[1]?.trim();
+    // Generic "thanks for choosing a shipping option" is not a store name.
+    if (index === 2 && candidate && !/^\p{Lu}/u.test(candidate)) continue;
+    if (candidate && /^[\p{L}\p{N}]/u.test(candidate) && !/[<>@]/.test(candidate)) return candidate;
+  }
   const lower = text.toLowerCase();
   for (const k of known) if (lower.includes(k.toLowerCase())) return k;
   return '';
@@ -75,8 +90,15 @@ export function parse(text: string, knownMerchants: string[] = []): Parsed {
   const orderDate = pickOrderDate(text);
   const no = /\border\s*(?:#|number\b|no\b\.?|id\b)\s*:?\s*#?\s*([A-Z0-9][A-Z0-9-]{3,})/i.exec(text);
   const tot = /\b(?:order\s+)?total\s*:?\s*([$€£]\s?\d[\d,]*(?:\.\d{2})?)/i.exec(text);
-  const orderNo = no ? no[1] : '';
-  const total = tot ? tot[1].replace(/\s/g, '') : '';
+  // Some common receipts phrase an ID as "Your order number is XX-0001".
+  // Require a digit for this extra syntax; otherwise a status word such as
+  // "pending" could be mistaken for an identifier.
+  const alternateNo = no ? null : /\byour\s+order\s+number\s+is\s+([A-Z0-9][A-Z0-9-]{3,})\b/i.exec(text);
+  const confirmationNo = no || alternateNo ? null : /\border\s+confirmation\s*:\s*#?\s*([A-Z0-9][A-Z0-9-]{3,})\b/i.exec(text);
+  const candidateNo = alternateNo?.[1] || confirmationNo?.[1] || '';
+  const orderNo = no ? no[1] : /\d/.test(candidateNo) ? candidateNo : '';
+  const alternateTotal = tot ? null : /\bamount\s+paid\s*:\s*([$€£]\s?\d[\d,]*(?:\.\d{2})?)/i.exec(text);
+  const total = (tot ? tot[1] : alternateTotal?.[1] || '').replace(/\s/g, '');
   return {
     merchant, orderDate, orderNo, total,
     found: { merchant: !!merchant, orderDate: !!orderDate, orderNo: !!orderNo, total: !!total },
