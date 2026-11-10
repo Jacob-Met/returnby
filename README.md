@@ -268,3 +268,14 @@ Use **Find a saved return** above the tracker to search a store name or order nu
 Download backup now includes the saved trip date, selected orders, packing checks and notes. Keep the file private. In the receiving browser, choose the backup, review and import its orders, then choose Restore trip. If that browser already has a different trip, confirm its replacement explicitly; importing orders alone never overwrites the trip. Old order-only backups still work and leave the saved trip untouched.
 
 Changed order facts require checking store instructions again. Notes for unavailable orders remain recoverable but those orders are not selected. A failed trip save leaves the reviewed file open for retry. This is an explicit file transfer, not account synchronization.
+
+## Spreadsheet export
+
+Open **Export or restore saved returns**, then **Download all saved returns as CSV**.
+The file contains every currently saved purchase, regardless of tracker filters, with
+its saved amount, order number, return window, confirmed clock start and calculated
+deadline. It reads storage again on each click. Original emails and trip notes are
+excluded. Formula-like cells receive a leading apostrophe; the completion message
+reports that protection. Import order-number columns as text to preserve leading
+zeros. CSV is for spreadsheet review; use the JSON backup for exact restoration.
+This adapts the existing CSV contribution in PR #25 to current confirmed clocks.

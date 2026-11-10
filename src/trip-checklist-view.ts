@@ -233,7 +233,7 @@ function refresh(): void {
   readMessage.classList.remove('error');
   try {
     snapshot = readSavedOrders(savedReader);
-    const aligned = alignTripPlan(plan, { ...snapshot, orders: snapshot.orders.filter(order => !isCompleted(order)) });
+    const aligned = alignTripPlan(plan, snapshot);
     plan = aligned.plan;
     unavailable = aligned.unavailable;
     plan.orders.filter(entry => entry.selected).forEach(entry => selected.add(entry.id));

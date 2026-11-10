@@ -1,6 +1,8 @@
 import './order-items.css';
 import { bindItemEditor } from './order-items-ui';
 import { itemSummary } from './order-items';
+import { bindRefunds, renderRefunds } from './refund-ui';
+import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
 import { reviewDuplicateIntake } from './duplicate-intake';
 import './style.css';
 import './backup.css';
@@ -228,7 +230,8 @@ function historyCard(o: Order): string {
     + '<div class="order-actions">'
     + (o.items ? '<button class="button button-link" data-items="' + h(o.id) + '">Review item decisions</button>'
       : '<button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>')
-    + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button>'
+    + '<button class="button button-link" data-refund="' + h(o.id) + '">' + (o.refundState ? 'Review refund' : 'Track a refund') + '</button>'
+      + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button>'
     + '<button class="button button-link" data-del="' + h(o.id) + '">Remove</button></div></li>';
 }
 
@@ -239,6 +242,7 @@ function render() {
     ? 'Returned and kept orders, newest first. Reopen an order to track its original deadline.'
     : 'Your next deadlines, soonest first.';
   for (const id of ['tracker-summary', 'calendar-toolbar', 'trip-link']) $('#' + id).hidden = showingHistory;
+  renderRefunds(orders, loadFailed);
   if (loadFailed) {
     for (const id of ['tracked-count', 'soon-count', 'expired-count', 'completed-count']) $('#' + id).textContent = '—';
     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
@@ -292,6 +296,7 @@ function render() {
       + '<div class="order-actions"><button class="button button-primary" data-items="' + h(o.id) + '">' + (o.items ? 'Review items' : 'Add items') + '</button>'
       + '<button class="button button-link" data-ics="' + h(o.id) + '">Add calendar reminder</button>'
       + '<button class="button button-link" data-finish="' + h(o.id) + '">Finish return</button>'
+      + '<button class="button button-link" data-refund="' + h(o.id) + '">' + (o.refundState ? 'Review refund' : 'Track a refund') + '</button>'
       + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button></div></li>';
   }).join('');
 }
@@ -447,6 +452,7 @@ const removalUndo = bindRemovalUndo({
   refresh: current => { orders = current; render(); },
   focusTracker: () => $('#filter-' + filterMode).focus(),
 });
+bindRefunds({ commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
 bindTabSync({ refresh: reloadOrders });
 reloadOrders();
 
@@ -455,7 +461,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRe
   // urgency reorder; do not silently move keyboard focus to another order.
   const active = document.activeElement;
   const focused = active instanceof HTMLButtonElement && list.contains(active) ? active : undefined;
-  const action = (['ics', 'finish', 'reopen', 'edit', 'del'] as const).find(name => focused?.hasAttribute('data-' + name));
+  const action = (['items', 'ics', 'finish', 'reopen', 'edit', 'refund', 'del'] as const).find(name => focused?.hasAttribute('data-' + name));
   const id = action ? focused?.dataset[action] : undefined;
   render();
   if (!action || id === undefined || loadFailed) return;
@@ -463,3 +469,5 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRe
     .find(button => button.dataset[action] === id);
   (next ?? $<HTMLButtonElement>('#filter-' + filterMode)).focus({ preventScroll: true });
 });
+
+bindSavedReturnsCsv(read);
