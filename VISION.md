@@ -18,7 +18,7 @@ The judge's top remaining gap is discoverability: CSV was buried inside a combin
 
 ## Ranked gaps
 
-1. Confirm independent acceptance of the tracker-level spreadsheet action and known-date helper. Future pending-delivery sources must demonstrate blank unresolved deadlines in CSV; current accepted source does not support that state.
+1. Confirm independent acceptance of the tracker-level spreadsheet action and known-date helper. Pending delivery uses a separate review draft, excluded from tracked-return CSV. The current UI now states that scope; browser verification keeps a real pending review without exporting a fabricated deadline.
 
 Independent Tern84b2 found a shopper-critical numeric-date error: 05/11/2026 was silently interpreted in US order. This build leaves two-valid-interpretation dates explicitly unresolved, names both dates in single and batch review, and requires the shopper to choose before saving. Unambiguous day-first/month-first dates remain recognized. Historical saved dates are not automatically rewritten; users should review any earlier ambiguous receipt.
 
