@@ -12,6 +12,8 @@ These are inspected public product descriptions, not accounts exercised by this 
 
 ## Ranked gaps
 
+Independent Tern84b2 found a shopper-critical numeric-date error: 05/11/2026 was silently interpreted in US order. This build leaves two-valid-interpretation dates explicitly unresolved, names both dates in single and batch review, and requires the shopper to choose before saving. Unambiguous day-first/month-first dates remain recognized. Historical saved dates are not automatically rewritten; users should review any earlier ambiguous receipt.
+
 1. A returning phone user still reaches the saved-order search only after the intake form (Quartz observed it below the first viewport at 390px). Bring existing saved deadlines and actions into the returning shopper's first screen.
 2. Complete a return or keep decision and distinguish closed history from active deadlines (existing lifecycle contributor; coordinate before changing).
 3. Confirm the actual start of a return window, including delivery-based windows (existing contributor; current manual entry clearly counts from purchase).
@@ -23,7 +25,7 @@ These are inspected public product descriptions, not accounts exercised by this 
 
 The README links downloadable source-pinned builds. Manual receipt intake adds a direct blank form for store, purchase date and checked return window, with optional receipt number and total. It shows the computed deadline before saving; incomplete entries and storage failures keep the draft. Existing email drafts stay separate. Saved purchases use the normal tracker, edit, calendar, backup and trip capabilities. No OCR, purchase synchronization, automatic retailer verification or logistics is claimed.
 
-The app stays local. Purchase-intake drafts remain in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups include the saved trip for separately reviewed restoration. Downloaded trip sheets include the selected orders, packing checks and notes.
+The app stays local. Unfinished manual purchase fields recover after reload in the same tab until Save or Discard; raw email remains only in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups include the saved trip for separately reviewed restoration. Downloaded trip sheets include the selected orders, packing checks and notes.
 
 ## Trip planning, 2026-11-10
 
@@ -35,6 +37,11 @@ For shoppers who have handed goods back but still need to check the money, the e
 
 ReturnQueen https://returnqueen.com/ was inspected again on 2026-11-10: its published service tracks a return from pickup to refund. ReturnBy offers a local shopper record, not that logistics or payment verification. Excellent here means reopening the desk identifies the merchant, expected amount and next action immediately, and another browser restored from backup retains that work. No notification is sent by the follow-up date. Independent judgment belongs to returnby-refund-judge-tern84b2, not the producer tests.
 
+## Deadline-to-trip handoff, 2026-11-10
+
+A shopper choosing a busy deadline day in the monthly view should carry those returns into the existing trip planner without recalling and selecting every receipt again. The day now links to a review of current matching purchases. Adding them preserves the saved trip date, packing checks and notes; the chosen deadline never silently becomes the trip date. Only the date travels in the page address. The planner rereads saved orders and refuses an outdated selection until refreshed. This extends ReturnBy's local planning job alongside the ReturnQueen logistics and Whering inventory alternatives above; it does not perform a return.
+
+Remaining handoff gaps, ranked: (1) distinguish retailer drop-off versus shipment deadlines using verified instructions, (2) support more than one saved trip without overwriting packing work, (3) bring confirmed store locations into route planning. The current product has one saved trip and shopper-entered notes. Independent judgment belongs to Mica; producer tests establish behavior, not a quality verdict.
 
 ## Finding a trip order in a full tracker, 2026-11-10
 
