@@ -96,14 +96,14 @@ try {
   page=await context.newPage();
   await page.goto(origin);
   assert(await page.locator('#saved-returns').isVisible(),'saved desk remains primary with pending delivery');
-  assert(await page.locator('#pending-delivery').isVisible(),'pending purchase is discoverable outside collapsed intake');
-  await page.locator('#pending-delivery').click();
+  assert(await page.locator('#pending-desk').isVisible(),'pending purchase is discoverable outside collapsed intake');
+  await page.locator('#pending-desk .pending-purchase button').first().click();
   assert(await page.locator('#purchase-intake').isVisible(),'pending resume opens phone intake');
   assert(await page.locator('#preview').isVisible(),'pending review is visible after opening');
   await page.locator('#preview [name=windowStartDate]').fill('2026-11-06');
   await page.locator('#preview button[type=submit]').click();
   await page.waitForFunction(()=>document.activeElement?.hasAttribute('data-order-id') && document.activeElement.textContent.includes('Cedar Pending'));
-  assert.equal(await page.locator('#pending-delivery').isVisible(),false,'confirmed delivery clears pending indicator');
+  assert.equal(await page.locator('#pending-desk').isVisible(),false,'confirmed delivery clears pending indicator');
   assert.equal(await page.locator('#tracked-count').textContent(),'3');
   console.log('PASS pending-delivery indicator on returning phone and resumed saved-row focus');
   assert.deepEqual(errors,[],'no runtime errors');

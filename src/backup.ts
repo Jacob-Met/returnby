@@ -1,3 +1,4 @@
+import {portablePending,type PendingPurchase} from './pending-delivery';
 import { REFUND_KEYS, hasValidRefund } from './refund';
 import { dueDate, returnDueDate } from './deadline';
 import type { Order } from './store';
@@ -83,8 +84,8 @@ function orders(value: unknown, strict = true): Order[] {
   });
 }
 
-function document(rows: Order[], exportedAt: string, trip?: TripPlan | null) {
-  return { schema: 'returnby.backup', version: trip ? 2 : 1, exportedAt, orders: rows, ...(trip ? {trip} : {}) };
+function document(rows: Order[], exportedAt: string, trip?: TripPlan | null, pending:PendingPurchase[] = []) {
+  return { schema: 'returnby.backup', version: pending.length ? 3 : trip ? 2 : 1, exportedAt, orders: rows, ...(trip ? {trip} : {}), ...(pending.length ? {pending} : {}) };
 }
 
 function fits(output: string) { return encoder.encode(output).byteLength <= MAX_BACKUP_BYTES; }
@@ -93,8 +94,8 @@ function portable(rows: Order[], message: string) {
   if (!fits(JSON.stringify(document(rows, SIZE_TIMESTAMP)) + '\n')) throw new BackupError(message);
 }
 
-export function exportBackup(current: unknown, now = new Date(), trip?: TripPlan | null): string {
-  const doc = document(orders(current, false), now.toISOString(), trip ? parsePortableTrip(trip) : null);
+export function exportBackup(current: unknown, now = new Date(), trip?: TripPlan | null, pending:PendingPurchase[] = []): string {
+  const doc = document(orders(current, false), now.toISOString(), trip ? parsePortableTrip(trip) : null, portablePending(pending));
   let output = JSON.stringify(doc, null, 2) + '\n';
   // Formatting must not make an otherwise portable tracker impossible to
   // back up again after restoration.
@@ -103,19 +104,20 @@ export function exportBackup(current: unknown, now = new Date(), trip?: TripPlan
   return output;
 }
 
-export function parseBackupDocument(input: string): {orders: Order[]; trip: TripPlan | null} {
+export function parseBackupDocument(input: string): {orders: Order[]; trip: TripPlan | null; pending?:PendingPurchase[]} {
   if (encoder.encode(input).byteLength > MAX_BACKUP_BYTES) throw new BackupError('Choose a backup no larger than 5 MiB.');
   let parsed: unknown;
   try { parsed = JSON.parse(input); } catch { throw new BackupError('This file is not valid JSON. Choose a ReturnBy backup.'); }
   const doc = object(parsed, 'Backup');
-  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2)) throw new BackupError('This backup format or version is not supported.');
-  onlyKeys(doc, doc.version === 2 ? ['schema', 'version', 'exportedAt', 'orders', 'trip'] : ['schema', 'version', 'exportedAt', 'orders'], 'Backup');
+  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2 && doc.version !== 3)) throw new BackupError('This backup format or version is not supported.');
+  onlyKeys(doc, doc.version === 3 ? ['schema','version','exportedAt','orders','trip','pending'] : doc.version === 2 ? ['schema', 'version', 'exportedAt', 'orders', 'trip'] : ['schema', 'version', 'exportedAt', 'orders'], 'Backup');
   timestamp(doc.exportedAt, 'Backup export time');
   const rows = orders(doc.orders);
   portable(rows, 'The normalized saved details would exceed the 5 MiB backup limit.');
-  const trip = doc.version === 2 ? parsePortableTrip(doc.trip) : null;
-  if (!fits(JSON.stringify(document(rows, SIZE_TIMESTAMP, trip)) + '\n')) throw new BackupError('The normalized trip and orders exceed the 5 MiB backup limit.');
-  return {orders:rows, trip};
+  const trip = (doc.version === 2 || doc.version===3&&doc.trip!==undefined) ? parsePortableTrip(doc.trip) : null;
+  const pending=doc.version===3?portablePending(doc.pending):[];
+  if (!fits(JSON.stringify(document(rows, SIZE_TIMESTAMP, trip,pending)) + '\n')) throw new BackupError('The normalized trip and orders exceed the 5 MiB backup limit.');
+  return {orders:rows, trip,...(doc.version===3?{pending}:{})};
 }
 
 export function parseBackup(input: string): Order[] {

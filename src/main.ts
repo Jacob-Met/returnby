@@ -1,3 +1,4 @@
+import {readPending,writePending,PENDING_KEY} from './pending-delivery';
 import { deliveryReview } from './delivery-review';
 import { bindKnownDeadlines } from './known-deadline';
 import './known-deadline.css';
@@ -34,20 +35,30 @@ const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const refreshIntakeDeadline = bindIntakeDeadline(preview);
 const pendingDelivery = $<HTMLButtonElement>('#pending-delivery');
-pendingDelivery.type = 'button'; pendingDelivery.className = 'button button-link';
-pendingDelivery.textContent = 'Purchase pending delivery — resume review';
-
-function refreshPendingDelivery() {
-  try { const raw = localStorage.getItem('returnby.pending-delivery'); pendingDelivery.hidden = !raw;
-    if(raw) { const fields = JSON.parse(raw); pendingDelivery.textContent = `${fields.merchant || 'Purchase'}${fields.orderNo ? ' #' + fields.orderNo : ''} pending delivery — resume review`; }
-    $('#pending-backup-note').hidden = !raw;
-  } catch { pendingDelivery.hidden = true; }
+pendingDelivery.hidden=true;
+const pendingDesk=$<HTMLElement>('#pending-desk');
+let pendingId:string|null=null,pendingToken:string|null=null;
+function refreshPendingDelivery(){
+ try{
+  const saved=readPending(localStorage);pendingDesk.replaceChildren();pendingDesk.hidden=!saved.rows.length;
+  if(!saved.rows.length){$('#pending-backup-note').hidden=true;return;}
+  const heading=document.createElement('h2');heading.textContent='Awaiting delivery ('+saved.rows.length+')';pendingDesk.append(heading);
+  const note=document.createElement('p');note.textContent='Keep each purchase here until you confirm delivery. No deadline or reminder has been created.';pendingDesk.append(note);
+  for(const row of saved.rows){
+   const line=document.createElement('div');line.className='pending-purchase';
+   const label=document.createElement('p');label.textContent=(row.fields.merchant||'Purchase')+(row.fields.orderNo?' #'+row.fields.orderNo:'')+' · ordered '+(row.fields.orderDate||'date to review');line.append(label);
+   const resume=document.createElement('button');resume.type='button';resume.className='button button-primary';resume.textContent='Review delivery';
+   resume.onclick=()=>{const latest=readPending(localStorage);const item=latest.rows.find(x=>x.id===row.id);if(!item){refreshPendingDelivery();return;}if(showPreview(item.fields)){deskNavigation.openIntake();pendingId=item.id;pendingToken=latest.token;preview.scrollIntoView({block:'start'});preview.querySelector<HTMLInputElement>('[name=windowStartDate]')?.focus();}};
+   const remove=document.createElement('button');remove.type='button';remove.className='button button-link';remove.textContent='Discard pending purchase';remove.onclick=()=>{if(!window.confirm('Discard pending review for '+(row.fields.merchant||'this purchase')+'? Saved deadlines will stay.'))return;try{const latest=readPending(localStorage);if(JSON.stringify(latest.rows.find(x=>x.id===row.id))!==JSON.stringify(row))throw Error('This pending purchase changed. Review the refreshed details before discarding.');writePending(localStorage,latest.rows.filter(x=>x.id!==row.id),latest.token);refreshPendingDelivery();}catch(e){showStorageError(e instanceof Error?e.message:'Could not remove pending purchase.');}};
+   line.append(resume,remove);pendingDesk.append(line);
+  }
+  $('#pending-backup-note').hidden=!saved.rows.length;
+  $('#pending-backup-note').textContent='Your backup includes these reviewed pending purchases. They still need delivery confirmation before a deadline is created.';
+ }catch{pendingDesk.hidden=false;pendingDesk.textContent='Pending purchases could not be loaded. Existing details have been kept; check browser storage before continuing.';}
 }
 refreshPendingDelivery();
-pendingDelivery.addEventListener('click', () => {
-  try { const raw = localStorage.getItem('returnby.pending-delivery'); if(raw) { deskNavigation.openIntake(); showPreview(JSON.parse(raw)); } }
-  catch { showStorageError('Could not open the pending purchase.'); }
-});
+window.addEventListener('storage',e=>{if(e.key===PENDING_KEY||e.key==='returnby.pending-delivery')refreshPendingDelivery();});
+window.addEventListener('returnby-pending-changed',()=>refreshPendingDelivery());
 const refreshIntakeDeparture = bindIntakeDeparture(paste, preview);
 const search = $<HTMLInputElement>('#return-search');
 const searchClear = $<HTMLButtonElement>('#search-clear');
@@ -179,13 +190,14 @@ preview.addEventListener('input', (event) => {
 
 function showPreview(restored?: Record<string, string>) {
   if (restored && (paste.value !== '' || !preview.hidden) &&
-      !window.confirm('Replace your current unsaved receipt and review with the pending purchase? Cancel to keep your current work.')) return;
+      !window.confirm('Replace your current unsaved receipt and review with the pending purchase? Cancel to keep your current work.')) return false;
   if (!restored && !preview.hidden && reviewedIntake !== reviewSignature() &&
-      !window.confirm('Replace your corrected review with details from the pasted receipt? Your unsaved corrections will be lost. Cancel to keep reviewing.')) return;
+      !window.confirm('Replace your corrected review with details from the pasted receipt? Your unsaved corrections will be lost. Cancel to keep reviewing.')) return false;
   if (restored) paste.value = '';
   const p = restored ? { merchant: restored.merchant, orderDate: restored.orderDate, orderNo: restored.orderNo, total: restored.total, dateWarning: undefined, found: {merchant:true,orderDate:true,orderNo:true,total:true} } : parse(paste.value, knownMerchants);
   const pol = lookup(p.merchant);
   const delivery = restored ? {required:true} : deliveryReview(paste.value);
+  if(!restored){pendingId=null;pendingToken=null;}
   preview.dataset.pendingResume = restored ? 'yes' : '';
   preview.dataset.deliveryReview = delivery.required ? "yes" : "";
   const field = (name: string, label: string, val: string, ok: boolean, type = 'text') =>
@@ -206,19 +218,24 @@ function showPreview(restored?: Record<string, string>) {
     <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${restored?.windowDays || pol.days}"></label>
     <p class="src"><output id="intake-deadline" aria-live="polite" aria-atomic="true"></output></p>
     <p class="src" id="src">${pol.source === 'policy' ? 'Store rule from the local policy table; confirm with the retailer.' : 'No store match: editable 30-day fallback.'}</p>
-    ${delivery.required ? '<button type="button" class="button button-link" id="save-pending-delivery">Keep purchase pending delivery</button><p class="review-note">No deadline or reminders until you confirm delivery. Pending purchases stay in this browser and are not included in return backups.</p>' : ''}<button type="submit" class="button button-primary">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;
+    ${delivery.required ? '<button type="button" class="button button-link" id="save-pending-delivery">Keep purchase pending delivery</button><p class="review-note">No deadline or reminders until you confirm delivery. Pending purchases stay in this browser and are included when you download a backup.</p>' : ''}<button type="submit" class="button button-primary">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;
   preview.dataset.days = String(pol.days);
   preview.hidden = false;
   refreshIntakeDeadline();
   if (delivery.required) preview.querySelector('#save-pending-delivery')?.addEventListener('click', () => {
     const fields: Record<string,string> = {}; new FormData(preview).forEach((value,key) => { fields[key] = String(value); });
-    if (!restored && localStorage.getItem('returnby.pending-delivery')) { showStorageError('A purchase is already pending delivery. Resume that review before keeping another pending purchase.'); return; }
-    try { localStorage.setItem('returnby.pending-delivery', JSON.stringify(fields)); refreshPendingDelivery(); preview.hidden = true; paste.value = ''; }
-    catch { showStorageError('Could not keep this pending purchase. Your form is still here.'); }
+    try {
+      const saved=readPending(localStorage);
+      if(restored&&saved.token!==pendingToken)throw Error('Pending purchases changed. Reopen this purchase before saving.');
+      const id=pendingId||crypto.randomUUID();
+      writePending(localStorage,[...saved.rows.filter(x=>x.id!==id),{id,updatedAt:new Date().toISOString(),fields}],saved.token);
+      pendingId=null;pendingToken=null;refreshPendingDelivery();preview.hidden=true;paste.value='';refreshIntakeDeparture();
+    }catch(e){showStorageError(e instanceof Error?e.message:'Could not keep this pending purchase. Your form is still here.');}
   });
   refreshPreviewPolicy();
   reviewedIntake = reviewSignature();
   refreshIntakeDeparture();
+  return true;
 }
 
 preview.addEventListener('submit', (e) => {
@@ -257,8 +274,9 @@ preview.addEventListener('submit', (e) => {
     windowSource: days === pol.days ? pol.source : 'user',
     createdAt: new Date().toISOString(),
   }];
+  if(pendingId){try{if(readPending(localStorage).token!==pendingToken)throw Error('Pending purchases changed. Reopen this purchase before confirming delivery.');}catch(e){showStorageError(e instanceof Error?e.message:'Could not check pending purchase.');return;}}
   if (!persistOrders(next)) return;
-  if(preview.dataset.pendingResume === 'yes') { try { localStorage.removeItem('returnby.pending-delivery'); refreshPendingDelivery(); } catch { showStorageError('Return saved, but pending draft could not be cleared.'); } }
+  if(pendingId){try{const saved=readPending(localStorage);writePending(localStorage,saved.rows.filter(x=>x.id!==pendingId),saved.token);pendingId=null;pendingToken=null;refreshPendingDelivery();}catch{showStorageError('Return saved, but pending review could not be cleared. It remains available; avoid saving it again.');}}
   preview.hidden = true; paste.value = ''; refreshIntakeDeparture(); revealSavedOrder(next[next.length - 1]);
 });
 
