@@ -1,6 +1,7 @@
 import { exportBackup, parseBackup } from './backup';
 import { daysLeft, dueDate, returnDueDate, status, todayISO, type Status } from './deadline';
 import type { Order } from './store';
+import { isCompleted } from './completion';
 
 export const OVERVIEW_PAGE_SIZE = 20;
 
@@ -77,7 +78,7 @@ export function buildDeadlineOverview(
   // Reuse the shipped whole-collection field, identity, date, count and byte
   // contract. The fixed admission timestamp is never displayed or saved; no
   // file, storage write or new history format is created by this projection.
-  const approved = parseBackup(exportBackup(current, admissionTime));
+  const approved = parseBackup(exportBackup(current, admissionTime)).filter(order => !isCompleted(order));
   const rows = approved.map(order => {
     const due = returnDueDate(order);
     const left = daysLeft(due, today);

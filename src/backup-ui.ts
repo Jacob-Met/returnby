@@ -1,3 +1,5 @@
+import { completionLabel } from './completion';
+import { itemSummary } from './order-items';
 import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackup, planImport, type ImportPlan } from './backup';
 import { returnDueDate } from './deadline';
 import type { Order } from './store';
@@ -47,7 +49,22 @@ export function bindBackup(tracker: Tracker) {
       const o = row.order;
       const action = row.action === 'add' ? 'Add' : row.action === 'skip' ? 'Already saved' : 'Conflict';
       const source = o.windowSource === 'policy' ? 'saved store policy' : o.windowSource === 'default' ? 'saved fallback' : 'your saved rule';
-      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ordered ${o.orderDate}, return by ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})${row.changedFields.length ? `. Different fields: ${row.changedFields.join(', ')}.` : ''}`;
+      const lifecycle = o.completedAt === undefined ? 'Open' : `${completionLabel(o)} ${o.completedAt.slice(0, 10)}`;
+      const changed = row.changedFields.map(field => field === 'completedAt' ? 'completion status/date' : field);
+      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ${lifecycle}; ordered ${o.orderDate}, ${o.completedAt === undefined ? 'return by' : 'original return-by'} ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})${changed.length ? `. Different fields: ${changed.join(', ')}.` : ''}`;
+      if (o.items) {
+        const detail = document.createElement('details');
+        const heading = document.createElement('summary');
+        heading.textContent = 'Items: ' + itemSummary(o);
+        const itemList = document.createElement('ul');
+        for (const item of o.items) {
+          const entry = document.createElement('li');
+          entry.textContent = item.name + ' — bought ' + item.quantity + ', returned ' + item.returned + ', kept ' + item.kept + ', still open ' + (item.quantity - item.returned - item.kept) + '.';
+          itemList.append(entry);
+        }
+        detail.append(heading, itemList);
+        li.append(detail);
+      }
       return li;
     }));
     get('backup-page').textContent = preview.rows.length ? `${start + 1}–${Math.min(start + PAGE_SIZE, preview.rows.length)} of ${preview.rows.length} orders` : 'No orders in this backup';

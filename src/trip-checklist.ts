@@ -1,4 +1,6 @@
+import { parseOrderItems, type OrderItem } from './order-items';
 import type { Order } from './store';
+import { hasValidCompletion, isCompleted } from './completion';
 import { dueDate, returnDueDate, daysLeft, todayISO } from './deadline';
 
 export const SAVED_ORDERS_KEY = 'returnby.v1';
@@ -95,7 +97,17 @@ export function parseSavedOrders(raw: string | null): SavedSnapshot {
       badRow(index, 'has an unrecognized window source');
     }
     const createdAt = textField(row, 'createdAt', index)!;
-    return Object.freeze({ id, merchant, orderNo, total, orderDate, ...(windowStartDate ? {windowStartDate} : {}), windowDays, windowSource, createdAt });
+    let items: OrderItem[] | undefined;
+    if (row.items !== undefined) {
+      try { items = parseOrderItems(row.items); }
+      catch { badRow(index, 'has unreadable item quantities'); }
+    }
+    if (!hasValidCompletion(row)) badRow(index, 'has an unreadable completion record');
+    const completion = row.completedAt === undefined ? {} : {
+      completedAt: row.completedAt as string,
+      ...(row.completionKind === undefined ? {} : { completionKind: row.completionKind as Order['completionKind'] }),
+    };
+    return Object.freeze({ id, merchant, orderNo, total, orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays, windowSource, createdAt, ...(items ? { items } : {}), ...completion });
   });
   return Object.freeze({ raw, orders: Object.freeze(orders) });
 }
@@ -134,6 +146,7 @@ export function createChecklist(snapshot: SavedSnapshot, selectedIds: readonly s
   const orders = selectedIds.map(id => {
     const order = byId.get(id);
     if (!order) throw new ChecklistError('A selected order is no longer in this loaded list. Refresh saved orders and choose again.', 'selection');
+    if (isCompleted(order)) throw new ChecklistError('This order is in History. Reopen it in the tracker before planning a return trip.', 'selection');
     const due = returnDueDate(order);
     return Object.freeze({ order, due, tripTiming: tripTiming(due, tripDate) });
   }).sort((a, b) => a.due.localeCompare(b.due));
@@ -146,6 +159,14 @@ export function escapeHtml(value: string): string {
 
 const saved = (value: string | undefined): string => value === undefined || value === ''
   ? '<span class="not-recorded">Not recorded</span>' : '<span class="saved-text">' + escapeHtml(value) + '</span>';
+
+function remainingItems(order: Readonly<Order>): string {
+  if (!order.items) return '';
+  return '<section class="sheet-items"><h4>Items still open</h4><ul>'
+    + order.items.filter(item => item.quantity > item.returned + item.kept).map(item =>
+      '<li>' + (item.quantity - item.returned - item.kept) + ' × ' + escapeHtml(item.name) + '</li>'
+    ).join('') + '</ul><p>Check these remaining quantities before packing.</p></section>';
+}
 
 function packingMark(checked = false): string {
   return '<span class="blank-check' + (checked ? ' checked' : '') + '" role="img" aria-label="' + (checked ? 'Ready' : 'Not checked') + '">' + (checked ? '✓' : '') + '</span>';
@@ -166,6 +187,7 @@ export function renderChecklist(checklist: TripChecklist): string {
       + '<div><dt>Calculated deadline</dt><dd>' + escapeHtml(due) + '</dd></div>'
       + '<div><dt>Saved window</dt><dd>' + order.windowDays + ' days · ' + sourceLabel(order.windowSource) + '</dd></div></dl>'
       + '<p class="sheet-timing">' + escapeHtml(timing) + '</p>'
+      + remainingItems(order)
       + '<ul class="packing-checks"><li>' + packingMark(checklist.packing?.[order.id]?.packed) + 'Item, tags and packaging ready</li>'
       + '<li>' + packingMark(checklist.packing?.[order.id]?.receiptReady) + 'Receipt or order confirmation ready</li>'
       + '<li>' + packingMark(checklist.packing?.[order.id]?.instructionsChecked) + 'Store instructions and return arrangement checked</li></ul>'
@@ -176,7 +198,7 @@ export function renderChecklist(checklist: TripChecklist): string {
     + '<p>This sheet captures your trip at download time. Reopen ReturnBy to continue your saved plan; marks added on paper do not update the app.</p></footer></article>';
 }
 
-export const CHECKLIST_SHEET_CSS = "\n.trip-sheet{background:#fffefa;border:1px solid #d7d7cc;border-radius:3px;padding:32px;color:#27362d;box-sizing:border-box;font-family:Arial,sans-serif}\n.trip-sheet *{box-sizing:border-box}\n.sheet-eyebrow{margin:0 0 15px;color:#516355;font-size:10px;font-weight:700;letter-spacing:.14em}\n.sheet-heading h2{font:normal 32px/1.12 Georgia,serif;margin:0 0 24px}\n.sheet-meta{display:grid;grid-template-columns:1.35fr 1fr 1.35fr;border-top:1px solid #7c8b7e;border-bottom:1px solid #d7d7cc;padding:14px 0;gap:16px}\n.sheet-meta p{margin:0}.sheet-meta span{display:block;font-size:9px;letter-spacing:.1em;font-weight:700;color:#626b61;margin-bottom:7px}.sheet-meta strong{font-size:17px;font-weight:600}\n.sheet-guidance{font-size:12px;line-height:1.65;color:#566154;margin:18px 0 22px}\n.sheet-orders{list-style:none;padding:0;margin:0}.sheet-order{padding:22px 0;border-top:1px solid #b7c1b4;break-inside:avoid}\n.sheet-order>header{display:flex;gap:13px;align-items:flex-start}.sheet-order>header>div{min-width:0}\n.sheet-number{display:flex;align-items:center;justify-content:center;flex:0 0 28px;height:28px;background:#e8eddf;font-size:10px;font-weight:700;border-radius:50%}\n.sheet-order h3{font:normal 24px/1.25 Georgia,serif;margin:0 0 5px;overflow-wrap:anywhere}\n.sheet-order-ref{font-size:11px;margin:0;color:#5a6258;overflow-wrap:anywhere}\n.saved-text{white-space:pre-wrap;overflow-wrap:anywhere}.not-recorded{font-style:italic;color:#60675e}\n.sheet-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;margin:17px 0}\n.sheet-facts div{min-width:0}.sheet-facts dt{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#6a7267;margin-bottom:5px}.sheet-facts dd{margin:0;font-size:12px;line-height:1.4;overflow-wrap:anywhere}\n.sheet-timing{margin:0 0 16px;font-size:11px;background:#eff1e7;border-left:2px solid #6a7b55;padding:8px 10px;line-height:1.5}\n.packing-checks{padding:0;margin:0;list-style:none;display:grid;gap:9px;font-size:12px;line-height:1.45}.packing-checks li{display:flex;align-items:flex-start;gap:8px}\n.blank-check{display:inline-block;width:13px;height:13px;border:1px solid #63705f;border-radius:2px;flex:0 0 13px;margin-top:2px}\n.sheet-notes{margin-top:18px;color:#798072;font-size:8px;font-weight:700;letter-spacing:.08em}.sheet-notes div{height:22px;border-bottom:1px solid #d8dccf}\n.sheet-footer{border-top:1px solid #aab5a4;padding-top:12px;font-size:10px;line-height:1.6;color:#626b5d}.sheet-footer p{margin:5px 0}\n.blank-check.checked{background:#365b3c;color:#fff;text-align:center;font-size:11px;line-height:11px}.saved-trip-notes{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.65;font-weight:400;letter-spacing:normal;color:#27362d;margin:8px 0 0}\n@media(max-width:600px){.trip-sheet{padding:22px 18px}.sheet-heading h2{font-size:27px}.sheet-meta{gap:10px}.sheet-meta span{font-size:8px;letter-spacing:.04em}.sheet-meta strong{font-size:13px}.sheet-order h3{font-size:22px}.sheet-facts{gap:12px}.sheet-facts dd{font-size:11px}}\n@page{size:auto;margin:16mm}\n@media print{.trip-sheet{border:0;padding:0;background:white;box-shadow:none;max-width:none!important}.sheet-order{break-inside:avoid}.sheet-heading{break-after:avoid}.sheet-guidance{break-after:avoid}.sheet-footer{break-inside:avoid}.sheet-timing{background:transparent;border-left:1px solid #63705f}.sheet-meta strong{font-size:17px}.sheet-meta span{font-size:9px}.sheet-order h3{font-size:24px}.sheet-facts dd{font-size:12px}}\n";
+export const CHECKLIST_SHEET_CSS = "\n.sheet-items{border-top:1px solid #d7d7cc;padding:12px 0}.sheet-items h4{margin:0 0 7px;font-size:13px}.sheet-items ul{padding-left:20px;margin:0;font-size:13px;line-height:1.6}.sheet-items p{font-size:11px;color:#566154}\n\n.trip-sheet{background:#fffefa;border:1px solid #d7d7cc;border-radius:3px;padding:32px;color:#27362d;box-sizing:border-box;font-family:Arial,sans-serif}\n.trip-sheet *{box-sizing:border-box}\n.sheet-eyebrow{margin:0 0 15px;color:#516355;font-size:10px;font-weight:700;letter-spacing:.14em}\n.sheet-heading h2{font:normal 32px/1.12 Georgia,serif;margin:0 0 24px}\n.sheet-meta{display:grid;grid-template-columns:1.35fr 1fr 1.35fr;border-top:1px solid #7c8b7e;border-bottom:1px solid #d7d7cc;padding:14px 0;gap:16px}\n.sheet-meta p{margin:0}.sheet-meta span{display:block;font-size:9px;letter-spacing:.1em;font-weight:700;color:#626b61;margin-bottom:7px}.sheet-meta strong{font-size:17px;font-weight:600}\n.sheet-guidance{font-size:12px;line-height:1.65;color:#566154;margin:18px 0 22px}\n.sheet-orders{list-style:none;padding:0;margin:0}.sheet-order{padding:22px 0;border-top:1px solid #b7c1b4;break-inside:avoid}\n.sheet-order>header{display:flex;gap:13px;align-items:flex-start}.sheet-order>header>div{min-width:0}\n.sheet-number{display:flex;align-items:center;justify-content:center;flex:0 0 28px;height:28px;background:#e8eddf;font-size:10px;font-weight:700;border-radius:50%}\n.sheet-order h3{font:normal 24px/1.25 Georgia,serif;margin:0 0 5px;overflow-wrap:anywhere}\n.sheet-order-ref{font-size:11px;margin:0;color:#5a6258;overflow-wrap:anywhere}\n.saved-text{white-space:pre-wrap;overflow-wrap:anywhere}.not-recorded{font-style:italic;color:#60675e}\n.sheet-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;margin:17px 0}\n.sheet-facts div{min-width:0}.sheet-facts dt{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#6a7267;margin-bottom:5px}.sheet-facts dd{margin:0;font-size:12px;line-height:1.4;overflow-wrap:anywhere}\n.sheet-timing{margin:0 0 16px;font-size:11px;background:#eff1e7;border-left:2px solid #6a7b55;padding:8px 10px;line-height:1.5}\n.packing-checks{padding:0;margin:0;list-style:none;display:grid;gap:9px;font-size:12px;line-height:1.45}.packing-checks li{display:flex;align-items:flex-start;gap:8px}\n.blank-check{display:inline-block;width:13px;height:13px;border:1px solid #63705f;border-radius:2px;flex:0 0 13px;margin-top:2px}\n.sheet-notes{margin-top:18px;color:#798072;font-size:8px;font-weight:700;letter-spacing:.08em}.sheet-notes div{height:22px;border-bottom:1px solid #d8dccf}\n.sheet-footer{border-top:1px solid #aab5a4;padding-top:12px;font-size:10px;line-height:1.6;color:#626b5d}.sheet-footer p{margin:5px 0}\n.blank-check.checked{background:#365b3c;color:#fff;text-align:center;font-size:11px;line-height:11px}.saved-trip-notes{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.65;font-weight:400;letter-spacing:normal;color:#27362d;margin:8px 0 0}\n@media(max-width:600px){.trip-sheet{padding:22px 18px}.sheet-heading h2{font-size:27px}.sheet-meta{gap:10px}.sheet-meta span{font-size:8px;letter-spacing:.04em}.sheet-meta strong{font-size:13px}.sheet-order h3{font-size:22px}.sheet-facts{gap:12px}.sheet-facts dd{font-size:11px}}\n@page{size:auto;margin:16mm}\n@media print{.trip-sheet{border:0;padding:0;background:white;box-shadow:none;max-width:none!important}.sheet-order{break-inside:avoid}.sheet-heading{break-after:avoid}.sheet-guidance{break-after:avoid}.sheet-footer{break-inside:avoid}.sheet-timing{background:transparent;border-left:1px solid #63705f}.sheet-meta strong{font-size:17px}.sheet-meta span{font-size:9px}.sheet-order h3{font-size:24px}.sheet-facts dd{font-size:12px}}\n";
 
 export function buildChecklistHtml(checklist: TripChecklist): string {
   return '<!doctype html>\n<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">'

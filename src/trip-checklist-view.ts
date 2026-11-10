@@ -1,5 +1,6 @@
 import './trip-checklist.css';
-import { returnDueDate } from './deadline';
+import { dueDate, returnDueDate, todayISO } from './deadline';
+import { isCompleted } from './completion';
 import {
   assertSnapshotCurrent, buildChecklistHtml, CHECKLIST_SHEET_CSS, createChecklist,
   readSavedOrders, renderChecklist, SAVED_ORDERS_KEY, sourceLabel,
@@ -232,16 +233,16 @@ function refresh(): void {
   readMessage.classList.remove('error');
   try {
     snapshot = readSavedOrders(savedReader);
-    const aligned = alignTripPlan(plan, snapshot);
+    const aligned = alignTripPlan(plan, { ...snapshot, orders: snapshot.orders.filter(order => !isCompleted(order)) });
     plan = aligned.plan;
     unavailable = aligned.unavailable;
     plan.orders.filter(entry => entry.selected).forEach(entry => selected.add(entry.id));
-    const ordered = [...snapshot.orders].sort((a, b) => returnDueDate(a).localeCompare(returnDueDate(b)));
+    const ordered = snapshot.orders.filter(order => !isCompleted(order)).sort((a, b) => returnDueDate(a).localeCompare(returnDueDate(b)));
 
     ordered.forEach(addOrderOption);
     readMessage.textContent = ordered.length
       ? ordered.length + (ordered.length === 1 ? ' saved order ready to choose.' : ' saved orders ready to choose.')
-      : 'No saved returns. Add an order in your tracker to plan another trip.';
+      : snapshot.orders.length ? 'All saved orders are in History. Reopen an order in the tracker if you need to plan its return.' : 'No saved returns. Add an order in your tracker to plan another trip.';
     form.hidden = ordered.length === 0;
     selectionChanged(false);
     const changes = [];

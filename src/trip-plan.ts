@@ -26,7 +26,10 @@ export class TripPlanError extends Error {
 }
 export const emptyTripPlan = (tripDate = todayISO()): TripPlan => ({ version: 1, tripDate, orders: [] });
 export function orderSignature(order: Readonly<Order>): string {
-  return JSON.stringify([order.merchant, order.orderNo || '', order.orderDate, order.windowStartDate || '', order.windowDays, order.windowSource, order.createdAt]);
+  return JSON.stringify([order.merchant, order.orderNo || '', order.orderDate, order.windowStartDate || '', order.windowDays, order.windowSource, order.createdAt, ...(order.items ? [order.items] : [])]);
+}
+function savedItemSignature(signature: string): string {
+  try { return JSON.stringify(JSON.parse(signature)[7] ?? null); } catch { return ''; }
 }
 export function planOrder(order: Readonly<Order>): PlannedOrder {
   return {
@@ -85,7 +88,7 @@ export function alignTripPlan(plan: TripPlan, snapshot: SavedSnapshot): {
     const signature = orderSignature(order);
     if (signature !== entry.signature) {
       changed.push(order.merchant || entry.merchant || 'Unnamed store');
-      return { ...entry, merchant: order.merchant, orderNo: order.orderNo || '', signature, instructionsChecked: false };
+      return { ...entry, merchant: order.merchant, orderNo: order.orderNo || '', signature, packed: savedItemSignature(signature) === savedItemSignature(entry.signature) ? entry.packed : false, instructionsChecked: false };
     }
     return { ...entry };
   });
