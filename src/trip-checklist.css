@@ -83,3 +83,17 @@ textarea:focus-visible{outline:3px solid #be681f;outline-offset:3px}
 .packing-timing{font-size:12px;line-height:1.5;color:#42613b;margin:0 0 12px}.packing-timing.late{color:#8c3f26;font-weight:600}
 .packing-jump{text-decoration:none}.choice-date{font-size:11px}.choice-source{font-size:10px}
 #packing-title{scroll-margin-top:20px}.plan-recovery:empty{display:none}
+
+/* Keep finding and packing available even when a trip spans a full return desk. */
+.trip-search{margin:20px 0 8px}
+.trip-search>label{display:block;font-size:14px;font-weight:600;margin-bottom:9px}
+.trip-search-field{display:flex;align-items:center;gap:12px}
+#trip-search{min-width:0;flex:1;width:100%;min-height:44px;padding:11px 12px;border:1px solid #899b80;border-radius:3px;background:#fffdf7;color:var(--ink);font-size:16px}
+#trip-search-clear{flex-shrink:0;min-height:44px;font-size:12px}
+#trip-search-results{margin:8px 0 0;font-size:12px;line-height:1.5;color:#52624a}
+.trip-selection-actions{position:sticky;top:0;z-index:2;background:#faf8f0;padding:4px 0 12px;margin-bottom:10px;border-bottom:1px solid var(--line)}
+.trip-selection-actions .selection-row{margin:0;gap:10px;font-size:13px;line-height:1.45;color:#3d543a}
+#selection-summary{margin:9px 0;flex:1}
+#clear-selection{font-size:12px;min-height:44px;text-align:right}
+.trip-selection-actions .packing-jump{margin-top:6px}
+.search-empty{margin:8px 0 0;border-left:3px solid #8a9d78;padding:12px 14px;background:#edf0e5;font-size:14px;line-height:1.6;color:#3d543a}

@@ -1,0 +1,17 @@
+#refund-calendar-dialog{width:min(580px,calc(100% - 28px));max-height:calc(100dvh - 28px);overflow:auto;box-sizing:border-box;padding:28px;border:1px solid #737e6d;background:#f8f6ee;color:#25382c}
+#refund-calendar-dialog::backdrop{background:#17231db3}
+#refund-calendar-title{font:28px/1.2 Georgia,serif;margin:8px 0 20px}
+.refund-calendar-kicker{font:600 12px/1.4 sans-serif;letter-spacing:.06em;color:#53604e;margin:0}
+#refund-calendar-purchase{font-size:17px;font-weight:700;border-block:1px solid #c6c9bd;padding:16px 0;overflow-wrap:anywhere}
+#refund-calendar-dialog p{line-height:1.5}
+#refund-calendar-saved{font-size:15px}
+.refund-calendar-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.refund-calendar-fields label{display:grid;gap:8px;font-size:14px;font-weight:700;min-width:0}
+.refund-calendar-fields input{min-width:0;width:100%;box-sizing:border-box;min-height:46px;padding:10px;font:inherit;border:1px solid #899580;background:#fff}
+#refund-calendar-preview{font-size:16px;font-weight:700}
+.refund-calendar-help{font-size:13px;color:#505c4d}
+#refund-calendar-error{color:#922e20;font-weight:700}
+.refund-calendar-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.refund-row .refund-actions{grid-column:3;grid-row:1/3;display:grid;gap:8px;justify-items:start}
+.refund-row .refund-actions button{grid-column:auto;grid-row:auto;text-align:left}
+@media(max-width:600px){#refund-calendar-dialog{padding:20px}.refund-row .refund-actions{grid-column:1;grid-row:auto}.refund-calendar-actions button{width:100%}}

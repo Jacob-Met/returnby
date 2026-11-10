@@ -1,3 +1,4 @@
+import { readPending, writePending } from './pending-delivery';
 import './batch-intake.css';
 import {
   appendConfirmations, validateDraft, prepareBatch, commitBatch,
@@ -5,6 +6,7 @@ import {
   type BatchDraft, type BatchReview, type DraftFields,
 } from './batch-intake';
 import { returnDueDate } from './deadline';
+import { deliveryReview } from './delivery-review';
 import { extractEmlPlainText } from './eml';
 
 const get = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -69,6 +71,7 @@ function showError(error: unknown) {
 function renderDrafts() {
   const fragment = document.createDocumentFragment();
   drafts.forEach((draft, index) => {
+    const delivery = deliveryReview(draft.text);
     const card = element('article', undefined, 'batch-card' + (draft.reviewed ? ' is-reviewed' : ''));
     card.dataset.draft = draft.id;
     const head = element('header', undefined, 'batch-card-head');
@@ -83,10 +86,15 @@ function renderDrafts() {
     head.append(identity, remove);
     card.append(head);
     if (draft.dateWarning) card.append(element('p', draft.dateWarning, 'warn'));
+    if (delivery.required) {
+      const warning = element('p', 'This receipt starts its return window at delivery. ' + (delivery.date ? 'Delivery date mentioned: ' + delivery.date + '. ' : 'No unambiguous delivered date was found. ') + 'Confirm the clock start and return window with the retailer before selecting this purchase. Awaiting delivery? Keep the reviewed purchase pending to resume later from the tracker, without a deadline or reminder.', 'warn');
+      warning.setAttribute('role', 'status');
+      card.append(warning);
+    }
     const fields = element('div', undefined, 'batch-fields');
     const labels: Array<[keyof DraftFields, string, string]> = [
       ['merchant', 'Store', 'text'], ['orderNo', 'Order number', 'text'],
-      ['orderDate', 'Order date', 'date'], ['windowStartDate', 'Return clock starts (optional; date confirmed by you)', 'date'], ['total', 'Total (as entered)', 'text'],
+      ['orderDate', 'Order date', 'date'], ['windowStartDate', delivery.required ? 'Confirm return clock start (required)' : 'Return clock starts (optional; date confirmed by you)', 'date'], ['total', 'Total (as entered)', 'text'],
       ['windowDays', 'Return window (days)', 'number'],
     ];
     for (const [key, labelText, type] of labels) {
@@ -98,6 +106,7 @@ function renderDrafts() {
       input.value = draft.fields[key] ?? '';
       input.dataset.field = key;
       input.name = key;
+      if (key === 'windowStartDate' && delivery.required) input.required = true;
       input.maxLength = 4096;
       input.setAttribute('aria-label', labelText + ' for confirmation ' + (index + 1));
       if (key === 'orderDate' || key === 'windowStartDate') { input.min = '1000-01-01'; input.max = '9999-12-31'; }
@@ -106,6 +115,23 @@ function renderDrafts() {
       fields.append(label);
     }
     card.append(fields);
+    if (delivery.required) {
+      const keep = element('button', 'Keep purchase pending delivery', 'batch-button quiet');
+      keep.type = 'button';
+      keep.dataset.keepPending = draft.id;
+      keep.addEventListener('click', () => {
+        try {
+          const current = readPending(localStorage);
+          const fields: Record<string,string> = {};
+          for (const key of ['merchant','orderDate','orderNo','total','windowStartDate','windowDays'] as const) fields[key] = draft.fields[key] ?? '';
+          writePending(localStorage, [...current.rows, {id:crypto.randomUUID(),updatedAt:new Date().toISOString(),fields}], current.token);
+          drafts = drafts.filter(item => item.id !== draft.id);
+          invalidate('Purchase kept pending delivery. Resume it from the tracker; no deadline or reminder was created.');
+          renderDrafts();
+        } catch(error) { showError(error); }
+      });
+      card.append(keep);
+    }
     const original = element('details');
     original.append(element('summary', 'Read the original confirmation'), element('pre', draft.text));
     card.append(original);
@@ -236,7 +262,7 @@ discard.addEventListener('click', () => {
 function renderReview(current: BatchReview) {
   get('batch-final-summary').textContent = 'Add ' + current.orders.length + ' reviewed '
     + (current.orders.length === 1 ? 'order' : 'orders') + ' beside ' + current.existingCount
-    + ' already saved. Existing records will be retained.';
+    + ' already saved.';
   const fragment = document.createDocumentFragment();
   current.orders.forEach(order => {
     const article = element('article', undefined, 'batch-final-order');

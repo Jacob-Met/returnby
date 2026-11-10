@@ -1,5 +1,6 @@
 import { purchaseIdentity as identity } from './purchase-identity';
 import { parse } from './parse';
+import { deliveryReview } from './delivery-review';
 import { knownMerchants, lookup } from './policy';
 import { dueDate } from './deadline';
 import { save, type Order } from './store';
@@ -103,6 +104,9 @@ export function validateDraft(draft: BatchDraft): Omit<Order, 'id' | 'createdAt'
     throw new BatchIntakeError('Choose a valid confirmed return-clock start date.', 'windowStartDate', draft.id);
   }
   const windowStartDate = fields.windowStartDate?.trim() ?? '';
+  if (deliveryReview(draft.text).required && !windowStartDate) {
+    throw new BatchIntakeError('This receipt starts its return window at delivery. Confirm the return-clock start before selecting it, or leave this purchase unselected until delivery.', 'windowStartDate', draft.id);
+  }
   if (windowStartDate && !isSupportedDate(windowStartDate)) {
     throw new BatchIntakeError('Choose a real confirmed return-clock start date (or leave blank to count from the order date).', 'windowStartDate', draft.id);
   }

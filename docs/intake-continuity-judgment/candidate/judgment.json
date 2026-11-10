@@ -1,0 +1,68 @@
+{
+  "judge": "astra-kestrel-b6a904df3c",
+  "source": "cb29ecc9e76cedd4316b8b85f750364afa5576c7",
+  "receipt": "Fictional Cedar Outfitters purchase, actual compiled application",
+  "courses": [
+    {
+      "width": 1440,
+      "departureCancelledRetains": true,
+      "reloadCancelledRetains": true,
+      "storedBeforeSave": [],
+      "reparsePreserves": true,
+      "afterReparse": {
+        "merchant": "Cedar Outfitters",
+        "orderDate": "2026-11-01",
+        "windowStartDate": "2026-11-06",
+        "orderNo": "CDR-72814",
+        "total": "$57.98",
+        "windowDays": "14"
+      },
+      "examplePreserves": true,
+      "afterExample": {
+        "merchant": "Cedar Outfitters",
+        "orderDate": "2026-11-01",
+        "windowStartDate": "2026-11-06",
+        "orderNo": "CDR-72814",
+        "total": "$57.98",
+        "windowDays": "14"
+      },
+      "confirms": 2,
+      "savedThenReopened": true,
+      "savedText": "Cedar Outfitters #CDR-72814\nON TRACK\nORDER 2026-11-01 · CLOCK 2026-11-06 (confirmed by you)\nYOUR RULE / 14 DAYS\nRETURN BY 2026-11-20\n10 DAYS LEFT\nAdd calendar reminder\nEdit details\nTrack a refund\nRemove",
+      "stored": {
+        "returnby.v1": "[{\"id\":\"c6ecc479-4204-4cf2-9274-0d8be455c3f2\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"CDR-72814\",\"total\":\"$57.98\",\"orderDate\":\"2026-11-01\",\"windowStartDate\":\"2026-11-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-11-10T18:44:22.590Z\"}]"
+      }
+    },
+    {
+      "width": 390,
+      "departureCancelledRetains": true,
+      "reloadCancelledRetains": true,
+      "storedBeforeSave": [],
+      "reparsePreserves": true,
+      "afterReparse": {
+        "merchant": "Cedar Outfitters",
+        "orderDate": "2026-11-01",
+        "windowStartDate": "2026-11-06",
+        "orderNo": "CDR-72814",
+        "total": "$57.98",
+        "windowDays": "14"
+      },
+      "examplePreserves": true,
+      "afterExample": {
+        "merchant": "Cedar Outfitters",
+        "orderDate": "2026-11-01",
+        "windowStartDate": "2026-11-06",
+        "orderNo": "CDR-72814",
+        "total": "$57.98",
+        "windowDays": "14"
+      },
+      "confirms": 2,
+      "savedThenReopened": true,
+      "savedText": "Cedar Outfitters #CDR-72814\nON TRACK\nORDER 2026-11-01 · CLOCK 2026-11-06 (confirmed by you)\nYOUR RULE / 14 DAYS\nRETURN BY 2026-11-20\n10 DAYS LEFT\nAdd calendar reminder\nEdit details\nTrack a refund\nRemove",
+      "stored": {
+        "returnby.v1": "[{\"id\":\"190072c6-825f-4065-8704-5ba34f7626c6\",\"merchant\":\"Cedar Outfitters\",\"orderNo\":\"CDR-72814\",\"total\":\"$57.98\",\"orderDate\":\"2026-11-01\",\"windowStartDate\":\"2026-11-06\",\"windowDays\":14,\"windowSource\":\"user\",\"createdAt\":\"2026-11-10T18:44:27.356Z\"}]"
+      }
+    }
+  ],
+  "verdict": "Actual corrected intake is retained after cancelled departure, reload, reparse and sample replacement; exact date basis saves and reopens."
+}
