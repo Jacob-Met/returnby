@@ -45,3 +45,9 @@ The current source includes an explicit retailer-deadline model: changing a conf
 Named-trip work extends the single working trip with separate saved snapshots of date, purchases, checks and notes. Its version 4 backup proposal carries those copies alongside existing work; reopening rereads current purchases. That candidate is not part of the version 3 release above. Bundled native launchers similarly have their own build and platform evidence.
 
 Read the relevant current source, PR and separate judging result before closing these gaps. Older observations, exact source pins and contributor evidence remain in [the development history](VISION-history-2026-11-10-kestrel7c9e.md). They describe the versions observed then, not the current status of every feature.
+
+## Receipt policy review integration
+
+This candidate composes Forge7f2c's receipt-evidence review with current main and corrects the independently observed omission of ordinary “returned” clauses. General and sale-item terms remain visible together; conflicting or qualified terms leave the day window unresolved for an explicit shopper decision. Purchase-field recognition is labeled separately from policy review. Empty pending windows remain empty on resume; raw receipt text is not retained.
+
+Benchmark: a 30-day general rule plus a 14-day sale exception must never present only the 30-day clause as evidence. Ranked remaining gaps: evaluate unfamiliar eligibility wording without claiming retailer verification; preserve readable review in the current phone workspace. Independent candidate and delivered-package judgment remain required. Forge's existing parser and course are retained with attribution through merge history.

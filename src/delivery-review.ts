@@ -3,7 +3,7 @@ import { findDates } from './parse';
 export function deliveryReview(text: string): { required: boolean; date?: string } {
   const normalized = text.replace(/\s+/g, ' ');
   const deliveryBasis = /\b(?:days?\s+(?:of|after|from)\s+(?:(?:the|your)\s+)?(?:delivery(?:\s+date)?|receipt|date\s+(?:your\s+order\s+was\s+)?delivered)|(?:starts?|begins?)\s+(?:on|at)\s+delivery)\b/i;
-  const required = /\breturns?\b/i.test(normalized) && deliveryBasis.test(normalized);
+  const required = /\breturn(?:s|ed|ing|able)?\b/i.test(normalized) && deliveryBasis.test(normalized);
   if (!required) return { required: false };
   const dates = new Set<string>();
   for (const line of text.split(/\r?\n/)) {

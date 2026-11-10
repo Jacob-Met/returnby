@@ -1,3 +1,5 @@
+import './receipt-policy.css';
+import { receiptPolicy, receiptWindow } from './receipt-policy';
 import {readPending,writePending,PENDING_KEY} from './pending-delivery';
 import { deliveryReview } from './delivery-review';
 import { bindKnownDeadlines } from './known-deadline';
@@ -173,9 +175,13 @@ function refreshPreviewPolicy() {
   if (!merchant || !windowDays || !chip || !source) return;
   const days = Number(windowDays.value);
   const policy = lookup(merchant.value);
+  const receiptDays = Number(preview.dataset.receiptDays || '0');
   if (!Number.isSafeInteger(days) || days < 1) {
     chip.textContent = 'CHECK RETURN WINDOW';
     source.textContent = 'Enter a whole number of days before saving this return.';
+  } else if (receiptDays > 0 && days === receiptDays) {
+    chip.textContent = 'RECEIPT / ' + days + ' DAYS';
+    source.textContent = 'Window mentioned in this receipt; confirm it applies to your purchase.';
   } else if (days !== policy.days) {
     chip.textContent = `YOUR RULE / ${days} DAYS`;
     source.textContent = `Your entered ${days}-day window; confirm this rule with the retailer.`;
@@ -200,6 +206,9 @@ function showPreview(restored?: Record<string, string>) {
   if (restored) paste.value = '';
   const p = restored ? { merchant: restored.merchant, orderDate: restored.orderDate, orderNo: restored.orderNo, total: restored.total, dateWarning: undefined, found: {merchant:true,orderDate:true,orderNo:true,total:true} } : parse(paste.value, knownMerchants);
   const pol = lookup(p.merchant);
+  const evidence = receiptPolicy(restored ? '' : paste.value);
+  preview.dataset.receiptEvidence = evidence.passages.length ? 'yes' : '';
+  preview.dataset.receiptDays = evidence.days === undefined ? '' : String(evidence.days);
   const delivery = restored ? {required:true} : deliveryReview(paste.value);
   if(!restored){pendingId=null;pendingToken=null;}
   preview.dataset.pendingResume = restored ? 'yes' : '';
@@ -209,7 +218,7 @@ function showPreview(restored?: Record<string, string>) {
   const nothing = !p.found.merchant && !p.found.orderDate;
   const foundCount = Object.values(p.found).filter(Boolean).length;
   preview.innerHTML = `
-    <div class="review-head"><div><span>RULE ENGINE / REVIEW</span><strong>${foundCount} OF 4 FIELDS RECOGNIZED</strong></div><span class="policy-chip">${pol.source === 'policy' ? 'STORE MATCH' : '30-DAY FALLBACK'}</span></div>
+    <div class="review-head"><div><span>RULE ENGINE / REVIEW</span><strong>${foundCount} OF 4 PURCHASE FIELDS RECOGNIZED</strong></div><span class="policy-chip">${pol.source === 'policy' ? 'STORE MATCH' : '30-DAY FALLBACK'}</span></div>
     <p class="review-note">Amber fields need attention. Confirm or correct the details before saving.</p>
     ${delivery.required ? `<p class="warn" role="status">This receipt describes a return window starting at delivery. ${delivery.date ? 'Delivery date mentioned: ' + h(delivery.date) + '.' : 'No unambiguous delivered date was found.'} Confirm the clock start and return window with the retailer before saving. The order date stays separate.</p>` : ''}
     ${p.dateWarning ? '<p class="warn" role="status">'+h(p.dateWarning)+'</p>' : ''}
@@ -219,7 +228,8 @@ function showPreview(restored?: Record<string, string>) {
     <label>${delivery.required ? 'Confirm return clock start (required to save a deadline)' : 'Return clock starts (optional; date you confirmed with retailer, such as delivery)'}<input name="windowStartDate" ${delivery.required ? 'required' : ''} type="date" min="1000-01-01" max="9999-12-31" value="${h(restored?.windowStartDate || '')}"></label>
     ${field('orderNo', 'Order #', p.orderNo, p.found.orderNo)}
     ${field('total', 'Total', p.total, p.found.total)}
-    <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${restored?.windowDays || pol.days}"></label>
+    <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${h(restored ? (restored.windowDays || '') : receiptWindow(paste.value, pol.days))}"></label>
+    ${evidence.passages.length ? '<section class="receipt-policy-evidence" aria-label="Receipt return terms"><h3>Return terms in this receipt</h3><p>'+h(evidence.message)+'</p>'+evidence.passages.map(p=>'<blockquote>'+h(p)+'</blockquote>').join('')+'</section>' : ''}
     <p class="src"><output id="intake-deadline" aria-live="polite" aria-atomic="true"></output></p>
     <p class="src" id="src">${pol.source === 'policy' ? 'Store rule from the local policy table; confirm with the retailer.' : 'No store match: editable 30-day fallback.'}</p>
     ${delivery.required ? '<button type="button" class="button button-link" id="save-pending-delivery">Keep purchase pending delivery</button><p class="review-note">No deadline or reminders until you confirm delivery. Pending purchases stay in this browser and are included when you download a backup.</p>' : ''}<button type="submit" class="button button-primary">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;
@@ -275,7 +285,7 @@ preview.addEventListener('submit', (e) => {
   const next: Order[] = [...current, {
     id: crypto.randomUUID(), merchant, orderNo: String(f.get('orderNo') || ''),
     total: String(f.get('total') || ''), orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays: days,
-    windowSource: days === pol.days ? pol.source : 'user',
+    windowSource: preview.dataset.receiptEvidence === 'yes' ? 'user' : days === pol.days ? pol.source : 'user',
     createdAt: new Date().toISOString(),
   }];
   if(pendingId){try{if(readPending(localStorage).token!==pendingToken)throw Error('Pending purchases changed. Reopen this purchase before confirming delivery.');}catch(e){showStorageError(e instanceof Error?e.message:'Could not check pending purchase.');return;}}
