@@ -3,6 +3,8 @@ export type Order = {
   orderDate: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
 };
 const KEY = 'returnby.v1';
+// Backup/restore must distinguish unreadable storage from an empty tracker.
+export const read = (): unknown => JSON.parse(localStorage.getItem(KEY) || '[]');
 export const load = (): Order[] => {
   try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; }
 };
