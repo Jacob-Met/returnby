@@ -1,6 +1,12 @@
 # ReturnBy
 
-## Current runnable release — HTML receipt import and saved-return search
+## Current downloadable build — cross-tab-safe ReturnBy (2026-11-10)
+
+**[Download the standalone ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-af06bb7-browser.zip)** — [source pin, checksum, launch steps and testing](./downloads/ReturnBy-2026-11-10-af06bb7-browser.md).
+
+This pinned build includes the merged cross-tab review notice alongside HTML receipt import and saved-order search. Extract and run the appropriate local launcher (Python 3 required), then visit http://127.0.0.1:8769/. It is a versioned repository download, not a new GitHub Release. Existing downloaded releases remain linked below.
+
+## Earlier GitHub release — HTML receipt import and saved-return search
 
 [Download the browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-html-receipt-2026-11-10/ReturnBy-v0.2.0-browser.zip) · [release notes and exact source ZIP](https://github.com/Jacob-Met/returnby/releases/tag/returnby-html-receipt-2026-11-10)
 
