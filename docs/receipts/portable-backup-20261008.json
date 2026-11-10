@@ -1,0 +1,119 @@
+{
+  "schema": "returnby.backup-verification.v1",
+  "recorded_at": "2026-10-08T07:18:54Z",
+  "source": {
+    "repository": "Jacob-Met/returnby",
+    "parent_commit": "43a11d9f66ca2d8cb7902f8ed1bcae2ac0962fbf",
+    "parent_tree": "b4e2c1811c4cdea2438781e4592e11275ac46460",
+    "stack_base": "fix/submitted-window-source-20261008",
+    "coordination_issue": 8,
+    "preserves": [
+      "PR #5 persistence commit semantics",
+      "PR #7 submitted-window attribution"
+    ],
+    "scope": "Portable backup and reviewed restore; source receipt, no site deployment."
+  },
+  "native": {
+    "node": "24.19.0",
+    "typescript": "5.9.3",
+    "vite": "8.3.3",
+    "vitest": "5.0.3",
+    "test_command": "npm test",
+    "test_files": 5,
+    "tests_passed": 93,
+    "tests_failed": 0,
+    "build_command": "npm run build",
+    "build_passed": true,
+    "audit_command": "npm audit --audit-level=moderate",
+    "audit_vulnerabilities": 0
+  },
+  "independent_boundary_review": {
+    "before_source_sha256": "f974c0719cb1179c101d5b475c49283f58ebb7d1b13556762cb2988852b16c87",
+    "orders": 8000,
+    "input_bytes": 4702981,
+    "before_error": "This backup is larger than the 5 MiB import limit.",
+    "corrected_output_bytes": 4702982,
+    "corrected_round_trip_exact": true,
+    "additional_regressions": [
+      "Normalized optional fields cannot exceed the portable byte budget.",
+      "A combined tracker exceeding the byte budget is refused before any import write."
+    ]
+  },
+  "browser": {
+    "component": "hamon-thinkpad",
+    "node": "22.22.1",
+    "chromium": "153.0.8010.47 snap",
+    "playwright": "1.62.1",
+    "harness": "tools/check_backup_browser.mjs",
+    "production_build_transfer": "SHA256 verified for each transferred file",
+    "isolation": "Task-specific directory, loopback HTTP server, fresh temporary browser contexts. Browser and server closed after the run.",
+    "runtime_seconds": 11.95,
+    "viewport_checks": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "observed": {
+      "native_saved_sources": [
+        "policy",
+        "default",
+        "user"
+      ],
+      "round_trip_exact": true,
+      "cancel_unchanged": true,
+      "repeated_import_skipped": 3,
+      "conflict_and_incompatible_files_unchanged": true,
+      "oversized_file_unchanged": true,
+      "changed_other_tab_requires_fresh_review": true,
+      "quota_failure_preserves_bytes_and_draft_then_retries": true,
+      "serialization_failure_preserves_bytes_then_retries": true,
+      "imported_html_is_text": true,
+      "preview_pagination": [
+        25,
+        1
+      ],
+      "mobile_horizontal_overflow": false,
+      "final_orders": 7,
+      "browser_errors": [],
+      "external_requests": []
+    }
+  },
+  "local_browser_setup": {
+    "outcome": "Existing estate Chromium used after isolated local setup failed.",
+    "observed_failures": [
+      "Primary runtime Playwright had no chromium_headless_shell-1234 executable.",
+      "Playwright Chromium headless download returned: End of central directory record signature not found. Either not a zip file, or file is truncated.",
+      "The retrying installer then reported: Unable to update lock within the stale threshold."
+    ]
+  },
+  "limits": [
+    "5 MiB UTF-8 file and normalized/combined compact backup budget; 10,000 orders.",
+    "Duplicate IDs within one file are refused; identical saved IDs skip; any different saved fields block the entire import.",
+    "Only approved Order keys are exported. The paste box and unrelated stored fields are excluded.",
+    "Saved source labels are historical file data, not verified current retailer terms.",
+    "The saved-baseline reread detects a changed preview. It is not an atomic transaction spanning simultaneous writers in different tabs."
+  ],
+  "source_sha256": {
+    "README.md": "4fba1f35e7c09a6a382eaa7a0fc21752a15797c13cff31c848e7b50e56661343",
+    "index.html": "ceac6faed8283581df5a2ca7eabf5a8853da3f554b8f34e3fe02033ab6b1fe83",
+    "src/backup-ui.ts": "555815bc764eea10aa4025e0eea882693cb4a61f6e1d7e3ad94bb94f8d936600",
+    "src/backup.css": "39ee346bb9bf1164c556bd9f7a453ffb483d40f7865c95939e153b32ffba8594",
+    "src/backup.ts": "99b6e2e339a86abcae7e3de6cf932e2f1db6d05deec659d656f85dba7a609a6a",
+    "src/main.ts": "18eb1fe33c21a8af874007385bef6eca56c6af99e7bb79f2cbb52ec0bf864e0c",
+    "src/store.ts": "c97ca2dc748402fb8070629afb12a3b17475eb920d5864e8b85e75cb8047b135",
+    "tests/backup-ui.test.mjs": "c63721905d64903791dc53d1515bc708a15213bbaae1f383e4b0efc6fd82555e",
+    "tests/backup.test.ts": "606c36f06c3257e8258329462ee45d5166ef92cdbf05f889a5c81a01b5c7d7c0",
+    "tools/check_backup_browser.mjs": "3e7abfe8eefe3ea8878c973bdc676baf68826f33709ae5240e19ca0a56dd617c"
+  },
+  "built_sha256": {
+    "dist/index.html": "853eaa117401630b16d944645e56ad702d199cc3cd82d4b8eb93ea79abe0e6f0",
+    "dist/favicon.svg": "f9ea3886ae5a78655671d93b09e65ce6bfb177cb31b4ae157edecc95fa411587",
+    "dist/assets/index-BBu3I43j.js": "e53fd1747e99803138a0c13328f41c5c529b09d0dbe17b1284fea7efbb1df1be",
+    "dist/assets/index-DBAzDYvy.css": "40ba5cc06bf5aca98061b793c773ccfd0b47745ae58fbcf486fddc4db542901d"
+  }
+}
