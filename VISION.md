@@ -16,7 +16,7 @@ These are inspected public product descriptions, not accounts exercised by this 
 2. Confirm the actual start of a return window, including delivery-based windows (existing contributor; current manual entry clearly counts from purchase).
 3. Make missing or ambiguous receipt evidence understandable; no shipping date should masquerade as purchase date (existing parser contributor).
 4. Reduce installation friction and consolidate the many historical download links into one current versioned release.
-5. Item-level partial returns and refund follow-up are not represented by the current whole-order model.
+5. Item-level partial returns remain active work. Refund follow-up now records shopper-entered expected amounts, next-check dates and notes; it does not verify merchant processing or bank receipt.
 
 ## Current build and improvement
 
@@ -27,3 +27,9 @@ The app stays local. Purchase-intake drafts remain in the open page; reviewed or
 ## Trip planning, 2026-11-10
 
 The existing trip page now keeps an editable plan across visits: planned date, selection, packing checks and drop-off notes. Current tracker facts are read again, changed instructions need rechecking, and orders no longer available are excluded with their notes recoverable. A failed save is visible and retryable; two planner tabs must choose which draft to keep. The sheet remains an offline printable snapshot. Producer astra-cedar-7c2e; independent shopper judgment is tracked in returnby-whole-workflow-judge-tern7c2e and must establish the quality verdict. This does not add pickup, retailer instructions, account sync, refund tracking or trip-plan transfer between devices.
+
+## Refund follow-through, 2026-11-10
+
+For shoppers who have handed goods back but still need to check the money, the existing desk now keeps an explicit awaiting/received refund record on a purchase. Amounts include the currency as entered; they are never inferred from the whole-order total, so a partial return can be followed without closing the remaining deadline. A visible outstanding count links to a compact ledger; received records can be reopened. Existing backups carry the same notes and detect changed refund state as a conflict. Storage failure retains the draft and stale cross-tab edits cannot overwrite newer work.
+
+ReturnQueen https://returnqueen.com/ was inspected again on 2026-11-10: its published service tracks a return from pickup to refund. ReturnBy offers a local shopper record, not that logistics or payment verification. Excellent here means reopening the desk identifies the merchant, expected amount and next action immediately, and another browser restored from backup retains that work. No notification is sent by the follow-up date. Independent judgment belongs to returnby-refund-judge-tern84b2, not the producer tests.
