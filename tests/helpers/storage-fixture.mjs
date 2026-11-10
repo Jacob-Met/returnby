@@ -26,6 +26,12 @@ export function storageFixture(html, initial = []) {
   const window = Object.assign(Object.create(eventHost), {
     setTimeout() { return ++timerId; },
     clearTimeout() {},
+    location: { hash: '', pathname: '/', search: '' },
+    history: { replaceState() {} },
+    // Storage tests use the desktop viewport. Real phone navigation, focus and
+    // resize behavior are exercised by check_phone_desk_browser.mjs in Chrome.
+    matchMedia() { return Object.assign(Object.create(eventHost), { matches: false }); },
+    requestAnimationFrame(fn) { return this.setTimeout(fn, 16); },
   });
   class Element {
     constructor(id, tag) {
