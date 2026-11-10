@@ -1,5 +1,14 @@
 # ReturnBy — a private return desk
 
+## Current shopper findings — November 10
+
+Independent Reed use of downloaded Undo ba63c7e: confirmed clock corrections survive reload and produce the same December8 deadline in tracker, calendar and trip. Manual intake lacked the clock field; Sable already fixed that in9da9e30. Integrated release returnby-integrated-2026-11-10-a4c0338 now delivers that fix, persistent trips, portable trip backups and repeated-receipt review. It was downloaded and run in Chrome; product judgment of that delivery remains separate.
+
+Highest observed revisit gap: on390px phones the first saved deadline appeared around1240px down after a large empty intake form. The mobile revisit change puts the saved tracker first when purchases exist, with the first card now at542px in the same scenario. Reading and keyboard order match. Empty trackers still start with intake, and desktop retains its layout. Actual screenshots: docs/mobile-revisit. This is producer verification; independent changed-build judgment is pending.
+
+Remaining bar: delivery-based email evidence still needs explicit basis review (Gawa lane); phone users must see actionable deadlines without wading through intake; returned/kept and partial-item tracking remain their separate lanes. The inspected ReturnQueen public page offers purchase sync, pickup and refund tracking; ReturnBy is useful as a local private planning desk, not a substitute for those logistics. Reference website inspected in Chrome, no signed-in competitor app use claimed.
+
+
 ReturnBy is for people who need to remember return deadlines across stores, including purchases on paper receipts, without connecting their inbox. Success is a reviewed purchase that can be found next week, acted on before its deadline, and carried into a calendar or a printable trip list.
 
 ## Latest independent intake judgment

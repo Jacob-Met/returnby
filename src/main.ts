@@ -4,6 +4,7 @@ import './known-deadline.css';
 import { bindIntakeDeparture } from './intake-departure';
 import { bindRefunds, renderRefunds } from './refund-ui';
 import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
+import { updateMobileDesk } from './mobile-desk';
 import { reviewDuplicateIntake } from './duplicate-intake';
 import './style.css';
 import './backup.css';
@@ -258,6 +259,7 @@ preview.addEventListener('submit', (e) => {
 
 function render() {
   renderRefunds(orders, loadFailed);
+  updateMobileDesk(!loadFailed && orders.length > 0);
   if (loadFailed) {
     for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';

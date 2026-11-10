@@ -87,3 +87,10 @@
 .intake-panel .list-note a {color:var(--copper);text-underline-offset:3px}
 
 .csv-toolbar{margin:14px 0;padding:12px 0;border-top:1px solid var(--line,#d8d3c5)}.csv-toolbar .button{font-family:inherit;font-size:.95rem;letter-spacing:normal;min-height:44px;white-space:normal}.csv-toolbar .list-note{margin:8px 0;line-height:1.45}
+/* Returning phone users see saved deadlines before the intake form. */
+@media(max-width:760px){
+ .desk-grid.has-saved-returns .ledger-panel .panel-heading{margin-bottom:14px}
+ .desk-grid.has-saved-returns .ledger-panel .panel-heading>p:last-child{display:none}
+ .desk-grid.has-saved-returns .summary-grid{margin-bottom:14px}
+ .desk-grid.has-saved-returns .tracker-search{margin-bottom:12px}
+}
