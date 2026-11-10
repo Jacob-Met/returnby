@@ -4,15 +4,17 @@ A private purchase-to-return desk: review purchases, keep their return dates vis
 
 ## Download and run
 
-**[Download ReturnBy browser preview](https://github.com/Jacob-Met/returnby/releases/download/returnby-trip-2026-11-10/ReturnBy-2026-11-10-trip-54c12f5-browser.zip)** · [Release notes and exact source](./docs/releases/returnby-trip-2026-11-10.md) · [Watch the actual 35-second browser journey](https://github.com/Jacob-Met/returnby/releases/download/returnby-trip-2026-11-10/ReturnBy-trip-demo-54c12f5.mp4)
+**[Download ReturnBy browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-known-date-2026-11-10/ReturnBy-v0.2.2-browser.zip)** · [release notes, exact source and screenshots](https://github.com/Jacob-Met/returnby/releases/tag/returnby-known-date-2026-11-10)
 
-The November 10 trip release keeps the planned date, purchases, packing checks and drop-off notes when you leave and return. It includes manual purchases, confirmed return-window dates and removal undo. The public ZIP has been downloaded and run through its included Linux launcher, real Chrome journey and 390px layout.
+This build lets you enter a retailer-confirmed return-by date in manual purchase entry or Edit details without calculating the day count yourself. It also exports all saved purchases, confirmed clocks and shopper-recorded refund follow-up to CSV. It includes preserved email reviews, calendar alert choices and portable prepared trips from the merged product.
 
-Extract the ZIP, use Python 3 to run `serve_returnby.py`, then open **http://127.0.0.1:8769/**. Windows/macOS launchers are also included. Keep the same browser profile and port to retain existing orders. This is an experimental local app; the exact supported features and platform limits are in its release notes.
+Extract the ZIP, install Python 3 if needed, and run the included launcher for your platform; open http://127.0.0.1:8769. Keep the same browser profile and port for your saved tracker. Linux/Chrome was exercised after downloading this actual release; Windows/macOS launchers are included but not separately tested.
 
-[Desktop screenshot](https://github.com/Jacob-Met/returnby/releases/download/returnby-trip-2026-11-10/trip-desktop.png) · [Phone screenshot](https://github.com/Jacob-Met/returnby/releases/download/returnby-trip-2026-11-10/trip-mobile.png) · [Earlier distributions](./docs/HISTORICAL_RELEASES.md)
+Source: [5acd108e](https://github.com/Jacob-Met/returnby/commit/5acd108e74eccdeb49f0cb8fd1489a0a1851ec88). ZIP SHA-256: `309554e9dc07b65b8dd56ed59b97d3762b1a8f3be0469309b5708cded64601f6`. The date helper saves a day window; future edits to the clock start require reapplying a known date. CSV is a review snapshot; JSON remains the restore format. Independent shopper assessment is tracked separately; producer checks do not establish that verdict.
 
-The guide below follows current source development. Newer trip-transfer, refund and other integrations are not in the pinned trip ZIP until a later cumulative release replaces it.
+The source branch also fixes ambiguous numeric receipt dates such as 05/11/2026, but that correction landed after this pinned release. Review those dates explicitly when using the ZIP; the later fix must be included in the next downloadable build.
+
+[Earlier distributions](./docs/HISTORICAL_RELEASES.md) · [Saved-trip release and actual 35-second demonstration](./docs/releases/returnby-trip-2026-11-10.md)
 
 ## Import exported email confirmations locally
 
@@ -37,7 +39,7 @@ Cancel and Escape leave the saved tracker and new-order draft intact.
 
 **Download selected reminders** creates one local `.ics` file containing one all-day
 event per selected order, sorted by deadline and then saved identity. Each event retains
-the existing per-order calendar UID and three-day display alarm. The file includes the
+the existing per-order calendar UID. Choose an alert lead time and local hour, or no alert. Exact alert times are reviewed before download; elapsed lead times use a visible fifteen-minute catch-up and past deadlines receive no alarm. The file includes the
 merchant, order number and deadline; it excludes the order total and original email.
 Open the downloaded file in your calendar application to import it. The receiving calendar
 decides how to handle an already imported UID; this is a file export, not a subscription.
@@ -53,8 +55,7 @@ transaction across browser tabs.
 Invalid dates/windows and duplicate or unsupported calendar identities remain visible with
 an explanation and cannot be selected. Other valid returns can still be exported. The dialog
 supports up to 2,000 saved records, with 4,096-character limits on exported fields and a
-4 MiB calendar limit; oversized selections must be reduced. Existing single-order reminders
-continue to use the same calendar serialization.
+4 MiB calendar limit; oversized selections must be reduced. Single-order reminders open the same alert review and use the same calendar serialization. See [upcoming alert behavior and independent judgment](docs/calendar-alerts/README.md).
 
 The native tests cover exact event identity/text, fixed dates, Unicode folding, selection,
 stale-record refusal and output admission. A separate optional real-browser receiver is
@@ -240,3 +241,9 @@ excluded. Formula-like cells receive a leading apostrophe; the completion messag
 reports that protection. Import order-number columns as text to preserve leading
 zeros. CSV is for spreadsheet review; use the JSON backup for exact restoration.
 This adapts the existing CSV contribution in PR #25 to current confirmed clocks.
+
+## Enter a known return-by date
+
+In manual purchase entry or Edit details, open **Know the exact return-by date?**, enter the date you checked with the retailer, and select **Use this return-by date**. ReturnBy calculates the day window from the purchase date or your confirmed clock start. While that helper is applied in the open form, changing the clock start recalculates days to keep the chosen date. Editing days directly returns to a day window. Review the proposed deadline before saving.
+
+The saved record remains a day window, so future edits to its clock start can change the deadline; use the helper again to retain a retailer-confirmed date. The date must be after the clock start. This does not verify return eligibility or hardcode holiday policies. The motivating example was Apple's dated US holiday return policy, inspected on November 10, 2026 at https://www.apple.com/shop/help/returns_refund; eligibility and exclusions remain the shopper's responsibility.
