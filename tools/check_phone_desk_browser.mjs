@@ -97,6 +97,7 @@ try {
   await page.goto(origin);
   assert(await page.locator('#saved-returns').isVisible(),'saved desk remains primary with pending delivery');
   assert(await page.locator('#pending-desk').isVisible(),'pending purchase is discoverable outside collapsed intake');
+  await page.locator('#pending-desk summary').click();
   await page.locator('#pending-desk .pending-purchase button').first().click();
   assert(await page.locator('#purchase-intake').isVisible(),'pending resume opens phone intake');
   assert(await page.locator('#preview').isVisible(),'pending review is visible after opening');
