@@ -102,7 +102,8 @@
       <label>Store<input name="merchant" maxlength="4096" required autocomplete="organization"></label>
       <label>Purchase date<input name="orderDate" type="date" min="1000-01-01" max="9999-12-30" required></label>
       <label>Return window (days)<input name="windowDays" type="number" min="1" step="1" required placeholder="Days confirmed with the store"></label>
-      <p class="src">Counted from the purchase date. This entry uses your rule; it does not verify store policy.</p>
+      <label>Confirmed return clock starts (optional)<input name="windowStartDate" type="date" min="1000-01-01" max="9999-12-31" aria-describedby="manual-clock-help"></label>
+      <p id="manual-clock-help" class="src">Leave blank to count from purchase. Enter another date only if you confirmed the window starts then, such as delivery. This entry uses your rule; it does not verify store policy.</p>
       <label>Order or receipt number (optional)<input name="orderNo" maxlength="4096"></label>
       <label>Total (optional)<input name="total" maxlength="4096" placeholder="For example, £42.50"></label>
       <p id="manual-deadline" class="edit-calendar-note" role="status" aria-live="polite">Enter a store, purchase date and return window to calculate the deadline.</p>
