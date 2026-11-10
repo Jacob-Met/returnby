@@ -32,6 +32,7 @@ function createRefundPayments(form:HTMLFormElement){
  }
  function render(){
   amount.readOnly=enabled;
+  amount.closest<HTMLLabelElement>('label')!.hidden=enabled;
   if(!enabled){host.innerHTML='<button class="button button-link" type="button" data-enable>Track partial payments</button><p class="list-note">Keep each credit you received and the amount still owed. Your existing amount and notes stay until you save changes.</p>';host.querySelector('[data-enable]')!.addEventListener('click',()=>{enabled=true;render();host.querySelector<HTMLElement>('[data-currency]')!.focus();});return;}
   host.innerHTML='<h3>Refund payments</h3><p>Record credits you checked yourself. This does not read your bank or confirm a merchant payment.</p><div class="credit-fields"><label>Currency<select data-currency><option value="">Choose currency</option>'+REFUND_CURRENCIES.map(c=>'<option>'+c+'</option>').join('')+'</select></label><label>Total refund expected<input data-expected inputmode="decimal" placeholder="0.00"></label></div><p class="list-note">Amounts use two decimal places. For another currency, keep a refund note instead.</p><p data-balance class="refund-balance" role="status" aria-live="polite"></p><ol data-credits></ol><button class="button button-link" type="button" data-add>Add a received payment</button><p class="list-note">Edits and removals take effect only when you choose Save refund. A zero balance does not automatically mark the refund received.</p>';
   const currency=host.querySelector<HTMLSelectElement>('[data-currency]')!;

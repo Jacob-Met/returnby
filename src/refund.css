@@ -4,3 +4,5 @@
 .refund-payments{border-top:1px solid #a5ac9d;border-bottom:1px solid #a5ac9d;margin:18px 0;padding:16px 0}.refund-payments h3{font:22px Georgia,serif;margin:0 0 12px}.refund-payments p{font-size:14px}.credit-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.refund-payments ol{padding-left:24px}.refund-payments li{padding:12px 0;border-top:1px solid #c6c9bd}.refund-payments button{min-height:44px}.refund-balance{font-size:15px;line-height:1.6;grid-column:1/-1;margin:4px 0 12px;color:#243f38}.refund-row>.refund-balance{background:#e8eee5;padding:10px 12px}.refund-payments input[readonly]{background:#eee}.refund-payments [data-balance]{border-left:3px solid #2f6857;padding:10px 12px;background:#e8eee5}
 
 #refund-dialog .refund-payments .list-note{color:#555d55}#refund-dialog .refund-payments .button-link{color:#85401f;font-size:12px}#refund-dialog .refund-payments select:disabled{color:#394d43;opacity:1;background:#eee}
+
+#refund-dialog label[hidden]{display:none}
