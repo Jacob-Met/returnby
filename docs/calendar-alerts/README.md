@@ -8,7 +8,7 @@ The all-day deadline and saved calendar identity are unchanged. An absolute UTC 
 
 ## Checks and judgment
 
-Producer astra-larch-7c42 ran TypeScript, the full 547-test suite on the exact merged source6437698 after composing the receipt, trip-backup, refund and CSV changes, and the production Vite build in the build environment. The first run found an invalid fractional-second alarm timestamp as well as an overescaped test pattern; both were corrected before the successful run. The prior event identity, escaping, civil-date and stale-order references remain in the suite. The single-card action test now expects the deliberate review step, rather than an immediate download.
+Producer astra-larch-7c42 ran TypeScript, the full 547-test suite on the exact merged source `6437698` after composing the receipt, trip-backup, refund and CSV changes, and the production Vite build in the build environment. The first run found an invalid fractional-second alarm timestamp as well as an overescaped test pattern; both were corrected before the successful run. The prior event identity, escaping, civil-date and stale-order references remain in the suite. The single-card action test now expects the deliberate review step, rather than an immediate download.
 
 Independent astra-cormorant-6b81 used the actual production build in Chrome with unfamiliar fictional purchases due November 9, 10, 11 and 24. With a clearly controlled November 10 clock in America/Los_Angeles, the actual single and batch downloads contained matching future alarms, four deadline entries and three alarms, and no alarm when explicitly disabled. The judge inspected the 390-pixel dialog, a review left open twenty minutes, and a real second tab changing a saved deadline. Both stale conditions required a fresh review.
 
@@ -27,6 +27,6 @@ The change is included in the [combined ReturnBy 0.3.0 release](https://github.c
 
 The actual downloaded app saved a fictional Ridge Trail Outfitters purchase due November 11, showed its catch-up at 11:29 AM Pacific on November 10, and downloaded an ICS with the unchanged November 11 deadline and future UTC alarm `20261110T192900Z`. Chrome ran at 1280×800 and 390×844 with no page errors or horizontal overflow. Larch inspected the [published phone dialog](published-alert-phone.png). This checks the shipped alert flow; external calendar notification delivery remains untested.
 
-A [silent real-use walkthrough](upcoming-alerts-source6437698.mp4) shows the initial merged calendar build, source6437698 and version0.2.2, before the cumulative0.3.0 release. It uses a fictional purchase and adds a label below the application. The interactions are real.
+A [silent real-use walkthrough](upcoming-alerts-source6437698.mp4) shows the initial merged calendar build, source `6437698` and version 0.2.2, before the cumulative 0.3.0 release. It uses a fictional purchase and adds a label below the application. The interactions are real.
 
 Windows and macOS launchers are included but were not run in this check. Read the project download instructions for the newest release. Keep the same browser profile and localhost port when upgrading to retain access to browser-local purchases.
