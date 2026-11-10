@@ -6,6 +6,7 @@ import { parse } from './parse';
 import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
 import { startDayRefresh } from './day-refresh';
+import { bindTabSync } from './tab-sync';
 import { bindIntakeDeadline } from './intake-deadline';
 import { planSingleCalendar } from './calendar-batch';
 import { load, read, save, type Order } from './store';
@@ -43,18 +44,19 @@ function clearStorageError() {
   storageRetry.hidden = true;
 }
 
-function reloadOrders() {
+function reloadOrders(): boolean {
   try {
     orders = load();
   } catch {
     loadFailed = true;
     showStorageError(loadError);
     render();
-    return;
+    return false;
   }
   loadFailed = false;
   clearStorageError();
   render();
+  return true;
 }
 
 function persistOrders(next: Order[], reset = false): boolean {
@@ -241,6 +243,7 @@ const orderEditor = bindOrderEditor({
   refresh: reloadOrders,
 });
 bindCalendarBatch({ read: load, filter: () => filterMode });
+bindTabSync({ refresh: reloadOrders });
 reloadOrders();
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRefresh(() => {
