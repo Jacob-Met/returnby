@@ -28,9 +28,9 @@
         <textarea id="batch-paste" rows="9" placeholder="Paste the plain text of an order confirmation…"></textarea>
         <button id="batch-add" type="button" class="batch-button primary">Add pasted confirmation</button>
         <div class="batch-divider"><span>OR</span></div>
-        <label for="batch-files">Choose local plain-text files</label>
-        <input id="batch-files" type="file" accept=".txt,text/plain" multiple aria-describedby="batch-file-help">
-        <p id="batch-file-help" class="batch-help">UTF-8 .txt files, one confirmation per file. Up to 20 confirmations, 100 KiB each and 1 MiB total. No PDFs, images or email attachments.</p>
+        <label for="batch-files">Choose local order confirmation files</label>
+        <input id="batch-files" type="file" accept=".txt,.eml,text/plain,message/rfc822" multiple aria-describedby="batch-file-help">
+        <p id="batch-file-help" class="batch-help">UTF-8 .txt or exported .eml files, one confirmation per file. .eml imports only the plain-text message body, not HTML or attachments. Up to 20 confirmations, 100 KiB each and 1 MiB total. No PDFs or images.</p>
         <p class="batch-privacy">Original text and unsaved corrections stay in this page’s memory. Leaving or reloading this page discards them. Only fields you review and save enter the tracker.</p>
         <button id="batch-discard" type="button" class="batch-button quiet" disabled>Discard this batch</button>
       </aside>
@@ -42,7 +42,7 @@
         <p class="batch-guide">Extraction uses ReturnBy’s existing local rules. Confirm the date, store and return window with the original order and retailer. Amounts stay as entered.</p>
         <p id="batch-status" class="batch-status" role="status" aria-live="polite"></p>
         <p id="batch-error" class="batch-error" role="alert" hidden></p>
-        <div id="batch-empty" class="batch-empty">Add a pasted confirmation or choose text files to start your review.</div>
+        <div id="batch-empty" class="batch-empty">Add a pasted confirmation or choose .txt / .eml files to start your review.</div>
         <div id="batch-drafts"></div>
         <div class="batch-review-bar">
           <p id="batch-selection">No confirmations selected for saving.</p>
