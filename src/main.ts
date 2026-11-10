@@ -22,7 +22,7 @@ import { bindManualPurchase } from './manual-purchase';
 import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
-import { bindCalendarBatch, downloadCalendar } from './calendar-batch-ui';
+import { bindCalendarBatch } from './calendar-batch-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
@@ -246,8 +246,9 @@ list.addEventListener('click', (e) => {
     const current = readCurrentOrders();
     if (!current) return;
     try {
-      const plan = planSingleCalendar(current, displayed[0]);
-      downloadCalendar(plan.content, plan.filename);
+      // Retain the card's freshness check before opening the shared alert review.
+      planSingleCalendar(current, displayed[0]);
+      calendarExporter.openSingle(displayed[0]);
       clearStorageError();
     } catch (error) {
       orders = current;
@@ -307,7 +308,7 @@ const orderEditor = bindOrderEditor({
   refresh: reloadOrders,
 });
 bindManualPurchase({ read: readCurrentOrders, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
-bindCalendarBatch({ read: load, filter: () => filterMode });
+const calendarExporter = bindCalendarBatch({ read: load, filter: () => filterMode });
 const removalUndo = bindRemovalUndo({
   read: readCurrentOrders,
   commit: next => { if (!persistOrders(next)) return false; render(); return true; },

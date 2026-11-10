@@ -94,14 +94,21 @@
   </form>
 </dialog><dialog id="calendar-dialog" aria-labelledby="calendar-title" aria-describedby="calendar-description">
 <form id="calendar-form">
-<p class="eyebrow">LOCAL CALENDAR DOWNLOAD</p><h2 id="calendar-title" tabindex="-1">Choose your reminders.</h2>
-<p id="calendar-description">Download one .ics file with an all-day event for each selected return deadline and a reminder three days before. Import the file into your calendar app when you are ready.</p>
+<h2 id="calendar-title" tabindex="-1">Set return reminders</h2>
+<p id="calendar-description">Keep each return deadline on your calendar. Choose when to be alerted, then review the exact times before downloading.</p>
+<div class="calendar-alert-controls">
+<label>Alert<select id="calendar-alert-days"><option value="3">3 days before</option><option value="1">1 day before</option><option value="7">1 week before</option><option value="0">On the deadline day</option><option value="none">No alert</option></select></label>
+<label>At<input id="calendar-alert-time" type="time" value="09:00" required></label>
+</div>
+<p id="calendar-timezone" class="calendar-help"></p>
+<p class="calendar-help">If that time has passed, use a catch-up alert about 15 minutes from review. Past deadlines get a calendar entry only.</p>
+<button id="calendar-refresh-alerts" class="button button-link" type="button">Refresh alert times</button>
 <p id="calendar-note"></p>
 <div class="calendar-choice-actions"><button id="calendar-select-all" class="button button-link" type="button">Select all available</button><button id="calendar-select-none" class="button button-link" type="button">Clear selection</button><button id="calendar-reload" class="button button-link" type="button">Reload saved returns</button></div>
 <div id="calendar-choices" role="group" aria-label="Saved returns to include"></div>
 <p id="calendar-summary" role="status" aria-live="polite"></p>
 <p id="calendar-message" role="alert" tabindex="-1" hidden></p>
-<p>The original email and order total are excluded. Existing reminder IDs are retained; your calendar app decides how to handle an event you have imported before. Download again after editing a deadline.</p>
+<p class="calendar-help">Import the file before its alert time and check notifications in your calendar app. ReturnBy does not send alerts. Download again after changing a deadline; an earlier import will not update itself.</p>
 <div class="calendar-dialog-actions"><button id="calendar-download" class="button button-primary" type="submit" disabled>Download selected reminders</button><button id="calendar-cancel" class="button button-link" type="button">Cancel</button></div>
 </form></dialog>
 <script type="module" src="/src/main.ts"></script><script type="module" src="/src/deadline-overview-entry.ts"></script><dialog id="manual-dialog" class="edit-dialog" aria-labelledby="manual-title">

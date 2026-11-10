@@ -2,14 +2,14 @@ import { readFileSync } from 'node:fs';
 import { afterEach, expect, test, vi } from 'vitest';
 import { storageFixture, storedOrder } from './helpers/storage-fixture.mjs';
 
-const captured = vi.hoisted(() => ({ downloads: vi.fn() }));
+const captured = vi.hoisted(() => ({ downloads: vi.fn(), openSingle: vi.fn() }));
 vi.mock('../src/style.css', () => ({}));
 vi.mock('../src/edit.css', () => ({}));
 vi.mock('../src/calendar-batch-ui', () => ({
-  bindCalendarBatch: () => {},
+  bindCalendarBatch: () => ({ openSingle: captured.openSingle }),
   downloadCalendar: captured.downloads,
 }));
-afterEach(() => { vi.unstubAllGlobals(); captured.downloads.mockReset(); });
+afterEach(() => { vi.unstubAllGlobals(); captured.downloads.mockReset(); captured.openSingle.mockReset(); });
 
 async function open(initial = [storedOrder('ORIGINAL')]) {
   vi.resetModules();
@@ -36,11 +36,9 @@ test('single-card click rereads storage, retains unrelated changes and preserves
   const saved = { ...storedOrder('ORIGINAL'), total: '$99.00' };
   app.external([saved, storedOrder('OTHER')]);
   app.calendar('ORIGINAL');
-  expect(captured.downloads).toHaveBeenCalledTimes(1);
-  const [content, name] = captured.downloads.mock.calls[0];
-  expect(content).toContain('UID:ORIGINAL@returnby');
-  expect(content).not.toContain('OTHER@returnby');
-  expect(name).toBe('return-Saved-Store.ics');
+  expect(captured.downloads).not.toHaveBeenCalled();
+  expect(captured.openSingle).toHaveBeenCalledTimes(1);
+  expect(captured.openSingle.mock.calls[0][0].id).toBe('ORIGINAL');
   expect(app.persisted()).toEqual([saved, storedOrder('OTHER')]);
   expect(app.elements.get('paste').value).toBe('Unsaved email UNSAVED');
 });

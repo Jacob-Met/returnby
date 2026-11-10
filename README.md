@@ -71,7 +71,7 @@ Unzip the package, install Node.js 20+ if necessary, run `START-WINDOWS.cmd` on 
 
 **Previous version:** [ReturnBy v0.2.0 browser ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/9cd8d0d5f2fd8ba32a0525db65e292cae92ccdcf/downloads/v0.2.0/ReturnBy-v0.2.0-browser.zip), built from [b1c32488](https://github.com/Jacob-Met/returnby/commit/b1c32488f1d198a5461abf61bf98467ff99bba55). That historical package has **Python 3** launchers and uses port **8769**; it predates the new calendar freshness fix. Both downloads are on versioned GitHub distribution branches because the connected GitHub integration cannot create formal Releases.
 
-ReturnBy turns an order-confirmation email into a reviewable return deadline and a calendar reminder. The visitor supplies the email text; the browser runs the repository's real rule-based parser, merchant-policy lookup, date calculation, status logic and RFC 5545 export. It is a multi-order tracker, not a canned result: correct extracted fields, override a return window, save several deadlines, filter the list and export a three-day alarm for any order.
+ReturnBy turns an order-confirmation email into a reviewable return deadline and a calendar reminder. The visitor supplies the email text; the browser runs the repository's real rule-based parser, merchant-policy lookup, date calculation, status logic and RFC 5545 export. It is a multi-order tracker, not a canned result: correct extracted fields, override a return window, save several deadlines, filter the list and review a useful upcoming calendar alert for any order.
 
 ## Import exported email confirmations locally
 
@@ -96,7 +96,7 @@ Cancel and Escape leave the saved tracker and new-order draft intact.
 
 **Download selected reminders** creates one local `.ics` file containing one all-day
 event per selected order, sorted by deadline and then saved identity. Each event retains
-the existing per-order calendar UID and three-day display alarm. The file includes the
+the existing per-order calendar UID. Choose an alert lead time and local hour, or no alert. Exact alert times are reviewed before download; elapsed lead times use a visible fifteen-minute catch-up and past deadlines receive no alarm. The file includes the
 merchant, order number and deadline; it excludes the order total and original email.
 Open the downloaded file in your calendar application to import it. The receiving calendar
 decides how to handle an already imported UID; this is a file export, not a subscription.
@@ -112,8 +112,7 @@ transaction across browser tabs.
 Invalid dates/windows and duplicate or unsupported calendar identities remain visible with
 an explanation and cannot be selected. Other valid returns can still be exported. The dialog
 supports up to 2,000 saved records, with 4,096-character limits on exported fields and a
-4 MiB calendar limit; oversized selections must be reduced. Existing single-order reminders
-continue to use the same calendar serialization.
+4 MiB calendar limit; oversized selections must be reduced. Single-order reminders open the same alert review and use the same calendar serialization. See [upcoming alert behavior and independent judgment](docs/calendar-alerts/README.md).
 
 The native tests cover exact event identity/text, fixed dates, Unicode folding, selection,
 stale-record refusal and output admission. A separate optional real-browser receiver is
