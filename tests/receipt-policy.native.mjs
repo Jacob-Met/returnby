@@ -15,6 +15,7 @@ await p.goto(url+'/');
 await p.reload();
 assert.equal(await p.evaluate(()=>localStorage.getItem('returnby.v1')),null);
 assert.equal(await p.evaluate(()=>JSON.stringify(localStorage).includes('PRIVATE-RECEIPT-NOT-RETAINED')),false);
+await p.getByText('Awaiting delivery (1) — review purchases',{exact:true}).click();
 await p.getByRole('button',{name:'Review delivery',exact:true}).click();
 assert.equal(await p.locator('#preview [name=windowDays]').inputValue(),'');
 await p.locator('#preview [name=windowStartDate]').fill('2026-11-10');
