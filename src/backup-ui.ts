@@ -1,3 +1,5 @@
+import { bindTripLibraryRestore } from './trip-library-backup-ui';
+import { readTripLibrary, TripLibraryError, type TripLibrary } from './trip-library';
 import {readPending,writePending,planPendingRestore,type PendingPurchase} from './pending-delivery';
 import { planResolvedImport, backupFieldLabel, backupFieldValue, type BackupChoice, type ResolvedImportPlan } from './backup-resolution';
 import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackupDocument } from './backup';
@@ -20,6 +22,8 @@ export function bindBackup(tracker: Tracker) {
   const previous = get<HTMLButtonElement>('backup-previous');
   const next = get<HTMLButtonElement>('backup-next');
   let incoming: Order[] | null = null;
+  let incomingLibrary:TripLibrary|null=null;
+  const libraryRestore=bindTripLibraryRestore(get<HTMLElement>('backup-trip-library'),tell);
   let incomingPending:PendingPurchase[]=[];
   let pendingExpected:string|null=null;
   const pendingPanel=get<HTMLElement>('backup-pending');
@@ -109,12 +113,13 @@ export function bindBackup(tracker: Tracker) {
   }
 
   function errorText(error: unknown) {
-    return (error instanceof BackupError || error instanceof TripBackupError || error instanceof TripPlanError) ? error.message : "Couldn't read saved returns or this file. Check browser storage and try again.";
+    return (error instanceof BackupError || error instanceof TripBackupError || error instanceof TripPlanError || error instanceof TripLibraryError) ? error.message : "Couldn't read saved returns or this file. Check browser storage and try again.";
   }
 
   function reset() {
     generation++;
     incoming = null;
+    incomingLibrary=null;libraryRestore.show(null);
     incomingPending=[];pendingPanel.hidden=true;
     choices.clear();
     incomingTrip = null;
@@ -180,9 +185,10 @@ export function bindBackup(tracker: Tracker) {
     panel.hidden = false;
     renderPage();
     showTrip();
+    libraryRestore.show(incomingLibrary);
     if (plan.conflicts) tell('Compare the current and backup values before choosing a version. Unreviewed differences stay current; you can apply the new purchases and chosen updates without replacing them.');
     else if (!plan.added && !plan.replaced && plan.kept) tell(incomingTrip ? 'Your current purchase versions will stay. Review the trip separately below.' : 'Your current purchase versions will stay. No additions or updates are selected.');
-    else if (!plan.added && !plan.replaced) tell(incomingPending.length?'Saved deadlines need no changes. Review the pending purchases below before restoring them.':incomingTrip?'All orders are already saved. Review the trip below before restoring it.':'Everything in this backup is already saved, or the backup is empty. Nothing will change.');
+    else if (!plan.added && !plan.replaced) tell(incomingLibrary?.trips.length?'Purchases need no changes. Review the named trip plans separately below.':incomingPending.length?'Saved deadlines need no changes. Review the pending purchases below before restoring them.':incomingTrip?'All orders are already saved. Review the trip below before restoring it.':'Everything in this backup is already saved, or the backup is empty. Nothing will change.');
     else tell('Review additions and updates below, then choose Apply. Only purchases you chose from the backup will replace current details.');
     if (focus) summary.focus();
   }
@@ -201,6 +207,7 @@ export function bindBackup(tracker: Tracker) {
       incoming = parsed.orders;
       incomingTrip = parsed.trip;
       incomingPending=parsed.pending||[];
+      incomingLibrary=parsed.tripLibrary||null;
       show(planResolvedImport(tracker.read(), incoming, choices));
       showPending();
     } catch (error) {
@@ -231,7 +238,7 @@ export function bindBackup(tracker: Tracker) {
         tell("The backup wasn't imported because browser storage refused the change. Your preview is kept so you can try again.", true);
         return;
       }
-      if(incomingTrip || current.conflicts || incomingPending.length){show(planResolvedImport(tracker.read(),incoming,choices));showPending();}else reset();
+      if(incomingTrip || current.conflicts || incomingPending.length || incomingLibrary){show(planResolvedImport(tracker.read(),incoming,choices));showPending();}else reset();
       tell(`Added ${current.added} purchases and updated ${current.replaced}. Kept ${current.kept + current.conflicts} current versions; ${current.skipped} were already saved.${current.conflicts ? ' Differences above still need your choice.' : ''}${incomingTrip ? ' Review the trip separately below.' : ''}`);
     } catch (error) { tell(errorText(error), true); }
   });
@@ -241,13 +248,14 @@ export function bindBackup(tracker: Tracker) {
     try {
       const now = new Date();
       const trip = readTripPlan(localStorage).plan;
-      const content = exportBackup(tracker.read(), now, trip,readPending(localStorage).rows);
+      const library=readTripLibrary(localStorage).library;
+      const content = exportBackup(tracker.read(), now, trip,readPending(localStorage).rows,library);
       url = URL.createObjectURL(new Blob([content], { type: 'application/json' }));
       const link = document.createElement('a');
       link.href = url;
       link.download = `returnby-backup-${now.toISOString().slice(0, 10)}.json`;
       link.click();
-      tell(trip?'Backup download requested with your saved orders and trip, including private packing notes.':'Backup download requested. Keep this file private: it contains your saved order details.');
+      tell(library.trips.length?'Backup download requested with '+library.trips.length+' named trip plans, your working trip, purchases and pending reviews. Keep private packing notes secure.':trip?'Backup download requested with your saved orders and trip, including private packing notes.':'Backup download requested. Keep this file private: it contains your saved order details.');
     } catch (error) { tell(errorText(error), true); }
     finally {
       // Let the browser start its download before releasing the object URL.

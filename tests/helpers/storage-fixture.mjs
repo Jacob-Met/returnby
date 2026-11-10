@@ -41,6 +41,7 @@ export function storageFixture(html, initial = []) {
       for (const match of tag.matchAll(/([\w-]+)="([^"]*)"/g)) this.attributes[match[1]] = match[2];
       this.classList = { toggle() {} };
     }
+    replaceChildren(...children) { this.children = children; this.innerHTML = ""; this.textContent = ""; }
     addEventListener(type, fn) { this.listeners.set(type, fn); }
     setAttribute(key, value) { this.attributes[key] = value; }
     focus() { document.activeElement = this; }
@@ -68,7 +69,7 @@ export function storageFixture(html, initial = []) {
   const preview = elements.get('preview');
   preview.dataset = { source: 'default', days: '30' };
   const pendingStorage = new Map();
-  const pendingKey = key => ['returnby.pending-deliveries','returnby.pending-delivery'].includes(key);
+  const pendingKey = key => ['returnby.pending-deliveries','returnby.pending-delivery','returnby.trip-library.v1'].includes(key);
   const localStorage = {
     removeItem(key) { if(pendingKey(key)){pendingStorage.delete(key);return;}throw Error('Unexpected storage key'); },
     getItem(key) { if(pendingKey(key))return pendingStorage.get(key)??null; if (key === 'returnby.trip-plan.v1') return tripValue; if (key !== 'returnby.v1') throw Error('Unexpected storage key'); return value; },

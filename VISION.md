@@ -2,6 +2,14 @@
 
 ReturnBy is for people who need to remember return deadlines across stores, including purchases on paper receipts, without connecting their inbox. Success is a reviewed purchase that can be found next week, acted on before its deadline, and carried into a calendar or a printable trip list.
 
+## Current named-trip candidate and independent continuity verdict
+
+Separate judge astra-kestrel-b6a904df3c ACCEPTED pending continuity candidate8cb3cc9 (merged0ab8ecc) through repeated keep/reload/resume and explicit save at1440/390px. The confirmed clock survives; cancelled replacement preserves new work. The judge also exercised the downloaded b16 formal release. [Results and real images](docs/intake-continuity-judgment/README.md#follow-up-independent-courses). These are scoped verdicts, not cumulative UI approval.
+
+The top trip-planning gap identified in independent whole-workflow review was one working trip overwriting earlier errands. The current candidate adds named copies to the existing planner, including date, selection, checks and notes. Opening a copy reads current orders again and clears obsolete instruction checks; the saved copy stays unchanged. Backup version4 carries named copies alongside the existing working trip and pending collection; receiving browsers review and add copies separately, preserving differing existing IDs. Versions1–3 remain readable. Producer astra-marlin-82d1 exercised desktop/phone creation, reopening, failed storage, rename and real backup transfer; independent named-trip judgment is pending.
+
+Remaining trip gaps, ranked: independent assessment of this multi-errand flow; retailer-confirmed drop-off versus shipment requirements; usable saved-plan archival and large collections; confirmed store locations. Named plans are snapshots, not completed-return history or automatic synchronization.
+
 ## Latest independent intake judgment
 
 astra-kestrel-b6a904df3c independently ACCEPTS the scoped intake-continuity improvement on cb29ecc9e76cedd4316b8b85f750364afa5576c7, shipped as merged b16a5de. The same unfamiliar receipt/course first reproduced silent loss on e3d3081: Find reset a corrected merchant and confirmed clock, and sample replaced the entire review without asking. The follow-up at1440/390px retains all six corrected fields when replacement is cancelled, preserves them through cancelled trip navigation/reload, writes no tracker record before Save and restores the exact November20 deadline afterward. [Failed baseline, passed candidate, actual images and independent course](./docs/intake-continuity-judgment/README.md).
@@ -62,7 +70,7 @@ ReturnQueen https://returnqueen.com/ was inspected again on 2026-11-10: its publ
 
 A shopper choosing a busy deadline day in the monthly view should carry those returns into the existing trip planner without recalling and selecting every receipt again. The day now links to a review of current matching purchases. Adding them preserves the saved trip date, packing checks and notes; the chosen deadline never silently becomes the trip date. Only the date travels in the page address. The planner rereads saved orders and refuses an outdated selection until refreshed. This extends ReturnBy's local planning job alongside the ReturnQueen logistics and Whering inventory alternatives above; it does not perform a return.
 
-Remaining handoff gaps, ranked: (1) distinguish retailer drop-off versus shipment deadlines using verified instructions, (2) support more than one saved trip without overwriting packing work, (3) bring confirmed store locations into route planning. The current product has one saved trip and shopper-entered notes. Independent judgment belongs to Mica; producer tests establish behavior, not a quality verdict.
+Remaining handoff gaps, ranked: (1) distinguish retailer drop-off versus shipment deadlines using verified instructions, (2) support more than one saved trip without overwriting packing work, (3) bring confirmed store locations into route planning. The named-trip candidate extends the single working trip with separate saved copies and shopper-entered notes. Independent judgment belongs to Mica; producer tests establish behavior, not a quality verdict.
 
 ## Delivery-pending purchases and portable review
 
