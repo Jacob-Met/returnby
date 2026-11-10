@@ -1,0 +1,3 @@
+ReturnBy 0.7.1, source 593afb6b75460c8680317c71f42a81b3576438ff.
+Actual extracted Linux native launcher and live release endpoint verified before capture. Actual Chrome CDP frames in chronological order, 390x844 app pixels with captions below. Fictional Marlow Outfitters purchase and credits entered through the UI before recording. Real correction, Save and reload. Capture 19.696 seconds; silent. No bank or merchant connection. Independent reviewer accepted the scoped silent-film story after decoded frames and full-resolution final-frame inspection.
+Caption intervals: 0–4.512 initial credits; 4.512–9.597 correction; 9.597–14.694 saved balance; 14.694–19.696 reload.
