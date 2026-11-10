@@ -16,6 +16,7 @@ import { isSupportedDate } from './trip-checklist';
 import { load, read, save, type Order } from './store';
 import { bindManualPurchase } from './manual-purchase';
 import { samples } from './samples';
+import { reviewPurchaseAddition } from './purchase-addition';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
 import { bindCalendarBatch, downloadCalendar } from './calendar-batch-ui';
@@ -171,7 +172,10 @@ preview.addEventListener('submit', (e) => {
     windowSource: days === pol.days ? pol.source : 'user',
     createdAt: new Date().toISOString(),
   }];
-  if (!persistOrders(next)) return;
+  let addition: Order[] | null;
+  try { addition = reviewPurchaseAddition(current, next[next.length - 1], readCurrentOrders, message => window.confirm(message)); }
+  catch (error) { showStorageError(error instanceof Error ? error.message : 'Review saved returns before adding this purchase.'); return; }
+  if (!addition || !persistOrders(addition)) return;
   preview.hidden = true; paste.value = ''; render();
 });
 
