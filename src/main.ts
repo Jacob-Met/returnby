@@ -1,3 +1,4 @@
+import { reviewDuplicateIntake } from './duplicate-intake';
 import './style.css';
 import './backup.css';
 import './edit.css';
@@ -163,7 +164,14 @@ preview.addEventListener('submit', (e) => {
   }
   const merchant = String(f.get('merchant') || '');
   const pol = lookup(merchant);
-  const current = readCurrentOrders();
+  let current: Order[] | null;
+  try {
+    current = reviewDuplicateIntake({ merchant, orderNo: String(f.get('orderNo') || '') }, readCurrentOrders, message => window.confirm(message));
+  } catch (error) {
+    const hint = preview.querySelector<HTMLOutputElement>('#intake-deadline');
+    if (hint) hint.textContent = error instanceof Error ? error.message : 'Your draft is kept. Review saved returns before trying again.';
+    return;
+  }
   if (!current) return;
   const next: Order[] = [...current, {
     id: crypto.randomUUID(), merchant, orderNo: String(f.get('orderNo') || ''),
