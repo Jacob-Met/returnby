@@ -51,7 +51,7 @@ test('pre-release outcome backup remains closed and unsupported future formats f
   const earlier=JSON.parse(exportBackup([closed],stamp));
   earlier.version=3;
   expect(parseBackupDocument(JSON.stringify(earlier)).orders).toEqual([closed]);
-  earlier.version=6;
+  earlier.version=999;
   expect(()=>parseBackupDocument(JSON.stringify(earlier))).toThrow('not supported');
 });
 

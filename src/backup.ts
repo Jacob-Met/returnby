@@ -49,10 +49,11 @@ function timestamp(value: unknown, label: string): string {
   return s;
 }
 
-function order(value: unknown, index: number, strict: boolean, version: 1 | 2 | 3 | 4 | 5): Order {
+function order(value: unknown, index: number, strict: boolean, version: 1 | 2 | 3 | 4 | 5 | 6): Order {
   const label = `Order ${index + 1}`;
   const row = object(value, label);
   if (!hasValidCompletion(row)) throw new BackupError(label + ' has an invalid completion record.');
+  if (strict && version < 6 && row.refundPayments !== undefined) throw new BackupError(label + ' contains payment history requiring backup version 6.');
   if (strict) onlyKeys(row, version === 1 ? LEGACY_ORDER_KEYS : version === 2 ? COMPLETED_ORDER_KEYS : ORDER_KEYS, label);
   const id = text(row.id, `${label} ID`, 128);
   if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(id)) throw new BackupError(`${label} has an invalid ID.`);
@@ -68,6 +69,7 @@ function order(value: unknown, index: number, strict: boolean, version: 1 | 2 | 
   return {
     id,
     ...(row.refundState === undefined ? {} : {refundState:row.refundState as Order['refundState'],refundAmount:row.refundAmount as string,refundFollowUpDate:row.refundFollowUpDate as string,refundNote:row.refundNote as string,refundUpdatedAt:row.refundUpdatedAt as string}),
+    ...(row.refundPayments === undefined ? {} : {refundPayments: structuredClone(row.refundPayments) as Order['refundPayments']}),
     merchant: text(row.merchant, `${label} store`),
     orderNo: row.orderNo === undefined ? '' : text(row.orderNo, `${label} number`),
     total: row.total === undefined ? '' : text(row.total, `${label} total`),
@@ -82,7 +84,7 @@ function order(value: unknown, index: number, strict: boolean, version: 1 | 2 | 
   };
 }
 
-function orders(value: unknown, strict = true, version: 1 | 2 | 3 | 4 | 5 = 5): Order[] {
+function orders(value: unknown, strict = true, version: 1 | 2 | 3 | 4 | 5 | 6 = 6): Order[] {
   if (!Array.isArray(value) || value.length > MAX_BACKUP_ORDERS) throw new BackupError(`Expected at most ${MAX_BACKUP_ORDERS.toLocaleString('en-US')} saved orders.`);
   const seen = new Set<string>();
   return value.map((value, index) => {
@@ -96,9 +98,10 @@ function orders(value: unknown, strict = true, version: 1 | 2 | 3 | 4 | 5 = 5): 
 function document(rows: Order[], exportedAt: string, trip?: TripPlan | null, pending: PendingPurchase[] = [], tripLibrary?: TripLibrary | null) {
   // Existing mainline formats: v1 orders/confirmed clocks, v2 prepared trip, v3 pending
   // deliveries, v4 named trips. Explicit return outcomes use v5 so old readers
-  // refuse them instead of silently reopening a finished purchase.
+  // refuse them instead of silently reopening a finished purchase. Dated refund
+  // credits use v6 so older readers cannot silently discard payment history.
   return { schema: 'returnby.backup',
-    version: rows.some(row => row.completionKind !== undefined) ? 5
+    version: rows.some(row => row.refundPayments !== undefined) ? 6 : rows.some(row => row.completionKind !== undefined) ? 5
       : tripLibrary?.trips.length ? 4 : pending.length ? 3
       : trip || rows.some(row => row.completedAt !== undefined) ? 2 : 1,
     exportedAt, orders: rows, ...(trip ? { trip } : {}),
@@ -127,7 +130,7 @@ export function parseBackupDocument(input: string): {orders: Order[]; trip: Trip
   let parsed: unknown;
   try { parsed = JSON.parse(input); } catch { throw new BackupError('This file is not valid JSON. Choose a ReturnBy backup.'); }
   const doc = object(parsed, 'Backup');
-  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2 && doc.version !== 3 && doc.version !== 4 && doc.version !== 5)) throw new BackupError('This backup format or version is not supported.');
+  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2 && doc.version !== 3 && doc.version !== 4 && doc.version !== 5 && doc.version !== 6)) throw new BackupError('This backup format or version is not supported.');
   onlyKeys(doc, doc.version >= 4 ? ['schema', 'version', 'exportedAt', 'orders', 'trip', 'pending', 'tripLibrary']
     : doc.version === 3 ? ['schema', 'version', 'exportedAt', 'orders', 'trip', 'pending']
     : doc.version === 2 ? ['schema', 'version', 'exportedAt', 'orders', 'trip']
@@ -141,7 +144,7 @@ export function parseBackupDocument(input: string): {orders: Order[]; trip: Trip
   const pending = doc.version === 3 && doc.pending === undefined && rows.some(row => row.completedAt !== undefined)
     ? [] : doc.version >= 3 ? portablePending(doc.pending === undefined && doc.version >= 4 ? [] : doc.pending) : [];
   const tripLibrary = doc.version === 4 ? parseTripLibrary(doc.tripLibrary)
-    : doc.version === 5 && doc.tripLibrary !== undefined ? parseTripLibrary(doc.tripLibrary) : undefined;
+    : doc.version >= 5 && doc.tripLibrary !== undefined ? parseTripLibrary(doc.tripLibrary) : undefined;
   if (!fits(JSON.stringify(document(rows, SIZE_TIMESTAMP, trip, pending, tripLibrary)) + '\n')) throw new BackupError('The normalized trip and orders exceed the 5 MiB backup limit.');
   return { orders: rows, trip, ...(doc.pending !== undefined || doc.version >= 4 ? { pending } : {}), ...(tripLibrary ? { tripLibrary } : {}) };
 }
@@ -167,7 +170,7 @@ export function planImport(current: unknown, incoming: unknown): ImportPlan {
   const byId = new Map(saved.map(row => [row.id, row]));
   const rows: ImportRow[] = imported.map(row => {
     const old = byId.get(row.id);
-    const changedFields = old ? ORDER_KEYS.filter(key => old[key] !== row[key]) : [];
+    const changedFields = old ? ORDER_KEYS.filter(key => JSON.stringify(old[key]) !== JSON.stringify(row[key])) : [];
     return { order: row, action: !old ? 'add' : changedFields.length ? 'conflict' : 'skip', changedFields };
   });
   const additions = rows.filter(row => row.action === 'add').map(row => row.order);

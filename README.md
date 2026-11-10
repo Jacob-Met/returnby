@@ -18,7 +18,7 @@ The exact [f95eb649 source](https://github.com/Jacob-Met/returnby/commit/f95eb64
 - **Add a purchase.** Enter a paper receipt manually, paste a confirmation, or review exported text/HTML email. Correct the proposed store, date and return window before saving. Dates such as 05/11/2026 require a choice when both day/month interpretations are valid.
 - **Wait for delivery.** Keep reviewed delivery-based purchases pending until you can confirm their return-clock start. Expand the pending count to choose a purchase; confirming one leaves the others intact.
 - **Find and act.** Search saved purchases, see upcoming deadlines, export calendar reminders, and prepare an editable return-trip checklist. Save named copies for different errands and reopen their dates, selections and packing notes. CSV export below the saved list includes every saved purchase, even when the list is filtered.
-- **Check a refund.** Record the amount and currency you expect, a date to check again, and notes. Mark received after checking for yourself. A partial refund record does not close the remaining purchase deadline.
+- **Check a refund.** Keep a simple expected amount and follow-up note, or choose **Track partial payments** to record dated credits, their references and the amount still owed. Correct or remove a credit before saving. A zero balance still requires you to mark the refund received after checking for yourself. Refund tracking does not close the purchase deadline.
 - **Keep a copy.** Download a JSON backup for recovery or transfer. Review saved purchases, pending purchases and the working trip and named copies separately before restoring them.
 
 Calendar files must be imported into your calendar. Check that app's notification settings. Imported entries are snapshots: ReturnBy cannot update or cancel them when a purchase changes. A follow-up date recorded in ReturnBy does not itself send a notification.
@@ -29,7 +29,7 @@ A confirmed fixed return-by date remains distinct from a day-window policy. Revi
 
 There is no inbox connection, upload or account synchronization. Saved purchases, refund notes, reviewed pending purchases and trip work use this browser's storage. Original email text is not retained in saved purchases or backups. Clearing browser data can remove saved work.
 
-Backups are unencrypted and can contain purchase details, refund notes, reviewed pending fields and private packing notes. Keep them private. This release writes version 4 when named trip copies are present, preserving the existing working trip and pending purchases. Versions 1–3 remain readable; older releases may refuse version 4. Some unfinished input is local to its original browser or tab rather than part of the portable backup.
+Backups are unencrypted and can contain purchase details, refund notes, reviewed pending fields and private packing notes. Keep them private. Current source writes backup version 6 when dated refund payments are present, version 5 for explicit finished-return outcomes, and older versions for simpler records. Versions 1–5 remain readable. Older releases refuse a version they cannot preserve; use a current build to restore payment history. Some unfinished input is local to its original browser or tab rather than part of the portable backup.
 
 ReturnBy records your decisions. It does not arrange pickup, verify retailer eligibility, contact a merchant or confirm bank receipt.
 

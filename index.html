@@ -431,10 +431,10 @@
 </dialog>
 <dialog id="refund-dialog" aria-labelledby="refund-title">
 <form id="refund-form" novalidate>
-<h2 id="refund-title">Track a refund</h2>
+<header class="refund-editor-header"><h2 id="refund-title">Track a refund</h2>
 <p id="refund-purchase">
-</p>
-<p>Record the amount you expect after returning an item. Your purchase's deadline stays unchanged; this does not contact the store or check your bank.</p>
+</p></header><div class="refund-editor-fields">
+<p class="refund-local-note">Your own refund record. No bank or store connection.</p>
 <label>Status<select name="state">
 <option value="awaiting">Awaiting refund</option>
 <option value="received">Received — I checked</option>
@@ -450,7 +450,7 @@
 <p class="list-note">The date is a note to check when you open ReturnBy. After saving, choose “Set refund reminder” to download a calendar reminder. ReturnBy itself does not send notifications. Refund notes are included in your backup.</p>
 <p id="refund-error" role="alert" tabindex="-1" hidden>
 </p>
-<div class="action-row">
+</div><div class="action-row refund-editor-actions">
 <button class="button button-primary" type="submit">Save refund</button>
 <button class="button button-link" id="refund-close" type="button">Close</button>
 <button class="button button-link" id="refund-stop" type="button" hidden>Stop tracking refund</button>
