@@ -135,8 +135,22 @@
 <label>Expected refund (optional, include currency)<input name="amount" maxlength="120" placeholder="For example, £42.50"></label>
 <label>Next date to check (optional)<input name="followUpDate" type="date" min="1000-01-01" max="9999-12-31"></label>
 <label>Return reference or notes (optional)<textarea name="note" maxlength="2000" rows="3" placeholder="Returned the blue shirt. Drop-off reference, merchant promise, or next step."></textarea></label>
-<p class="list-note">The date is a note to check when you open ReturnBy. It does not send a notification. Refund notes are included in your backup.</p>
+<p class="list-note">The date is a note to check when you open ReturnBy. After saving, choose “Set refund reminder” to download a calendar reminder. ReturnBy itself does not send notifications. Refund notes are included in your backup.</p>
 <p id="refund-error" role="alert" tabindex="-1" hidden></p>
 <div class="action-row"><button class="button button-primary" type="submit">Save refund</button><button class="button button-link" id="refund-close" type="button">Close</button><button class="button button-link" id="refund-stop" type="button" hidden>Stop tracking refund</button></div>
-</form></dialog></body></html>
-
+</form></dialog><dialog id="refund-calendar-dialog" aria-labelledby="refund-calendar-title"><form id="refund-calendar-form" novalidate>
+    <p class="refund-calendar-kicker">OUTSTANDING REFUND</p>
+    <h2 id="refund-calendar-title" tabindex="-1">Remember to check the money</h2>
+    <p id="refund-calendar-purchase"></p>
+    <p id="refund-calendar-saved"></p>
+    <div class="refund-calendar-fields">
+      <label>Reminder date<input id="refund-calendar-date" type="date" required max="9999-12-30"></label>
+      <label>Time<input id="refund-calendar-time" type="time" required></label>
+    </div>
+    <p id="refund-calendar-preview" role="status"></p>
+    <p id="refund-calendar-zone" class="refund-calendar-help"></p>
+    <p class="refund-calendar-help">The calendar entry includes this store, order number and expected amount. Your private refund notes stay here.</p>
+    <p class="refund-calendar-help">Download, then import the file into your calendar and check its notifications. ReturnBy does not send alerts. This is a one-time copy: receiving the refund here will not cancel a calendar entry.</p>
+    <p id="refund-calendar-error" role="alert" tabindex="-1" hidden></p>
+    <div class="refund-calendar-actions"><button class="button button-primary" type="submit">Download refund reminder</button><button id="refund-calendar-close" class="button button-link" type="button">Cancel</button></div>
+  </form></dialog></body></html>
