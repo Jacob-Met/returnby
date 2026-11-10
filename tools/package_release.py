@@ -73,6 +73,8 @@ def main():
         "Do not open index.html directly by file:// because the module assets need HTTP.\n\n"
         "Review/save several returns, correct them, back up and restore, select calendar\n"
         "reminders, plan a month, and download offline printable return-trip checklists.\n"
+        "Finish returned or kept orders into History; reopen with the original deadline.\n"
+        "Use version 0.3.0 or later with History; older apps cannot interpret its markers.\n"
         "Pasted emails are not uploaded or retained by the app. Downloaded backups\n"
         "contain order details and are unencrypted; keep those files private.\n"
         "Merchant rules are reference estimates, not verified current return policies.\n"

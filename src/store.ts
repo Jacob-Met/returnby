@@ -1,6 +1,10 @@
+import { hasValidCompletion } from './completion';
+
 export type Order = {
   id: string; merchant: string; orderNo?: string; total?: string;
   orderDate: string; windowStartDate?: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
+  completedAt?: string;
+  completionKind?: 'returned' | 'kept';
 };
 const KEY = 'returnby.v1';
 const isOrder = (value: unknown): value is Order => {
@@ -11,7 +15,8 @@ const isOrder = (value: unknown): value is Order => {
     && (o.windowSource === 'policy' || o.windowSource === 'default' || o.windowSource === 'user')
     && (o.windowStartDate === undefined || typeof o.windowStartDate === 'string')
     && (o.orderNo === undefined || typeof o.orderNo === 'string')
-    && (o.total === undefined || typeof o.total === 'string');
+    && (o.total === undefined || typeof o.total === 'string')
+    && hasValidCompletion(o);
 };
 // Backup/restore must distinguish unreadable storage from an empty tracker.
 export const read = (): unknown => {

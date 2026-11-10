@@ -55,7 +55,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
     choices.replaceChildren();
     if (!rows.length) {
       const empty = document.createElement('p');
-      empty.textContent = 'There are no saved returns to export.';
+      empty.textContent = 'There are no open saved returns to export. Completed returns stay in your tracker history.';
       choices.append(empty);
       return;
     }
@@ -90,7 +90,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
       loaded = true;
       renderChoices();
       const invalid = rows.filter(row => row.problem).length;
-      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates before downloading.' : `Initial selection follows the tracker's ${options.filter() === 'due' ? 'Due soon' : options.filter() === 'expired' ? 'Expired' : 'All'} filter. You can change any checkbox below.`}${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}`;
+      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates before downloading.' : `Initial selection follows the tracker's ${options.filter() === 'due' ? 'Due soon' : options.filter() === 'expired' ? 'Expired' : options.filter() === 'completed' ? 'Completed (none selected)' : 'Open'} filter. You can change any checkbox below.`} Completed returns are excluded.${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}`;
       showMessage('');
     } catch (error) {
       loaded = false;

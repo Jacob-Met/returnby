@@ -1,5 +1,6 @@
 import './trip-checklist.css';
 import { dueDate, returnDueDate, todayISO } from './deadline';
+import { isCompleted } from './completion';
 import {
   assertSnapshotCurrent, buildChecklistHtml, CHECKLIST_SHEET_CSS, createChecklist,
   readSavedOrders, renderChecklist, SAVED_ORDERS_KEY, sourceLabel,
@@ -104,11 +105,11 @@ function refresh(): void {
   readMessage.classList.remove('error');
   try {
     snapshot = readSavedOrders(savedReader);
-    const ordered = [...snapshot.orders].sort((a, b) => returnDueDate(a).localeCompare(returnDueDate(b)));
+    const ordered = snapshot.orders.filter(order => !isCompleted(order)).sort((a, b) => returnDueDate(a).localeCompare(returnDueDate(b)));
     ordered.forEach(addOrderOption);
     readMessage.textContent = ordered.length
       ? ordered.length + (ordered.length === 1 ? ' saved order ready to choose.' : ' saved orders ready to choose.')
-      : 'No saved orders yet. Return to your tracker to review and save an order, then refresh here.';
+      : snapshot.orders.length ? 'All saved orders are in History. Reopen an order in the tracker if you need to plan its return.' : 'No saved orders yet. Return to your tracker to review and save an order, then refresh here.';
     form.hidden = ordered.length === 0;
   } catch (error) {
     readMessage.textContent = error instanceof Error ? error.message : 'Saved orders could not be read. Return to the tracker to review them, then refresh here.';
