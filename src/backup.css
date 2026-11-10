@@ -5,10 +5,15 @@
 .backup-panel input[type="file"] { display: block; max-width: 100%; margin: .65rem 0; }
 .backup-panel .input-label { display: block; margin-top: 1.2rem; }
 .backup-panel .action-row { flex-wrap: wrap; }
+.backup-panel .input-label { font-size: .8125rem; letter-spacing: .045em; line-height: 1.5; }
+.backup-panel .list-note { font-size: .875rem; line-height: 1.55; }
+.backup-panel input[type="file"] { font-size: .875rem; line-height: 1.4; }
+.backup-panel .button { min-height: 44px; padding: .7rem 1rem; font-size: .8125rem; letter-spacing: .025em; }
+.backup-panel summary:focus-visible { outline: 2px solid var(--copper); outline-offset: 4px; }
 .backup-panel button:disabled { opacity: .5; cursor: not-allowed; }
 #backup-message { padding: .7rem; border-left: 3px solid #426e5f; background: #f0f4ed; overflow-wrap: anywhere; }
 #backup-message[role="alert"] { border-color: #956325; background: #fff2dd; }
 #backup-rows { padding-left: 1.4rem; }
 #backup-rows li { margin: .65rem 0; line-height: 1.5; overflow-wrap: anywhere; }
-#backup-page { font-size: .85rem; }
+#backup-page { font-size: .875rem; }
 @media (max-width: 600px) { .backup-panel { padding: 1rem; } }

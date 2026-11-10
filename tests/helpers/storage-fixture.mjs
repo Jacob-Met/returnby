@@ -4,7 +4,28 @@ export function storageFixture(html, initial = []) {
   const elements = new Map();
   let value = JSON.stringify(initial), failures = 0, serial = 0, allowClear = true;
   const attempts = [];
-  const document = { activeElement: null, querySelector: selector => elements.get(selector.slice(1)) };
+  // Browser event registration is real within this fixture, but time does not
+  // advance implicitly. The separate day-refresh suite tests midnight timing.
+  const listeners = new Map();
+  const eventHost = {
+    addEventListener(type, fn) {
+      if (!listeners.has(this)) listeners.set(this, new Map());
+      const events = listeners.get(this);
+      if (!events.has(type)) events.set(type, new Set());
+      events.get(type).add(fn);
+    },
+    removeEventListener(type, fn) { listeners.get(this)?.get(type)?.delete(fn); },
+  };
+  const document = Object.assign(Object.create(eventHost), {
+    activeElement: null,
+    visibilityState: 'visible',
+    querySelector: selector => elements.get(selector.slice(1)),
+  });
+  let timerId = 0;
+  const window = Object.assign(Object.create(eventHost), {
+    setTimeout() { return ++timerId; },
+    clearTimeout() {},
+  });
   class Element {
     constructor(id, tag) {
       this.id = id; this.value = ''; this.innerHTML = ''; this.textContent = '';
@@ -53,7 +74,7 @@ export function storageFixture(html, initial = []) {
     return elements.get(id).listeners.get(type)({ preventDefault() {}, target: { dataset } });
   }
   return {
-    globals: { document, localStorage, FormData, crypto: { randomUUID: () => `order-${++serial}` },
+    globals: { document, window, localStorage, FormData, crypto: { randomUUID: () => `order-${++serial}` },
       confirm: () => allowClear, alert() { throw Error('Unexpected blocking alert'); } },
     elements, attempts, persisted: () => clone(JSON.parse(value)),
     failNext(n = 1) { failures = n; }, confirm(next) { allowClear = next; },

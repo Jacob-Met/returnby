@@ -179,6 +179,25 @@ try {
   assert.deepEqual(restored.orders.slice(0, 3), original);
   assert(!JSON.stringify(restored).includes('RECEIVING_UNSAVED_EMAIL'));
   observed.final_orders = restored.orders.length;
+  // Imported records must remain useful in the existing return-trip consumer,
+  // not merely survive a tracker/export round trip.
+  const trip = await receivingContext.newPage();
+  await trip.goto(new URL('trip-checklist.html', base).href, { waitUntil: 'networkidle' });
+  assert.equal(await trip.locator('#order-options input[type=checkbox]').count(), restored.orders.length);
+  assert.match(await trip.locator('#read-message').innerText(), /7 saved orders ready to choose/);
+  await trip.locator('#order-options input[type=checkbox]').first().check();
+  assert.equal(await trip.locator('#selection-summary').innerText(), '1 order selected');
+  await trip.locator('#preview-trip').click();
+  assert(await trip.locator('#checklist-preview').isVisible());
+  assert(await trip.locator('#download-checklist').isEnabled());
+  const sheetPending = trip.waitForEvent('download');
+  await trip.locator('#download-checklist').click();
+  const sheet = await sheetPending;
+  const sheetText = await readFile(await sheet.path(), 'utf8');
+  assert.match(sheet.suggestedFilename(), /^returnby-trip-\d{4}-\d{2}-\d{2}\.html$/);
+  assert(sheetText.includes(restored.orders[0].merchant) || sheetText.includes(restored.orders[1].merchant));
+  observed.restored_records_reach_trip_checklist = true;
+  await trip.close();
   if (process.env.RETURNBY_CAPTURE_DIR) {
     const directory = resolve(process.env.RETURNBY_CAPTURE_DIR);
     await mkdir(directory, { recursive: true });
