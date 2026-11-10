@@ -4,7 +4,7 @@ import {
   BatchIntakeError, MAX_BATCH_ORDERS, MAX_CONFIRMATION_BYTES,
   type BatchDraft, type BatchReview, type DraftFields,
 } from './batch-intake';
-import { dueDate } from './deadline';
+import { returnDueDate } from './deadline';
 import { extractEmlPlainText } from './eml';
 
 const get = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -85,21 +85,21 @@ function renderDrafts() {
     const fields = element('div', undefined, 'batch-fields');
     const labels: Array<[keyof DraftFields, string, string]> = [
       ['merchant', 'Store', 'text'], ['orderNo', 'Order number', 'text'],
-      ['orderDate', 'Order date', 'date'], ['total', 'Total (as entered)', 'text'],
+      ['orderDate', 'Order date', 'date'], ['windowStartDate', 'Return clock starts (optional; date confirmed by you)', 'date'], ['total', 'Total (as entered)', 'text'],
       ['windowDays', 'Return window (days)', 'number'],
     ];
     for (const [key, labelText, type] of labels) {
       const label = element('label', labelText);
-      if (key !== 'windowDays' && !draft.found[key]) label.className = 'not-recognized';
+      if (key !== 'windowDays' && key !== 'windowStartDate' && !draft.found[key]) label.className = 'not-recognized';
       if (key === 'windowDays') label.className = 'window-field';
       const input = element('input');
       input.type = type;
-      input.value = draft.fields[key];
+      input.value = draft.fields[key] ?? '';
       input.dataset.field = key;
       input.name = key;
       input.maxLength = 4096;
       input.setAttribute('aria-label', labelText + ' for confirmation ' + (index + 1));
-      if (key === 'orderDate') { input.min = '1000-01-01'; input.max = '9999-12-31'; }
+      if (key === 'orderDate' || key === 'windowStartDate') { input.min = '1000-01-01'; input.max = '9999-12-31'; }
       if (key === 'windowDays') { input.min = '1'; input.step = '1'; }
       label.append(input);
       fields.append(label);
@@ -243,7 +243,7 @@ function renderReview(current: BatchReview) {
     const facts = element('dl');
     const source = order.windowSource === 'policy' ? 'Local store rule' : order.windowSource === 'default' ? 'Local default' : 'Your chosen window';
     for (const [label, value] of [
-      ['Order date', order.orderDate], ['Calculated deadline', dueDate(order.orderDate, order.windowDays)],
+      ['Order date', order.orderDate], ['Return clock starts', (order.windowStartDate || order.orderDate) + (order.windowStartDate ? ' · confirmed by you' : ' · order date')], ['Calculated deadline', returnDueDate(order)],
       ['Reviewed window', order.windowDays + ' days · ' + source], ['Saved amount', order.total || 'Not recorded'],
     ]) {
       const pair = element('div');

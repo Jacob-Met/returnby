@@ -1,4 +1,4 @@
-import { dueDate } from './deadline';
+import { returnDueDate } from './deadline';
 import { editDraft, EditConflict, EditError, planEdit, previewEdit, sourceDescription, type EditDraft } from './edit';
 import type { Order } from './store';
 
@@ -19,7 +19,7 @@ export function bindOrderEditor(options: EditorOptions) {
   const save = get<HTMLButtonElement>('edit-save');
   const fields: Record<keyof EditDraft, HTMLInputElement> = {
     merchant: get('edit-merchant'), orderNo: get('edit-order-no'), total: get('edit-total'),
-    orderDate: get('edit-order-date'), windowDays: get('edit-window-days'),
+    orderDate: get('edit-order-date'), windowStartDate: get('edit-window-start-date'), windowDays: get('edit-window-days'),
   };
   let original: Order | null = null;
 
@@ -95,8 +95,8 @@ export function bindOrderEditor(options: EditorOptions) {
       // Store an immutable review snapshot; a later render or import cannot move it.
       original = JSON.parse(JSON.stringify(matches[0])) as Order;
       const values = editDraft(original);
-      for (const name of Object.keys(fields) as (keyof EditDraft)[]) fields[name].value = values[name];
-      get('edit-current-deadline').textContent = dueDate(original.orderDate, original.windowDays);
+      for (const name of Object.keys(fields) as (keyof EditDraft)[]) fields[name].value = values[name] ?? '';
+      get('edit-current-deadline').textContent = returnDueDate(original);
       get('edit-feedback').textContent = '';
       updatePreview();
       dialog.showModal();

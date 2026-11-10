@@ -14,7 +14,7 @@ Open **Prepare a return-trip checklist** below the tracker’s saved-order list.
 
 The trip date is separate from the calculated return deadline. Both are shown, including when your trip would fall after a saved deadline. ReturnBy uses the saved window; confirm the store’s current instructions.
 
-Changing an order in the tracker retires any prepared sheet. **Refresh saved orders** keeps your selected current orders and packing notes, reads the latest facts, and clears an instructions check if the reviewed details changed. Removed or finished orders are excluded from the trip; their notes remain visible under **No longer in your active returns** until you remove them from the plan. Reopening such an order does not silently select it again.
+Changing an order in the tracker retires any prepared sheet. **Refresh saved orders** keeps your selected current orders and packing notes, reads the latest facts, and clears an instructions check if the reviewed details changed. Orders no longer available are excluded from the trip; their notes remain visible under **Orders no longer available** until you remove them from the plan. Restoring such an order does not silently select it again.
 
 Preview and download still read the saved order list again. If it changed since review, refresh and make another preview. The printable file is a snapshot; it does not update after you download it. Amounts are literal saved strings, not a refund estimate or a sum across currencies.
 

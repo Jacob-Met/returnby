@@ -34,6 +34,16 @@ describe('a shopper can resume their return trip', () => {
     expect(printable).not.toContain('2026-12-02');
     expect(printable).toContain('Locker 12');
   });
+  it('composes the confirmed return-clock start with trip recovery and the printable deadline', () => {
+    const current = snapshot([{...coat, windowStartDate:'2026-11-06'},book]);
+    const aligned = alignTripPlan(savedPlan(),current);
+    expect(aligned.changed).toEqual(['Elm Outfitters']);
+    expect(aligned.plan.orders[0].instructionsChecked).toBe(false);
+    expect(aligned.plan.orders[0].notes).toContain('Locker 12');
+    const sheet = buildChecklistHtml({...createChecklist(current,[coat.id],'2026-11-14'),packing:{[coat.id]:aligned.plan.orders[0]}});
+    expect(sheet).toContain('2026-12-06');
+    expect(sheet).not.toContain('2026-12-02');
+  });
   it('retains notes for removed/finished orders, excludes them from selection and does not reselect an order when it returns', () => {
     const aligned = alignTripPlan(savedPlan(),snapshot([book]));
     expect(aligned.unavailable.map(row=>row.id)).toEqual([coat.id]);

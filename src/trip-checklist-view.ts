@@ -1,5 +1,5 @@
 import './trip-checklist.css';
-import { dueDate } from './deadline';
+import { returnDueDate } from './deadline';
 import {
   assertSnapshotCurrent, buildChecklistHtml, CHECKLIST_SHEET_CSS, createChecklist,
   readSavedOrders, renderChecklist, SAVED_ORDERS_KEY, sourceLabel,
@@ -114,7 +114,7 @@ function selectionChanged(save = true): void {
 function renderPacking(): void {
   packing.replaceChildren();
   if (!snapshot) return;
-  for (const order of snapshot.orders.filter(value => selected.has(value.id)).sort((a,b) => dueDate(a.orderDate,a.windowDays).localeCompare(dueDate(b.orderDate,b.windowDays)))) {
+  for (const order of snapshot.orders.filter(value => selected.has(value.id)).sort((a,b) => returnDueDate(a).localeCompare(returnDueDate(b)))) {
     const entry = entryFor(order.id);
     const section = document.createElement('section');
     section.className = 'packing-order';
@@ -122,11 +122,11 @@ function renderPacking(): void {
     title.textContent = order.merchant || 'Unnamed store';
     const ref = document.createElement('p');
     ref.className = 'packing-reference';
-    ref.textContent = (order.orderNo ? '#' + order.orderNo + ' · ' : '') + 'Return by ' + dueDate(order.orderDate, order.windowDays);
+    ref.textContent = (order.orderNo ? '#' + order.orderNo + ' · ' : '') + 'Return by ' + returnDueDate(order);
     section.append(title, ref);
     if (isSupportedDate(tripDate.value)) {
       const timing = document.createElement('p');
-      const due = dueDate(order.orderDate, order.windowDays);
+      const due = returnDueDate(order);
       timing.className = 'packing-timing' + (tripDate.value > due ? ' late' : '');
       timing.textContent = 'Planned trip: ' + tripTiming(due, tripDate.value).toLowerCase() + '.';
       section.append(timing);
@@ -164,9 +164,9 @@ function renderPacking(): void {
     const section = document.createElement('section');
     section.className = 'unavailable-plan';
     const title = document.createElement('h3');
-    title.textContent = 'No longer in your active returns';
+    title.textContent = 'Orders no longer available';
     const description = document.createElement('p');
-    description.textContent = 'These orders were removed or finished. They are left out of this trip; your notes are kept below.';
+    description.textContent = 'These orders are no longer available for this trip. They are left out of the sheet; your notes are kept below.';
     section.append(title, description);
     for (const entry of unavailable) {
       const row = document.createElement('div');
@@ -207,7 +207,7 @@ function addOrderOption(order: SavedSnapshot['orders'][number]): void {
   ref.textContent = 'Order ' + (order.orderNo || 'number not recorded') + (order.total ? ' · ' + order.total : '');
   const date = document.createElement('span');
   date.className = 'choice-date';
-  date.textContent = 'Calculated deadline · ' + dueDate(order.orderDate, order.windowDays);
+  date.textContent = 'Calculated deadline · ' + returnDueDate(order);
   const source = document.createElement('span');
   source.className = 'choice-source';
   source.textContent = sourceLabel(order.windowSource) + ' · ' + order.windowDays + ' days';
@@ -236,16 +236,17 @@ function refresh(): void {
     plan = aligned.plan;
     unavailable = aligned.unavailable;
     plan.orders.filter(entry => entry.selected).forEach(entry => selected.add(entry.id));
-    const ordered = [...snapshot.orders].sort((a, b) => dueDate(a.orderDate, a.windowDays).localeCompare(dueDate(b.orderDate, b.windowDays)));
+    const ordered = [...snapshot.orders].sort((a, b) => returnDueDate(a).localeCompare(returnDueDate(b)));
+
     ordered.forEach(addOrderOption);
     readMessage.textContent = ordered.length
       ? ordered.length + (ordered.length === 1 ? ' saved order ready to choose.' : ' saved orders ready to choose.')
-      : 'No active returns. Add or reopen an order in your tracker to plan another trip.';
+      : 'No saved returns. Add an order in your tracker to plan another trip.';
     form.hidden = ordered.length === 0;
     selectionChanged(false);
     const changes = [];
     if (aligned.changed.length) changes.push('Saved details changed for ' + aligned.changed.join(', ') + '. Review the current dates and check the store instructions again; your packing notes are kept.');
-    if (unavailable.length) changes.push(unavailable.length + (unavailable.length === 1 ? ' order is' : ' orders are') + ' no longer active and will not appear on the sheet.');
+    if (unavailable.length) changes.push(unavailable.length + (unavailable.length === 1 ? ' order is' : ' orders are') + ' no longer available and will not appear on the sheet.');
     if (changes.length) showNotice(changes.join(' '));
   } catch (error) {
     readMessage.textContent = error instanceof Error ? error.message : 'Saved orders could not be read. Refresh and try again.';

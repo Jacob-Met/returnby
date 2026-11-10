@@ -72,7 +72,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
       name.textContent = `${row.order.merchant || 'Unknown store'}${row.order.orderNo ? ` #${row.order.orderNo}` : ''}`;
       const detail = document.createElement('span');
       detail.className = row.problem ? 'calendar-invalid' : 'calendar-due';
-      detail.textContent = row.problem ?? `Return by ${row.due}${row.left! < 0 ? ' · Past due' : ''}`;
+      detail.textContent = row.problem ?? `Return by ${row.due} · clock starts ${row.order.windowStartDate || row.order.orderDate}${row.order.windowStartDate ? ' (confirmed by you)' : ' (order date)'}${row.left! < 0 ? ' · Past due' : ''}`;
       text.append(name, detail);
       label.append(checkbox, text);
       choices.append(label);

@@ -1,5 +1,5 @@
 import type { Order } from './store';
-import { dueDate, daysLeft, todayISO } from './deadline';
+import { dueDate, returnDueDate, daysLeft, todayISO } from './deadline';
 
 export const SAVED_ORDERS_KEY = 'returnby.v1';
 export const MAX_SAVED_BYTES = 2 * 1024 * 1024;
@@ -81,9 +81,13 @@ export function parseSavedOrders(raw: string | null): SavedSnapshot {
     const total = textField(row, 'total', index, true);
     const orderDate = textField(row, 'orderDate', index)!;
     if (!isSupportedDate(orderDate)) badRow(index, 'has an order date this tracker cannot calculate');
+    const windowStartDate = row.windowStartDate;
+    if (windowStartDate !== undefined && !isSupportedDate(windowStartDate)) {
+      badRow(index, 'has an invalid confirmed return-clock start date');
+    }
     const windowDays = row.windowDays;
     if (typeof windowDays !== 'number' || !Number.isSafeInteger(windowDays) || windowDays < 1
-      || !isSupportedDate(dueDate(orderDate, windowDays))) {
+      || !isSupportedDate(returnDueDate({ orderDate, windowStartDate: windowStartDate as string | undefined, windowDays }))) {
       badRow(index, 'has a return window this tracker cannot calculate');
     }
     const windowSource = row.windowSource;
@@ -91,7 +95,7 @@ export function parseSavedOrders(raw: string | null): SavedSnapshot {
       badRow(index, 'has an unrecognized window source');
     }
     const createdAt = textField(row, 'createdAt', index)!;
-    return Object.freeze({ id, merchant, orderNo, total, orderDate, windowDays, windowSource, createdAt });
+    return Object.freeze({ id, merchant, orderNo, total, orderDate, ...(windowStartDate ? {windowStartDate} : {}), windowDays, windowSource, createdAt });
   });
   return Object.freeze({ raw, orders: Object.freeze(orders) });
 }
@@ -130,7 +134,7 @@ export function createChecklist(snapshot: SavedSnapshot, selectedIds: readonly s
   const orders = selectedIds.map(id => {
     const order = byId.get(id);
     if (!order) throw new ChecklistError('A selected order is no longer in this loaded list. Refresh saved orders and choose again.', 'selection');
-    const due = dueDate(order.orderDate, order.windowDays);
+    const due = returnDueDate(order);
     return Object.freeze({ order, due, tripTiming: tripTiming(due, tripDate) });
   }).sort((a, b) => a.due.localeCompare(b.due));
   return Object.freeze({ tripDate, preparedOn, orders: Object.freeze(orders) });
@@ -158,6 +162,7 @@ export function renderChecklist(checklist: TripChecklist): string {
       '<li class="sheet-order"><header><span class="sheet-number">' + String(i + 1).padStart(2, '0') + '</span><div><h3>' + saved(order.merchant) + '</h3><p class="sheet-order-ref">Order number: ' + saved(order.orderNo) + '</p></div></header>'
       + '<dl class="sheet-facts"><div><dt>Order date</dt><dd>' + escapeHtml(order.orderDate) + '</dd></div>'
       + '<div><dt>Saved order amount</dt><dd>' + saved(order.total) + '</dd></div>'
+      + '<div><dt>Return clock starts</dt><dd>' + (order.windowStartDate ? escapeHtml(order.windowStartDate) + ' · user-confirmed' : escapeHtml(order.orderDate) + ' · order date') + '</dd></div>'
       + '<div><dt>Calculated deadline</dt><dd>' + escapeHtml(due) + '</dd></div>'
       + '<div><dt>Saved window</dt><dd>' + order.windowDays + ' days · ' + sourceLabel(order.windowSource) + '</dd></div></dl>'
       + '<p class="sheet-timing">' + escapeHtml(timing) + '</p>'

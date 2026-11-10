@@ -1,5 +1,5 @@
 import { exportBackup, parseBackup } from './backup';
-import { daysLeft, dueDate, status, todayISO, type Status } from './deadline';
+import { daysLeft, dueDate, returnDueDate, status, todayISO, type Status } from './deadline';
 import type { Order } from './store';
 
 export const OVERVIEW_PAGE_SIZE = 20;
@@ -79,7 +79,7 @@ export function buildDeadlineOverview(
   // file, storage write or new history format is created by this projection.
   const approved = parseBackup(exportBackup(current, admissionTime));
   const rows = approved.map(order => {
-    const due = dueDate(order.orderDate, order.windowDays);
+    const due = returnDueDate(order);
     const left = daysLeft(due, today);
     return { order, due, left, status: status(left) };
   }).sort((a, b) => compare(a.due, b.due) || compare(a.order.id, b.order.id));

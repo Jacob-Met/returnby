@@ -1,6 +1,20 @@
 # ReturnBy
 
-## Current downloadable browser preview — desk-first return tracker (November 10, 2026)
+## Current downloadable build — confirmed return-window start
+
+**[Download source-pinned ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-clock-92baeb9-browser.zip)** · [launch instructions, checksum and tested limitations](./downloads/ReturnBy-2026-11-10-clock-92baeb9.md) · [actual desktop screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-desktop.png) · [actual phone screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-mobile.png).
+
+Adds a **user-confirmed return-window start date** when a retailer counts from delivery rather than purchase. The same reviewed date now flows through saved orders, corrected deadlines, calendar reminders, backups, monthly planning, batch intake and trip sheets; older orders retain their order-date behavior. Includes manual-purchase entry, HTML/.eml receipts and saved-order search. Built from the merged [source commit 92baeb9](https://github.com/Jacob-Met/returnby/commit/92baeb99324ce60538bdefb3c36768fe419dfe43); independently exercised from its extracted ZIP in Chrome. **SHA-256:** f9c7a2b294a462e9263b52236740bc2cae40ce98e511ecf62227ccb5e5d89cb9.
+
+Extract the archive, run the local Python 3 launcher for your platform, and open http://127.0.0.1:8769/. All order data stays in your browser. Confirm retailer policy yourself. This is a downloadable local browser application, **not a hosted service or formal GitHub Release**.
+
+## Previous downloadable build — paper-receipt purchases
+
+[Download ReturnBy](https://github.com/Jacob-Met/returnby/releases/download/returnby-manual-2026-11-10/ReturnBy-2026-11-10-manual-1a76717-browser.zip) · [source, launch steps, checksum and limitations](./downloads/ReturnBy-2026-11-10-manual-1a76717.md)
+
+Adds direct manual purchase entry alongside email import, saved deadlines and reminder exports. Extract, run the Python3 launcher, then open http://127.0.0.1:8769/. Linux/Chrome exercised; Windows/macOS launchers packaged.
+
+## Earlier downloadable browser preview — desk-first return tracker (November 10, 2026)
 
 **[Download ReturnBy v0.2.0 ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/ReturnBy-v0.2.0-browser.zip)** · [Actual desktop screenshot](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/desk-first-desktop.png) · [Actual phone screenshot](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/desk-first-phone.png) · [Package notes](https://github.com/Jacob-Met/returnby/blob/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/RELEASE_NOTES.md).
 
@@ -9,7 +23,7 @@ This build puts working order intake and saved deadlines in the first desktop vi
 Extract the ZIP, install Python 3, launch Start ReturnBy.cmd (Windows), Start ReturnBy.command (macOS) or ./Start ReturnBy.sh (Linux), and open http://127.0.0.1:8769. The ZIP was downloaded back from GitHub, checksum-verified, extracted and exercised in actual Chrome with fictional reviewed/saved orders at desktop and phone sizes. Source builds passed 480 unit tests plus five Chrome stale-tab tests. Linux/Chrome was exercised; Windows and macOS launchers are included but not separately tested. Confirm retailer return windows yourself. This is a versioned downloadable preview branch, **not a formal GitHub Release** or hosted service.
 
 
-## Current downloadable build — cross-tab-safe ReturnBy (2026-11-10)
+## Previous downloadable build — cross-tab-safe ReturnBy (2026-11-10)
 
 **[Download the standalone ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-af06bb7-browser.zip)** — [source pin, checksum, launch steps and testing](./downloads/ReturnBy-2026-11-10-af06bb7-browser.md).
 
@@ -123,6 +137,36 @@ The importer checks the entire versioned document before showing a plan. Unsuppo
 
 The preview is recalculated against readable browser storage before committing. If saved orders changed since review, the updated plan requires another Import click. Storage failures preserve the preview for retry. This does not add continuous cross-tab synchronization or a transaction spanning simultaneous writes from different tabs; avoid editing the tracker in another tab during import. The existing tracker controls and single-order calendar export keep their behavior.
 
+## Undo a removal
+
+After **Remove** succeeds, choose **Undo removal** in the tracker to restore that
+one return with its original reviewed details, saved ID and creation time. Your
+new-order draft stays in place. The current date filter remains selected, so a
+restored return may be outside the visible filter.
+
+The most recent successful removal is kept in this page's memory, with no short
+countdown. **Keep removed** discards that recovery; another successful removal,
+a successful confirmed **Clear saved returns**, or reloading/closing the page
+also ends it. A cancelled clear or a failed remove/save does not discard it.
+Undo does not change calendar files you already imported.
+
+Undo reads current saved returns and restores only the missing record, preserving
+newer unrelated changes. If an exact copy is already saved, it refreshes the
+tracker without writing a duplicate. A changed record with the same ID, or
+duplicate IDs, blocks Undo instead of overwriting saved data. The recovery stays
+available for retry or **Keep removed**. If browser storage fails, address the
+storage problem; use **Retry loading saved returns** when offered, then choose
+**Undo removal** again. Retrying a load does not discard the removed return.
+As with other tracker actions, this reread does not make simultaneous writes
+in separate tabs transactional.
+
+After building, `node tools/check_removal_undo_browser.mjs` checks the real
+controls with fictional returns and fresh browser profiles. Set
+`RETURNBY_PLAYWRIGHT` and `RETURNBY_CHROME` for an installed Playwright module
+and Chromium executable; `RETURNBY_BUILD` and `RETURNBY_UNDO_OUTPUT` select
+the build and receipt folders. The browser checks include keyboard recovery,
+draft retention, explicit storage retry, clear/reload lifetime and a 390px notice.
+
 ## Using more than one tab
 
 Saving a new reviewed order reads the latest saved tracker first, preserving
@@ -175,7 +219,7 @@ The app is browser-only; no AI runs in the page. The Devpost Learn planning docu
 
 ## Return-trip checklist
 
-From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. Your planned date, selected orders, packing checks and drop-off notes are saved in this browser, separately from the tracker. Reopening restores the editable trip with current order facts; removed or finished orders are left out while their notes remain recoverable. Downloaded sheets contain your checked items and notes; marks added on paper do not update the app. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
+From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. Your planned date, selected orders, packing checks and drop-off notes are saved in this browser, separately from the tracker. Reopening restores the editable trip with current order facts; orders no longer available are left out while their notes remain recoverable. Downloaded sheets contain your checked items and notes; marks added on paper do not update the app. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
 
 ## Reading long saved-order labels
 
