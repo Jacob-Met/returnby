@@ -5,6 +5,7 @@ from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 import json
 import subprocess
 import sys
+sys.dont_write_bytecode = True
 
 ROOT = Path(__file__).resolve().parent.parent
 VERSION = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))["version"]
