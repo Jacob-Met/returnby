@@ -8,6 +8,12 @@ Extract the ZIP, run the included Windows, macOS or Linux launcher with Python 3
 
 ReturnBy turns an order-confirmation email into a reviewable return deadline and a calendar reminder. The visitor supplies the email text; the browser runs the repository's real rule-based parser, merchant-policy lookup, date calculation, status logic and RFC 5545 export. It is a multi-order tracker, not a canned result: correct extracted fields, override a return window, save several deadlines, filter the list and export a three-day alarm for any order.
 
+## Download a runnable browser preview
+
+[Download the verified 2026-11-10 browser ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/a637cd465c26e2d6a4729a7e07e162f70e9f2b83/downloads/returnby-browser-2026-11-10.zip). Extract it, use Node.js 20 or later, run `START-WINDOWS.cmd` on Windows or `./start-mac-linux.sh` on macOS/Linux (or `node serve.mjs`), then open `http://127.0.0.1:8787/`. The package contains compiled assets, a loopback-only server, launch instructions, a file-checksum manifest and an actual Chrome capture with fictional orders. No npm installation or inbox connection is required. Data remains in that browser profile.
+
+The ZIP was downloaded back and independently matched the tested archive (SHA-256: `505ff5b7d6d6ca7a0163ede641f6da7fb56c3e4cde6c0915231ad0d915ef1de4`). See its [distribution record](https://github.com/Jacob-Met/returnby/tree/a637cd465c26e2d6a4729a7e07e162f70e9f2b83/downloads) and [source fix](https://github.com/Jacob-Met/returnby/pull/83). This is a downloadable preview, **not** a hosted website or a formal GitHub Release; the connected Release API refused write access. Node 22/Chrome 156 on Linux were exercised, while other operating systems and browsers were not independently run for this package.
+
 ## Privacy
 
 The original pasted email is not sent or persisted. The user must review and save fields; only merchant, order number, total, order date, return-window days and timestamps are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
