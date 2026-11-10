@@ -36,6 +36,7 @@ export function bindTripDeadlineHandoff(dependencies: {
     const snapshot = dependencies.getSnapshot();
     const matches = snapshot ? ordersForDeadline(snapshot.orders, deadline!) : [];
     const pending = matches.filter(order => !dependencies.selected.has(order.id));
+    panel.classList.toggle('is-added', matches.length > 0 && pending.length === 0);
     rows.replaceChildren();
     for (const order of matches) {
       const row = document.createElement('li');
@@ -64,7 +65,7 @@ export function bindTripDeadlineHandoff(dependencies: {
     update();
     const packing = document.getElementById('packing-title');
     packing?.focus({ preventScroll: true });
-    packing?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    packing?.scrollIntoView({ block: 'start', behavior: 'auto' });
   });
   return update;
 }
