@@ -1,5 +1,13 @@
 # ReturnBy
 
+## Current runnable release — exported .eml confirmation import (2026-11-10)
+
+**[Download ReturnBy with local .eml support](https://github.com/Jacob-Met/returnby/releases/download/returnby-eml-2026-11-10/ReturnBy-v0.2.0-browser.zip)** — [release notes and source pin](https://github.com/Jacob-Met/returnby/releases/tag/returnby-eml-2026-11-10).
+
+This prerelease is built from [merged PR #87](https://github.com/Jacob-Met/returnby/pull/87), commit `dd21f4feadba23b3b48d58a13d4c4e66ee0ffe3b`. SHA-256: `957648cce351f8cd17f94e8a78a18bd690cc218b431b7bcc62f2749949cb2d18`. Extract the ZIP; with Python 3 installed, run `Start ReturnBy.cmd` (Windows), `Start ReturnBy.command` (macOS), or `./Start ReturnBy.sh` (Linux), then open `http://127.0.0.1:8769/`. The original message stays in browser memory and approved fields remain in local browser storage; no inbox connection or network upload is used.
+
+The Linux build passed 469 unit tests and the extracted distribution passed seven Chrome browser groups, including real `.eml` selection, approval and saving, plus HTML-only refusal. The downloadable ZIP was fetched from GitHub and matched the tested archive byte-for-byte. Windows and macOS launchers were packaged but not independently exercised. This is a versioned pre-release, not a live service.
+
 ## Download the multi-confirmation browser preview — 2026-11-10
 
 **[Download the new multi-confirmation ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/c908f9c8176554afa1aba8c672ad07042156d637/downloads/returnby-browser-2026-11-10-batch-intake.zip)** — [package checksum and launch notes](https://github.com/Jacob-Met/returnby/tree/c908f9c8176554afa1aba8c672ad07042156d637/downloads). SHA-256: `23a77516a3c75ffc0a22b1951be6f92613e1e1e76e575ecda161a7263df3d86c`.
