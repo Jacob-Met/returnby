@@ -18,3 +18,9 @@
 .edit-feedback { color: #f0b084; font-size: 12px; line-height: 1.6; }
 .edit-feedback:empty { display: none; }
 @media (max-width: 440px) { .edit-dialog { padding: 18px; } .edit-fields { grid-template-columns: minmax(0, 1fr); gap: 12px; } .edit-dates { grid-template-columns: minmax(0, 1fr); } }
+
+#manual-form > label { display: grid; gap: 6px; margin: 14px 0; color: var(--muted); font: 11px var(--mono); }
+#manual-form input { width: 100%; min-width: 0; padding: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font: 16px var(--mono); }
+#manual-form > p { font-size: 13px; line-height: 1.5; }
+
+#manual-form .list-note { color: var(--muted); }

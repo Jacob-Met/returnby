@@ -1,0 +1,22 @@
+[
+  {
+    "width": 1440,
+    "manualReview": true,
+    "closeResume": true,
+    "writeRefusalRetry": true,
+    "persistedReload": true,
+    "calendarDeadline": "2026-11-24",
+    "separateEmailDraft": true,
+    "noOverflow": true
+  },
+  {
+    "width": 390,
+    "manualReview": true,
+    "closeResume": true,
+    "writeRefusalRetry": true,
+    "persistedReload": true,
+    "calendarDeadline": "2026-11-24",
+    "separateEmailDraft": true,
+    "noOverflow": true
+  }
+]
