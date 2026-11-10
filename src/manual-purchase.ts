@@ -1,3 +1,4 @@
+import { bindManualDraftRecovery } from './manual-draft-recovery';
 import { reviewDuplicateIntake } from './duplicate-intake';
 import { previewEdit, EditError, type EditDraft } from './edit';
 import type { Order } from './store';
@@ -22,6 +23,7 @@ export function bindManualPurchase(options: { read: () => Order[] | null; commit
     try { deadline.textContent = 'Return by ' + manualPurchase(draft(), 'preview', '2000-01-01T00:00:00Z').due; }
     catch { deadline.textContent = 'Enter a store, valid purchase date and whole-day return window to calculate the deadline.'; }
   };
+  const recovery = bindManualDraftRecovery(form, open, refresh);
   form.addEventListener('input', refresh);
   open.addEventListener('click', () => { dialog.showModal(); });
   document.querySelector('#manual-close')!.addEventListener('click', () => dialog.close());
@@ -33,7 +35,7 @@ export function bindManualPurchase(options: { read: () => Order[] | null; commit
       const current = reviewDuplicateIntake(result.order, options.read, message => window.confirm(message));
       if (!current) return;
       if (!options.commit([...current, result.order])) throw new Error("The purchase wasn't saved. Your draft is still here; check browser storage and try again.");
-      form.reset(); refresh(); dialog.close();
+      recovery.clear(); form.reset(); refresh(); dialog.close();
       const feedback = document.querySelector('#edit-feedback');
       if (feedback) feedback.textContent = result.order.merchant + ' saved. Return by ' + result.due + '.';
     } catch (cause) {

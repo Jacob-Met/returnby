@@ -32,7 +32,7 @@ export function bindIntakeDeadline(form: HTMLFormElement): () => void {
     const days = form.querySelector<HTMLInputElement>('[name="windowDays"]');
     const clock = form.querySelector<HTMLInputElement>('[name="windowStartDate"]');
     if (!output || !date || !days) return;
-    const message = intakeDeadlineText(date.validity.valid ? date.value : '', days.validity.valid ? days.value : '', clock && !clock.validity.valid ? 'invalid' : clock?.value ?? '');
+    const message = form.dataset?.deliveryReview === 'yes' && !clock?.value ? 'Deadline awaiting your confirmed delivery clock start. No reminder will be saved yet.' : intakeDeadlineText(date.validity.valid ? date.value : '', days.validity.valid ? days.value : '', clock && !clock.validity.valid ? 'invalid' : clock?.value ?? '');
     if (output.textContent !== message) output.textContent = message;
   };
   const changed = (event: Event) => {
