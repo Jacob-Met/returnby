@@ -7,6 +7,7 @@ export function loadingFixture(html, raw = null, readFailures = 0) {
   const writes = [];
   app.globals.localStorage = {
     getItem(key) {
+      if (key === 'returnby.trip-plan.v1') return null;
       if (key !== 'returnby.v1') throw Error('Unexpected storage key');
       reads++;
       if (readsLeft > 0) { readsLeft--; throw Error('Authored storage read refusal'); }
