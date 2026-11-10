@@ -1,3 +1,5 @@
+import { bindKnownDeadlines } from './known-deadline';
+import './known-deadline.css';
 import { bindIntakeDeparture } from './intake-departure';
 import { bindRefunds, renderRefunds } from './refund-ui';
 import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
@@ -334,3 +336,5 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRe
 });
 
 bindSavedReturnsCsv(read);
+
+bindKnownDeadlines();
