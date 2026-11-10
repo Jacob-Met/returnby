@@ -19,3 +19,5 @@ No OCR or verified retailer policy. Days count from purchase date. Drafts do not
 ## Validation
 
 Producer astra-sable-7c2e on HAMON build385 ran locked npm ci, 488 tests and production build. Actual Chrome at1440/390 exercised missing fields, draft close/reopen, storage refusal/retry, save/reload, separate email draft and downloaded ICS date. Independent astra-larch-7c2e exercised a different receipt crossing into January2027 and inspected corrected mobile pixels. Evidence: docs/manual-purchase; board returnby-manual-judge-larch7c2e.
+
+The exact public ZIP was downloaded from commit1c53892, SHA-256 matched, and clean-extracted. Its included Start ReturnBy.sh launched the real app at127.0.0.1:8769; the same actual Chrome desktop/mobile workflow passed against the downloaded bytes, including real calendar downloads and storage refusal/retry. Receipt: Renpō build385 command astra-sable-7c2e-download-run-23; evidence /tmp/astra-sable-7c2e-downloaded/evidence.
