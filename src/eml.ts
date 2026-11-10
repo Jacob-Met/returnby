@@ -1,4 +1,5 @@
-/** Local, conservative MIME text/plain reader for exported .eml confirmations.
+import { htmlReceiptText } from './html-receipt';
+/** Local, conservative MIME receipt text reader for exported .eml confirmations.
  * No HTML rendering, attachments, network access or persistence. */
 export class EmlImportError extends Error {
   constructor(message: string) { super(message); this.name = 'EmlImportError'; }
@@ -93,7 +94,7 @@ function multipart(body: string, boundary: string): string[] {
   return parts;
 }
 
-function extract(part: string, depth = 0): string | null {
+function extract(part: string, wanted: 'text/plain' | 'text/html', depth = 0): string | null {
   if (depth > 8) throw new EmlImportError('Too many nested MIME sections.');
   const { headers, body } = headersAndBody(part);
   const contentType = headers.get('content-type') || 'text/plain; charset=utf-8';
@@ -105,21 +106,22 @@ function extract(part: string, depth = 0): string | null {
     const boundary = parameter(contentType, 'boundary');
     if (!boundary) throw new EmlImportError('Multipart email is missing a boundary.');
     for (const child of multipart(body, boundary)) {
-      const text = extract(child, depth + 1);
+      const text = extract(child, wanted, depth + 1);
       if (text?.trim()) return text;
     }
     return null;
   }
-  if (mime !== 'text/plain') return null;
+  if (mime !== wanted) return null;
   const bytes = transferBytes(body, headers.get('content-transfer-encoding') || '7bit');
   const text = decode(bytes, parameter(contentType, 'charset') || 'us-ascii').trim();
   if (text.includes('\u0000')) throw new EmlImportError('Email text contains null bytes.');
-  return text || null;
+  return (wanted === 'text/html' ? htmlReceiptText(text) : text) || null;
 }
 
 export function extractEmlPlainText(bytes: Uint8Array): string {
   if (!bytes.length || bytes.length > 102400) throw new EmlImportError('Choose an .eml file up to 100 KiB.');
-  const text = extract(rawBytes(bytes));
-  if (!text) throw new EmlImportError('No plain-text body found. HTML-only messages and attachments are not imported; paste the confirmation text instead.');
+  const raw = rawBytes(bytes);
+  const text = extract(raw, 'text/plain') || extract(raw, 'text/html');
+  if (!text) throw new EmlImportError('No readable email body found. Attachments and hidden HTML are not imported; paste the confirmation text instead.');
   return text;
 }

@@ -59,7 +59,7 @@ const emlFile = fixture('exported.eml',
   '--emails\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Transfer-Encoding: quoted-printable\r\n\r\n' +
   'From: Contoso\r\nOrder #MAIL-455\r\nOrder date: October 3, 2026\r\nTotal: $34.50\r\n' +
   '--emails\r\nContent-Type: text/html\r\n\r\n<div>Wrong order</div>\r\n--emails--\r\n');
-const htmlOnlyEml = fixture('html-only.eml', 'From: receipts@example.test\r\nContent-Type: text/html\r\n\r\n<b>HTML is not accepted</b>');
+const htmlOnlyEml = fixture('html-only.eml', 'From: receipts@example.test\r\nContent-Type: text/html\r\n\r\n<script>hidden nonreceipt</script>');
 const bFile = fixture('second.txt', secondEmail);
 const heldFile = fixture('held.txt', 'Unparsed confirmation. Keep this raw note for later review.');
 const badFile = fixture('invalid-utf8.txt', Buffer.from([0xff, 0xfe, 0xff]));
@@ -392,10 +392,10 @@ try {
   await htmlPage.selectFiles([emlFile, htmlOnlyEml]);
   await htmlPage.wait('!document.querySelector("#batch-error").hidden');
   assert.equal(await htmlPage.evaluate('document.querySelectorAll(".batch-card").length'), 0);
-  assert.equal(await htmlPage.evaluate('document.querySelector("#batch-error").textContent.includes("No plain-text body")'), true);
+  assert.equal(await htmlPage.evaluate('document.querySelector("#batch-error").textContent.includes("No readable email body")'), true);
   assert.deepEqual(JSON.parse(await saved(htmlPage)), []);
   await htmlPage.close();
-  mark('Real Chrome .eml selection imports only reviewed plain text; HTML-only selection refuses entire batch without writes');
+  mark('Real Chrome .eml selection imports only reviewed plain text; unreadable HTML selection refuses entire batch without writes');
 
   currentGroup = 'edit-invalidation-and-phone';
   const phone = await openPage('batch-intake.html', 390, 844);
