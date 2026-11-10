@@ -1,5 +1,12 @@
 # ReturnBy
 
+## Current release — manual purchase recovery
+
+[Download ReturnBy](https://github.com/Jacob-Met/returnby/releases/download/returnby-manual-recovery-2026-11-10/ReturnBy-manual-recovery-e837e1b-browser.zip) · [launch steps, exact source and limitations](https://github.com/Jacob-Met/returnby/releases/tag/returnby-manual-recovery-2026-11-10).
+
+Unfinished manual receipt details survive reload in the same tab. Resume, review, then deliberately Save or Discard. Current saved purchases are preserved, including purchases added in another tab. Raw email remains unstored. Source e837e1bd630f685e33b8bcda9fc073071fdbc4b2; 554 tests and build passed; separate independent actual Chrome desktop/390px judgment accepted this workflow. Linux/Chrome exercised; Python 3 launchers for Windows/macOS packaged. SHA-256: 8685ef161367505b6f774cf7daaf8a878d19aa3b2229a04c32b984a0184d3703.
+
+
 ## Current GitHub Release — known return-by dates and spreadsheet export
 
 **[Download ReturnBy browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-known-date-2026-11-10/ReturnBy-v0.2.2-browser.zip)** · [release notes, exact source and screenshots](https://github.com/Jacob-Met/returnby/releases/tag/returnby-known-date-2026-11-10)

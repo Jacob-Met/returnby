@@ -10,6 +10,10 @@ Reviewed public product pages on 2026-11-10:
 
 These are inspected public product descriptions, not accounts exercised by this producer. Independent UI judgment is tracked separately.
 
+## Current recovery judgment — 2026-11-10
+
+Separate reviewer astra-kestrel-8b84a742 accepted manual recovery on e837e1b through actual desktop and 390px Chrome: six fields and deadline recovered, concurrent saved purchases retained, Save clears recovery, Discard removes only the draft, and Close/reopen retains work. The phone dialog fits and Save remains reachable through normal scrolling. This is a scoped workflow improvement, not whole-product design parity with Things. Current remaining design priorities from that judgment: clearer labels instead of tiny monospaced text, shorter repeated instructions, and saved work first when returning on a phone (active peer work).
+
 ## Ranked gaps
 
 Independent Tern84b2 found a shopper-critical numeric-date error: 05/11/2026 was silently interpreted in US order. This build leaves two-valid-interpretation dates explicitly unresolved, names both dates in single and batch review, and requires the shopper to choose before saving. Unambiguous day-first/month-first dates remain recognized. Historical saved dates are not automatically rewritten; users should review any earlier ambiguous receipt.
