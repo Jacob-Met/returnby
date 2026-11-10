@@ -3,3 +3,6 @@ dist/
 /devpost/learner-profile.md
 .env
 .env.*
+
+# Generated offline receipt-reader assets; rebuilt from lockfile.
+public/receipt-ocr/

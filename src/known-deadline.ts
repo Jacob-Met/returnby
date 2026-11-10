@@ -62,6 +62,7 @@ export function bindKnownDeadlines(): void {
     }, true);
     const clear = () => { active = false; date.value = ''; message.textContent = ''; date.removeAttribute('aria-invalid'); section.open = false; };
     form.addEventListener('reset', clear);
+    form.addEventListener('returnby:purchase-replaced', clear);
     form.closest('dialog')?.addEventListener('close', clear);
   }
 }

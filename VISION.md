@@ -2,6 +2,12 @@
 
 ReturnBy is for people who need to remember return deadlines across stores, including purchases on paper receipts, without connecting their inbox. Success is a reviewed purchase that can be found next week, acted on before its deadline, and carried into a calendar or a printable trip list.
 
+## Receipt-photo intake
+
+The existing manual form now reads a JPG, PNG or WebP locally and keeps the source beside editable suggestions. A checked retailer window is still required; ambiguous dates remain blank. Phone Photo/Details controls and source zoom make correction practical. The complete package includes its English reader and does not need an OCR service. [Use, limits and reproduction](docs/RECEIPT_PHOTOS.md).
+
+Independent astra-forge-9a4d accepted an unfamiliar printed layout, cancellation and missing-worker recovery. Independent astra-cairn-9f4b used the same untouched crumpled real receipt before and after correction: a survey banner no longer replaces its printed store header, and its amount-before-total layout is read. The judge inspected the visible warning and 300% phone zoom. These are scoped improvements, not a general OCR accuracy result. Ranked photo gaps: faint or perspective-distorted printing; additional languages and formats; an explicit receipt archive if shoppers need proof after intake. Images are not retained with saved purchases.
+
 ## Current named-trip candidate and independent continuity verdict
 
 Separate judge astra-kestrel-b6a904df3c ACCEPTED pending continuity candidate8cb3cc9 (merged0ab8ecc) through repeated keep/reload/resume and explicit save at1440/390px. The confirmed clock survives; cancelled replacement preserves new work. The judge also exercised the downloaded b16 formal release. [Results and real images](docs/intake-continuity-judgment/README.md#follow-up-independent-courses). These are scoped verdicts, not cumulative UI approval.
@@ -52,9 +58,9 @@ Independent Tern84b2 found a shopper-critical numeric-date error: 05/11/2026 was
 
 ## Current build and improvement
 
-The README links downloadable source-pinned builds. Manual receipt intake adds a direct blank form for store, purchase date and checked return window, with optional receipt number and total. It shows the computed deadline before saving; incomplete entries and storage failures keep the draft. Existing email drafts stay separate. Saved purchases use the normal tracker, edit, calendar, backup and trip capabilities. No OCR, purchase synchronization, automatic retailer verification or logistics is claimed.
+The README links downloadable source-pinned builds. Manual receipt intake adds a direct blank form for store, purchase date and checked return window, with optional receipt number and total. It shows the computed deadline before saving; incomplete entries and storage failures keep the draft. Existing email drafts stay separate. Saved purchases use the normal tracker, edit, calendar, backup and trip capabilities. Local English receipt-photo suggestions also feed this same reviewed form. Purchase synchronization, automatic retailer verification and logistics are not provided.
 
-The app stays local. Unfinished manual purchase fields recover after reload in the same tab until Save or Discard; raw email remains only in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups include the saved trip for separately reviewed restoration. Downloaded trip sheets include the selected orders, packing checks and notes.
+The app stays local. Unfinished manual purchase fields recover after reload in the same tab until Save or Discard; raw email, photos and recognized receipt text remain only in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups include the saved trip for separately reviewed restoration. Downloaded trip sheets include the selected orders, packing checks and notes.
 
 ## Trip planning, 2026-11-10
 

@@ -19,6 +19,10 @@ def package_native(root, static, out, version, source, platforms):
         candidate = root / relative
         if candidate.is_file():
             notices.append(relative + "\n\n" + candidate.read_text())
+    for relative in ("receipt-ocr/ABOUT.txt", "receipt-ocr/LICENSE-tesseract.js", "receipt-ocr/LICENSE-tesseract.js-core"):
+        candidate = static / relative
+        if candidate.is_file():
+            notices.append(relative + "\n\n" + candidate.read_text())
     for platform in platforms:
         system, arch = platform.split("-")
         folder = "ReturnBy-v" + version + "-" + platform
