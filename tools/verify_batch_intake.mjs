@@ -54,6 +54,12 @@ const fixture = (name, text) => {
   return filename;
 };
 const aFile = fixture('first.txt', email);
+const emlFile = fixture('exported.eml',
+  'From: receipts@example.test\r\nSubject: Order receipt\r\nMIME-Version: 1.0\r\nContent-Type: multipart/alternative; boundary="emails"\r\n\r\n' +
+  '--emails\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Transfer-Encoding: quoted-printable\r\n\r\n' +
+  'From: Contoso\r\nOrder #MAIL-455\r\nOrder date: October 3, 2026\r\nTotal: $34.50\r\n' +
+  '--emails\r\nContent-Type: text/html\r\n\r\n<div>Wrong order</div>\r\n--emails--\r\n');
+const htmlOnlyEml = fixture('html-only.eml', 'From: receipts@example.test\r\nContent-Type: text/html\r\n\r\n<b>HTML is not accepted</b>');
 const bFile = fixture('second.txt', secondEmail);
 const heldFile = fixture('held.txt', 'Unparsed confirmation. Keep this raw note for later review.');
 const badFile = fixture('invalid-utf8.txt', Buffer.from([0xff, 0xfe, 0xff]));
@@ -366,6 +372,30 @@ try {
   assert.equal(await saved(invalid), invalidBefore);
   await invalid.close();
   mark('Unreadable or oversize selected files preserve existing work; late file completion cannot revive a discarded batch');
+
+  currentGroup = 'exported-eml-real-browser';
+  const emlPage = await openPage();
+  await seed(emlPage, []);
+  await emlPage.selectFiles([emlFile]);
+  await emlPage.wait('document.querySelectorAll(".batch-card").length===1');
+  assert.equal(await emlPage.evaluate('document.querySelector("[data-field=orderNo]").value'), 'MAIL-455');
+  assert.equal(await emlPage.evaluate('document.querySelector(".batch-card details pre").textContent.includes("receipts@example.test")'), false);
+  assert.equal(await emlPage.evaluate('document.querySelector(".batch-card details pre").textContent.includes("Wrong order")'), false);
+  await reviewOne(emlPage);
+  await emlPage.click('#batch-preview');
+  await emlPage.click('#batch-save');
+  assert.equal(JSON.parse(await saved(emlPage))[0].orderNo, 'MAIL-455');
+  await emlPage.capture('eml-import-saved.png');
+  await emlPage.close();
+  const htmlPage = await openPage();
+  await seed(htmlPage, []);
+  await htmlPage.selectFiles([emlFile, htmlOnlyEml]);
+  await htmlPage.wait('!document.querySelector("#batch-error").hidden');
+  assert.equal(await htmlPage.evaluate('document.querySelectorAll(".batch-card").length'), 0);
+  assert.equal(await htmlPage.evaluate('document.querySelector("#batch-error").textContent.includes("No plain-text body")'), true);
+  assert.deepEqual(JSON.parse(await saved(htmlPage)), []);
+  await htmlPage.close();
+  mark('Real Chrome .eml selection imports only reviewed plain text; HTML-only selection refuses entire batch without writes');
 
   currentGroup = 'edit-invalidation-and-phone';
   const phone = await openPage('batch-intake.html', 390, 844);
