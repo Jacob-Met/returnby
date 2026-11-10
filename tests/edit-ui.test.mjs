@@ -13,6 +13,7 @@ function setup() {
   const get = id => app.elements.get(id);
   app.globals.document.querySelectorAll = () => [];
   for (const element of app.elements.values()) element.removeAttribute = key => { delete element.attributes[key]; };
+  get('edit-form').dispatchEvent = event => { get('edit-form').listeners.get(event.type)?.(event); return true; };
   const dialog = get('edit-dialog');
   dialog.open = false;
   dialog.showModal = () => { dialog.open = true; };

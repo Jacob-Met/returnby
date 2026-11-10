@@ -1,5 +1,5 @@
 const KEY = 'returnby.manual-draft.v1';
-export const manualDraftFields = ['merchant', 'orderDate', 'windowStartDate', 'windowDays', 'orderNo', 'total'] as const;
+export const manualDraftFields = ['merchant', 'orderDate', 'windowStartDate', 'fixedDeadline', 'windowDays', 'orderNo', 'total'] as const;
 export type ManualDraft = Record<typeof manualDraftFields[number], string>;
 
 export function decodeManualDraft(raw: string | null): ManualDraft | null {
@@ -9,6 +9,7 @@ export function decodeManualDraft(raw: string | null): ManualDraft | null {
   const record = value as Record<string, unknown>;
   if (record.version !== 1 || !record.fields || typeof record.fields !== 'object' || Array.isArray(record.fields)) throw new Error('Invalid draft');
   const fields = record.fields as Record<string, unknown>;
+  if (fields.fixedDeadline === undefined) fields.fixedDeadline = ''; // Legacy drafts never implied an exact-date rule.
   if (Object.keys(fields).length !== manualDraftFields.length || manualDraftFields.some(name => typeof fields[name] !== 'string' || (fields[name] as string).length > 10000)) throw new Error('Invalid draft');
   return fields as ManualDraft;
 }

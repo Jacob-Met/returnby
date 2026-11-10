@@ -86,7 +86,9 @@ export function parseSavedOrders(raw: string | null): SavedSnapshot {
     if (windowStartDate !== undefined && !isSupportedDate(windowStartDate)) {
       badRow(index, 'has an invalid confirmed return-clock start date');
     }
+    const fixedDeadline = row.fixedDeadline;
     const windowDays = row.windowDays;
+    if (fixedDeadline !== undefined && (!isSupportedDate(fixedDeadline) || fixedDeadline !== returnDueDate({orderDate,windowStartDate:windowStartDate as string|undefined,windowDays:windowDays as number}))) badRow(index,'has an inconsistent fixed deadline');
     if (typeof windowDays !== 'number' || !Number.isSafeInteger(windowDays) || windowDays < 1
       || !isSupportedDate(returnDueDate({ orderDate, windowStartDate: windowStartDate as string | undefined, windowDays }))) {
       badRow(index, 'has a return window this tracker cannot calculate');
@@ -101,7 +103,7 @@ export function parseSavedOrders(raw: string | null): SavedSnapshot {
       completedAt: row.completedAt as string,
       ...(row.completionKind === undefined ? {} : { completionKind: row.completionKind as Order['completionKind'] }),
     };
-    return Object.freeze({ id, merchant, orderNo, total, orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays, windowSource, createdAt, ...completion });
+    return Object.freeze({ id, merchant, orderNo, total, orderDate, ...(windowStartDate ? { windowStartDate } : {}), ...(fixedDeadline ? { fixedDeadline: fixedDeadline as string } : {}), windowDays, windowSource, createdAt, ...completion });
   });
   return Object.freeze({ raw, orders: Object.freeze(orders) });
 }
@@ -171,7 +173,7 @@ export function renderChecklist(checklist: TripChecklist): string {
       + '<div><dt>Saved order amount</dt><dd>' + saved(order.total) + '</dd></div>'
       + '<div><dt>Return clock starts</dt><dd>' + (order.windowStartDate ? escapeHtml(order.windowStartDate) + ' · user-confirmed' : escapeHtml(order.orderDate) + ' · order date') + '</dd></div>'
       + '<div><dt>Calculated deadline</dt><dd>' + escapeHtml(due) + '</dd></div>'
-      + '<div><dt>Saved window</dt><dd>' + order.windowDays + ' days · ' + sourceLabel(order.windowSource) + '</dd></div></dl>'
+      + '<div><dt>Saved window</dt><dd>' + (order.fixedDeadline ? 'Fixed retailer deadline · '+escapeHtml(order.fixedDeadline) : order.windowDays + ' days · ' + sourceLabel(order.windowSource)) + '</dd></div></dl>'
       + '<p class="sheet-timing">' + escapeHtml(timing) + '</p>'
       + '<ul class="packing-checks"><li>' + packingMark(checklist.packing?.[order.id]?.packed) + 'Item, tags and packaging ready</li>'
       + '<li>' + packingMark(checklist.packing?.[order.id]?.receiptReady) + 'Receipt or order confirmation ready</li>'

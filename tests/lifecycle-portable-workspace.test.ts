@@ -1,3 +1,6 @@
+import { editDraft, previewEdit } from '../src/edit';
+import { planSingleCalendar } from '../src/calendar-batch';
+import { parseSavedOrders } from '../src/trip-checklist';
 import { expect, test } from 'vitest';
 import { exportBackup, parseBackupDocument } from '../src/backup';
 import { planCompletion } from '../src/completion';
@@ -50,4 +53,18 @@ test('pre-release outcome backup remains closed and unsupported future formats f
   expect(parseBackupDocument(JSON.stringify(earlier)).orders).toEqual([closed]);
   earlier.version=6;
   expect(()=>parseBackupDocument(JSON.stringify(earlier))).toThrow('not supported');
+});
+
+test('a fixed retailer date survives History, backup and a corrected clock before reopening', () => {
+  const fixed: Order = {...coat,windowStartDate:'2026-11-01',windowDays:60,fixedDeadline:'2026-12-31'};
+  const closed=planCompletion([fixed],fixed,'returned',stamp).order;
+  const restored=parseBackupDocument(exportBackup([closed],stamp)).orders[0];
+  const edited=previewEdit(restored,{...editDraft(restored),windowStartDate:'2026-11-08'});
+  expect(edited.due).toBe('2026-12-31');
+  expect(edited.order).toMatchObject({completionKind:'returned',completedAt:stamp.toISOString(),
+    fixedDeadline:'2026-12-31',windowDays:53,windowStartDate:'2026-11-08'});
+  expect(parseSavedOrders(JSON.stringify([edited.order])).orders[0].fixedDeadline).toBe('2026-12-31');
+  const reopened=planCompletion([edited.order],edited.order,'reopen',stamp).order;
+  expect(reopened.fixedDeadline).toBe('2026-12-31');
+  expect(planSingleCalendar([reopened],reopened,stamp).content).toContain('DTSTART;VALUE=DATE:20261231');
 });

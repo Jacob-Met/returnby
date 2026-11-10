@@ -74,7 +74,9 @@
 </article>
 <aside id="saved-returns" class="ledger-panel" aria-labelledby="returns-title">
 <header class="panel-heading">
-<h2 id="returns-title" tabindex="-1"><span id="tracker-title">Active returns</span></h2>
+<h2 id="returns-title" tabindex="-1">
+<span id="tracker-title">Active returns</span>
+</h2>
 <p id="tracker-description">Your next deadlines, soonest first.</p>
 </header>
 <div id="tracker-summary" class="summary-grid">
@@ -279,6 +281,7 @@
   <h2 id="edit-title">Edit saved return</h2>
   <p id="edit-intro" class="edit-intro">Correct the details, review the new deadline, then save. Confirm the return window with the retailer.</p>
   <form id="edit-form" novalidate>
+<input type="hidden" id="edit-fixed-deadline" name="fixedDeadline">
     <div class="edit-fields">
       <label for="edit-merchant">Store<input id="edit-merchant" name="merchant" type="text" maxlength="4096" autocomplete="off">
 </label>
@@ -395,6 +398,7 @@
 </script>
 <dialog id="manual-dialog" class="edit-dialog" aria-labelledby="manual-title">
     <form id="manual-form" novalidate>
+<input type="hidden" name="fixedDeadline">
       <h2 id="manual-title">Add a purchase from your receipt</h2>
       <p id="manual-recovery" class="src" role="status">
 </p>

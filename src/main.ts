@@ -76,7 +76,7 @@ let completionReviewed: Order | undefined;
 let reviewedIntake = '';
 const reviewSignature = () => {
   const fields = new FormData(preview);
-  return JSON.stringify(['merchant', 'orderDate', 'orderNo', 'total', 'windowStartDate', 'windowDays']
+  return JSON.stringify(['merchant', 'orderDate', 'orderNo', 'total', 'windowStartDate', 'fixedDeadline', 'windowDays']
     .map(name => [name, fields.get(name) ?? '']));
 };
 const deskNavigation = bindDeskNavigation();
@@ -360,7 +360,7 @@ function render() {
   }
   list.innerHTML = rows.map(({ o, due, left, progress }) => {
     const label = left < 0 ? 'PAST DUE' : left <= 2 ? 'URGENT' : left <= 7 ? 'DUE SOON' : 'ON TRACK';
-    const policy = o.windowSource === 'policy' ? 'STORE POLICY / ' + o.windowDays + ' DAYS' : o.windowSource === 'default' ? o.windowDays + '-DAY FALLBACK' : 'YOUR RULE / ' + o.windowDays + ' DAYS';
+    const policy = o.fixedDeadline ? 'FIXED DATE / CONFIRMED BY YOU' : o.windowSource === 'policy' ? 'STORE POLICY / ' + o.windowDays + ' DAYS' : o.windowSource === 'default' ? o.windowDays + '-DAY FALLBACK' : 'YOUR RULE / ' + o.windowDays + ' DAYS';
     const count = left < 0 ? 'EXPIRED ' + -left + 'D' : left + ' DAYS LEFT';
     return '<li class="card ' + status(left) + '" data-order-id="' + h(o.id) + '" tabindex="-1"><div class="order-head"><div><strong>' + h(o.merchant || 'Unknown store') + '</strong>'
       + (o.orderNo ? ' <span class="mono">#' + h(o.orderNo) + '</span>' : '') + '</div><span class="status-tag">' + label + '</span></div>'

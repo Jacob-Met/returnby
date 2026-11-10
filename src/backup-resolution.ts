@@ -29,7 +29,7 @@ export function planResolvedImport(current: unknown, incoming: unknown, choices:
 export type ResolvedImportPlan = ReturnType<typeof planResolvedImport>;
 
 const labels: Record<string,string> = {
-  completionKind: 'Return outcome', completedAt: 'Outcome recorded',
+  fixedDeadline: 'Confirmed return-by date', completionKind: 'Return outcome', completedAt: 'Outcome recorded',
   merchant: 'Store', orderNo: 'Order number', total: 'Purchase total',
   orderDate: 'Purchase date', windowStartDate: 'Confirmed return clock starts',
   windowDays: 'Return window (days)', windowSource: 'Return rule source',

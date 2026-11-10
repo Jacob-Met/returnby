@@ -4,6 +4,7 @@ import { hasValidCompletion } from './completion';
 export type Order = {
   refundState?: 'awaiting' | 'received'; refundAmount?: string; refundFollowUpDate?: string; refundNote?: string; refundUpdatedAt?: string;
   id: string; merchant: string; orderNo?: string; total?: string;
+  fixedDeadline?: string;
   orderDate: string; windowStartDate?: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
   completedAt?: string;
   completionKind?: 'returned' | 'kept';
@@ -15,6 +16,7 @@ const isOrder = (value: unknown): value is Order => {
   return ['id', 'merchant', 'orderDate', 'createdAt'].every((key) => typeof o[key] === 'string')
     && typeof o.windowDays === 'number' && Number.isFinite(o.windowDays)
     && (o.windowSource === 'policy' || o.windowSource === 'default' || o.windowSource === 'user')
+    && (o.fixedDeadline === undefined || typeof o.fixedDeadline === 'string')
     && (o.windowStartDate === undefined || typeof o.windowStartDate === 'string')
     && (o.orderNo === undefined || typeof o.orderNo === 'string')
     && (o.total === undefined || typeof o.total === 'string')
