@@ -74,7 +74,7 @@
 <footer class="footer"><p><strong>PRIVATE BY DESIGN.</strong> The pasted email is not stored or sent. Saved purchases stay on this device. Unfinished manual purchase details are recovered in this tab until you save or discard them.</p><button id="clear" class="button button-link">Clear saved returns</button></footer></div><dialog id="edit-dialog" class="edit-dialog" aria-labelledby="edit-title" aria-describedby="edit-intro">
   <h2 id="edit-title">Edit saved return</h2>
   <p id="edit-intro" class="edit-intro">Correct the details, review the new deadline, then save. Confirm the return window with the retailer.</p>
-  <form id="edit-form" novalidate>
+  <form id="edit-form" novalidate><input type="hidden" id="edit-fixed-deadline" name="fixedDeadline">
     <div class="edit-fields">
       <label for="edit-merchant">Store<input id="edit-merchant" name="merchant" type="text" maxlength="4096" autocomplete="off"></label>
       <label for="edit-order-date">Order date<input id="edit-order-date" name="orderDate" type="date" min="1000-01-01" max="9999-12-31" required></label>
@@ -112,7 +112,7 @@
 <div class="calendar-dialog-actions"><button id="calendar-download" class="button button-primary" type="submit" disabled>Download selected reminders</button><button id="calendar-cancel" class="button button-link" type="button">Cancel</button></div>
 </form></dialog>
 <script type="module" src="/src/main.ts"></script><script type="module" src="/src/deadline-overview-entry.ts"></script><dialog id="manual-dialog" class="edit-dialog" aria-labelledby="manual-title">
-    <form id="manual-form" novalidate>
+    <form id="manual-form" novalidate><input type="hidden" name="fixedDeadline">
       <h2 id="manual-title">Add a purchase from your receipt</h2>
       <p id="manual-recovery" class="src" role="status"></p>
       <button id="manual-discard" class="button button-link" type="button" hidden>Discard unfinished purchase</button>

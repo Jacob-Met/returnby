@@ -243,10 +243,10 @@ function addOrderOption(order: SavedSnapshot['orders'][number]): void {
   ref.textContent = 'Order ' + (order.orderNo || 'number not recorded') + (order.total ? ' · ' + order.total : '');
   const date = document.createElement('span');
   date.className = 'choice-date';
-  date.textContent = 'Calculated deadline · ' + returnDueDate(order);
+  date.textContent = (order.fixedDeadline ? 'Confirmed fixed deadline · ' : 'Calculated deadline · ') + returnDueDate(order);
   const source = document.createElement('span');
   source.className = 'choice-source';
-  source.textContent = sourceLabel(order.windowSource) + ' · ' + order.windowDays + ' days';
+  source.textContent = order.fixedDeadline ? 'Exact date confirmed by you' : sourceLabel(order.windowSource) + ' · ' + order.windowDays + ' days';
   body.append(heading, ref, date, source);
   label.append(check, body);
   check.addEventListener('change', () => {

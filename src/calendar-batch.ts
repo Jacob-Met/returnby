@@ -50,7 +50,8 @@ function reminder(order: Order): CalendarReminder {
   if (!isCalendarDate(due) || !isCalendarDate(dueDate(due, 1))) {
     throw new CalendarBatchError('The calendar deadline must be before 9999-12-31.');
   }
-  return { id: order.id, merchant: order.merchant, orderNo: order.orderNo, due, ...(order.windowStartDate ? {confirmedStartDate: order.windowStartDate} : {}) };
+  if (order.fixedDeadline !== undefined && order.fixedDeadline !== due) throw new CalendarBatchError('Review the fixed deadline before exporting this return.');
+  return { ...(order.fixedDeadline ? {fixedDeadline:order.fixedDeadline} : {}), id: order.id, merchant: order.merchant, orderNo: order.orderNo, due, ...(order.windowStartDate ? {confirmedStartDate: order.windowStartDate} : {}) };
 }
 
 /** Freeze the reviewed fields. Invalid records remain visible but unselectable. */

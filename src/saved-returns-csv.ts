@@ -53,7 +53,7 @@ export function createSavedReturnsCsv(current: unknown, exportedAt = new Date())
     lines.push([
       order.id, order.merchant, order.orderNo ?? '', order.total ?? '',
       order.orderDate, order.windowDays, order.windowSource, due ?? '', returnClockStart(order) ?? '',
-      order.windowStartDate ? 'Confirmed start date' : 'Order date',
+      order.fixedDeadline ? 'Fixed retailer deadline: ' + order.fixedDeadline : order.windowStartDate ? 'Confirmed start date' : 'Order date',
       order.refundState ?? '', order.refundAmount ?? '', order.refundFollowUpDate ?? '', order.createdAt,
     ].map(cell).join(','));
   }
