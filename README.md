@@ -199,3 +199,7 @@ This monthly overview originated in the reviewed PR #20 integration branch. The 
 ## Review several confirmations
 
 From the intake panel, open **Review several order confirmations together**. Add pasted confirmations or local UTF-8 text files, correct each extracted order and select the orders you reviewed. The final preview precedes any save. Raw confirmation text and unsaved drafts stay in memory; the saved tracker is re-read to refuse changed or ambiguous orders. See [the batch intake guide](docs/BATCH_INTAKE.md) for limits and retry behavior.
+
+## Find a saved return
+
+Use **Find a saved return** above the tracker to search a store name or order number. Matching ignores case and surrounding spaces and works together with All, Due soon, and Expired. Clear search restores the current date filter. Search does not change saved records, the deadline overview, or calendar selection; the calendar dialog continues to follow the date filter and lets you review every selection.
