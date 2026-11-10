@@ -1,0 +1,203 @@
+#deadline-overview {
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  min-width: 0;
+}
+#deadline-overview [hidden] { display: none; }
+#deadline-overview-open {
+  padding: 22px 24px;
+  cursor: pointer;
+  font: 26px/1.2 var(--serif);
+  color: var(--ink);
+}
+#deadline-overview-open::marker { color: var(--copper); }
+#deadline-overview-open:focus-visible,
+#deadline-overview button:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 3px;
+}
+.overview-body { padding: 0 24px 24px; min-width: 0; }
+.overview-intro, .overview-help, #overview-month-summary,
+#overview-selected-summary, #overview-snapshot {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.overview-intro { margin-top: 0; max-width: 900px; }
+.overview-controls {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 14px 0;
+}
+.overview-controls label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font: 10px var(--mono);
+}
+#overview-month {
+  min-width: 170px;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+  font: 13px var(--mono);
+}
+#deadline-overview .button { min-height: 44px; line-height: 1.4; }
+#deadline-overview button:disabled { cursor: default; opacity: .48; }
+#overview-refresh { margin-left: auto; }
+#overview-error {
+  padding: 14px;
+  border: 1px solid var(--danger);
+  background: #fff0e9;
+  color: #84352f;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+#overview-snapshot {
+  margin: 0 0 18px;
+  padding: 12px;
+  background: var(--paper);
+}
+#overview-snapshot:empty { display: none; }
+.overview-layout {
+  display: grid;
+  grid-template-columns: minmax(340px, .9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 24px;
+}
+.overview-calendar, .overview-selection { min-width: 0; }
+#overview-month-title, #overview-selected-title {
+  margin: 0 0 8px;
+  font: 26px/1.2 var(--serif);
+  overflow-wrap: anywhere;
+}
+#overview-selected-title { font-size: 22px; }
+#overview-month-summary, #overview-selected-summary { margin: 0 0 14px; }
+.overview-weekdays, #overview-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+.overview-weekdays {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font: 10px/1.4 var(--mono);
+  text-align: center;
+}
+.overview-day {
+  min-width: 0;
+  min-height: 64px;
+  padding: 8px 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid var(--line);
+  background: #faf8f0;
+  color: var(--ink);
+  cursor: pointer;
+}
+.overview-day:hover { background: #eee9dc; }
+.overview-day[aria-pressed=true] {
+  background: #233a39;
+  border-color: #233a39;
+  color: var(--white);
+}
+.overview-day[aria-current=date] .overview-day-number {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.overview-day-number { font: 15px/1.1 var(--mono); }
+.overview-day-count {
+  font: 700 11px/1.2 var(--mono);
+  padding: 2px 5px;
+  border-radius: 12px;
+  background: #e4ece4;
+  color: #275344;
+}
+.overview-day[aria-pressed=true] .overview-day-count {
+  background: #efb07e;
+  color: #203636;
+}
+.overview-help { margin: 12px 0 0; }
+#overview-records {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.overview-record {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--green);
+  background: #faf8f0;
+}
+.overview-record-heading {
+  margin: 0;
+  font: 21px/1.3 var(--serif);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.overview-record-timing {
+  margin: 8px 0 14px;
+  color: var(--green);
+  font: 11px/1.4 var(--mono);
+}
+.overview-record-timing[data-status=soon],
+.overview-record-timing[data-status=urgent] { color: var(--danger); }
+.overview-record-timing[data-status=expired] { color: #596165; }
+.overview-record dl { margin: 0; }
+.overview-record dt {
+  margin-top: 10px;
+  color: var(--muted);
+  font: 9px/1.5 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.overview-record dd {
+  margin: 3px 0 0;
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 12px/1.6 var(--mono);
+}
+#overview-record-pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+#overview-record-page {
+  color: var(--muted);
+  font: 11px/1.6 var(--mono);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 900px) {
+  .overview-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 620px) {
+  #deadline-overview-open { padding: 18px 12px; font-size: 24px; }
+  .overview-body { padding: 0 12px 18px; }
+  .overview-controls { gap: 8px; }
+  #overview-refresh { margin-left: 0; width: 100%; }
+  .overview-weekdays, #overview-days { gap: 3px; }
+  .overview-day { min-height: 58px; }
+  .overview-record { padding: 12px; }
+}
+@media (max-width: 370px) {
+  #deadline-overview-open { padding-inline: 6px; }
+  .overview-body { padding-inline: 6px; }
+  .overview-weekdays, #overview-days { gap: 2px; }
+}

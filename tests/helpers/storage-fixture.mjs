@@ -38,14 +38,19 @@ export function storageFixture(html, initial = []) {
     setAttribute(key, value) { this.attributes[key] = value; }
     focus() { document.activeElement = this; }
     querySelector(selector) {
-      // The current intake UI reads live inputs after replacing form.innerHTML.
-      // Model the selected fields, including their browser ValidityState.
-      const name = /^\[name="(orderDate|windowDays)"\]$/.exec(selector)?.[1];
-      if (name && this.innerHTML.includes('name="' + name + '"')) {
-        return { name, value: String(this.fields[name] ?? ''), validity: { valid: true }, focus() {} };
-      }
-      if (selector === '#intake-deadline' && this.innerHTML.includes('id="intake-deadline"')) {
-        return { textContent: '' };
+      if (this.id === 'preview') {
+        if (selector === '#intake-deadline') return this.previewOutput ??= { textContent: '' };
+        const match = /^\[name="?([^"\]]+)"?\]$/.exec(selector);
+        if (match) {
+          const name = match[1];
+          const fromMarkup = [...this.innerHTML.matchAll(/<input\s+name="([^"]+)"[^>]*\svalue="([^"]*)"/g)]
+            .find(([, field]) => field === name);
+          if (!fromMarkup && !Object.hasOwn(this.fields, name)) return null;
+          // Inert inputs mirror the current rendered form and edited fixture fields.
+          // The browser-only validity flag is explicit, not silently absent.
+          const value = this.fields[name] ?? fromMarkup?.[2] ?? '';
+          return { name, value, validity: { valid: true }, focus() {} };
+        }
       }
       return { focus() {} };
     }
