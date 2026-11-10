@@ -1,5 +1,12 @@
 # ReturnBy
 
+## Current source-pinned download — preserved email review
+
+[Download ReturnBy browser ZIP](./downloads/returnby-intake-613f15f/ReturnBy-613f15f-browser.zip) · [source, launch instructions, checksum and limits](./downloads/returnby-intake-613f15f/README.md) · [desktop](./downloads/returnby-intake-613f15f/review-1440.png) · [phone](./downloads/returnby-intake-613f15f/review-390.png).
+
+Merged source613f15f adds unsaved email-review departure protection and includes current manual purchases, portable prepared trips, refund follow-up and CSV export. Extract and run the included Python3 launcher. Actual packaged Linux/Chrome entrypoint exercised at desktop and phone sizes. Browser departure warnings let you cancel leaving and retain your review; this does not provide crash recovery. Independent audience judgment is tracked separately.
+
+
 ## Current downloadable build — confirmed return-window start
 
 **[Download source-pinned ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-clock-92baeb9-browser.zip)** · [launch instructions, checksum and tested limitations](./downloads/ReturnBy-2026-11-10-clock-92baeb9.md) · [actual desktop screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-desktop.png) · [actual phone screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-mobile.png).
