@@ -39,6 +39,12 @@ const storageRetry = $<HTMLButtonElement>('#storage-retry');
 let orders: Order[] = [];
 let loadFailed = false;
 let sampleIdx = 0;
+let reviewedIntake = '';
+const reviewSignature = () => {
+  const fields = new FormData(preview);
+  return JSON.stringify(['merchant', 'orderDate', 'orderNo', 'total', 'windowStartDate', 'windowDays']
+    .map(name => [name, fields.get(name) ?? '']));
+};
 let filterMode: 'all' | 'due' | 'expired' = 'all';
 
 const loadError = "Couldn't load saved returns. Try loading again before saving, or clear saved returns to start over.";
@@ -153,6 +159,8 @@ preview.addEventListener('input', (event) => {
 });
 
 function showPreview() {
+  if (!preview.hidden && reviewedIntake !== reviewSignature() &&
+      !window.confirm('Replace your corrected review with details from the pasted receipt? Your unsaved corrections will be lost. Cancel to keep reviewing.')) return;
   const p = parse(paste.value, knownMerchants);
   const pol = lookup(p.merchant);
   const field = (name: string, label: string, val: string, ok: boolean, type = 'text') =>
@@ -176,6 +184,7 @@ function showPreview() {
   preview.hidden = false;
   refreshIntakeDeadline();
   refreshPreviewPolicy();
+  reviewedIntake = reviewSignature();
   refreshIntakeDeparture();
 }
 
@@ -264,7 +273,14 @@ search.addEventListener('input', render);
 searchClear.addEventListener('click', () => { search.value = ''; render(); search.focus(); });
 $('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);
 paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
-$('#sample').addEventListener('click', (e) => { e.preventDefault(); paste.value = samples[sampleIdx++ % samples.length]; showPreview(); });
+$('#sample').addEventListener('click', (e) => {
+  e.preventDefault();
+  if ((paste.value !== '' || !preview.hidden) &&
+      !window.confirm('Replace your unsaved receipt and review with an example? Cancel to keep your purchase details.')) return;
+  preview.hidden = true;
+  paste.value = samples[sampleIdx++ % samples.length];
+  showPreview();
+});
 // Clearing all returns must not erase orders another tab saved while a destructive
 // confirmation was open. Unlike normal edits, this action has no selected record
 // to detect a stale view, so compare the complete saved state on both sides.
