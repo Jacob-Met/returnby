@@ -223,3 +223,16 @@ test('the download contains saved reviewed details, preserves attribution, and e
   expect(content).not.toContain('SECRET RAW EMAIL');
   expect(app.attempts).toHaveLength(0);
 });
+
+
+test('restore preview uses the confirmed clock start and preserves it on import', async () => {
+  const app = await open();
+  const incoming = { ...storedOrder('clock-restore'), orderDate: '2026-11-01', windowStartDate: '2026-11-08', windowDays: 14 };
+  await app.choose(exportBackup([incoming]));
+  const preview = app.element('backup-rows').children[0].textContent;
+  expect(preview).toContain('return by 2026-11-22');
+  expect(preview).toContain('from confirmed start 2026-11-08');
+  expect(preview).not.toContain('return by 2026-11-15');
+  app.click('backup-apply');
+  expect(app.persisted()).toEqual([incoming]);
+});
