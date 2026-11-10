@@ -231,6 +231,35 @@ try {
     mark('Original production page has no batch entry; ordinary review/save works');
   }
 
+  currentGroup = 'delivery-clock-confirmation';
+  for (const width of [1440, 390]) {
+    const delivery = await openPage('batch-intake.html', width, 900);
+    await delivery.evaluate('localStorage.clear()');
+    await pasteOne(delivery, 'From: Orchard Goods\nOrder #DEL-4412\nOrder date: October 3, 2026\nTotal: $64.00\nReturns within 30 days of delivery.\nDelivered on: October 9, 2026');
+    await delivery.click(card(1, '[data-reviewed]'));
+    assert.equal(await delivery.evaluate('document.querySelector("[data-reviewed]").checked'), false);
+    assert.equal(await saved(delivery), null);
+    assert.match(await delivery.evaluate('document.querySelector("#batch-error").textContent'), /Confirm the return-clock start/);
+    assert.equal(await delivery.evaluate('document.activeElement.dataset.field'), 'windowStartDate');
+    assert.equal(await delivery.evaluate('document.querySelector("[data-field=windowStartDate]").value'), '');
+    await delivery.capture('delivery-confirmation-required-' + width + '.png');
+    await delivery.fill(card(1, '[data-field=windowStartDate]'), '2026-10-09');
+    await delivery.fill(card(1, '[data-field=windowDays]'), '30');
+    await reviewOne(delivery);
+    await delivery.click('#batch-preview');
+    assert.match(await delivery.evaluate('document.querySelector("#batch-final-orders").textContent'), /2026-11-08/);
+    await delivery.capture('delivery-final-review-' + width + '.png');
+    await delivery.click('#batch-save');
+    const received = JSON.parse(await saved(delivery));
+    assert.equal(received[0].orderDate, '2026-10-03');
+    assert.equal(received[0].windowStartDate, '2026-10-09');
+    const deliveredTracker = await openPage('index.html', width, 900);
+    assert.match(await deliveredTracker.evaluate('document.querySelector("#list").textContent'), /2026-11-08/);
+    await deliveredTracker.close();
+    await delivery.close();
+  }
+  mark('Desktop and phone require delivery confirmation, preserve purchase date and show the confirmed deadline in the tracker');
+
   currentGroup = 'files-and-selected-save';
   const p = await openPage();
   await seed(p);

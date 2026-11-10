@@ -39,7 +39,7 @@
           <div><p class="batch-eyebrow">02 / CHECK EVERY ORDER</p><h2 id="batch-review-title">Review the details.</h2></div>
           <p id="batch-count">0 confirmations</p>
         </header>
-        <p class="batch-guide">Extraction uses ReturnBy’s existing local rules. Confirm the date, store and return window with the original order and retailer. Amounts stay as entered.</p>
+        <p class="batch-guide">Check the store, purchase date and return window against your receipt and retailer. Confirm a delivery date separately when the return window starts at delivery.</p>
         <p id="batch-status" class="batch-status" role="status" aria-live="polite"></p>
         <p id="batch-error" class="batch-error" role="alert" hidden></p>
         <div id="batch-empty" class="batch-empty">Add a pasted confirmation or choose .txt / .eml files to start your review.</div>
@@ -50,7 +50,7 @@
         </div>
         <section id="batch-final" class="batch-final" aria-labelledby="batch-final-title" hidden>
           <p class="batch-eyebrow">03 / THE SAVED RESULT</p>
-          <h2 id="batch-final-title" tabindex="-1">Check the complete append.</h2>
+          <h2 id="batch-final-title" tabindex="-1">Check your return deadlines.</h2>
           <p id="batch-final-summary"></p>
           <div id="batch-final-orders"></div>
           <div id="batch-duplicates" class="batch-duplicate-box" hidden>
@@ -59,7 +59,7 @@
             <ul id="batch-duplicate-list"></ul>
             <label><input id="batch-duplicate-ack" type="checkbox"> I reviewed these matches and want to add every selected order.</label>
           </div>
-          <p class="batch-help">Existing saved records stay in the tracker. If that saved list changes, make a fresh preview. Each successful batch is one local save; other tabs can still write concurrently.</p>
+          <p class="batch-help">Your saved purchases stay in the tracker. If they change while you review, we will ask you to check this selection again before saving.</p>
           <div class="batch-final-actions">
             <button id="batch-save" type="button" class="batch-button primary">Save reviewed orders</button>
             <button id="batch-back" type="button" class="batch-button quiet">Keep reviewing</button>
