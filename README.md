@@ -1,13 +1,23 @@
 # ReturnBy
 
-## Current source-pinned download — preserved email review
+## Current GitHub Release — known return-by dates and spreadsheet export
+
+**[Download ReturnBy browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-known-date-2026-11-10/ReturnBy-v0.2.2-browser.zip)** · [release notes, exact source and screenshots](https://github.com/Jacob-Met/returnby/releases/tag/returnby-known-date-2026-11-10)
+
+This build lets you enter a retailer-confirmed return-by date in manual purchase entry or Edit details without calculating the day count yourself. It also exports all saved purchases, confirmed clocks and shopper-recorded refund follow-up to CSV. It includes preserved email reviews, calendar alert choices and portable prepared trips from the merged product.
+
+Extract the ZIP, install Python 3 if needed, and run the included launcher for your platform; open http://127.0.0.1:8769. Keep the same browser profile and port for your saved tracker. Linux/Chrome was exercised after downloading this actual release; Windows/macOS launchers are included but not separately tested.
+
+Source: [5acd108e](https://github.com/Jacob-Met/returnby/commit/5acd108e74eccdeb49f0cb8fd1489a0a1851ec88). ZIP SHA-256: `309554e9dc07b65b8dd56ed59b97d3762b1a8f3be0469309b5708cded64601f6`. The date helper saves a day window; future edits to the clock start require reapplying a known date. CSV is a review snapshot; JSON remains the restore format. Independent shopper assessment is tracked separately; producer checks do not establish that verdict.
+
+## Earlier source-pinned download — preserved email review
 
 [Download ReturnBy browser ZIP](./downloads/returnby-intake-613f15f/ReturnBy-613f15f-browser.zip) · [source, launch instructions, checksum and limits](./downloads/returnby-intake-613f15f/README.md) · [desktop](./downloads/returnby-intake-613f15f/review-1440.png) · [phone](./downloads/returnby-intake-613f15f/review-390.png).
 
 Merged source613f15f adds unsaved email-review departure protection and includes current manual purchases, portable prepared trips, refund follow-up and CSV export. Extract and run the included Python3 launcher. Actual packaged Linux/Chrome entrypoint exercised at desktop and phone sizes. Browser departure warnings let you cancel leaving and retain your review; this does not provide crash recovery. Independent audience judgment is tracked separately.
 
 
-## Current downloadable build — confirmed return-window start
+## Earlier downloadable build — confirmed return-window start
 
 **[Download source-pinned ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-clock-92baeb9-browser.zip)** · [launch instructions, checksum and tested limitations](./downloads/ReturnBy-2026-11-10-clock-92baeb9.md) · [actual desktop screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-desktop.png) · [actual phone screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-mobile.png).
 
