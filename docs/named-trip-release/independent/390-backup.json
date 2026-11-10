@@ -1,0 +1,95 @@
+{
+  "schema": "returnby.backup",
+  "version": 4,
+  "exportedAt": "2026-11-10T19:40:06.523Z",
+  "orders": [
+    {
+      "id": "e04e8a4e-2955-4903-821c-3d36a696c149",
+      "merchant": "Gannet Workshop",
+      "orderNo": "GW-23917",
+      "total": "$74.00",
+      "orderDate": "2026-11-02",
+      "windowStartDate": "2026-11-06",
+      "windowDays": 5,
+      "windowSource": "user",
+      "createdAt": "2026-11-10T19:40:04.739Z"
+    },
+    {
+      "id": "93464a1c-598c-4527-b072-83f23a9c4949",
+      "merchant": "Lumen Supply",
+      "orderNo": "LS-80052",
+      "total": "$129.40",
+      "orderDate": "2026-10-28",
+      "windowStartDate": "2026-11-07",
+      "windowDays": 30,
+      "windowSource": "user",
+      "createdAt": "2026-11-10T19:40:04.871Z"
+    }
+  ],
+  "trip": {
+    "version": 1,
+    "tripDate": "2026-11-13",
+    "orders": [
+      {
+        "id": "e04e8a4e-2955-4903-821c-3d36a696c149",
+        "merchant": "Gannet Workshop",
+        "orderNo": "GW-23917",
+        "signature": "[\"Gannet Workshop\",\"GW-23917\",\"2026-11-02\",\"2026-11-06\",5,\"user\",\"2026-11-10T19:40:04.739Z\"]",
+        "notes": "Service desk before 17:00. Keep courier receipt.",
+        "selected": true,
+        "packed": true,
+        "receiptReady": true,
+        "instructionsChecked": false
+      }
+    ]
+  },
+  "tripLibrary": {
+    "version": 1,
+    "trips": [
+      {
+        "id": "2c4f5c5e-e759-4b40-994d-e3fee57b759a",
+        "name": "Friday desk drop-off",
+        "savedAt": "2026-11-10T19:40:05.155Z",
+        "plan": {
+          "version": 1,
+          "tripDate": "2026-11-13",
+          "orders": [
+            {
+              "id": "e04e8a4e-2955-4903-821c-3d36a696c149",
+              "merchant": "Gannet Workshop",
+              "orderNo": "GW-23917",
+              "signature": "[\"Gannet Workshop\",\"GW-23917\",\"2026-11-02\",\"2026-11-06\",14,\"user\",\"2026-11-10T19:40:04.739Z\"]",
+              "notes": "Service desk before 17:00. Keep courier receipt.",
+              "selected": true,
+              "packed": true,
+              "receiptReady": true,
+              "instructionsChecked": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "d7ddbae6-29f4-4f69-bf21-8fb2d7e2385b",
+        "name": "Monday supply run",
+        "savedAt": "2026-11-10T19:40:05.305Z",
+        "plan": {
+          "version": 1,
+          "tripDate": "2026-11-23",
+          "orders": [
+            {
+              "id": "93464a1c-598c-4527-b072-83f23a9c4949",
+              "merchant": "Lumen Supply",
+              "orderNo": "LS-80052",
+              "signature": "[\"Lumen Supply\",\"LS-80052\",\"2026-10-28\",\"2026-11-07\",30,\"user\",\"2026-11-10T19:40:04.871Z\"]",
+              "notes": "Box stays at studio; bring adapter.",
+              "selected": true,
+              "packed": false,
+              "receiptReady": true,
+              "instructionsChecked": false
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

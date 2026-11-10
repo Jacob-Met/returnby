@@ -173,6 +173,7 @@ try {
   await until("document.querySelector('#receipt-photo-status').textContent.startsWith('Text read.')",'replacement OCR');
   assert.equal(confirmedReplacements,1);
   assert.equal(await evaluate("document.querySelector('#manual-form-known-date').value"),'');
+  assert.equal(await evaluate("document.querySelector('#manual-form [name=fixedDeadline]').value"),'');
   await fill('#manual-form [name=orderDate]','2026-11-09');
   assert.equal(await evaluate("document.querySelector('#manual-form [name=windowDays]').value"),'');
   checks.push({name:'new receipt releases previous exact-deadline helper before correcting purchase date',passed:true});

@@ -1,5 +1,6 @@
 import { exportBackup, planImport, type ImportRow } from './backup';
 import type { Order } from './store';
+import { completionLabel, isCompleted } from './completion';
 
 export type BackupChoice = 'keep' | 'replace';
 export type ResolvedImportRow = Omit<ImportRow, 'action'> & {
@@ -28,6 +29,7 @@ export function planResolvedImport(current: unknown, incoming: unknown, choices:
 export type ResolvedImportPlan = ReturnType<typeof planResolvedImport>;
 
 const labels: Record<string,string> = {
+  fixedDeadline: 'Confirmed return-by date', completionKind: 'Return outcome', completedAt: 'Outcome recorded',
   merchant: 'Store', orderNo: 'Order number', total: 'Purchase total',
   orderDate: 'Purchase date', windowStartDate: 'Confirmed return clock starts',
   windowDays: 'Return window (days)', windowSource: 'Return rule source',
@@ -37,6 +39,8 @@ const labels: Record<string,string> = {
 };
 export const backupFieldLabel = (key: string) => labels[key] || key.replace(/([A-Z])/g, ' $1');
 export function backupFieldValue(order: Order, key: string): string {
+  if (key === 'completionKind') return isCompleted(order) ? completionLabel(order) : 'Active';
+  if (key === 'completedAt' && !isCompleted(order)) return 'Not finished';
   const value = (order as unknown as Record<string, unknown>)[key];
   if (value === undefined || value === '') return 'Not recorded';
   if (key === 'refundState') return value === 'received' ? 'Received — checked by you' : 'Awaiting refund';

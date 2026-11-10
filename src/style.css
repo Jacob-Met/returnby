@@ -85,6 +85,32 @@
 
 /* Keep intake pathways in the same deliberate palette as the main actions. */
 .intake-panel .list-note a {color:var(--copper);text-underline-offset:3px}
+/* A finished order is a quiet record, without an active-deadline alarm. */
+.order-actions,.filter-row{flex-wrap:wrap}
+.card.completed{border-left-color:var(--line);background:#f5f3ec}
+.completion-kind{font-size:12px;font-weight:650;color:var(--green)}
+.completion-date,.history-amount{font-size:12px;color:var(--muted);margin:8px 0}
+.history-amount strong{color:var(--ink);font-weight:500}
+.completion-feedback{font-size:13px;line-height:1.5;color:#e4f0dd}
+.completion-feedback:empty{display:none}
+#filter-completed{margin-left:auto}
+#completed-count{font-variant-numeric:tabular-nums;margin-left:4px}
+#finish-dialog{width:min(480px,calc(100% - 32px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid var(--line);border-radius:3px;background:var(--paper,#f2efe5);color:var(--ink);padding:28px}
+#finish-dialog::backdrop{background:#14221b80}
+#finish-title{font:normal 30px/1.2 var(--serif);margin:0 0 8px}
+#finish-order{font-size:15px;line-height:1.4;margin:0 0 24px;overflow-wrap:anywhere}
+.finish-options{border:0;padding:0;margin:0}
+.finish-options legend{font-size:13px;font-weight:600;margin-bottom:12px}
+.finish-options label{display:flex;align-items:flex-start;gap:12px;padding:16px 0;border-top:1px solid var(--line);cursor:pointer}
+.finish-options input{accent-color:var(--green);width:18px;height:18px;margin:2px 0 0;flex:0 0 18px}
+.finish-options strong{display:block;font-size:16px;font-weight:600}
+.finish-options small{display:block;color:var(--muted);font-size:13px;line-height:1.5;margin-top:5px}
+#finish-note{font-size:12px;line-height:1.6;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin:8px 0 22px}
+#finish-dialog .action-row{flex-wrap:wrap}
+@media(max-width:420px){#finish-dialog{padding:22px 18px}.order-actions button{min-height:36px;font-size:10px}}
+
+#saved-returns{scroll-margin-top:16px}
+#saved-returns [hidden]{display:none!important}
 
 .pending-desk{margin:1.5rem 0 2rem;padding:1.25rem 0;border-top:2px solid currentColor}
 .pending-desk>h2{font-size:1.5rem;margin:0 0 .5rem}

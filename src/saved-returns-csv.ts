@@ -1,3 +1,4 @@
+import { completionLabel, isCompleted } from './completion';
 import { exportBackup, parseBackup, MAX_BACKUP_BYTES } from './backup';
 import { returnDueDate, returnClockStart } from './deadline';
 
@@ -5,7 +6,7 @@ export const MAX_SAVED_CSV_BYTES = MAX_BACKUP_BYTES;
 export const SAVED_CSV_COLUMNS = Object.freeze([
   'Saved return ID', 'Store', 'Order number', 'Total (as entered)',
   'Order date', 'Return window (days)', 'Recorded window source',
-  'Return deadline', 'Clock starts', 'Clock basis', 'Refund status', 'Refund amount (as entered)', 'Refund follow-up date', 'Created at',
+  'Return deadline', 'Clock starts', 'Clock basis', 'Refund status', 'Refund amount (as entered)', 'Refund follow-up date', 'Return status', 'Finished at', 'Created at',
 ] as const);
 
 export class SavedCsvError extends Error {}
@@ -53,8 +54,8 @@ export function createSavedReturnsCsv(current: unknown, exportedAt = new Date())
     lines.push([
       order.id, order.merchant, order.orderNo ?? '', order.total ?? '',
       order.orderDate, order.windowDays, order.windowSource, due ?? '', returnClockStart(order) ?? '',
-      order.windowStartDate ? 'Confirmed start date' : 'Order date',
-      order.refundState ?? '', order.refundAmount ?? '', order.refundFollowUpDate ?? '', order.createdAt,
+      order.fixedDeadline ? 'Fixed retailer deadline: ' + order.fixedDeadline : order.windowStartDate ? 'Confirmed start date' : 'Order date',
+      order.refundState ?? '', order.refundAmount ?? '', order.refundFollowUpDate ?? '', isCompleted(order) ? completionLabel(order) : 'Active', order.completedAt ?? '', order.createdAt,
     ].map(cell).join(','));
   }
   const content = '\ufeff' + lines.join('\r\n') + '\r\n';

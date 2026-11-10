@@ -2,6 +2,7 @@ import { bindTripLibrary } from './trip-library-ui';
 import { bindTripDeadlineHandoff } from './trip-deadline-handoff-ui';
 import './trip-checklist.css';
 import { returnDueDate } from './deadline';
+import { isCompleted } from './completion';
 import {
   assertSnapshotCurrent, buildChecklistHtml, CHECKLIST_SHEET_CSS, createChecklist,
   readSavedOrders, renderChecklist, SAVED_ORDERS_KEY, sourceLabel,
@@ -243,10 +244,10 @@ function addOrderOption(order: SavedSnapshot['orders'][number]): void {
   ref.textContent = 'Order ' + (order.orderNo || 'number not recorded') + (order.total ? ' · ' + order.total : '');
   const date = document.createElement('span');
   date.className = 'choice-date';
-  date.textContent = 'Calculated deadline · ' + returnDueDate(order);
+  date.textContent = (order.fixedDeadline ? 'Confirmed fixed deadline · ' : 'Calculated deadline · ') + returnDueDate(order);
   const source = document.createElement('span');
   source.className = 'choice-source';
-  source.textContent = sourceLabel(order.windowSource) + ' · ' + order.windowDays + ' days';
+  source.textContent = order.fixedDeadline ? 'Exact date confirmed by you' : sourceLabel(order.windowSource) + ' · ' + order.windowDays + ' days';
   body.append(heading, ref, date, source);
   label.append(check, body);
   check.addEventListener('change', () => {
@@ -275,12 +276,12 @@ function refresh(): void {
     plan = aligned.plan;
     unavailable = aligned.unavailable;
     plan.orders.filter(entry => entry.selected).forEach(entry => selected.add(entry.id));
-    const ordered = [...snapshot.orders].sort((a, b) => returnDueDate(a).localeCompare(returnDueDate(b)));
+    const ordered = snapshot.orders.filter(order => !isCompleted(order)).sort((a, b) => returnDueDate(a).localeCompare(returnDueDate(b)));
 
     ordered.forEach(addOrderOption);
     readMessage.textContent = ordered.length
       ? ordered.length + (ordered.length === 1 ? ' saved order ready to choose.' : ' saved orders ready to choose.')
-      : 'No saved returns. Add an order in your tracker to plan another trip.';
+      : snapshot.orders.length ? 'All saved orders are in History. Reopen an order in the tracker if you need to plan its return.' : 'No saved returns. Add an order in your tracker to plan another trip.';
     form.hidden = ordered.length === 0;
     selectionChanged(false);
     const changes = [];

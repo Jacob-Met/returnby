@@ -1,14 +1,17 @@
-import { parseTripLibrary, type TripLibrary } from './trip-library';
+import { parseTripLibrary, TripLibraryError, type TripLibrary } from './trip-library';
 import {portablePending,type PendingPurchase} from './pending-delivery';
 import { REFUND_KEYS, hasValidRefund } from './refund';
 import { dueDate, returnDueDate } from './deadline';
 import type { Order } from './store';
+import { hasValidCompletion } from './completion';
 import { parsePortableTrip, TripBackupError } from './trip-backup';
 import type { TripPlan } from './trip-plan';
 
 export const MAX_BACKUP_BYTES = 5 * 1024 * 1024;
 export const MAX_BACKUP_ORDERS = 10_000;
-const ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowStartDate', 'windowDays', 'windowSource', 'createdAt', ...REFUND_KEYS] as const;
+const LEGACY_ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'windowStartDate', 'fixedDeadline', 'windowDays', 'windowSource', 'createdAt', ...REFUND_KEYS] as const;
+const COMPLETED_ORDER_KEYS = [...LEGACY_ORDER_KEYS, 'completedAt'] as const;
+const ORDER_KEYS = [...COMPLETED_ORDER_KEYS, 'completionKind'] as const;
 const encoder = new TextEncoder();
 // Ordinary ISO export timestamps are always 24 bytes. Use the same envelope
 // when checking portability without changing any saved record timestamps.
@@ -46,14 +49,16 @@ function timestamp(value: unknown, label: string): string {
   return s;
 }
 
-function order(value: unknown, index: number, strict: boolean): Order {
+function order(value: unknown, index: number, strict: boolean, version: 1 | 2 | 3 | 4 | 5): Order {
   const label = `Order ${index + 1}`;
   const row = object(value, label);
-  if (strict) onlyKeys(row, ORDER_KEYS, label);
+  if (!hasValidCompletion(row)) throw new BackupError(label + ' has an invalid completion record.');
+  if (strict) onlyKeys(row, version === 1 ? LEGACY_ORDER_KEYS : version === 2 ? COMPLETED_ORDER_KEYS : ORDER_KEYS, label);
   const id = text(row.id, `${label} ID`, 128);
   if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(id)) throw new BackupError(`${label} has an invalid ID.`);
   if (!isDate(row.orderDate)) throw new BackupError(`${label} has an invalid order date.`);
   if (row.windowStartDate !== undefined && !isDate(row.windowStartDate)) throw new BackupError(`${label} has an invalid confirmed return-clock start date.`);
+  if (row.fixedDeadline !== undefined && (!isDate(row.fixedDeadline) || row.fixedDeadline >= '9999-12-31' || row.fixedDeadline !== returnDueDate({orderDate:row.orderDate, windowStartDate:row.windowStartDate as string|undefined, windowDays:row.windowDays as number}))) throw new BackupError(label + ' has an inconsistent confirmed deadline.');
   if (!Number.isSafeInteger(row.windowDays) || (row.windowDays as number) < 1 || (row.windowDays as number) > 3_700_000 ||
       !isDate(returnDueDate({ orderDate: row.orderDate, windowStartDate: row.windowStartDate as string | undefined, windowDays: row.windowDays as number }))) throw new BackupError(`${label} has an invalid return window.`);
   if (!['policy', 'default', 'user'].includes(row.windowSource as string)) throw new BackupError(`${label} has an invalid window source.`);
@@ -68,25 +73,37 @@ function order(value: unknown, index: number, strict: boolean): Order {
     total: row.total === undefined ? '' : text(row.total, `${label} total`),
     orderDate: row.orderDate,
     ...(row.windowStartDate === undefined ? {} : { windowStartDate: row.windowStartDate }),
+    ...(row.fixedDeadline === undefined ? {} : {fixedDeadline:row.fixedDeadline as string}),
     windowDays: row.windowDays as number,
     windowSource: row.windowSource as Order['windowSource'],
     createdAt: timestamp(row.createdAt, `${label} creation time`),
+    ...(row.completionKind === undefined ? {} : { completionKind: row.completionKind as Order['completionKind'] }),
+    ...(row.completedAt === undefined ? {} : { completedAt: timestamp(row.completedAt, `${label} completion time`) }),
   };
 }
 
-function orders(value: unknown, strict = true): Order[] {
+function orders(value: unknown, strict = true, version: 1 | 2 | 3 | 4 | 5 = 5): Order[] {
   if (!Array.isArray(value) || value.length > MAX_BACKUP_ORDERS) throw new BackupError(`Expected at most ${MAX_BACKUP_ORDERS.toLocaleString('en-US')} saved orders.`);
   const seen = new Set<string>();
   return value.map((value, index) => {
-    const row = order(value, index, strict);
+    const row = order(value, index, strict, version);
     if (seen.has(row.id)) throw new BackupError(`Order ${index + 1} repeats an ID in this list.`);
     seen.add(row.id);
     return row;
   });
 }
 
-function document(rows: Order[], exportedAt: string, trip?: TripPlan | null, pending:PendingPurchase[] = [], tripLibrary?:TripLibrary|null) {
-  return { schema: 'returnby.backup', version: tripLibrary?.trips.length ? 4 : pending.length ? 3 : trip ? 2 : 1, exportedAt, orders: rows, ...(trip ? {trip} : {}), ...(pending.length ? {pending} : {}), ...(tripLibrary?.trips.length ? {tripLibrary} : {}) };
+function document(rows: Order[], exportedAt: string, trip?: TripPlan | null, pending: PendingPurchase[] = [], tripLibrary?: TripLibrary | null) {
+  // Existing mainline formats: v1 orders/confirmed clocks, v2 prepared trip, v3 pending
+  // deliveries, v4 named trips. Explicit return outcomes use v5 so old readers
+  // refuse them instead of silently reopening a finished purchase.
+  return { schema: 'returnby.backup',
+    version: rows.some(row => row.completionKind !== undefined) ? 5
+      : tripLibrary?.trips.length ? 4 : pending.length ? 3
+      : trip || rows.some(row => row.completedAt !== undefined) ? 2 : 1,
+    exportedAt, orders: rows, ...(trip ? { trip } : {}),
+    ...(pending.length ? { pending } : {}),
+    ...(tripLibrary?.trips.length ? { tripLibrary } : {}) };
 }
 
 function fits(output: string) { return encoder.encode(output).byteLength <= MAX_BACKUP_BYTES; }
@@ -110,21 +127,28 @@ export function parseBackupDocument(input: string): {orders: Order[]; trip: Trip
   let parsed: unknown;
   try { parsed = JSON.parse(input); } catch { throw new BackupError('This file is not valid JSON. Choose a ReturnBy backup.'); }
   const doc = object(parsed, 'Backup');
-  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2 && doc.version !== 3 && doc.version !== 4)) throw new BackupError('This backup format or version is not supported.');
-  onlyKeys(doc, doc.version === 4 ? ['schema','version','exportedAt','orders','trip','pending','tripLibrary'] : doc.version === 3 ? ['schema','version','exportedAt','orders','trip','pending'] : doc.version === 2 ? ['schema', 'version', 'exportedAt', 'orders', 'trip'] : ['schema', 'version', 'exportedAt', 'orders'], 'Backup');
+  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2 && doc.version !== 3 && doc.version !== 4 && doc.version !== 5)) throw new BackupError('This backup format or version is not supported.');
+  onlyKeys(doc, doc.version >= 4 ? ['schema', 'version', 'exportedAt', 'orders', 'trip', 'pending', 'tripLibrary']
+    : doc.version === 3 ? ['schema', 'version', 'exportedAt', 'orders', 'trip', 'pending']
+    : doc.version === 2 ? ['schema', 'version', 'exportedAt', 'orders', 'trip']
+    : ['schema', 'version', 'exportedAt', 'orders'], 'Backup');
   timestamp(doc.exportedAt, 'Backup export time');
-  const rows = orders(doc.orders);
+  const rows = orders(doc.orders, true, doc.version);
   portable(rows, 'The normalized saved details would exceed the 5 MiB backup limit.');
-  const trip = (doc.version === 2 || (doc.version===3||doc.version===4)&&doc.trip!==undefined) ? parsePortableTrip(doc.trip) : null;
-  const pending=doc.version===3?portablePending(doc.pending):doc.version===4?portablePending(doc.pending === undefined ? [] : doc.pending):[];
-  const tripLibrary=doc.version===4?parseTripLibrary(doc.tripLibrary):undefined;
-  if (!fits(JSON.stringify(document(rows, SIZE_TIMESTAMP, trip,pending,tripLibrary)) + '\n')) throw new BackupError('The normalized trip and orders exceed the 5 MiB backup limit.');
-  return {orders:rows, trip,...(doc.version===3||doc.version===4?{pending}:{}),...(tripLibrary?{tripLibrary}:{})};
+  const trip = doc.trip === undefined ? null : parsePortableTrip(doc.trip);
+  // A pre-release v3 lifecycle backup had no pending collection. Keep it
+  // readable, alongside the published v3 pending-delivery documents.
+  const pending = doc.version === 3 && doc.pending === undefined && rows.some(row => row.completedAt !== undefined)
+    ? [] : doc.version >= 3 ? portablePending(doc.pending === undefined && doc.version >= 4 ? [] : doc.pending) : [];
+  const tripLibrary = doc.version === 4 ? parseTripLibrary(doc.tripLibrary)
+    : doc.version === 5 && doc.tripLibrary !== undefined ? parseTripLibrary(doc.tripLibrary) : undefined;
+  if (!fits(JSON.stringify(document(rows, SIZE_TIMESTAMP, trip, pending, tripLibrary)) + '\n')) throw new BackupError('The normalized trip and orders exceed the 5 MiB backup limit.');
+  return { orders: rows, trip, ...(doc.pending !== undefined || doc.version >= 4 ? { pending } : {}), ...(tripLibrary ? { tripLibrary } : {}) };
 }
 
 export function parseBackup(input: string): Order[] {
   try { return parseBackupDocument(input).orders; }
-  catch(error) { if(error instanceof TripBackupError)throw new BackupError(error.message);throw error; }
+  catch(error) { if(error instanceof TripBackupError || error instanceof TripLibraryError)throw new BackupError(error.message);throw error; }
 }
 
 export type ImportRow = { order: Order; action: 'add' | 'skip' | 'conflict'; changedFields: string[] };

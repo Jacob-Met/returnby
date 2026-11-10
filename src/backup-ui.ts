@@ -4,6 +4,7 @@ import {readPending,writePending,planPendingRestore,type PendingPurchase} from '
 import { planResolvedImport, backupFieldLabel, backupFieldValue, type BackupChoice, type ResolvedImportPlan } from './backup-resolution';
 import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackupDocument } from './backup';
 import { returnDueDate } from './deadline';
+import { completionLabel } from './completion';
 import type { Order } from './store';
 import { parsePortableTrip, prepareTripRestore, TripBackupError } from './trip-backup';
 import { readTripPlan, saveTripPlan, TripPlanError, type TripPlan } from './trip-plan';
@@ -138,7 +139,9 @@ export function bindBackup(tracker: Tracker) {
       const o = row.action === 'keep' && row.current ? row.current : row.order;
       const action = ({add:'Add',skip:'Already saved',conflict:'Choose a version',keep:'Keep current',replace:'Use backup'})[row.action];
       const source = o.windowSource === 'policy' ? 'saved store policy' : o.windowSource === 'default' ? 'saved fallback' : 'your saved rule';
-      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ordered ${o.orderDate}, return by ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})`;
+      const lifecycle = o.completedAt === undefined ? 'Active' : `${completionLabel(o)} ${o.completedAt.slice(0, 10)}`;
+      const changed = row.changedFields.map(field => field === 'completedAt' ? 'completion status/date' : field === 'completionKind' ? 'completion outcome' : field);
+      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ${lifecycle}; ordered ${o.orderDate}, ${o.completedAt === undefined ? 'return by' : 'original return-by'} ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})${changed.length ? `. Different fields: ${changed.join(', ')}.` : ''}`;
       if (row.current) {
         const comparison = document.createElement('div');
         comparison.className = 'backup-comparison';

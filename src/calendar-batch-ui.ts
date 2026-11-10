@@ -71,7 +71,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
     choices.replaceChildren();
     if (!rows.length) {
       const empty = document.createElement('p');
-      empty.textContent = 'There are no saved returns to export.';
+      empty.textContent = 'There are no open saved returns to export. Completed returns stay in your tracker history.';
       choices.append(empty);
       return;
     }
@@ -122,7 +122,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
       reviewedAt = new Date();
       renderChoices();
       const invalid = rows.filter(row => row.problem).length;
-      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates and alert times.' : singleId ? 'Review this deadline and its alert before downloading.' : 'Choose the returns to add to your calendar.'}${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}`;
+      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates and alert times.' : singleId ? 'Review this deadline and its alert before downloading.' : 'Choose the returns to add to your calendar.'} Completed returns are excluded.${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}`;
       showMessage('');
     } catch (error) {
       loaded = false;

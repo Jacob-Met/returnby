@@ -18,7 +18,7 @@ export function bindOrderEditor(options: EditorOptions) {
   const source = get<HTMLParagraphElement>('edit-source');
   const save = get<HTMLButtonElement>('edit-save');
   const fields: Record<keyof EditDraft, HTMLInputElement> = {
-    merchant: get('edit-merchant'), orderNo: get('edit-order-no'), total: get('edit-total'),
+    fixedDeadline: get('edit-fixed-deadline'), merchant: get('edit-merchant'), orderNo: get('edit-order-no'), total: get('edit-total'),
     orderDate: get('edit-order-date'), windowStartDate: get('edit-window-start-date'), windowDays: get('edit-window-days'),
   };
   let original: Order | null = null;
@@ -96,6 +96,7 @@ export function bindOrderEditor(options: EditorOptions) {
       original = JSON.parse(JSON.stringify(matches[0])) as Order;
       const values = editDraft(original);
       for (const name of Object.keys(fields) as (keyof EditDraft)[]) fields[name].value = values[name] ?? '';
+      form.dispatchEvent(new Event('returnby-edit-loaded'));
       get('edit-current-deadline').textContent = returnDueDate(original);
       get('edit-feedback').textContent = '';
       updatePreview();

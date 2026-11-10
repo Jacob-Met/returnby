@@ -180,12 +180,12 @@ export function bindReceiptPhoto() {
   });
   read.addEventListener('click', async () => {
     if (!image || controller) return;
-    if (['merchant', 'orderDate', 'orderNo', 'total', 'windowDays', 'windowStartDate'].some(name => field(name).value.trim()) &&
-        !window.confirm('Replace the entered purchase details with suggestions from this photo? The return window and confirmed start date will be cleared so you can check them for this receipt.')) return;
+    if (['merchant', 'orderDate', 'orderNo', 'total', 'windowDays', 'windowStartDate', 'fixedDeadline'].some(name => field(name).value.trim()) &&
+        !window.confirm('Replace the entered purchase details with suggestions from this photo? The previous window, exact deadline and confirmed start will be cleared so you can check the return rule for this receipt.')) return;
     controller = new AbortController();
     const signal = controller.signal;
     const token = ++generation;
-    const before = Object.fromEntries(['merchant', 'orderDate', 'orderNo', 'total', 'windowDays', 'windowStartDate'].map(name => [name, field(name).value]));
+    const before = Object.fromEntries(['merchant', 'orderDate', 'orderNo', 'total', 'windowDays', 'windowStartDate', 'fixedDeadline'].map(name => [name, field(name).value]));
     busy(true);
     progress.value = 0;
     setStatus('Preparing the local receipt reader…');

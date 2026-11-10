@@ -1,3 +1,4 @@
+import { isCompleted } from './completion';
 import { returnDueDate } from './deadline';
 import { isSupportedDate } from './trip-checklist';
 import type { Order } from './store';
@@ -9,5 +10,5 @@ export function requestedDeadline(search: string): string | null {
   return values[0];
 }
 export function ordersForDeadline(orders: readonly Order[], deadline: string): Order[] {
-  return orders.filter(order => returnDueDate(order) === deadline);
+  return orders.filter(order => !isCompleted(order) && returnDueDate(order) === deadline);
 }

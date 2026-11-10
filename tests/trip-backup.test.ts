@@ -44,7 +44,27 @@ describe('portable prepared trips',()=>{
  it('preserves an unfinished trip date and rejects unsupported trip versions',()=>{
   expect(parsePortableTrip({...trip(),tripDate:''}).tripDate).toBe('');
   expect(()=>parsePortableTrip({...trip(),version:7})).toThrow();
-  const doc=JSON.parse(exportBackup([order]));doc.version=2;
+  const doc=JSON.parse(exportBackup([order]));doc.version=2;doc.trip={version:7};
   expect(()=>parseBackupDocument(JSON.stringify(doc))).toThrow();
  });
+ it('restores closed history and packing notes without selecting a finished return',()=>{
+  const closed:Order={...order,completionKind:'returned',completedAt:'2027-01-04T10:00:00.000Z'};
+  const file=exportBackup([closed],new Date('2027-01-05T10:00:00Z'),trip());
+  expect(JSON.parse(file).version).toBe(5);
+  const restored=parseBackupDocument(file);
+  expect(restored.orders).toEqual([closed]);
+  const prepared=prepareTripRestore(restored.trip,restored.orders);
+  expect(prepared.selected).toBe(0);
+  expect(prepared.unavailable.map(entry=>entry.id)).toEqual(['north-1']);
+  expect(prepared.plan.orders[0].notes).toBe(trip().orders[0].notes);
+  expect(prepared.plan.orders[0].packed).toBe(true);
+ });
+ it('accepts already-published confirmed-clock v1 files and pre-outcome v2 history',()=>{
+  const published={schema:'returnby.backup',version:1,exportedAt:'2027-01-03T12:00:00Z',orders:[order]};
+  expect(parseBackupDocument(JSON.stringify(published)).orders[0].windowStartDate).toBe('2027-01-02');
+  const legacy={...published,version:2,orders:[{...order,completedAt:'2027-01-04T10:00:00Z'}]};
+  expect(parseBackupDocument(JSON.stringify(legacy)).orders[0].completedAt).toBe('2027-01-04T10:00:00Z');
+  expect(parseBackupDocument(JSON.stringify(legacy)).trip).toBe(null);
+ });
+
 });

@@ -25,6 +25,7 @@ import { planSingleCalendar } from './calendar-batch';
 import { isSupportedDate } from './trip-checklist';
 import { load, read, save, type Order } from './store';
 import { bindManualPurchase } from './manual-purchase';
+import { completionLabel, isCompleted, planCompletion, type CompletionAction } from './completion';
 import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
@@ -70,13 +71,14 @@ const storageRetry = $<HTMLButtonElement>('#storage-retry');
 let orders: Order[] = [];
 let loadFailed = false;
 let sampleIdx = 0;
+let filterMode: 'all' | 'due' | 'expired' | 'completed' = 'all';
+let completionReviewed: Order | undefined;
 let reviewedIntake = '';
 const reviewSignature = () => {
   const fields = new FormData(preview);
-  return JSON.stringify(['merchant', 'orderDate', 'orderNo', 'total', 'windowStartDate', 'windowDays']
+  return JSON.stringify(['merchant', 'orderDate', 'orderNo', 'total', 'windowStartDate', 'fixedDeadline', 'windowDays']
     .map(name => [name, fields.get(name) ?? '']));
 };
-let filterMode: 'all' | 'due' | 'expired' = 'all';
 const deskNavigation = bindDeskNavigation();
 
 const loadError = "Couldn't load saved returns. Try loading again before saving, or clear saved returns to start over.";
@@ -282,6 +284,23 @@ preview.addEventListener('submit', (e) => {
   preview.hidden = true; paste.value = ''; refreshIntakeDeparture(); revealSavedOrder(next[next.length - 1]);
 });
 
+function refundAction(o: Order): string {
+  return '<button class="button button-link" data-refund="' + h(o.id) + '">' + (o.refundState ? 'Review refund' : 'Track a refund') + '</button>';
+}
+
+function historyCard(o: Order): string {
+  const recorded = new Date(o.completedAt!).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  return '<li class="card completed" data-order-id="' + h(o.id) + '" tabindex="-1"><div class="order-head"><div><strong>' + h(o.merchant || 'Unknown store') + '</strong>'
+    + (o.orderNo ? ' <span class="mono">#' + h(o.orderNo) + '</span>' : '')
+    + '</div><span class="completion-kind">' + completionLabel(o) + '</span></div>'
+    + '<p class="completion-date">Recorded ' + h(recorded) + '</p>'
+    + '<div class="window-meta"><span>ORDER ' + h(o.orderDate) + '</span><span>Original deadline ' + h(returnDueDate(o)) + '</span></div>'
+    + (o.total ? '<p class="history-amount">Order total <strong>' + h(o.total) + '</strong></p>' : '')
+    + '<div class="order-actions"><button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>'
+    + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button>'
+    + '<button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
+}
+
 function revealSavedOrder(order: Order) {
   filterMode = 'all';
   search.value = '';
@@ -293,23 +312,124 @@ function revealSavedOrder(order: Order) {
 function render() {
   deskNavigation.update(orders.length, loadFailed);
   renderRefunds(orders, loadFailed);
+  const showingHistory = filterMode === 'completed';
+  $('#tracker-title').textContent = showingHistory ? 'History' : 'Active returns';
+  $('#tracker-description').textContent = showingHistory
+    ? 'Returned and kept orders, newest first. Reopen an order to track its original deadline.'
+    : 'Your next deadlines, soonest first.';
+  for (const id of ['tracker-summary', 'calendar-toolbar', 'trip-link']) $('#' + id).hidden = showingHistory;
   if (loadFailed) {
-    for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
+    for (const id of ['tracked-count', 'soon-count', 'expired-count', 'completed-count']) $('#' + id).textContent = '—';
     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
     return;
   }
-  const all=orders.map(o=>{const due=returnDueDate(o),left=daysLeft(due,todayISO()),progress=Math.max(0,Math.min(100,Math.round((o.windowDays-left)/Math.max(1,o.windowDays)*100)));return {o,due,left,progress};}).sort((a,b)=>a.left-b.left);
-  $('#tracked-count').textContent=String(all.length);$('#soon-count').textContent=String(all.filter(r=>r.left>=0&&r.left<=7).length);$('#expired-count').textContent=String(all.filter(r=>r.left<0).length);
-  for(const [id,mode] of [['filter-all','all'],['filter-due','due'],['filter-expired','expired']] as const){const b=$<HTMLButtonElement>(`#${id}`);b.classList.toggle('active',filterMode===mode);b.setAttribute('aria-pressed',String(filterMode===mode));}
   const query = search.value.trim().toLocaleLowerCase();
+  const matchesSearch = (order: Order) => !query || [order.merchant, order.orderNo]
+    .some(value => (value ?? '').toLocaleLowerCase().includes(query));
   searchClear.hidden = !search.value;
-  const rows=all.filter(r=>!query || [r.o.merchant,r.o.orderNo].some(value=>(value ?? "").toLocaleLowerCase().includes(query))).filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
-  $('#search-results').textContent = query ? rows.length + ' of ' + all.length + ' saved returns match this search and date filter.' : '';
-  if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match. Clear the search or choose another date filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}" data-order-id="${h(o.id)}" tabindex="-1"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)} · CLOCK ${h(o.windowStartDate || o.orderDate)}${o.windowStartDate ? ' (confirmed by you)' : ' (order date)'}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-refund="${h(o.id)}">${o.refundState ? 'Review refund' : 'Track a refund'}</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+  const history = orders.filter(isCompleted).sort((a, b) => Date.parse(b.completedAt!) - Date.parse(a.completedAt!));
+  const all = orders.filter(o => !isCompleted(o)).map(o => {
+    const due = returnDueDate(o), left = daysLeft(due, todayISO());
+    const progress = Math.max(0, Math.min(100, Math.round((o.windowDays - left) / Math.max(1, o.windowDays) * 100)));
+    return { o, due, left, progress };
+  }).sort((a, b) => a.left - b.left);
+  $('#tracked-count').textContent = String(all.length);
+  $('#soon-count').textContent = String(all.filter(r => r.left >= 0 && r.left <= 7).length);
+  $('#expired-count').textContent = String(all.filter(r => r.left < 0).length);
+  $('#completed-count').textContent = String(history.length);
+  for (const [id, mode] of [['filter-all', 'all'], ['filter-due', 'due'], ['filter-expired', 'expired'], ['filter-completed', 'completed']] as const) {
+    const button = $<HTMLButtonElement>('#' + id);
+    button.classList.toggle('active', filterMode === mode);
+    button.setAttribute('aria-pressed', String(filterMode === mode));
+  }
+  if (filterMode === 'completed') {
+    const visibleHistory = history.filter(matchesSearch);
+    $('#search-results').textContent = query ? visibleHistory.length + ' of ' + history.length + ' finished orders match this search.' : '';
+    list.innerHTML = visibleHistory.length ? visibleHistory.map(historyCard).join('')
+      : '<li class="empty">' + (history.length ? 'No finished orders match. Clear the search to see your History.'
+        : 'No finished orders yet. Choose Finish return on an active order to record it as returned or kept.') + '</li>';
+    return;
+  }
+  const rows = all.filter(r => matchesSearch(r.o)).filter(r => filterMode === 'all' || (filterMode === 'due' && r.left >= 0 && r.left <= 7) || (filterMode === 'expired' && r.left < 0));
+  $('#search-results').textContent = query ? rows.length + ' of ' + all.length + ' active returns match this search and date filter.' : '';
+  if (!rows.length) {
+    list.innerHTML = '<li class="empty">' + (all.length ? 'No saved deadlines match. Clear the search or choose another date filter.' : history.length
+      ? 'All caught up. Your finished orders are saved in History.'
+      : 'No returns tracked yet. Paste an order email above, or try a fictional example.') + '</li>';
+    return;
+  }
+  list.innerHTML = rows.map(({ o, due, left, progress }) => {
+    const label = left < 0 ? 'PAST DUE' : left <= 2 ? 'URGENT' : left <= 7 ? 'DUE SOON' : 'ON TRACK';
+    const policy = o.fixedDeadline ? 'FIXED DATE / CONFIRMED BY YOU' : o.windowSource === 'policy' ? 'STORE POLICY / ' + o.windowDays + ' DAYS' : o.windowSource === 'default' ? o.windowDays + '-DAY FALLBACK' : 'YOUR RULE / ' + o.windowDays + ' DAYS';
+    const count = left < 0 ? 'EXPIRED ' + -left + 'D' : left + ' DAYS LEFT';
+    return '<li class="card ' + status(left) + '" data-order-id="' + h(o.id) + '" tabindex="-1"><div class="order-head"><div><strong>' + h(o.merchant || 'Unknown store') + '</strong>'
+      + (o.orderNo ? ' <span class="mono">#' + h(o.orderNo) + '</span>' : '') + '</div><span class="status-tag">' + label + '</span></div>'
+      + '<div class="window-meta"><span>ORDER ' + h(o.orderDate) + ' · CLOCK ' + h(o.windowStartDate || o.orderDate) + (o.windowStartDate ? ' (confirmed by you)' : ' (order date)') + '</span><span class="source-tag">' + policy + '</span></div>'
+      + '<div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="' + progress + '" aria-valuemin="0" aria-valuemax="100"><i style="width:' + progress + '%"></i></div>'
+      + '<div class="order-foot"><span class="return-by">RETURN BY ' + h(due) + '</span><strong class="days-left">' + count + '</strong></div>'
+      + '<div class="order-actions"><button class="button button-primary" data-ics="' + h(o.id) + '">Add calendar reminder</button>'
+      + '<button class="button button-link" data-finish="' + h(o.id) + '">Finish return</button>'
+      + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
+  }).join('');
 }
+
+function changeCompletion(displayed: Order | undefined, action: CompletionAction): boolean {
+  const current = readCurrentOrders();
+  if (!current) return false;
+  try {
+    const plan = planCompletion(current, displayed, action);
+    if (!persistOrders(plan.next)) return false;
+    render();
+    $('#completion-feedback').textContent = (plan.order.merchant || 'Order') + (action === 'reopen'
+      ? ' reopened with its original deadline.'
+      : ' marked ' + completionLabel(plan.order).toLowerCase() + ' and saved in History. Remove any old reminder from your calendar.');
+    return true;
+  } catch (error) {
+    orders = current;
+    render();
+    showStorageError(error instanceof Error ? error.message : 'This return could not be updated.');
+    return false;
+  }
+}
+
+function openCompletion(id: string) {
+  const matches = orders.filter(order => order.id === id);
+  if (matches.length !== 1 || isCompleted(matches[0])) return;
+  completionReviewed = { ...matches[0] };
+  $('#finish-order').textContent = completionReviewed.merchant + (completionReviewed.orderNo ? ' · #' + completionReviewed.orderNo : '');
+  $<HTMLFormElement>('#finish-form').reset();
+  $('#finish-message').hidden = true;
+  $<HTMLDialogElement>('#finish-dialog').showModal();
+  $('#finish-title').focus();
+}
+
+$('#finish-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const kind = String(new FormData($<HTMLFormElement>('#finish-form')).get('completionKind') || '');
+  if (kind !== 'returned' && kind !== 'kept') return;
+  if (!changeCompletion(completionReviewed, kind)) {
+    $('#finish-message').textContent = storageError.textContent;
+    $('#finish-message').hidden = false;
+    $('#finish-message').focus();
+    return;
+  }
+  $<HTMLDialogElement>('#finish-dialog').close();
+  $('#filter-completed').focus();
+});
+$('#finish-cancel').addEventListener('click', () => $<HTMLDialogElement>('#finish-dialog').close());
+$('#finish-dialog').addEventListener('close', () => {
+  const id = completionReviewed?.id;
+  const button = Array.from(list.querySelectorAll<HTMLButtonElement>('button[data-finish]')).find(item => item.dataset.finish === id);
+  button?.focus();
+  completionReviewed = undefined;
+});
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
+  if (t.dataset.finish) openCompletion(t.dataset.finish);
+  if (t.dataset.reopen) {
+    const matches = orders.filter(order => order.id === t.dataset.reopen);
+    if (changeCompletion(matches.length === 1 ? matches[0] : undefined, 'reopen')) $('#filter-all').focus();
+  }
   if (t.dataset.edit !== undefined) orderEditor.open(t.dataset.edit);
   if (t.dataset.del) removeOrder(t.dataset.del);
   if (t.dataset.ics) {
@@ -335,6 +455,11 @@ list.addEventListener('click', (e) => {
 
 search.addEventListener('input', render);
 searchClear.addEventListener('click', () => { search.value = ''; render(); search.focus(); });
+$('#filter-completed').addEventListener('click', () => {
+  filterMode = 'completed';
+  render();
+  $('#saved-returns').scrollIntoView({ block: 'start' });
+});
 $('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',()=>showPreview());
 paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
 $('#sample').addEventListener('click', (e) => {
@@ -406,7 +531,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRe
   // urgency reorder; do not silently move keyboard focus to another order.
   const active = document.activeElement;
   const focused = active instanceof HTMLButtonElement && list.contains(active) ? active : undefined;
-  const action = (['ics', 'edit', 'del'] as const).find(name => focused?.hasAttribute('data-' + name));
+  const action = (['ics', 'finish', 'reopen', 'edit', 'del'] as const).find(name => focused?.hasAttribute('data-' + name));
   const id = action ? focused?.dataset[action] : undefined;
   render();
   if (!action || id === undefined || loadFailed) return;

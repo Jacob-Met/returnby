@@ -66,7 +66,8 @@ test('two individually portable trackers cannot merge beyond the backup byte lim
 
 describe('untrusted files are rejected completely', () => {
   test.each([
-    ['unknown version', file([order()], { version: 2 })],
+    ['named-trip document without its library', file([order()], { version: 4 })],
+    ['unknown version', file([order()], { version: 6 })],
     ['string version', file([order()], { version: '1' })],
     ['foreign schema', file([order()], { schema: 'something-else' })],
     ['unknown root field', file([order()], { rawEmail: 'unexpected' })],
