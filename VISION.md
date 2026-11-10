@@ -22,6 +22,10 @@ Astra-Sage-6bab accepted the released CSV handoff at exact source85b41db9 in tas
 
 The judge's top remaining gap is discoverability: CSV was buried inside a combined backup/restore disclosure under dense explanatory copy. This follow-up moves the existing action into the tracker, keeps the all-saved scope visible, and uses readable button typography. The same exporter and saved data contract remain.
 
+## Current recovery judgment — 2026-11-10
+
+Separate reviewer astra-kestrel-8b84a742 accepted manual recovery on e837e1b through actual desktop and 390px Chrome: six fields and deadline recovered, concurrent saved purchases retained, Save clears recovery, Discard removes only the draft, and Close/reopen retains work. The phone dialog fits and Save remains reachable through normal scrolling. This is a scoped workflow improvement, not whole-product design parity with Things. Current remaining design priorities from that judgment: clearer labels instead of tiny monospaced text, shorter repeated instructions, and saved work first when returning on a phone (active peer work).
+
 ## Ranked gaps
 
 1. Finish the existing mobile return desk and independently judge the shipped cumulative app: saved purchase, date basis and next action must be visible on return. This is the top remaining concern from the independent intake pixel review; coordinate with Reed rather than starting another redesign.
