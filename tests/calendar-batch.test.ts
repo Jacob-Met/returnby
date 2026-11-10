@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { calendarRows, initialCalendarSelection, planCalendarBatch } from '../src/calendar-batch';
+import { calendarRows, initialCalendarSelection, planCalendarBatch, planSingleCalendar } from '../src/calendar-batch';
 import { buildIcs, buildIcsCalendar } from '../src/ics';
 import type { Order } from '../src/store';
 
@@ -141,5 +141,37 @@ describe('reviewed multi-return calendar', () => {
     const reduced = planCalendarBatch(saved, rows, ['0', '1'], stamp);
     expect(entries(reduced.content)).toHaveLength(2);
     expect(new TextEncoder().encode(reduced.content).byteLength).toBeLessThan(4 * 1024 * 1024);
+  });
+});
+
+describe('single-card calendar freshness', () => {
+  it('uses reviewed selected data and the original single filename while accepting unrelated changes', () => {
+    const reviewed = order('selected');
+    const current = [{ ...reviewed, total: '$99.00' }, order('other')];
+    const plan = planSingleCalendar(current, reviewed, stamp);
+    expect(plan.count).toBe(1);
+    expect(plan.filename).toBe('return-Fictional-selected.ics');
+    expect(entries(plan.content)).toHaveLength(1);
+    expect(entries(plan.content)[0]).toContain('DTSTART;VALUE=DATE:20261031');
+    expect(plan.content).not.toContain('other@returnby');
+    expect(current[0].total).toBe('$99.00');
+  });
+
+  it.each([
+    { label: 'removed', current: [] },
+    { label: 'changed deadline', current: [order('selected', 60)] },
+    { label: 'changed store', current: [order('selected', 30, { merchant: 'Elsewhere' })] },
+    { label: 'duplicated ID', current: [order('selected'), order('selected')] },
+    { label: 'malformed latest record', current: [order('selected', 0)] },
+  ])('refuses $label before producing bytes', ({ current }) => {
+    expect(() => planSingleCalendar(current, order('selected'), stamp)).toThrow(/changed|removed/);
+  });
+
+  it('rejects invalid reviewed dates and does not limit unrelated saved rows', () => {
+    const invalid = order('selected', -2);
+    expect(() => planSingleCalendar([invalid], invalid, stamp)).toThrow(/not ready/);
+    const reviewed = order('selected');
+    const current = [reviewed, ...Array.from({ length: 2100 }, (_, i) => order('other-' + i))];
+    expect(planSingleCalendar(current, reviewed, stamp).count).toBe(1);
   });
 });
