@@ -305,3 +305,9 @@ excluded. Formula-like cells receive a leading apostrophe; the completion messag
 reports that protection. Import order-number columns as text to preserve leading
 zeros. CSV is for spreadsheet review; use the JSON backup for exact restoration.
 This adapts the existing CSV contribution in PR #25 to current confirmed clocks.
+
+## Enter a known return-by date
+
+In manual purchase entry or Edit details, open **Know the exact return-by date?**, enter the date you checked with the retailer, and select **Use this return-by date**. ReturnBy calculates the day window from the purchase date or your confirmed clock start. While that helper is applied in the open form, changing the clock start recalculates days to keep the chosen date. Editing days directly returns to a day window. Review the proposed deadline before saving.
+
+The saved record remains a day window, so future edits to its clock start can change the deadline; use the helper again to retain a retailer-confirmed date. The date must be after the clock start. This does not verify return eligibility or hardcode holiday policies. The motivating example was Apple's dated US holiday return policy, inspected on November 10, 2026 at https://www.apple.com/shop/help/returns_refund; eligibility and exclusions remain the shopper's responsibility.
