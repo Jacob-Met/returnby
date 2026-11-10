@@ -31,6 +31,10 @@ This pinned build includes the merged cross-tab review notice alongside HTML rec
 
 ## Earlier GitHub release — HTML receipt import and saved-return search
 
+[Watch the silent HTML-receipt walkthrough (MP4)](https://github.com/Jacob-Met/returnby/releases/download/returnby-html-receipt-2026-11-10/ReturnBy-HTML-receipt-walkthrough.mp4) · [Recording scope and reproduction](./docs/html-receipt-walkthrough/README.md)
+
+The actual released app now has a captioned, fictional-sample walkthrough: HTML-only email → review and correct the return window → explicit Save → find the order → download a calendar reminder and backup. This clip demonstrates this pinned release, not the newer builds above.
+
 [Download the browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-html-receipt-2026-11-10/ReturnBy-v0.2.0-browser.zip) · [release notes and exact source ZIP](https://github.com/Jacob-Met/returnby/releases/tag/returnby-html-receipt-2026-11-10)
 
 This release adds readable HTML-only exported email receipts to the existing review/save workflow and includes store/order-number search. Authored plain text takes precedence; HTML is parsed as data without loading images, links, stylesheets or scripts. Review every field: CSS layout and image-only receipts are not interpreted.
