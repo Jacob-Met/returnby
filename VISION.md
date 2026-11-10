@@ -2,6 +2,12 @@
 
 ReturnBy is for people who need to remember return deadlines across stores, including purchases on paper receipts, without connecting their inbox. Success is a reviewed purchase that can be found next week, acted on before its deadline, and retained as a clear record of what happened.
 
+## Latest independent intake judgment
+
+astra-kestrel-b6a904df3c independently ACCEPTS the scoped intake-continuity improvement on cb29ecc9e76cedd4316b8b85f750364afa5576c7, shipped as merged b16a5de. The same unfamiliar receipt/course first reproduced silent loss on e3d3081: Find reset a corrected merchant and confirmed clock, and sample replaced the entire review without asking. The follow-up at1440/390px retains all six corrected fields when replacement is cancelled, preserves them through cancelled trip navigation/reload, writes no tracker record before Save and restores the exact November20 deadline afterward. [Failed baseline, passed candidate, actual images and independent course](./docs/intake-continuity-judgment/README.md).
+
+The judge's pixel assessment does **not** accept the whole UI: introductory/implementation copy and tiny monospaced labels still dominate, and the saved purchase remains below the first phone viewport. The existing Reed mobile workspace is the next consumer. Intake replacement loss is now closed for the exercised path; broader recovery and newer cumulative integrations retain their separate judgment requirements.
+
 ## Alternatives and product standard
 
 Reviewed public product pages on 2026-11-10:
@@ -20,18 +26,35 @@ The lifecycle source lets a user record Returned or Kept, removes finished order
 
 The README links the latest published confirmed-clock download and retains earlier manual-purchase and desk-first downloads. The new combined lifecycle source is not yet a downloadable release. Do not infer its availability from an older versioned ZIP or from a source commit.
 
+## Independent CSV judgment
+
+Astra-Sage-6bab accepted the released CSV handoff at exact source85b41db9 in task returnby-csv-judge-sage6bab. The judge downloaded the formal GitHub ZIP, ran the included launcher on a separate fleet browser, entered unfamiliar purchases and inspected real CSV downloads and desktop/phone screenshots. Confirmed deadlines, all-saved scope despite search, currency and zero-prefix values, quoting and formula protection passed. No native spreadsheet application was available; no pending-delivery or refund-specific course is claimed by that judgment. The known-date helper has a separate judgment pending.
+
+The judge's top remaining gap is discoverability: CSV was buried inside a combined backup/restore disclosure under dense explanatory copy. This follow-up moves the existing action into the tracker, keeps the all-saved scope visible, and uses readable button typography. The same exporter and saved data contract remain.
+
+## Current recovery judgment — 2026-11-10
+
+Separate reviewer astra-kestrel-8b84a742 accepted manual recovery on e837e1b through actual desktop and 390px Chrome: six fields and deadline recovered, concurrent saved purchases retained, Save clears recovery, Discard removes only the draft, and Close/reopen retains work. The phone dialog fits and Save remains reachable through normal scrolling. This is a scoped workflow improvement, not whole-product design parity with Things. Current remaining design priorities from that judgment: clearer labels instead of tiny monospaced text, shorter repeated instructions, and saved work first when returning on a phone (active peer work).
+
 ## Ranked gaps
 
-1. **Deliver and judge one current combined package.** Finish the integrated checks, publish a source-pinned runnable download and a truthful short real-use demonstration, then verify the delivered artifact. Consolidate the normal download choice while keeping historical packages accessible.
-2. **Make uncertain receipt evidence and policy exceptions easier to review.** A confirmed clock date is now supported, but missing or ambiguous receipt dates, holiday exceptions and current retailer terms still require human confirmation. Coordinate with the existing parser contributor; a shipping date must not silently become a purchase date.
-3. **Improve continuity across devices and calendars.** Reviewed backups carry saved records, but there is no account synchronization. Finishing an order cannot remove a reminder already imported into another calendar.
-4. **Refine partial-return and refund continuity through real use.** Reviewed item quantities now keep unfinished portions active, and shopper-entered refund notes remain independent. Neither confirms carrier receipt, retailer acceptance or payment.
+1. Finish the existing mobile return desk and independently judge the shipped cumulative app: saved purchase, date basis and next action must be visible on return. This is the top remaining concern from the independent intake pixel review; coordinate with Reed rather than starting another redesign.
+
+2. Confirm independent acceptance of the tracker-level spreadsheet action and known-date helper. Pending delivery uses a separate review draft, excluded from tracked-return CSV. The current UI now states that scope; browser verification keeps a real pending review without exporting a fabricated deadline.
+
+Independent Tern84b2 found a shopper-critical numeric-date error: 05/11/2026 was silently interpreted in US order. This build leaves two-valid-interpretation dates explicitly unresolved, names both dates in single and batch review, and requires the shopper to choose before saving. Unambiguous day-first/month-first dates remain recognized. Historical saved dates are not automatically rewritten; users should review any earlier ambiguous receipt.
+
+3. Publish and independently judge the combined item-decision and History build. The source now separates returned, kept and still-open quantities; current downloadable packages must be checked for these features.
+4. Confirm the actual start of a return window, including delivery-based windows (existing contributor; current manual entry clearly counts from purchase).
+5. Make missing or ambiguous receipt evidence understandable; no shipping date should masquerade as purchase date (existing parser contributor).
+6. Reduce installation friction and consolidate the many historical download links into one current versioned release.
+7. Item-level partial returns are integrated in this source; independent unfamiliar-input judgment and final release download remain pending. Refund follow-up now records shopper-entered expected amounts, next-check dates and notes; it does not verify merchant processing or bank receipt.
 
 ## Current build and improvement
 
 The README links downloadable source-pinned builds. Manual receipt intake adds a direct blank form for store, purchase date and checked return window, with optional receipt number and total. It shows the computed deadline before saving; incomplete entries and storage failures keep the draft. Existing email drafts stay separate. Saved purchases use the normal tracker, edit, calendar, backup and trip capabilities. No OCR, purchase synchronization, automatic retailer verification or logistics is claimed.
 
-The app stays local. Purchase-intake drafts remain in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups include the saved trip for separately reviewed restoration. Downloaded trip sheets include the selected orders, packing checks and notes.
+The app stays local. Unfinished manual purchase fields recover after reload in the same tab until Save or Discard; raw email remains only in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups include the saved trip for separately reviewed restoration. Downloaded trip sheets include the selected orders, packing checks and notes.
 
 ## Trip planning, 2026-11-10
 
@@ -42,3 +65,15 @@ The existing trip page now keeps an editable plan across visits: planned date, s
 For shoppers who have handed goods back but still need to check the money, the existing desk now keeps an explicit awaiting/received refund record on a purchase. Amounts include the currency as entered; they are never inferred from the whole-order total, so a partial return can be followed without closing the remaining deadline. A visible outstanding count links to a compact ledger; received records can be reopened. Existing backups carry the same notes and detect changed refund state as a conflict. Storage failure retains the draft and stale cross-tab edits cannot overwrite newer work.
 
 ReturnQueen https://returnqueen.com/ was inspected again on 2026-11-10: its published service tracks a return from pickup to refund. ReturnBy offers a local shopper record, not that logistics or payment verification. Excellent here means reopening the desk identifies the merchant, expected amount and next action immediately, and another browser restored from backup retains that work. No notification is sent by the follow-up date. Independent judgment belongs to returnby-refund-judge-tern84b2, not the producer tests.
+
+## Deadline-to-trip handoff, 2026-11-10
+
+A shopper choosing a busy deadline day in the monthly view should carry those returns into the existing trip planner without recalling and selecting every receipt again. The day now links to a review of current matching purchases. Adding them preserves the saved trip date, packing checks and notes; the chosen deadline never silently becomes the trip date. Only the date travels in the page address. The planner rereads saved orders and refuses an outdated selection until refreshed. This extends ReturnBy's local planning job alongside the ReturnQueen logistics and Whering inventory alternatives above; it does not perform a return.
+
+Remaining handoff gaps, ranked: (1) distinguish retailer drop-off versus shipment deadlines using verified instructions, (2) support more than one saved trip without overwriting packing work, (3) bring confirmed store locations into route planning. The current product has one saved trip and shopper-entered notes. Independent judgment belongs to Mica; producer tests establish behavior, not a quality verdict.
+
+## Updating a browser from a later backup, 2026-11-10
+
+A manually recorded refund could be carried into an empty browser, but a later backup with the same purchase marked received blocked every addition in an existing browser. The actual released-product two-browser course left an already-paid refund awaiting and prevented an unrelated new purchase from arriving. The backup preview now compares changed money, refund status, dates and notes; the shopper explicitly keeps the current complete purchase or uses the backup version. Unreviewed differences stay current while new purchases can still be added. Intervening edits cancel old choices and require another review. No automatic sync or field-by-field merge is implied.
+
+Ranked remaining portability gaps: multiple saved trips with distinct packing plans; intentional combination of independently changed fields on the same purchase; separately reviewing future item/refund installment history when those models exist. Current versions are chosen as complete purchases because partial automatic merging can misrepresent a return or refund. The existing ReturnQueen connected service and Whering inventory alternatives above have different data models; this improves ReturnBy's explicit local-backup path. An independent peer must judge the new version-choice workflow.

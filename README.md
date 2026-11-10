@@ -1,8 +1,32 @@
 # ReturnBy
 
-ReturnBy is a private return desk for purchases across stores, including paper receipts. Add an order manually or import its confirmation, review the retailer's terms, save the deadline, and keep a useful record of what happened. Raw receipt text stays in the current browser tab; only reviewed fields are saved locally.
+ReturnBy is a private return desk for purchases across stores, including paper receipts. Review a purchase, track what remains to return, and keep clear history and refund notes.
 
-## Latest published download — confirmed return-window start
+## Current GitHub Release — spreadsheet handoff from the return desk
+
+**[Download ReturnBy browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/returnby-desk-export-2026-11-10/ReturnBy-v0.2.2-browser.zip)** · [release notes, exact source and screenshots](https://github.com/Jacob-Met/returnby/releases/tag/returnby-desk-export-2026-11-10)
+
+The spreadsheet export action is now directly above the saved-return list; pending-delivery review drafts are explicitly excluded. This build also lets you enter a retailer-confirmed return-by date in manual purchase entry or Edit details without calculating the day count yourself. It also exports all saved purchases, confirmed clocks and shopper-recorded refund follow-up to CSV. It includes preserved email reviews, calendar alert choices and portable prepared trips from the merged product.
+
+Extract the ZIP, install Python 3 if needed, and run the included launcher for your platform; open http://127.0.0.1:8769. Keep the same browser profile and port for your saved tracker. Linux/Chrome was exercised after downloading this actual release; Windows/macOS launchers are included but not separately tested.
+
+Source: [6e6dca8](https://github.com/Jacob-Met/returnby/commit/6e6dca875a89b7bc80355325b7be34a956502a71). ZIP SHA-256: `a991c60d3c13a31f2e012df4ad15d42265ac3778f232f5f0d1639b5ea6285dcb`. The date helper saves a day window; future edits to the clock start require reapplying a known date. CSV is a review snapshot; JSON remains the restore format. Independent Sage accepted the original CSV handoff at85b41db9; this release addresses the judge’s discoverability finding. Independent review of the known-date helper and revised placement is tracked separately.
+
+## Independently verified recovery build — earlier source pin
+
+[Download ReturnBy](https://github.com/Jacob-Met/returnby/releases/download/returnby-manual-recovery-2026-11-10/ReturnBy-manual-recovery-e837e1b-browser.zip) · [launch steps, exact source and limitations](https://github.com/Jacob-Met/returnby/releases/tag/returnby-manual-recovery-2026-11-10).
+
+Unfinished manual receipt details survive reload in the same tab. Resume, review, then deliberately Save or Discard. Current saved purchases are preserved, including purchases added in another tab. Raw email remains unstored. Source e837e1bd630f685e33b8bcda9fc073071fdbc4b2; 554 tests and build passed; separate independent actual Chrome desktop/390px judgment accepted this workflow. Linux/Chrome exercised; Python 3 launchers for Windows/macOS packaged. SHA-256: 8685ef161367505b6f774cf7daaf8a878d19aa3b2229a04c32b984a0184d3703.
+
+
+## Earlier source-pinned download — preserved email review
+
+[Download ReturnBy browser ZIP](./downloads/returnby-intake-613f15f/ReturnBy-613f15f-browser.zip) · [source, launch instructions, checksum and limits](./downloads/returnby-intake-613f15f/README.md) · [desktop](./downloads/returnby-intake-613f15f/review-1440.png) · [phone](./downloads/returnby-intake-613f15f/review-390.png).
+
+Merged source613f15f adds unsaved email-review departure protection and includes current manual purchases, portable prepared trips, refund follow-up and CSV export. Extract and run the included Python3 launcher. Actual packaged Linux/Chrome entrypoint exercised at desktop and phone sizes. Browser departure warnings let you cancel leaving and retain your review; this does not provide crash recovery. Independent audience judgment is tracked separately.
+
+
+## Earlier downloadable build — confirmed return-window start
 
 **[Download source-pinned ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-clock-92baeb9-browser.zip)** · [launch instructions, checksum and tested limitations](./downloads/ReturnBy-2026-11-10-clock-92baeb9.md) · [actual desktop screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-desktop.png) · [actual phone screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-mobile.png).
 
@@ -300,7 +324,7 @@ Changed order facts require checking store instructions again. Notes for unavail
 
 ## Spreadsheet export
 
-Open **Export or restore saved returns**, then **Download all saved returns as CSV**.
+Choose **Download all saved returns as CSV** directly above your saved-return list.
 The file contains every currently saved purchase, regardless of tracker filters, with
 its saved amount, order number, return window, confirmed clock start and calculated
 deadline. It reads storage again on each click. Original emails and trip notes are
@@ -308,3 +332,9 @@ excluded. Formula-like cells receive a leading apostrophe; the completion messag
 reports that protection. Import order-number columns as text to preserve leading
 zeros. CSV is for spreadsheet review; use the JSON backup for exact restoration.
 This adapts the existing CSV contribution in PR #25 to current confirmed clocks.
+
+## Enter a known return-by date
+
+In manual purchase entry or Edit details, open **Know the exact return-by date?**, enter the date you checked with the retailer, and select **Use this return-by date**. ReturnBy calculates the day window from the purchase date or your confirmed clock start. While that helper is applied in the open form, changing the clock start recalculates days to keep the chosen date. Editing days directly returns to a day window. Review the proposed deadline before saving.
+
+The saved record remains a day window, so future edits to its clock start can change the deadline; use the helper again to retain a retailer-confirmed date. The date must be after the clock start. This does not verify return eligibility or hardcode holiday policies. The motivating example was Apple's dated US holiday return policy, inspected on November 10, 2026 at https://www.apple.com/shop/help/returns_refund; eligibility and exclusions remain the shopper's responsibility.

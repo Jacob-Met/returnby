@@ -1,3 +1,5 @@
+import { test as itemRestoreTest, expect as itemRestoreExpect } from 'vitest';
+import { planResolvedImport, backupFieldLabel, backupFieldValue } from '../src/backup-resolution';
 import { expect, test } from 'vitest';
 import { exportBackup, parseBackup, planImport } from '../src/backup';
 import { hasValidCompletion, planCompletion } from '../src/completion';
@@ -84,4 +86,19 @@ test('item backup export removes extra local receipt data without losing reviewe
   const exported = exportBackup([unsafe], now);
   expect(exported).not.toContain('PRIVATE');
   expect(parseBackup(exported)[0].items).toEqual(items);
+});
+
+itemRestoreTest('reviewed backup replacement exposes and retains item outcomes as a complete purchase', () => {
+ const current = {id:'reviewed-items',merchant:'Harbour',orderDate:'2026-11-05',windowDays:30,windowSource:'user' as const,createdAt:'2026-11-05T10:00:00.000Z',items:[{id:'shirt',name:'Blue linen shirt',quantity:3,returned:1,kept:1}]};
+ const incoming = {...current,items:[{...current.items[0],returned:2}],completionKind:'mixed' as const,completedAt:'2026-11-10T10:00:00.000Z'};
+ const unresolved=planResolvedImport([current],[incoming]);
+ itemRestoreExpect(unresolved.conflicts).toBe(1);
+ itemRestoreExpect(unresolved.next[0].completedAt).toBeUndefined();
+ itemRestoreExpect(backupFieldLabel('items')).toBe('Item decisions');
+ itemRestoreExpect(backupFieldValue(current,'items')).toContain('1 still open · 1 returned · 1 kept');
+ itemRestoreExpect(backupFieldValue(incoming,'items')).toContain('Blue linen shirt: 3 bought, 2 returned, 1 kept, 0 still open');
+ itemRestoreExpect(backupFieldValue(incoming,'completionKind')).toBe('Returned & kept');
+ const accepted=planResolvedImport([current],[incoming],new Map([['reviewed-items','replace']]));
+ itemRestoreExpect(accepted.replaced).toBe(1);
+ itemRestoreExpect(accepted.next[0]).toMatchObject(incoming);
 });

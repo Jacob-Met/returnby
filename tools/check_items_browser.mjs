@@ -53,7 +53,8 @@ try{
  await page.locator('#refund-form button[type=submit]').click();
  await page.locator('#refund-dialog').waitFor({state:'hidden'});
  await page.setViewportSize({width:1440,height:1000});
- const [reminder]=await Promise.all([page.waitForEvent('download'),page.locator('[data-ics]').click()]);await reminder.saveAs(dir+'/partial.ics');
+ await page.locator('[data-ics]').click();
+ const [reminder]=await Promise.all([page.waitForEvent('download'),page.locator('#calendar-download').click()]);await reminder.saveAs(dir+'/partial.ics');
  assert.match(await fs.readFile(dir+'/partial.ics','utf8'),/20261208/);
  await passed('Partial purchase remains eligible for actual downloaded calendar reminder');
  await page.goto(base+'/trip-checklist.html',{waitUntil:'networkidle'});
@@ -116,6 +117,21 @@ try{
  assert.equal(restored.trip.orders[0].notes,backup.trip.orders[0].notes);
  await restore.locator('[data-items]').click();await restore.screenshot({path:dir+'/05-restored-phone.png'});
  await passed('Actual downloaded backup restores item decisions, refund and prepared trip in a fresh phone browser');
+ await restore.locator('#items-cancel').click();
+ await restore.locator('[data-items]').click();
+ await restore.locator('.item-line').first().locator('[data-item-field=returned]').fill('2');
+ await restore.locator('#items-save').click();
+ await restore.locator('#backup-file').setInputFiles(dir+'/partial-returnby.json');
+ await restore.locator('#backup-preview').waitFor({state:'visible'});
+ const comparison=await restore.locator('#backup-rows').innerText();
+ assert.match(comparison,/Item decisions/);assert.match(comparison,/2 returned/);assert.match(comparison,/1 returned/);
+ assert.doesNotMatch(comparison,/"quantity":/);
+ await restore.locator('#backup-rows select[data-backup-choice]').selectOption('replace');
+ await restore.locator('#backup-apply').click();
+ const replaced=await restore.evaluate(()=>JSON.parse(localStorage.getItem('returnby.v1')));
+ assert.equal(replaced[0].completedAt,undefined);assert.equal(replaced[0].items[0].returned,1);assert.equal(replaced[0].refundAmount,'£28.00');
+ await passed('Reviewed backup differences explain item quantities and explicitly replace the complete chosen purchase');
+
  assert.deepEqual(failures,[]);
  console.log(JSON.stringify({passed:results.length,checks:results,errors:failures}));
  await fs.writeFile(dir+'/results.json',JSON.stringify({passed:true,checks:results,errors:failures},null,2));

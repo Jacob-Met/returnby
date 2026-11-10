@@ -1,5 +1,6 @@
 import { purchaseIdentity as identity } from './purchase-identity';
 import { parse } from './parse';
+import { deliveryReview } from './delivery-review';
 import { knownMerchants, lookup } from './policy';
 import { dueDate } from './deadline';
 import { save, type Order } from './store';
@@ -25,6 +26,7 @@ export type BatchDraft = {
   fields: DraftFields;
   found: ReturnType<typeof parse>['found'];
   reviewed: boolean;
+  dateWarning?: string;
 };
 export type Confirmation = { label: string; text: string };
 export type DuplicateNotice = Readonly<{ draftId: string; label: string; match: string }>;
@@ -77,6 +79,7 @@ export function appendConfirmations(
     const policy = lookup(parsed.merchant);
     return {
       id, label: input.label, text: input.text, found: parsed.found, reviewed: false,
+      ...(parsed.dateWarning ? {dateWarning:parsed.dateWarning} : {}),
       fields: {
         merchant: parsed.merchant, orderNo: parsed.orderNo, total: parsed.total,
         orderDate: parsed.orderDate, windowDays: String(policy.days),
@@ -101,6 +104,9 @@ export function validateDraft(draft: BatchDraft): Omit<Order, 'id' | 'createdAt'
     throw new BatchIntakeError('Choose a valid confirmed return-clock start date.', 'windowStartDate', draft.id);
   }
   const windowStartDate = fields.windowStartDate?.trim() ?? '';
+  if (deliveryReview(draft.text).required && !windowStartDate) {
+    throw new BatchIntakeError('This receipt starts its return window at delivery. Confirm the return-clock start before selecting it, or leave this purchase unselected until delivery.', 'windowStartDate', draft.id);
+  }
   if (windowStartDate && !isSupportedDate(windowStartDate)) {
     throw new BatchIntakeError('Choose a real confirmed return-clock start date (or leave blank to count from the order date).', 'windowStartDate', draft.id);
   }

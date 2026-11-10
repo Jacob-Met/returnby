@@ -1,0 +1,51 @@
+import {chromium} from 'playwright';
+import {mkdir,writeFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const output=process.env.EVIDENCE || '/tmp/astra-marlin-82d1/pending-evidence';
+await mkdir(output,{recursive:true});
+const browser=await chromium.launch({executablePath:'/usr/local/bin/google-chrome',headless:true,args:['--no-sandbox']});
+const results=[];
+try{
+for(const width of [1440,390]){
+ const page=await browser.newPage({viewport:{width,height:900}});
+ await page.goto(process.env.BASE_URL || 'http://127.0.0.1:18991');
+ let accept=false;const prompts=[];
+ page.on('dialog',async d=>{prompts.push(d.type());await(accept?d.accept():d.dismiss());});
+ await page.locator('#paste').fill('Store: Cedar Outfitters\nOrder date: November 1, 2026\nOrder number: PENDING-428\nTotal: $57.98\nReturns accepted within 14 days of delivery.');
+ await page.locator('#find').click();
+ await page.locator('#preview [name=merchant]').fill('Cedar Outfitters');
+ await page.locator('#preview [name=orderDate]').fill('2026-11-01');
+ await page.locator('#preview [name=windowStartDate]').fill('2026-11-06');
+ await page.locator('#preview [name=windowDays]').fill('14');
+ await page.locator('#save-pending-delivery').click();
+ await page.reload();
+ await page.locator('#pending-delivery').click();
+ assert.equal(prompts.length,0);
+ assert.equal(await page.locator('#preview [name=windowStartDate]').inputValue(),'2026-11-06');
+ await page.locator('#save-pending-delivery').click();
+ const newRaw='A different real receipt still being typed';
+ await page.locator('#paste').fill(newRaw);
+ await page.locator('#pending-delivery').click();
+ assert.deepEqual(prompts,['confirm']);
+ assert.equal(await page.locator('#paste').inputValue(),newRaw);
+ assert.equal(await page.locator('#preview').isVisible(),false);
+ accept=true;await page.locator('#pending-delivery').click();
+ assert.equal(prompts.length,2);assert.equal(await page.locator('#paste').inputValue(),'');
+ assert.equal(await page.locator('#preview [name=windowStartDate]').inputValue(),'2026-11-06');
+ await page.locator('#preview [name=merchant]').fill('Cedar corrected name');
+ accept=false;await page.locator('#pending-delivery').click();
+ assert.equal(prompts.length,3);
+ assert.equal(await page.locator('#preview [name=merchant]').inputValue(),'Cedar corrected name');
+ assert.equal(await page.evaluate(()=>localStorage.getItem('returnby.v1')),null);
+ await page.screenshot({path:output+'/resumed-'+width+'.png',fullPage:true});
+ await page.locator('#preview button[type=submit]').click();
+ assert.equal(await page.evaluate(()=>localStorage.getItem('returnby.pending-delivery')),null);
+ await page.reload();
+ const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('returnby.v1')));
+ assert.equal(saved.length,1);assert.equal(saved[0].windowStartDate,'2026-11-06');assert.equal(saved[0].windowDays,14);
+ assert.match(await page.locator('#list').innerText(),/2026-11-20/);
+ results.push({width,pendingClockSurvivesReload:true,emptyResumeNoPrompt:true,cancelResumeKeepsRaw:true,acceptedResumeClearsOtherRaw:true,cancelResumeKeepsCorrections:true,noPrematureTrackerWrite:true,savedDeadline:'2026-11-20',pendingRemovedAfterSave:true});
+ await page.close();
+}
+await writeFile(output+'/result.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results));
+}finally{await browser.close();}

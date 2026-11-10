@@ -1,0 +1,28 @@
+[
+  {
+    "width": 1440,
+    "manualPurchase": true,
+    "refundSaved": true,
+    "downloadedActualIcs": true,
+    "newYorkUtcCorrect": true,
+    "privateNotesAbsent": true,
+    "pastTimeRefused": true,
+    "secondTabReceivedRefused": true,
+    "noReceivedAction": true,
+    "noPageErrors": true,
+    "noHorizontalOverflow": true
+  },
+  {
+    "width": 390,
+    "manualPurchase": true,
+    "refundSaved": true,
+    "downloadedActualIcs": true,
+    "newYorkUtcCorrect": true,
+    "privateNotesAbsent": true,
+    "pastTimeRefused": true,
+    "secondTabReceivedRefused": true,
+    "noReceivedAction": true,
+    "noPageErrors": true,
+    "noHorizontalOverflow": true
+  }
+]

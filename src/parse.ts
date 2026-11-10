@@ -1,6 +1,8 @@
+import { numericDate, reviewNumericDate } from './numeric-date';
 export type Parsed = {
   merchant: string;
   orderDate: string; // YYYY-MM-DD or ''
+  dateWarning?: string;
   orderNo: string;
   total: string;
   found: { merchant: boolean; orderDate: boolean; orderNo: boolean; total: boolean };
@@ -29,7 +31,7 @@ export function findDates(text: string): Hit[] {
     [new RegExp(`\\b(\\d{1,2})\\s+${mon}\\s+(\\d{4})\\b`, 'gi'),
       (m) => iso(+m[3], MONTHS[m[2].slice(0, 3).toLowerCase()], +m[1])],
     [/\b(\d{4})-(\d{2})-(\d{2})\b/g, (m) => iso(+m[1], +m[2], +m[3])],
-    [/\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/g, (m) => iso(+m[3], +m[1], +m[2])], // US order
+    [/\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/g, (m) => numericDate(+m[3], +m[1], +m[2])],
   ];
   for (const [re, conv] of patterns) {
     let m: RegExpExecArray | null;
@@ -87,7 +89,8 @@ function pickMerchant(text: string, known: string[]): string {
 
 export function parse(text: string, knownMerchants: string[] = []): Parsed {
   const merchant = pickMerchant(text, knownMerchants);
-  const orderDate = pickOrderDate(text);
+  const dateReview = reviewNumericDate(text, pickOrderDate(text), findDates(text));
+  const orderDate = dateReview.date;
   const no = /\border\s*(?:#|number\b|no\b\.?|id\b)\s*:?\s*#?\s*([A-Z0-9][A-Z0-9-]{3,})/i.exec(text);
   const tot = /\b(?:order\s+)?total\s*:?\s*([$€£]\s?\d[\d,]*(?:\.\d{2})?)/i.exec(text);
   // Some common receipts phrase an ID as "Your order number is XX-0001".
@@ -101,6 +104,7 @@ export function parse(text: string, knownMerchants: string[] = []): Parsed {
   const total = (tot ? tot[1] : alternateTotal?.[1] || '').replace(/\s/g, '');
   return {
     merchant, orderDate, orderNo, total,
+    ...(dateReview.warning ? {dateWarning:dateReview.warning} : {}),
     found: { merchant: !!merchant, orderDate: !!orderDate, orderNo: !!orderNo, total: !!total },
   };
 }
