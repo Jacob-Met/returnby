@@ -1,7 +1,9 @@
+import type { RefundPayments } from './refund-payments';
 import { hasValidRefund } from './refund';
 import { hasValidCompletion } from './completion';
 
 export type Order = {
+  refundPayments?: RefundPayments;
   refundState?: 'awaiting' | 'received'; refundAmount?: string; refundFollowUpDate?: string; refundNote?: string; refundUpdatedAt?: string;
   id: string; merchant: string; orderNo?: string; total?: string;
   fixedDeadline?: string;
