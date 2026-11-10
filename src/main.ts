@@ -7,12 +7,12 @@ import { lookup, knownMerchants } from './policy';
 import { dueDate, daysLeft, status, todayISO } from './deadline';
 import { startDayRefresh } from './day-refresh';
 import { bindIntakeDeadline } from './intake-deadline';
-import { buildIcs } from './ics';
+import { planSingleCalendar } from './calendar-batch';
 import { load, read, save, type Order } from './store';
 import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
-import { bindCalendarBatch } from './calendar-batch-ui';
+import { bindCalendarBatch, downloadCalendar } from './calendar-batch-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
@@ -167,11 +167,22 @@ list.addEventListener('click', (e) => {
   if (t.dataset.edit !== undefined) orderEditor.open(t.dataset.edit);
   if (t.dataset.del) removeOrder(t.dataset.del);
   if (t.dataset.ics) {
-    const o = orders.find((x) => x.id === t.dataset.ics)!;
-    const blob = new Blob([buildIcs({ ...o, due: dueDate(o.orderDate, o.windowDays) })], { type: 'text/calendar' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = `return-${(o.merchant || 'order').replace(/\W+/g, '-')}.ics`; a.click();
-    URL.revokeObjectURL(a.href);
+    const displayed = orders.filter(order => order.id === t.dataset.ics);
+    if (displayed.length !== 1) {
+      showStorageError('This saved return could not be selected uniquely. Review the tracker before downloading.');
+      return;
+    }
+    const current = readCurrentOrders();
+    if (!current) return;
+    try {
+      const plan = planSingleCalendar(current, displayed[0]);
+      downloadCalendar(plan.content, plan.filename);
+      clearStorageError();
+    } catch (error) {
+      orders = current;
+      render();
+      showStorageError(error instanceof Error ? error.message : 'This return could not be exported. Review the refreshed tracker.');
+    }
   }
 });
 
