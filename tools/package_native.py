@@ -14,8 +14,7 @@ PLATFORMS = ("linux-amd64", "linux-arm64", "darwin-amd64", "darwin-arm64", "wind
 
 def package_native(root, static, out, version, source, platforms):
     go_version = subprocess.check_output(["go", "version"], text=True).strip()
-    go_root = subprocess.check_output(["go", "env", "GOROOT"], text=True).strip()
-    notices = ["Go runtime\n\n" + (Path(go_root) / "LICENSE").read_text()]
+    notices = ["Go runtime\n\n" + (root / "tools/launcher/LICENSE-Go").read_text()]
     for relative in ("LICENSE", "node_modules/parse5/LICENSE", "node_modules/entities/LICENSE"):
         candidate = root / relative
         if candidate.is_file():
