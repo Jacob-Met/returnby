@@ -69,7 +69,8 @@ test('a confirmed delivery clock survives finishing, portable history and reopen
   const before = planSingleCalendar([delivered], delivered, now).content;
   expect(before).toContain('20261120');
   const activeBackup = exportBackup([delivered], now);
-  expect(JSON.parse(activeBackup).version).toBe(2);
+  // Mainline v1 exports already include confirmed clocks; keep that compatibility.
+  expect(JSON.parse(activeBackup).version).toBe(1);
   expect(parseBackup(activeBackup)[0].windowStartDate).toBe('2026-11-06');
   const closed = planCompletion([delivered], delivered, 'returned', now);
   const portable = parseBackup(exportBackup(closed.next, now));

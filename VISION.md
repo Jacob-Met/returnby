@@ -16,7 +16,7 @@ These are inspected public descriptions and official reference pixels, not compe
 
 Desk-first intake and the saved-return tracker, direct manual purchase entry, and a user-confirmed return-clock start have now been integrated from mainline. A confirmed start can represent a delivery date checked by the user; leaving it blank uses the order date. ReturnBy does not fetch or verify delivery events, current retailer policies or exceptions. The earlier gap that required all windows to begin on the purchase date is therefore no longer the current source behavior.
 
-The lifecycle source lets a user record Returned or Kept, removes finished orders from active planning and reminder exports, retains their details in searchable History, and supports reopening and versioned backup recovery. Independent astra-tern-7c33 judgment accepted the actual dba47a3 browser workflow and drove clearer History context, readable confirmation text and immediate phone visibility. That verdict is specific to the tested lifecycle candidate; the later combined mainline layout and clock changes are undergoing final integrated checks.
+The lifecycle source lets a user record Returned or Kept, removes finished orders from active planning and reminder exports, retains their details in searchable History, and supports reopening and versioned backup recovery. Independent astra-tern-7c33 judgment accepted the actual dba47a3 browser workflow and drove clearer History context, readable confirmation text and immediate phone visibility. That verdict is specific to the tested lifecycle candidate. Kestrel subsequently exercised the composed desk-first, confirmed-clock, Undo and prepared-trip build: 555 native tests, the production build, ten real Chrome lifecycle groups and donor-to-fresh-browser trip restoration passed. The versioned package and its current-source film remain the delivery gap.
 
 The README links the latest published confirmed-clock download and retains earlier manual-purchase and desk-first downloads. The new combined lifecycle source is not yet a downloadable release. Do not infer its availability from an older versioned ZIP or from a source commit.
 
@@ -31,7 +31,7 @@ The README links the latest published confirmed-clock download and retains earli
 
 The README links downloadable source-pinned builds. Manual receipt intake adds a direct blank form for store, purchase date and checked return window, with optional receipt number and total. It shows the computed deadline before saving; incomplete entries and storage failures keep the draft. Existing email drafts stay separate. Saved purchases use the normal tracker, edit, calendar, backup and trip capabilities. No OCR, purchase synchronization, automatic retailer verification or logistics is claimed.
 
-The app stays local. Purchase-intake drafts remain in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups do not include a trip plan. Downloaded trip sheets include the selected orders, packing checks and notes.
+The app stays local. Purchase-intake drafts remain in the open page; reviewed orders and editable trip plans remain in this browser origin. Order backups and calendar files are explicit downloads; order backups include the saved trip for separately reviewed restoration. Downloaded trip sheets include the selected orders, packing checks and notes.
 
 ## Trip planning, 2026-11-10
 

@@ -1,3 +1,4 @@
+import { purchaseIdentity as identity } from './purchase-identity';
 import { parse } from './parse';
 import { knownMerchants, lookup } from './policy';
 import { dueDate } from './deadline';
@@ -128,11 +129,6 @@ function readRaw(reader: Reader): string | null {
   }
 }
 
-function identity(order: Pick<Order, 'merchant' | 'orderNo'>): string | null {
-  const merchant = order.merchant.trim().toLowerCase();
-  const number = (order.orderNo ?? '').trim().toLowerCase();
-  return merchant && number ? JSON.stringify([merchant, number]) : null;
-}
 
 const preparedReviews = new WeakSet<BatchReview>();
 

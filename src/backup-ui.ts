@@ -1,7 +1,9 @@
-import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackup, planImport, type ImportPlan } from './backup';
+import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackupDocument, planImport, type ImportPlan } from './backup';
 import { returnDueDate } from './deadline';
 import { completionLabel } from './completion';
 import type { Order } from './store';
+import { parsePortableTrip, prepareTripRestore, TripBackupError } from './trip-backup';
+import { readTripPlan, saveTripPlan, TripPlanError, type TripPlan } from './trip-plan';
 
 type Tracker = { read: () => unknown; commit: (orders: Order[]) => boolean };
 const PAGE_SIZE = 25;
@@ -21,6 +23,65 @@ export function bindBackup(tracker: Tracker) {
   let generation = 0;
   let page = 0;
 
+
+  const tripPanel=get<HTMLElement>('backup-trip');
+  const tripSummary=get<HTMLElement>('backup-trip-summary');
+  const tripRows=get<HTMLElement>('backup-trip-orders');
+  const tripNote=get<HTMLElement>('backup-trip-note');
+  const tripRestore=get<HTMLButtonElement>('backup-trip-restore');
+  const tripReplace=get<HTMLInputElement>('backup-trip-replace');
+  const tripReplaceLabel=get<HTMLElement>('backup-trip-replace-label');
+  let incomingTrip:TripPlan|null=null;
+  let tripExpectedRaw:string|null=null;
+  let tripNeedsReplacement=false;
+  let tripAvailable=false;
+
+  function showTrip() {
+    tripPanel.hidden=!incomingTrip;
+    tripRestore.disabled=true;tripAvailable=false;tripReplace.checked=false;
+    if(!incomingTrip || !incoming)return;
+    try {
+      const current=planImport(tracker.read(),incoming);
+      const prepared=prepareTripRestore(incomingTrip,current.next);
+      const saved=readTripPlan(localStorage);
+      tripExpectedRaw=saved.raw;
+      const same=saved.plan && JSON.stringify(parsePortableTrip(saved.plan))===JSON.stringify(prepared.plan);
+      tripNeedsReplacement=!!saved.plan&&!same;
+      tripReplaceLabel.hidden=!tripNeedsReplacement;
+      tripSummary.textContent=(incomingTrip.tripDate || 'Date not chosen')+' · '+prepared.selected+' selected '+(prepared.selected===1?'order':'orders')+' · '+incomingTrip.orders.filter(o=>o.notes).length+' packing notes';
+      tripRows.replaceChildren(...incomingTrip.orders.map(entry=>{
+        const li=document.createElement('li');
+        li.textContent=(entry.merchant || 'Unknown store')+(entry.orderNo?' #'+entry.orderNo:'')+' — '+(entry.selected?'Selected':'Not selected')+
+          '; '+[entry.packed?'item packed':'item not packed',entry.receiptReady?'receipt ready':'receipt not ready',entry.instructionsChecked?'instructions checked':'instructions not checked'].join(', ')+(entry.notes?'. Notes: '+entry.notes:'');
+        return li;
+      }));
+      const changes=prepared.changed.length?' Changed order details will require checking store instructions again.':'';
+      const unavailable=prepared.unavailable.length?' '+prepared.unavailable.length+' unavailable orders will stay unselected; their notes are kept.':'';
+      if(current.conflicts)tripNote.textContent='Resolve the conflicting order IDs before restoring this trip. Your current trip will stay.';
+      else if(current.added)tripNote.textContent='First import the reviewed orders above. Then restore this trip in a separate step.'+changes+unavailable;
+      else if(same)tripNote.textContent='This trip is already saved in this browser.';
+      else {
+        tripAvailable=true;tripRestore.disabled=tripNeedsReplacement;
+        tripNote.textContent=(tripNeedsReplacement?'This browser already has a different trip. Confirm replacement below, or leave it unchanged.':'Your current orders are ready. Restore the date, packing checks and notes when you are ready.')+changes+unavailable;
+      }
+    } catch(error) {tripNote.textContent=error instanceof Error?error.message:'The saved trip could not be read.';}
+  }
+  tripReplace.addEventListener('change',()=>{tripRestore.disabled=!tripAvailable||(tripNeedsReplacement&&!tripReplace.checked);});
+  tripRestore.addEventListener('click',()=>{
+    if(!incomingTrip||!incoming||!tripAvailable||(tripNeedsReplacement&&!tripReplace.checked))return;
+    try {
+      const current=planImport(tracker.read(),incoming);
+      if(current.conflicts||current.added){show(current);tell('Saved orders changed. Review and import them before restoring the trip.',true);return;}
+      const saved=readTripPlan(localStorage);
+      if(saved.raw!==tripExpectedRaw){showTrip();tripNote.textContent='The saved trip changed in another tab. Review it again before choosing replacement.';tell(tripNote.textContent,true);return;}
+      const prepared=prepareTripRestore(incomingTrip,current.next);
+      saveTripPlan(localStorage,prepared.plan,tripExpectedRaw);
+      incomingTrip=null;tripRestore.disabled=true;tripReplaceLabel.hidden=true;
+      tripNote.textContent='Trip restored on this device. Open the planner to review current deadlines before travelling.';
+      tell('Trip restored. Your packing notes and checks are ready in the return-trip planner.');
+    } catch(error) {tripNote.textContent=error instanceof Error?error.message:'The trip could not be restored. Your review is still open.';tell(tripNote.textContent,true);}
+  });
+
   function tell(value: string, error = false) {
     message.textContent = value;
     message.hidden = !value;
@@ -28,12 +89,14 @@ export function bindBackup(tracker: Tracker) {
   }
 
   function errorText(error: unknown) {
-    return error instanceof BackupError ? error.message : "Couldn't read saved returns or this file. Check browser storage and try again.";
+    return (error instanceof BackupError || error instanceof TripBackupError || error instanceof TripPlanError) ? error.message : "Couldn't read saved returns or this file. Check browser storage and try again.";
   }
 
   function reset() {
     generation++;
     incoming = null;
+    incomingTrip = null;
+    tripPanel.hidden = true;
     preview = null;
     panel.hidden = true;
     apply.disabled = true;
@@ -66,8 +129,9 @@ export function bindBackup(tracker: Tracker) {
     apply.disabled = plan.conflicts > 0 || plan.added === 0;
     panel.hidden = false;
     renderPage();
+    showTrip();
     if (plan.conflicts) tell('Nothing can be imported from this file while IDs conflict. Keep your current tracker and choose the matching backup, or cancel.', true);
-    else if (!plan.added) tell('Everything in this backup is already saved, or the backup is empty. Nothing will change.');
+    else if (!plan.added) tell(incomingTrip?'All orders are already saved. Review the trip below before restoring it.':'Everything in this backup is already saved, or the backup is empty. Nothing will change.');
     else tell('Review the orders below, then choose Import. Existing saved orders will stay.');
     summary.focus();
   }
@@ -82,7 +146,9 @@ export function bindBackup(tracker: Tracker) {
       if (file.size > MAX_BACKUP_BYTES) throw new BackupError('Choose a backup no larger than 5 MiB.');
       const contents = await file.text();
       if (ticket !== generation) return;
-      incoming = parseBackup(contents);
+      const parsed = parseBackupDocument(contents);
+      incoming = parsed.orders;
+      incomingTrip = parsed.trip;
       show(planImport(tracker.read(), incoming));
     } catch (error) {
       if (ticket !== generation) return;
@@ -111,8 +177,8 @@ export function bindBackup(tracker: Tracker) {
         tell("The backup wasn't imported because browser storage refused the change. Your preview is kept so you can try again.", true);
         return;
       }
-      reset();
-      tell(`Imported ${current.added} ${current.added === 1 ? 'order' : 'orders'}. Skipped ${current.skipped} already saved.`);
+      if(incomingTrip)show(planImport(tracker.read(),incoming));else reset();
+      tell(`Imported ${current.added} ${current.added === 1 ? 'order' : 'orders'}. Skipped ${current.skipped} already saved.${incomingTrip ? ' Now review and restore the trip below.' : ''}`);
     } catch (error) { tell(errorText(error), true); }
   });
 
@@ -120,13 +186,14 @@ export function bindBackup(tracker: Tracker) {
     let url: string | undefined;
     try {
       const now = new Date();
-      const content = exportBackup(tracker.read(), now);
+      const trip = readTripPlan(localStorage).plan;
+      const content = exportBackup(tracker.read(), now, trip);
       url = URL.createObjectURL(new Blob([content], { type: 'application/json' }));
       const link = document.createElement('a');
       link.href = url;
       link.download = `returnby-backup-${now.toISOString().slice(0, 10)}.json`;
       link.click();
-      tell('Backup download requested. Keep this file private: it contains your saved order details.');
+      tell(trip?'Backup download requested with your saved orders and trip, including private packing notes.':'Backup download requested. Keep this file private: it contains your saved order details.');
     } catch (error) { tell(errorText(error), true); }
     finally {
       // Let the browser start its download before releasing the object URL.

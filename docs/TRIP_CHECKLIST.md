@@ -20,7 +20,7 @@ Preview and download still read the saved order list again. If it changed since 
 
 ## Saving, privacy and recovery
 
-The trip is saved separately from order records. The planner never writes the order store. Notes are optional and may contain private details; they appear in downloaded sheets. Order backup files contain orders only, not the trip plan. This is local browser storage, not account synchronization.
+The trip is saved separately from order records. The planner never writes the order store. Notes are optional and may contain private details; they appear in downloaded sheets. Backup files include the saved trip, packing checks and notes. Import reviewed orders first, then explicitly restore the trip; replacing an existing trip requires confirmation. This is local browser storage, not account synchronization.
 
 A storage failure leaves the plan open in the tab and offers **Retry saving trip**. The UI reports a successful save only after the write succeeds, and warns before leaving with unsaved edits. If another planner tab saved a different trip, choose **Load saved trip** or **Keep this tab’s trip instead**. These are explicit overwrite choices, not an atomic multi-device transaction.
 
