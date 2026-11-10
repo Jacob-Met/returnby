@@ -6,6 +6,7 @@ type Options = {
   read(): ItemOrder[];
   commit(next: ItemOrder[]): boolean;
   refresh(): unknown;
+  saved?(order: ItemOrder, previous: ItemOrder): void;
 };
 const escape = (text: string) => text.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!);
 
@@ -96,8 +97,11 @@ export function bindItemEditor(options: Options) {
         showError('Could not save item decisions. Your draft is kept. Try saving again when browser storage is available.');
         return;
       }
+      if (plan.changed) options.saved?.(plan.order, original);
+      const reopened = !!original.completedAt && !plan.order.completedAt;
       const feedback = document.querySelector<HTMLElement>('#edit-feedback');
-      if (feedback) feedback.textContent = 'Saved items for ' + (plan.order.merchant || 'this purchase') + ': ' + itemSummary(plan.order) + '.';
+      if (feedback) feedback.textContent = 'Saved items for ' + (plan.order.merchant || 'this purchase') + ': ' + itemSummary(plan.order) + '.'
+        + (reopened ? ' Back in Active returns with its original deadline.' : '');
       dialog.close();
     } catch (error) {
       if (error instanceof ItemConflict) options.refresh();

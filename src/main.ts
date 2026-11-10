@@ -494,6 +494,12 @@ const itemEditor = bindItemEditor({
   read: load,
   commit: next => { if (!persistOrders(next)) return false; render(); return true; },
   refresh: reloadOrders,
+  saved: (order, previous) => {
+    if (!!order.completedAt !== !!previous.completedAt) {
+      filterMode = order.completedAt ? 'completed' : 'all';
+      render();
+    }
+  },
 });
 const orderEditor = bindOrderEditor({
   getOrders: () => orders,

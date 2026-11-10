@@ -22,4 +22,4 @@ for i,s in enumerate(r['stages']):
 (p/'captions.ass').write_text(ass)
 videos=list((p/'raw').glob('*.webm'))
 assert len(videos)==1, videos
-subprocess.run(['ffmpeg','-hide_banner','-nostdin','-i',str(videos[0]),'-vf','pad=1366:1020:0:120:color=0x132c2a,ass=captions.ass','-t',str(r['end']),'-r','30','-c:v','libx264','-preset','fast','-crf','20','-pix_fmt','yuv420p','-an','-movflags','+faststart','ReturnBy-HTML-receipt-walkthrough.mp4'],cwd=p,check=True)
+subprocess.run(['ffmpeg','-hide_banner','-nostdin','-i',str(videos[0]),'-vf','pad=1366:1020:0:120:color=0x132c2a,ass=captions.ass','-t',str(r['end']),'-r','30','-c:v','libx264','-preset','fast','-crf','20','-threads','2','-pix_fmt','yuv420p','-an','-movflags','+faststart',sys.argv[2] if len(sys.argv)>2 else 'ReturnBy-HTML-receipt-walkthrough.mp4'],cwd=p,check=True)

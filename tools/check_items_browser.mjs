@@ -91,7 +91,10 @@ try{
  await page.locator('.item-line').first().locator('[data-item-field=returned]').fill('1');
  await page.locator('.item-line').first().locator('[data-item-field=kept]').fill('0');
  await page.locator('#items-save').click();
- await page.locator('#filter-all').click();
+ await page.locator('#items-dialog').waitFor({state:'hidden'});
+ assert.equal(await page.locator('#filter-all').getAttribute('aria-pressed'),'true');
+ await page.waitForFunction(()=>document.activeElement?.matches('[data-items]'));
+ assert.match(await page.locator('#edit-feedback').innerText(),/Back in Active returns/);
  assert.match(await page.locator('#list').innerText(),/2 still open/);
  orders=await page.evaluate(()=>JSON.parse(localStorage.getItem('returnby.v1')));
  assert.equal(orders[0].completedAt,undefined);assert.equal(orders[0].refundAmount,'£28.00');
