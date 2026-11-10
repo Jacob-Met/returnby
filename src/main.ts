@@ -1,3 +1,4 @@
+import { bindRefunds, renderRefunds } from './refund-ui';
 import { reviewDuplicateIntake } from './duplicate-intake';
 import './style.css';
 import './backup.css';
@@ -184,6 +185,7 @@ preview.addEventListener('submit', (e) => {
 });
 
 function render() {
+  renderRefunds(orders, loadFailed);
   if (loadFailed) {
     for (const id of ['tracked-count', 'soon-count', 'expired-count']) $(`#${id}`).textContent = '—';
     list.innerHTML = '<li class="empty">Saved returns are unavailable until they can be loaded.</li>';
@@ -197,7 +199,7 @@ function render() {
   const rows=all.filter(r=>!query || [r.o.merchant,r.o.orderNo].some(value=>(value ?? "").toLocaleLowerCase().includes(query))).filter(r=>filterMode==='all'||(filterMode==='due'&&r.left>=0&&r.left<=7)||(filterMode==='expired'&&r.left<0));
   $('#search-results').textContent = query ? rows.length + ' of ' + all.length + ' saved returns match this search and date filter.' : '';
   if(!rows.length){list.innerHTML=`<li class="empty">${all.length?'No saved deadlines match. Clear the search or choose another date filter.':'No returns tracked yet. Paste an order email above, or try a fictional example.'}</li>`;return;}
-  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)} · CLOCK ${h(o.windowStartDate || o.orderDate)}${o.windowStartDate ? ' (confirmed by you)' : ' (order date)'}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
+  list.innerHTML=rows.map(({o,due,left,progress})=>{const label=left<0?'PAST DUE':left<=2?'URGENT':left<=7?'DUE SOON':'ON TRACK';const policy=o.windowSource==='policy'?`STORE POLICY / ${o.windowDays} DAYS`:o.windowSource==='default'?`${o.windowDays}-DAY FALLBACK`:`YOUR RULE / ${o.windowDays} DAYS`;const count=left<0?`EXPIRED ${-left}D`:`${left} DAYS LEFT`;return `<li class="card ${status(left)}"><div class="order-head"><div><strong>${h(o.merchant||'Unknown store')}</strong>${o.orderNo?` <span class="mono">#${h(o.orderNo)}</span>`:''}</div><span class="status-tag">${label}</span></div><div class="window-meta"><span>ORDER ${h(o.orderDate)} · CLOCK ${h(o.windowStartDate || o.orderDate)}${o.windowStartDate ? ' (confirmed by you)' : ' (order date)'}</span><span class="source-tag">${policy}</span></div><div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><i style="width:${progress}%"></i></div><div class="order-foot"><span class="return-by">RETURN BY ${h(due)}</span><strong class="days-left">${count}</strong></div><div class="order-actions"><button class="button button-primary" data-ics="${h(o.id)}">Add calendar reminder</button><button class="button button-link" data-edit="${h(o.id)}">Edit details</button><button class="button button-link" data-refund="${h(o.id)}">${o.refundState ? 'Review refund' : 'Track a refund'}</button><button class="button button-link" data-del="${h(o.id)}">Remove</button></div></li>`;}).join('');
 }
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
@@ -280,6 +282,7 @@ const removalUndo = bindRemovalUndo({
   refresh: current => { orders = current; render(); },
   focusTracker: () => $('#filter-' + filterMode).focus(),
 });
+bindRefunds({ commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
 bindTabSync({ refresh: reloadOrders });
 reloadOrders();
 
