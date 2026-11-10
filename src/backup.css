@@ -26,3 +26,5 @@
 #backup-trip-replace-label[hidden] {display:none}
 #backup-trip-replace {margin-right:.5rem}
 #backup-trip-restore {min-height:44px;padding:.7rem 1rem;background:#315b4d;color:white;border:0;margin:.5rem .75rem .5rem 0;cursor:pointer}
+
+.backup-comparison{display:grid;gap:8px;margin:12px 0;padding:12px;border:1px solid #c9c4b5;background:#fffdf7}.backup-comparison section{min-width:0}.backup-comparison p{margin:3px 0;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}.backup-choice{display:block;font-weight:650;margin:10px 0}.backup-choice select{display:block;width:100%;max-width:420px;margin-top:6px;padding:10px;font:inherit;background:white;border:1px solid #7d897d}.backup-choice select:focus{outline:2px solid var(--copper);outline-offset:2px}

@@ -59,7 +59,7 @@
     <div class="action-row"><button id="backup-export" type="button" class="button button-primary">Download backup</button></div>
 <label class="input-label" for="backup-file">Choose a ReturnBy backup to preview</label>
     <input id="backup-file" type="file" accept=".json,application/json" aria-describedby="backup-limits" />
-    <p id="backup-limits" class="list-note">Up to 5 MiB and 10,000 orders. Import adds new saved IDs, skips matching copies and refuses conflicting IDs. Restore a trip separately after reviewing its date, orders and notes. Return windows and policy labels are restored as saved; confirm current terms with the retailer.</p>
+    <p id="backup-limits" class="list-note">Up to 5 MiB and 10,000 orders. Import adds new purchases and skips matching copies. For different versions of the same purchase, compare current and backup values and choose which to keep. Unreviewed differences stay current. Restore a trip separately after reviewing its date, orders and notes. Return windows and policy labels are restored as saved; confirm current terms with the retailer.</p>
     <p id="backup-message" role="status" aria-live="polite" hidden></p>
     <div id="backup-preview" hidden>
       <h3 id="backup-summary" tabindex="-1"></h3>

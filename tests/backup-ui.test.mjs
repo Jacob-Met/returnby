@@ -14,9 +14,14 @@ async function open(initial = []) {
   const Element = element('backup-rows').constructor;
   element('backup-rows').replaceChildren = (...children) => { element('backup-rows').children = children; };
   const downloads = [], blobs = [];
+  const descendants = (node, tag) => (node.children || []).flatMap(child => [...(child.tagName === tag ? [child] : []), ...descendants(child, tag)]);
+  element('backup-rows').querySelectorAll = tag => descendants(element('backup-rows'), tag);
   app.globals.document.createElement = tag => {
     const node = new Element('', '');
     node.tagName = tag;
+    node.children = [];
+    node.append = (...children) => node.children.push(...children);
+    node.querySelectorAll = selector => descendants(node, selector);
     node.click = () => downloads.push(node);
     return node;
   };
@@ -36,7 +41,7 @@ test('preview and cancel preserve storage, native tracker, and an unsaved email 
   const app = await open([storedOrder('saved')]); app.draft('DRAFT');
   const bytes = app.globals.localStorage.getItem('returnby.v1');
   await app.choose(exportBackup([storedOrder('restore')]));
-  expect(app.element('backup-summary').textContent).toBe('1 to add · 0 already saved · 0 conflicting');
+  expect(app.element('backup-summary').textContent).toBe('1 to add');
   expect(app.element('backup-preview').hidden).toBe(false);
   expect(app.attempts).toHaveLength(0);
   expect(app.count()).toBe(1);
@@ -72,15 +77,37 @@ test('a restored historical fallback displays its saved days without applying th
   expect(app.element('list').innerHTML).not.toContain('30-DAY FALLBACK');
 });
 
-test('conflict in one row blocks every addition and exposes the changed attribution', async () => {
+test('unreviewed differences stay current while unrelated additions remain usable', async () => {
   const app = await open([storedOrder('saved')]);
   await app.choose(exportBackup([storedOrder('new'), { ...storedOrder('saved'), windowSource: 'user' }]));
-  expect(app.element('backup-apply').disabled).toBe(true);
-  expect(app.element('backup-summary').textContent).toContain('1 conflicting');
-  expect(app.element('backup-rows').children[1].textContent).toContain('windowSource');
+  expect(app.element('backup-apply').disabled).toBe(false);
+  expect(app.element('backup-summary').textContent).toContain('1 need a choice');
+  expect(app.element('backup-message').textContent).toContain('Unreviewed differences stay current');
   app.click('backup-apply');
-  expect(app.attempts).toHaveLength(0);
-  expect(app.persisted()).toEqual([storedOrder('saved')]);
+  expect(app.attempts).toHaveLength(1);
+  expect(app.persisted()).toEqual([storedOrder('saved'), storedOrder('new')]);
+  expect(app.element('backup-preview').hidden).toBe(false);
+});
+
+test('an explicit replacement is reviewed and stale choices are cleared before apply', async () => {
+  const app = await open([storedOrder('saved')]);
+  const updated = { ...storedOrder('saved'), total:'£42.00', windowSource:'user' };
+  await app.choose(exportBackup([updated]));
+  let select = app.element('backup-rows').querySelectorAll('select')[0];
+  select.value = 'replace'; select.listeners.get('change')();
+  expect(app.element('backup-summary').textContent).toContain('1 to update');
+  const newer = {...storedOrder('saved'), total:'£99.00'};
+  app.globals.localStorage.setItem('returnby.v1',JSON.stringify([newer]));
+  const attempts = app.attempts.length;
+  app.click('backup-apply');
+  expect(app.attempts).toHaveLength(attempts);
+  expect(app.persisted()[0].total).toBe('£99.00');
+  select = app.element('backup-rows').querySelectorAll('select')[0];
+  expect(select.value).toBe('');
+  expect(app.element('backup-apply').disabled).toBe(true);
+  select.value = 'replace'; select.listeners.get('change')();
+  app.click('backup-apply');
+  expect(app.persisted()).toEqual([updated]);
 });
 
 test('a byte-limit overflow in the combined tracker is refused before any import write', async () => {
