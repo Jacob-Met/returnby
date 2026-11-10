@@ -1,3 +1,4 @@
+import { deliveryReview } from './delivery-review';
 import { bindKnownDeadlines } from './known-deadline';
 import './known-deadline.css';
 import { bindIntakeDeparture } from './intake-departure';
@@ -30,6 +31,21 @@ const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
 const preview = $<HTMLFormElement>('#preview');
 const refreshIntakeDeadline = bindIntakeDeadline(preview);
+const pendingDelivery = $<HTMLButtonElement>('#pending-delivery');
+pendingDelivery.type = 'button'; pendingDelivery.className = 'button button-link';
+pendingDelivery.textContent = 'Purchase pending delivery — resume review';
+
+function refreshPendingDelivery() {
+  try { const raw = localStorage.getItem('returnby.pending-delivery'); pendingDelivery.hidden = !raw;
+    if(raw) { const fields = JSON.parse(raw); pendingDelivery.textContent = `${fields.merchant || 'Purchase'}${fields.orderNo ? ' #' + fields.orderNo : ''} pending delivery — resume review`; }
+    $('#pending-backup-note').hidden = !raw;
+  } catch { pendingDelivery.hidden = true; }
+}
+refreshPendingDelivery();
+pendingDelivery.addEventListener('click', () => {
+  try { const raw = localStorage.getItem('returnby.pending-delivery'); if(raw) showPreview(JSON.parse(raw)); }
+  catch { showStorageError('Could not open the pending purchase.'); }
+});
 const refreshIntakeDeparture = bindIntakeDeparture(paste, preview);
 const search = $<HTMLInputElement>('#return-search');
 const searchClear = $<HTMLButtonElement>('#search-clear');
@@ -158,11 +174,14 @@ preview.addEventListener('input', (event) => {
   if (field.name === 'merchant' || field.name === 'windowDays') refreshPreviewPolicy();
 });
 
-function showPreview() {
+function showPreview(restored?: Record<string, string>) {
   if (!preview.hidden && reviewedIntake !== reviewSignature() &&
       !window.confirm('Replace your corrected review with details from the pasted receipt? Your unsaved corrections will be lost. Cancel to keep reviewing.')) return;
-  const p = parse(paste.value, knownMerchants);
+  const p = restored ? { merchant: restored.merchant, orderDate: restored.orderDate, orderNo: restored.orderNo, total: restored.total, dateWarning: undefined, found: {merchant:true,orderDate:true,orderNo:true,total:true} } : parse(paste.value, knownMerchants);
   const pol = lookup(p.merchant);
+  const delivery = restored ? {required:true} : deliveryReview(paste.value);
+  preview.dataset.pendingResume = restored ? 'yes' : '';
+  preview.dataset.deliveryReview = delivery.required ? "yes" : "";
   const field = (name: string, label: string, val: string, ok: boolean, type = 'text') =>
     `<label class="${ok ? '' : 'missing'}">${label}<input name="${name}" type="${type}" value="${h(val)}"></label>`;
   const nothing = !p.found.merchant && !p.found.orderDate;
@@ -170,20 +189,27 @@ function showPreview() {
   preview.innerHTML = `
     <div class="review-head"><div><span>RULE ENGINE / REVIEW</span><strong>${foundCount} OF 4 FIELDS RECOGNIZED</strong></div><span class="policy-chip">${pol.source === 'policy' ? 'STORE MATCH' : '30-DAY FALLBACK'}</span></div>
     <p class="review-note">Amber fields need attention. Confirm or correct the details before saving.</p>
+    ${delivery.required ? `<p class="warn" role="status">This receipt describes a return window starting at delivery. ${delivery.date ? 'Delivery date mentioned: ' + h(delivery.date) + '.' : 'No unambiguous delivered date was found.'} Confirm the clock start and return window with the retailer before saving. The order date stays separate.</p>` : ''}
     ${p.dateWarning ? '<p class="warn" role="status">'+h(p.dateWarning)+'</p>' : ''}
     ${nothing ? '<p class="warn">Could not read this one. Fill in the highlighted fields.</p>' : ''}
     ${field('merchant', 'Store', p.merchant, p.found.merchant)}
     ${field('orderDate', 'Order date', p.orderDate, p.found.orderDate, 'date')}
-    <label>Return clock starts (optional; date you confirmed with retailer, such as delivery)<input name="windowStartDate" type="date" min="1000-01-01" max="9999-12-31"></label>
+    <label>${delivery.required ? 'Confirm return clock start (required to save a deadline)' : 'Return clock starts (optional; date you confirmed with retailer, such as delivery)'}<input name="windowStartDate" ${delivery.required ? 'required' : ''} type="date" min="1000-01-01" max="9999-12-31"></label>
     ${field('orderNo', 'Order #', p.orderNo, p.found.orderNo)}
     ${field('total', 'Total', p.total, p.found.total)}
-    <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${pol.days}"></label>
+    <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${restored?.windowDays || pol.days}"></label>
     <p class="src"><output id="intake-deadline" aria-live="polite" aria-atomic="true"></output></p>
     <p class="src" id="src">${pol.source === 'policy' ? 'Store rule from the local policy table; confirm with the retailer.' : 'No store match: editable 30-day fallback.'}</p>
-    <button type="submit" class="button button-primary">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;
+    ${delivery.required ? '<button type="button" class="button button-link" id="save-pending-delivery">Keep purchase pending delivery</button><p class="review-note">No deadline or reminders until you confirm delivery. Pending purchases stay in this browser and are not included in return backups.</p>' : ''}<button type="submit" class="button button-primary">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;
   preview.dataset.days = String(pol.days);
   preview.hidden = false;
   refreshIntakeDeadline();
+  if (delivery.required) preview.querySelector('#save-pending-delivery')?.addEventListener('click', () => {
+    const fields: Record<string,string> = {}; new FormData(preview).forEach((value,key) => { fields[key] = String(value); });
+    if (!restored && localStorage.getItem('returnby.pending-delivery')) { showStorageError('A purchase is already pending delivery. Resume that review before keeping another pending purchase.'); return; }
+    try { localStorage.setItem('returnby.pending-delivery', JSON.stringify(fields)); refreshPendingDelivery(); preview.hidden = true; paste.value = ''; }
+    catch { showStorageError('Could not keep this pending purchase. Your form is still here.'); }
+  });
   refreshPreviewPolicy();
   reviewedIntake = reviewSignature();
   refreshIntakeDeparture();
@@ -196,6 +222,7 @@ preview.addEventListener('submit', (e) => {
   if (!orderDate) { (preview.querySelector('[name=orderDate]') as HTMLInputElement).focus(); return; }
   const days = Number(f.get('windowDays'));
   const windowStartDate = String(f.get('windowStartDate') || '');
+  if (preview.dataset.deliveryReview === 'yes' && !windowStartDate) { preview.querySelector<HTMLInputElement>('[name=windowStartDate]')?.reportValidity(); return; }
   const clockStart = windowStartDate || orderDate;
   const validDate = (value: string) => isSupportedDate(value) && Number(value.slice(0,4)) >= 1000;
   if (!validDate(clockStart) || !validDate(orderDate) || !Number.isSafeInteger(days) || days < 1 ||
@@ -225,6 +252,7 @@ preview.addEventListener('submit', (e) => {
     createdAt: new Date().toISOString(),
   }];
   if (!persistOrders(next)) return;
+  if(preview.dataset.pendingResume === 'yes') { try { localStorage.removeItem('returnby.pending-delivery'); refreshPendingDelivery(); } catch { showStorageError('Return saved, but pending draft could not be cleared.'); } }
   preview.hidden = true; paste.value = ''; refreshIntakeDeparture(); render();
 });
 
@@ -272,7 +300,7 @@ list.addEventListener('click', (e) => {
 
 search.addEventListener('input', render);
 searchClear.addEventListener('click', () => { search.value = ''; render(); search.focus(); });
-$('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',showPreview);
+$('#filter-all').addEventListener('click',()=>{filterMode='all';render();});$('#filter-due').addEventListener('click',()=>{filterMode='due';render();});$('#filter-expired').addEventListener('click',()=>{filterMode='expired';render();});$('#find').addEventListener('click',()=>showPreview());
 paste.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) showPreview(); });
 $('#sample').addEventListener('click', (e) => {
   e.preventDefault();
