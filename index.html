@@ -61,7 +61,7 @@
     <input id="backup-file" type="file" accept=".json,application/json" aria-describedby="backup-limits" />
     <p id="backup-limits" class="list-note">Up to 5 MiB and 10,000 orders. Import adds new purchases and skips matching copies. For different versions of the same purchase, compare current and backup values and choose which to keep. Unreviewed differences stay current. Restore a trip separately after reviewing its date, orders and notes. Return windows and policy labels are restored as saved; confirm current terms with the retailer.</p>
     <p id="backup-message" role="status" aria-live="polite" hidden></p>
-    <section id="backup-pending" hidden></section><div id="backup-preview" hidden>
+    <div id="backup-trip-library" hidden></div><section id="backup-pending" hidden></section><div id="backup-preview" hidden>
       <h3 id="backup-summary" tabindex="-1"></h3>
       <ul id="backup-rows"></ul>
       <div class="action-row"><button id="backup-previous" type="button" class="button button-link" disabled>Previous</button><span id="backup-page" aria-live="polite"></span><button id="backup-next" type="button" class="button button-link" disabled>Next</button></div>

@@ -6,7 +6,7 @@ export function loadingFixture(html, raw = null, readFailures = 0) {
   let bytes = raw, readsLeft = readFailures, writesLeft = 0, reads = 0;
   const writes = [];
   const extraStorage=app.globals.localStorage;
-  const pendingKey=key=>['returnby.pending-deliveries','returnby.pending-delivery'].includes(key);
+  const pendingKey=key=>['returnby.pending-deliveries','returnby.pending-delivery','returnby.trip-library.v1'].includes(key);
   app.globals.localStorage = {
     getItem(key) {
       if(pendingKey(key))return extraStorage.getItem(key);
