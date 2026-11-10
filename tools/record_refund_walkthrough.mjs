@@ -1,0 +1,62 @@
+// Record real ReturnBy interactions against a served build; all receipt data is fictional.
+// RETURNBY_PLAYWRIGHT=/path/to/playwright/index.mjs BASE_URL=http://127.0.0.1:PORT node record_refund_walkthrough.mjs
+const {chromium}=await import(process.env.RETURNBY_PLAYWRIGHT||'playwright');
+import {mkdir,writeFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import assert from 'node:assert/strict';
+const url=process.env.BASE_URL;if(!url)throw new Error('BASE_URL must identify the exact served release');
+const output=process.env.EVIDENCE||'/tmp/astra-wren-52d1/release-film';
+await mkdir(output,{recursive:true});
+const browser=await chromium.launch({executablePath:process.env.RETURNBY_CHROME||'/usr/local/bin/google-chrome',headless:true,args:['--no-sandbox']});
+const context=await browser.newContext({viewport:{width:1280,height:800},recordVideo:{dir:output,size:{width:1280,height:800}}});
+const page=await context.newPage(),video=page.video(),start=Date.now(),captions=[];
+let previous;
+function caption(text){const t=(Date.now()-start)/1000;if(previous)previous.end=t;previous={start:t,text};captions.push(previous);}
+const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+try{
+ await page.goto(url);
+ caption('FICTIONAL RECEIPT DEMONSTRATION\nA £126 purchase. One £37.80 item returned.');await pause(2200);
+ await page.locator('#manual-open').click();
+ const manual=page.locator('#manual-form');
+ await manual.locator('[name=merchant]').fill('Northstar Outfitters');await pause(400);
+ await manual.locator('[name=orderDate]').fill('2026-11-05');
+ await manual.locator('[name=windowDays]').fill('30');
+ await manual.locator('[name=orderNo]').fill('DEMO-NS-481');
+ await manual.locator('[name=total]').fill('£126.00');
+ caption('Add the purchase from its receipt.\nCheck the date and return window before saving.');await pause(2400);
+ await manual.locator('[type=submit]').click();
+ await page.locator('#list').scrollIntoViewIfNeeded();await pause(1500);
+ await page.locator('#list [data-refund]').click();
+ const refund=page.locator('#refund-form');
+ caption('Track the refund for the returned item.\nThe rest of this purchase keeps its return deadline.');
+ await refund.locator('[name=amount]').fill('£37.80');await pause(600);
+ await refund.locator('[name=followUpDate]').fill('2026-11-17');
+ await refund.locator('[name=note]').fill('Blue overshirt only. Drop-off reference NS-481.');
+ await pause(2400);
+ await refund.locator('[type=submit]').click();
+ await page.locator('#refunds').scrollIntoViewIfNeeded();
+ assert.equal(await page.locator('#refund-count').innerText(),'1');
+ caption('The refund stays in an awaiting queue with your next check date.\nThe amount is your record, not a merchant or bank confirmation.');await pause(3500);
+ await page.locator('#refund-pending [data-refund]').click();
+ await refund.locator('[name=state]').selectOption('received');
+ caption('After checking that the money arrived, mark it received.\nReturnBy does not check your bank or send a payment.');await pause(2500);
+ await refund.locator('[type=submit]').click();
+ await page.locator('#refund-history summary').click();
+ await page.locator('#refunds').scrollIntoViewIfNeeded();
+ assert.equal(await page.locator('#refund-count').innerText(),'0');
+ assert.match(await page.locator('#refund-received').innerText(),/£37.80/);
+ const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('returnby.v1')));
+ assert.equal(saved[0].total,'£126.00');assert.equal(saved[0].refundState,'received');
+ caption('The received refund and notes remain available to review or reopen.\nSaved refund details also travel in your ReturnBy backup.');await pause(3600);
+ previous.end=(Date.now()-start)/1000;
+ await page.screenshot({path:output+'/final-received.png'});
+ await context.close();
+ const recording=await video.path();
+ const time=s=>{const ms=Math.round(s*1000),h=Math.floor(ms/3600000),m=Math.floor(ms/60000)%60,sec=Math.floor(ms/1000)%60;return [h,m,sec].map(n=>String(n).padStart(2,'0')).join(':')+','+String(ms%1000).padStart(3,'0');};
+ const srt=captions.map((c,i)=>(i+1)+'\n'+time(c.start)+' --> '+time(c.end)+'\n'+c.text+'\n').join('\n');
+ await writeFile(output+'/captions.srt',srt);
+ const filter="pad=iw:ih+110:0:0:color=0x16251f,subtitles="+output+"/captions.srt:force_style='FontName=DejaVu Sans,FontSize=8,PrimaryColour=&H00FFFFFF,Outline=0,Shadow=0,Alignment=2,MarginV=8'";
+ execFileSync('ffmpeg',['-hide_banner','-loglevel','error','-y','-i',recording,'-vf',filter,'-r','20','-c:v','libx264','-preset','veryfast','-crf','25','-pix_fmt','yuv420p','-movflags','+faststart',output+'/ReturnBy-refund-walkthrough.mp4']);
+ const manifest={url,source:process.env.SOURCE_SHA||null,syntheticReceipt:true,actualBrowserInteractions:true,captionsAddedBelowBrowser:true,viewport:{width:1280,height:800},duration:previous.end,recording,video:output+'/ReturnBy-refund-walkthrough.mp4',captions};
+ await writeFile(output+'/walkthrough.json',JSON.stringify(manifest,null,2));console.log(JSON.stringify(manifest));
+}finally{await browser.close();}

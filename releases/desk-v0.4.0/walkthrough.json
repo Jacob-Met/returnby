@@ -1,0 +1,46 @@
+{
+  "url": "http://127.0.0.1:18978",
+  "source": "f38843003426b0b6d49ab733f11c39a8d576421e",
+  "syntheticReceipt": true,
+  "actualBrowserInteractions": true,
+  "captionsAddedBelowBrowser": true,
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "duration": 19.645,
+  "recording": "/tmp/astra-wren-52d1/release-film/page@320c0fc37158a9cc96021050f34f4454.webm",
+  "video": "/tmp/astra-wren-52d1/release-film/ReturnBy-refund-walkthrough.mp4",
+  "captions": [
+    {
+      "start": 0.085,
+      "text": "FICTIONAL RECEIPT DEMONSTRATION\nA £126 purchase. One £37.80 item returned.",
+      "end": 2.814
+    },
+    {
+      "start": 2.814,
+      "text": "Add the purchase from its receipt.\nCheck the date and return window before saving.",
+      "end": 6.832
+    },
+    {
+      "start": 6.832,
+      "text": "Track the refund for the returned item.\nThe rest of this purchase keeps its return deadline.",
+      "end": 9.922
+    },
+    {
+      "start": 9.922,
+      "text": "The refund stays in an awaiting queue with your next check date.\nThe amount is your record, not a merchant or bank confirmation.",
+      "end": 13.453
+    },
+    {
+      "start": 13.453,
+      "text": "After checking that the money arrived, mark it received.\nReturnBy does not check your bank or send a payment.",
+      "end": 16.044
+    },
+    {
+      "start": 16.044,
+      "text": "The received refund and notes remain available to review or reopen.\nSaved refund details also travel in your ReturnBy backup.",
+      "end": 19.645
+    }
+  ]
+}
