@@ -1,12 +1,20 @@
 # ReturnBy
 
-## Current downloadable build — paper-receipt purchases
+## Current downloadable build — confirmed return-window start
+
+**[Download source-pinned ReturnBy ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-clock-92baeb9-browser.zip)** · [launch instructions, checksum and tested limitations](./downloads/ReturnBy-2026-11-10-clock-92baeb9.md) · [actual desktop screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-desktop.png) · [actual phone screenshot](./downloads/returnby-confirmed-clock-2026-11-10/clock-tracker-mobile.png).
+
+Adds a **user-confirmed return-window start date** when a retailer counts from delivery rather than purchase. The same reviewed date now flows through saved orders, corrected deadlines, calendar reminders, backups, monthly planning, batch intake and trip sheets; older orders retain their order-date behavior. Includes manual-purchase entry, HTML/.eml receipts and saved-order search. Built from the merged [source commit 92baeb9](https://github.com/Jacob-Met/returnby/commit/92baeb99324ce60538bdefb3c36768fe419dfe43); independently exercised from its extracted ZIP in Chrome. **SHA-256:** f9c7a2b294a462e9263b52236740bc2cae40ce98e511ecf62227ccb5e5d89cb9.
+
+Extract the archive, run the local Python 3 launcher for your platform, and open http://127.0.0.1:8769/. All order data stays in your browser. Confirm retailer policy yourself. This is a downloadable local browser application, **not a hosted service or formal GitHub Release**.
+
+## Previous downloadable build — paper-receipt purchases
 
 [Download ReturnBy](https://raw.githubusercontent.com/Jacob-Met/returnby/main/downloads/ReturnBy-2026-11-10-manual-1a76717-browser.zip) · [source, launch steps, checksum and limitations](./downloads/ReturnBy-2026-11-10-manual-1a76717.md)
 
 Adds direct manual purchase entry alongside email import, saved deadlines and reminder exports. Extract, run the Python3 launcher, then open http://127.0.0.1:8769/. Linux/Chrome exercised; Windows/macOS launchers packaged.
 
-## Current downloadable browser preview — desk-first return tracker (November 10, 2026)
+## Earlier downloadable browser preview — desk-first return tracker (November 10, 2026)
 
 **[Download ReturnBy v0.2.0 ZIP](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/ReturnBy-v0.2.0-browser.zip)** · [Actual desktop screenshot](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/desk-first-desktop.png) · [Actual phone screenshot](https://raw.githubusercontent.com/Jacob-Met/returnby/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/desk-first-phone.png) · [Package notes](https://github.com/Jacob-Met/returnby/blob/4516bfe3ec68d12fda4578ce078262c361457637/downloads/returnby-desk-first-2026-11-10/RELEASE_NOTES.md).
 
