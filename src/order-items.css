@@ -1,6 +1,9 @@
 .items-dialog{width:min(850px,calc(100% - 28px));max-height:calc(100dvh - 32px);padding:0;border:1px solid var(--ink);border-radius:0;background:var(--white);color:var(--ink);box-shadow:0 18px 70px #172c2850}
 .items-dialog::backdrop{background:#182c2a99}
-.items-dialog form{margin:0;padding:26px}
+.items-dialog{overflow:hidden}
+.items-dialog form{display:flex;flex-direction:column;margin:0;padding:0;max-height:calc(100dvh - 34px)}
+.items-body{min-height:0;overflow-y:auto;padding:0 26px}
+.items-heading{flex-shrink:0;padding:26px 26px 0}
 .items-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
 .items-heading>div{min-width:0}
 .items-heading h2{margin:0;font:30px/1.15 var(--serif)}
@@ -15,7 +18,7 @@
 .item-open output{display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:6px;font:600 19px var(--mono);color:var(--green);background:#e9eee6}
 .items-dialog .item-remove{min-height:44px;padding:8px 5px;font-size:10px;letter-spacing:0}
 #items-add{margin:10px 0 22px;min-height:44px}
-.items-footer{display:flex;gap:22px;align-items:center;justify-content:space-between;border-top:2px solid var(--ink);padding:18px 0 0}
+.items-footer{flex-shrink:0;margin:0 26px 26px;display:flex;gap:22px;align-items:center;justify-content:space-between;border-top:2px solid var(--ink);padding:18px 0 0}
 .items-footer>div{min-width:0}
 .items-footer output{font:600 14px/1.5 system-ui,sans-serif}
 .items-footer p{font-size:12px;line-height:1.55;color:var(--muted);margin:7px 0 0;max-width:500px}
@@ -25,7 +28,11 @@
 .order-item-summary{border-top:1px solid var(--line);margin:13px 0 0;padding-top:11px;font-size:12px;line-height:1.5;color:var(--ink)}
 .order-actions{flex-wrap:wrap}
 @media(max-width:640px){
- .items-dialog form{padding:18px}
+ .items-heading{padding:18px 18px 0}
+ .items-body{padding:0 18px}
+ .items-footer{margin:0 18px 18px}
+ .item-line input{font-size:16px}
+ .item-line label,.item-open>span{font-size:12px}
  .items-heading{gap:12px}
  .items-heading h2{font-size:25px}
  .items-heading p{font-size:13px}

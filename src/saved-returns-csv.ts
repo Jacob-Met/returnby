@@ -1,3 +1,5 @@
+import { completionLabel, isCompleted } from './completion';
+import { itemTotals } from './order-items';
 import { exportBackup, parseBackup, MAX_BACKUP_BYTES } from './backup';
 import { returnDueDate, returnClockStart } from './deadline';
 
@@ -6,6 +8,7 @@ export const SAVED_CSV_COLUMNS = Object.freeze([
   'Saved return ID', 'Store', 'Order number', 'Total (as entered)',
   'Order date', 'Return window (days)', 'Recorded window source',
   'Return deadline', 'Clock starts', 'Clock basis', 'Refund status', 'Refund amount (as entered)', 'Refund follow-up date', 'Created at',
+  'Return status', 'Finished at', 'Items bought', 'Items returned', 'Items kept', 'Items still open', 'Item decisions',
 ] as const);
 
 export class SavedCsvError extends Error {}
@@ -50,11 +53,15 @@ export function createSavedReturnsCsv(current: unknown, exportedAt = new Date())
   };
   const lines = [SAVED_CSV_COLUMNS.map(cell).join(',')];
   for (const { order, due } of rows) {
+    const quantities = order.items ? itemTotals(order.items) : null;
+    const itemDetails = order.items?.map(item => item.name + ': ' + item.quantity + ' bought, ' + item.returned + ' returned, ' + item.kept + ' kept, ' + (item.quantity - item.returned - item.kept) + ' still open').join('\n') ?? '';
     lines.push([
       order.id, order.merchant, order.orderNo ?? '', order.total ?? '',
       order.orderDate, order.windowDays, order.windowSource, due ?? '', returnClockStart(order) ?? '',
       order.windowStartDate ? 'Confirmed start date' : 'Order date',
       order.refundState ?? '', order.refundAmount ?? '', order.refundFollowUpDate ?? '', order.createdAt,
+      isCompleted(order) ? completionLabel(order) : 'Active', order.completedAt ?? '',
+      quantities?.quantity ?? '', quantities?.returned ?? '', quantities?.kept ?? '', quantities?.open ?? '', itemDetails,
     ].map(cell).join(','));
   }
   const content = '\ufeff' + lines.join('\r\n') + '\r\n';

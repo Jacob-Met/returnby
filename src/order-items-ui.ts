@@ -121,7 +121,7 @@ export function bindItemEditor(options: Options) {
       }
       original = JSON.parse(JSON.stringify(matches[0])) as ItemOrder;
       get('items-purchase').textContent = original.merchant + (original.orderNo ? ' · #' + original.orderNo : '');
-      get('items-clock').textContent = 'Shared return deadline: ' + returnDueDate(original) + '. Check any item-specific exclusions with the store.';
+      get('items-clock').textContent = 'Return by ' + returnDueDate(original) + '. Check the store’s item exclusions.';
       showError('');
       renderItems(original.items ?? [blank()]);
       dialog.showModal();
