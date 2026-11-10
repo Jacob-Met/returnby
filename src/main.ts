@@ -119,6 +119,33 @@ function removeOrder(id: string) {
 
 const h = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
+function refreshPreviewPolicy() {
+  const merchant = preview.querySelector<HTMLInputElement>('[name=merchant]');
+  const windowDays = preview.querySelector<HTMLInputElement>('[name=windowDays]');
+  const chip = preview.querySelector<HTMLElement>('.policy-chip');
+  const source = preview.querySelector<HTMLElement>('#src');
+  if (!merchant || !windowDays || !chip || !source) return;
+  const days = Number(windowDays.value);
+  const policy = lookup(merchant.value);
+  if (!Number.isSafeInteger(days) || days < 1) {
+    chip.textContent = 'CHECK RETURN WINDOW';
+    source.textContent = 'Enter a whole number of days before saving this return.';
+  } else if (days !== policy.days) {
+    chip.textContent = `YOUR RULE / ${days} DAYS`;
+    source.textContent = `Your entered ${days}-day window; confirm this rule with the retailer.`;
+  } else {
+    chip.textContent = policy.source === 'policy' ? 'STORE MATCH' : `${policy.days}-DAY FALLBACK`;
+    source.textContent = policy.source === 'policy'
+      ? 'Store rule from the local policy table; confirm with the retailer.'
+      : `No store match: editable ${policy.days}-day fallback.`;
+  }
+}
+
+preview.addEventListener('input', (event) => {
+  const field = event.target as HTMLInputElement;
+  if (field.name === 'merchant' || field.name === 'windowDays') refreshPreviewPolicy();
+});
+
 function showPreview() {
   const p = parse(paste.value, knownMerchants);
   const pol = lookup(p.merchant);
@@ -135,13 +162,14 @@ function showPreview() {
     <label>Return clock starts (optional; date you confirmed with retailer, such as delivery)<input name="windowStartDate" type="date" min="1000-01-01" max="9999-12-31"></label>
     ${field('orderNo', 'Order #', p.orderNo, p.found.orderNo)}
     ${field('total', 'Total', p.total, p.found.total)}
-    <label>Return window (days)<input name="windowDays" type="number" min="1" value="${pol.days}"></label>
+    <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${pol.days}"></label>
     <p class="src"><output id="intake-deadline" aria-live="polite" aria-atomic="true"></output></p>
     <p class="src" id="src">${pol.source === 'policy' ? 'Store rule from the local policy table; confirm with the retailer.' : 'No store match: editable 30-day fallback.'}</p>
     <button type="submit" class="button button-primary">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;
   preview.dataset.days = String(pol.days);
   preview.hidden = false;
   refreshIntakeDeadline();
+  refreshPreviewPolicy();
 }
 
 preview.addEventListener('submit', (e) => {
@@ -149,7 +177,7 @@ preview.addEventListener('submit', (e) => {
   const f = new FormData(preview);
   const orderDate = String(f.get('orderDate') || '');
   if (!orderDate) { (preview.querySelector('[name=orderDate]') as HTMLInputElement).focus(); return; }
-  const days = Number(f.get('windowDays')) || 30;
+  const days = Number(f.get('windowDays'));
   const windowStartDate = String(f.get('windowStartDate') || '');
   const clockStart = windowStartDate || orderDate;
   const validDate = (value: string) => isSupportedDate(value) && Number(value.slice(0,4)) >= 1000;
