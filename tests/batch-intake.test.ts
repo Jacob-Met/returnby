@@ -253,3 +253,30 @@ describe('immutable reviewed append through the native store', () => {
     expect(JSON.parse(state.raw()!)).toHaveLength(1);
   });
 });
+
+describe('delivery-based receipt batch review', () => {
+  it.each(['Returns within 30 days of delivery.', 'Your return window begins on delivery.'])('withholds a purchase-date deadline for %s', policy => {
+    const value = appendConfirmations([], [{label:'delivery.txt', text:email + '\n' + policy + '\nDelivered on: October 9, 2026'}], ids())[0];
+    value.reviewed = true;
+    expect(value.fields.windowStartDate).toBeUndefined();
+    expect(() => validateDraft(value)).toThrow(/Confirm the return-clock start/);
+    const state = storage();
+    expect(() => prepareBatch([value], state.port)).toThrow(/Confirm the return-clock start/);
+    expect(state.writes()).toBe(0);
+    value.fields.windowStartDate = '2026-10-09';
+    const review = prepareBatch([value], state.port, {makeId:ids(), now:clock});
+    commitBatch(review,state.port);
+    const saved = JSON.parse(state.raw()!)[0];
+    expect(saved.orderDate).toBe('2026-10-03');
+    expect(saved.windowStartDate).toBe('2026-10-09');
+  });
+  it('saves a ready receipt while leaving a delivery-pending receipt unselected', () => {
+    const ready=selected();
+    const pending=appendConfirmations([], [{label:'pending.txt',text:email+'\nReturns within 30 days after delivery.'}], ids('pending'))[0];
+    const state=storage();
+    const review=prepareBatch([ready,pending],state.port,{makeId:ids(),now:clock});
+    expect(commitBatch(review,state.port)).toEqual([ready.id]);
+    expect(JSON.parse(state.raw()!)).toHaveLength(1);
+    expect(pending.fields.windowStartDate).toBeUndefined();
+  });
+});

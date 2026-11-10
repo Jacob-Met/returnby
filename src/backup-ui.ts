@@ -1,5 +1,6 @@
 import {readPending,writePending,planPendingRestore,type PendingPurchase} from './pending-delivery';
-import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackupDocument, planImport, type ImportPlan } from './backup';
+import { planResolvedImport, backupFieldLabel, backupFieldValue, type BackupChoice, type ResolvedImportPlan } from './backup-resolution';
+import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackupDocument } from './backup';
 import { returnDueDate } from './deadline';
 import type { Order } from './store';
 import { parsePortableTrip, prepareTripRestore, TripBackupError } from './trip-backup';
@@ -36,7 +37,9 @@ export function bindBackup(tracker: Tracker) {
     pendingPanel.append(title,description,list,restore);
   }
 
-  let preview: ImportPlan | null = null;
+
+  let preview: ResolvedImportPlan | null = null;
+  const choices = new Map<string, BackupChoice>();
   let generation = 0;
   let page = 0;
 
@@ -58,7 +61,7 @@ export function bindBackup(tracker: Tracker) {
     tripRestore.disabled=true;tripAvailable=false;tripReplace.checked=false;
     if(!incomingTrip || !incoming)return;
     try {
-      const current=planImport(tracker.read(),incoming);
+      const current=planResolvedImport(tracker.read(),incoming,choices);
       const prepared=prepareTripRestore(incomingTrip,current.next);
       const saved=readTripPlan(localStorage);
       tripExpectedRaw=saved.raw;
@@ -75,7 +78,7 @@ export function bindBackup(tracker: Tracker) {
       const changes=prepared.changed.length?' Changed order details will require checking store instructions again.':'';
       const unavailable=prepared.unavailable.length?' '+prepared.unavailable.length+' unavailable orders will stay unselected; their notes are kept.':'';
       if(current.conflicts)tripNote.textContent='Resolve the conflicting order IDs before restoring this trip. Your current trip will stay.';
-      else if(current.added)tripNote.textContent='First import the reviewed orders above. Then restore this trip in a separate step.'+changes+unavailable;
+      else if(current.added||current.replaced)tripNote.textContent='First import the reviewed orders above. Then restore this trip in a separate step.'+changes+unavailable;
       else if(same)tripNote.textContent='This trip is already saved in this browser.';
       else {
         tripAvailable=true;tripRestore.disabled=tripNeedsReplacement;
@@ -87,8 +90,8 @@ export function bindBackup(tracker: Tracker) {
   tripRestore.addEventListener('click',()=>{
     if(!incomingTrip||!incoming||!tripAvailable||(tripNeedsReplacement&&!tripReplace.checked))return;
     try {
-      const current=planImport(tracker.read(),incoming);
-      if(current.conflicts||current.added){show(current);tell('Saved orders changed. Review and import them before restoring the trip.',true);return;}
+      const current=planResolvedImport(tracker.read(),incoming,choices);
+      if(current.conflicts||current.added||current.replaced){show(current);tell('Saved orders changed. Review and import them before restoring the trip.',true);return;}
       const saved=readTripPlan(localStorage);
       if(saved.raw!==tripExpectedRaw){showTrip();tripNote.textContent='The saved trip changed in another tab. Review it again before choosing replacement.';tell(tripNote.textContent,true);return;}
       const prepared=prepareTripRestore(incomingTrip,current.next);
@@ -113,6 +116,7 @@ export function bindBackup(tracker: Tracker) {
     generation++;
     incoming = null;
     incomingPending=[];pendingPanel.hidden=true;
+    choices.clear();
     incomingTrip = null;
     tripPanel.hidden = true;
     preview = null;
@@ -126,10 +130,40 @@ export function bindBackup(tracker: Tracker) {
     const start = page * PAGE_SIZE;
     rows.replaceChildren(...preview.rows.slice(start, start + PAGE_SIZE).map(row => {
       const li = document.createElement('li');
-      const o = row.order;
-      const action = row.action === 'add' ? 'Add' : row.action === 'skip' ? 'Already saved' : 'Conflict';
+      const o = row.action === 'keep' && row.current ? row.current : row.order;
+      const action = ({add:'Add',skip:'Already saved',conflict:'Choose a version',keep:'Keep current',replace:'Use backup'})[row.action];
       const source = o.windowSource === 'policy' ? 'saved store policy' : o.windowSource === 'default' ? 'saved fallback' : 'your saved rule';
-      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ordered ${o.orderDate}, return by ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})${row.changedFields.length ? `. Different fields: ${row.changedFields.join(', ')}.` : ''}`;
+      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ordered ${o.orderDate}, return by ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})`;
+      if (row.current) {
+        const comparison = document.createElement('div');
+        comparison.className = 'backup-comparison';
+        for (const key of row.changedFields) {
+          const field = document.createElement('section');
+          const label = document.createElement('strong'); label.textContent = backupFieldLabel(key);
+          const current = document.createElement('p'); current.textContent = 'Current: ' + backupFieldValue(row.current, key);
+          const backup = document.createElement('p'); backup.textContent = 'Backup: ' + backupFieldValue(row.order, key);
+          field.append(label, current, backup); comparison.append(field);
+        }
+        const label = document.createElement('label'); label.className = 'backup-choice';
+        label.textContent = 'Which complete purchase should this browser keep?';
+        const select = document.createElement('select'); select.dataset.backupChoice = o.id;
+        for (const [value,text] of [['','Choose a version'],['keep','Keep current purchase'],['replace','Use purchase from backup']]) {
+          const option = document.createElement('option'); option.value = value; option.textContent = text; select.append(option);
+        }
+        select.value = choices.get(o.id) || '';
+        select.addEventListener('change', () => {
+          const value = select.value;
+          if (value === 'keep' || value === 'replace') choices.set(o.id, value); else choices.delete(o.id);
+          if (!incoming || !preview) return;
+          try {
+            const current = planResolvedImport(tracker.read(), incoming, choices);
+            if (current.snapshot !== preview.snapshot) { choices.clear(); show(planResolvedImport(tracker.read(), incoming)); tell('Saved purchases changed. Compare the current values and choose again.', true); return; }
+            show(current, false);
+            for (const control of Array.from(rows.querySelectorAll<HTMLSelectElement>('select'))) if (control.dataset.backupChoice === o.id) control.focus();
+          } catch (error) { tell(errorText(error), true); }
+        });
+        label.append(select); li.append(comparison, label);
+      }
       return li;
     }));
     get('backup-page').textContent = preview.rows.length ? `${start + 1}–${Math.min(start + PAGE_SIZE, preview.rows.length)} of ${preview.rows.length} orders` : 'No orders in this backup';
@@ -137,19 +171,20 @@ export function bindBackup(tracker: Tracker) {
     next.disabled = start + PAGE_SIZE >= preview.rows.length;
   }
 
-  function show(plan: ImportPlan) {
+  function show(plan: ResolvedImportPlan, focus = true) {
     preview = plan;
-    page = 0;
-    summary.textContent = `${plan.added} to add · ${plan.skipped} already saved · ${plan.conflicts} conflicting`;
-    apply.textContent = `Import ${plan.added} ${plan.added === 1 ? 'order' : 'orders'}`;
-    apply.disabled = plan.conflicts > 0 || plan.added === 0;
+    if (focus) page = 0;
+    summary.textContent = [[plan.added, 'to add'], [plan.replaced, 'to update'], [plan.kept, 'keep current'], [plan.skipped, 'already saved'], [plan.conflicts, 'need a choice']].filter(([count]) => Number(count) > 0).map(([count, label]) => count + ' ' + label).join(' · ') || 'No purchases in this backup';
+    apply.textContent = `Apply ${plan.added} additions and ${plan.replaced} updates`;
+    apply.disabled = plan.added + plan.replaced === 0;
     panel.hidden = false;
     renderPage();
     showTrip();
-    if (plan.conflicts) tell('Nothing can be imported from this file while IDs conflict. Keep your current tracker and choose the matching backup, or cancel.', true);
-    else if (!plan.added) tell(incomingPending.length?'Saved deadlines need no changes. Review the pending purchases below before restoring them.':incomingTrip?'All orders are already saved. Review the trip below before restoring it.':'Everything in this backup is already saved, or the backup is empty. Nothing will change.');
-    else tell('Review the orders below, then choose Import. Existing saved orders will stay.');
-    summary.focus();
+    if (plan.conflicts) tell('Compare the current and backup values before choosing a version. Unreviewed differences stay current; you can apply the new purchases and chosen updates without replacing them.');
+    else if (!plan.added && !plan.replaced && plan.kept) tell(incomingTrip ? 'Your current purchase versions will stay. Review the trip separately below.' : 'Your current purchase versions will stay. No additions or updates are selected.');
+    else if (!plan.added && !plan.replaced) tell(incomingPending.length?'Saved deadlines need no changes. Review the pending purchases below before restoring them.':incomingTrip?'All orders are already saved. Review the trip below before restoring it.':'Everything in this backup is already saved, or the backup is empty. Nothing will change.');
+    else tell('Review additions and updates below, then choose Apply. Only purchases you chose from the backup will replace current details.');
+    if (focus) summary.focus();
   }
 
   fileInput.addEventListener('change', async () => {
@@ -166,7 +201,7 @@ export function bindBackup(tracker: Tracker) {
       incoming = parsed.orders;
       incomingTrip = parsed.trip;
       incomingPending=parsed.pending||[];
-      show(planImport(tracker.read(), incoming));
+      show(planResolvedImport(tracker.read(), incoming, choices));
       showPending();
     } catch (error) {
       if (ticket !== generation) return;
@@ -184,19 +219,20 @@ export function bindBackup(tracker: Tracker) {
     try {
       // Read again at commitment: another save or tab may have changed the list
       // while the user reviewed the file. A changed plan needs fresh review.
-      const current = planImport(tracker.read(), incoming);
+      const current = planResolvedImport(tracker.read(), incoming, choices);
       if (current.snapshot !== preview.snapshot) {
-        show(current);
+        choices.clear();
+        show(planResolvedImport(tracker.read(), incoming));
         tell('Saved returns changed since the preview. Review this updated plan before importing.', true);
         return;
       }
-      if (current.conflicts || !current.added) return;
+      if (!current.added && !current.replaced) return;
       if (!tracker.commit(current.next)) {
         tell("The backup wasn't imported because browser storage refused the change. Your preview is kept so you can try again.", true);
         return;
       }
-      if(incomingTrip||incomingPending.length){show(planImport(tracker.read(),incoming));showPending();}else reset();
-      tell(`Imported ${current.added} ${current.added === 1 ? 'order' : 'orders'}. Skipped ${current.skipped} already saved.${incomingTrip ? ' Now review and restore the trip below.' : ''}`);
+      if(incomingTrip || current.conflicts || incomingPending.length){show(planResolvedImport(tracker.read(),incoming,choices));showPending();}else reset();
+      tell(`Added ${current.added} purchases and updated ${current.replaced}. Kept ${current.kept + current.conflicts} current versions; ${current.skipped} were already saved.${current.conflicts ? ' Differences above still need your choice.' : ''}${incomingTrip ? ' Review the trip separately below.' : ''}`);
     } catch (error) { tell(errorText(error), true); }
   });
 
