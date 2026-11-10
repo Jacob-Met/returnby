@@ -263,3 +263,14 @@ test('restore preview uses the confirmed clock start and preserves it on import'
   app.click('backup-apply');
   expect(app.persisted()).toEqual([incoming]);
 });
+
+
+test('keep-current summary shows the current money and deadline being retained', async () => {
+  const app = await open([storedOrder('saved')]);
+  await app.choose(exportBackup([{...storedOrder('saved'),total:'£500',windowDays:75}]));
+  const select=app.element('backup-rows').querySelectorAll('select')[0];
+  select.value='keep';select.listeners.get('change')();
+  const summary=app.element('backup-rows').children[0].textContent;
+  expect(summary).toContain('$8.00');expect(summary).toContain('30 days');
+  expect(summary).not.toContain('£500');expect(summary).not.toContain('75 days');
+});

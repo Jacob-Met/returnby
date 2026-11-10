@@ -110,7 +110,7 @@ export function bindBackup(tracker: Tracker) {
     const start = page * PAGE_SIZE;
     rows.replaceChildren(...preview.rows.slice(start, start + PAGE_SIZE).map(row => {
       const li = document.createElement('li');
-      const o = row.order;
+      const o = row.action === 'keep' && row.current ? row.current : row.order;
       const action = ({add:'Add',skip:'Already saved',conflict:'Choose a version',keep:'Keep current',replace:'Use backup'})[row.action];
       const source = o.windowSource === 'policy' ? 'saved store policy' : o.windowSource === 'default' ? 'saved fallback' : 'your saved rule';
       li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ordered ${o.orderDate}, return by ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})`;
