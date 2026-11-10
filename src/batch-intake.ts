@@ -25,6 +25,7 @@ export type BatchDraft = {
   fields: DraftFields;
   found: ReturnType<typeof parse>['found'];
   reviewed: boolean;
+  dateWarning?: string;
 };
 export type Confirmation = { label: string; text: string };
 export type DuplicateNotice = Readonly<{ draftId: string; label: string; match: string }>;
@@ -77,6 +78,7 @@ export function appendConfirmations(
     const policy = lookup(parsed.merchant);
     return {
       id, label: input.label, text: input.text, found: parsed.found, reviewed: false,
+      ...(parsed.dateWarning ? {dateWarning:parsed.dateWarning} : {}),
       fields: {
         merchant: parsed.merchant, orderNo: parsed.orderNo, total: parsed.total,
         orderDate: parsed.orderDate, windowDays: String(policy.days),

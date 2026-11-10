@@ -82,6 +82,7 @@ function renderDrafts() {
     remove.setAttribute('aria-label', 'Remove confirmation ' + (index + 1) + ': ' + draft.label);
     head.append(identity, remove);
     card.append(head);
+    if (draft.dateWarning) card.append(element('p', draft.dateWarning, 'warn'));
     const fields = element('div', undefined, 'batch-fields');
     const labels: Array<[keyof DraftFields, string, string]> = [
       ['merchant', 'Store', 'text'], ['orderNo', 'Order number', 'text'],
