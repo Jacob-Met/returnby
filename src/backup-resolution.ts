@@ -1,3 +1,4 @@
+import { refundBalance, refundMoney } from './refund-payments';
 import { exportBackup, planImport, type ImportRow } from './backup';
 import type { Order } from './store';
 import { completionLabel, isCompleted } from './completion';
@@ -35,10 +36,11 @@ const labels: Record<string,string> = {
   windowDays: 'Return window (days)', windowSource: 'Return rule source',
   createdAt: 'Purchase record created', refundState: 'Refund status',
   refundAmount: 'Expected refund', refundFollowUpDate: 'Next refund check',
-  refundNote: 'Refund notes', refundUpdatedAt: 'Refund last updated',
+  refundPayments: 'Recorded refund payments', refundNote: 'Refund notes', refundUpdatedAt: 'Refund last updated',
 };
 export const backupFieldLabel = (key: string) => labels[key] || key.replace(/([A-Z])/g, ' $1');
 export function backupFieldValue(order: Order, key: string): string {
+  if (key === 'refundPayments' && order.refundPayments) { const p=order.refundPayments,b=refundBalance(p); return 'Expected '+refundMoney(p.currency,p.expectedCents)+'; received '+refundMoney(p.currency,b.received)+'; still owed '+refundMoney(p.currency,b.remaining)+'. '+p.credits.map(c=>c.date+' '+refundMoney(p.currency,c.amountCents)+(c.note?' — '+c.note:'')).join('; '); }
   if (key === 'completionKind') return isCompleted(order) ? completionLabel(order) : 'Active';
   if (key === 'completedAt' && !isCompleted(order)) return 'Not finished';
   const value = (order as unknown as Record<string, unknown>)[key];
