@@ -1,4 +1,5 @@
 import { bindRefunds, renderRefunds } from './refund-ui';
+import { bindSavedReturnsCsv } from './saved-returns-csv-ui';
 import { reviewDuplicateIntake } from './duplicate-intake';
 import './style.css';
 import './backup.css';
@@ -327,3 +328,5 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRe
     .find(button => button.dataset[action] === id);
   (next ?? $<HTMLButtonElement>('#filter-' + filterMode)).focus({ preventScroll: true });
 });
+
+bindSavedReturnsCsv(read);
