@@ -65,7 +65,7 @@ The pure MIME-reader tests are `tests/eml.test.ts`; the production Chrome file-p
 
 ## Privacy
 
-The original pasted email is not sent or persisted. The user must review and save fields; only merchant, order number, total, order date, return-window days and timestamps are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
+The original pasted email is not sent or persisted. The user must review and save fields; reviewed order fields and trip plans you create are kept in this browser's local storage. There is no account, inbox connection, analytics, external API or model call. Clearing the list removes saved records from this device.
 
 ## Export several calendar reminders
 
@@ -175,7 +175,7 @@ The app is browser-only; no AI runs in the page. The Devpost Learn planning docu
 
 ## Return-trip checklist
 
-From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. The page keeps the existing tracker unchanged; selections, paper check marks and notes are not saved. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
+From the saved-order list, open **Prepare a return-trip checklist**. Select orders and a planned date, review the saved facts, then download a self-contained HTML sheet to open offline and print. Your planned date, selected orders, packing checks and drop-off notes are saved in this browser, separately from the tracker. Reopening restores the editable trip with current order facts; removed or finished orders are left out while their notes remain recoverable. Downloaded sheets contain your checked items and notes; marks added on paper do not update the app. Each amount stays literal and every window retains its stored source. See [the checklist guide](docs/TRIP_CHECKLIST.md) for refresh behavior and date limitations.
 
 ## Reading long saved-order labels
 
