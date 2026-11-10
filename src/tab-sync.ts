@@ -4,6 +4,8 @@ export function bindTabSync(options: { refresh: () => boolean }): void {
   const notice = document.querySelector<HTMLElement>('#tab-sync')!;
   const message = document.querySelector<HTMLElement>('#tab-sync-message')!;
   const review = document.querySelector<HTMLButtonElement>('#tab-sync-review')!;
+  const editDialog = document.querySelector<HTMLDialogElement>('#edit-dialog')!;
+  const editNotice = document.querySelector<HTMLElement>('#edit-tab-sync-notice')!;
 
   window.addEventListener('storage', (event: StorageEvent) => {
     // A storage event is only sent to *other* documents, never to its writer.
@@ -13,6 +15,17 @@ export function bindTabSync(options: { refresh: () => boolean }): void {
     notice.hidden = false;
     review.hidden = false;
     message.textContent = 'Saved returns changed in another tab. Review the latest tracker before acting on older deadlines.';
+    // The background Review control is unreachable while a native edit dialog
+    // is open. Announce the change inside the modal without touching the draft.
+    if (editDialog.open) {
+      editNotice.hidden = false;
+      editNotice.textContent = 'Saved returns changed in another tab while you were editing. Your draft is still here. Save will check for conflicts; cancel and reopen to review the latest details.';
+    }
+  });
+
+  editDialog.addEventListener('close', () => {
+    editNotice.hidden = true;
+    editNotice.textContent = '';
   });
 
   review.addEventListener('click', () => {
