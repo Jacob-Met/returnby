@@ -20,10 +20,10 @@ export function bindManualPurchase(options: { read: () => Order[] | null; commit
   const form = document.querySelector<HTMLFormElement>('#manual-form')!;
   const error = document.querySelector<HTMLParagraphElement>('#manual-error')!;
   const deadline = document.querySelector<HTMLParagraphElement>('#manual-deadline')!;
-  const draft = (): EditDraft => Object.fromEntries(['merchant', 'orderDate', 'windowStartDate', 'fixedDeadline', 'windowDays', 'orderNo', 'total', 'returnEvidenceUrl', 'deadlineRequirement'].map(name => [name, String(new FormData(form).get(name) ?? '')])) as EditDraft;
+  const draft = (): EditDraft => Object.fromEntries(['merchant', 'orderDate', 'windowStartDate', 'fixedDeadline', 'windowDays', 'orderNo', 'total', 'returnEvidenceUrl', 'deadlineRequirement', 'merchantArrivalDeadline'].map(name => [name, String(new FormData(form).get(name) ?? '')])) as EditDraft;
   const refresh = () => {
     error.hidden = true;
-    try { const review=manualPurchase(draft(), 'preview', '2000-01-01T00:00:00Z'); deadline.textContent=deadlinePhrase(review.order.deadlineRequirement)+' '+review.due; }
+    try { const review=manualPurchase(draft(), 'preview', '2000-01-01T00:00:00Z'); deadline.textContent=deadlinePhrase(review.order.deadlineRequirement)+' '+review.due+(review.order.merchantArrivalDeadline?' · Merchant receives by '+review.order.merchantArrivalDeadline:''); }
     catch { deadline.textContent = 'Enter a store, valid purchase date and whole-day return window to calculate the deadline.'; }
   };
   const recovery = bindManualDraftRecovery(form, open, refresh);

@@ -1,0 +1,73 @@
+import assert from 'node:assert/strict';
+import {spawn} from 'node:child_process';
+import {mkdir,readFile} from 'node:fs/promises';
+import {chromium} from 'playwright';
+
+const output = process.env.RETURNBY_BROWSER_OUTPUT || '/workspace/tmp/gpt6-c7f2-dual-browser';
+await mkdir(output,{recursive:true});
+const server = spawn('python3',['-m','http.server','18973','--bind','127.0.0.1','--directory','dist'],{stdio:'ignore'});
+const browser = await chromium.launch({executablePath:'/usr/local/bin/google-chrome',headless:true,args:['--no-sandbox']});
+const sleep = ms => new Promise(resolve=>setTimeout(resolve,ms));
+const observations = [];
+try {
+  for (const width of [1440,390]) {
+    const context = await browser.newContext({viewport:{width,height:900},acceptDownloads:true});
+    const page = await context.newPage();
+    const errors=[];page.on('pageerror',err=>errors.push(err.message));
+    for(let tries=0;;tries++){try{await page.goto('http://127.0.0.1:18973');break;}catch(err){if(tries>25)throw err;await sleep(100);}}
+    await page.locator('#manual-open').click();
+    const manual=page.locator('#manual-form');
+    await manual.locator('[name=merchant]').fill('Harbor Outfitters');
+    await manual.locator('[name=orderDate]').fill('2026-11-01');
+    await manual.locator('[name=windowDays]').fill('14');
+    await manual.locator('[name=orderNo]').fill('HARBOR-17');
+    await manual.locator('[name=deadlineRequirement]').selectOption('ship-by');
+    await manual.locator('[name=merchantArrivalDeadline]').fill('2026-11-14');
+    await manual.locator('button[type=submit]').click();
+    assert.match(await page.locator('#manual-error').innerText(),/after the carrier|on or after/);
+    assert.equal(await page.evaluate(()=>localStorage.getItem('returnby.v1')),null);
+    await manual.locator('[name=merchantArrivalDeadline]').fill('2026-11-20');
+    assert.match(await page.locator('#manual-deadline').innerText(),/2026-11-15.*2026-11-20/);
+    await page.screenshot({path:output+'/manual-'+width+'.png'});
+    await manual.locator('button[type=submit]').click();
+    assert.equal(await page.locator('#manual-dialog').evaluate(el=>el.open),false);
+    let stored=await page.evaluate(()=>JSON.parse(localStorage.getItem('returnby.v1')));
+    assert.equal(stored.length,1);
+    assert.equal(stored[0].deadlineRequirement,'ship-by');
+    assert.equal(stored[0].merchantArrivalDeadline,'2026-11-20');
+    await page.reload();
+    const card=page.locator('#list .card').first();
+    assert.match(await card.innerText(),/SHIP BY 2026-11-15/);
+    assert.match(await card.innerText(),/MERCHANT MUST RECEIVE BY 2026-11-20/);
+    await card.scrollIntoViewIfNeeded();
+    await page.screenshot({path:output+'/saved-'+width+'.png'});
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+    await card.locator('[data-ics]').click();
+    assert.equal(await page.locator('#calendar-dialog').evaluate(el=>el.open),true);
+    assert.match(await page.locator('#calendar-dialog').innerText(),/2026-11-20/);
+    const downloadWait=page.waitForEvent('download');
+    await page.locator('#calendar-download').click();
+    const result=await downloadWait;
+    const ics=(await readFile(await result.path(),'utf8')).replace(/\r\n[ \t]/g,'');
+    assert.equal((ics.match(/BEGIN:VEVENT/g)||[]).length,2);
+    assert.match(ics,/DTSTART;VALUE=DATE:20261115/);
+    assert.match(ics,/DTSTART;VALUE=DATE:20261120/);
+    assert.match(ics,/SUMMARY:Merchant receipt deadline:/);
+    await page.locator('[data-edit]').first().click();
+    const edit=page.locator('#edit-form');
+    assert.equal(await edit.locator('[name=merchantArrivalDeadline]').inputValue(),'2026-11-20');
+    await edit.locator('[name=merchantArrivalDeadline]').fill('2026-11-21');
+    assert.match(await page.locator('#edit-proposed-deadline').innerText(),/2026-11-21/);
+    await page.locator('#edit-save').click();
+    assert.equal(await page.locator('#edit-dialog').evaluate(el=>el.open),false);
+    stored=await page.evaluate(()=>JSON.parse(localStorage.getItem('returnby.v1')));
+    assert.equal(stored[0].merchantArrivalDeadline,'2026-11-21');
+    await page.reload();
+    assert.match(await page.locator('#list .card').first().innerText(),/2026-11-21/);
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+    assert.deepEqual(errors,[]);
+    observations.push({width,invalidArrivalBlocked:true,saved:true,rehydrated:true,exportedCalendarEvents:2,changedArrivalSaved:true,overflow:false});
+    await context.close();
+  }
+  console.log(JSON.stringify(observations));
+} finally {await browser.close();server.kill();}

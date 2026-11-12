@@ -1,5 +1,5 @@
 import { receiptPolicy, receiptWindow } from './receipt-policy';
-import { validDeadlineRequirement, type DeadlineRequirement } from './deadline-requirement';
+import { validDeadlineRequirement, validMerchantArrivalDeadline, type DeadlineRequirement } from './deadline-requirement';
 import { purchaseIdentity as identity } from './purchase-identity';
 import { parse } from './parse';
 import { deliveryReview } from './delivery-review';
@@ -21,6 +21,7 @@ export type DraftFields = {
   windowStartDate?: string;
   windowDays: string;
   deadlineRequirement?: string;
+  merchantArrivalDeadline?: string;
 };
 export type BatchDraft = {
   id: string;
@@ -131,11 +132,16 @@ export function validateDraft(draft: BatchDraft): Omit<Order, 'id' | 'createdAt'
   if (receiptPolicy(draft.text).actionRequired && !requirement) {
     throw new BatchIntakeError('This confirmation names a return handoff. Choose what must happen by the deadline before selecting it.', 'deadlineRequirement', draft.id);
   }
+  const arrival = fields.merchantArrivalDeadline?.trim() ?? '';
+  if (!validMerchantArrivalDeadline(arrival, requirement as DeadlineRequirement | undefined, dueDate(windowStartDate || fields.orderDate, windowDays))) {
+    throw new BatchIntakeError('The merchant arrival date must be real, on or after the carrier cutoff; choose Ship by for the first date.', 'merchantArrivalDeadline', draft.id);
+  }
   const policy = lookup(fields.merchant);
   return {
     merchant: fields.merchant, orderNo: fields.orderNo, total: fields.total,
     orderDate: fields.orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays,
     ...(requirement ? { deadlineRequirement: requirement as DeadlineRequirement } : {}),
+    ...(arrival ? { merchantArrivalDeadline: arrival } : {}),
     windowSource: receiptPolicy(draft.text).passages.length ? 'user' : windowDays === policy.days ? policy.source : 'user',
   };
 }

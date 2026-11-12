@@ -1,6 +1,6 @@
 import './receipt-policy.css';
 import { receiptPolicy } from './receipt-policy';
-import { deadlineOptions } from './deadline-requirement';
+import { deadlinePhrase,deadlineOptions } from './deadline-requirement';
 import { readPending, writePending } from './pending-delivery';
 import './batch-intake.css';
 import {
@@ -102,7 +102,7 @@ function renderDrafts() {
     ];
     for (const [key, labelText, type] of labels) {
       const label = element('label', labelText);
-      if (key !== 'windowDays' && key !== 'windowStartDate' && key !== 'deadlineRequirement' && !draft.found[key]) label.className = 'not-recognized';
+      if (key !== 'windowDays' && key !== 'windowStartDate' && key !== 'deadlineRequirement' && key !== 'merchantArrivalDeadline' && !draft.found[key]) label.className = 'not-recognized';
       if (key === 'windowDays') label.className = 'window-field';
       const input = element('input');
       input.type = type;
@@ -131,10 +131,21 @@ function renderDrafts() {
     actionLabel.append(actionSelect);
     const windowField = fields.querySelector('[data-field=windowDays]')?.closest('label');
     fields.insertBefore(actionLabel, windowField ?? null);
+    const arrivalLabel = element('label', 'Also: merchant must receive by (optional; choose Ship by above)');
+    const arrivalInput = element('input');
+    arrivalInput.type = 'date';
+    arrivalInput.min = '1000-01-01';
+    arrivalInput.max = '9999-12-30';
+    arrivalInput.name = 'merchantArrivalDeadline';
+    arrivalInput.dataset.field = 'merchantArrivalDeadline';
+    arrivalInput.value = draft.fields.merchantArrivalDeadline ?? '';
+    arrivalInput.setAttribute('aria-label', 'Merchant arrival deadline for confirmation ' + (index + 1));
+    arrivalLabel.append(arrivalInput);
+    fields.insertBefore(arrivalLabel, windowField ?? null);
     card.append(fields);
     if (actionEvidence.actionRequired) {
       const warning = element('p', actionEvidence.actionConflict
-        ? 'Shipping and merchant arrival can have different dates. Check which terms apply; if both apply, confirm both dates before saving one plan.'
+        ? 'If both deadlines apply, choose Ship by, confirm the carrier cutoff, and enter the merchant arrival date above.'
         : 'Confirm what must happen by the date before saving.', 'warn');
       warning.setAttribute('role', 'status');
       card.append(warning);
@@ -155,7 +166,7 @@ function renderDrafts() {
         try {
           const current = readPending(localStorage);
           const fields: Record<string,string> = {};
-          for (const key of ['merchant','orderDate','orderNo','total','windowStartDate','windowDays','deadlineRequirement'] as const) fields[key] = draft.fields[key] ?? '';
+          for (const key of ['merchant','orderDate','orderNo','total','windowStartDate','windowDays','deadlineRequirement','merchantArrivalDeadline'] as const) fields[key] = draft.fields[key] ?? '';
           if (actionEvidence.actionRequired) fields.deadlineActionReviewRequired = 'yes';
           writePending(localStorage, [...current.rows, {id:crypto.randomUUID(),updatedAt:new Date().toISOString(),fields}], current.token);
           drafts = drafts.filter(item => item.id !== draft.id);
@@ -307,7 +318,8 @@ function renderReview(current: BatchReview) {
     const facts = element('dl');
     const source = order.windowSource === 'policy' ? 'Local store rule' : order.windowSource === 'default' ? 'Local default' : 'Your chosen window';
     for (const [label, value] of [
-      ['Order date', order.orderDate], ['Return clock starts', (order.windowStartDate || order.orderDate) + (order.windowStartDate ? ' · confirmed by you' : ' · order date')], ['Calculated deadline', returnDueDate(order)],
+      ['Order date', order.orderDate], ['Return clock starts', (order.windowStartDate || order.orderDate) + (order.windowStartDate ? ' · confirmed by you' : ' · order date')], [deadlinePhrase(order.deadlineRequirement), returnDueDate(order)],
+      ...(order.merchantArrivalDeadline ? [['Merchant must receive by',order.merchantArrivalDeadline]] : []),
       ['Reviewed window', order.windowDays + ' days · ' + source], ['Saved amount', order.total || 'Not recorded'],
     ]) {
       const pair = element('div');

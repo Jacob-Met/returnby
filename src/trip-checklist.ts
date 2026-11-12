@@ -1,6 +1,6 @@
 import type { Order } from './store';
 import { validReturnEvidenceUrl } from './return-evidence';
-import { deadlinePhrase,deadlineCaution,validDeadlineRequirement } from './deadline-requirement';
+import { deadlinePhrase,deadlineCaution,validDeadlineRequirement,validMerchantArrivalDeadline } from './deadline-requirement';
 import { hasValidCompletion, isCompleted } from './completion';
 import { dueDate, returnDueDate, daysLeft, todayISO } from './deadline';
 
@@ -94,6 +94,7 @@ export function parseSavedOrders(raw: string | null): SavedSnapshot {
     const fixedDeadline = row.fixedDeadline;
     const windowDays = row.windowDays;
     if (fixedDeadline !== undefined && (!isSupportedDate(fixedDeadline) || fixedDeadline !== returnDueDate({orderDate,windowStartDate:windowStartDate as string|undefined,windowDays:windowDays as number}))) badRow(index,'has an inconsistent fixed deadline');
+    if (!validMerchantArrivalDeadline(row.merchantArrivalDeadline, row.deadlineRequirement as Order['deadlineRequirement'], returnDueDate({orderDate,windowStartDate:windowStartDate as string|undefined,windowDays:windowDays as number}))) badRow(index,'has a contradictory second arrival deadline');
     if (typeof windowDays !== 'number' || !Number.isSafeInteger(windowDays) || windowDays < 1
       || !isSupportedDate(returnDueDate({ orderDate, windowStartDate: windowStartDate as string | undefined, windowDays }))) {
       badRow(index, 'has a return window this tracker cannot calculate');
@@ -108,7 +109,7 @@ export function parseSavedOrders(raw: string | null): SavedSnapshot {
       completedAt: row.completedAt as string,
       ...(row.completionKind === undefined ? {} : { completionKind: row.completionKind as Order['completionKind'] }),
     };
-    return Object.freeze({ id, merchant, orderNo, total, ...(returnEvidenceUrl ? {returnEvidenceUrl} : {}), ...(row.deadlineRequirement ? {deadlineRequirement:row.deadlineRequirement as import('./deadline-requirement').DeadlineRequirement} : {}), orderDate, ...(windowStartDate ? { windowStartDate } : {}), ...(fixedDeadline ? { fixedDeadline: fixedDeadline as string } : {}), windowDays, windowSource, createdAt, ...completion });
+    return Object.freeze({ id, merchant, orderNo, total, ...(returnEvidenceUrl ? {returnEvidenceUrl} : {}), ...(row.deadlineRequirement ? {deadlineRequirement:row.deadlineRequirement as import('./deadline-requirement').DeadlineRequirement} : {}), ...(row.merchantArrivalDeadline ? {merchantArrivalDeadline:row.merchantArrivalDeadline as string} : {}), orderDate, ...(windowStartDate ? { windowStartDate } : {}), ...(fixedDeadline ? { fixedDeadline: fixedDeadline as string } : {}), windowDays, windowSource, createdAt, ...completion });
   });
   return Object.freeze({ raw, orders: Object.freeze(orders) });
 }
@@ -178,6 +179,7 @@ export function renderChecklist(checklist: TripChecklist): string {
       + '<div><dt>Saved order amount</dt><dd>' + saved(order.total) + '</dd></div>'
       + '<div><dt>Return clock starts</dt><dd>' + (order.windowStartDate ? escapeHtml(order.windowStartDate) + ' · user-confirmed' : escapeHtml(order.orderDate) + ' · order date') + '</dd></div>'
       + '<div><dt>'+escapeHtml(deadlinePhrase(order.deadlineRequirement))+'</dt><dd>' + escapeHtml(due) + '</dd></div>'
+      + (order.merchantArrivalDeadline ? '<div><dt>Merchant must receive by</dt><dd>' + escapeHtml(order.merchantArrivalDeadline) + '</dd></div>' : '')
       + '<div><dt>Saved window</dt><dd>' + (order.fixedDeadline ? 'Fixed retailer deadline · '+escapeHtml(order.fixedDeadline) : order.windowDays + ' days · ' + sourceLabel(order.windowSource)) + '</dd></div></dl>'
       + '<p class="sheet-timing">' + escapeHtml(timing) + '</p>'
       + '<p class="sheet-requirement">'+escapeHtml(deadlineCaution(order.deadlineRequirement))+'</p>'

@@ -19,7 +19,7 @@ export function bindOrderEditor(options: EditorOptions) {
   const source = get<HTMLParagraphElement>('edit-source');
   const save = get<HTMLButtonElement>('edit-save');
   const fields: Record<keyof EditDraft, HTMLInputElement | HTMLSelectElement> = {
-    fixedDeadline: get('edit-fixed-deadline'), merchant: get('edit-merchant'), orderNo: get('edit-order-no'), total: get('edit-total'), returnEvidenceUrl: get('edit-return-evidence-url'), deadlineRequirement: get<HTMLSelectElement>('edit-deadline-requirement'),
+    fixedDeadline: get('edit-fixed-deadline'), merchant: get('edit-merchant'), orderNo: get('edit-order-no'), total: get('edit-total'), returnEvidenceUrl: get('edit-return-evidence-url'), deadlineRequirement: get<HTMLSelectElement>('edit-deadline-requirement'), merchantArrivalDeadline: get('edit-merchant-arrival-deadline'),
     orderDate: get('edit-order-date'), windowStartDate: get('edit-window-start-date'), windowDays: get('edit-window-days'),
   };
   let original: Order | null = null;
@@ -38,7 +38,7 @@ export function bindOrderEditor(options: EditorOptions) {
     for (const input of Object.values(fields)) input.removeAttribute('aria-invalid');
     try {
       const review = previewEdit(original, draft());
-      proposed.textContent = review.due;
+      proposed.textContent = review.order.merchantArrivalDeadline ? deadlinePhrase(review.order.deadlineRequirement) + ' ' + review.due + ' · Merchant receives by ' + review.order.merchantArrivalDeadline : review.due;
       source.textContent = sourceDescription(review.order);
       save.disabled = false;
       showMessage('');
@@ -98,7 +98,7 @@ export function bindOrderEditor(options: EditorOptions) {
       const values = editDraft(original);
       for (const name of Object.keys(fields) as (keyof EditDraft)[]) fields[name].value = values[name] ?? '';
       form.dispatchEvent(new Event('returnby-edit-loaded'));
-      get('edit-current-deadline').textContent = returnDueDate(original);
+      get('edit-current-deadline').textContent = original.merchantArrivalDeadline ? deadlinePhrase(original.deadlineRequirement) + ' ' + returnDueDate(original) + ' · Merchant receives by ' + original.merchantArrivalDeadline : returnDueDate(original);
       get('edit-feedback').textContent = '';
       updatePreview();
       dialog.showModal();

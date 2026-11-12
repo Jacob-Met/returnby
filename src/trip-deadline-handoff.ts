@@ -10,5 +10,5 @@ export function requestedDeadline(search: string): string | null {
   return values[0];
 }
 export function ordersForDeadline(orders: readonly Order[], deadline: string): Order[] {
-  return orders.filter(order => !isCompleted(order) && returnDueDate(order) === deadline);
+  return orders.filter(order => !isCompleted(order) && (returnDueDate(order) === deadline || order.merchantArrivalDeadline === deadline));
 }

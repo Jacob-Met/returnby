@@ -1,13 +1,13 @@
-# ReturnBy — current return desk
+# ReturnBy — current desk
 
-**[Download ReturnBy 0.9.4](https://github.com/Jacob-Met/returnby/releases/tag/v0.9.4)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
+**[Download ReturnBy 0.10.0](https://github.com/Jacob-Met/returnby/releases/tag/v0.10.0)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
 
-**[Phone: restoring an original receipt](https://github.com/Jacob-Met/returnby/releases/download/v0.9.4/ReturnBy-v0.9.4-backup-preview-phone.jpg)** · [Desktop view](https://github.com/Jacob-Met/returnby/releases/download/v0.9.4/ReturnBy-v0.9.4-backup-preview-desktop.jpg)
+[Phone — both deadlines on one return](https://github.com/Jacob-Met/returnby/releases/download/v0.10.0/ReturnBy-v0.10.0-dual-deadline-phone.png) · [Desktop](https://github.com/Jacob-Met/returnby/releases/download/v0.10.0/ReturnBy-v0.10.0-dual-deadline-desktop.png)
 
-Downloaded backups now carry saved paper-receipt photos with purchases, preserving the image and its rotation when moved to a new device. The fresh phone restore opens the saved purchase and its Paper receipt action. Earlier backups still import, and an existing destination photo is kept unless its purchase is deliberately replaced. The released Linux package completed the browser transfer; macOS and Windows packages are cross-compiled.
+A purchase now tracks two separate merchant obligations: carrier handoff by one date, warehouse arrival by another. Both dates follow the saved purchase into its calendar reminders, monthly view, return-trip packing, CSV and device-transfer backup. The shipped phone and desktop purchase journeys save, reload and edit both dates.
 
 ## Top gaps
 
-1. **Separate merchant handoffs still collapse into one reminder.** A merchant may require both carrier acceptance and warehouse arrival on different dates, but one purchase still tracks just one.
-2. **Faint or distorted printed receipts still lose key fields.** The photo reader can require manual reconstruction of the store, purchase date or total when text is washed out or skewed.
-3. **Restoring on a phone still means reading a full screen of instructions.** The import's explanatory paragraphs push the choice and action far below the file picker at 390px.
+1. **Faint or distorted printed receipts still lose key fields.** The offline photo reader can make shoppers reconstruct the store, purchase date, or total when print is washed out or skewed.
+2. **Phone backup restore still buries the action under instructions.** The full explanatory text pushes the restore choice well below the file picker on a narrow phone.
+3. **Edited returns leave obsolete entries in external calendars.** The .ics download is a snapshot; a changed or canceled return cannot remove its old imported event.

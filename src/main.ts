@@ -4,7 +4,7 @@ import './receipt-policy.css';
 import { receiptPolicy, receiptWindow } from './receipt-policy';
 import {readPending,writePending,PENDING_KEY} from './pending-delivery';
 import {validReturnEvidenceUrl} from './return-evidence';
-import {deadlineOptions,deadlinePhrase,deadlineCaution,validDeadlineRequirement} from './deadline-requirement';
+import {deadlineOptions,deadlinePhrase,deadlineCaution,validDeadlineRequirement,validMerchantArrivalDeadline} from './deadline-requirement';
 import { deliveryReview } from './delivery-review';
 import { bindKnownDeadlines } from './known-deadline';
 import './known-deadline.css';
@@ -82,7 +82,7 @@ let completionReviewed: Order | undefined;
 let reviewedIntake = '';
 const reviewSignature = () => {
   const fields = new FormData(preview);
-  return JSON.stringify(['merchant', 'orderDate', 'orderNo', 'total', 'returnEvidenceUrl', 'deadlineRequirement', 'windowStartDate', 'fixedDeadline', 'windowDays']
+  return JSON.stringify(['merchant', 'orderDate', 'orderNo', 'total', 'returnEvidenceUrl', 'deadlineRequirement', 'merchantArrivalDeadline', 'windowStartDate', 'fixedDeadline', 'windowDays']
     .map(name => [name, fields.get(name) ?? '']));
 };
 const deskNavigation = bindDeskNavigation();
@@ -235,6 +235,7 @@ function showPreview(restored?: Record<string, string>) {
     ${field('total', 'Total', p.total, p.found.total)}
     <label>Return label, QR or receipt link (optional)<input name="returnEvidenceUrl" type="url" inputmode="url" autocomplete="off" maxlength="2048" placeholder="https://merchant.example/return" value="${h(restored?.returnEvidenceUrl || '')}"></label>
     <label>What must happen by the deadline?<select name="deadlineRequirement">${deadlineOptions(restored?.deadlineRequirement)}</select></label>
+    <label>Also: merchant must receive by (optional second date; choose Ship by above)<input name="merchantArrivalDeadline" type="date" min="1000-01-01" max="9999-12-30" value="${h(restored?.merchantArrivalDeadline || '')}"></label>
     <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${h(restored ? (restored.windowDays || '') : receiptWindow(paste.value, pol.days))}"></label>
     ${evidence.passages.length ? '<section class="receipt-policy-evidence" aria-label="Receipt return terms"><h3>Return terms in this receipt</h3><p>'+h(evidence.message)+'</p>'+evidence.passages.map(p=>'<blockquote>'+h(p)+'</blockquote>').join('')+'</section>' : ''}
     <p class="src"><output id="intake-deadline" aria-live="polite" aria-atomic="true"></output></p>
@@ -249,7 +250,7 @@ function showPreview(restored?: Record<string, string>) {
     warning.className = 'warn return-action-warning';
     warning.setAttribute('role', 'status');
     warning.textContent = evidence.actionConflict
-      ? 'Shipping and merchant arrival can have different dates. Confirm which terms apply; if both apply, check both dates with the retailer before saving one plan.'
+      ? 'If both dates apply, choose Ship by, confirm the carrier cutoff, and enter the merchant arrival date below.'
       : 'Confirm what must happen by this date. A delivery deadline is not necessarily a shipping deadline.';
     actionSelect.closest('label')?.after(warning);
   }
@@ -309,6 +310,12 @@ preview.addEventListener('submit', (e) => {
     preview.querySelector<HTMLOutputElement>('#intake-deadline')!.textContent = 'Choose what the retailer requires by the deadline.';
     return;
   }
+  const merchantArrivalDeadline = String(f.get('merchantArrivalDeadline') || '');
+  if (!validMerchantArrivalDeadline(merchantArrivalDeadline, deadlineRequirement as Order['deadlineRequirement'], dueDate(clockStart, days))) {
+    preview.querySelector<HTMLOutputElement>('#intake-deadline')!.textContent = 'For two cutoffs, choose Ship by and enter a merchant arrival date on or after the carrier cutoff.';
+    preview.querySelector<HTMLInputElement>('[name=merchantArrivalDeadline]')?.focus();
+    return;
+  }
   const pol = lookup(merchant);
   let current: Order[] | null;
   try {
@@ -321,7 +328,7 @@ preview.addEventListener('submit', (e) => {
   if (!current) return;
   const next: Order[] = [...current, {
     id: crypto.randomUUID(), merchant, orderNo: String(f.get('orderNo') || ''),
-    total: String(f.get('total') || ''), ...(returnEvidenceUrl ? {returnEvidenceUrl} : {}), ...(deadlineRequirement ? {deadlineRequirement:deadlineRequirement as Order['deadlineRequirement']} : {}), orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays: days,
+    total: String(f.get('total') || ''), ...(returnEvidenceUrl ? {returnEvidenceUrl} : {}), ...(deadlineRequirement ? {deadlineRequirement:deadlineRequirement as Order['deadlineRequirement']} : {}), ...(merchantArrivalDeadline ? {merchantArrivalDeadline} : {}), orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays: days,
     windowSource: preview.dataset.receiptEvidence === 'yes' ? 'user' : days === pol.days ? pol.source : 'user',
     createdAt: new Date().toISOString(),
   }];
@@ -341,7 +348,7 @@ function historyCard(o: Order): string {
     + (o.orderNo ? ' <span class="mono">#' + h(o.orderNo) + '</span>' : '')
     + '</div><span class="completion-kind">' + completionLabel(o) + '</span></div>'
     + '<p class="completion-date">Recorded ' + h(recorded) + '</p>'
-    + '<div class="window-meta"><span>ORDER ' + h(o.orderDate) + '</span><span>Original ' + h(deadlinePhrase(o.deadlineRequirement).toLowerCase()) + ' ' + h(returnDueDate(o)) + '</span></div>'
+    + '<div class="window-meta"><span>ORDER ' + h(o.orderDate) + '</span><span>Original ' + h(deadlinePhrase(o.deadlineRequirement).toLowerCase()) + ' ' + h(returnDueDate(o)) + '</span>' + (o.merchantArrivalDeadline ? '<span>Merchant received by ' + h(o.merchantArrivalDeadline) + '</span>' : '') + '</div>'
     + (o.total ? '<p class="history-amount">Order total <strong>' + h(o.total) + '</strong></p>' : '')
     + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open saved return document</a></p>' : '')
     + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>'
@@ -353,7 +360,7 @@ function revealSavedOrder(order: Order) {
   filterMode = 'all';
   search.value = '';
   render();
-  $('#edit-feedback').textContent = (order.merchant || 'Purchase') + ' saved. ' + deadlinePhrase(order.deadlineRequirement) + ' ' + returnDueDate(order) + '.';
+  $('#edit-feedback').textContent = (order.merchant || 'Purchase') + ' saved. ' + deadlinePhrase(order.deadlineRequirement) + ' ' + returnDueDate(order) + (order.merchantArrivalDeadline ? '; merchant must receive by ' + order.merchantArrivalDeadline : '') + '.';
   deskNavigation.saved(order.id);
 }
 
@@ -415,9 +422,10 @@ function render() {
       + '<div class="window-meta"><span>ORDER ' + h(o.orderDate) + ' · CLOCK ' + h(o.windowStartDate || o.orderDate) + (o.windowStartDate ? ' (confirmed by you)' : ' (order date)') + '</span><span class="source-tag">' + policy + '</span></div>'
       + '<div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="' + progress + '" aria-valuemin="0" aria-valuemax="100"><i style="width:' + progress + '%"></i></div>'
       + '<div class="order-foot"><span class="return-by">' + h(deadlinePhrase(o.deadlineRequirement).toUpperCase()) + ' ' + h(due) + '</span><strong class="days-left">' + count + '</strong></div>'
+      + (o.merchantArrivalDeadline ? '<div class="order-foot second-return-deadline"><span class="return-by">MERCHANT MUST RECEIVE BY ' + h(o.merchantArrivalDeadline) + '</span><strong class="days-left">' + (daysLeft(o.merchantArrivalDeadline, todayISO()) < 0 ? 'PAST DUE' : h(String(daysLeft(o.merchantArrivalDeadline, todayISO()))) + ' DAYS LEFT') + '</strong></div>' : '')
       + (o.deadlineRequirement ? '<p class="return-document return-document-caution">'+h(deadlineCaution(o.deadlineRequirement))+'</p>' : '')
       + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open return label, QR or receipt</a></p>' : '<p class="return-document return-document-missing">No return document saved. Add one in Edit details before going to the store.</p>')
-      + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-primary" data-ics="' + h(o.id) + '">Add calendar reminder</button>'
+      + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-primary" data-ics="' + h(o.id) + '">Add calendar reminders</button>'
       + '<button class="button button-link" data-finish="' + h(o.id) + '">Finish return</button>'
       + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
   }).join('');
