@@ -69,7 +69,7 @@ export function bindOrderEditor(options: EditorOptions) {
         return;
       }
       get('edit-feedback').textContent = plan.changed
-        ? `Saved changes for ${plan.order.merchant || 'Unknown store'}. ${deadlinePhrase(plan.order.deadlineRequirement)} ${plan.due}.`
+        ? `Saved changes for ${plan.order.merchant || 'Unknown store'}. ${deadlinePhrase(plan.order.deadlineRequirement)} ${plan.due}. Re-import updated calendar reminders if you had imported them.${plan.order.calendarPreviousArrivalDate && !plan.order.merchantArrivalDeadline ? ' The old merchant-arrival entry also needs cancellation from the tracker.' : ''}`
         : 'No changes to save.';
       dialog.close();
     } catch (error) {

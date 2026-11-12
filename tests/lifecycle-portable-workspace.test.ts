@@ -24,7 +24,7 @@ const pending = [{id:'pending-lamp',updatedAt:stamp.toISOString(),fields:{
 test.each(['returned','kept'] as const)('portable workspace preserves %s, refund, pending delivery and named trips together', kind => {
   const closed = planCompletion([coat],coat,kind,stamp).order;
   const file = exportBackup([closed],stamp,trip,pending,library);
-  expect(JSON.parse(file).version).toBe(5);
+  expect(JSON.parse(file).version).toBe(11);
   const restored = parseBackupDocument(file);
   expect(restored.orders).toEqual([closed]);
   expect(restored.pending).toEqual(pending);
@@ -48,9 +48,10 @@ test('existing v3 pending and v4 named-trip backups remain readable with active 
 
 test('pre-release outcome backup remains closed and unsupported future formats fail visibly', () => {
   const closed=planCompletion([coat],coat,'returned',stamp).order;
-  const earlier=JSON.parse(exportBackup([closed],stamp));
+  const { calendarRevision: _calendarRevision, ...legacy } = closed;
+  const earlier=JSON.parse(exportBackup([legacy],stamp));
   earlier.version=3;
-  expect(parseBackupDocument(JSON.stringify(earlier)).orders).toEqual([closed]);
+  expect(parseBackupDocument(JSON.stringify(earlier)).orders).toEqual([legacy]);
   earlier.version=999;
   expect(()=>parseBackupDocument(JSON.stringify(earlier))).toThrow('not supported');
 });

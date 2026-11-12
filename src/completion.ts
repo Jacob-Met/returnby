@@ -1,4 +1,5 @@
 import type { Order } from './store';
+import { nextCalendarRevision } from './calendar-revision';
 
 export type CompletionAction = 'complete' | 'returned' | 'kept' | 'reopen';
 export class CompletionError extends Error {}
@@ -44,7 +45,7 @@ export function planCompletion(
   if (!['complete', 'returned', 'kept', 'reopen'].includes(action)) throw new CompletionError('Choose Returned, Kept or Reopen.');
   const completed = action !== 'reopen';
   if (isCompleted(saved) === completed) return { next: [...current], order: saved, changed: false };
-  const nextOrder = { ...saved };
+  const nextOrder = { ...saved, calendarRevision: nextCalendarRevision(saved) };
   if (completed) {
     if (!Number.isFinite(now.getTime()) || !isCompletionTimestamp(now.toISOString())) {
       throw new CompletionError('The completion date could not be read. Your saved return was kept.');

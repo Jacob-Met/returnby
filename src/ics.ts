@@ -33,7 +33,7 @@ function fold(line: string): string {
 
 const timestamp = (date: Date) => date.toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
 
-export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string; confirmedStartDate?: string; fixedDeadline?: string; deadlineRequirement?: DeadlineRequirement; alertAt?: string | null; merchantArrivalDeadline?: string; merchantArrivalAlertAt?: string | null };
+export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string; calendarRevision?: number; confirmedStartDate?: string; fixedDeadline?: string; deadlineRequirement?: DeadlineRequirement; alertAt?: string | null; merchantArrivalDeadline?: string; merchantArrivalAlertAt?: string | null };
 
 function eventLines(o: CalendarReminder, ts: string): string[] {
   const d = o.due.replace(/-/g, '');
@@ -43,6 +43,7 @@ function eventLines(o: CalendarReminder, ts: string): string[] {
   const title = esc(`${deadlineCalendarTitle(o.deadlineRequirement)}: ${o.merchant || 'order'}${o.orderNo ? ' #' + o.orderNo : ''}`);
   return [
     'BEGIN:VEVENT', `UID:${esc(o.id)}@returnby`, `DTSTAMP:${ts}`,
+    ...(o.calendarRevision ? [`SEQUENCE:${o.calendarRevision}`] : []),
     `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${e}`, `SUMMARY:${title}`,
     ...(o.deadlineRequirement ? ['DESCRIPTION:' + esc(deadlinePhrase(o.deadlineRequirement)+' '+o.due+'. Shopper selected this requirement; retailer policy not verified.'+(o.deadlineRequirement==='arrive-by'?' Allow transit time.':'')+(o.fixedDeadline?' Fixed date confirmed by you.':o.confirmedStartDate?' Return clock starts '+o.confirmedStartDate+' (confirmed by you).':''))] : o.fixedDeadline ? [`DESCRIPTION:${esc('Fixed return-by date '+o.fixedDeadline+' (confirmed by you; retailer policy not verified).')}`] : o.confirmedStartDate ? [`DESCRIPTION:${esc('Return clock starts ' + o.confirmedStartDate + ' (user-confirmed; retailer policy not verified).')}`] : []),
     ...(o.alertAt === null ? [] : ['BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`,
@@ -68,6 +69,26 @@ export function buildIcsCalendar(reminders: readonly CalendarReminder[], stamp =
         merchantArrivalDeadline: undefined,
       }, ts) : []),
     ]),
+    'END:VCALENDAR', '',
+  ].map(fold).join('\r\n');
+}
+
+// A cancellation has one UID per iTIP message. Calendar applications vary in
+// whether importing a CANCEL file removes previously imported (not invited)
+// events, so the UI also tells the shopper how to remove an old event manually.
+export function buildCancelledIcs(o: CalendarReminder, stamp = new Date()): string {
+  const ts = timestamp(stamp);
+  const day = o.due.replace(/-/g, '');
+  const end = new Date(Date.UTC(+o.due.slice(0, 4), +o.due.slice(5, 7) - 1, +o.due.slice(8, 10) + 1));
+  const ending = `${end.getUTCFullYear()}${String(end.getUTCMonth() + 1).padStart(2, '0')}${String(end.getUTCDate()).padStart(2, '0')}`;
+  const title = esc(`${deadlineCalendarTitle(o.deadlineRequirement)}: ${o.merchant || 'order'}${o.orderNo ? ' #' + o.orderNo : ''}`);
+  return [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN',
+    'CALSCALE:GREGORIAN', 'METHOD:CANCEL',
+    'BEGIN:VEVENT', `UID:${esc(o.id)}@returnby`, `DTSTAMP:${ts}`,
+    `SEQUENCE:${Math.max(1, o.calendarRevision ?? 0)}`,
+    `DTSTART;VALUE=DATE:${day}`, `DTEND;VALUE=DATE:${ending}`,
+    `SUMMARY:${title}`, 'STATUS:CANCELLED', 'END:VEVENT',
     'END:VCALENDAR', '',
   ].map(fold).join('\r\n');
 }

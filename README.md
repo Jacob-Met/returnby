@@ -2,9 +2,9 @@
 
 ReturnBy is an offline return desk: save a purchase, see what a retailer requires by which date, prepare your return trip, and follow the refund. Your orders and receipt photos stay in your browser.
 
-**[Download ReturnBy 0.10.1](https://github.com/Jacob-Met/returnby/releases/tag/v0.10.1)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
+**[Download ReturnBy 0.11.0](https://github.com/Jacob-Met/returnby/releases/tag/v0.11.0)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
 
-[Phone view: backup restore](https://github.com/Jacob-Met/returnby/releases/download/v0.10.1/ReturnBy-v0.10.1-restore-phone.png) · [Desktop view](https://github.com/Jacob-Met/returnby/releases/download/v0.10.1/ReturnBy-v0.10.1-restore-desktop.png)
+[Phone view: calendar cleanup](https://github.com/Jacob-Met/returnby/releases/download/v0.11.0/ReturnBy-v0.11.0-calendar-history-phone.png) · [Desktop view](https://github.com/Jacob-Met/returnby/releases/download/v0.11.0/ReturnBy-v0.11.0-calendar-history-desktop.png)
 
 ## Know which deadline you have
 
@@ -28,9 +28,9 @@ Open **Back up or restore saved returns**, choose a ReturnBy JSON file, and revi
 
 ReturnBy has no account, inbox connection, or remote sync. Your original receipt image is stored in your browser and included in the downloadable JSON backup. Save a new backup before changing devices, clearing browser data, or changing the local server address. Backups are **unencrypted** and may contain order details, photos, return links, refund notes, and private trip notes. Store them securely.
 
-Backups with two separate deadlines use **version 10**. Versions 1–9 remain readable in ReturnBy 0.10.1, including older backups with receipt photos. Earlier app releases cannot read version 10 safely; upgrade the app before restoring it. CSV is for spreadsheet review, not a substitute for a JSON backup.
+Backups containing a calendar event revision use **version 11**, retaining revisions across computers, edits and History. Earlier versions 1–10 remain readable, including backups with original receipt photos. Update ReturnBy before restoring version 11 into an older app. CSV is for spreadsheet review, not a substitute for a JSON backup.
 
-Calendar files must be imported into your calendar app. ReturnBy does not send notifications itself, change an existing imported reminder when you edit an order, contact the retailer, arrange a return, or verify refund receipt. Make sure your calendar app's notifications are enabled.
+Calendar files still need to be imported into your calendar app. After changing a deadline, import the updated reminder with the same event identity and a higher revision; calendar apps that honor updates can replace its previous date. When you finish a return or remove a separate merchant-arrival cutoff, the tracker offers a one-event cancellation file to import. Some calendar apps ignore file-import updates or cancellations: check the old event is gone and remove it manually if it remains. ReturnBy never modifies external calendars or sends notifications on its own. Ensure calendar notifications are enabled.
 
 ## Build
 

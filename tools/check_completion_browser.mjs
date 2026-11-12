@@ -144,7 +144,7 @@ try {
   const backupPath = resolve(output, 'fictional-returns-backup.json');
   await backupDownload.saveAs(backupPath);
   const backup = JSON.parse(await readFile(backupPath, 'utf8'));
-  assert.equal(backup.version, 5);
+  assert.equal(backup.version, 11);
   assert.equal(backup.orders.filter(row => row.completedAt).length, 2);
   const restoredContext = await browser.newContext({ viewport: { width: 390, height: 844 }, acceptDownloads: true, timezoneId: 'America/Los_Angeles' });
   const restored = await restoredContext.newPage();
@@ -165,7 +165,7 @@ try {
   assert(!(await restored.locator('#calendar-open').isVisible()));
   assert(await restored.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await restored.screenshot({ path: resolve(output, 'history-mobile.png') });
-  checks.push('Actual downloaded v5 backup restores both outcomes in a fresh phone browser');
+  checks.push('Actual downloaded calendar-revision backup restores both outcomes in a fresh phone browser');
 
   await page.locator('#filter-all').click();
   await page.locator('#calendar-open').click();
@@ -187,7 +187,9 @@ try {
   await page.locator('#filter-all').click();
   assert.equal(await page.locator('#tracked-count').innerText(), '2');
   const reopened = (await saved()).find(row => row.id === coat.id);
-  assert.deepEqual(reopened, coat);
+  const { calendarRevision, ...reopenedOriginal } = reopened;
+  assert.deepEqual(reopenedOriginal, coat);
+  assert.equal(calendarRevision, 2);
   const reminderEvent = page.waitForEvent('download');
   await page.locator('[data-ics="' + coat.id + '"]').click();
   await page.locator('#calendar-dialog').waitFor({state:'visible'});
@@ -196,7 +198,9 @@ try {
   assert.equal(await page.locator('#calendar-dialog').isVisible(), false);
   const reminderPath = resolve(output, 'reopened-return.ics');
   await reminder.saveAs(reminderPath);
-  assert.match(await readFile(reminderPath, 'utf8'), /20261115/);
+  const reopenedReminder = await readFile(reminderPath, 'utf8');
+  assert.match(reopenedReminder, /20261115/);
+  assert.match(reopenedReminder, /SEQUENCE:2/);
   checks.push('Reopen restores original saved identity and actual calendar date');
 
   await page.locator('[data-finish="' + coat.id + '"]').click();

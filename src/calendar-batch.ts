@@ -1,5 +1,5 @@
 import { daysLeft, dueDate, returnDueDate, todayISO } from './deadline';
-import { buildIcsCalendar, type CalendarReminder } from './ics';
+import { buildIcsCalendar, buildCancelledIcs, type CalendarReminder } from './ics';
 import { deadlineCalendarTitle, validMerchantArrivalDeadline } from './deadline-requirement';
 import type { Order } from './store';
 import { isCompleted } from './completion';
@@ -55,7 +55,7 @@ function reminder(order: Order): CalendarReminder {
   }
   if (order.fixedDeadline !== undefined && order.fixedDeadline !== due) throw new CalendarBatchError('Review the fixed deadline before exporting this return.');
   if (!validMerchantArrivalDeadline(order.merchantArrivalDeadline, order.deadlineRequirement, due)) throw new CalendarBatchError('Correct the second merchant arrival cutoff before exporting this return.');
-  return { ...(order.merchantArrivalDeadline ? {merchantArrivalDeadline:order.merchantArrivalDeadline} : {}), ...(order.fixedDeadline ? {fixedDeadline:order.fixedDeadline} : {}), ...(order.deadlineRequirement ? {deadlineRequirement:order.deadlineRequirement} : {}), id: order.id, merchant: order.merchant, orderNo: order.orderNo, due, ...(order.windowStartDate ? {confirmedStartDate: order.windowStartDate} : {}) };
+  return { ...(order.merchantArrivalDeadline ? {merchantArrivalDeadline:order.merchantArrivalDeadline} : {}), ...(order.fixedDeadline ? {fixedDeadline:order.fixedDeadline} : {}), ...(order.deadlineRequirement ? {deadlineRequirement:order.deadlineRequirement} : {}), id: order.id, merchant: order.merchant, orderNo: order.orderNo, due, ...(order.calendarRevision ? {calendarRevision:order.calendarRevision} : {}), ...(order.windowStartDate ? {confirmedStartDate: order.windowStartDate} : {}) };
 }
 
 /** Freeze the reviewed fields. Invalid records remain visible but unselectable. */
@@ -135,4 +135,36 @@ export function planSingleCalendar(current: readonly Order[], reviewed: Order, s
   }
   const plan = planCalendarBatch(matches, calendarRows([reviewed]), [reviewed.id], stamp);
   return { ...plan, filename: `return-${(reviewed.merchant || 'order').replace(/\W+/g, '-')}.ics` };
+}
+
+/** A one-event cancellation file for an imported deadline, without changing
+ * the saved return. Active secondary deadlines cannot be canceled until they
+ * are removed through Edit details or the return is completed.
+ */
+export function planCalendarCancellation(
+  current: readonly Order[], reviewed: Order, kind: 'return' | 'merchant-arrival', stamp = new Date(),
+) {
+  const matches = current.filter(row => row.id === reviewed.id);
+  if (matches.length !== 1 || JSON.stringify(matches[0]) !== JSON.stringify(reviewed)) {
+    throw new CalendarBatchError('This return changed since it was displayed. Reload the tracker and try again.');
+  }
+  const saved = matches[0];
+  if (!isCompleted(saved) && (kind === 'return' || !!saved.merchantArrivalDeadline)) {
+    throw new CalendarBatchError('This deadline is still active. Update the imported reminder instead of cancelling it.');
+  }
+  const base = reminder({ ...saved, completedAt: undefined, completionKind: undefined });
+  const arrival = saved.merchantArrivalDeadline || saved.calendarPreviousArrivalDate;
+  if (kind === 'merchant-arrival' && (!arrival || !isCalendarDate(arrival))) {
+    throw new CalendarBatchError('There is no earlier merchant-arrival reminder to cancel.');
+  }
+  const event: CalendarReminder = kind === 'return' ? base : {
+    ...base, id: base.id + ':merchant-arrival', due: arrival!,
+    deadlineRequirement: 'arrive-by',
+  };
+  const content = buildCancelledIcs(event, stamp);
+  if (encoder.encode(content).byteLength > MAX_CALENDAR_BYTES) throw sizeError();
+  return {
+    content,
+    filename: `return-${(saved.merchant || 'order').replace(/\W+/g, '-')}-${kind}-cancel.ics`,
+  };
 }

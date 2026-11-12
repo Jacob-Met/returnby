@@ -24,7 +24,7 @@ test.each(['returned', 'kept'] as const)('%s stays closed after backup, import a
   expect(closed.order).toMatchObject({ id: 'coat', completionKind: kind, completedAt: now.toISOString() });
   expect(completionLabel(closed.order)).toBe(kind === 'returned' ? 'Returned' : 'Kept');
   const backup = exportBackup(closed.next, now);
-  expect(JSON.parse(backup).version).toBe(5);
+  expect(JSON.parse(backup).version).toBe(11);
   const restored = planImport([], parseBackup(backup)).next;
   expect(restored).toEqual(closed.next);
   expect(calendarRows(restored, '2026-11-10').map(row => row.order.id)).toEqual(['boots']);
@@ -40,7 +40,10 @@ test.each(['returned', 'kept'] as const)('%s stays closed after backup, import a
   expect(reopened.order).not.toHaveProperty('completedAt');
   expect(reopened.order).not.toHaveProperty('completionKind');
   expect(reopened.order).toMatchObject({ id: original.id, createdAt: original.createdAt, orderDate: original.orderDate, windowDays: original.windowDays });
-  expect(planSingleCalendar(reopened.next, reopened.order, now).content).toBe(initialReminder);
+  const resumed = planSingleCalendar(reopened.next, reopened.order, now).content;
+  expect(resumed).toContain('UID:coat@returnby');
+  expect(resumed).toContain('SEQUENCE:2');
+  expect(resumed.replace('SEQUENCE:2\r\n', '')).toBe(initialReminder);
 });
 
 test('a backup cannot silently lose the distinction between returned and kept', () => {
@@ -82,7 +85,9 @@ test('a confirmed delivery clock survives finishing, portable history and reopen
   expect(tripSnapshot.orders[0].windowStartDate).toBe('2026-11-06');
   expect(calendarRows(portable, '2026-11-10')).toEqual([]);
   const reopened = planCompletion(portable, portable[0], 'reopen', now);
-  expect(planSingleCalendar(reopened.next, reopened.order, now).content).toBe(before);
+  const resuming = planSingleCalendar(reopened.next, reopened.order, now).content;
+  expect(resuming).toContain('SEQUENCE:2');
+  expect(resuming.replace('SEQUENCE:2\r\n', '')).toBe(before);
 });
 
 test('finishing retires a saved trip selection but preserves packing notes through removal undo and reopening', () => {

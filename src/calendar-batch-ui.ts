@@ -177,7 +177,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
       const filename = singleId ? `return-${(rows[0].order.merchant || 'order').replace(/\W+/g, '-')}.ics` : plan.filename;
       (options.download ?? downloadCalendar)(plan.content, filename);
       const alertCount = plan.reminders.reduce((count,row) => count + (row.alertAt ? 1 : 0) + (row.merchantArrivalAlertAt ? 1 : 0), 0);
-      feedback.textContent = `Calendar file prepared with ${plan.count} ${plan.count === 1 ? 'deadline' : 'deadlines'} and ${alertCount} ${alertCount === 1 ? 'alert' : 'alerts'}. ${alertCount ? 'Import the downloaded .ics file before the alert time. Check notifications in your calendar app; ReturnBy does not send them.' : 'Import the downloaded .ics file to add the deadline entries. No alerts were requested.'}`;
+      feedback.textContent = `Calendar file prepared with ${plan.count} ${plan.count === 1 ? 'deadline' : 'deadlines'} and ${alertCount} ${alertCount === 1 ? 'alert' : 'alerts'}. ${alertCount ? 'Import the downloaded .ics file before the alert time. If correcting an earlier import, check the old date was replaced. ReturnBy does not send notifications.' : 'Import the downloaded .ics file to add or update the deadline entries. No alerts were requested.'}`;
       dialog.close();
     } catch (error) {
       if (error instanceof CalendarAlertExpiredError) refreshAlerts();
