@@ -46,3 +46,33 @@ describe('observed photographed-receipt failures', () => {
     expect(receiptSuggestions('Give us feedback\nJoin today\nThank you\nTOTAL $9.50').merchant).toBe('');
   });
 });
+
+describe('source-first faint print merging', () => {
+  it('fills truly absent printed facts but does not overrule legible ones', async () => {
+    const { mergeReceiptSuggestions } = await import('../src/receipt-photo');
+    const first = receiptSuggestions('PAPER & PINE\nPurchase date: 2026-11-10');
+    const faded = receiptSuggestions('OTHER SHOP\nPurchase date: 2026-11-09\nTOTAL $24.30');
+    expect(mergeReceiptSuggestions(first, faded)).toMatchObject({
+      merchant: 'PAPER & PINE', orderDate: '2026-11-10', total: '$24.30', recoveredCount: 1,
+    });
+  });
+  it('does not use a partial recovery to choose between conflicting printed dates or totals', async () => {
+    const { mergeReceiptSuggestions } = await import('../src/receipt-photo');
+    const first = receiptSuggestions('DATE 2026-11-10\nDATE 2026-11-11\nTOTAL $42.00\nTotal paid $38.00');
+    const faded = receiptSuggestions('DATE 2026-11-10\nTOTAL $42.00');
+    const result = mergeReceiptSuggestions(first, faded);
+    expect(result.orderDate).toBe('');
+    expect(result.total).toBe('');
+    expect(result.notes.join(' ')).toMatch(/Several dates|Different totals/);
+  });
+});
+
+
+describe('wrinkled real receipt safety', () => {
+  it('does not invent a merchant out of low-quality header fragments', () => {
+    const primary = receiptSuggestions('501 umot Vil\nSA   —  |  NC\nFRI NOVEVBE');
+    const second = receiptSuggestions('Noy ay ih\nBn Ol DY pe\nNL SEEN\ni FRI NOVEMBER 16, 2018\nHECK #17114');
+    expect(primary.merchant).toBe('');
+    expect(second.merchant).toBe('');
+  });
+});
