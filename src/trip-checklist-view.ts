@@ -161,6 +161,20 @@ function renderPacking(): void {
     ref.className = 'packing-reference';
     ref.textContent = (order.orderNo ? '#' + order.orderNo + ' · ' : '') + 'Return by ' + returnDueDate(order);
     section.append(title, ref);
+    if (order.returnEvidenceUrl) {
+      const link = document.createElement('a');
+      link.href = order.returnEvidenceUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Open saved return label, QR or receipt';
+      link.className = 'packing-evidence-link';
+      section.append(link);
+    } else {
+      const missing = document.createElement('p');
+      missing.className = 'packing-reference';
+      missing.textContent = 'Return document not saved — check the merchant instructions before leaving.';
+      section.append(missing);
+    }
     if (isSupportedDate(tripDate.value)) {
       const timing = document.createElement('p');
       const due = returnDueDate(order);

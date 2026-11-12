@@ -1,11 +1,12 @@
 import type { RefundPayments } from './refund-payments';
 import { hasValidRefund } from './refund';
 import { hasValidCompletion } from './completion';
+import { validReturnEvidenceUrl } from './return-evidence';
 
 export type Order = {
   refundPayments?: RefundPayments;
   refundState?: 'awaiting' | 'received'; refundAmount?: string; refundFollowUpDate?: string; refundNote?: string; refundUpdatedAt?: string;
-  id: string; merchant: string; orderNo?: string; total?: string;
+  id: string; merchant: string; orderNo?: string; total?: string; returnEvidenceUrl?: string;
   fixedDeadline?: string;
   orderDate: string; windowStartDate?: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
   completedAt?: string;
@@ -22,6 +23,7 @@ const isOrder = (value: unknown): value is Order => {
     && (o.windowStartDate === undefined || typeof o.windowStartDate === 'string')
     && (o.orderNo === undefined || typeof o.orderNo === 'string')
     && (o.total === undefined || typeof o.total === 'string')
+    && (o.returnEvidenceUrl === undefined || validReturnEvidenceUrl(o.returnEvidenceUrl))
     && hasValidCompletion(o) && hasValidRefund(o);
 };
 // Backup/restore must distinguish unreadable storage from an empty tracker.

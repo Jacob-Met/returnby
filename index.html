@@ -296,6 +296,8 @@
 </label>
       <label for="edit-total">Total<input id="edit-total" name="total" type="text" maxlength="4096" autocomplete="off">
 </label>
+      <label for="edit-return-evidence-url">Return label, QR or receipt link (optional)<input id="edit-return-evidence-url" name="returnEvidenceUrl" type="url" maxlength="2048" inputmode="url" autocomplete="off" placeholder="https://merchant.example/return">
+</label>
     </div>
     <dl class="edit-dates">
       <div>
@@ -416,6 +418,8 @@
 </label>
       <p id="manual-clock-help" class="src">Leave blank to count from purchase. Enter another date only if you confirmed the window starts then, such as delivery. This entry uses your rule; it does not verify store policy.</p>
       <label>Order or receipt number (optional)<input name="orderNo" maxlength="4096">
+</label>
+      <label>Return label, QR or receipt link (optional)<input name="returnEvidenceUrl" type="url" inputmode="url" maxlength="2048" autocomplete="off" placeholder="https://merchant.example/return">
 </label>
       <label>Total (optional)<input name="total" maxlength="4096" placeholder="For example, £42.50">
 </label>

@@ -1,11 +1,13 @@
 import { dueDate } from './deadline';
 import { lookup } from './policy';
 import type { Order } from './store';
+import { validReturnEvidenceUrl } from './return-evidence';
 
 export type EditDraft = {
   merchant: string;
   orderNo: string;
   total: string;
+  returnEvidenceUrl?: string;
   orderDate: string;
   windowStartDate?: string;
   fixedDeadline?: string;
@@ -25,6 +27,7 @@ export function editDraft(order: Order): EditDraft {
     merchant: order.merchant,
     orderNo: order.orderNo ?? '',
     total: order.total ?? '',
+    returnEvidenceUrl: order.returnEvidenceUrl ?? '',
     orderDate: order.orderDate,
     windowStartDate: order.windowStartDate ?? '',
     fixedDeadline: order.fixedDeadline ?? '',
@@ -42,6 +45,10 @@ function isCalendarDate(value: string): boolean {
 export function previewEdit(original: Order, draft: EditDraft): { order: Order; due: string } {
   for (const [field, label] of [['merchant', 'Store'], ['orderNo', 'Order number'], ['total', 'Total']] as const) {
     if (draft[field].length > 4096) throw new EditError(`${label} must be no longer than 4,096 characters.`, field);
+  }
+  const returnEvidenceUrl = (draft.returnEvidenceUrl ?? '').trim();
+  if (returnEvidenceUrl && !validReturnEvidenceUrl(returnEvidenceUrl)) {
+    throw new EditError('Paste an HTTPS link to the return label, QR code or receipt (up to 2,048 characters).', 'returnEvidenceUrl');
   }
   if (!isCalendarDate(draft.orderDate)) {
     throw new EditError('Choose a valid order date with a year from 1000 to 9999.', 'orderDate');
@@ -81,6 +88,8 @@ export function previewEdit(original: Order, draft: EditDraft): { order: Order; 
   else delete order.windowStartDate;
   if (draft.orderNo !== (original.orderNo ?? '')) order.orderNo = draft.orderNo;
   if (draft.total !== (original.total ?? '')) order.total = draft.total;
+  if (returnEvidenceUrl) order.returnEvidenceUrl = returnEvidenceUrl;
+  else delete order.returnEvidenceUrl;
   return { order, due };
 }
 

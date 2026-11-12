@@ -111,3 +111,17 @@ describe('saved-order correction', () => {
     expect(() => planEdit(current as Order[], saved, correction({ total: '$20' }))).toThrow(EditConflict);
   });
 });
+describe('merchant return document link',()=>{
+ it('can be added, corrected and cleared without changing dates',()=>{
+  const url='https://merchant.example/returns/QR?order=17&source=email';
+  const linked=previewEdit(saved,correction({returnEvidenceUrl:url}));
+  expect(linked.order.returnEvidenceUrl).toBe(url);
+  expect(linked.order.windowDays).toBe(saved.windowDays);
+  const revised=previewEdit(linked.order,{...editDraft(linked.order),total:'$20'});
+  expect(revised.order.returnEvidenceUrl).toBe(url);
+  expect(previewEdit(linked.order,{...editDraft(linked.order),returnEvidenceUrl:''}).order).not.toHaveProperty('returnEvidenceUrl');
+ });
+ it.each(['http://merchant.example/label','javascript:alert(1)','https://user:pass@merchant.example/qr','https://merchant.example\\evil.test/label'])('refuses unsafe link %s',url=>{
+  expect(()=>previewEdit(saved,correction({returnEvidenceUrl:url}))).toThrow(/HTTPS link/);
+ });
+});

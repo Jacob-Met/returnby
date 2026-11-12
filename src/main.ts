@@ -1,6 +1,7 @@
 import './receipt-policy.css';
 import { receiptPolicy, receiptWindow } from './receipt-policy';
 import {readPending,writePending,PENDING_KEY} from './pending-delivery';
+import {validReturnEvidenceUrl} from './return-evidence';
 import { deliveryReview } from './delivery-review';
 import { bindKnownDeadlines } from './known-deadline';
 import './known-deadline.css';
@@ -78,7 +79,7 @@ let completionReviewed: Order | undefined;
 let reviewedIntake = '';
 const reviewSignature = () => {
   const fields = new FormData(preview);
-  return JSON.stringify(['merchant', 'orderDate', 'orderNo', 'total', 'windowStartDate', 'fixedDeadline', 'windowDays']
+  return JSON.stringify(['merchant', 'orderDate', 'orderNo', 'total', 'returnEvidenceUrl', 'windowStartDate', 'fixedDeadline', 'windowDays']
     .map(name => [name, fields.get(name) ?? '']));
 };
 const deskNavigation = bindDeskNavigation();
@@ -228,6 +229,7 @@ function showPreview(restored?: Record<string, string>) {
     <label>${delivery.required ? 'Confirm return clock start (required to save a deadline)' : 'Return clock starts (optional; date you confirmed with retailer, such as delivery)'}<input name="windowStartDate" ${delivery.required ? 'required' : ''} type="date" min="1000-01-01" max="9999-12-31" value="${h(restored?.windowStartDate || '')}"></label>
     ${field('orderNo', 'Order #', p.orderNo, p.found.orderNo)}
     ${field('total', 'Total', p.total, p.found.total)}
+    <label>Return label, QR or receipt link (optional)<input name="returnEvidenceUrl" type="url" inputmode="url" autocomplete="off" maxlength="2048" placeholder="https://merchant.example/return" value="${h(restored?.returnEvidenceUrl || '')}"></label>
     <label>Return window (days)<input name="windowDays" type="number" min="1" required value="${h(restored ? (restored.windowDays || '') : receiptWindow(paste.value, pol.days))}"></label>
     ${evidence.passages.length ? '<section class="receipt-policy-evidence" aria-label="Receipt return terms"><h3>Return terms in this receipt</h3><p>'+h(evidence.message)+'</p>'+evidence.passages.map(p=>'<blockquote>'+h(p)+'</blockquote>').join('')+'</section>' : ''}
     <p class="src"><output id="intake-deadline" aria-live="polite" aria-atomic="true"></output></p>
@@ -272,6 +274,13 @@ preview.addEventListener('submit', (e) => {
     return;
   }
   const merchant = String(f.get('merchant') || '');
+  const returnEvidenceUrl = String(f.get('returnEvidenceUrl') || '').trim();
+  if (returnEvidenceUrl && !validReturnEvidenceUrl(returnEvidenceUrl)) {
+    const hint = preview.querySelector<HTMLOutputElement>('#intake-deadline');
+    if (hint) hint.textContent = 'Use an HTTPS return label, QR or receipt link without a username or password.';
+    preview.querySelector<HTMLInputElement>('[name=returnEvidenceUrl]')?.focus();
+    return;
+  }
   const pol = lookup(merchant);
   let current: Order[] | null;
   try {
@@ -284,7 +293,7 @@ preview.addEventListener('submit', (e) => {
   if (!current) return;
   const next: Order[] = [...current, {
     id: crypto.randomUUID(), merchant, orderNo: String(f.get('orderNo') || ''),
-    total: String(f.get('total') || ''), orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays: days,
+    total: String(f.get('total') || ''), ...(returnEvidenceUrl ? {returnEvidenceUrl} : {}), orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays: days,
     windowSource: preview.dataset.receiptEvidence === 'yes' ? 'user' : days === pol.days ? pol.source : 'user',
     createdAt: new Date().toISOString(),
   }];
@@ -306,6 +315,7 @@ function historyCard(o: Order): string {
     + '<p class="completion-date">Recorded ' + h(recorded) + '</p>'
     + '<div class="window-meta"><span>ORDER ' + h(o.orderDate) + '</span><span>Original deadline ' + h(returnDueDate(o)) + '</span></div>'
     + (o.total ? '<p class="history-amount">Order total <strong>' + h(o.total) + '</strong></p>' : '')
+    + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open saved return document</a></p>' : '')
     + '<div class="order-actions"><button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>'
     + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button>'
     + '<button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
@@ -377,6 +387,7 @@ function render() {
       + '<div class="window-meta"><span>ORDER ' + h(o.orderDate) + ' · CLOCK ' + h(o.windowStartDate || o.orderDate) + (o.windowStartDate ? ' (confirmed by you)' : ' (order date)') + '</span><span class="source-tag">' + policy + '</span></div>'
       + '<div class="window-track" role="progressbar" aria-label="Return window elapsed" aria-valuenow="' + progress + '" aria-valuemin="0" aria-valuemax="100"><i style="width:' + progress + '%"></i></div>'
       + '<div class="order-foot"><span class="return-by">RETURN BY ' + h(due) + '</span><strong class="days-left">' + count + '</strong></div>'
+      + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open return label, QR or receipt</a></p>' : '<p class="return-document return-document-missing">No return document saved. Add one in Edit details before going to the store.</p>')
       + '<div class="order-actions"><button class="button button-primary" data-ics="' + h(o.id) + '">Add calendar reminder</button>'
       + '<button class="button button-link" data-finish="' + h(o.id) + '">Finish return</button>'
       + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';

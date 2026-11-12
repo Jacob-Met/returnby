@@ -18,7 +18,7 @@ export function bindOrderEditor(options: EditorOptions) {
   const source = get<HTMLParagraphElement>('edit-source');
   const save = get<HTMLButtonElement>('edit-save');
   const fields: Record<keyof EditDraft, HTMLInputElement> = {
-    fixedDeadline: get('edit-fixed-deadline'), merchant: get('edit-merchant'), orderNo: get('edit-order-no'), total: get('edit-total'),
+    fixedDeadline: get('edit-fixed-deadline'), merchant: get('edit-merchant'), orderNo: get('edit-order-no'), total: get('edit-total'), returnEvidenceUrl: get('edit-return-evidence-url'),
     orderDate: get('edit-order-date'), windowStartDate: get('edit-window-start-date'), windowDays: get('edit-window-days'),
   };
   let original: Order | null = null;

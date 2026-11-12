@@ -30,3 +30,18 @@ test('quota failure leaves prior pending purchase intact',()=>{
  expect(()=>writePending(s,[...before.rows,row('second')],before.token)).toThrow(/quota/);
  expect(readPending(s)).toEqual(before);
 });
+test('return document survives pending delivery, backup and restoration without becoming a deadline',()=>{
+ const url='https://returns.example/label?id=42&proof=a';
+ const pending={...row('parcel'),fields:{...row('parcel').fields,returnEvidenceUrl:url}};
+ const s=storage(), initial=readPending(s);
+ writePending(s,[pending],initial.token);
+ expect(readPending(s).rows[0].fields.returnEvidenceUrl).toBe(url);
+ const exported=exportBackup([],new Date('2026-11-10T12:00:00Z'),null,readPending(s).rows);
+ expect(JSON.parse(exported).version).toBe(7);
+ const restored=parseBackupDocument(exported);
+ expect(restored.orders).toEqual([]);
+ expect(restored.pending?.[0].fields.returnEvidenceUrl).toBe(url);
+ for(const unsafe of ['http://returns.example/label','javascript:alert(1)','https://user:pass@returns.example/label','https://returns.example\\evil.test/label']){
+  expect(()=>portablePending([{...pending,fields:{...pending.fields,returnEvidenceUrl:unsafe}}])).toThrow(/HTTPS/);
+ }
+});
