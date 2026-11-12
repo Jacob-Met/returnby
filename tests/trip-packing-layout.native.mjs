@@ -1,0 +1,88 @@
+const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright-core");
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const base = process.env.RETURNBY_BASE || 'http://127.0.0.1:18863';
+const out = process.env.RETURNBY_EVIDENCE || '/workspace/tmp/gpt6-k7p4q-frames';
+fs.mkdirSync(out, { recursive: true });
+const browser = await chromium.launch({ executablePath: process.env.CHROME_BIN || '/usr/local/bin/google-chrome', headless: true, args: ['--no-sandbox'] });
+const page = await browser.newPage({ viewport: {width:390, height:844}, acceptDownloads:true });
+const errors=[];
+page.on('pageerror',e => errors.push(e.message));
+const orders=[
+ {id:'lamp',merchant:'Linden Home',orderNo:'LAM-104',orderDate:'2026-11-01',windowDays:30,windowSource:'user',createdAt:'2026-11-01T12:00:00Z',returnEvidenceUrl:'https://example.com/returns/lamp'},
+ {id:'shoes',merchant:'Harbor Shoes',orderNo:'SHO-002',orderDate:'2026-11-03',windowDays:30,windowSource:'user',createdAt:'2026-11-03T12:00:00Z'}
+];
+const signature=o=>JSON.stringify([o.merchant,o.orderNo||'',o.orderDate,o.windowStartDate||'',o.fixedDeadline||'',o.windowDays,o.windowSource,o.deadlineRequirement||'',o.returnEvidenceUrl||'',o.createdAt]);
+const plan={version:1,tripDate:'2026-11-23',orders:[{id:'lamp',merchant:'Linden Home',orderNo:'LAM-104',signature:signature(orders[0]),selected:true,packed:false,receiptReady:false,instructionsChecked:false,notes:''}]};
+await page.goto(base + '/trip-checklist.html');
+await page.evaluate(({orders,plan})=>{localStorage.setItem('returnby.v1',JSON.stringify(orders));localStorage.setItem('returnby.trip-plan.v1',JSON.stringify(plan));},{orders,plan});
+await page.reload();
+await page.locator('#packing-workspace:not([hidden])').waitFor();
+assert.equal(await page.locator('#packing-order').count(),0);
+assert.equal(await page.locator('#packing-planner .packing-order').count(),1);
+const mobile=await page.evaluate(()=>{
+ const box = id => {const r=document.getElementById(id).getBoundingClientRect();return {x:r.x,y:r.y,top:r.top,bottom:r.bottom,width:r.width};};
+ return {parent:document.getElementById('packing-workspace').parentElement.id, packing:box('packing-workspace'), summary:box('selection-summary'), orderList:box('order-options'), scrollWidth:document.documentElement.scrollWidth, viewport:innerWidth};
+});
+assert.equal(mobile.parent,'mobile-packing-slot');
+assert(mobile.packing.top>=mobile.summary.top && mobile.packing.bottom<=mobile.orderList.top+2,JSON.stringify(mobile));
+assert(mobile.scrollWidth<=mobile.viewport,JSON.stringify(mobile));
+await page.locator('#packing-title').scrollIntoViewIfNeeded();
+await page.screenshot({path:out+'/phone-390.png'});
+const checks=page.locator('#packing-planner input[type=checkbox]');
+await checks.first().check();
+const notes=page.locator('#packing-planner textarea');
+await notes.fill('Bring return label and padded bag');
+let saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('returnby.trip-plan.v1')));
+assert.equal(saved.orders.find(x=>x.id==='lamp').packed,true);
+assert.equal(saved.orders.find(x=>x.id==='lamp').notes,'Bring return label and padded bag');
+await page.reload();
+assert.equal(await page.locator('#packing-planner textarea').inputValue(),'Bring return label and padded bag');
+assert.equal(await page.locator('#packing-planner input[type=checkbox]').first().isChecked(),true);
+await page.setViewportSize({width:320,height:568});
+const narrow=await page.evaluate(()=>({parent:document.getElementById('packing-workspace').parentElement.id,scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
+assert.equal(narrow.parent,'mobile-packing-slot');assert(narrow.scrollWidth<=narrow.viewport);
+await page.locator('#packing-title').scrollIntoViewIfNeeded();
+await page.screenshot({path:out+'/phone-320.png'});
+await page.setViewportSize({width:1440,height:900});
+await page.waitForFunction(()=>document.getElementById('packing-workspace').parentElement.classList.contains('preview-panel')); 
+const geometry=await page.evaluate(()=>{
+ const a=document.querySelector('.planner').getBoundingClientRect();
+ const b=document.querySelector('#packing-workspace').getBoundingClientRect();
+ return {plannerRight:a.right,packingLeft:b.left,scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth};
+});
+assert(geometry.packingLeft > geometry.plannerRight-5,JSON.stringify(geometry));
+await page.locator('#packing-planner textarea').focus();
+await page.setViewportSize({width:390,height:844});
+await page.waitForFunction(()=>document.getElementById('packing-workspace').parentElement.id === 'mobile-packing-slot');
+assert.equal(await page.evaluate(()=>document.activeElement.tagName),'TEXTAREA');
+assert.equal(await page.locator('#packing-planner textarea').inputValue(),'Bring return label and padded bag');
+await page.setViewportSize({width:1440,height:900});
+await page.locator('#packing-title').scrollIntoViewIfNeeded();
+await page.screenshot({path:out+'/desktop-1440.png'});
+await page.locator('#preview-trip').click();
+assert(await page.locator('#checklist-preview').isVisible());
+const downloadPromise=page.waitForEvent('download');
+await page.locator('#download-checklist').click();
+const download=await downloadPromise;
+const path=out+'/printable.html';await download.saveAs(path);
+const text=fs.readFileSync(path,'utf8');
+assert(text.includes('Bring return label and padded bag') && text.includes('Linden Home'));
+assert(!text.includes('Harbor Shoes'));
+// Starting with no selection shows the picker; choosing restores the same controls.
+await page.setViewportSize({width:390,height:844});
+await page.locator('#clear-selection').click();
+assert(await page.locator('#packing-workspace').isHidden());
+assert(await page.locator('#trip-search').isVisible());
+await page.locator('#order-options input[value="lamp"]').check();
+assert(await page.locator('#packing-workspace').isVisible());
+assert.equal(await page.locator('#packing-planner textarea').inputValue(),'Bring return label and padded bag');
+// An unavailable or empty local order list must still show its status, not hide it inside the form.
+await page.evaluate(()=>localStorage.setItem('returnby.v1','[]'));
+await page.reload();
+assert(await page.locator('#read-message').isVisible());
+assert.match(await page.locator('#read-message').textContent(),/No saved returns|All saved orders/);
+assert(await page.locator('#trip-form').isHidden());
+assert.deepEqual(errors,[]);
+console.log(JSON.stringify({passed:true,mobile,narrow,desktop:geometry,frames:[out+'/phone-390.png',out+'/phone-320.png',out+'/desktop-1440.png']})); 
+await browser.close();

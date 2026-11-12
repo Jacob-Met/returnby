@@ -12,7 +12,7 @@ const orders=[
 {id:'shoes',merchant:'Harbor Shoes',orderNo:'SHOE-52',orderDate:'2026-10-27',windowStartDate:'2026-11-01',windowDays:30,windowSource:'user',createdAt:'2026-11-01T12:00:00Z'},
 {id:'lamp',merchant:'Linden Home',orderNo:'LAMP-19',orderDate:'2026-11-09',windowDays:30,windowSource:'user',createdAt:'2026-11-09T12:00:00Z'}
 ];
-const signature=o=>JSON.stringify([o.merchant,o.orderNo||'',o.orderDate,o.windowStartDate||'',o.windowDays,o.windowSource,o.createdAt]);
+const signature=o=>JSON.stringify([o.merchant,o.orderNo||'',o.orderDate,o.windowStartDate||'',o.fixedDeadline||'',o.windowDays,o.windowSource,o.deadlineRequirement||'',o.returnEvidenceUrl||'',o.createdAt]);
 const plan={version:1,tripDate:'2026-11-28',orders:[{id:'lamp',merchant:orders[2].merchant,orderNo:orders[2].orderNo,signature:signature(orders[2]),selected:true,packed:true,receiptReady:true,instructionsChecked:true,notes:'Use rear service entrance'}]};
 await page.goto(base);
 await page.evaluate(({orders,plan})=>{localStorage.setItem('returnby.v1',JSON.stringify(orders));localStorage.setItem('returnby.trip-plan.v1',JSON.stringify(plan));},{orders,plan});
