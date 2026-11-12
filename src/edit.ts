@@ -1,4 +1,5 @@
 import { dueDate } from './deadline';
+import { eventDetailsChanged, nextCalendarRevision } from './calendar-revision';
 import { lookup } from './policy';
 import type { Order } from './store';
 import { validReturnEvidenceUrl } from './return-evidence';
@@ -120,6 +121,14 @@ export function planEdit(current: Order[], original: Order, draft: EditDraft) {
     throw new EditConflict('This saved return changed while you were editing. Your draft is still here; cancel and reopen Edit details to review the saved version.');
   }
   const preview = previewEdit(matches[0], draft);
+  if (eventDetailsChanged(matches[0], preview.order)) {
+    preview.order.calendarRevision = nextCalendarRevision(matches[0]);
+    if (matches[0].merchantArrivalDeadline && !preview.order.merchantArrivalDeadline) {
+      preview.order.calendarPreviousArrivalDate = matches[0].merchantArrivalDeadline;
+    } else if (preview.order.merchantArrivalDeadline) {
+      delete preview.order.calendarPreviousArrivalDate;
+    }
+  }
   const changed = JSON.stringify(preview.order) !== JSON.stringify(matches[0]);
   return {
     ...preview,

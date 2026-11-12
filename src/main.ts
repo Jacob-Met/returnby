@@ -27,7 +27,7 @@ import { dueDate, returnDueDate, daysLeft, status, todayISO } from './deadline';
 import { startDayRefresh } from './day-refresh';
 import { bindTabSync } from './tab-sync';
 import { bindIntakeDeadline } from './intake-deadline';
-import { planSingleCalendar } from './calendar-batch';
+import { planSingleCalendar, planCalendarCancellation } from './calendar-batch';
 import { isSupportedDate } from './trip-checklist';
 import { load, read, save, type Order } from './store';
 import { bindManualPurchase } from './manual-purchase';
@@ -35,7 +35,7 @@ import { completionLabel, isCompleted, planCompletion, type CompletionAction } f
 import { samples } from './samples';
 import { bindBackup } from './backup-ui';
 import { bindOrderEditor } from './edit-ui';
-import { bindCalendarBatch } from './calendar-batch-ui';
+import { bindCalendarBatch, downloadCalendar } from './calendar-batch-ui';
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const paste = $<HTMLTextAreaElement>('#paste');
@@ -351,7 +351,9 @@ function historyCard(o: Order): string {
     + '<div class="window-meta"><span>ORDER ' + h(o.orderDate) + '</span><span>Original ' + h(deadlinePhrase(o.deadlineRequirement).toLowerCase()) + ' ' + h(returnDueDate(o)) + '</span>' + (o.merchantArrivalDeadline ? '<span>Merchant received by ' + h(o.merchantArrivalDeadline) + '</span>' : '') + '</div>'
     + (o.total ? '<p class="history-amount">Order total <strong>' + h(o.total) + '</strong></p>' : '')
     + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open saved return document</a></p>' : '')
-    + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>'
+    + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-link" data-cancel-calendar="' + h(o.id) + '">Cancel imported deadline</button>'
+    + (o.merchantArrivalDeadline || o.calendarPreviousArrivalDate ? '<button class="button button-link" data-cancel-arrival="' + h(o.id) + '">Cancel imported arrival cutoff</button>' : '')
+    + '<button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>'
     + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button>'
     + '<button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
 }
@@ -370,7 +372,7 @@ function render() {
   const showingHistory = filterMode === 'completed';
   $('#tracker-title').textContent = showingHistory ? 'History' : 'Active returns';
   $('#tracker-description').textContent = showingHistory
-    ? 'Returned and kept orders, newest first. Reopen an order to track its original deadline.'
+    ? 'Returned and kept orders, newest first. Reopen an order to resume its saved deadline.'
     : 'Your next deadlines, soonest first.';
   for (const id of ['tracker-summary', 'calendar-toolbar', 'trip-link']) $('#' + id).hidden = showingHistory;
   if (loadFailed) {
@@ -425,7 +427,8 @@ function render() {
       + (o.merchantArrivalDeadline ? '<div class="order-foot second-return-deadline"><span class="return-by">MERCHANT MUST RECEIVE BY ' + h(o.merchantArrivalDeadline) + '</span><strong class="days-left">' + (daysLeft(o.merchantArrivalDeadline, todayISO()) < 0 ? 'PAST DUE' : h(String(daysLeft(o.merchantArrivalDeadline, todayISO()))) + ' DAYS LEFT') + '</strong></div>' : '')
       + (o.deadlineRequirement ? '<p class="return-document return-document-caution">'+h(deadlineCaution(o.deadlineRequirement))+'</p>' : '')
       + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open return label, QR or receipt</a></p>' : '<p class="return-document return-document-missing">No return document saved. Add one in Edit details before going to the store.</p>')
-      + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-primary" data-ics="' + h(o.id) + '">Add calendar reminders</button>'
+      + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-primary" data-ics="' + h(o.id) + '">' + (o.calendarRevision ? 'Update calendar reminders' : 'Add calendar reminders') + '</button>'
+      + (o.calendarPreviousArrivalDate && !o.merchantArrivalDeadline ? '<button class="button button-link" data-cancel-arrival="' + h(o.id) + '">Cancel old arrival cutoff</button>' : '')
       + '<button class="button button-link" data-finish="' + h(o.id) + '">Finish return</button>'
       + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
   }).join('');
@@ -437,10 +440,12 @@ function changeCompletion(displayed: Order | undefined, action: CompletionAction
   try {
     const plan = planCompletion(current, displayed, action);
     if (!persistOrders(plan.next)) return false;
+    if (action === 'reopen') filterMode = 'all';
     render();
+    $('#edit-feedback').textContent = '';
     $('#completion-feedback').textContent = (plan.order.merchant || 'Order') + (action === 'reopen'
       ? ' reopened with its original deadline.'
-      : ' marked ' + completionLabel(plan.order).toLowerCase() + ' and saved in History. Remove any old reminder from your calendar.');
+      : ' marked ' + completionLabel(plan.order).toLowerCase() + ' and saved in History. Use Cancel imported deadline there if you previously added it to your calendar.');
     return true;
   } catch (error) {
     orders = current;
@@ -495,6 +500,26 @@ list.addEventListener('click', (e) => {
     else showStorageError('This purchase cannot be selected uniquely. Refresh saved returns first.');
   }
   if (t.dataset.del) removeOrder(t.dataset.del);
+  if (t.dataset.cancelCalendar !== undefined || t.dataset.cancelArrival !== undefined) {
+    const kind = t.dataset.cancelArrival !== undefined ? 'merchant-arrival' : 'return';
+    const id = t.dataset.cancelArrival ?? t.dataset.cancelCalendar!;
+    const shown = orders.filter(order => order.id === id);
+    const current = readCurrentOrders();
+    if (!current) return;
+    try {
+      if (shown.length !== 1) throw new Error('The saved return is no longer unique. Refresh the tracker.');
+      const plan = planCalendarCancellation(current, shown[0], kind);
+      downloadCalendar(plan.content, plan.filename);
+      $('#edit-feedback').textContent = '';
+      $('#completion-feedback').textContent = 'Cancellation downloaded. Import it into your calendar, then check the old event is gone. If it remains, delete it there.';
+      clearStorageError();
+    } catch (error) {
+      orders = current;
+      render();
+      showStorageError(error instanceof Error ? error.message : 'The old calendar reminder could not be cancelled.');
+    }
+    return;
+  }
   if (t.dataset.ics) {
     const displayed = orders.filter(order => order.id === t.dataset.ics);
     if (displayed.length !== 1) {

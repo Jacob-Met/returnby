@@ -1,5 +1,6 @@
 import type { RefundPayments } from './refund-payments';
 import { hasValidRefund } from './refund';
+import { validCalendarRevision } from './calendar-revision';
 import { hasValidCompletion } from './completion';
 import { validReturnEvidenceUrl } from './return-evidence';
 import { validDeadlineRequirement, hasValidMerchantArrivalDeadline, type DeadlineRequirement } from './deadline-requirement';
@@ -9,6 +10,7 @@ export type Order = {
   refundState?: 'awaiting' | 'received'; refundAmount?: string; refundFollowUpDate?: string; refundNote?: string; refundUpdatedAt?: string;
   id: string; merchant: string; orderNo?: string; total?: string; returnEvidenceUrl?: string; deadlineRequirement?: DeadlineRequirement;
   fixedDeadline?: string; merchantArrivalDeadline?: string;
+  calendarRevision?: number; calendarPreviousArrivalDate?: string;
   orderDate: string; windowStartDate?: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
   completedAt?: string;
   completionKind?: 'returned' | 'kept';
@@ -27,7 +29,7 @@ const isOrder = (value: unknown): value is Order => {
     && (o.returnEvidenceUrl === undefined || validReturnEvidenceUrl(o.returnEvidenceUrl))
     && (o.deadlineRequirement === undefined || validDeadlineRequirement(o.deadlineRequirement))
     && hasValidMerchantArrivalDeadline(o as Order)
-    && hasValidCompletion(o) && hasValidRefund(o);
+    && validCalendarRevision(o as Order) && hasValidCompletion(o) && hasValidRefund(o);
 };
 // Backup/restore must distinguish unreadable storage from an empty tracker.
 export const read = (): unknown => {

@@ -20,13 +20,13 @@ test('complete and reopen preserve reviewed identity, field order, unrelated row
   const done = planCompletion(current, original, 'complete', now);
   expect(done.changed).toBe(true);
   expect(done.next[0]).toBe(other);
-  expect(done.order).toEqual({ ...original, completedAt: now.toISOString() });
+  expect(done.order).toEqual({ ...original, calendarRevision: 1, completedAt: now.toISOString() });
   expect(JSON.stringify(current)).toBe(before);
   expect(isCompleted(original)).toBe(false);
   const reopened = planCompletion(done.next, done.order, 'reopen', now);
-  expect(reopened.order).toEqual(original);
+  expect(reopened.order).toEqual({ ...original, calendarRevision: 2 });
   expect(reopened.next[0]).toBe(other);
-  expect(JSON.stringify(reopened.order)).toBe(JSON.stringify(original));
+  expect(JSON.stringify(reopened.order)).toBe(JSON.stringify({ ...original, calendarRevision: 2 }));
   expect(done.order.completedAt).toBe(now.toISOString());
 });
 
@@ -103,7 +103,8 @@ test('both single and batch reminder plans refuse a selected return completed si
   const reopened = planCompletion([done], done, 'reopen', now).order;
   const after = planCalendarBatch([reopened], calendarRows([reopened], '2026-10-08'), ['A'], now);
   const before = planCalendarBatch([active], reviewed, ['A'], now);
-  expect(after.content).toBe(before.content);
+  expect(after.content).toContain('SEQUENCE:1');
+  expect(after.content.replace('SEQUENCE:1\r\n', '')).toBe(before.content);
   expect(reviewedOpenReturn([reopened], reopened)).toBe(reopened);
 });
 
