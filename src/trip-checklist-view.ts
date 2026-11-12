@@ -1,3 +1,4 @@
+import { openReceiptProof } from './receipt-photo-archive-ui';
 import { bindTripLibrary } from './trip-library-ui';
 import { bindTripDeadlineHandoff } from './trip-deadline-handoff-ui';
 import './trip-checklist.css';
@@ -162,6 +163,12 @@ function renderPacking(): void {
     ref.className = 'packing-reference';
     ref.textContent = (order.orderNo ? '#' + order.orderNo + ' · ' : '') + deadlinePhrase(order.deadlineRequirement) + ' ' + returnDueDate(order);
     section.append(title, ref);
+    const paper = document.createElement('button');
+    paper.type = 'button';
+    paper.className = 'receipt-proof-trip-open';
+    paper.textContent = 'Show paper receipt photo';
+    paper.addEventListener('click', () => { void openReceiptProof(order); });
+    section.append(paper);
     if(order.deadlineRequirement){const caution=document.createElement('p');caution.className='packing-reference';caution.textContent=deadlineCaution(order.deadlineRequirement);section.append(caution);}
     if (order.returnEvidenceUrl) {
       const link = document.createElement('a');
