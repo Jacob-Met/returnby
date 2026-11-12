@@ -37,7 +37,7 @@ function ensureDialog(): HTMLDialogElement {
   zoom = dialog.querySelector('#receipt-proof-zoom-input')!;
   zoomValue = dialog.querySelector('.receipt-proof-zoom output')!;
   message = dialog.querySelector('.receipt-proof-message')!;
-  input = dialog.querySelector('input')!;
+  input = dialog.querySelector('.receipt-proof-input input')!;
   remove = dialog.querySelector('[data-proof=remove]')!;
   rotate = dialog.querySelector('[data-proof=rotate]')!;
   download = dialog.querySelector('[data-proof=download]')!;
