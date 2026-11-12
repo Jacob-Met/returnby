@@ -1,4 +1,5 @@
 import { openReceiptProof } from './receipt-photo-archive-ui';
+import { readOriginalReceipts, type ReceiptPhoto } from './receipt-photo-archive';
 import { bindTripLibrary } from './trip-library-ui';
 import { bindTripDeadlineHandoff } from './trip-deadline-handoff-ui';
 import './trip-checklist.css';
@@ -60,6 +61,7 @@ const reloadPlan = el<HTMLButtonElement>('reload-trip');
 const keepPlan = el<HTMLButtonElement>('keep-trip');
 let snapshot: SavedSnapshot | null = null;
 let prepared: TripChecklist | null = null;
+let previewToken = 0;
 let stale = false;
 let plan: TripPlan = emptyTripPlan();
 let planRaw: string | null = null;
@@ -119,6 +121,7 @@ function planMessage(message: string, error = false): void {
   planStatus.classList.toggle('error', error);
 }
 function retirePreview(): void {
+  previewToken++;
   prepared = null;
   preview.replaceChildren();
   preview.hidden = true;
@@ -402,23 +405,83 @@ el<HTMLButtonElement>('new-trip').addEventListener('click', () => {
   refresh();
   persist();
 });
-form.addEventListener('submit', event => {
+// Orient saved receipt proof and keep it inside the downloaded HTML, never on a server.
+const MAX_PORTABLE_PHOTO_CHARACTERS = 24 * 1024 * 1024;
+async function embedPaperReceipt(record: ReceiptPhoto): Promise<string> {
+  const bitmap = await createImageBitmap(record.photo);
+  try {
+    if (bitmap.width * bitmap.height > 60_000_000)
+      throw new Error('A saved receipt is too large to prepare. Open it in ReturnBy and attach a smaller original.');
+    const scale = Math.min(1, 2600 / Math.max(bitmap.width, bitmap.height));
+    const w = Math.max(1, Math.round(bitmap.width * scale));
+    const h = Math.max(1, Math.round(bitmap.height * scale));
+    const canvas = document.createElement('canvas');
+    canvas.width = record.rotation % 2 ? h : w;
+    canvas.height = record.rotation % 2 ? w : h;
+    const context = canvas.getContext('2d');
+    if (!context) throw new Error('This browser cannot prepare receipt images for offline travel.');
+    context.fillStyle = '#ffffff';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.translate(canvas.width / 2, canvas.height / 2);
+    context.rotate(record.rotation * Math.PI / 2);
+    context.drawImage(bitmap, -w / 2, -h / 2, w, h);
+    return canvas.toDataURL('image/jpeg', .92);
+  } finally { bitmap.close(); }
+}
+async function printablePaperReceipts(checklist: TripChecklist): Promise<{images: Record<string,string>; unreadable: boolean}> {
+  let originals: ReceiptPhoto[];
+  try { originals = await readOriginalReceipts(checklist.orders.map(row => row.order)); }
+  catch { return { images: {}, unreadable: true }; }
+  const images: Record<string,string> = {};
+  let total = 0;
+  for (const record of originals) {
+    let photo: string;
+    try { photo = await embedPaperReceipt(record); }
+    catch { throw new Error('A saved paper receipt could not be rendered for the offline sheet. Open that receipt in ReturnBy, then retry the trip preview.'); }
+    total += photo.length;
+    if (total > MAX_PORTABLE_PHOTO_CHARACTERS)
+      throw new Error('The selected receipt photos exceed the 24 MiB offline sheet limit. Split this trip into smaller sheets; the original photos remain saved.');
+    images[record.id] = photo;
+  }
+  return { images, unreadable: false };
+}
+
+form.addEventListener('submit', async event => {
   event.preventDefault();
   if (!snapshot || !validateCurrent()) return;
+  const currentSnapshot = snapshot;
+  const requestToken = ++previewToken;
+  previewButton.disabled = true;
+  showNotice('Preparing the offline sheet and saved paper receipts…');
   try {
     const checks: Record<string, TripPacking> = {};
     for (const id of selected) checks[id] = { ...entryFor(id) };
-    prepared = { ...createChecklist(snapshot, [...selected], tripDate.value), packing: checks };
+    const checklist = createChecklist(currentSnapshot, [...selected], tripDate.value);
+    // Show the selected orders immediately while their local proof images load.
+    // Download stays disabled until the final self-contained file is prepared.
+    preview.innerHTML = renderChecklist({ ...checklist, packing: checks });
+    preview.hidden = false;
+    empty.hidden = true;
+    downloadButton.disabled = true;
+    const { images: receiptImages, unreadable } = await printablePaperReceipts(checklist);
+    if (previewToken !== requestToken || snapshot !== currentSnapshot || !validateCurrent()) return;
+    const photoCount = Object.keys(receiptImages).length;
+    prepared = { ...checklist, packing: checks, ...(photoCount ? { receiptImages } : {}) };
     preview.innerHTML = renderChecklist(prepared);
     preview.hidden = false;
     empty.hidden = true;
     downloadButton.disabled = false;
     persist();
-    showNotice('Preview ready. Review the current dates, checks and notes, then download your sheet.');
+    showNotice(unreadable
+      ? 'Saved photo storage could not be read. This sheet has no embedded receipts; bring the paper original or return document. You can still download the order checklist.'
+      : photoCount
+      ? 'Preview ready with ' + photoCount + ' original paper ' + (photoCount === 1 ? 'receipt' : 'receipts') + '. The downloaded offline HTML includes the images and may contain private payment or address details. Store it securely.'
+      : 'Preview ready. No original paper receipt photos were saved for the selected orders; bring your receipt or merchant document separately.', unreadable);
     el<HTMLHeadingElement>('preview-title').setAttribute('tabindex', '-1');
     el<HTMLHeadingElement>('preview-title').focus({ preventScroll: true });
     if (window.matchMedia('(max-width: 820px)').matches) el<HTMLHeadingElement>('preview-title').scrollIntoView({ block: 'start', behavior: 'smooth' });
   } catch (error) { retirePreview(); showFailure(error); }
+  finally { if (!stale && snapshot) previewButton.disabled = !selected.size; }
 });
 downloadButton.addEventListener('click', () => {
   if (!prepared || !validateCurrent()) return;
