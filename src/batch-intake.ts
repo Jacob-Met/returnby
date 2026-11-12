@@ -1,4 +1,5 @@
 import { receiptPolicy, receiptWindow } from './receipt-policy';
+import { validDeadlineRequirement, type DeadlineRequirement } from './deadline-requirement';
 import { purchaseIdentity as identity } from './purchase-identity';
 import { parse } from './parse';
 import { deliveryReview } from './delivery-review';
@@ -19,6 +20,7 @@ export type DraftFields = {
   orderDate: string;
   windowStartDate?: string;
   windowDays: string;
+  deadlineRequirement?: string;
 };
 export type BatchDraft = {
   id: string;
@@ -122,10 +124,18 @@ export function validateDraft(draft: BatchDraft): Omit<Order, 'id' | 'createdAt'
   if (!supportedWindow) {
     throw new BatchIntakeError('Choose a positive whole-day window with a deadline the tracker can calculate and export.', 'windowDays', draft.id);
   }
+  const requirement = fields.deadlineRequirement?.trim() ?? '';
+  if (requirement && !validDeadlineRequirement(requirement)) {
+    throw new BatchIntakeError('Choose a supported return deadline action.', 'deadlineRequirement', draft.id);
+  }
+  if (receiptPolicy(draft.text).actionRequired && !requirement) {
+    throw new BatchIntakeError('This confirmation names a return handoff. Choose what must happen by the deadline before selecting it.', 'deadlineRequirement', draft.id);
+  }
   const policy = lookup(fields.merchant);
   return {
     merchant: fields.merchant, orderNo: fields.orderNo, total: fields.total,
     orderDate: fields.orderDate, ...(windowStartDate ? { windowStartDate } : {}), windowDays,
+    ...(requirement ? { deadlineRequirement: requirement as DeadlineRequirement } : {}),
     windowSource: receiptPolicy(draft.text).passages.length ? 'user' : windowDays === policy.days ? policy.source : 'user',
   };
 }

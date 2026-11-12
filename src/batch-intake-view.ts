@@ -1,5 +1,6 @@
 import './receipt-policy.css';
 import { receiptPolicy } from './receipt-policy';
+import { deadlineOptions } from './deadline-requirement';
 import { readPending, writePending } from './pending-delivery';
 import './batch-intake.css';
 import {
@@ -101,7 +102,7 @@ function renderDrafts() {
     ];
     for (const [key, labelText, type] of labels) {
       const label = element('label', labelText);
-      if (key !== 'windowDays' && key !== 'windowStartDate' && !draft.found[key]) label.className = 'not-recognized';
+      if (key !== 'windowDays' && key !== 'windowStartDate' && key !== 'deadlineRequirement' && !draft.found[key]) label.className = 'not-recognized';
       if (key === 'windowDays') label.className = 'window-field';
       const input = element('input');
       input.type = type;
@@ -116,8 +117,29 @@ function renderDrafts() {
       label.append(input);
       fields.append(label);
     }
+    const actionEvidence = receiptPolicy(draft.text);
+    const actionLabel = element('label', 'What must happen by the return deadline?');
+    actionLabel.className = 'batch-deadline-action';
+    const actionSelect = element('select');
+    actionSelect.innerHTML = deadlineOptions(draft.fields.deadlineRequirement);
+    actionSelect.name = 'deadlineRequirement';
+    actionSelect.dataset.field = 'deadlineRequirement';
+    actionSelect.value = draft.fields.deadlineRequirement ?? '';
+    actionSelect.required = actionEvidence.actionRequired;
+    if (actionEvidence.actionRequired) actionSelect.options[0].textContent = 'Choose the confirmed return action';
+    actionSelect.setAttribute('aria-label', 'Return deadline action for confirmation ' + (index + 1));
+    actionLabel.append(actionSelect);
+    const windowField = fields.querySelector('[data-field=windowDays]')?.closest('label');
+    fields.insertBefore(actionLabel, windowField ?? null);
     card.append(fields);
-    const policyEvidence = receiptPolicy(draft.text);
+    if (actionEvidence.actionRequired) {
+      const warning = element('p', actionEvidence.actionConflict
+        ? 'Shipping and merchant arrival can have different dates. Check which terms apply; if both apply, confirm both dates before saving one plan.'
+        : 'Confirm what must happen by the date before saving.', 'warn');
+      warning.setAttribute('role', 'status');
+      card.append(warning);
+    }
+    const policyEvidence = actionEvidence;
     if (policyEvidence.passages.length) {
       const evidence = element('section', undefined, 'receipt-policy-evidence');
       evidence.setAttribute('aria-label', 'Receipt return terms');
@@ -133,7 +155,8 @@ function renderDrafts() {
         try {
           const current = readPending(localStorage);
           const fields: Record<string,string> = {};
-          for (const key of ['merchant','orderDate','orderNo','total','windowStartDate','windowDays'] as const) fields[key] = draft.fields[key] ?? '';
+          for (const key of ['merchant','orderDate','orderNo','total','windowStartDate','windowDays','deadlineRequirement'] as const) fields[key] = draft.fields[key] ?? '';
+          if (actionEvidence.actionRequired) fields.deadlineActionReviewRequired = 'yes';
           writePending(localStorage, [...current.rows, {id:crypto.randomUUID(),updatedAt:new Date().toISOString(),fields}], current.token);
           drafts = drafts.filter(item => item.id !== draft.id);
           invalidate('Purchase kept pending delivery. Resume it from the tracker; no deadline or reminder was created.');
@@ -160,7 +183,7 @@ function renderDrafts() {
 
 draftsRoot.addEventListener('input', event => {
   const input = event.target;
-  if (!(input instanceof HTMLInputElement) || !input.dataset.field) return;
+  if (!(input instanceof HTMLInputElement || input instanceof HTMLSelectElement) || !input.dataset.field) return;
   const card = input.closest<HTMLElement>('[data-draft]');
   const draft = drafts.find(item => item.id === card?.dataset.draft);
   if (!draft) return;
@@ -175,6 +198,10 @@ draftsRoot.addEventListener('input', event => {
 
 draftsRoot.addEventListener('change', event => {
   const input = event.target;
+  if (input instanceof HTMLSelectElement && input.dataset.field) {
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    return;
+  }
   if (!(input instanceof HTMLInputElement) || !input.dataset.reviewed) return;
   const draft = drafts.find(item => item.id === input.dataset.reviewed);
   if (!draft) return;
