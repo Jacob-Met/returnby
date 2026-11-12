@@ -562,7 +562,7 @@ function clearAllTrackedOrders() {
 }
 $('#clear').addEventListener('click', clearAllTrackedOrders);
 storageRetry.addEventListener('click', reloadOrders);
-bindBackup({ read, commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
+bindBackup({ read, commit: next => { if (!persistOrders(next)) return false; render(); return true; }, showSaved: id => { $('#edit-feedback').textContent = 'Restored purchase ready. Open Paper receipt to see the saved original.'; deskNavigation.saved(id); } });
 const orderEditor = bindOrderEditor({
   getOrders: () => orders,
   read: load,

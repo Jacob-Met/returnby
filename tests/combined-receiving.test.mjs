@@ -60,7 +60,7 @@ test('corrected subtotal and reviewed attribution survive refused save, download
   expect(source.persisted()[0]).toMatchObject({ merchant: 'Unlisted Review Store', total: '$55.00', windowDays: 15, windowSource: 'user' });
   const approved = source.persisted();
   source.element('paste').value = 'UNSAVED PRIVATE EMAIL';
-  source.click('backup-export');
+  await source.click('backup-export');
   const backup = await source.blobs[0].text();
   expect(JSON.parse(backup).orders).toEqual(approved);
   expect(backup).not.toContain('UNSAVED PRIVATE EMAIL');
@@ -71,7 +71,7 @@ test('corrected subtotal and reviewed attribution survive refused save, download
   receiver.click('backup-apply');
   expect(receiver.persisted()).toEqual(approved);
   expect(receiver.element('list').innerHTML).toContain('YOUR RULE / 15 DAYS');
-  receiver.click('backup-export');
+  await receiver.click('backup-export');
   expect(JSON.parse(await receiver.blobs[0].text()).orders).toEqual(approved);
 });
 
@@ -80,7 +80,7 @@ test('initial read refusal blocks backup and ordinary writes until explicit reco
   const raw = JSON.stringify(original);
   const app = await open(raw, 100);
   expect(app.element('storage-retry').hidden).toBe(false);
-  app.draft('UNSAVED-DRAFT'); app.submit(); app.click('backup-export');
+  app.draft('UNSAVED-DRAFT'); app.submit(); await app.click('backup-export');
   const incoming = { ...storedOrder('RESTORED-B'), total: '$55.00' };
   await app.choose(exportBackup([incoming]));
   expect(app.writes).toHaveLength(0);
@@ -98,14 +98,14 @@ test('initial read refusal blocks backup and ordinary writes until explicit reco
   expect(app.persisted()).toEqual([...original, incoming]);
   expect(app.writes).toHaveLength(1);
   expect(app.element('paste').value).toBe('Unsaved email UNSAVED-DRAFT');
-  app.click('backup-export');
+  await app.click('backup-export');
   expect(JSON.parse(await app.blobs[0].text()).orders).toEqual([...original, incoming]);
 });
 
 test('empty stored bytes refuse backup export and import until an explicit confirmed reset', async () => {
   const app = await open('');
   const incoming = storedOrder('RESTORED-A');
-  app.click('backup-export');
+  await app.click('backup-export');
   await app.choose(exportBackup([incoming]));
   app.click('backup-apply');
   expect(app.downloads).toHaveLength(0);
@@ -120,6 +120,6 @@ test('empty stored bytes refuse backup export and import until an explicit confi
   expect(app.element('storage-retry').hidden).toBe(true);
   await app.choose(exportBackup([incoming])); app.click('backup-apply');
   expect(app.persisted()).toEqual([incoming]);
-  app.click('backup-export');
+  await app.click('backup-export');
   expect(JSON.parse(await app.blobs[0].text()).orders).toEqual([incoming]);
 });

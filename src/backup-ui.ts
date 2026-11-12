@@ -3,14 +3,15 @@ import { bindTripLibraryRestore } from './trip-library-backup-ui';
 import { readTripLibrary, TripLibraryError, type TripLibrary } from './trip-library';
 import {readPending,writePending,planPendingRestore,type PendingPurchase} from './pending-delivery';
 import { planResolvedImport, backupFieldLabel, backupFieldValue, type BackupChoice, type ResolvedImportPlan } from './backup-resolution';
-import { BackupError, exportBackup, MAX_BACKUP_BYTES, parseBackupDocument } from './backup';
+import { BackupError, exportBackup, parseBackupDocument } from './backup';
+import {collectReceiptPhotos, restoreReceiptPhotos, MAX_PHOTO_BACKUP_BYTES, type PackedReceiptPhoto} from './receipt-photo-backup';
 import { returnDueDate } from './deadline';
 import { completionLabel } from './completion';
 import type { Order } from './store';
 import { parsePortableTrip, prepareTripRestore, TripBackupError } from './trip-backup';
 import { readTripPlan, saveTripPlan, TripPlanError, type TripPlan } from './trip-plan';
 
-type Tracker = { read: () => unknown; commit: (orders: Order[]) => boolean };
+type Tracker = { read: () => unknown; commit: (orders: Order[]) => boolean; showSaved?: (id: string) => void };
 const PAGE_SIZE = 25;
 
 export function bindBackup(tracker: Tracker) {
@@ -24,6 +25,9 @@ export function bindBackup(tracker: Tracker) {
   const previous = get<HTMLButtonElement>('backup-previous');
   const next = get<HTMLButtonElement>('backup-next');
   let incoming: Order[] | null = null;
+  let incomingPhotos: PackedReceiptPhoto[] = [];
+  const restoredPhotos = new Set<string>();
+  let applying = false;
   let incomingLibrary:TripLibrary|null=null;
   const libraryRestore=bindTripLibraryRestore(get<HTMLElement>('backup-trip-library'),tell);
   let incomingPending:PendingPurchase[]=[];
@@ -121,6 +125,7 @@ export function bindBackup(tracker: Tracker) {
   function reset() {
     generation++;
     incoming = null;
+    incomingPhotos = []; restoredPhotos.clear(); applying = false;
     incomingLibrary=null;libraryRestore.show(null);
     incomingPending=[];pendingPanel.hidden=true;
     choices.clear();
@@ -180,17 +185,26 @@ export function bindBackup(tracker: Tracker) {
     next.disabled = start + PAGE_SIZE >= preview.rows.length;
   }
 
+  function eligiblePhotos(plan: ResolvedImportPlan) {
+    const eligible = new Map(plan.rows.filter(row => row.action === 'add' || row.action === 'replace' || row.action === 'skip')
+      .map(row => [row.order.id, row] as const));
+    return incomingPhotos.filter(photo => eligible.get(photo.id)?.order.createdAt === photo.createdAt && !restoredPhotos.has(photo.id));
+  }
+
   function show(plan: ResolvedImportPlan, focus = true) {
     preview = plan;
     if (focus) page = 0;
+    const photos = eligiblePhotos(plan);
     summary.textContent = [[plan.added, 'to add'], [plan.replaced, 'to update'], [plan.kept, 'keep current'], [plan.skipped, 'already saved'], [plan.conflicts, 'need a choice']].filter(([count]) => Number(count) > 0).map(([count, label]) => count + ' ' + label).join(' · ') || 'No purchases in this backup';
-    apply.textContent = `Apply ${plan.added} additions and ${plan.replaced} updates`;
-    apply.disabled = plan.added + plan.replaced === 0;
+    if (incomingPhotos.length) summary.textContent += ` · ${incomingPhotos.length} original ${incomingPhotos.length === 1 ? 'receipt photo' : 'receipt photos'} included`;
+    apply.textContent = photos.length ? `Restore purchases and ${photos.length} ${photos.length === 1 ? 'photo' : 'photos'}` : `Apply ${plan.added} additions and ${plan.replaced} updates`;
+    apply.disabled = applying || plan.added + plan.replaced === 0 && photos.length === 0;
     panel.hidden = false;
     renderPage();
     showTrip();
     libraryRestore.show(incomingLibrary);
-    if (plan.conflicts) tell('Compare the current and backup values before choosing a version. Unreviewed differences stay current; you can apply the new purchases and chosen updates without replacing them.');
+    if (photos.length && !plan.added && !plan.replaced && !plan.conflicts) tell('Saved purchases match. Restore their original photos where this browser has none; existing photos stay unchanged.');
+    else if (plan.conflicts) tell('Compare the current and backup values before choosing a version. Unreviewed differences stay current; you can apply the new purchases and chosen updates without replacing them.');
     else if (!plan.added && !plan.replaced && plan.kept) tell(incomingTrip ? 'Your current purchase versions will stay. Review the trip separately below.' : 'Your current purchase versions will stay. No additions or updates are selected.');
     else if (!plan.added && !plan.replaced) tell(incomingLibrary?.trips.length?'Purchases need no changes. Review the named trip plans separately below.':incomingPending.length?'Saved deadlines need no changes. Review the pending purchases below before restoring them.':incomingTrip?'All orders are already saved. Review the trip below before restoring it.':'Everything in this backup is already saved, or the backup is empty. Nothing will change.');
     else tell('Review additions and updates below, then choose Apply. Only purchases you chose from the backup will replace current details.');
@@ -204,11 +218,12 @@ export function bindBackup(tracker: Tracker) {
     const ticket = generation;
     tell('Reading backup…');
     try {
-      if (file.size > MAX_BACKUP_BYTES) throw new BackupError('Choose a backup no larger than 5 MiB.');
+      if (file.size > MAX_PHOTO_BACKUP_BYTES) throw new BackupError('Choose a backup no larger than 96 MiB.');
       const contents = await file.text();
       if (ticket !== generation) return;
       const parsed = parseBackupDocument(contents);
       incoming = parsed.orders;
+      incomingPhotos = parsed.photos || [];
       incomingTrip = parsed.trip;
       incomingPending=parsed.pending||[];
       incomingLibrary=parsed.tripLibrary||null;
@@ -225,43 +240,96 @@ export function bindBackup(tracker: Tracker) {
   previous.addEventListener('click', () => { if (page > 0) { page--; renderPage(); } });
   next.addEventListener('click', () => { if (preview && (page + 1) * PAGE_SIZE < preview.rows.length) { page++; renderPage(); } });
 
-  apply.addEventListener('click', () => {
-    if (!incoming || !preview) return;
+  apply.addEventListener('click', async () => {
+    if (!incoming || !preview || applying) return;
+    applying = true;
+    apply.disabled = true;
+    fileInput.disabled = true;
+    get<HTMLButtonElement>('backup-cancel').disabled = true;
+    let resultMessage = '';
+    let resultError = false;
+    let focusSaved = '';
     try {
-      // Read again at commitment: another save or tab may have changed the list
-      // while the user reviewed the file. A changed plan needs fresh review.
+      // A second tab may alter saved orders during a preview. Never attach a
+      // photo to a different saved purchase with the same ID.
       const current = planResolvedImport(tracker.read(), incoming, choices);
       if (current.snapshot !== preview.snapshot) {
         choices.clear();
-        show(planResolvedImport(tracker.read(), incoming));
-        tell('Saved returns changed since the preview. Review this updated plan before importing.', true);
+        resultMessage = 'Saved returns changed since the preview. Review this updated plan before importing.';
+        resultError = true;
         return;
       }
-      if (!current.added && !current.replaced) return;
-      if (!tracker.commit(current.next)) {
-        tell("The backup wasn't imported because browser storage refused the change. Your preview is kept so you can try again.", true);
+      const photographs = eligiblePhotos(current);
+      if (!current.added && !current.replaced && !photographs.length) return;
+      if (current.added || current.replaced) {
+        if (!tracker.commit(current.next)) {
+          resultMessage = "The backup wasn't imported because browser storage refused the change. Your preview is kept so you can try again.";
+          resultError = true;
+          return;
+        }
+      }
+      let photoCount = 0;
+      try {
+        photoCount = await restoreReceiptPhotos(photographs, current.rows
+          .filter(row => row.action === 'add' || row.action === 'replace' || row.action === 'skip')
+          .map(row => ({id: row.order.id, createdAt: row.order.createdAt, replace: row.action === 'replace'})));
+        for (const photo of photographs) restoredPhotos.add(photo.id);
+      } catch {
+        // Order changes have committed. Retain the preview for a photo-only
+        // retry and report this as incomplete instead of claiming transfer.
+        resultMessage = 'Purchases were saved, but original receipt photos could not be restored. Check browser photo storage and choose Restore again. Your backup file is unchanged.';
+        resultError = true;
         return;
       }
-      if(incomingTrip || current.conflicts || incomingPending.length || incomingLibrary){show(planResolvedImport(tracker.read(),incoming,choices));showPending();}else reset();
-      tell(`Added ${current.added} purchases and updated ${current.replaced}. Kept ${current.kept + current.conflicts} current versions; ${current.skipped} were already saved.${current.conflicts ? ' Differences above still need your choice.' : ''}${incomingTrip ? ' Review the trip separately below.' : ''}`);
-    } catch (error) { tell(errorText(error), true); }
+      const note = `Added ${current.added} purchases and updated ${current.replaced}.` + (photographs.length ? ` ${photoCount} original ${photoCount === 1 ? 'receipt photo was' : 'receipt photos were'} saved here; existing photos were kept.` : '') + ` ${current.kept + current.conflicts} current versions kept; ${current.skipped} were already saved.`;
+      if (!incomingTrip && !current.conflicts && !incomingPending.length && !incomingLibrary) {
+        focusSaved = current.rows.find(row => row.action === 'add' || row.action === 'replace')?.order.id || photographs[0]?.id || '';
+      }
+      if (incomingTrip || current.conflicts || incomingPending.length || incomingLibrary) {
+        show(planResolvedImport(tracker.read(), incoming, choices));
+        showPending();
+      } else reset();
+      resultMessage = note + (incomingTrip ? ' Review the trip separately below.' : '');
+    } catch (error) { resultMessage = errorText(error); resultError = true; }
+    finally {
+      applying = false;
+      fileInput.disabled = false;
+      get<HTMLButtonElement>('backup-cancel').disabled = false;
+      try { if (incoming && preview) show(planResolvedImport(tracker.read(), incoming, choices), false); }
+      catch (error) { resultMessage = errorText(error); resultError = true; }
+      if (resultMessage) tell(resultMessage, resultError);
+      if (focusSaved && !resultError) tracker.showSaved?.(focusSaved);
+    }
   });
 
-  get('backup-export').addEventListener('click', () => {
+  get('backup-export').addEventListener('click', async () => {
+    const exportButton = get<HTMLButtonElement>('backup-export');
+    if (exportButton.disabled) return;
+    exportButton.disabled = true;
     let url: string | undefined;
     try {
+      tell('Reading saved purchases and original receipt photos…');
       const now = new Date();
       const trip = readTripPlan(localStorage).plan;
       const library=readTripLibrary(localStorage).library;
-      const content = exportBackup(tracker.read(), now, trip,readPending(localStorage).rows,library);
+      const snapshot = tracker.read();
+      const pending = readPending(localStorage).rows;
+      // Validate the portable order set before accessing the local image store.
+      const plain = exportBackup(snapshot, now, trip, pending, library);
+      const orders = parseBackupDocument(plain).orders;
+      const photos = await collectReceiptPhotos(orders);
+      if (JSON.stringify(tracker.read()) !== JSON.stringify(snapshot))
+        throw new BackupError('Saved purchases changed during export. Choose Download backup again.');
+      const content = exportBackup(orders, now, trip, pending, library, photos);
       url = URL.createObjectURL(new Blob([content], { type: 'application/json' }));
       const link = document.createElement('a');
       link.href = url;
       link.download = `returnby-backup-${now.toISOString().slice(0, 10)}.json`;
       link.click();
-      tell(library.trips.length?'Backup download requested with '+library.trips.length+' named trip plans, your working trip, purchases and pending reviews. Keep private packing notes secure.':trip?'Backup download requested with your saved orders and trip, including private packing notes.':'Backup download requested. Keep this file private: it contains your saved order details.');
-    } catch (error) { tell(errorText(error), true); }
+      tell(photos.length ? `Backup download requested with ${photos.length} original receipt ${photos.length === 1 ? 'photo' : 'photos'}, saved purchases and trip details. Keep the file private.` : library.trips.length?'Backup download requested with '+library.trips.length+' named trip plans, your working trip, purchases and pending reviews. Keep private packing notes secure.':trip?'Backup download requested with your saved orders and trip, including private packing notes.':'Backup download requested. Keep this file private: it contains your saved order details.');
+    } catch (error) { tell(error instanceof Error ? error.message : errorText(error), true); }
     finally {
+      exportButton.disabled = false;
       // Let the browser start its download before releasing the object URL.
       if (url) {
         const downloaded = url;
