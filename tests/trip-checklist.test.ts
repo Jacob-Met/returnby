@@ -152,3 +152,24 @@ describe('preview freshness and printable artifact', () => {
       .toContain('30 days · User-adjusted window');
   });
 });
+
+describe('paper receipts in the offline take-along sheet', () => {
+  it('embeds each selected paper receipt on its own printable proof panel', () => {
+    const selected = createChecklist(snapshot(), [base.id, other.id], '2026-10-10');
+    const uri = 'data:image/jpeg;base64,/9j/AA==';
+    const enriched = { ...selected, receiptImages: { [base.id]: uri } };
+    const html = buildChecklistHtml(enriched);
+    expect(html).toContain('id="original-receipts"');
+    expect(html).toContain(uri);
+    expect(html).toContain('View 1 saved paper receipt in this offline file');
+    expect(html).toContain('Fictional Trail Shop');
+    expect((html.match(/class="sheet-receipt"/g) || [])).toHaveLength(1);
+    expect(html).toContain('break-before:page');
+  });
+  it('does not insert external or malformed image locations into portable HTML', () => {
+    const selected = createChecklist(snapshot(), [base.id], '2026-10-10');
+    const html = buildChecklistHtml({ ...selected, receiptImages: { [base.id]: 'javascript:alert(1)' } });
+    expect(html).not.toContain('javascript:alert');
+    expect(html).not.toContain('id="original-receipts"');
+  });
+});
