@@ -1,13 +1,13 @@
 # ReturnBy — current desk
 
-**[Download ReturnBy 0.10.1](https://github.com/Jacob-Met/returnby/releases/tag/v0.10.1)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
+**[Download ReturnBy 0.11.0](https://github.com/Jacob-Met/returnby/releases/tag/v0.11.0)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
 
-[Phone — backup restore](https://github.com/Jacob-Met/returnby/releases/download/v0.10.1/ReturnBy-v0.10.1-restore-phone.png) · [Desktop](https://github.com/Jacob-Met/returnby/releases/download/v0.10.1/ReturnBy-v0.10.1-restore-desktop.png)
+[Phone — calendar cleanup](https://github.com/Jacob-Met/returnby/releases/download/v0.11.0/ReturnBy-v0.11.0-calendar-history-phone.png) · [Desktop](https://github.com/Jacob-Met/returnby/releases/download/v0.11.0/ReturnBy-v0.11.0-calendar-history-desktop.png)
 
-Choosing a backup on a phone now puts its reviewed additions and import action directly after the file picker. Conflicting purchases still require a version choice; opening the file does not change saved work. The import action shows what will be added or updated, while exporting and detailed file guidance follow. Original receipt photos travel with the restored purchases.
+The offline return desk now exports corrected calendar events with their original identity and updated sequence. History offers cancellation files for finished returns, and editing a return can cancel a removed merchant-arrival deadline. JSON backups preserve those changes. Calendar applications still require importing files; shoppers can delete obsolete reminders manually if their calendar ignores imported cancellations.
 
 ## Top gaps
 
-1. **Faint or distorted printed receipts still lose key fields.** The offline photo reader can make shoppers reconstruct the store, date or total when printing is washed out or skewed.
-2. **Edited returns leave obsolete entries in external calendars.** The .ics file is a snapshot; changing or canceling a return cannot retract its previously imported calendar event.
-3. **Actual return handoff still requires hunting elsewhere.** The shopper must find their merchant receipt, QR code and instructions outside the prepared trip at the time of handoff.
+1. **Faint or distorted printed receipts lose key fields.** Shoppers still have to reconstruct the store, date or total from poorly printed photos.
+2. **Some calendars retain obsolete reminders even after a cancellation import.** ReturnBy cannot confirm that an external calendar accepted the changed or cancelled event.
+3. **Return handoff still needs a merchant-specific QR code or label.** A purchase receipt and offline trip sheet cannot substitute for the retailer's actual return authorization when one is required.
