@@ -5,6 +5,7 @@ import { dueDate, returnDueDate } from './deadline';
 import type { Order } from './store';
 import { hasValidCompletion } from './completion';
 import { validReturnEvidenceUrl } from './return-evidence';
+import {validDeadlineRequirement} from './deadline-requirement';
 import { parsePortableTrip, TripBackupError } from './trip-backup';
 import type { TripPlan } from './trip-plan';
 
@@ -14,6 +15,7 @@ const LEGACY_ORDER_KEYS = ['id', 'merchant', 'orderNo', 'total', 'orderDate', 'w
 const COMPLETED_ORDER_KEYS = [...LEGACY_ORDER_KEYS, 'completedAt'] as const;
 const ORDER_KEYS = [...COMPLETED_ORDER_KEYS, 'completionKind'] as const;
 const RETURN_EVIDENCE_ORDER_KEYS = [...ORDER_KEYS, 'returnEvidenceUrl'] as const;
+const REQUIREMENT_ORDER_KEYS = [...RETURN_EVIDENCE_ORDER_KEYS, 'deadlineRequirement'] as const;
 const encoder = new TextEncoder();
 // Ordinary ISO export timestamps are always 24 bytes. Use the same envelope
 // when checking portability without changing any saved record timestamps.
@@ -51,13 +53,14 @@ function timestamp(value: unknown, label: string): string {
   return s;
 }
 
-function order(value: unknown, index: number, strict: boolean, version: 1 | 2 | 3 | 4 | 5 | 6 | 7): Order {
+function order(value: unknown, index: number, strict: boolean, version: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8): Order {
   const label = `Order ${index + 1}`;
   const row = object(value, label);
   if (!hasValidCompletion(row)) throw new BackupError(label + ' has an invalid completion record.');
   if (strict && version < 6 && row.refundPayments !== undefined) throw new BackupError(label + ' contains payment history requiring backup version 6.');
-  if (strict) onlyKeys(row, version === 1 ? LEGACY_ORDER_KEYS : version === 2 ? COMPLETED_ORDER_KEYS : version === 7 ? RETURN_EVIDENCE_ORDER_KEYS : ORDER_KEYS, label);
+  if (strict) onlyKeys(row, version === 1 ? LEGACY_ORDER_KEYS : version === 2 ? COMPLETED_ORDER_KEYS : version === 8 ? REQUIREMENT_ORDER_KEYS : version === 7 ? RETURN_EVIDENCE_ORDER_KEYS : ORDER_KEYS, label);
   if (row.returnEvidenceUrl !== undefined && !validReturnEvidenceUrl(row.returnEvidenceUrl)) throw new BackupError(label + ' has an invalid HTTPS return document link.');
+  if(row.deadlineRequirement!==undefined&&!validDeadlineRequirement(row.deadlineRequirement))throw new BackupError(label+' has an invalid deadline requirement.');
   const id = text(row.id, `${label} ID`, 128);
   if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(id)) throw new BackupError(`${label} has an invalid ID.`);
   if (!isDate(row.orderDate)) throw new BackupError(`${label} has an invalid order date.`);
@@ -77,6 +80,7 @@ function order(value: unknown, index: number, strict: boolean, version: 1 | 2 | 
     orderNo: row.orderNo === undefined ? '' : text(row.orderNo, `${label} number`),
     total: row.total === undefined ? '' : text(row.total, `${label} total`),
     ...(row.returnEvidenceUrl === undefined ? {} : {returnEvidenceUrl:row.returnEvidenceUrl as string}),
+    ...(row.deadlineRequirement === undefined ? {} : {deadlineRequirement:row.deadlineRequirement as Order['deadlineRequirement']}),
     orderDate: row.orderDate,
     ...(row.windowStartDate === undefined ? {} : { windowStartDate: row.windowStartDate }),
     ...(row.fixedDeadline === undefined ? {} : {fixedDeadline:row.fixedDeadline as string}),
@@ -88,7 +92,7 @@ function order(value: unknown, index: number, strict: boolean, version: 1 | 2 | 
   };
 }
 
-function orders(value: unknown, strict = true, version: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 7): Order[] {
+function orders(value: unknown, strict = true, version: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 = 8): Order[] {
   if (!Array.isArray(value) || value.length > MAX_BACKUP_ORDERS) throw new BackupError(`Expected at most ${MAX_BACKUP_ORDERS.toLocaleString('en-US')} saved orders.`);
   const seen = new Set<string>();
   return value.map((value, index) => {
@@ -105,8 +109,10 @@ function document(rows: Order[], exportedAt: string, trip?: TripPlan | null, pen
   // refuse them instead of silently reopening a finished purchase. Dated refund
   // credits use v6. Return document links use v7, so older readers must refuse
   // rather than silently discard the shopper's return handoff.
+  // The action required by a date uses v8 to retain shipment versus arrival meaning.
   return { schema: 'returnby.backup',
-    version: rows.some(row => row.returnEvidenceUrl !== undefined) || pending.some(row => !!row.fields.returnEvidenceUrl) ? 7
+    version: rows.some(row => row.deadlineRequirement !== undefined) || pending.some(row => !!row.fields.deadlineRequirement) ? 8
+      : rows.some(row => row.returnEvidenceUrl !== undefined) || pending.some(row => !!row.fields.returnEvidenceUrl) ? 7
       : rows.some(row => row.refundPayments !== undefined) ? 6 : rows.some(row => row.completionKind !== undefined) ? 5
       : tripLibrary?.trips.length ? 4 : pending.length ? 3
       : trip || rows.some(row => row.completedAt !== undefined) ? 2 : 1,
@@ -136,7 +142,7 @@ export function parseBackupDocument(input: string): {orders: Order[]; trip: Trip
   let parsed: unknown;
   try { parsed = JSON.parse(input); } catch { throw new BackupError('This file is not valid JSON. Choose a ReturnBy backup.'); }
   const doc = object(parsed, 'Backup');
-  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2 && doc.version !== 3 && doc.version !== 4 && doc.version !== 5 && doc.version !== 6 && doc.version !== 7)) throw new BackupError('This backup format or version is not supported.');
+  if (doc.schema !== 'returnby.backup' || (doc.version !== 1 && doc.version !== 2 && doc.version !== 3 && doc.version !== 4 && doc.version !== 5 && doc.version !== 6 && doc.version !== 7 && doc.version !== 8)) throw new BackupError('This backup format or version is not supported.');
   onlyKeys(doc, doc.version >= 4 ? ['schema', 'version', 'exportedAt', 'orders', 'trip', 'pending', 'tripLibrary']
     : doc.version === 3 ? ['schema', 'version', 'exportedAt', 'orders', 'trip', 'pending']
     : doc.version === 2 ? ['schema', 'version', 'exportedAt', 'orders', 'trip']
@@ -147,6 +153,7 @@ export function parseBackupDocument(input: string): {orders: Order[]; trip: Trip
   const trip = doc.trip === undefined ? null : parsePortableTrip(doc.trip);
   // A pre-release v3 lifecycle backup had no pending collection. Keep it
   // readable, alongside the published v3 pending-delivery documents.
+  if(doc.version<8 && Array.isArray(doc.pending) && doc.pending.some(row => row && row.fields && Object.prototype.hasOwnProperty.call(row.fields,'deadlineRequirement'))) throw new BackupError('Pending deadline requirements require backup version 8.');
   const pending = doc.version === 3 && doc.pending === undefined && rows.some(row => row.completedAt !== undefined)
     ? [] : doc.version >= 3 ? portablePending(doc.pending === undefined && doc.version >= 4 ? [] : doc.pending) : [];
   const tripLibrary = doc.version === 4 ? parseTripLibrary(doc.tripLibrary)

@@ -1,4 +1,5 @@
 import { dueDate } from './deadline';
+import { deadlinePhrase, type DeadlineRequirement } from './deadline-requirement';
 
 const DATE_PROMPT = 'Enter a valid order date to preview the return-by date.';
 const WINDOW_PROMPT = 'Enter a positive whole number of days to preview the return-by date.';
@@ -14,14 +15,14 @@ function isCalendarDate(value: string): boolean {
 }
 
 /** Preview only: the existing Save handler and date calculation keep their own semantics. */
-export function intakeDeadlineText(orderDate: string, windowDays: string, windowStartDate = ''): string {
+export function intakeDeadlineText(orderDate: string, windowDays: string, windowStartDate = '', requirement?: DeadlineRequirement): string {
   if (!isCalendarDate(orderDate)) return DATE_PROMPT;
   const days = Number(windowDays);
   if (!windowDays.trim() || !Number.isSafeInteger(days) || days < 1) return WINDOW_PROMPT;
   if (windowStartDate && !isCalendarDate(windowStartDate)) return 'Enter a valid confirmed return-clock start date, or leave it blank to count from the order date.';
   const due = dueDate(windowStartDate || orderDate, days);
   if (!isCalendarDate(due)) return RANGE_PROMPT;
-  return 'Calculated return-by date: ' + due + (windowStartDate ? ' · starts ' + windowStartDate + ' (confirmed by you)' : '');
+  return 'Calculated '+(requirement?deadlinePhrase(requirement).toLowerCase():'return-by')+' date: ' + due + (windowStartDate ? ' · starts ' + windowStartDate + ' (confirmed by you)' : '');
 }
 
 /** Bind once to the stable form; refresh after its fields are replaced by a new review. */
@@ -31,13 +32,14 @@ export function bindIntakeDeadline(form: HTMLFormElement): () => void {
     const date = form.querySelector<HTMLInputElement>('[name="orderDate"]');
     const days = form.querySelector<HTMLInputElement>('[name="windowDays"]');
     const clock = form.querySelector<HTMLInputElement>('[name="windowStartDate"]');
+    const requirement = form.querySelector<HTMLSelectElement>('[name="deadlineRequirement"]')?.value;
     if (!output || !date || !days) return;
-    const message = form.dataset?.deliveryReview === 'yes' && !clock?.value ? 'Deadline awaiting your confirmed delivery clock start. No reminder will be saved yet.' : intakeDeadlineText(date.validity.valid ? date.value : '', days.validity.valid ? days.value : '', clock && !clock.validity.valid ? 'invalid' : clock?.value ?? '');
+    const message = form.dataset?.deliveryReview === 'yes' && !clock?.value ? 'Deadline awaiting your confirmed delivery clock start. No reminder will be saved yet.' : intakeDeadlineText(date.validity.valid ? date.value : '', days.validity.valid ? days.value : '', clock && !clock.validity.valid ? 'invalid' : clock?.value ?? '', requirement && ['ship-by','drop-off-by','arrive-by'].includes(requirement) ? requirement as DeadlineRequirement : undefined);
     if (output.textContent !== message) output.textContent = message;
   };
   const changed = (event: Event) => {
     const name = (event.target as HTMLInputElement | null)?.name;
-    if (name === 'orderDate' || name === 'windowDays' || name === 'windowStartDate') refresh();
+    if (name === 'orderDate' || name === 'windowDays' || name === 'windowStartDate' || name === 'deadlineRequirement') refresh();
   };
   form.addEventListener('input', changed);
   form.addEventListener('change', changed);

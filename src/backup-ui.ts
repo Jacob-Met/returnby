@@ -1,3 +1,4 @@
+import {deadlinePhrase} from './deadline-requirement';
 import { bindTripLibraryRestore } from './trip-library-backup-ui';
 import { readTripLibrary, TripLibraryError, type TripLibrary } from './trip-library';
 import {readPending,writePending,planPendingRestore,type PendingPurchase} from './pending-delivery';
@@ -141,7 +142,7 @@ export function bindBackup(tracker: Tracker) {
       const source = o.windowSource === 'policy' ? 'saved store policy' : o.windowSource === 'default' ? 'saved fallback' : 'your saved rule';
       const lifecycle = o.completedAt === undefined ? 'Active' : `${completionLabel(o)} ${o.completedAt.slice(0, 10)}`;
       const changed = row.changedFields.map(field => field === 'completedAt' ? 'completion status/date' : field === 'completionKind' ? 'completion outcome' : field);
-      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ${lifecycle}; ordered ${o.orderDate}, ${o.completedAt === undefined ? 'return by' : 'original return-by'} ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})${changed.length ? `. Different fields: ${changed.join(', ')}.` : ''}`;
+      li.textContent = `${action}: ${o.merchant || 'Unknown store'}${o.orderNo ? ` #${o.orderNo}` : ''}${o.total ? ` · ${o.total}` : ''} — ${lifecycle}; ordered ${o.orderDate}, ${o.completedAt === undefined ? deadlinePhrase(o.deadlineRequirement).toLowerCase() : 'original ' + deadlinePhrase(o.deadlineRequirement).toLowerCase()} ${returnDueDate(o)} (${o.windowDays} days${o.windowStartDate ? ` from confirmed start ${o.windowStartDate}` : ''}; ${source})${changed.length ? `. Different fields: ${changed.join(', ')}.` : ''}`;
       if (row.current) {
         const comparison = document.createElement('div');
         comparison.className = 'backup-comparison';

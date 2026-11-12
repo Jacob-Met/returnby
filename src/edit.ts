@@ -2,12 +2,14 @@ import { dueDate } from './deadline';
 import { lookup } from './policy';
 import type { Order } from './store';
 import { validReturnEvidenceUrl } from './return-evidence';
+import { deadlinePhrase, validDeadlineRequirement, type DeadlineRequirement } from './deadline-requirement';
 
 export type EditDraft = {
   merchant: string;
   orderNo: string;
   total: string;
   returnEvidenceUrl?: string;
+  deadlineRequirement?: string;
   orderDate: string;
   windowStartDate?: string;
   fixedDeadline?: string;
@@ -28,6 +30,7 @@ export function editDraft(order: Order): EditDraft {
     orderNo: order.orderNo ?? '',
     total: order.total ?? '',
     returnEvidenceUrl: order.returnEvidenceUrl ?? '',
+    deadlineRequirement: order.deadlineRequirement ?? '',
     orderDate: order.orderDate,
     windowStartDate: order.windowStartDate ?? '',
     fixedDeadline: order.fixedDeadline ?? '',
@@ -49,6 +52,10 @@ export function previewEdit(original: Order, draft: EditDraft): { order: Order; 
   const returnEvidenceUrl = (draft.returnEvidenceUrl ?? '').trim();
   if (returnEvidenceUrl && !validReturnEvidenceUrl(returnEvidenceUrl)) {
     throw new EditError('Paste an HTTPS link to the return label, QR code or receipt (up to 2,048 characters).', 'returnEvidenceUrl');
+  }
+  const requirement = draft.deadlineRequirement?.trim() ?? '';
+  if (requirement && !validDeadlineRequirement(requirement)) {
+    throw new EditError('Choose what the retailer requires by the deadline.', 'deadlineRequirement');
   }
   if (!isCalendarDate(draft.orderDate)) {
     throw new EditError('Choose a valid order date with a year from 1000 to 9999.', 'orderDate');
@@ -90,6 +97,8 @@ export function previewEdit(original: Order, draft: EditDraft): { order: Order; 
   if (draft.total !== (original.total ?? '')) order.total = draft.total;
   if (returnEvidenceUrl) order.returnEvidenceUrl = returnEvidenceUrl;
   else delete order.returnEvidenceUrl;
+  if (requirement) order.deadlineRequirement = requirement as DeadlineRequirement;
+  else delete order.deadlineRequirement;
   return { order, due };
 }
 
@@ -111,7 +120,7 @@ export function planEdit(current: Order[], original: Order, draft: EditDraft) {
 }
 
 export function sourceDescription(order: Order): string {
-  if (order.fixedDeadline) return 'Confirmed return-by date · ' + order.fixedDeadline + '. Changing the clock keeps this deadline; entering days switches to a duration.';
+  if (order.fixedDeadline) return 'Confirmed ' + deadlinePhrase(order.deadlineRequirement).toLowerCase() + ' date · ' + order.fixedDeadline + '. Changing the clock keeps this deadline; entering days switches to a duration.';
   const clock = order.windowStartDate ? ' Clock begins ' + order.windowStartDate + ' (confirmed by you).' : ' Clock begins on the order date.';
   if (order.windowSource === 'policy') return `Local store rule · ${order.windowDays} days. Confirm with the retailer.${clock}`;
   if (order.windowSource === 'default') return `Saved fallback · ${order.windowDays} days. Confirm with the retailer.${clock}`;

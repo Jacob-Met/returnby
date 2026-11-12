@@ -2,26 +2,28 @@
 
 A local return desk for remembering purchase deadlines, preparing a return trip, and following an outstanding refund. Review the dates and store policy before saving. Your purchase records stay in your browser.
 
-## Current release 0.7.2 — local receipt photos
+## Current release 0.8.0 — purchase to return handoff
 
-**[Download packages and checksums](https://github.com/Jacob-Met/returnby/releases/tag/v0.7.2)** — read a printed receipt photo locally, review the suggested fields beside its source, and keep the current policy, trip and partial-refund workflow.
+**[Download ReturnBy 0.8.0 for your computer](https://github.com/Jacob-Met/returnby/releases/tag/v0.8.0)** — save a return label, QR code or receipt link with the purchase; decide whether the store requires you to ship, drop off or have the parcel received by the deadline; take both into the actual trip plan.
 
-[Linux amd64](https://github.com/Jacob-Met/returnby/releases/download/v0.7.2/ReturnBy-v0.7.2-linux-amd64.tar.gz) · [macOS Intel](https://github.com/Jacob-Met/returnby/releases/download/v0.7.2/ReturnBy-v0.7.2-darwin-amd64.zip) · [macOS Apple Silicon](https://github.com/Jacob-Met/returnby/releases/download/v0.7.2/ReturnBy-v0.7.2-darwin-arm64.zip) · [Windows amd64](https://github.com/Jacob-Met/returnby/releases/download/v0.7.2/ReturnBy-v0.7.2-windows-amd64.zip) · [Python 3 browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/v0.7.2/ReturnBy-v0.7.2-browser.zip)
+A general return-by date remains the default for older purchases. ReturnBy never guesses whether a date means shipment or merchant receipt. Choose the requirement from the retailer's instructions. A merchant-receipt deadline needs transit time before the displayed date, not a last-day postmark.
 
-Extract the matching native archive and run ReturnBy or its included launcher. The runtime, app and English OCR reader are bundled. Keep the same browser profile and http://127.0.0.1:8769 address to retain saved work. Linux amd64 was executed; macOS/Windows are cross-built and unsigned, with no platform execution claim.
+[Linux amd64](https://github.com/Jacob-Met/returnby/releases/download/v0.8.0/ReturnBy-v0.8.0-linux-amd64.tar.gz) · [macOS Intel](https://github.com/Jacob-Met/returnby/releases/download/v0.8.0/ReturnBy-v0.8.0-darwin-amd64.zip) · [macOS Apple Silicon](https://github.com/Jacob-Met/returnby/releases/download/v0.8.0/ReturnBy-v0.8.0-darwin-arm64.zip) · [Windows amd64](https://github.com/Jacob-Met/returnby/releases/download/v0.8.0/ReturnBy-v0.8.0-windows-amd64.zip) · [Python 3 browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/v0.8.0/ReturnBy-v0.8.0-browser.zip)
 
-[Watch the actual 21-second receipt workflow](https://github.com/Jacob-Met/returnby/releases/download/v0.7.2/ReturnBy-receipt-photo.mp4) — captioned and silent, using a clearly labelled fictional receipt in the bundled app. [Photo intake details and limits](docs/RECEIPT_PHOTOS.md).
+Extract the native archive and run ReturnBy or the included launcher. The runtime, app and English OCR reader are bundled. Keep the same browser profile and http://127.0.0.1:8769 address to retain purchases and trips. The Linux build is exercised; macOS and Windows packages are crosscompiled and unsigned.
 
-![Actual desktop photo review](https://github.com/Jacob-Met/returnby/releases/download/v0.7.2/receipt-review-desktop.png)
+[Watch the earlier receipt-photo walkthrough](https://github.com/Jacob-Met/returnby/releases/download/v0.7.2/ReturnBy-receipt-photo.mp4) — a captioned, silent walkthrough with a fictional receipt. The current version still reads receipt photos locally. [Photo intake details](docs/RECEIPT_PHOTOS.md).
 
-The exact [9165d8f source](https://github.com/Jacob-Met/returnby/commit/9165d8fcea612875dea6c2a16474413b02f4e717) includes conditional receipt-policy review, dated refund credits and the compact refund editor, purchase History, named trips and calendar exports. Photos suggest purchase facts; they do not verify a store's policy. Check the source and choose the applicable return window before saving.
+The release includes local photo review, dated partial-refund credits, purchase History, named return trips and calendar exports. It now carries the return document link and precise deadline action from the saved purchase into the editable and printable packing plan, downloaded backups, CSV and calendar reminders.
+
+![Actual return-trip packing screen](https://github.com/Jacob-Met/returnby/releases/download/v0.8.0/ReturnBy-return-trip-phone.png)
 
 ## Your next return
 
 - **Return to saved work.** On a phone, existing purchases lead the desk. **Add purchase** opens intake; returning to the list keeps your current review. Saving takes you to the purchase you just added.
 - **Add a purchase.** Read a JPG, PNG or WebP receipt photo, enter details manually, paste a confirmation, or review exported text/HTML email. Correct the proposed store, date and return window before saving. Dates such as 05/11/2026 require a choice when both day/month interpretations are valid.
-- **Wait for delivery.** Keep reviewed delivery-based purchases pending until you can confirm their return-clock start. Expand the pending count to choose a purchase; confirming one leaves the others intact.
-- **Find and act.** Search saved purchases, see upcoming deadlines, export calendar reminders, and prepare an editable return-trip checklist. Save named copies for different errands and reopen their dates, selections and packing notes. CSV export below the saved list includes every saved purchase, even when the list is filtered.
+- **Wait for delivery.** Keep reviewed delivery-based purchases pending until you can confirm their return-clock start. The return document link and retailer action requirement survive this wait. Confirming one purchase leaves the others intact.
+- **Find and act.** Search saved purchases, see whether to ship, drop off or allow time for merchant receipt, open the saved label or QR link, export calendar reminders, and prepare an editable trip checklist. Save named trips for errands; reopening checks current order facts. CSV export includes every saved purchase.
 - **Check a refund.** Keep a simple expected amount and follow-up note, or choose **Track partial payments** to record dated credits, their references and the amount still owed. Correct or remove a credit before saving. A zero balance still requires you to mark the refund received after checking for yourself. Refund tracking does not close the purchase deadline.
 - **Keep a copy.** Download a JSON backup for recovery or transfer. Review saved purchases, pending purchases and the working trip and named copies separately before restoring them.
 
@@ -31,19 +33,17 @@ A confirmed fixed return-by date remains distinct from a day-window policy. Revi
 
 ## What stays local
 
-There is no inbox connection, upload or account synchronization. Saved purchases, refund notes, reviewed pending purchases and trip work use this browser's storage. Original email text is not retained in saved purchases or backups. Receipt images and raw OCR stay only on the open page; reload clears them while unfinished reviewed fields recover in the same tab. Saved purchases do not retain a receipt archive. Clearing browser data can remove saved work.
+There is no inbox connection, upload or account synchronization. Saved purchases, refund notes, reviewed pending purchases and trip work use this browser's storage. Original email text is not retained in saved purchases or backups. Receipt images and raw OCR stay only on the open page; reload clears them while unfinished reviewed fields recover in the same tab. Saved purchases do not retain a photo archive. A saved HTTPS return-document link opens the merchant-hosted source; it may require a sign-in or expire. Bring a separate paper or offline receipt when needed. Clearing browser data can remove saved work.
 
-Backups are unencrypted and can contain purchase details, refund notes, reviewed pending fields and private packing notes. Keep them private. Current source writes backup version 6 when dated refund payments are present, version 5 for explicit finished-return outcomes, and older versions for simpler records. Versions 1–5 remain readable. Older releases refuse a version they cannot preserve; use a current build to restore payment history. Some unfinished input is local to its original browser or tab rather than part of the portable backup.
+Backups are unencrypted and may contain purchase details, return links, action deadlines, refund records and private trip notes. Keep them private. The current app writes backup version 8 when a shipment, drop-off or merchant-receipt requirement is saved; version 7 for return links; and earlier formats when applicable. Versions 1–7 remain readable. Older releases cannot safely read version 8; upgrade before restoring or transferring such backups.
 
 ReturnBy records your decisions. It does not arrange pickup, verify retailer eligibility, contact a merchant or confirm bank receipt.
 
-## Actual release verification
+## Current build and limits
 
-Source 9165d8f passed 707 tests across 52 files, TypeScript and production build. The bundled Linux executable ran with PATH=/nonexistent. Actual Chrome and the included Tesseract worker exercised photo reading, reviewed saving, same-tab draft recovery, cancellation and replacement after an exact deadline. A separate actual browser course preserved split credits, correction/removal, explicit completion and a downloaded backup restored in a fresh browser. No external requests were observed in the photo course.
+The 0.8.0 source passed 722 automated tests across 54 files, TypeScript compilation and a production Vite build. The built app was used in Chrome at 390px and 1440px through a purchase, pending delivery, a changed deadline action, editing, a downloaded version-8 backup, printable return trip and manual merchant-receipt deadline. The Linux package is exercised separately before publishing; macOS and Windows archives are crosscompiled and unsigned.
 
-Earlier independent unfamiliar synthetic and untouched crumpled-photo courses led to concrete merchant/total/review-warning improvements. Forge separately reviewed recovery, raw-image/text exclusion, deadline replacement and conditional terms on desktop/phone. Forge also independently accepted the final cumulative source after a photo-to-purchase-to-partial-refund course and actual 390px editor inspection. The photo omitted an optional receipt number in that sample; the reviewer corrected it explicitly. Independent reviewer astra-moraine-8f4c downloaded the actual published Linux archive, verified its exact 15,466,305 bytes, checksum, version and source, and ran the included executable with PATH=/nonexistent. It served HTTP 200; real Chrome at 390px loaded the receipt-photo entrance and image input with no horizontal overflow. The first browser harness failed before an app assertion because an ephemeral debugging port was not discovered; the corrected explicit-port course passed. This receiving check does not repeat or extend the OCR accuracy or refund interaction claims above.
-
-Linux archive SHA256: `c8d005bd825d5da56be717429847142038295f3a6098ce7d6886609378d63c3a`. All platform checksums accompany the release. Remaining photo gaps are faint/perspective-distorted printing, more languages/formats, and an explicit receipt archive. Source zoom supports correction; it is not an OCR accuracy guarantee.
+ReturnBy keeps the shopper's decisions and dates, not verified merchant policies or bank transfers. It does not arrange a shipment or pickup. Its saved link is not a locally archived QR image; bring a separate copy when the retailer requires it.
 
 ## Earlier source-pinned work
 

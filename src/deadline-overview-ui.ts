@@ -1,3 +1,4 @@
+import {deadlinePhrase} from './deadline-requirement';
 import { todayISO } from './deadline';
 import {
   buildDeadlineOverview, OVERVIEW_PAGE_SIZE, shiftOverviewMonth,
@@ -89,7 +90,7 @@ export function bindDeadlineOverview({
         ['windowDays', 'Return window (days)', row.order.windowDays],
         ['windowSource', 'Saved window source', row.order.windowSource],
         ['createdAt', 'Saved creation time', row.order.createdAt],
-        ['due', 'Return by', row.due],
+        ['due', deadlinePhrase(row.order.deadlineRequirement), row.due],
       ];
       const details = document.createElement('dl');
       for (const [key, label, value] of values) {
