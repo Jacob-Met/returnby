@@ -28,6 +28,32 @@ const empty = el<HTMLDivElement>('empty-preview');
 const notice = el<HTMLDivElement>('trip-notice');
 const readMessage = el<HTMLParagraphElement>('read-message');
 const packing = el<HTMLDivElement>('packing-planner');
+const packingWorkspace = el<HTMLDivElement>('packing-workspace');
+const mobilePackingSlot = el<HTMLDivElement>('mobile-packing-slot');
+const searchPanel = document.querySelector<HTMLElement>('.trip-search')!;
+const selectionActions = document.querySelector<HTMLElement>('.trip-selection-actions')!;
+const packingJump = el<HTMLAnchorElement>('pack-selected');
+const compactTrip = window.matchMedia('(max-width: 820px)');
+// The same editable controls move beside the trip selection on small screens;
+// there is never a second packing form or a second source of saved checks.
+function placePacking(): void {
+  const focused = document.activeElement;
+  if (compactTrip.matches) {
+    mobilePackingSlot.append(packingWorkspace);
+    if (!form.hidden) mobilePackingSlot.after(readMessage, searchPanel);
+    else { form.before(readMessage); mobilePackingSlot.after(searchPanel); }
+  } else {
+    previewButton.before(packingWorkspace);
+    form.before(readMessage);
+    selectionActions.before(searchPanel);
+  }
+  packingJump.href = compactTrip.matches ? '#trip-search' : '#packing-title';
+  packingJump.firstChild!.textContent = compactTrip.matches ? 'Add or change orders ' : 'Continue packing ';
+  packingJump.classList.toggle('mobile-edit-orders', compactTrip.matches);
+  packingWorkspace.hidden = compactTrip.matches && selected.size === 0;
+  if (focused instanceof HTMLElement && packingWorkspace.contains(focused)) focused.focus({preventScroll: true});
+}
+compactTrip.addEventListener('change', placePacking);
 const planStatus = el<HTMLParagraphElement>('plan-status');
 const retrySave = el<HTMLButtonElement>('retry-trip-save');
 const reloadPlan = el<HTMLButtonElement>('reload-trip');
@@ -147,6 +173,7 @@ function selectionChanged(save = true): void {
   el<HTMLAnchorElement>('pack-selected').hidden = selected.size === 0;
   retirePreview();
   renderPacking();
+  placePacking();
   if (save) persist();
   refreshDeadlineHandoff();
 }
@@ -163,13 +190,9 @@ function renderPacking(): void {
     ref.className = 'packing-reference';
     ref.textContent = (order.orderNo ? '#' + order.orderNo + ' · ' : '') + deadlinePhrase(order.deadlineRequirement) + ' ' + returnDueDate(order);
     section.append(title, ref);
-    const paper = document.createElement('button');
-    paper.type = 'button';
-    paper.className = 'receipt-proof-trip-open';
-    paper.textContent = 'Show paper receipt photo';
-    paper.addEventListener('click', () => { void openReceiptProof(order); });
-    section.append(paper);
     if(order.deadlineRequirement){const caution=document.createElement('p');caution.className='packing-reference';caution.textContent=deadlineCaution(order.deadlineRequirement);section.append(caution);}
+    const documents = document.createElement('div');
+    documents.className = 'packing-documents';
     if (order.returnEvidenceUrl) {
       const link = document.createElement('a');
       link.href = order.returnEvidenceUrl;
@@ -177,13 +200,20 @@ function renderPacking(): void {
       link.rel = 'noopener noreferrer';
       link.textContent = 'Open saved return label, QR or receipt';
       link.className = 'packing-evidence-link';
-      section.append(link);
+      documents.append(link);
     } else {
       const missing = document.createElement('p');
       missing.className = 'packing-reference';
       missing.textContent = 'Return document not saved — check the merchant instructions before leaving.';
-      section.append(missing);
+      documents.append(missing);
     }
+    const paper = document.createElement('button');
+    paper.type = 'button';
+    paper.className = 'receipt-proof-trip-open';
+    paper.textContent = 'Show paper receipt photo';
+    paper.addEventListener('click', () => { void openReceiptProof(order); });
+    documents.append(paper);
+    section.append(documents);
     if (isSupportedDate(tripDate.value)) {
       const timing = document.createElement('p');
       const due = returnDueDate(order);
@@ -315,6 +345,7 @@ function refresh(): void {
     readMessage.textContent = error instanceof Error ? error.message : 'Saved orders could not be read. Refresh and try again.';
     readMessage.classList.add('error');
     packing.replaceChildren();
+    placePacking();
   }
   refreshDeadlineHandoff();
 }
@@ -325,7 +356,7 @@ function loadPlan(): void {
     planRaw = saved.raw;
     planReadable = true;
     unsaved = false;
-    planMessage(saved.plan ? 'Your trip is restored. Packing checks and notes are ready to continue.' : 'Choose orders for a trip. Your plan will be saved on this device.');
+    planMessage(saved.plan ? 'Saved trip reopened. Continue packing.' : 'Choose a return to start a trip.');
     retrySave.hidden = true; reloadPlan.hidden = true; keepPlan.hidden = true;
   } catch (error) {
     planReadable = false;
@@ -426,6 +457,7 @@ refreshDeadlineHandoff = bindTripDeadlineHandoff({
   },
 });
 loadPlan();
+placePacking();
 
 bindTripLibrary({
   current: () => plan,

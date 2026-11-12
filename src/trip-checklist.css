@@ -97,3 +97,42 @@ textarea:focus-visible{outline:3px solid #be681f;outline-offset:3px}
 #clear-selection{font-size:12px;min-height:44px;text-align:right}
 .trip-selection-actions .packing-jump{margin-top:6px}
 .search-empty{margin:8px 0 0;border-left:3px solid #8a9d78;padding:12px 14px;background:#edf0e5;font-size:14px;line-height:1.6;color:#3d543a}
+
+/* On short phones, return preparation follows the chosen trip, not a long
+   stack of unchosen orders. The same controls return to the right desktop pane. */
+@media(max-width:820px){
+  #mobile-packing-slot:not(:empty){margin:0 0 18px}
+  #mobile-packing-slot #packing-workspace:not([hidden]){
+    border-top:2px solid #466344;
+    border-bottom:1px solid var(--line);
+    padding:14px 0 18px;
+  }
+  #mobile-packing-slot .packing-heading{margin:0 0 8px}
+  #mobile-packing-slot .packing-heading h2{font-size:24px}
+  #mobile-packing-slot .packing-order{padding:15px 0}
+  #mobile-packing-slot .packing-order h3{font-size:21px}
+  #mobile-packing-slot .packing-order:first-child{border-top:0}
+}
+
+.packing-documents{display:grid;gap:8px;justify-items:start;margin:13px 0 10px}
+.packing-documents .packing-evidence-link{display:inline-flex;align-items:center;min-height:44px;max-width:100%;background:#e4eddf;border-left:3px solid var(--green);padding:9px 12px;line-height:1.45}
+.packing-documents .receipt-proof-trip-open{display:inline-block;min-height:40px}
+@media(max-width:820px){
+  .trip-selection-actions .mobile-edit-orders{min-height:40px;width:auto;display:inline-flex;align-items:center;gap:16px;margin:0;background:transparent;border:0;padding:5px 0;color:var(--green);font-size:12px;text-decoration:underline;text-underline-offset:3px}
+  .trip-selection-actions .mobile-edit-orders:hover{background:transparent;color:#182e24}
+}
+
+@media(max-width:820px){
+  .trip-heading{padding:18px 0 10px}
+  .trip-heading>.back-link{margin-bottom:12px}
+  .trip-heading h1{font-size:28px}
+  .trip-heading .plan-status{margin-top:7px}
+  .trip-library{margin:8px 0 18px}
+  .trip-library>summary{font-size:14px}
+  .planner>.section-heading h2{font-size:24px;margin-bottom:12px}
+  .planner>#refresh-orders{margin-bottom:9px}
+  .planner .field-note{margin:6px 0 16px}
+  .planner #read-message{margin:7px 0 4px}
+}
+
+@media(max-width:820px){#mobile-packing-slot .packing-heading p{display:none}}
