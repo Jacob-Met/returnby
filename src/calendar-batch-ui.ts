@@ -1,4 +1,5 @@
 import { CalendarBatchError, CalendarAlertExpiredError, calendarRows, initialCalendarSelection, planCalendarBatch, type CalendarFilter, type CalendarRow } from './calendar-batch';
+import { deadlinePhrase } from './deadline-requirement';
 import { DEFAULT_ALERT_SETTINGS, describeCalendarAlert, localCalendarDate, planCalendarAlert, type CalendarAlertSettings } from './calendar-alert';
 import type { Order } from './store';
 
@@ -88,7 +89,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
       name.textContent = `${row.order.merchant || 'Unknown store'}${row.order.orderNo ? ` #${row.order.orderNo}` : ''}`;
       const detail = document.createElement('span');
       detail.className = row.problem ? 'calendar-invalid' : 'calendar-due';
-      detail.textContent = row.problem ?? `Return by ${row.due} · clock starts ${row.order.windowStartDate || row.order.orderDate}${row.order.windowStartDate ? ' (confirmed by you)' : ' (order date)'}`;
+      detail.textContent = row.problem ?? `${deadlinePhrase(row.order.deadlineRequirement)} ${row.due} · clock starts ${row.order.windowStartDate || row.order.orderDate}${row.order.windowStartDate ? ' (confirmed by you)' : ' (order date)'}`;
       text.append(name, detail);
       if (!row.problem) {
         const timing = document.createElement('span');

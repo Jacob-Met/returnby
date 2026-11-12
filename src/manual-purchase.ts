@@ -2,6 +2,7 @@ import { bindManualDraftRecovery } from './manual-draft-recovery';
 import { reviewDuplicateIntake } from './duplicate-intake';
 import { previewEdit, EditError, type EditDraft } from './edit';
 import type { Order } from './store';
+import { deadlinePhrase } from './deadline-requirement';
 
 export function manualPurchase(draft: EditDraft, id: string, createdAt: string) {
   if (!draft.merchant.trim()) throw new EditError('Enter the store name from your receipt.', 'merchant');
@@ -17,10 +18,10 @@ export function bindManualPurchase(options: { read: () => Order[] | null; commit
   const form = document.querySelector<HTMLFormElement>('#manual-form')!;
   const error = document.querySelector<HTMLParagraphElement>('#manual-error')!;
   const deadline = document.querySelector<HTMLParagraphElement>('#manual-deadline')!;
-  const draft = (): EditDraft => Object.fromEntries(['merchant', 'orderDate', 'windowStartDate', 'fixedDeadline', 'windowDays', 'orderNo', 'total', 'returnEvidenceUrl'].map(name => [name, String(new FormData(form).get(name) ?? '')])) as EditDraft;
+  const draft = (): EditDraft => Object.fromEntries(['merchant', 'orderDate', 'windowStartDate', 'fixedDeadline', 'windowDays', 'orderNo', 'total', 'returnEvidenceUrl', 'deadlineRequirement'].map(name => [name, String(new FormData(form).get(name) ?? '')])) as EditDraft;
   const refresh = () => {
     error.hidden = true;
-    try { deadline.textContent = 'Return by ' + manualPurchase(draft(), 'preview', '2000-01-01T00:00:00Z').due; }
+    try { const review=manualPurchase(draft(), 'preview', '2000-01-01T00:00:00Z'); deadline.textContent=deadlinePhrase(review.order.deadlineRequirement)+' '+review.due; }
     catch { deadline.textContent = 'Enter a store, valid purchase date and whole-day return window to calculate the deadline.'; }
   };
   const recovery = bindManualDraftRecovery(form, open, refresh);
@@ -37,7 +38,7 @@ export function bindManualPurchase(options: { read: () => Order[] | null; commit
       if (!options.commit([...current, result.order])) throw new Error("The purchase wasn't saved. Your draft is still here; check browser storage and try again.");
       recovery.clear(); form.reset(); refresh(); dialog.close();
       const feedback = document.querySelector('#edit-feedback');
-      if (feedback) feedback.textContent = result.order.merchant + ' saved. Return by ' + result.due + '.';
+      if (feedback) feedback.textContent = result.order.merchant + ' saved. ' + deadlinePhrase(result.order.deadlineRequirement) + ' ' + result.due + '.';
       options.onSaved?.(result.order);
     } catch (cause) {
       error.textContent = cause instanceof Error ? cause.message : 'The purchase could not be saved.';

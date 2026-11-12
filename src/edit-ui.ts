@@ -1,4 +1,5 @@
 import { returnDueDate } from './deadline';
+import { deadlinePhrase } from './deadline-requirement';
 import { editDraft, EditConflict, EditError, planEdit, previewEdit, sourceDescription, type EditDraft } from './edit';
 import type { Order } from './store';
 
@@ -17,8 +18,8 @@ export function bindOrderEditor(options: EditorOptions) {
   const proposed = get<HTMLOutputElement>('edit-proposed-deadline');
   const source = get<HTMLParagraphElement>('edit-source');
   const save = get<HTMLButtonElement>('edit-save');
-  const fields: Record<keyof EditDraft, HTMLInputElement> = {
-    fixedDeadline: get('edit-fixed-deadline'), merchant: get('edit-merchant'), orderNo: get('edit-order-no'), total: get('edit-total'), returnEvidenceUrl: get('edit-return-evidence-url'),
+  const fields: Record<keyof EditDraft, HTMLInputElement | HTMLSelectElement> = {
+    fixedDeadline: get('edit-fixed-deadline'), merchant: get('edit-merchant'), orderNo: get('edit-order-no'), total: get('edit-total'), returnEvidenceUrl: get('edit-return-evidence-url'), deadlineRequirement: get<HTMLSelectElement>('edit-deadline-requirement'),
     orderDate: get('edit-order-date'), windowStartDate: get('edit-window-start-date'), windowDays: get('edit-window-days'),
   };
   let original: Order | null = null;
@@ -68,7 +69,7 @@ export function bindOrderEditor(options: EditorOptions) {
         return;
       }
       get('edit-feedback').textContent = plan.changed
-        ? `Saved changes for ${plan.order.merchant || 'Unknown store'}. Return by ${plan.due}.`
+        ? `Saved changes for ${plan.order.merchant || 'Unknown store'}. ${deadlinePhrase(plan.order.deadlineRequirement)} ${plan.due}.`
         : 'No changes to save.';
       dialog.close();
     } catch (error) {

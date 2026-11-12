@@ -30,8 +30,8 @@ export function planResolvedImport(current: unknown, incoming: unknown, choices:
 export type ResolvedImportPlan = ReturnType<typeof planResolvedImport>;
 
 const labels: Record<string,string> = {
-  fixedDeadline: 'Confirmed return-by date', completionKind: 'Return outcome', completedAt: 'Outcome recorded',
-  merchant: 'Store', orderNo: 'Order number', total: 'Purchase total', returnEvidenceUrl: 'Return document link',
+  fixedDeadline: 'Confirmed deadline date', completionKind: 'Return outcome', completedAt: 'Outcome recorded',
+  merchant: 'Store', orderNo: 'Order number', total: 'Purchase total', returnEvidenceUrl: 'Return document link', deadlineRequirement: 'Retailer deadline requirement',
   orderDate: 'Purchase date', windowStartDate: 'Confirmed return clock starts',
   windowDays: 'Return window (days)', windowSource: 'Return rule source',
   createdAt: 'Purchase record created', refundState: 'Refund status',

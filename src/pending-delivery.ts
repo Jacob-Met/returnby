@@ -1,8 +1,9 @@
 import { validReturnEvidenceUrl } from './return-evidence';
+import { validDeadlineRequirement } from './deadline-requirement';
 export type PendingPurchase = { id:string; updatedAt:string|null; fields:Record<string,string> };
 export const PENDING_KEY='returnby.pending-deliveries';
 const LEGACY='returnby.pending-delivery';
-const KEYS=['merchant','orderDate','orderNo','total','windowStartDate','windowDays','returnEvidenceUrl'];
+const KEYS=['merchant','orderDate','orderNo','total','windowStartDate','windowDays','returnEvidenceUrl','deadlineRequirement'];
 type StoragePort=Pick<Storage,'getItem'|'setItem'|'removeItem'>;
 export function portablePending(input:unknown):PendingPurchase[] {
  if(!Array.isArray(input)||input.length>100)throw Error('Keep at most 100 purchases pending delivery.');
@@ -12,7 +13,7 @@ export function portablePending(input:unknown):PendingPurchase[] {
   ids.add(value.id);
   if(!value.fields||typeof value.fields!=='object'||Array.isArray(value.fields))throw Error('Pending purchase details are invalid.');
   const fields:Record<string,string>={};
-  for(const key of KEYS){const v=value.fields[key]??'';if(typeof v!=='string'||v.length>(key==='returnEvidenceUrl'?2048:4096))throw Error('Pending purchase details are too long.');if(key==='returnEvidenceUrl'){if(v&&!validReturnEvidenceUrl(v))throw Error('Pending return document must be an HTTPS link.');if(!v)continue;}fields[key]=v;}
+  for(const key of KEYS){const v=value.fields[key]??'';if(typeof v!=='string'||v.length>(key==='returnEvidenceUrl'?2048:4096))throw Error('Pending purchase details are too long.');if(key==='returnEvidenceUrl'){if(v&&!validReturnEvidenceUrl(v))throw Error('Pending return document must be an HTTPS link.');if(!v)continue;}if(key==='deadlineRequirement'){if(v&&!validDeadlineRequirement(v))throw Error('Choose what the retailer requires by the deadline.');if(!v)continue;}fields[key]=v;}
   return {id:value.id,updatedAt:value.updatedAt,fields};
  });
 }

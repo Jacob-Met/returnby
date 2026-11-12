@@ -298,6 +298,7 @@
 </label>
       <label for="edit-return-evidence-url">Return label, QR or receipt link (optional)<input id="edit-return-evidence-url" name="returnEvidenceUrl" type="url" maxlength="2048" inputmode="url" autocomplete="off" placeholder="https://merchant.example/return">
 </label>
+      <label for="edit-deadline-requirement">What must happen by the deadline?<select id="edit-deadline-requirement" name="deadlineRequirement"><option value="">Return by (general)</option><option value="ship-by">Ship by (carrier handoff)</option><option value="drop-off-by">Drop off by (store or collection point)</option><option value="arrive-by">Merchant must receive by (allow transit time)</option></select></label>
     </div>
     <dl class="edit-dates">
       <div>
@@ -421,6 +422,7 @@
 </label>
       <label>Return label, QR or receipt link (optional)<input name="returnEvidenceUrl" type="url" inputmode="url" maxlength="2048" autocomplete="off" placeholder="https://merchant.example/return">
 </label>
+      <label>What must happen by the deadline?<select name="deadlineRequirement"><option value="">Return by (general)</option><option value="ship-by">Ship by (carrier handoff)</option><option value="drop-off-by">Drop off by (store or collection point)</option><option value="arrive-by">Merchant must receive by (allow transit time)</option></select></label>
       <label>Total (optional)<input name="total" maxlength="4096" placeholder="For example, £42.50">
 </label>
       <p id="manual-deadline" class="edit-calendar-note" role="status" aria-live="polite">Enter a store, purchase date and return window to calculate the deadline.</p>

@@ -2,6 +2,7 @@ import { bindTripLibrary } from './trip-library-ui';
 import { bindTripDeadlineHandoff } from './trip-deadline-handoff-ui';
 import './trip-checklist.css';
 import { returnDueDate } from './deadline';
+import {deadlinePhrase,deadlineCaution} from './deadline-requirement';
 import { isCompleted } from './completion';
 import {
   assertSnapshotCurrent, buildChecklistHtml, CHECKLIST_SHEET_CSS, createChecklist,
@@ -159,8 +160,9 @@ function renderPacking(): void {
     title.textContent = order.merchant || 'Unnamed store';
     const ref = document.createElement('p');
     ref.className = 'packing-reference';
-    ref.textContent = (order.orderNo ? '#' + order.orderNo + ' · ' : '') + 'Return by ' + returnDueDate(order);
+    ref.textContent = (order.orderNo ? '#' + order.orderNo + ' · ' : '') + deadlinePhrase(order.deadlineRequirement) + ' ' + returnDueDate(order);
     section.append(title, ref);
+    if(order.deadlineRequirement){const caution=document.createElement('p');caution.className='packing-reference';caution.textContent=deadlineCaution(order.deadlineRequirement);section.append(caution);}
     if (order.returnEvidenceUrl) {
       const link = document.createElement('a');
       link.href = order.returnEvidenceUrl;
@@ -258,7 +260,7 @@ function addOrderOption(order: SavedSnapshot['orders'][number]): void {
   ref.textContent = 'Order ' + (order.orderNo || 'number not recorded') + (order.total ? ' · ' + order.total : '');
   const date = document.createElement('span');
   date.className = 'choice-date';
-  date.textContent = (order.fixedDeadline ? 'Confirmed fixed deadline · ' : 'Calculated deadline · ') + returnDueDate(order);
+  date.textContent = (order.fixedDeadline ? 'Confirmed ' : 'Calculated ') + deadlinePhrase(order.deadlineRequirement).toLowerCase() + ' · ' + returnDueDate(order);
   const source = document.createElement('span');
   source.className = 'choice-source';
   source.textContent = order.fixedDeadline ? 'Exact date confirmed by you' : sourceLabel(order.windowSource) + ' · ' + order.windowDays + ' days';

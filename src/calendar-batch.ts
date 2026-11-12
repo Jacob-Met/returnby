@@ -1,5 +1,6 @@
 import { daysLeft, dueDate, returnDueDate, todayISO } from './deadline';
 import { buildIcsCalendar, type CalendarReminder } from './ics';
+import { deadlineCalendarTitle } from './deadline-requirement';
 import type { Order } from './store';
 import { isCompleted } from './completion';
 import { DEFAULT_ALERT_SETTINGS, localCalendarDate, planCalendarAlert, type CalendarAlertSettings } from './calendar-alert';
@@ -53,7 +54,7 @@ function reminder(order: Order): CalendarReminder {
     throw new CalendarBatchError('The calendar deadline must be before 9999-12-31.');
   }
   if (order.fixedDeadline !== undefined && order.fixedDeadline !== due) throw new CalendarBatchError('Review the fixed deadline before exporting this return.');
-  return { ...(order.fixedDeadline ? {fixedDeadline:order.fixedDeadline} : {}), id: order.id, merchant: order.merchant, orderNo: order.orderNo, due, ...(order.windowStartDate ? {confirmedStartDate: order.windowStartDate} : {}) };
+  return { ...(order.fixedDeadline ? {fixedDeadline:order.fixedDeadline} : {}), ...(order.deadlineRequirement ? {deadlineRequirement:order.deadlineRequirement} : {}), id: order.id, merchant: order.merchant, orderNo: order.orderNo, due, ...(order.windowStartDate ? {confirmedStartDate: order.windowStartDate} : {}) };
 }
 
 /** Freeze the reviewed fields. Invalid records remain visible but unselectable. */
@@ -81,7 +82,7 @@ export function initialCalendarSelection(rows: readonly CalendarRow[], filter: C
 }
 
 const fingerprint = (order: Order) => JSON.stringify([
-  order.id, order.merchant, order.orderNo ?? '', order.orderDate, order.windowStartDate ?? '', order.windowDays,
+  order.id, order.merchant, order.orderNo ?? '', order.orderDate, order.windowStartDate ?? '', order.windowDays, order.deadlineRequirement ?? '',
 ]);
 
 /** Recheck exactly the selected returns against storage before producing bytes. */
@@ -114,7 +115,7 @@ export function planCalendarBatch(
   // folding cannot shorten these UTF-8 values, so reject a clearly oversized
   // selection before the serializer performs its per-character folding.
   const minimumBytes = reminders.reduce((bytes, value) => bytes + encoder.encode(value.id).byteLength
-    + 2 * encoder.encode(`Return deadline: ${value.merchant || 'order'}${value.orderNo ? ' #' + value.orderNo : ''}`).byteLength, 0);
+    + 2 * encoder.encode(`${deadlineCalendarTitle(value.deadlineRequirement)}: ${value.merchant || 'order'}${value.orderNo ? ' #' + value.orderNo : ''}`).byteLength, 0);
   if (minimumBytes > MAX_CALENDAR_BYTES) throw sizeError();
   const content = buildIcsCalendar(reminders, stamp);
   if (encoder.encode(content).byteLength > MAX_CALENDAR_BYTES) throw sizeError();

@@ -27,7 +27,7 @@ export class TripPlanError extends Error {
 }
 export const emptyTripPlan = (tripDate = todayISO()): TripPlan => ({ version: 1, tripDate, orders: [] });
 export function orderSignature(order: Readonly<Order>): string {
-  return JSON.stringify([order.merchant, order.orderNo || '', order.orderDate, order.windowStartDate || '', order.fixedDeadline || '', order.windowDays, order.windowSource, order.createdAt]);
+  return JSON.stringify([order.merchant, order.orderNo || '', order.orderDate, order.windowStartDate || '', order.fixedDeadline || '', order.windowDays, order.windowSource, order.deadlineRequirement || '', order.returnEvidenceUrl || '', order.createdAt]);
 }
 export function planOrder(order: Readonly<Order>): PlannedOrder {
   return {
