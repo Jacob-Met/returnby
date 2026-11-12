@@ -1,4 +1,5 @@
 import { dueDate } from './deadline';
+import { findDates } from './parse';
 
 function validDate(value: string): boolean {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || Number(value.slice(0, 4)) < 1000) return false;
@@ -14,6 +15,25 @@ export function windowDaysFromDeadline(start: string, deadline: string): number 
   if (!Number.isSafeInteger(days) || days < 1) throw new Error('The return-by date must be after the clock start. Check both dates.');
   if (dueDate(start, days) !== deadline) throw new Error('This date could not be represented in the saved return window. Check the dates.');
   return days;
+}
+
+/** A receipt date is a *suggestion*, not retailer verification. Only accept a
+ * complete, unambiguous calendar date directly following a deadline cue in
+ * the return-action passage. Never borrow purchase or delivery dates.
+ */
+export function suggestedMerchantDeadlineDate(passages: readonly string[]): string | undefined {
+  const found = new Set<string>();
+  for (const passage of passages) {
+    for (const hit of findDates(passage)) {
+      const candidate = passage.slice(hit.index);
+      // Slash dates have merchant-locale ambiguity even when one parses.
+      if (/^\d{1,2}\/\d{1,2}\/\d{4}\b/.test(candidate)) return undefined;
+      const before = passage.slice(Math.max(0, hit.index - 55), hit.index);
+      if (!/\b(?:by|before|no\s+later\s+than|not\s+after|on\s+or\s+before|until|through)\s*$/i.test(before)) continue;
+      found.add(hit.date);
+    }
+  }
+  return found.size === 1 ? [...found][0] : undefined;
 }
 
 /** Use the existing reviewed day-window model; no inferred retailer policy. */
