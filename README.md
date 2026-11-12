@@ -2,9 +2,9 @@
 
 ReturnBy is an offline return desk: save a purchase, see what a retailer requires by which date, prepare your return trip, and follow the refund. Your orders and receipt photos stay in your browser.
 
-**[Download ReturnBy 0.10.0](https://github.com/Jacob-Met/returnby/releases/tag/v0.10.0)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
+**[Download ReturnBy 0.10.1](https://github.com/Jacob-Met/returnby/releases/tag/v0.10.1)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
 
-[Phone view: carrier and merchant deadlines](https://github.com/Jacob-Met/returnby/releases/download/v0.10.0/ReturnBy-v0.10.0-dual-deadline-phone.png) · [Desktop view](https://github.com/Jacob-Met/returnby/releases/download/v0.10.0/ReturnBy-v0.10.0-dual-deadline-desktop.png)
+[Phone view: backup restore](https://github.com/Jacob-Met/returnby/releases/download/v0.10.1/ReturnBy-v0.10.1-restore-phone.png) · [Desktop view](https://github.com/Jacob-Met/returnby/releases/download/v0.10.1/ReturnBy-v0.10.1-restore-desktop.png)
 
 ## Know which deadline you have
 
@@ -20,11 +20,15 @@ You can add a purchase by typing its details, pasting a confirmation email, addi
 
 Saved purchases offer editing, a paper-receipt photo, return-document links, calendar reminder downloads, and a printable return-trip checklist. Finish a return to move it to History. Refund follow-up supports partial payments and future check dates.
 
+## Restore saved work
+
+Open **Back up or restore saved returns**, choose a ReturnBy JSON file, and review the additions or changed purchases. The import action appears above the long record list on phones and names the changes it will make. Nothing is imported just by choosing a file; when a saved purchase differs, explicitly choose whether to keep the browser's version or the backup's. Download a new backup from the same panel before changing computers.
+
 ## Saved work and privacy
 
 ReturnBy has no account, inbox connection, or remote sync. Your original receipt image is stored in your browser and included in the downloadable JSON backup. Save a new backup before changing devices, clearing browser data, or changing the local server address. Backups are **unencrypted** and may contain order details, photos, return links, refund notes, and private trip notes. Store them securely.
 
-Backups with two separate deadlines use **version 10**. Versions 1–9 remain readable in ReturnBy 0.10.0, including older backups with receipt photos. Earlier app releases cannot read version 10 safely; upgrade the app before restoring it. CSV is for spreadsheet review, not a substitute for a JSON backup.
+Backups with two separate deadlines use **version 10**. Versions 1–9 remain readable in ReturnBy 0.10.1, including older backups with receipt photos. Earlier app releases cannot read version 10 safely; upgrade the app before restoring it. CSV is for spreadsheet review, not a substitute for a JSON backup.
 
 Calendar files must be imported into your calendar app. ReturnBy does not send notifications itself, change an existing imported reminder when you edit an order, contact the retailer, arrange a return, or verify refund receipt. Make sure your calendar app's notifications are enabled.
 
