@@ -43,20 +43,31 @@ export function findDates(text: string): Hit[] {
   return hits.sort((a, b) => a.index - b.index);
 }
 
-function pickOrderDate(text: string): string {
-  const hits = findDates(text);
-  if (!hits.length) return '';
-  const explicitDates = new Set(
-    [...text.matchAll(/\border\s+date\s*:?\s*/gi)].map((m) => m.index + m[0].length),
-  );
-  const explicit = hits.find((h) => explicitDates.has(h.index));
-  if (explicit) return explicit.date;
-  const lower = text.toLowerCase();
-  for (const h of hits) {
-    const before = lower.slice(Math.max(0, h.index - 40), h.index);
-    if (/(order|placed|purchased|ordered)/.test(before)) return h.date;
+type OrderDatePick = { date: string; warning?: string };
+
+// Purchase dates require purchase language. "Order #" near an expected
+// delivery date is not a purchase-date label.
+function pickOrderDate(text: string, hits: Hit[]): OrderDatePick {
+  if (!hits.length) return { date: '' };
+  const explicitPurchase = /(?:^|[\r\n])\s*(?:order\s+date|purchase\s+date|date\s+of\s+purchase|transaction\s+date|sale\s+date|order\s+placed(?:\s+on)?|placed\s+on|purchased(?:\s+on)?|ordered(?:\s+on)?|date\s+ordered)\s*[:=\-–—]?\s*$/i;
+  const purchaseSentence = /\b(?:your\s+)?order\s+(?:was\s+)?placed\s+on\s*$|\border\s*#\s*[A-Z0-9-]+\s+was\s+placed\s+on\s*$/i;
+  const explicit = hits.find(h => {
+    const before = text.slice(Math.max(0, h.index - 240), h.index);
+    return explicitPurchase.test(before) || purchaseSentence.test(before.slice(-100));
+  });
+  if (explicit) return { date: explicit.date };
+
+  // One neutral Date field is usable on a till receipt. Shipping, refund and
+  // return dates cannot stand in for the original purchase date.
+  if (hits.length === 1) {
+    const h = hits[0];
+    const lineStart = text.lastIndexOf('\n', h.index - 1) + 1;
+    if (/^\s*date\s*:\s*$/i.test(text.slice(lineStart, h.index))) return { date: h.date };
   }
-  return hits.map((h) => h.date).sort()[0];
+  return {
+    date: '',
+    warning: 'The receipt shows dates but no clear purchase date. Check the original order or receipt and enter the purchase date before saving a deadline.',
+  };
 }
 
 function pickMerchant(text: string, known: string[]): string {
@@ -89,7 +100,9 @@ function pickMerchant(text: string, known: string[]): string {
 
 export function parse(text: string, knownMerchants: string[] = []): Parsed {
   const merchant = pickMerchant(text, knownMerchants);
-  const dateReview = reviewNumericDate(text, pickOrderDate(text), findDates(text));
+  const hits = findDates(text);
+  const choice = pickOrderDate(text, hits);
+  const dateReview = reviewNumericDate(text, choice.date, hits);
   const orderDate = dateReview.date;
   const no = /\border\s*(?:#|number\b|no\b\.?|id\b)\s*:?\s*#?\s*([A-Z0-9][A-Z0-9-]{3,})/i.exec(text);
   const tot = /\b(?:order\s+)?total\s*:?\s*([$€£]\s?\d[\d,]*(?:\.\d{2})?)/i.exec(text);
@@ -104,7 +117,7 @@ export function parse(text: string, knownMerchants: string[] = []): Parsed {
   const total = (tot ? tot[1] : alternateTotal?.[1] || '').replace(/\s/g, '');
   return {
     merchant, orderDate, orderNo, total,
-    ...(dateReview.warning ? {dateWarning:dateReview.warning} : {}),
+    ...(dateReview.warning || choice.warning ? {dateWarning:dateReview.warning || choice.warning} : {}),
     found: { merchant: !!merchant, orderDate: !!orderDate, orderNo: !!orderNo, total: !!total },
   };
 }
