@@ -29,10 +29,14 @@ describe('parse', () => {
       expect(parse(`İİİ\nOrder #AB1234\nDelivery: October 10, 2026\n${label}October 3, 2026`).orderDate).toBe('2026-10-03');
     expect(parse('Order date: October 5, 2026\nOrder date: October 3, 2026').orderDate).toBe('2026-10-05');
   });
-  it('retains date fallbacks when no valid date directly follows an explicit label', () => {
-    for (const suffix of ['Preorder date: October 3, 2026', 'Order date revised to October 3, 2026', 'Order date - October 3, 2026', 'Order date: February 30, 2026\nReminder: October 3, 2026'])
-      expect(parse(`Order #AB1234\nDelivery: October 10, 2026\n${suffix}`).orderDate).toBe('2026-10-10');
-    expect(parse('Delivery October 10, 2026; reminder October 3, 2026').orderDate).toBe('2026-10-03');
+  it('does not substitute delivery or reminder dates when purchase evidence is missing', () => {
+    for (const suffix of ['Preorder date: October 3, 2026', 'Order date revised to October 3, 2026', 'Order date: February 30, 2026\nReminder: October 3, 2026']) {
+      const p = parse('Order #AB1234\nDelivery: October 10, 2026\n' + suffix);
+      expect(p.orderDate).toBe('');
+      expect(p.dateWarning).toMatch(/purchase date/i);
+    }
+    expect(parse('Order #AB1234\nDelivery: October 10, 2026\nOrder date - October 3, 2026').orderDate).toBe('2026-10-03');
+    expect(parse('Delivery October 10, 2026; reminder October 3, 2026').orderDate).toBe('');
     expect(parse('Order date: unknown').found.orderDate).toBe(false);
   });
   it('leaves unknowns blank', () => {

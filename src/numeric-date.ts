@@ -10,7 +10,7 @@ export function numericDate(year:number,first:number,second:number):string {
  const monthFirst=iso(year,first,second),dayFirst=iso(year,second,first);
  return monthFirst&&dayFirst&&monthFirst!==dayFirst?'':monthFirst||dayFirst;
 }
-const purchasePrefix=(text:string,index:number)=>/\b(?:order(?:\s+date)?|purchased|ordered|placed)(?:\s+on)?\s*:?\s*$/i.test(text.slice(Math.max(0,index-50),index));
+const purchasePrefix=(text:string,index:number)=>/\b(?:order(?:\s+date)?|purchase(?:\s+date)?|date\s+of\s+purchase|transaction\s+date|sale\s+date|purchased|ordered|placed)(?:\s+on)?\s*:?\s*$/i.test(text.slice(Math.max(0,index-120),index));
 export function reviewNumericDate(text:string,selected:string,hits:DateHit[]):{date:string;warning?:string} {
  const ambiguous=[...text.matchAll(numeric)].filter(m=>{
   const a=iso(+m[3],+m[1],+m[2]),b=iso(+m[3],+m[2],+m[1]);return a&&b&&a!==b;
