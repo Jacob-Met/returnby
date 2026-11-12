@@ -45,3 +45,14 @@ test('return document survives pending delivery, backup and restoration without 
   expect(()=>portablePending([{...pending,fields:{...pending.fields,returnEvidenceUrl:unsafe}}])).toThrow(/HTTPS/);
  }
 });
+test('unresolved receipt action survives pending delivery and backup without inventing a return deadline',()=>{
+ const s=storage(), start=readPending(s);
+ const pending={...row('action-check'),fields:{...row('action-check').fields,windowDays:'14',deadlineActionReviewRequired:'yes'}};
+ writePending(s,[pending],start.token);
+ const saved=readPending(s).rows;
+ expect(saved[0].fields.deadlineActionReviewRequired).toBe('yes');
+ const restored=parseBackupDocument(exportBackup([],new Date('2026-11-10T12:00:00Z'),null,saved));
+ expect(restored.pending?.[0].fields.deadlineActionReviewRequired).toBe('yes');
+ expect(restored.orders).toEqual([]);
+ expect(()=>portablePending([{...pending,fields:{...pending.fields,deadlineActionReviewRequired:'true'}}])).toThrow(/review state/);
+});

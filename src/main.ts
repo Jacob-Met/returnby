@@ -211,6 +211,7 @@ function showPreview(restored?: Record<string, string>) {
   const p = restored ? { merchant: restored.merchant, orderDate: restored.orderDate, orderNo: restored.orderNo, total: restored.total, dateWarning: undefined, found: {merchant:true,orderDate:true,orderNo:true,total:true} } : parse(paste.value, knownMerchants);
   const pol = lookup(p.merchant);
   const evidence = receiptPolicy(restored ? '' : paste.value);
+  preview.dataset.returnActionRequired = evidence.actionRequired || restored?.deadlineActionReviewRequired === 'yes' ? 'yes' : '';
   preview.dataset.receiptEvidence = evidence.passages.length ? 'yes' : '';
   preview.dataset.receiptDays = evidence.days === undefined ? '' : String(evidence.days);
   const delivery = restored ? {required:true} : deliveryReview(paste.value);
@@ -240,10 +241,23 @@ function showPreview(restored?: Record<string, string>) {
     <p class="src" id="src">${pol.source === 'policy' ? 'Store rule from the local policy table; confirm with the retailer.' : 'No store match: editable 30-day fallback.'}</p>
     ${delivery.required ? '<button type="button" class="button button-link" id="save-pending-delivery">Keep purchase pending delivery</button><p class="review-note">No deadline or reminders until you confirm delivery. Pending purchases stay in this browser and are included when you download a backup.</p>' : ''}<button type="submit" class="button button-primary">Save deadline to tracker</button>`;  preview.dataset.source = pol.source;
   preview.dataset.days = String(pol.days);
+  const actionSelect = preview.querySelector<HTMLSelectElement>('select[name=deadlineRequirement]');
+  if (preview.dataset.returnActionRequired === 'yes' && actionSelect) {
+    actionSelect.required = true;
+    actionSelect.options[0].textContent = 'Choose the confirmed return action';
+    const warning = document.createElement('p');
+    warning.className = 'warn return-action-warning';
+    warning.setAttribute('role', 'status');
+    warning.textContent = evidence.actionConflict
+      ? 'Shipping and merchant arrival can have different dates. Confirm which terms apply; if both apply, check both dates with the retailer before saving one plan.'
+      : 'Confirm what must happen by this date. A delivery deadline is not necessarily a shipping deadline.';
+    actionSelect.closest('label')?.after(warning);
+  }
   preview.hidden = false;
   refreshIntakeDeadline();
   if (delivery.required) preview.querySelector('#save-pending-delivery')?.addEventListener('click', () => {
     const fields: Record<string,string> = {}; new FormData(preview).forEach((value,key) => { fields[key] = String(value); });
+    if (preview.dataset.returnActionRequired === 'yes') fields.deadlineActionReviewRequired = 'yes';
     try {
       const saved=readPending(localStorage);
       if(restored&&saved.token!==pendingToken)throw Error('Pending purchases changed. Reopen this purchase before saving.');
@@ -286,6 +300,11 @@ preview.addEventListener('submit', (e) => {
     return;
   }
   const deadlineRequirement = String(f.get('deadlineRequirement') || '');
+  if (preview.dataset.returnActionRequired === 'yes' && !deadlineRequirement) {
+    preview.querySelector<HTMLOutputElement>('#intake-deadline')!.textContent = 'Select what must happen by the date after checking the receipt instructions.';
+    preview.querySelector<HTMLSelectElement>('[name=deadlineRequirement]')?.focus();
+    return;
+  }
   if (deadlineRequirement && !validDeadlineRequirement(deadlineRequirement)) {
     preview.querySelector<HTMLOutputElement>('#intake-deadline')!.textContent = 'Choose what the retailer requires by the deadline.';
     return;

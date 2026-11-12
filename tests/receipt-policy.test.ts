@@ -65,3 +65,55 @@ test('recognized returned duration cannot be saved against order date for pendin
  expect(()=>validateDraft(row)).toThrow(/delivery/);
  row.fields.windowStartDate='2026-11-10';expect(validateDraft(row).windowStartDate).toBe('2026-11-10');
 });
+
+test.each([
+ ['Return parcels must be shipped within 14 days.', 'ship-by'],
+ ['Returns must be postmarked by November 21, 2026.', 'ship-by'],
+ ['Drop off returns at the store by November 21, 2026.', 'drop-off-by'],
+ ['Bring returned items to the counter before November 21, 2026.', 'drop-off-by'],
+ ['The merchant must receive returned parcels by November 21, 2026.', 'arrive-by'],
+ ['Returned parcels must arrive at our warehouse within 30 days.', 'arrive-by'],
+] as const)('dated return handoff must be chosen, not silently treated as return-by: %s', (text, kind) => {
+ const review=receiptPolicy(text);
+ expect(review.actionKinds).toContain(kind);
+ expect(review.actionRequired).toBe(true);
+ expect(review.actionConflict).toBe(false);
+ expect(review.passages).toContain(text);
+});
+
+test('a merchant arrival instruction cannot be silently converted into a shipping deadline',()=>{
+ const text='Returns must be shipped within 14 days. Returned parcels must arrive at our warehouse within 21 days.';
+ const review=receiptPolicy(text);
+ expect(review.actionKinds).toEqual(['ship-by','arrive-by']);
+ expect(review.actionConflict).toBe(true);
+ expect(review.needsChoice).toBe(true);
+ expect(review.passages).toHaveLength(2);
+ expect(receiptWindow(text,30)).toBe('');
+ const row=appendConfirmations([], [{label:'mixed.txt',text:'Store: Cedar Goods\nOrder date: November 1, 2026\n'+text}],()=> 'mixed')[0];
+ expect(row.fields.windowDays).toBe('');
+ row.fields.windowDays='14';
+ expect(()=>validateDraft(row)).toThrow(/Choose what must happen/);
+ row.fields.deadlineRequirement='arrive-by';
+ expect(validateDraft(row).deadlineRequirement).toBe('arrive-by');
+ row.fields.deadlineRequirement='ship-by';
+ expect(validateDraft(row).deadlineRequirement).toBe('ship-by');
+ row.fields.deadlineRequirement='untrusted-label';
+ expect(()=>validateDraft(row)).toThrow(/supported return deadline/);
+});
+
+test('a separate return-label expiry and unrelated delivery date do not pretend to specify a handoff',()=>{
+ const text='Your order will be delivered within 3 days. Return shipping label expires within 14 days. Returns accepted within 30 days.';
+ const review=receiptPolicy(text);
+ expect(review.actionRequired).toBe(false);
+ expect(review.actionKinds).toEqual([]);
+ expect(receiptWindow(text,30)).toBe('');
+});
+
+test('a single merchant-arrival policy still needs an explicit saved action choice',()=>{
+ const text='Store: Cedar Goods\nOrder date: November 1, 2026\nReturns must be received by our warehouse within 30 days.';
+ const row=appendConfirmations([],[{label:'arrival.txt',text}],()=> 'arrive')[0];
+ expect(row.fields.windowDays).toBe('30');
+ expect(()=>validateDraft(row)).toThrow(/Choose what must happen/);
+ row.fields.deadlineRequirement='arrive-by';
+ expect(validateDraft(row).deadlineRequirement).toBe('arrive-by');
+});

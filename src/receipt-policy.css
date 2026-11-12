@@ -3,3 +3,8 @@
 .receipt-policy-evidence h3{font-family:Georgia,serif;font-size:1.2rem;margin:.25rem 0}
 .receipt-policy-evidence p,.receipt-policy-evidence blockquote{font-family:inherit;font-size:1rem;line-height:1.5}
 .receipt-policy-evidence blockquote{margin:.6rem 0;padding:.5rem .7rem;background:rgba(170,130,70,.07);overflow-wrap:anywhere}
+
+.return-action-warning{grid-column:1/-1;max-width:68ch;line-height:1.55}
+
+.preview-card select[name=deadlineRequirement]{width:100%;min-height:44px;padding:9px 10px;border:1px solid var(--line,#d8d7ce);background:var(--white,#fffdf7);color:var(--ink,#20292d);font:12px/1.4 var(--mono,monospace)}
+.preview-card select[name=deadlineRequirement]:focus-visible{outline:2px solid var(--copper,#c95632);outline-offset:2px}
