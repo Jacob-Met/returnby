@@ -98,6 +98,13 @@ try {
   await page.locator('#list [data-receipt]').click();
   await page.getByText('No paper receipt photo saved for this purchase on this device.', {exact:false}).waitFor();
   assert.match(await page.locator('.receipt-proof-message').innerText(), /No paper receipt photo saved/);
+  await page.locator('.receipt-proof-input input').setInputFiles({name:'replacement-original.png',mimeType:'image/png',buffer:png});
+  await page.getByText('Original photo saved.',{exact:false}).waitFor();
+  await page.locator('.receipt-proof-close').click();
+  await page.reload();
+  await page.locator('#list [data-receipt]').click();
+  await page.locator('.receipt-proof-image canvas').waitFor({state:'visible'});
+  assert.equal(await page.locator('.receipt-proof-image canvas').evaluate(el=>el.width),720);
   assert.deepEqual(errors,[]);
   console.log('PASS packaged 390/1440 native: original photo saved with purchase, survives reload, exact bytes downloaded, opened from trip, removed without affecting purchase; no page errors');
   await ctx.close();
