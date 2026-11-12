@@ -1,13 +1,13 @@
 # ReturnBy — current return desk
 
-**[Download ReturnBy 0.9.1](https://github.com/Jacob-Met/returnby/releases/tag/v0.9.1)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
+**[Download ReturnBy 0.9.2](https://github.com/Jacob-Met/returnby/releases/tag/v0.9.2)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
 
-**[Phone: missing purchase date stays for review](https://github.com/Jacob-Met/returnby/releases/download/v0.9.1/purchase-date-review-phone.png)**
+**[Phone: choose the merchant's deadline action](https://github.com/Jacob-Met/returnby/releases/download/v0.9.2/ReturnBy-v0.9.2-return-action-phone.png)**
 
-A shopper importing an order confirmation now sees a blank purchase date and a useful correction prompt when the text has only delivery, shipment, or return-by dates. An explicit purchase date is still recognized. After correcting the date, the tracker uses that choice rather than a shipping estimate. Paper-receipt proof, saved returns, named trips, backups, and refund follow-through remain in this version.
+When a pasted receipt names shipping, store drop-off or merchant arrival, ReturnBy now asks which action and date apply before saving a return. The choice carries into tracking, reminders, backups and trips, including purchases held pending delivery. The Linux download has run the return and packing path.
 
 ## Top gaps
 
-1. **Conflicting merchant instructions can still produce the wrong return plan.** The shopper must decide which shipping, delivery, merchant-arrival, or eligibility terms actually apply.
+1. **Two required handoffs still collapse into one reminder.** A merchant may require both carrier acceptance and warehouse arrival by different dates, but a purchase holds only one tracked deadline.
 2. **Phone packing appears too far below trip selection.** A shopper needs the return document and packing action without scrolling past repeated explanation.
 3. **Saved receipt photos are absent from JSON backups.** Moving to another device can leave restored purchases without their paper proof.
