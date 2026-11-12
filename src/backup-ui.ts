@@ -197,7 +197,15 @@ export function bindBackup(tracker: Tracker) {
     const photos = eligiblePhotos(plan);
     summary.textContent = [[plan.added, 'to add'], [plan.replaced, 'to update'], [plan.kept, 'keep current'], [plan.skipped, 'already saved'], [plan.conflicts, 'need a choice']].filter(([count]) => Number(count) > 0).map(([count, label]) => count + ' ' + label).join(' · ') || 'No purchases in this backup';
     if (incomingPhotos.length) summary.textContent += ` · ${incomingPhotos.length} original ${incomingPhotos.length === 1 ? 'receipt photo' : 'receipt photos'} included`;
-    apply.textContent = photos.length ? `Restore purchases and ${photos.length} ${photos.length === 1 ? 'photo' : 'photos'}` : `Apply ${plan.added} additions and ${plan.replaced} updates`;
+    const changedPurchases = plan.added + plan.replaced;
+    if (photos.length) {
+      apply.textContent = changedPurchases
+        ? `Restore ${changedPurchases} ${changedPurchases === 1 ? 'purchase' : 'purchases'} and ${photos.length} original ${photos.length === 1 ? 'photo' : 'photos'}`
+        : `Restore ${photos.length} original ${photos.length === 1 ? 'photo' : 'photos'}`;
+    } else if (plan.added && plan.replaced) apply.textContent = `Add ${plan.added}, update ${plan.replaced} purchases`;
+    else if (plan.added) apply.textContent = `Add ${plan.added} ${plan.added === 1 ? 'purchase' : 'purchases'}`;
+    else if (plan.replaced) apply.textContent = `Update ${plan.replaced} ${plan.replaced === 1 ? 'purchase' : 'purchases'}`;
+    else apply.textContent = plan.conflicts ? 'Choose a version below' : 'Nothing to import';
     apply.disabled = applying || plan.added + plan.replaced === 0 && photos.length === 0;
     panel.hidden = false;
     renderPage();
@@ -207,7 +215,7 @@ export function bindBackup(tracker: Tracker) {
     else if (plan.conflicts) tell('Compare the current and backup values before choosing a version. Unreviewed differences stay current; you can apply the new purchases and chosen updates without replacing them.');
     else if (!plan.added && !plan.replaced && plan.kept) tell(incomingTrip ? 'Your current purchase versions will stay. Review the trip separately below.' : 'Your current purchase versions will stay. No additions or updates are selected.');
     else if (!plan.added && !plan.replaced) tell(incomingLibrary?.trips.length?'Purchases need no changes. Review the named trip plans separately below.':incomingPending.length?'Saved deadlines need no changes. Review the pending purchases below before restoring them.':incomingTrip?'All orders are already saved. Review the trip below before restoring it.':'Everything in this backup is already saved, or the backup is empty. Nothing will change.');
-    else tell('Review additions and updates below, then choose Apply. Only purchases you chose from the backup will replace current details.');
+    else tell('');
     if (focus) summary.focus();
   }
 
