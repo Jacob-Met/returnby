@@ -225,14 +225,14 @@
 <section class="backup-panel" aria-labelledby="backup-heading">
   <details>
     <summary id="backup-heading">Export or restore saved returns</summary>
-    <p>Move your tracker to another browser, or keep a copy before clearing storage. A backup contains saved order details, reviewed purchases awaiting delivery, return-window labels and your saved trip, including packing checks and private notes. Keep the file private; the original pasted email is excluded.</p>
+    <p>Move your tracker to another browser, or keep a copy before clearing storage. A backup includes saved order details, original receipt photos, reviewed purchases awaiting delivery and trip packing notes. It may be large; keep it private. Keep the file private; the original pasted email is excluded.</p>
     <p id="pending-backup-note" class="list-note" hidden>Your purchase pending delivery is kept only in this browser. This backup does not include that pending review.</p>
     <div class="action-row">
 <button id="backup-export" type="button" class="button button-primary">Download backup</button>
 </div>
 <label class="input-label" for="backup-file">Choose a ReturnBy backup to preview</label>
     <input id="backup-file" type="file" accept=".json,application/json" aria-describedby="backup-limits" />
-    <p id="backup-limits" class="list-note">Up to 5 MiB and 10,000 orders. Import adds new purchases and skips matching copies. For different versions of the same purchase, compare current and backup values and choose which to keep. Unreviewed differences stay current. Restore a trip separately after reviewing its date, orders and notes. Return windows and policy labels are restored as saved; confirm current terms with the retailer.</p>
+    <p id="backup-limits" class="list-note">Up to 5 MiB for ordinary backups, or 96 MiB when original receipt photos are included; at most 10,000 orders. Import adds new purchases and skips matching copies. For different versions of the same purchase, compare current and backup values and choose which to keep. Unreviewed differences stay current. Restore a trip separately after reviewing its date, orders and notes. Return windows and policy labels are restored as saved; confirm current terms with the retailer.</p>
     <p id="backup-message" role="status" aria-live="polite" hidden>
 </p>
     <div id="backup-trip-library" hidden>

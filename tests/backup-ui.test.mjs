@@ -131,7 +131,7 @@ test.each(['unsupported version', 'foreign window source', 'malformed JSON', 'la
   if (kind === 'unsupported version') file.version = 4;
   if (kind === 'foreign window source') file.orders[1].windowSource = 'retailer-verified';
   if (kind === 'late bad row') file.orders[1].windowDays = false;
-  await app.choose(kind === 'malformed JSON' ? '{' : JSON.stringify(file), kind === 'oversized file' ? MAX_BACKUP_BYTES + 1 : undefined);
+  await app.choose(kind === 'oversized file' ? ' '.repeat(MAX_BACKUP_BYTES + 1) : kind === 'malformed JSON' ? '{' : JSON.stringify(file));
   expect(app.element('backup-preview').hidden).toBe(true);
   expect(app.element('backup-message').attributes.role).toBe('alert');
   expect(app.attempts).toHaveLength(0);
@@ -199,7 +199,7 @@ test.each(['unreadable', 'broken JSON', 'unexpected shape'])('existing %s storag
     return kind === 'broken JSON' ? '{' : '{"unexpected":true}';
   };
   await app.choose(exportBackup([storedOrder('incoming')]));
-  app.click('backup-apply'); app.click('backup-export');
+  app.click('backup-apply'); await app.click('backup-export');
   expect(app.attempts).toHaveLength(0);
   expect(app.count()).toBe(1);
   expect(app.downloads).toHaveLength(0);
@@ -242,7 +242,7 @@ test('large previews page through every order and render imported text without H
 test('the download contains saved reviewed details, preserves attribution, and excludes the current raw email draft', async () => {
   const saved = { ...storedOrder('saved'), windowSource: 'policy' };
   const app = await open([saved]); app.draft('SECRET RAW EMAIL');
-  app.click('backup-export');
+  await app.click('backup-export');
   expect(app.downloads).toHaveLength(1);
   expect(app.downloads[0].download).toMatch(/^returnby-backup-\d{4}-\d{2}-\d{2}\.json$/);
   const content = await app.blobs[0].text();

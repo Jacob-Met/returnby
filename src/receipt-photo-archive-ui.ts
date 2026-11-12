@@ -29,7 +29,7 @@ function ensureDialog(): HTMLDialogElement {
     '<div class="receipt-proof-image" hidden><canvas aria-label="Saved original receipt photograph"></canvas></div>',
     '<div class="receipt-proof-tools"><button type="button" data-proof="rotate" hidden>Rotate photo</button><button type="button" data-proof="download" hidden>Save original photo</button><button type="button" data-proof="remove" hidden>Remove photo</button></div>',
     '<label class="receipt-proof-input">Add or replace paper receipt<input type="file" accept="image/jpeg,image/png,image/webp"></label>',
-    '<p class="receipt-proof-privacy">Stored on this device. Save a copy before switching browsers or devices; regular backups do not include photos.</p>',
+    '<p class="receipt-proof-privacy">Stored on this device. Download a ReturnBy backup to carry this original photo to another browser or device.</p>',
   ].join('');
   document.body.append(dialog);
   heading = dialog.querySelector('#receipt-proof-heading')!;
