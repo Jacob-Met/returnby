@@ -1,5 +1,6 @@
-import { receiptFileProblem, receiptSuggestions } from './receipt-photo';
+import { receiptFileProblem, receiptSuggestions, mergeReceiptSuggestions } from './receipt-photo';
 import { readReceipt } from './receipt-ocr';
+import { straightenReceipt, validReceiptCorners, type ReceiptCorner } from './receipt-image';
 import './receipt-photo.css';
 
 let selectedOriginal: { file: File; rotation: number } | undefined;
@@ -22,9 +23,11 @@ export function bindReceiptPhoto() {
     '<label class="receipt-file-label" for="receipt-photo-file">Choose a receipt photo</label>',
     '<input id="receipt-photo-file" type="file" accept="image/jpeg,image/png,image/webp" aria-describedby="receipt-photo-privacy">',
     '<p id="receipt-photo-privacy" class="receipt-help">Read on this device. The original photo is saved with the purchase on this device. Raw recognized text is cleared on reload. Unfinished fields recover in this tab until you save or discard them.</p>',
-    '<div id="receipt-photo-source" hidden><div class="receipt-photo-toolbar"><button id="receipt-rotate" type="button">Rotate 90°</button><button id="receipt-clear" type="button">Remove photo</button></div>',
+    '<div id="receipt-photo-source" hidden><div class="receipt-photo-toolbar"><button id="receipt-rotate" type="button">Rotate 90°</button><button id="receipt-outline" type="button" aria-pressed="false">Outline paper</button><button id="receipt-original-view" type="button" hidden>Original view</button><button id="receipt-clear" type="button">Remove photo</button></div>',
     '<div class="receipt-photo-zoom"><label for="receipt-photo-zoom">Zoom photo</label><input id="receipt-photo-zoom" type="range" min="1" max="3" step="0.25" value="1"><output id="receipt-zoom-value" for="receipt-photo-zoom">100%</output></div>',
-    '<div class="receipt-canvas-wrap"><canvas id="receipt-photo-canvas" aria-label="Selected receipt photo"></canvas></div>',
+    '<div class="receipt-canvas-wrap"><div id="receipt-canvas-stage"><canvas id="receipt-photo-canvas" aria-label="Selected receipt photo"></canvas><div id="receipt-corners" hidden><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon id="receipt-corner-polygon"></polygon></svg><button type="button" data-corner="0" aria-label="Top left paper corner">1</button><button type="button" data-corner="1" aria-label="Top right paper corner">2</button><button type="button" data-corner="2" aria-label="Bottom right paper corner">3</button><button type="button" data-corner="3" aria-label="Bottom left paper corner">4</button></div></div></div>',
+    '<div id="receipt-corner-instructions" class="receipt-help" hidden>Drag the four numbered points onto the paper corners. Arrow keys move a selected point. The saved original is never changed.</div>',
+    '<button id="receipt-straighten" type="button" hidden>Use straightened photo</button>',
     '<div class="receipt-photo-actions"><button id="receipt-read" type="button" class="button button-primary">Read this receipt</button><button id="receipt-stop" type="button" class="button button-link" hidden>Stop reading</button></div></div>',
     '<p id="receipt-photo-status" role="status" aria-live="polite"></p><progress id="receipt-photo-progress" max="1" value="0" hidden aria-label="Receipt reading progress"></progress>',
     '<details id="receipt-photo-text" hidden><summary>See the text read from this photo</summary><pre></pre></details>',
@@ -52,6 +55,108 @@ export function bindReceiptPhoto() {
   const zoom = $<HTMLInputElement>('#receipt-photo-zoom');
   const zoomValue = $('#receipt-zoom-value');
   const canvas = $<HTMLCanvasElement>('#receipt-photo-canvas');
+  const stage = $('#receipt-canvas-stage');
+  const overlay = $('#receipt-corners');
+  const polygon = panel.querySelector<SVGPolygonElement>('#receipt-corner-polygon')!;
+  const cornerButtons = Array.from(overlay.querySelectorAll<HTMLButtonElement>('button[data-corner]'));
+  const outline = $<HTMLButtonElement>('#receipt-outline');
+  const originalView = $<HTMLButtonElement>('#receipt-original-view');
+  const straighten = $<HTMLButtonElement>('#receipt-straighten');
+  const cornerHelp = $('#receipt-corner-instructions');
+  let corners: ReceiptCorner[] = [];
+  let upright: HTMLCanvasElement | undefined;
+  let corrected: HTMLCanvasElement | undefined;
+  const refreshCorners = () => {
+    cornerButtons.forEach((button, i) => {
+      const corner = corners[i]!;
+      button.style.left = (corner.x * 100) + '%';
+      button.style.top = (corner.y * 100) + '%';
+    });
+    polygon.setAttribute('points', corners.map(p => (100 * p.x) + ',' + (100 * p.y)).join(' '));
+    straighten.disabled = !validReceiptCorners(corners);
+  };
+  const editingCorners = () => !overlay.hidden;
+  const showCornerEditor = (visible: boolean) => {
+    overlay.hidden = !visible;
+    cornerHelp.hidden = !visible;
+    straighten.hidden = !visible;
+    zoom.disabled = visible;
+    outline.setAttribute('aria-pressed', String(visible));
+    read.disabled = !!controller || visible;
+    if (visible) {
+      // A complete sheet, including its bottom corners, fits on the phone.
+      const height = window.matchMedia('(max-width: 680px)').matches ? 285 : 425;
+      const available = stage.parentElement!.clientWidth;
+      stage.style.width = Math.min(available, height * canvas.width / canvas.height) + 'px';
+      refreshCorners();
+    } else {
+      stage.style.width = Math.round(Number(zoom.value) * 100) + '%';
+    }
+  };
+  const displayCanvas = (imageCanvas: HTMLCanvasElement) => {
+    canvas.width = imageCanvas.width;
+    canvas.height = imageCanvas.height;
+    canvas.getContext('2d')!.drawImage(imageCanvas, 0, 0);
+  };
+  const resetCorrection = () => {
+    corrected = undefined;
+    originalView.hidden = true;
+    showCornerEditor(false);
+  };
+  const updateCorner = (index: number, x: number, y: number) => {
+    corners[index] = { x: Math.max(0, Math.min(1, x)), y: Math.max(0, Math.min(1, y)) };
+    refreshCorners();
+  };
+  cornerButtons.forEach((button, i) => {
+    button.addEventListener('pointerdown', event => {
+      if (controller) return;
+      event.preventDefault();
+      button.setPointerCapture(event.pointerId);
+    });
+    button.addEventListener('pointermove', event => {
+      if (!button.hasPointerCapture(event.pointerId)) return;
+      const rect = stage.getBoundingClientRect();
+      updateCorner(i, (event.clientX - rect.left) / rect.width, (event.clientY - rect.top) / rect.height);
+    });
+    button.addEventListener('keydown', event => {
+      const step = event.shiftKey ? 0.02 : 0.005;
+      const shift: Record<string, [number, number]> = {
+        ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step],
+      };
+      const delta = shift[event.key];
+      if (!delta) return;
+      event.preventDefault();
+      updateCorner(i, corners[i]!.x + delta[0], corners[i]!.y + delta[1]);
+    });
+  });
+  outline.addEventListener('click', () => {
+    if (!upright || controller) return;
+    if (editingCorners()) { showCornerEditor(false); return; }
+    corrected = undefined;
+    originalView.hidden = true;
+    displayCanvas(upright);
+    corners = [{ x: .05, y: .05 }, { x: .95, y: .05 }, { x: .95, y: .95 }, { x: .05, y: .95 }];
+    showCornerEditor(true);
+    setStatus('Move the four points to the paper corners, then use the straightened photo.');
+  });
+  straighten.addEventListener('click', () => {
+    if (!upright || !validReceiptCorners(corners) || controller) return;
+    try {
+      corrected = straightenReceipt(upright, corners);
+      displayCanvas(corrected);
+      showCornerEditor(false);
+      originalView.hidden = false;
+      setStatus('Photo straightened for reading. The original receipt is unchanged and will be saved with your purchase.');
+    } catch {
+      setStatus('Those corners cannot be straightened. Move them apart or return to the original photo.');
+    }
+  });
+  originalView.addEventListener('click', () => {
+    if (!upright || controller) return;
+    resetCorrection();
+    displayCanvas(upright);
+    setStatus('Original photo shown. You can outline the paper again or read it directly.');
+  });
   const status = $('#receipt-photo-status');
   const reviewNote = document.createElement('p');
   reviewNote.id = 'receipt-review-note';
@@ -76,8 +181,11 @@ export function bindReceiptPhoto() {
   let controller: AbortController | undefined;
   const field = (name: string) => form.querySelector<HTMLInputElement>('[name="' + name + '"]')!;
   const busy = (value: boolean) => {
-    read.disabled = value;
+    read.disabled = value || editingCorners();
     rotate.disabled = value;
+    outline.disabled = value;
+    originalView.disabled = value;
+    straighten.disabled = value || !validReceiptCorners(corners);
     fileInput.disabled = value;
     clear.disabled = value;
     stop.hidden = !value;
@@ -86,7 +194,7 @@ export function bindReceiptPhoto() {
   };
   const applyZoom = () => {
     const percent = Math.round(Number(zoom.value) * 100);
-    canvas.style.width = percent + '%';
+    stage.style.width = percent + '%';
     zoomValue.textContent = percent + '%';
   };
   zoom.addEventListener('input', applyZoom);
@@ -100,19 +208,24 @@ export function bindReceiptPhoto() {
     if (!image) return;
     const scale = Math.min(1, 2600 / Math.max(image.width, image.height));
     const w = Math.round(image.width * scale), h = Math.round(image.height * scale);
-    canvas.width = quarterTurns % 2 ? h : w;
-    canvas.height = quarterTurns % 2 ? w : h;
-    const context = canvas.getContext('2d')!;
+    upright = document.createElement('canvas');
+    upright.width = quarterTurns % 2 ? h : w;
+    upright.height = quarterTurns % 2 ? w : h;
+    const context = upright.getContext('2d')!;
     context.fillStyle = '#ffffff';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    context.translate(canvas.width / 2, canvas.height / 2);
+    context.fillRect(0, 0, upright.width, upright.height);
+    context.translate(upright.width / 2, upright.height / 2);
     context.rotate(quarterTurns * Math.PI / 2);
     context.drawImage(image, -w / 2, -h / 2, w, h);
+    resetCorrection();
+    displayCanvas(upright);
   };
   const discardPhoto = () => {
     endReading();
     image?.close();
     image = undefined;
+    upright = undefined;
+    resetCorrection();
     selectedOriginal = undefined;
     canvas.width = canvas.height = 0;
     source.hidden = true;
@@ -201,17 +314,28 @@ export function bindReceiptPhoto() {
     try {
       const recognized = await readReceipt(canvas, signal, (fraction, stage) => {
         if (token !== generation) return;
-        if (stage === 'recognizing text') {
+        if (stage === 'recovering faint print') {
+          progress.value = 0;
+          setStatus('Trying to recover faint printed words on this device…');
+        } else if (stage === 'recognizing text') {
           progress.value = fraction;
           setStatus('Reading receipt… ' + Math.round(fraction * 100) + '%');
         }
       });
       if (token !== generation) return;
-      if (!recognized.trim()) {
-        setStatus('No readable text was found. Try a brighter, closer photo, rotate it, or enter the details yourself.');
+      if (!recognized.text.trim() && !recognized.recoveredText?.trim()) {
+        setStatus('No readable text was found. Try outlining the paper corners or enter the details yourself.');
         return;
       }
-      text.querySelector('pre')!.textContent = recognized;
+      text.querySelector('pre')!.textContent = recognized.text +
+        (recognized.recoveredText ? '\n--- Faint-print recovery ---\n' + recognized.recoveredText : '');
+      if (recognized.enhancedImage) {
+        // The reviewer sees the same locally enhanced pixels the worker read.
+        // The saved receipt is still the exact original file.
+        corrected = recognized.enhancedImage;
+        displayCanvas(corrected);
+        originalView.hidden = false;
+      }
       text.hidden = false;
       // A user can keep editing while the worker runs. Do not replace that work.
       if (Object.entries(before).some(([name, value]) => field(name).value !== value)) {
@@ -219,13 +343,18 @@ export function bindReceiptPhoto() {
         return;
       }
       form.dispatchEvent(new Event('returnby:purchase-replaced'));
-      const result = receiptSuggestions(recognized);
-      for (const name of ['merchant', 'orderDate', 'orderNo', 'total'] as const) field(name).value = result[name];
+      const originalFields = receiptSuggestions(recognized.text);
+      const recoveredFields = recognized.recoveredText ? receiptSuggestions(recognized.recoveredText) : undefined;
+      const result = mergeReceiptSuggestions(originalFields, recoveredFields);
+      for (const name of ['merchant', 'orderDate', 'orderNo', 'total'] as const)
+        field(name).value = result[name];
       field('windowDays').value = '';
       field('windowStartDate').value = '';
       form.dispatchEvent(new Event('input', { bubbles: true }));
       view('details');
-      setStatus('Text read. These are suggestions: check each field against the photo. Enter the return window you confirmed with the store. ' + result.notes.join(' '));
+      setStatus('Text read.' + (result.recoveredCount ? ' Faint-print recovery suggested ' + result.recoveredCount + ' additional field(s).' : '') +
+        ' Check every suggestion against the photo' + (recognized.enhancedImage ? ' (Photo shows a brighter, enhanced view; Original view restores the source)' : '') + '. Enter the return window you confirmed with the store. ' +
+        result.notes.join(' '));
       field(result.merchant ? (result.orderDate ? 'windowDays' : 'orderDate') : 'merchant').focus();
     } catch (error) {
       if (token !== generation || signal.aborted) return;

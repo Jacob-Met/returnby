@@ -89,7 +89,13 @@ try {
     lines.forEach((line,i)=>c.fillText(line,85,245+i*62));
     return canvas.toDataURL('image/png').split(',')[1];
   })()`);
-  const sample=path.join(out,'synthetic-receipt.png');await writeFile(sample,Buffer.from(png,'base64'));
+  let sample=path.join(out,'synthetic-receipt.png');await writeFile(sample,Buffer.from(png,'base64'));
+  if (process.env.RETURNBY_SYNTH_FAINT) {
+    const faint=path.join(out,'faint-tilted-receipt.png');
+    execFileSync('convert',[sample,'-colorspace','Gray','+level',process.env.RETURNBY_SYNTH_FAINT === '2' ? '92%,98%' : '78%,95%',
+      '-background','#c7c4bd','-shear','9x0',faint]);
+    sample=faint;
+  }
   await fill('#paste','Separate email draft stays here');
   await click('#photo-open');
   const {root}=await cdp('DOM.getDocument');
@@ -97,10 +103,37 @@ try {
   await cdp('DOM.setFileInputFiles',{nodeId:input.nodeId,files:[sample]});
   await until("!document.querySelector('#receipt-photo-source').hidden",'photo preview');
   assert.equal(await evaluate("localStorage.getItem('returnby.v1')"),null);
+  await cdp('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await click('#receipt-outline');
+  await evaluate("document.querySelector('#receipt-canvas-stage').scrollIntoView({block:'center'})");
+  assert.equal(await evaluate("document.querySelector('#receipt-corners').hidden"),false);
+  await capture('receipt-paper-outline-phone.png');
+  const handle=await evaluate("(()=>{const b=document.querySelector('#receipt-corners button:first-of-type');const r=b.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2,left:b.style.left}})()");
+  await cdp('Input.dispatchMouseEvent',{type:'mouseMoved',x:handle.x,y:handle.y});
+  await cdp('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,x:handle.x,y:handle.y});
+  await cdp('Input.dispatchMouseEvent',{type:'mouseMoved',button:'left',buttons:1,x:handle.x+17,y:handle.y+12});
+  await cdp('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,x:handle.x+17,y:handle.y+12});
+  assert.notEqual(await evaluate("document.querySelector('#receipt-corners button:first-of-type').style.left"),handle.left);
+  checks.push({name:'actual Chrome pointer drag moves a paper corner',passed:true});
+
+  await click('#receipt-straighten');
+  assert.equal(await evaluate("document.querySelector('#receipt-original-view').hidden"),false);
+  await click('#receipt-original-view');
+  assert.equal(await evaluate("document.querySelector('#receipt-original-view').hidden"),true);
+  checks.push({name:'outline, straighten and restore receipt without modifying original source',passed:true});
+  await cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
   const started=Date.now();await click('#receipt-read');
   await until("document.querySelector('#receipt-photo-status').textContent.startsWith('Text read.')",'actual OCR',60000);
   const elapsedMs=Date.now()-started;
   const fields=await evaluate("Object.fromEntries(new FormData(document.querySelector('#manual-form')))");
+  if (process.env.RETURNBY_SYNTH_FAINT === '2') {
+    const recoveredRead=await evaluate("document.querySelector('#receipt-photo-text pre').textContent");
+    const [originalRead,enhancedRead]=recoveredRead.split('--- Faint-print recovery ---');
+    assert.equal(originalRead.trim(),'','unmodified severe-fade OCR sees no printed words');
+    assert.match(enhancedRead,/PAPER & PINE/);
+    assert.match(enhancedRead,/TOTAL/);
+    checks.push({name:'local faint-ink retry recovers fields absent from the original OCR pass',passed:true});
+  }
   assert.equal(fields.merchant,'PAPER & PINE');assert.equal(fields.orderDate,'2026-11-10');
   assert.equal(fields.orderNo,'PP-8421');assert.equal(fields.total,'$24.30');
   assert.equal(fields.windowDays,'');assert.equal(fields.windowStartDate,'');
@@ -111,6 +144,13 @@ try {
   await capture('receipt-review-phone.png');
   assert.equal(await evaluate("getComputedStyle(document.querySelector('#manual-form')).display!=='none'"),true);
   await click('#receipt-show-photo');
+  if (process.env.RETURNBY_SYNTH_FAINT === '2') {
+    assert.equal(await evaluate("document.querySelector('#receipt-original-view').hidden"),false);
+    await capture('receipt-enhanced-source-phone.png');
+    await click('#receipt-original-view');
+    await capture('receipt-original-source-phone.png');
+    checks.push({name:'enhanced reviewer image can return to the unchanged faint original',passed:true});
+  }
   await capture('receipt-source-phone.png');
   await click('#receipt-show-details');
   assert.equal(await evaluate("document.querySelector('#manual-dialog').scrollWidth<=document.querySelector('#manual-dialog').clientWidth"),true);

@@ -17,10 +17,12 @@ export function receiptSuggestions(text: string): ReceiptSuggestions {
   // Do not infer the merchant from branded payment-card or footer text.
   const storefront = lines.slice(0, 14).map(line =>
     /^([\p{L}][\p{L}\p{M} &.'-]{1,69})\s*#\s*\d[\w.-]*\s*$/u.exec(line)?.[1]?.trim()
-  ).find(name => name && !/^(?:receipt|transaction|invoice|register|cashier|terminal|order)\b/i.test(name));
+  ).find(name => name && !/^(?:receipt|transaction|invoice|register|cashier|terminal|order|check|heck|bill|table|ticket)\b/i.test(name));
   const merchant = parsed.merchant || storefront || lines.slice(0, 8).find(line =>
     line.length >= 2 && line.length <= 70 &&
-    /[A-Za-z]{2}/.test(line) && !/\d{3}|[@<>]/.test(line) &&
+    // Do not propose crumple noise such as 'SA — | NC' as a store.
+    (/^\p{L}{4,}/u.test(line) || /^[A-Z][&+][A-Z](?:\b|$)/.test(line)) &&
+    /^[\p{L}\p{M}\p{N} &.'-]+$/u.test(line) && !/\d{3}|[@<>]/.test(line) &&
     !/^(?:welcome|thank|receipt|invoice|tax invoice|customer copy|cashier|date|tel|phone|www\.|http)/i.test(line) &&
     !/\b(?:survey|feedback|give us|introducing|join|visa|mastercard|amex|credit|debit)\b/i.test(line) &&
     !/^(?:total|subtotal|tax|amount|cash|change)\b/i.test(line)
@@ -62,4 +64,33 @@ export function receiptFileProblem(file: Pick<File, 'type' | 'size'>): string | 
     return 'This photo is larger than 20 MB. Choose a smaller copy or enter the purchase manually.';
   if (!file.size) return 'This photo is empty. Choose another photo.';
   return null;
+}
+
+/** A second OCR pass may fill missing words, never decide a conflict visible in the first. */
+export function mergeReceiptSuggestions(primary: ReceiptSuggestions, recovered?: ReceiptSuggestions):
+  ReceiptSuggestions & { recoveredCount: number } {
+  const result = { ...primary, notes: [...primary.notes] };
+  let recoveredCount = 0;
+  const disputedDate = primary.notes.some(note => /several dates|two different dates/i.test(note));
+  const disputedTotal = primary.notes.some(note => /different totals/i.test(note));
+  for (const name of ['merchant', 'orderDate', 'orderNo', 'total'] as const) {
+    if (!result[name] && recovered?.[name] && !(name === 'orderDate' && disputedDate) &&
+        !(name === 'total' && disputedTotal)) {
+      result[name] = recovered[name];
+      recoveredCount++;
+    }
+  }
+  result.notes = result.notes.filter(note => !(
+    (result.merchant && /store name was not clear/i.test(note)) ||
+    (result.orderDate && /purchase date was not clear/i.test(note))
+  ));
+  if (!result.orderDate && recovered?.notes.some(note => /two different dates|several dates/i.test(note))) {
+    for (const note of recovered.notes.filter(note => /two different dates|several dates/i.test(note)))
+      if (!result.notes.includes(note)) result.notes.push(note);
+  }
+  if (!result.total && recovered?.notes.some(note => /different totals/i.test(note))) {
+    for (const note of recovered.notes.filter(note => /different totals/i.test(note)))
+      if (!result.notes.includes(note)) result.notes.push(note);
+  }
+  return { ...result, recoveredCount };
 }

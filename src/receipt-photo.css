@@ -71,3 +71,21 @@
 .receipt-proof-zoom input{flex:1;min-width:55px;accent-color:#406447}
 .receipt-proof-zoom output{min-width:43px;text-align:right;font-variant-numeric:tabular-nums}
 @media(max-width:680px){.receipt-proof-zoom{margin:2px 15px 10px}}
+
+/* Four draggable/keyboard-movable paper corners sit on the same zoomed pixels. */
+#receipt-canvas-stage{position:relative;width:100%;}
+#receipt-canvas-stage #receipt-photo-canvas{width:100%;}
+#receipt-corners{position:absolute;inset:0;pointer-events:none;}
+#receipt-corners[hidden]{display:none}
+#receipt-corners svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+#receipt-corner-polygon{fill:rgba(55,112,69,.09);stroke:#167548;stroke-width:.8;vector-effect:non-scaling-stroke;stroke-dasharray:4 2}
+#receipt-corners button{position:absolute;transform:translate(-50%,-50%);width:35px;height:35px;border:3px solid white;border-radius:50%;background:#126940;color:white;box-shadow:0 0 0 2px #126940,0 2px 5px #0008;font:700 15px system-ui;cursor:grab;touch-action:none;pointer-events:auto;display:grid;place-items:center}
+#receipt-corners button:focus-visible{outline:3px solid #f6ab45;outline-offset:4px}
+#receipt-corners button:active{cursor:grabbing}
+#receipt-straighten{margin-top:9px;border:1px solid #255a3b;background:#255a3b;color:white;padding:11px 14px;font:600 14px system-ui;cursor:pointer}
+#receipt-straighten[hidden]{display:none}
+#receipt-straighten:disabled{opacity:.5;cursor:not-allowed}
+#receipt-corner-instructions{margin:9px 0 0}
+#receipt-corner-instructions[hidden]{display:none}
+.receipt-photo-toolbar{justify-content:flex-start;flex-wrap:wrap}
+.receipt-photo-toolbar #receipt-clear{margin-left:auto}
