@@ -1,3 +1,5 @@
+import { receiptPhotoDraft } from './receipt-photo-ui';
+import { saveOriginalReceipt, removeOriginalReceipt } from './receipt-photo-archive';
 import { bindManualDraftRecovery } from './manual-draft-recovery';
 import { reviewDuplicateIntake } from './duplicate-intake';
 import { previewEdit, EditError, type EditDraft } from './edit';
@@ -28,14 +30,34 @@ export function bindManualPurchase(options: { read: () => Order[] | null; commit
   form.addEventListener('input', refresh);
   open.addEventListener('click', () => { dialog.showModal(); });
   document.querySelector('#manual-close')!.addEventListener('click', () => dialog.close());
-  form.addEventListener('submit', event => {
+  let saving = false;
+  form.addEventListener('submit', async event => {
     event.preventDefault();
+    if (saving) return;
     error.hidden = true;
     try {
       const result = manualPurchase(draft(), crypto.randomUUID(), new Date().toISOString());
       const current = reviewDuplicateIntake(result.order, options.read, message => window.confirm(message));
       if (!current) return;
-      if (!options.commit([...current, result.order])) throw new Error("The purchase wasn't saved. Your draft is still here; check browser storage and try again.");
+      const receipt = receiptPhotoDraft();
+      const button = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+      saving = true;
+      button.disabled = true;
+      try {
+        if (receipt) await saveOriginalReceipt(result.order, receipt.file, receipt.rotation);
+        // A second tab must not be overwritten while the photograph is stored.
+        const fresh = options.read();
+        if (!fresh || JSON.stringify(fresh) !== JSON.stringify(current))
+          throw new Error('Your saved purchases changed in another tab. Review them and save again; your draft and photograph remain open.');
+        if (!options.commit([...fresh, result.order]))
+          throw new Error("The purchase wasn't saved. Your draft is still here; check browser storage and try again.");
+      } catch (error) {
+        if (receipt) await removeOriginalReceipt(result.order).catch(() => {});
+        throw error;
+      } finally {
+        button.disabled = false;
+        saving = false;
+      }
       recovery.clear(); form.reset(); refresh(); dialog.close();
       const feedback = document.querySelector('#edit-feedback');
       if (feedback) feedback.textContent = result.order.merchant + ' saved. ' + deadlinePhrase(result.order.deadlineRequirement) + ' ' + result.due + '.';

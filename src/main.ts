@@ -1,3 +1,5 @@
+import { openReceiptProof } from './receipt-photo-archive-ui';
+import { pruneOriginalReceipts } from './receipt-photo-archive';
 import './receipt-policy.css';
 import { receiptPolicy, receiptWindow } from './receipt-policy';
 import {readPending,writePending,PENDING_KEY} from './pending-delivery';
@@ -323,7 +325,7 @@ function historyCard(o: Order): string {
     + '<div class="window-meta"><span>ORDER ' + h(o.orderDate) + '</span><span>Original ' + h(deadlinePhrase(o.deadlineRequirement).toLowerCase()) + ' ' + h(returnDueDate(o)) + '</span></div>'
     + (o.total ? '<p class="history-amount">Order total <strong>' + h(o.total) + '</strong></p>' : '')
     + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open saved return document</a></p>' : '')
-    + '<div class="order-actions"><button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>'
+    + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>'
     + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button>'
     + '<button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
 }
@@ -396,7 +398,7 @@ function render() {
       + '<div class="order-foot"><span class="return-by">' + h(deadlinePhrase(o.deadlineRequirement).toUpperCase()) + ' ' + h(due) + '</span><strong class="days-left">' + count + '</strong></div>'
       + (o.deadlineRequirement ? '<p class="return-document return-document-caution">'+h(deadlineCaution(o.deadlineRequirement))+'</p>' : '')
       + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open return label, QR or receipt</a></p>' : '<p class="return-document return-document-missing">No return document saved. Add one in Edit details before going to the store.</p>')
-      + '<div class="order-actions"><button class="button button-primary" data-ics="' + h(o.id) + '">Add calendar reminder</button>'
+      + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-primary" data-ics="' + h(o.id) + '">Add calendar reminder</button>'
       + '<button class="button button-link" data-finish="' + h(o.id) + '">Finish return</button>'
       + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
   }).join('');
@@ -460,6 +462,11 @@ list.addEventListener('click', (e) => {
     if (changeCompletion(matches.length === 1 ? matches[0] : undefined, 'reopen')) $('#filter-all').focus();
   }
   if (t.dataset.edit !== undefined) orderEditor.open(t.dataset.edit);
+  if (t.dataset.receipt !== undefined) {
+    const match = orders.filter(order => order.id === t.dataset.receipt);
+    if (match.length === 1) void openReceiptProof(match[0]);
+    else showStorageError('This purchase cannot be selected uniquely. Refresh saved returns first.');
+  }
   if (t.dataset.del) removeOrder(t.dataset.del);
   if (t.dataset.ics) {
     const displayed = orders.filter(order => order.id === t.dataset.ics);
@@ -532,7 +539,7 @@ function clearAllTrackedOrders() {
     return;
   }
   // Reset remains available for a genuinely unreadable store, as before.
-  if (persistOrders([], true)) { render(); removalUndo.clear(); }
+  if (persistOrders([], true)) { render(); removalUndo.clear(); void pruneOriginalReceipts([]).catch(() => {}); }
 }
 $('#clear').addEventListener('click', clearAllTrackedOrders);
 storageRetry.addEventListener('click', reloadOrders);
@@ -553,7 +560,7 @@ const removalUndo = bindRemovalUndo({
 });
 bindRefunds({ commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
 bindTabSync({ refresh: reloadOrders });
-reloadOrders();
+if (reloadOrders()) void pruneOriginalReceipts(orders).catch(() => {});
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRefresh(() => {
   // Preserve the currently focused saved-row action through midnight's

@@ -2,6 +2,12 @@ import { receiptFileProblem, receiptSuggestions } from './receipt-photo';
 import { readReceipt } from './receipt-ocr';
 import './receipt-photo.css';
 
+let selectedOriginal: { file: File; rotation: number } | undefined;
+/** The original file remains temporary until the shopper saves the reviewed purchase. */
+export function receiptPhotoDraft(): { file: File; rotation: number } | undefined {
+  return selectedOriginal && { ...selectedOriginal };
+}
+
 export function bindReceiptPhoto() {
   const dialog = document.querySelector<HTMLDialogElement>('#manual-dialog');
   const form = document.querySelector<HTMLFormElement>('#manual-form');
@@ -15,7 +21,7 @@ export function bindReceiptPhoto() {
     '<p class="receipt-help">Use a clear, upright photo with the whole receipt in frame. English printed text; check every detail before saving.</p>',
     '<label class="receipt-file-label" for="receipt-photo-file">Choose a receipt photo</label>',
     '<input id="receipt-photo-file" type="file" accept="image/jpeg,image/png,image/webp" aria-describedby="receipt-photo-privacy">',
-    '<p id="receipt-photo-privacy" class="receipt-help">Read on this device. The photo and raw text are cleared on reload. Unfinished fields recover in this tab until you save or discard them.</p>',
+    '<p id="receipt-photo-privacy" class="receipt-help">Read on this device. The original photo is saved with the purchase on this device. Raw recognized text is cleared on reload. Unfinished fields recover in this tab until you save or discard them.</p>',
     '<div id="receipt-photo-source" hidden><div class="receipt-photo-toolbar"><button id="receipt-rotate" type="button">Rotate 90°</button><button id="receipt-clear" type="button">Remove photo</button></div>',
     '<div class="receipt-photo-zoom"><label for="receipt-photo-zoom">Zoom photo</label><input id="receipt-photo-zoom" type="range" min="1" max="3" step="0.25" value="1"><output id="receipt-zoom-value" for="receipt-photo-zoom">100%</output></div>',
     '<div class="receipt-canvas-wrap"><canvas id="receipt-photo-canvas" aria-label="Selected receipt photo"></canvas></div>',
@@ -107,6 +113,7 @@ export function bindReceiptPhoto() {
     endReading();
     image?.close();
     image = undefined;
+    selectedOriginal = undefined;
     canvas.width = canvas.height = 0;
     source.hidden = true;
     text.hidden = true;
@@ -140,6 +147,7 @@ export function bindReceiptPhoto() {
       }
       image?.close();
       image = next;
+      selectedOriginal = { file: selected, rotation: 0 };
       quarterTurns = 0;
       zoom.value = '1'; applyZoom();
       paint();
@@ -155,6 +163,7 @@ export function bindReceiptPhoto() {
   });
   rotate.addEventListener('click', () => {
     quarterTurns = (quarterTurns + 1) % 4;
+    if (selectedOriginal) selectedOriginal.rotation = quarterTurns;
     paint();
     setStatus('Photo rotated. Choose Read this receipt when the text is upright.');
   });
