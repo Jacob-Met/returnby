@@ -33,7 +33,7 @@ function fold(line: string): string {
 
 const timestamp = (date: Date) => date.toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
 
-export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string; confirmedStartDate?: string; fixedDeadline?: string; deadlineRequirement?: DeadlineRequirement; alertAt?: string | null };
+export type CalendarReminder = { id: string; merchant: string; orderNo?: string; due: string; confirmedStartDate?: string; fixedDeadline?: string; deadlineRequirement?: DeadlineRequirement; alertAt?: string | null; merchantArrivalDeadline?: string; merchantArrivalAlertAt?: string | null };
 
 function eventLines(o: CalendarReminder, ts: string): string[] {
   const d = o.due.replace(/-/g, '');
@@ -56,7 +56,18 @@ export function buildIcsCalendar(reminders: readonly CalendarReminder[], stamp =
   const ts = timestamp(stamp);
   return [
     'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
-    ...reminders.flatMap(reminder => eventLines(reminder, ts)),
+    ...reminders.flatMap(reminder => [
+      ...eventLines(reminder, ts),
+      ...(reminder.merchantArrivalDeadline ? eventLines({
+        ...reminder,
+        id: reminder.id + ':merchant-arrival',
+        due: reminder.merchantArrivalDeadline,
+        fixedDeadline: reminder.merchantArrivalDeadline,
+        deadlineRequirement: 'arrive-by',
+        alertAt: reminder.merchantArrivalAlertAt,
+        merchantArrivalDeadline: undefined,
+      }, ts) : []),
+    ]),
     'END:VCALENDAR', '',
   ].map(fold).join('\r\n');
 }

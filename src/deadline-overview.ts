@@ -2,11 +2,14 @@ import { exportBackup, parseBackup } from './backup';
 import { daysLeft, dueDate, returnDueDate, status, todayISO, type Status } from './deadline';
 import type { Order } from './store';
 import { isCompleted } from './completion';
+import type { DeadlineRequirement } from './deadline-requirement';
 
 export const OVERVIEW_PAGE_SIZE = 20;
 
 export type DeadlineOverviewRecord = {
   order: Readonly<Order>;
+  kind: 'return' | 'arrival';
+  requirement?: DeadlineRequirement;
   due: string;
   left: number;
   status: Status;
@@ -79,10 +82,14 @@ export function buildDeadlineOverview(
   // contract. The fixed admission timestamp is never displayed or saved; no
   // file, storage write or new history format is created by this projection.
   const approved = parseBackup(exportBackup(current, admissionTime)).filter(order => !isCompleted(order));
-  const rows = approved.map(order => {
+  const rows: DeadlineOverviewRecord[] = approved.flatMap(order => {
     const due = returnDueDate(order);
-    const left = daysLeft(due, today);
-    return { order, due, left, status: status(left) };
+    const primary: DeadlineOverviewRecord = { order, kind: 'return', requirement: order.deadlineRequirement,
+      due, left: daysLeft(due, today), status: status(daysLeft(due, today)) };
+    if (!order.merchantArrivalDeadline) return [primary];
+    const arrival = order.merchantArrivalDeadline;
+    const second: DeadlineOverviewRecord = {order,kind:'arrival',requirement:'arrive-by',due:arrival,left:daysLeft(arrival,today),status:status(daysLeft(arrival,today))};
+    return [primary, second];
   }).sort((a, b) => compare(a.due, b.due) || compare(a.order.id, b.order.id));
 
   const byDate = new Map<string, DeadlineOverviewRecord[]>();
@@ -102,7 +109,7 @@ export function buildDeadlineOverview(
   const monthTotal = days.reduce((sum, day) => sum + day.records.length, 0);
   return {
     month, label: months[parts.month - 1] + ' ' + parts.year, today, firstWeekday,
-    total: approved.length, monthTotal, activeDates: byDate.size,
-    outsideMonth: approved.length - monthTotal, days,
+    total: rows.length, monthTotal, activeDates: byDate.size,
+    outsideMonth: rows.length - monthTotal, days,
   };
 }

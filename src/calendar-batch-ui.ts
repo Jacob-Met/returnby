@@ -51,13 +51,18 @@ export function bindCalendarBatch(options: CalendarOptions) {
   }
   function updateSummary() {
     const picked = rows.filter(row => !row.problem && selected.has(row.order.id));
-    const count = picked.length;
+    const count = picked.reduce((n, row) => n + (row.order.merchantArrivalDeadline ? 2 : 1), 0);
     let alarms = 0, catchUps = 0, valid = true;
     try {
       for (const row of picked) {
         const alert = planCalendarAlert(row.due!, settings(), reviewedAt);
         if (alert.at) alarms++;
         if (alert.reason === 'catch-up') catchUps++;
+        if (row.order.merchantArrivalDeadline) {
+          const arrivalAlert = planCalendarAlert(row.order.merchantArrivalDeadline, settings(), reviewedAt);
+          if (arrivalAlert.at) alarms++;
+          if (arrivalAlert.reason === 'catch-up') catchUps++;
+        }
       }
     } catch { valid = false; }
     summary.textContent = count
@@ -89,7 +94,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
       name.textContent = `${row.order.merchant || 'Unknown store'}${row.order.orderNo ? ` #${row.order.orderNo}` : ''}`;
       const detail = document.createElement('span');
       detail.className = row.problem ? 'calendar-invalid' : 'calendar-due';
-      detail.textContent = row.problem ?? `${deadlinePhrase(row.order.deadlineRequirement)} ${row.due} · clock starts ${row.order.windowStartDate || row.order.orderDate}${row.order.windowStartDate ? ' (confirmed by you)' : ' (order date)'}`;
+      detail.textContent = row.problem ?? `${deadlinePhrase(row.order.deadlineRequirement)} ${row.due}${row.order.merchantArrivalDeadline ? ' · Merchant receives by ' + row.order.merchantArrivalDeadline : ''} · clock starts ${row.order.windowStartDate || row.order.orderDate}${row.order.windowStartDate ? ' (confirmed by you)' : ' (order date)'}`;
       text.append(name, detail);
       if (!row.problem) {
         const timing = document.createElement('span');
@@ -97,6 +102,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
         try {
           const alert = planCalendarAlert(row.due!, settings(), reviewedAt);
           timing.textContent = describeCalendarAlert(alert);
+          if (row.order.merchantArrivalDeadline) timing.textContent += ' · Arrival: ' + describeCalendarAlert(planCalendarAlert(row.order.merchantArrivalDeadline, settings(), reviewedAt));
           if (alert.reason !== 'scheduled' && alert.reason !== 'off') timing.classList.add('calendar-alert-attention');
         } catch (error) { timing.textContent = error instanceof Error ? error.message : 'Choose an alert time.'; }
         text.append(timing);
@@ -170,7 +176,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
       const plan = planCalendarBatch(current, rows, [...selected], now, settings(), reviewedAt);
       const filename = singleId ? `return-${(rows[0].order.merchant || 'order').replace(/\W+/g, '-')}.ics` : plan.filename;
       (options.download ?? downloadCalendar)(plan.content, filename);
-      const alertCount = plan.reminders.filter(row => row.alertAt).length;
+      const alertCount = plan.reminders.reduce((count,row) => count + (row.alertAt ? 1 : 0) + (row.merchantArrivalAlertAt ? 1 : 0), 0);
       feedback.textContent = `Calendar file prepared with ${plan.count} ${plan.count === 1 ? 'deadline' : 'deadlines'} and ${alertCount} ${alertCount === 1 ? 'alert' : 'alerts'}. ${alertCount ? 'Import the downloaded .ics file before the alert time. Check notifications in your calendar app; ReturnBy does not send them.' : 'Import the downloaded .ics file to add the deadline entries. No alerts were requested.'}`;
       dialog.close();
     } catch (error) {
@@ -185,7 +191,7 @@ export function bindCalendarBatch(options: CalendarOptions) {
     rows = []; selected.clear(); loaded = false;
     choices.replaceChildren();
     feedback.textContent = '';
-    get('calendar-title').textContent = singleId ? 'Set a return reminder' : 'Set return reminders';
+    get('calendar-title').textContent = 'Set return reminders';
     get('calendar-timezone').textContent = `Times shown in ${Intl.DateTimeFormat().resolvedOptions().timeZone}.`;
     get('calendar-select-all').hidden = Boolean(singleId);
     get('calendar-select-none').hidden = Boolean(singleId);

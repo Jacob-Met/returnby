@@ -188,7 +188,7 @@ function renderPacking(): void {
     title.textContent = order.merchant || 'Unnamed store';
     const ref = document.createElement('p');
     ref.className = 'packing-reference';
-    ref.textContent = (order.orderNo ? '#' + order.orderNo + ' · ' : '') + deadlinePhrase(order.deadlineRequirement) + ' ' + returnDueDate(order);
+    ref.textContent = (order.orderNo ? '#' + order.orderNo + ' · ' : '') + deadlinePhrase(order.deadlineRequirement) + ' ' + returnDueDate(order) + (order.merchantArrivalDeadline ? ' · Merchant receives by ' + order.merchantArrivalDeadline : '');
     section.append(title, ref);
     if(order.deadlineRequirement){const caution=document.createElement('p');caution.className='packing-reference';caution.textContent=deadlineCaution(order.deadlineRequirement);section.append(caution);}
     const documents = document.createElement('div');
@@ -297,7 +297,7 @@ function addOrderOption(order: SavedSnapshot['orders'][number]): void {
   ref.textContent = 'Order ' + (order.orderNo || 'number not recorded') + (order.total ? ' · ' + order.total : '');
   const date = document.createElement('span');
   date.className = 'choice-date';
-  date.textContent = (order.fixedDeadline ? 'Confirmed ' : 'Calculated ') + deadlinePhrase(order.deadlineRequirement).toLowerCase() + ' · ' + returnDueDate(order);
+  date.textContent = (order.fixedDeadline ? 'Confirmed ' : 'Calculated ') + deadlinePhrase(order.deadlineRequirement).toLowerCase() + ' · ' + returnDueDate(order) + (order.merchantArrivalDeadline ? ' · Merchant receives by ' + order.merchantArrivalDeadline : '');
   const source = document.createElement('span');
   source.className = 'choice-source';
   source.textContent = order.fixedDeadline ? 'Exact date confirmed by you' : sourceLabel(order.windowSource) + ' · ' + order.windowDays + ' days';

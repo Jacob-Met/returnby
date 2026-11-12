@@ -1,61 +1,36 @@
 # ReturnBy
 
-A local return desk for remembering purchase deadlines, preparing a return trip, and following an outstanding refund. Review the dates and store policy before saving. Your purchase records stay in your browser.
+ReturnBy is an offline return desk: save a purchase, see what a retailer requires by which date, prepare your return trip, and follow the refund. Your orders and receipt photos stay in your browser.
 
-## Current release 0.9.3 — pack and go
+**[Download ReturnBy 0.10.0](https://github.com/Jacob-Met/returnby/releases/tag/v0.10.0)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
 
-**[Download ReturnBy 0.9.3](https://github.com/Jacob-Met/returnby/releases/tag/v0.9.3)** — on phones, the trip's return document, original receipt, packing checks and notes now follow the selected orders and date instead of sitting below the full order list. Finding and adding other orders remains on the same page. Desktop keeps selection and packing side by side. The merchant handoff and deadline review from 0.9.2 remains available in purchase and batch intake.
+[Phone view: carrier and merchant deadlines](https://github.com/Jacob-Met/returnby/releases/download/v0.10.0/ReturnBy-v0.10.0-dual-deadline-phone.png) · [Desktop view](https://github.com/Jacob-Met/returnby/releases/download/v0.10.0/ReturnBy-v0.10.0-dual-deadline-desktop.png)
 
-A general return-by date remains the default for older purchases. A merchant-receipt deadline needs transit time before the displayed date, not a last-day postmark. Some retailers require **both** shipment and receipt by separate dates; check both instructions before tracking the one you choose here.
+## Know which deadline you have
 
-Receipt-photo proof, purchase-date correction, saved returns and refund tracking continue in this version. Your purchases remain in the same browser profile when updating with the same localhost address.
+Some retailers require **carrier acceptance by one date** and **receipt by the merchant by a later date**. Choose **Ship by (carrier handoff)** as the first action and, when the retailer requires both, enter **Merchant must also receive by** as the second date. Both dates appear on the saved purchase, in the calendar view, the return-trip sheet, spreadsheet exports and backups. Downloading its calendar reminders creates two dated events, each with a distinct identity and alert.
 
-[Linux amd64](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-linux-amd64.tar.gz) · [macOS Intel](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-darwin-amd64.zip) · [macOS Apple Silicon](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-darwin-arm64.zip) · [Windows amd64](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-windows-amd64.zip) · [Python 3 browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-browser.zip)
+Other returns keep the simpler one-date options: **Return by**, **Drop off by**, or **Merchant must receive by**. ReturnBy does not infer these requirements from a vague policy. Check the merchant's published instructions and confirm both dates yourself. An arrival deadline is not a safe day to mail a parcel.
 
-Extract the native archive and run ReturnBy or the included launcher. The runtime, app and English OCR reader are bundled. Keep the same browser profile and http://127.0.0.1:8769 address to retain purchases and trips. The Linux build is exercised; macOS and Windows packages are crosscompiled and unsigned.
+## Use the desk
 
-[Watch the earlier receipt-photo walkthrough](https://github.com/Jacob-Met/returnby/releases/download/v0.7.2/ReturnBy-receipt-photo.mp4) — a captioned, silent walkthrough with a fictional receipt. The current version still reads receipt photos locally. [Photo intake details](docs/RECEIPT_PHOTOS.md).
+Download the archive for your computer: Linux, macOS (Intel or Apple Silicon), Windows, or the Python-based local browser ZIP. The native packages include their runtime and the offline English receipt reader. Open the included launcher, then use the app at **http://127.0.0.1:8769** in your normal browser. Keep the same browser profile and local address when upgrading to keep saved purchases and trips.
 
-The release includes local photo review, dated partial-refund credits, purchase History, named return trips and calendar exports. It now carries the return document link and precise deadline action from the saved purchase into the editable and printable packing plan, downloaded backups, CSV and calendar reminders.
+You can add a purchase by typing its details, pasting a confirmation email, adding local confirmation files in a batch, or reading a receipt photo. Review the proposed store, order date, confirmed return-clock start, duration, action and any second arrival date before saving. A delivery-based deadline can stay pending until you know the delivery date.
 
-![Packing and return documents immediately below the trip selection on a phone](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-packing-phone.png)
+Saved purchases offer editing, a paper-receipt photo, return-document links, calendar reminder downloads, and a printable return-trip checklist. Finish a return to move it to History. Refund follow-up supports partial payments and future check dates.
 
-## Your next return
+## Saved work and privacy
 
-- **Return to saved work.** On a phone, existing purchases lead the desk. **Add purchase** opens intake; returning to the list keeps your current review. Saving takes you to the purchase you just added.
-- **Add a purchase.** Read a JPG, PNG or WebP receipt photo, enter details manually, paste a confirmation, or review exported text/HTML email. Correct the proposed store, date and return window before saving. Dates such as 05/11/2026 require a choice when both day/month interpretations are valid.
-- **Wait for delivery.** Keep reviewed delivery-based purchases pending until you can confirm their return-clock start. The return document link and retailer action requirement survive this wait. Confirming one purchase leaves the others intact.
-- **Find and act.** Search saved purchases, tap **Paper receipt** to show or add your original receipt photo, see whether to ship, drop off or allow time for merchant receipt, open the saved label or QR link, export calendar reminders, and prepare an editable trip checklist. Save named trips for errands; reopening checks current order facts. CSV export includes every saved purchase.
-- **Check a refund.** Keep a simple expected amount and follow-up note, or choose **Track partial payments** to record dated credits, their references and the amount still owed. Correct or remove a credit before saving. A zero balance still requires you to mark the refund received after checking for yourself. Refund tracking does not close the purchase deadline.
-- **Keep a copy.** Download a JSON backup for recovery or transfer. Review saved purchases, pending purchases and the working trip and named copies separately before restoring them.
+ReturnBy has no account, inbox connection, or remote sync. Your original receipt image is stored in your browser and included in the downloadable JSON backup. Save a new backup before changing devices, clearing browser data, or changing the local server address. Backups are **unencrypted** and may contain order details, photos, return links, refund notes, and private trip notes. Store them securely.
 
-Calendar files must be imported into your calendar. Check that app's notification settings. Imported entries are snapshots: ReturnBy cannot update or cancel them when a purchase changes. A follow-up date recorded in ReturnBy does not itself send a notification.
+Backups with two separate deadlines use **version 10**. Versions 1–9 remain readable in ReturnBy 0.10.0, including older backups with receipt photos. Earlier app releases cannot read version 10 safely; upgrade the app before restoring it. CSV is for spreadsheet review, not a substitute for a JSON backup.
 
-A confirmed fixed return-by date remains distinct from a day-window policy. Review the proposed deadline and clock basis before saving.
+Calendar files must be imported into your calendar app. ReturnBy does not send notifications itself, change an existing imported reminder when you edit an order, contact the retailer, arrange a return, or verify refund receipt. Make sure your calendar app's notifications are enabled.
 
-## What stays local
+## Build
 
-There is no inbox connection, upload or account synchronization. Saved purchases, refund notes, reviewed pending purchases and trip work use this browser's storage. Original email text is not retained in saved purchases or backups. The original paper-receipt image is saved locally in your browser for a reviewed purchase and can be reopened from a saved return or its trip. You can also add or replace a photo from an existing return. Raw recognized text is cleared on reload. **JSON backups include saved original photos (up to 96 MiB for photo-bearing backups)**, while printed checklists do not. Download and safely keep a current backup before switching devices or clearing browser storage. A saved HTTPS return-document link opens the merchant-hosted source; it may require a sign-in or expire. Clearing browser data can remove saved work.
-
-Backups are unencrypted and may contain purchase details, return links, action deadlines, refund records and private trip notes. Keep them private. The current app writes backup version 9 when original receipt photos are included, version 8 when a shipment, drop-off or merchant-receipt requirement is saved; version 7 for return links; and earlier formats when applicable. Versions 1–8 remain readable. Older releases cannot safely read versions 8 or 9; upgrade before restoring or transferring such backups.
-
-ReturnBy records your decisions. It does not arrange pickup, verify retailer eligibility, contact a merchant or confirm bank receipt.
-
-## Current build and limits
-
-The 0.9.3 source passed 740 automated tests across 55 files, TypeScript compilation and a production Vite build. The downloaded 0.9.3 Linux launcher was used in Chrome at 390px, 320px and 1440px to select returns, resume packing, preserve checks and notes across a reload, and download a printable plan. The calendar-to-trip path passed in the same bundled app. macOS and Windows archives were crosscompiled and are unsigned.
-
-ReturnBy keeps the shopper's decisions and dates, not verified merchant policies or bank transfers. It does not arrange a shipment or pickup. Its merchant-hosted link is not a locally archived QR image. Paper receipt photos remain on the device where they were saved; bring a separate copy when required.
-
-## Earlier source-pinned work
-
-The [receipt-policy 0.6.1 release record](README-policy-release-2026-11-10.md) preserves its source and independent downloaded-use course.
-
-The [named-trip 0.5.0 release record](README-named-trips-2026-11-10.md) preserves its exact source, independent downloaded-use judgment and actual walkthrough.
-
-The [independently used phone-desk0.4.0 release](docs/named-trip-release/earlier-phone-desk-README.md) retains its source, walkthrough and exact Tern judgment. The [batch-to-pending package](downloads/returnby-batch-pending-0c12cba/README.md) and [historical releases](README-history-2026-11-10.md) remain available. They are separate source pins, not additional unverified capabilities silently added to this build.
-
-## Build from source
+Requires Node 22+ and a browser.
 
 ```sh
 npm ci
@@ -64,4 +39,4 @@ npm run build
 npm run preview
 ```
 
-The maintained browser packager is `python3 tools/package_release.py /existing/output/directory`. Commit source first so the package identifies an exact revision. Browser checks in `tools/` use a separately installed Playwright/Chrome; estate checks run through Renpō rather than GitHub Actions.
+The maintained release builders are `tools/package_release.py` and `tools/package_native.py`. Local-browser courses run from `tools/check_*_browser.mjs` using Playwright and Chrome. The packaged app uses no cloud API for purchases or OCR.

@@ -1,3 +1,19 @@
+import { returnDueDate } from './deadline';
+
+/** A second date is actionable only if the first date is the carrier cutoff. */
+export function validMerchantArrivalDeadline(value: unknown, requirement: DeadlineRequirement | undefined, due: string): boolean {
+  if (value === undefined || value === '') return true;
+  if (requirement !== 'ship-by' || typeof value !== 'string'
+    || !/^\d{4}-\d{2}-\d{2}$/.test(value) || +value.slice(0,4) < 1000
+    || value < due || value >= '9999-12-31') return false;
+  const date = new Date(value + 'T00:00:00Z');
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0,10) === value;
+}
+export const hasValidMerchantArrivalDeadline = (order: {
+  merchantArrivalDeadline?: unknown; deadlineRequirement?: DeadlineRequirement;
+  orderDate: string; windowStartDate?: string; windowDays: number;
+}): boolean => validMerchantArrivalDeadline(order.merchantArrivalDeadline, order.deadlineRequirement, returnDueDate(order));
+
 /** The shopper's understanding of a retailer's action deadline; not retailer verification. */
 export type DeadlineRequirement = 'ship-by' | 'drop-off-by' | 'arrive-by';
 export function validDeadlineRequirement(value: unknown): value is DeadlineRequirement {

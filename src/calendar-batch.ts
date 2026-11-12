@@ -1,6 +1,6 @@
 import { daysLeft, dueDate, returnDueDate, todayISO } from './deadline';
 import { buildIcsCalendar, type CalendarReminder } from './ics';
-import { deadlineCalendarTitle } from './deadline-requirement';
+import { deadlineCalendarTitle, validMerchantArrivalDeadline } from './deadline-requirement';
 import type { Order } from './store';
 import { isCompleted } from './completion';
 import { DEFAULT_ALERT_SETTINGS, localCalendarDate, planCalendarAlert, type CalendarAlertSettings } from './calendar-alert';
@@ -54,7 +54,8 @@ function reminder(order: Order): CalendarReminder {
     throw new CalendarBatchError('The calendar deadline must be before 9999-12-31.');
   }
   if (order.fixedDeadline !== undefined && order.fixedDeadline !== due) throw new CalendarBatchError('Review the fixed deadline before exporting this return.');
-  return { ...(order.fixedDeadline ? {fixedDeadline:order.fixedDeadline} : {}), ...(order.deadlineRequirement ? {deadlineRequirement:order.deadlineRequirement} : {}), id: order.id, merchant: order.merchant, orderNo: order.orderNo, due, ...(order.windowStartDate ? {confirmedStartDate: order.windowStartDate} : {}) };
+  if (!validMerchantArrivalDeadline(order.merchantArrivalDeadline, order.deadlineRequirement, due)) throw new CalendarBatchError('Correct the second merchant arrival cutoff before exporting this return.');
+  return { ...(order.merchantArrivalDeadline ? {merchantArrivalDeadline:order.merchantArrivalDeadline} : {}), ...(order.fixedDeadline ? {fixedDeadline:order.fixedDeadline} : {}), ...(order.deadlineRequirement ? {deadlineRequirement:order.deadlineRequirement} : {}), id: order.id, merchant: order.merchant, orderNo: order.orderNo, due, ...(order.windowStartDate ? {confirmedStartDate: order.windowStartDate} : {}) };
 }
 
 /** Freeze the reviewed fields. Invalid records remain visible but unselectable. */
@@ -82,7 +83,7 @@ export function initialCalendarSelection(rows: readonly CalendarRow[], filter: C
 }
 
 const fingerprint = (order: Order) => JSON.stringify([
-  order.id, order.merchant, order.orderNo ?? '', order.orderDate, order.windowStartDate ?? '', order.windowDays, order.deadlineRequirement ?? '',
+  order.id, order.merchant, order.orderNo ?? '', order.orderDate, order.windowStartDate ?? '', order.windowDays, order.fixedDeadline ?? '', order.deadlineRequirement ?? '', order.merchantArrivalDeadline ?? '',
 ]);
 
 /** Recheck exactly the selected returns against storage before producing bytes. */
@@ -109,7 +110,9 @@ export function planCalendarBatch(
     const value = reminder(row.order);
     const alert = planCalendarAlert(value.due, alertSettings, reviewedAt);
     if (alert.at && new Date(alert.at).getTime() <= stamp.getTime()) throw new CalendarAlertExpiredError();
-    return { ...value, alertAt: alert.at };
+    const arrivalAlert = value.merchantArrivalDeadline ? planCalendarAlert(value.merchantArrivalDeadline, alertSettings, reviewedAt) : null;
+    if (arrivalAlert?.at && new Date(arrivalAlert.at).getTime() <= stamp.getTime()) throw new CalendarAlertExpiredError();
+    return { ...value, alertAt: alert.at, ...(arrivalAlert ? {merchantArrivalAlertAt:arrivalAlert.at} : {}) };
   });
   // The title occurs in SUMMARY and the alarm DESCRIPTION. Escaping and line
   // folding cannot shorten these UTF-8 values, so reject a clearly oversized
@@ -119,7 +122,7 @@ export function planCalendarBatch(
   if (minimumBytes > MAX_CALENDAR_BYTES) throw sizeError();
   const content = buildIcsCalendar(reminders, stamp);
   if (encoder.encode(content).byteLength > MAX_CALENDAR_BYTES) throw sizeError();
-  return { content, count: reminders.length, reminders, filename: `returnby-reminders-${stamp.toISOString().slice(0, 10)}.ics` };
+  return { content, count: reminders.length + reminders.filter(row => !!row.merchantArrivalDeadline).length, reminders, filename: `returnby-reminders-${stamp.toISOString().slice(0, 10)}.ics` };
 }
 
 /** Single-card downloads share the reviewed batch path, including freshness,

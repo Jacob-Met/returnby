@@ -61,18 +61,19 @@ export function bindDeadlineOverview({
     const selectedDay = snapshot.days.find(day => day.date === selected);
     if (!selectedDay) return;
     selectedTitle.dataset.date = selected;
-    selectedTitle.textContent = 'Saved returns due ' + selected;
+    selectedTitle.textContent = 'Return deadlines on ' + selected;
     const count = selectedDay.records.length;
     if (tripLink) {
       tripLink.hidden = !count;
       tripLink.href = './trip-checklist.html?deadline=' + encodeURIComponent(selected);
-      tripLink.textContent = 'Plan a trip for these ' + count + (count === 1 ? ' return →' : ' returns →');
+      const uniqueOrders = new Set(selectedDay.records.map(value => value.order.id)).size;
+      tripLink.textContent = 'Plan a trip for ' + uniqueOrders + (uniqueOrders === 1 ? ' return →' : ' returns →');
     }
     const pages = Math.max(1, Math.ceil(count / OVERVIEW_PAGE_SIZE));
     page = Math.min(Math.max(0, page), pages - 1);
     selectedSummary.textContent = count
-      ? plural(count, 'saved return') + '. Details below preserve the approved saved fields.'
-      : 'No saved return in this snapshot has this deadline.';
+      ? plural(count, 'deadline') + '. Details below preserve the approved saved fields.'
+      : 'No saved deadline in this snapshot falls on this date.';
     const items = document.createDocumentFragment();
     for (const row of selectedDay.records.slice(page * OVERVIEW_PAGE_SIZE, (page + 1) * OVERVIEW_PAGE_SIZE)) {
       const item = document.createElement('li');
@@ -90,7 +91,7 @@ export function bindDeadlineOverview({
         ['windowDays', 'Return window (days)', row.order.windowDays],
         ['windowSource', 'Saved window source', row.order.windowSource],
         ['createdAt', 'Saved creation time', row.order.createdAt],
-        ['due', deadlinePhrase(row.order.deadlineRequirement), row.due],
+        ['due', deadlinePhrase(row.requirement), row.due],
       ];
       const details = document.createElement('dl');
       for (const [key, label, value] of values) {
@@ -130,9 +131,9 @@ export function bindDeadlineOverview({
     if (!snapshot) return;
     monthTitle.dataset.month = snapshot.month;
     monthTitle.textContent = snapshot.label;
-    monthSummary.textContent = plural(snapshot.monthTotal, 'saved return') + ' across '
+    monthSummary.textContent = plural(snapshot.monthTotal, 'deadline') + ' across '
       + plural(snapshot.activeDates, 'deadline day') + ' in this month. '
-      + snapshot.total + ' saved in total; ' + snapshot.outsideMonth + ' due in other months.';
+      + snapshot.total + ' deadlines tracked; ' + snapshot.outsideMonth + ' due in other months.';
     previousMonth.disabled = shiftOverviewMonth(snapshot.month, -1) === null;
     nextMonth.disabled = shiftOverviewMonth(snapshot.month, 1) === null;
     const cells = document.createDocumentFragment();
@@ -148,7 +149,7 @@ export function bindDeadlineOverview({
       button.className = 'overview-day';
       button.dataset.overviewDate = day.date;
       if (day.date === snapshot.today) button.setAttribute('aria-current', 'date');
-      button.setAttribute('aria-label', day.date + ': ' + plural(day.records.length, 'saved return'));
+      button.setAttribute('aria-label', day.date + ': ' + plural(day.records.length, 'deadline'));
       button.setAttribute('aria-pressed', String(day.date === selected));
       button.tabIndex = day.date === selected ? 0 : -1;
       button.append(text('span', String(day.day), 'overview-day-number'),

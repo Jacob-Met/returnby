@@ -2,7 +2,7 @@ import { dueDate } from './deadline';
 import { lookup } from './policy';
 import type { Order } from './store';
 import { validReturnEvidenceUrl } from './return-evidence';
-import { deadlinePhrase, validDeadlineRequirement, type DeadlineRequirement } from './deadline-requirement';
+import { deadlinePhrase, validDeadlineRequirement, validMerchantArrivalDeadline, type DeadlineRequirement } from './deadline-requirement';
 
 export type EditDraft = {
   merchant: string;
@@ -10,6 +10,7 @@ export type EditDraft = {
   total: string;
   returnEvidenceUrl?: string;
   deadlineRequirement?: string;
+  merchantArrivalDeadline?: string;
   orderDate: string;
   windowStartDate?: string;
   fixedDeadline?: string;
@@ -31,6 +32,7 @@ export function editDraft(order: Order): EditDraft {
     total: order.total ?? '',
     returnEvidenceUrl: order.returnEvidenceUrl ?? '',
     deadlineRequirement: order.deadlineRequirement ?? '',
+    merchantArrivalDeadline: order.merchantArrivalDeadline ?? '',
     orderDate: order.orderDate,
     windowStartDate: order.windowStartDate ?? '',
     fixedDeadline: order.fixedDeadline ?? '',
@@ -82,6 +84,11 @@ export function previewEdit(original: Order, draft: EditDraft): { order: Order; 
     throw new EditError('The return deadline must be before 9999-12-31 so its calendar reminder has a valid end date.', 'windowDays');
   }
 
+  const arrival = draft.merchantArrivalDeadline?.trim() ?? '';
+  if (arrival && !validMerchantArrivalDeadline(arrival, requirement as DeadlineRequirement | undefined, due)) {
+    throw new EditError('Merchant arrival must be a real date on or after the carrier handoff cutoff. Choose Ship by for the first deadline, or clear the second date.', 'merchantArrivalDeadline');
+  }
+
   // An unrelated correction must not reinterpret a historical saved policy.
   const policy = lookup(draft.merchant);
   const windowSource = fixed ? 'user' : draft.merchant === original.merchant && days === original.windowDays
@@ -99,6 +106,8 @@ export function previewEdit(original: Order, draft: EditDraft): { order: Order; 
   else delete order.returnEvidenceUrl;
   if (requirement) order.deadlineRequirement = requirement as DeadlineRequirement;
   else delete order.deadlineRequirement;
+  if (arrival) order.merchantArrivalDeadline = arrival;
+  else delete order.merchantArrivalDeadline;
   return { order, due };
 }
 
