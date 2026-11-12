@@ -2,15 +2,15 @@
 
 A local return desk for remembering purchase deadlines, preparing a return trip, and following an outstanding refund. Review the dates and store policy before saving. Your purchase records stay in your browser.
 
-## Current release 0.9.2 — know whether to ship, drop off or arrive
+## Current release 0.9.3 — pack and go
 
-**[Download ReturnBy 0.9.2](https://github.com/Jacob-Met/returnby/releases/tag/v0.9.2)** — when a confirmation distinguishes shipping from merchant arrival, review now shows the instructions and requires you to choose the handoff and deadline before saving. Batch imports work the same way. The chosen action follows the purchase into calendar reminders and trip packing, and unresolved action review survives pending delivery.
+**[Download ReturnBy 0.9.3](https://github.com/Jacob-Met/returnby/releases/tag/v0.9.3)** — on phones, the trip's return document, original receipt, packing checks and notes now follow the selected orders and date instead of sitting below the full order list. Finding and adding other orders remains on the same page. Desktop keeps selection and packing side by side. The merchant handoff and deadline review from 0.9.2 remains available in purchase and batch intake.
 
 A general return-by date remains the default for older purchases. A merchant-receipt deadline needs transit time before the displayed date, not a last-day postmark. Some retailers require **both** shipment and receipt by separate dates; check both instructions before tracking the one you choose here.
 
 Receipt-photo proof, purchase-date correction, saved returns and refund tracking continue in this version. Your purchases remain in the same browser profile when updating with the same localhost address.
 
-[Linux amd64](https://github.com/Jacob-Met/returnby/releases/download/v0.9.2/ReturnBy-v0.9.2-linux-amd64.tar.gz) · [macOS Intel](https://github.com/Jacob-Met/returnby/releases/download/v0.9.2/ReturnBy-v0.9.2-darwin-amd64.zip) · [macOS Apple Silicon](https://github.com/Jacob-Met/returnby/releases/download/v0.9.2/ReturnBy-v0.9.2-darwin-arm64.zip) · [Windows amd64](https://github.com/Jacob-Met/returnby/releases/download/v0.9.2/ReturnBy-v0.9.2-windows-amd64.zip) · [Python 3 browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/v0.9.2/ReturnBy-v0.9.2-browser.zip)
+[Linux amd64](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-linux-amd64.tar.gz) · [macOS Intel](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-darwin-amd64.zip) · [macOS Apple Silicon](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-darwin-arm64.zip) · [Windows amd64](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-windows-amd64.zip) · [Python 3 browser ZIP](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-browser.zip)
 
 Extract the native archive and run ReturnBy or the included launcher. The runtime, app and English OCR reader are bundled. Keep the same browser profile and http://127.0.0.1:8769 address to retain purchases and trips. The Linux build is exercised; macOS and Windows packages are crosscompiled and unsigned.
 
@@ -18,7 +18,7 @@ Extract the native archive and run ReturnBy or the included launcher. The runtim
 
 The release includes local photo review, dated partial-refund credits, purchase History, named return trips and calendar exports. It now carries the return document link and precise deadline action from the saved purchase into the editable and printable packing plan, downloaded backups, CSV and calendar reminders.
 
-![Return action review on a phone](https://github.com/Jacob-Met/returnby/releases/download/v0.9.2/ReturnBy-v0.9.2-return-action-phone.png)
+![Packing and return documents immediately below the trip selection on a phone](https://github.com/Jacob-Met/returnby/releases/download/v0.9.3/ReturnBy-v0.9.3-packing-phone.png)
 
 ## Your next return
 
@@ -43,7 +43,7 @@ ReturnBy records your decisions. It does not arrange pickup, verify retailer eli
 
 ## Current build and limits
 
-The 0.9.2 source passed 740 automated tests across 55 files, TypeScript compilation and a production Vite build. The locally stored receipt photograph was used at phone and desktop sizes through save, reload, original-byte download, trip access and removal. The built app was used in Chrome at 390px and 1440px through a purchase, pending delivery, a changed deadline action, editing, a downloaded version-8 backup, printable return trip and manual merchant-receipt deadline. The 0.9.2 Linux launcher was used through intake and a return-trip packing plan; macOS and Windows archives are crosscompiled and unsigned.
+The 0.9.3 source passed 740 automated tests across 55 files, TypeScript compilation and a production Vite build. The downloaded 0.9.3 Linux launcher was used in Chrome at 390px, 320px and 1440px to select returns, resume packing, preserve checks and notes across a reload, and download a printable plan. The calendar-to-trip path passed in the same bundled app. macOS and Windows archives were crosscompiled and are unsigned.
 
 ReturnBy keeps the shopper's decisions and dates, not verified merchant policies or bank transfers. It does not arrange a shipment or pickup. Its merchant-hosted link is not a locally archived QR image. Paper receipt photos remain on the device where they were saved; bring a separate copy when required.
 
