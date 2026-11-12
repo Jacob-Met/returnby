@@ -48,7 +48,15 @@ try{
  assert.equal(backup.version,9);assert.equal(backup.photos.length,1);
  assert.equal(Buffer.compare(Buffer.from(backup.photos[0].data,'base64'),png),0);
  const receiver=await open();await receiver.locator('#backup-heading').click();
- await choose(receiver,backup);await receiver.locator('#backup-apply').click();
+ await choose(receiver,backup);
+ const fileBox=await receiver.locator('#backup-file').boundingBox();
+ const actionBox=await receiver.locator('#backup-apply').boundingBox();
+ const rowsBox=await receiver.locator('#backup-rows').boundingBox();
+ assert(fileBox && actionBox && rowsBox,'phone restore controls must be visible');
+ assert(actionBox.y-fileBox.y-fileBox.height<260,'restore action must follow the file picker on phones');
+ assert(actionBox.y<rowsBox.y,'restore action must precede the long review list');
+ assert.equal(await receiver.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+ await receiver.locator('#backup-apply').click();
  await receiver.waitForFunction(()=>document.querySelector('#backup-message')?.textContent?.includes('saved here'));
  assert.deepEqual(await photos(receiver),before);
  await receiver.locator('button[data-receipt]').first().click();

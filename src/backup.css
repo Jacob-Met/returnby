@@ -1,9 +1,9 @@
 .backup-panel { margin: 2rem 0; border: 1px solid var(--line, #d7d3c7); padding: 1.2rem; background: #faf8f0; }
-.backup-panel summary { cursor: pointer; font-weight: 700; font-size: 1.1rem; }
+.backup-panel > details > summary { cursor: pointer; font-weight: 700; font-size: 1.1rem; }
 .backup-panel p { max-width: 78ch; line-height: 1.6; }
 .backup-panel .list-note { color: var(--muted); }
 .backup-panel input[type="file"] { display: block; max-width: 100%; margin: .65rem 0; }
-.backup-panel .input-label { display: block; margin-top: 1.2rem; }
+.backup-panel .input-label { display: block; margin-top: .55rem; }
 .backup-panel .action-row { flex-wrap: wrap; }
 .backup-panel .input-label { font-size: .8125rem; letter-spacing: .045em; line-height: 1.5; }
 .backup-panel .list-note { font-size: .875rem; line-height: 1.55; }
@@ -28,3 +28,25 @@
 #backup-trip-restore {min-height:44px;padding:.7rem 1rem;background:#315b4d;color:white;border:0;margin:.5rem .75rem .5rem 0;cursor:pointer}
 
 .backup-comparison{display:grid;gap:8px;margin:12px 0;padding:12px;border:1px solid #c9c4b5;background:#fffdf7}.backup-comparison section{min-width:0}.backup-comparison p{margin:3px 0;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}.backup-choice{display:block;font-weight:650;margin:10px 0}.backup-choice select{display:block;width:100%;max-width:420px;margin-top:6px;padding:10px;font:inherit;background:white;border:1px solid #7d897d}.backup-choice select:focus{outline:2px solid var(--copper);outline-offset:2px}
+
+/* Restore is the primary phone task. Disclosure and exporting follow the decision. */
+.backup-restore-first { padding-top: .8rem; }
+.backup-restore-first h3, .backup-export-zone h3 {
+  margin: .25rem 0 .45rem;
+  font: 600 1.2rem/1.25 Georgia, serif;
+}
+.backup-restore-first > .list-note { margin: .3rem 0 .55rem; }
+.backup-restore-first input[type="file"] { width: 100%; margin: .25rem 0 .6rem; }
+.backup-import-actions { margin: .65rem 0 .75rem; gap: .55rem; }
+.backup-import-actions .button-primary { font-weight: 750; }
+.backup-export-zone { margin-top: 1.35rem; padding-top: 1rem; border-top: 1px solid var(--line, #d7d3c7); }
+.backup-export-zone p { margin: .4rem 0 .65rem; }
+.backup-help { margin-top: 1rem; }
+.backup-help > summary { cursor: pointer; color: #315b4d; font-size: .9rem; font-weight: 650; }
+.backup-help > p { padding-left: .8rem; border-left: 2px solid var(--line, #d7d3c7); }
+@media (max-width: 600px) {
+  .backup-restore-first { padding-top: .55rem; }
+  .backup-restore-first h3 { font-size: 1.14rem; }
+  .backup-import-actions .button-primary { flex: 1 1 100%; }
+  .backup-import-actions .button-link { padding-left: 0; }
+}
