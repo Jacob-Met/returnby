@@ -16,7 +16,7 @@ Extract the native archive and run ReturnBy or the included launcher. The runtim
 
 The release includes local photo review, dated partial-refund credits, purchase History, named return trips and calendar exports. It now carries the return document link and precise deadline action from the saved purchase into the editable and printable packing plan, downloaded backups, CSV and calendar reminders.
 
-![Saved original paper receipt on a phone](https://github.com/Jacob-Met/returnby/releases/download/v0.9.1/ReturnBy-receipt-proof-phone.png)
+![Saved original paper receipt on a phone](https://github.com/Jacob-Met/returnby/releases/download/v0.9.0/ReturnBy-receipt-proof-phone.png)
 
 ## Your next return
 
