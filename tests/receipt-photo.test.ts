@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { damagedReceiptSuggestions, receiptSuggestions, receiptFileProblem } from '../src/receipt-photo';
+import { damagedReceiptSuggestions, mergeReceiptSuggestions, receiptSuggestions, receiptFileProblem } from '../src/receipt-photo';
 
 describe('printed receipt review suggestions', () => {
   it('keeps the final paid total, printed identity and purchase date together', () => {
@@ -174,5 +174,33 @@ describe('repeated final amounts through deep paper folds', () => {
   });
   it('does not confuse a repeated subtotal with evidence of a final amount', () => {
     expect(damagedReceiptSuggestions('SubTotal 47.00\nTotal 50.29').total).toBe('');
+  });
+});
+
+describe('folded heading continuation and final balance', () => {
+  it('takes a brand above its address when OCR leaves a paper-edge bar', () => {
+    const text = '3:\nSOLDEN BOWL TERIYAKI      |\n8610 GARFIELD AVE\nSOUTH GATE CA 90280';
+    expect(receiptSuggestions(text).merchant).toBe('SOLDEN BOWL TERIYAKI');
+  });
+  it('joins a clipped brand suffix only when the second reading contains the printed prefix', () => {
+    const first = receiptSuggestions('SOLDEN BowL TERI\ns       -RIYAK 1\n8610 GARFIELD AVE');
+    const second = receiptSuggestions('3:\nSOLDEN BOWL TERIYAKI      |\n8610 GARFIELD AVE');
+    expect(mergeReceiptSuggestions(first, second).merchant).toBe('SOLDEN BOWL TERIYAKI');
+  });
+  it('gets a final balance below a printed but illegible TOTAL line', () => {
+    expect(damagedReceiptSuggestions('4 Subtotal 71.40\n4 Total ne §\n4 Balance Due 77.83').total).toBe('77.83');
+  });
+  it('does not infer a paid total from a bare remaining balance', () => {
+    expect(damagedReceiptSuggestions('4 Subtotal 71.40\n4 Balance Due 77.83').total).toBe('');
+  });
+  it('does not trust a printed currency total when two final-amount lines conflict', () => {
+    const result = damagedReceiptSuggestions('Total $50.29\ni    Total 50.29\n:   Total Due 51.29 |');
+    expect(result.total).toBe('');
+    expect(result.notes.join(' ')).toMatch(/Different printed totals/);
+  });
+  it('does not choose between a currency total and a disagreeing balance', () => {
+    const result = damagedReceiptSuggestions('TOTAL: $50.00\n4 Balance Due 77.83');
+    expect(result.total).toBe('');
+    expect(result.notes.join(' ')).toMatch(/Different printed totals/);
   });
 });

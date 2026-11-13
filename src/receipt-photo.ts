@@ -25,7 +25,10 @@ export function receiptSuggestions(text: string): ReceiptSuggestions {
     /^\d{1,6}(?:\.\d+)?\s+\p{L}{2,}/u.test(line) ||
     /(?:^|\s)[$€£]?\d[\d,]*\.\d{2}(?:\b|$)/.test(line) ||
     /^(?:server|cashier|table|guests?|order|date|receipt|register)\s*[:#]/i.test(line));
-  const header = lines.slice(0, Math.min(8, bodyIndex >= 0 ? bodyIndex : 8));
+  const header = lines.slice(0, Math.min(8, bodyIndex >= 0 ? bodyIndex : 8))
+    // Folded paper edges can leave a column-guide bar after a complete name.
+    // Strip only that edge artifact, not arbitrary large whitespace within a row.
+    .map(line => /\s{2,}\|\s*$/.test(line) ? line.replace(/\s+\|\s*$/, '').trim() : line);
   const headerName = header.find(line => {
     const first = /^(\p{L}{3,})/u.exec(line)?.[1];
     return !!first && (first.length >= 4 || /\s+\p{L}{4,}/u.test(line)) &&
@@ -133,6 +136,14 @@ export function damagedReceiptSuggestions(text: string): ReceiptSuggestions {
     return amounts.length === 1 ? [amounts[0][0].replace(/\s/g, '')] : [];
   });
   const unique = [...new Set(totals)];
+  // A creased restaurant receipt can keep the final balance on one line while
+  // the adjacent TOTAL amount disappears. A separate TOTAL label anchors the
+  // amount; a solitary Balance Due or a subtotal is insufficient.
+  const hasFinalTotalLabel = lines.some(line => /\btotal\b/i.test(line) && !/\bsub[\s-]*total\b/i.test(line));
+  const balances = hasFinalTotalLabel ? lines.flatMap(line => {
+    const match = /^(?:\d{1,2}\s+)?balance\s+due\s*:?\s*([$€£]?\s*\d[\d,]*\.\d{2})\s*[|:]?$/i.exec(line);
+    return match ? [match[1].replace(/\s/g, '')] : [];
+  }) : [];
   // A crumpled receipt sometimes loses the currency signs but keeps two
   // separately printed final-amount lines. Only recover that number if the
   // distinct TOTAL and TOTAL DUE labels agree. One naked number is not proof.
@@ -144,10 +155,12 @@ export function damagedReceiptSuggestions(text: string): ReceiptSuggestions {
   const duplicateNumbers = new Set(duplicatePaid.map(hit => hit.amount));
   const agreedPrintedTotal = distinctLabels.has('total') && distinctLabels.has('total due') &&
     duplicateNumbers.size === 1 ? duplicatePaid[0].amount : '';
-  if (unique.length > 1 || duplicateNumbers.size > 1)
+  const finalAmounts = [...new Set([...unique, ...balances, ...(agreedPrintedTotal ? [agreedPrintedTotal] : [])].map(x => x.replace(/[$€£,]/g, '')))];
+  const disputed = finalAmounts.length > 1 || duplicateNumbers.size > 1;
+  if (disputed)
     notes.push('Different printed totals appeared in the damaged photo. Enter the final amount from the receipt.');
   return { merchant, orderDate: '', orderNo: '',
-    total: unique.length === 1 ? unique[0] : unique.length ? '' : agreedPrintedTotal, notes };
+    total: !disputed && finalAmounts.length === 1 ? (unique[0] || balances[0] || agreedPrintedTotal) : '', notes };
 }
 
 export function receiptFileProblem(file: Pick<File, 'type' | 'size'>): string | null {
@@ -173,8 +186,10 @@ export function mergeReceiptSuggestions(primary: ReceiptSuggestions, recovered?:
   // Sometimes a folded brand's first word is missing from the first pass.
   // A later complete heading can extend an intact shorter name without
   // guessing between two different printed shops.
+  const shorter = primary.merchant.replace(/\s+/g, ' ').trim().toLowerCase();
+  const longer = (recovered?.merchant || '').replace(/\s+/g, ' ').trim().toLowerCase();
   if (primary.merchant && recovered?.merchant &&
-      recovered.merchant.toLowerCase().endsWith(primary.merchant.toLowerCase()) &&
+      (longer.endsWith(shorter) || longer.startsWith(shorter)) &&
       recovered.merchant.length > primary.merchant.length + 3) {
     result.merchant = recovered.merchant;
   }
