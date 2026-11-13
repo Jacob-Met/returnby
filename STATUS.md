@@ -1,13 +1,13 @@
 # ReturnBy — current desk
 
-**[Download ReturnBy 0.12.1](https://github.com/Jacob-Met/returnby/releases/tag/v0.12.1)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
+**[Download ReturnBy 0.13.0](https://github.com/Jacob-Met/returnby/releases/tag/v0.13.0)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
 
-[Phone — receipt review](https://github.com/Jacob-Met/returnby/releases/download/v0.12.1/ReturnBy-v0.12.1-receipt-review-phone.png) · [Desktop — receipt review](https://github.com/Jacob-Met/returnby/releases/download/v0.12.1/ReturnBy-v0.12.1-receipt-review-desktop.png)
+[Phone — calendar cleanup](https://github.com/Jacob-Met/returnby/releases/download/v0.13.0/ReturnBy-v0.13.0-calendar-cleanup-phone.png) · [Desktop — calendar cleanup](https://github.com/Jacob-Met/returnby/releases/download/v0.13.0/ReturnBy-v0.13.0-calendar-cleanup-desktop.png)
 
-The local receipt reader now recovers the printed store and final paid total from a real small, wrinkled restaurant receipt that the previous release missed. In the downloadable Linux app it suggested Brixx and $14.46, left the unclear date blank, and kept the original image for review. The existing offline photo-to-saved-purchase flow still works.
+The offline tracker now remembers the dates of calendar files prepared for download. When a deadline changes or a return is finished, the saved return identifies old events that may remain in a calendar app, with a shopper-confirmed cleanup action. A cancellation uses the last downloaded date. The delivered Linux app worked through the full changed-date, cancelled-cutoff and completed-return journey on desktop and phone; Windows and macOS builds are also packaged.
 
 ## Top gaps
 
-1. **Some calendar apps retain obsolete reminders after a return date changes or is cancelled.** An imported update or cancellation does not always remove the old reminder, leaving shoppers with conflicting deadlines.
-2. **Returns that require merchant authorization still lack the merchant's actual QR code or shipping label.** A paper receipt or an offline trip sheet alone will not get these parcels accepted.
-3. **Other severely creased receipt layouts can still hide necessary printed facts.** Recovery succeeds on the observed restaurant photo, but folds and missing ink can leave store, date or total unreadable elsewhere.
+1. **A return requiring a merchant-issued QR code or shipping label still stalls when the shopper is offline at handoff.** ReturnBy keeps a web link, not an offline, zoomable/printable copy of the merchant document.
+2. **Other badly crumpled receipts can still hide their printed merchant or final amount.** The focused local reader recovers one real restaurant photo; lost ink and different folds can defeat it.
+3. **Importing a reminder cannot remove an old event in every calendar app.** ReturnBy now names the dates to remove and lets the shopper confirm cleanup, but has no account access to delete external events itself.
