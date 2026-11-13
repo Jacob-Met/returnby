@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { receiptSuggestions, receiptFileProblem } from '../src/receipt-photo';
+import { damagedReceiptSuggestions, receiptSuggestions, receiptFileProblem } from '../src/receipt-photo';
 
 describe('printed receipt review suggestions', () => {
   it('keeps the final paid total, printed identity and purchase date together', () => {
@@ -159,5 +159,20 @@ describe('different real photographed receipt layouts', () => {
       receiptSuggestions('HAMMOCKS TRADING COMPANY\nTotal Due 50.29'),
     );
     expect(result.merchant).toBe('HAMMOCKS TRADING COMPANY');
+  });
+});
+
+describe('repeated final amounts through deep paper folds', () => {
+  it('reads two independently labelled amounts after folds erase both currency signs', () => {
+    expect(damagedReceiptSuggestions('i                   Total            50.29\n:                Total Due         50.29 |').total).toBe('50.29');
+  });
+  it('does not read a single unmarked number or conflicting final totals', () => {
+    expect(damagedReceiptSuggestions('Total 50.29').total).toBe('');
+    const disputed = damagedReceiptSuggestions('i     Total       50.29\n: Total Due      51.29 |');
+    expect(disputed.total).toBe('');
+    expect(disputed.notes.join(' ')).toMatch(/Different printed totals/);
+  });
+  it('does not confuse a repeated subtotal with evidence of a final amount', () => {
+    expect(damagedReceiptSuggestions('SubTotal 47.00\nTotal 50.29').total).toBe('');
   });
 });
