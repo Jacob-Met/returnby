@@ -4,7 +4,7 @@ ReturnBy is an offline return desk: save a purchase, see what a retailer require
 
 **[Download ReturnBy 0.14.0](https://github.com/Jacob-Met/returnby/releases/tag/v0.14.0)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
 
-The saved return desk now carries the real merchant-issued QR code or shipping label into the offline return trip.
+[Phone: saved merchant QR / label](https://github.com/Jacob-Met/returnby/releases/download/v0.14.0/ReturnBy-v0.14.0-merchant-return-phone.png) · [Desktop: offline return trip](https://github.com/Jacob-Met/returnby/releases/download/v0.14.0/ReturnBy-v0.14.0-merchant-return-desktop.png)
 
 ## Know which deadline you have
 
