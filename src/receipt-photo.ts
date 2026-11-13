@@ -133,8 +133,21 @@ export function damagedReceiptSuggestions(text: string): ReceiptSuggestions {
     return amounts.length === 1 ? [amounts[0][0].replace(/\s/g, '')] : [];
   });
   const unique = [...new Set(totals)];
-  if (unique.length > 1) notes.push('Different printed totals appeared in the damaged photo. Enter the final amount from the receipt.');
-  return { merchant, orderDate: '', orderNo: '', total: unique.length === 1 ? unique[0] : '', notes };
+  // A crumpled receipt sometimes loses the currency signs but keeps two
+  // separately printed final-amount lines. Only recover that number if the
+  // distinct TOTAL and TOTAL DUE labels agree. One naked number is not proof.
+  const duplicatePaid = lines.flatMap(line => {
+    const match = /^(?:[a-z] {3,}|[:|;] +)?(total(?:\s+due)?)\s*:?\s*(\d[\d,]*\.\d{2})\s*[|:]?$/i.exec(line);
+    return match ? [{ label: match[1].toLowerCase().replace(/\s+/g, ' '), amount: match[2].replace(/,/g, '') }] : [];
+  });
+  const distinctLabels = new Set(duplicatePaid.map(hit => hit.label));
+  const duplicateNumbers = new Set(duplicatePaid.map(hit => hit.amount));
+  const agreedPrintedTotal = distinctLabels.has('total') && distinctLabels.has('total due') &&
+    duplicateNumbers.size === 1 ? duplicatePaid[0].amount : '';
+  if (unique.length > 1 || duplicateNumbers.size > 1)
+    notes.push('Different printed totals appeared in the damaged photo. Enter the final amount from the receipt.');
+  return { merchant, orderDate: '', orderNo: '',
+    total: unique.length === 1 ? unique[0] : unique.length ? '' : agreedPrintedTotal, notes };
 }
 
 export function receiptFileProblem(file: Pick<File, 'type' | 'size'>): string | null {
