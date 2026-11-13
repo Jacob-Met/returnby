@@ -96,6 +96,13 @@ try {
       '-background','#c7c4bd','-shear','9x0',faint]);
     sample=faint;
   }
+  if (process.env.RETURNBY_SYNTH_HIRES) {
+    // Exercise the complete packaged OCR path with the pixel dimensions of
+    // an ordinary full-resolution phone photo, not a small preview.
+    const highRes = path.join(out,'full-resolution-photo.png');
+    execFileSync('convert',[sample,'-resize','3024x4032!',highRes]);
+    sample = highRes;
+  }
   await fill('#paste','Separate email draft stays here');
   await click('#photo-open');
   const {root}=await cdp('DOM.getDocument');
