@@ -107,3 +107,57 @@ describe('creased print recognition', () => {
     expect(result.notes.join(' ')).toMatch(/Different printed totals/);
   });
 });
+
+describe('different real photographed receipt layouts', () => {
+  it('keeps the short-first-word store above its address, not the dinner item', () => {
+    const result = receiptSuggestions('New Asia Buffet\n14727.5 Rinaldi St\nSan Fernando, CA 91340\nWeekEnd Dinner\nTOTAL : 33.92');
+    expect(result).toMatchObject({ merchant: 'New Asia Buffet', total: '33.92' });
+  });
+  it('keeps a multiword shop with a plus sign above an isolated item line', () => {
+    const result = receiptSuggestions('JRHGE THA!\nce —\nSUKHOTHAI SUSHI + ASIAN\nFUSION\nTotal $28.04');
+    expect(result.merchant).toBe('SUKHOTHAI SUSHI + ASIAN');
+  });
+  it('does not treat a dish or server as the merchant when the heading disappeared', () => {
+    expect(receiptSuggestions('Rye 10yr (2 620.00)\nSirloin\nTotal 179.94').merchant).toBe('');
+    expect(receiptSuggestions('15700 Bellflower Blvd\nBellflower CA 90706\nNathalie\n2 Enchi Omelete').merchant).toBe('');
+    expect(receiptSuggestions('1 lass House Hine\n1 Veal Zingarte\ncargo bourautoonme\nTOTAL:').merchant).toBe('');
+    expect(receiptSuggestions('Roosevelt Field     ha\n0480 TABLE 101\nCoffee 2.95').merchant).toBe('');
+  });
+  it('fills the now-missing merchant from a second genuine-photo OCR pass', async () => {
+    const { mergeReceiptSuggestions } = await import('../src/receipt-photo');
+    expect(mergeReceiptSuggestions(
+      receiptSuggestions('Rye 10yr (2 620.00)\nSirloin\nTotal 179.94'),
+      receiptSuggestions("SASKA'S\n3768 Mission Blvd\nSan Diego CA 92109\nTotal 179.94")
+    ).merchant).toBe("SASKA'S");
+    expect(mergeReceiptSuggestions(
+      receiptSuggestions('15700 Bellflower Blvd\nBellflower CA 90706\nNathalie\n2 Enchi Omelete'),
+      receiptSuggestions('Loaded Cafe\nBellflower Blvd\nTotal Due 48.53')
+    ).merchant).toBe('Loaded Cafe');
+  });
+  it('recovers the labelled paid total after a time stamp without taking subtotal', () => {
+    expect(receiptSuggestions('GRAND LUX CAFE\nSub Total: 63.75\nSub Total: 69.25\n04/25 17:42 TOTAL: 69.25').total).toBe('69.25');
+    expect(receiptSuggestions('Loaded Cafe\nSUBTOTAL 44.32\n10:51AM TOTAL DUE 48.53').total).toBe('48.53');
+  });
+  it('does not confidently keep a digit that disagrees with the card charge', () => {
+    const result = receiptSuggestions('Taco Bell\nTotal 1.61\nVisa 7.61');
+    expect(result.total).toBe('');
+    expect(result.notes.join(' ')).toMatch(/card charge disagree/);
+  });
+  it('does not decide between contradictory OCR reads of a labelled total', async () => {
+    const { mergeReceiptSuggestions } = await import('../src/receipt-photo');
+    const result = mergeReceiptSuggestions(
+      receiptSuggestions('Total $14.46'),
+      receiptSuggestions('Total $19.46'),
+    );
+    expect(result.total).toBe('');
+    expect(result.notes.join(' ')).toMatch(/OCR readings/);
+  });
+  it('completes a folded merchant prefix when the second heading includes the same suffix', async () => {
+    const { mergeReceiptSuggestions } = await import('../src/receipt-photo');
+    const result = mergeReceiptSuggestions(
+      receiptSuggestions('TRADING COMPANY\nTotal Due 50.29'),
+      receiptSuggestions('HAMMOCKS TRADING COMPANY\nTotal Due 50.29'),
+    );
+    expect(result.merchant).toBe('HAMMOCKS TRADING COMPANY');
+  });
+});
