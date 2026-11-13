@@ -26,7 +26,7 @@ export function findDates(text: string): Hit[] {
   const hits: Hit[] = [];
   const mon = '(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember|t)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\\.?';
   const patterns: [RegExp, (m: RegExpExecArray) => string][] = [
-    [new RegExp(`\\b${mon}\\s+(\\d{1,2})(?:st|nd|rd|th)?,?\\s+(\\d{4})\\b`, 'gi'),
+    [new RegExp(`\\b${mon}\\s*,?\\s+(\\d{1,2})(?:st|nd|rd|th)?,?\\s+(\\d{4})\\b`, 'gi'),
       (m) => iso(+m[3], MONTHS[m[1].slice(0, 3).toLowerCase()], +m[2])],
     [new RegExp(`\\b(\\d{1,2})\\s+${mon}\\s+(\\d{4})\\b`, 'gi'),
       (m) => iso(+m[3], MONTHS[m[2].slice(0, 3).toLowerCase()], +m[1])],

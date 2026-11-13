@@ -47,6 +47,16 @@ describe('observed photographed-receipt failures', () => {
   });
 });
 
+describe('folded photographed purchase dates', () => {
+  it('recognizes a surviving printed weekday month-comma date, without guessing when dates conflict', () => {
+    const recovered = receiptSuggestions('i FRI NOVEMBER, 16, 2018\nHECK #17114\nTOTAL $14.46');
+    expect(recovered.orderDate).toBe('2018-11-16');
+    const combined = mergeReceiptSuggestions(receiptSuggestions('501 umot Vil\nFRI NOVEVBE'), recovered);
+    expect(combined.orderDate).toBe('2018-11-16');
+    expect(receiptSuggestions('FRI NOVEMBER, 16, 2018\nSAT NOVEMBER, 17, 2018').orderDate).toBe('');
+  });
+});
+
 describe('source-first faint print merging', () => {
   it('fills truly absent printed facts but does not overrule legible ones', async () => {
     const { mergeReceiptSuggestions } = await import('../src/receipt-photo');
