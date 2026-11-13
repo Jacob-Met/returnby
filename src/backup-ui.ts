@@ -1,3 +1,4 @@
+import {collectMerchantDocuments,restoreMerchantDocuments,type PackedMerchantDocument} from './return-document-backup';
 import {deadlinePhrase} from './deadline-requirement';
 import { bindTripLibraryRestore } from './trip-library-backup-ui';
 import { readTripLibrary, TripLibraryError, type TripLibrary } from './trip-library';
@@ -26,6 +27,8 @@ export function bindBackup(tracker: Tracker) {
   const next = get<HTMLButtonElement>('backup-next');
   let incoming: Order[] | null = null;
   let incomingPhotos: PackedReceiptPhoto[] = [];
+  let incomingDocuments:PackedMerchantDocument[]=[];
+  const restoredDocuments=new Set<string>();
   const restoredPhotos = new Set<string>();
   let applying = false;
   let incomingLibrary:TripLibrary|null=null;
@@ -125,7 +128,7 @@ export function bindBackup(tracker: Tracker) {
   function reset() {
     generation++;
     incoming = null;
-    incomingPhotos = []; restoredPhotos.clear(); applying = false;
+    incomingPhotos = []; restoredPhotos.clear(); incomingDocuments=[]; restoredDocuments.clear(); applying = false;
     incomingLibrary=null;libraryRestore.show(null);
     incomingPending=[];pendingPanel.hidden=true;
     choices.clear();
@@ -191,27 +194,35 @@ export function bindBackup(tracker: Tracker) {
     return incomingPhotos.filter(photo => eligible.get(photo.id)?.order.createdAt === photo.createdAt && !restoredPhotos.has(photo.id));
   }
 
+  function eligibleDocuments(plan: ResolvedImportPlan) {
+    const eligible=new Map(plan.rows.filter(row=>row.action==='add'||row.action==='replace'||row.action==='skip')
+      .map(row=>[row.order.id,row] as const));
+    return incomingDocuments.filter(file=>eligible.get(file.id)?.order.createdAt===file.createdAt && !restoredDocuments.has(file.id));
+  }
+
   function show(plan: ResolvedImportPlan, focus = true) {
     preview = plan;
     if (focus) page = 0;
     const photos = eligiblePhotos(plan);
+    const documents=eligibleDocuments(plan);
     summary.textContent = [[plan.added, 'to add'], [plan.replaced, 'to update'], [plan.kept, 'keep current'], [plan.skipped, 'already saved'], [plan.conflicts, 'need a choice']].filter(([count]) => Number(count) > 0).map(([count, label]) => count + ' ' + label).join(' · ') || 'No purchases in this backup';
+    if(incomingDocuments.length)summary.textContent += ' · '+incomingDocuments.length+' merchant return '+(incomingDocuments.length===1?'document':'documents')+' included';
     if (incomingPhotos.length) summary.textContent += ` · ${incomingPhotos.length} original ${incomingPhotos.length === 1 ? 'receipt photo' : 'receipt photos'} included`;
     const changedPurchases = plan.added + plan.replaced;
-    if (photos.length) {
-      apply.textContent = changedPurchases
-        ? `Restore ${changedPurchases} ${changedPurchases === 1 ? 'purchase' : 'purchases'} and ${photos.length} original ${photos.length === 1 ? 'photo' : 'photos'}`
-        : `Restore ${photos.length} original ${photos.length === 1 ? 'photo' : 'photos'}`;
+    if(photos.length || documents.length) {
+      apply.textContent=changedPurchases
+        ? 'Restore '+changedPurchases+' purchases and '+(photos.length+documents.length)+' saved files'
+        : 'Restore '+(photos.length+documents.length)+' saved files';
     } else if (plan.added && plan.replaced) apply.textContent = `Add ${plan.added}, update ${plan.replaced} purchases`;
     else if (plan.added) apply.textContent = `Add ${plan.added} ${plan.added === 1 ? 'purchase' : 'purchases'}`;
     else if (plan.replaced) apply.textContent = `Update ${plan.replaced} ${plan.replaced === 1 ? 'purchase' : 'purchases'}`;
     else apply.textContent = plan.conflicts ? 'Choose a version below' : 'Nothing to import';
-    apply.disabled = applying || plan.added + plan.replaced === 0 && photos.length === 0;
+    apply.disabled = applying || plan.added + plan.replaced === 0 && photos.length === 0 && documents.length===0;
     panel.hidden = false;
     renderPage();
     showTrip();
     libraryRestore.show(incomingLibrary);
-    if (photos.length && !plan.added && !plan.replaced && !plan.conflicts) tell('Saved purchases match. Restore their original photos where this browser has none; existing photos stay unchanged.');
+    if ((photos.length || documents.length) && !plan.added && !plan.replaced && !plan.conflicts) tell('Saved purchases match. Restore their saved receipts and merchant return files where this browser has none; existing files stay unchanged.');
     else if (plan.conflicts) tell('Compare the current and backup values before choosing a version. Unreviewed differences stay current; you can apply the new purchases and chosen updates without replacing them.');
     else if (!plan.added && !plan.replaced && plan.kept) tell(incomingTrip ? 'Your current purchase versions will stay. Review the trip separately below.' : 'Your current purchase versions will stay. No additions or updates are selected.');
     else if (!plan.added && !plan.replaced) tell(incomingLibrary?.trips.length?'Purchases need no changes. Review the named trip plans separately below.':incomingPending.length?'Saved deadlines need no changes. Review the pending purchases below before restoring them.':incomingTrip?'All orders are already saved. Review the trip below before restoring it.':'Everything in this backup is already saved, or the backup is empty. Nothing will change.');
@@ -232,6 +243,7 @@ export function bindBackup(tracker: Tracker) {
       const parsed = parseBackupDocument(contents);
       incoming = parsed.orders;
       incomingPhotos = parsed.photos || [];
+      incomingDocuments=parsed.merchantDocuments||[];
       incomingTrip = parsed.trip;
       incomingPending=parsed.pending||[];
       incomingLibrary=parsed.tripLibrary||null;
@@ -268,7 +280,8 @@ export function bindBackup(tracker: Tracker) {
         return;
       }
       const photographs = eligiblePhotos(current);
-      if (!current.added && !current.replaced && !photographs.length) return;
+      const documents=eligibleDocuments(current);
+      if (!current.added && !current.replaced && !photographs.length && !documents.length) return;
       if (current.added || current.replaced) {
         if (!tracker.commit(current.next)) {
           resultMessage = "The backup wasn't imported because browser storage refused the change. Your preview is kept so you can try again.";
@@ -289,15 +302,26 @@ export function bindBackup(tracker: Tracker) {
         resultError = true;
         return;
       }
+      let docCount=0;
+      try {
+        docCount=await restoreMerchantDocuments(documents,current.rows
+          .filter(row=>row.action==='add'||row.action==='replace'||row.action==='skip')
+          .map(row=>({id:row.order.id,createdAt:row.order.createdAt,replace:row.action==='replace'})));
+        for(const file of documents)restoredDocuments.add(file.id);
+      } catch {
+        resultMessage='Purchases were saved, but merchant return documents could not be restored. Keep the original backup file and retry document restoration.';
+        resultError=true;
+        return;
+      }
       const note = `Added ${current.added} purchases and updated ${current.replaced}.` + (photographs.length ? ` ${photoCount} original ${photoCount === 1 ? 'receipt photo was' : 'receipt photos were'} saved here; existing photos were kept.` : '') + ` ${current.kept + current.conflicts} current versions kept; ${current.skipped} were already saved.`;
       if (!incomingTrip && !current.conflicts && !incomingPending.length && !incomingLibrary) {
-        focusSaved = current.rows.find(row => row.action === 'add' || row.action === 'replace')?.order.id || photographs[0]?.id || '';
+        focusSaved = current.rows.find(row => row.action === 'add' || row.action === 'replace')?.order.id || photographs[0]?.id || documents[0]?.id || '';
       }
       if (incomingTrip || current.conflicts || incomingPending.length || incomingLibrary) {
         show(planResolvedImport(tracker.read(), incoming, choices));
         showPending();
       } else reset();
-      resultMessage = note + (incomingTrip ? ' Review the trip separately below.' : '');
+      resultMessage = note + (documents.length?' '+docCount+' merchant return '+(docCount===1?'document was':'documents were')+' saved.':'') + (incomingTrip ? ' Review the trip separately below.' : '');
     } catch (error) { resultMessage = errorText(error); resultError = true; }
     finally {
       applying = false;
@@ -316,7 +340,7 @@ export function bindBackup(tracker: Tracker) {
     exportButton.disabled = true;
     let url: string | undefined;
     try {
-      tell('Reading saved purchases and original receipt photos…');
+      tell('Reading saved purchases, receipts and merchant return documents…');
       const now = new Date();
       const trip = readTripPlan(localStorage).plan;
       const library=readTripLibrary(localStorage).library;
@@ -326,15 +350,16 @@ export function bindBackup(tracker: Tracker) {
       const plain = exportBackup(snapshot, now, trip, pending, library);
       const orders = parseBackupDocument(plain).orders;
       const photos = await collectReceiptPhotos(orders);
+      const documents=await collectMerchantDocuments(orders);
       if (JSON.stringify(tracker.read()) !== JSON.stringify(snapshot))
         throw new BackupError('Saved purchases changed during export. Choose Download backup again.');
-      const content = exportBackup(orders, now, trip, pending, library, photos);
+      const content = exportBackup(orders, now, trip, pending, library, photos, documents);
       url = URL.createObjectURL(new Blob([content], { type: 'application/json' }));
       const link = document.createElement('a');
       link.href = url;
       link.download = `returnby-backup-${now.toISOString().slice(0, 10)}.json`;
       link.click();
-      tell(photos.length ? `Backup download requested with ${photos.length} original receipt ${photos.length === 1 ? 'photo' : 'photos'}, saved purchases and trip details. Keep the file private.` : library.trips.length?'Backup download requested with '+library.trips.length+' named trip plans, your working trip, purchases and pending reviews. Keep private packing notes secure.':trip?'Backup download requested with your saved orders and trip, including private packing notes.':'Backup download requested. Keep this file private: it contains your saved order details.');
+      tell(documents.length ? 'Backup requested with '+documents.length+' merchant return '+(documents.length===1?'document':'documents')+', '+photos.length+' original receipt photos and your purchases. Keep private.' : photos.length ? `Backup download requested with ${photos.length} original receipt ${photos.length === 1 ? 'photo' : 'photos'}, saved purchases and trip details. Keep the file private.` : library.trips.length?'Backup download requested with '+library.trips.length+' named trip plans, your working trip, purchases and pending reviews. Keep private packing notes secure.':trip?'Backup download requested with your saved orders and trip, including private packing notes.':'Backup download requested. Keep this file private: it contains your saved order details.');
     } catch (error) { tell(error instanceof Error ? error.message : errorText(error), true); }
     finally {
       exportButton.disabled = false;

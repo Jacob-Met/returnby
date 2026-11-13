@@ -1,5 +1,6 @@
 import { openReceiptProof } from './receipt-photo-archive-ui';
-import { readOriginalReceipts, type ReceiptPhoto } from './receipt-photo-archive';
+import { openMerchantDocument } from './merchant-document-ui';
+import { readOriginalReceipts, readMerchantDocuments, type MerchantDocument, type ReceiptPhoto } from './receipt-photo-archive';
 import { bindTripLibrary } from './trip-library-ui';
 import { bindTripDeadlineHandoff } from './trip-deadline-handoff-ui';
 import './trip-checklist.css';
@@ -210,6 +211,12 @@ function renderPacking(): void {
       missing.textContent = 'Return document not saved — check the merchant instructions before leaving.';
       documents.append(missing);
     }
+    const merchantDoc=document.createElement('button');
+    merchantDoc.type='button';
+    merchantDoc.className='receipt-proof-trip-open';
+    merchantDoc.textContent='Show or attach merchant QR / label';
+    merchantDoc.addEventListener('click',()=>{void openMerchantDocument(order);});
+    documents.append(merchantDoc);
     const paper = document.createElement('button');
     paper.type = 'button';
     paper.className = 'receipt-proof-trip-open';
@@ -446,13 +453,32 @@ async function printablePaperReceipts(checklist: TripChecklist): Promise<{images
   return { images, unreadable: false };
 }
 
+async function printableMerchantDocuments(checklist: TripChecklist, currentSize: number): Promise<{documents: Record<string,{data:string;name:string;type:string}>; unreadable: boolean}> {
+  let originals:MerchantDocument[];
+  try { originals=await readMerchantDocuments(checklist.orders.map(row=>row.order)); }
+  catch { return {documents:{},unreadable:true}; }
+  const documents:Record<string,{data:string;name:string;type:string}>={};
+  let bytes=currentSize;
+  for(const record of originals){
+    if(!['image/jpeg','image/png','image/webp','application/pdf'].includes(record.file.type)) throw new Error('A saved merchant document has an unsupported format. Reattach the original.');
+    const buffer=new Uint8Array(await record.file.arrayBuffer());
+    const chunks:string[]=[];
+    for(let index=0;index<buffer.length;index+=8192) chunks.push(String.fromCharCode(...buffer.subarray(index,index+8192)));
+    const data='data:'+record.file.type+';base64,'+btoa(chunks.join(''));
+    bytes+=data.length;
+    if(bytes>MAX_PORTABLE_PHOTO_CHARACTERS) throw new Error('The saved receipts and merchant labels exceed the 24 MiB offline sheet limit. Split the trip or use smaller files.');
+    documents[record.id]={data,type:record.file.type,name:record.name};
+  }
+  return {documents,unreadable:false};
+}
+
 form.addEventListener('submit', async event => {
   event.preventDefault();
   if (!snapshot || !validateCurrent()) return;
   const currentSnapshot = snapshot;
   const requestToken = ++previewToken;
   previewButton.disabled = true;
-  showNotice('Preparing the offline sheet and saved paper receipts…');
+  showNotice('Preparing the offline sheet with receipts and merchant return documents…');
   try {
     const checks: Record<string, TripPacking> = {};
     for (const id of selected) checks[id] = { ...entryFor(id) };
@@ -464,15 +490,17 @@ form.addEventListener('submit', async event => {
     empty.hidden = true;
     downloadButton.disabled = true;
     const { images: receiptImages, unreadable } = await printablePaperReceipts(checklist);
+    const merchant=await printableMerchantDocuments(checklist,Object.values(receiptImages).reduce((sum,value)=>sum+value.length,0));
     if (previewToken !== requestToken || snapshot !== currentSnapshot || !validateCurrent()) return;
     const photoCount = Object.keys(receiptImages).length;
-    prepared = { ...checklist, packing: checks, ...(photoCount ? { receiptImages } : {}) };
+    const documentCount=Object.keys(merchant.documents).length;
+    prepared={...checklist,packing:checks,...(photoCount?{receiptImages}:{}),...(documentCount?{merchantDocuments:merchant.documents}:{})};
     preview.innerHTML = renderChecklist(prepared);
     preview.hidden = false;
     empty.hidden = true;
     downloadButton.disabled = false;
     persist();
-    showNotice(unreadable
+    showNotice(merchant.unreadable ? 'Saved merchant documents could not be read. This offline sheet lacks the QR code or label; open the merchant original before leaving.' : documentCount ? 'Offline sheet ready with '+documentCount+' merchant return '+(documentCount===1?'document':'documents')+' and '+photoCount+' paper '+(photoCount===1?'receipt':'receipts')+'. Keep this file private.' : unreadable
       ? 'Saved photo storage could not be read. This sheet has no embedded receipts; bring the paper original or return document. You can still download the order checklist.'
       : photoCount
       ? 'Preview ready with ' + photoCount + ' original paper ' + (photoCount === 1 ? 'receipt' : 'receipts') + '. The downloaded offline HTML includes the images and may contain private payment or address details. Store it securely.'
