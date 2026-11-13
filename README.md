@@ -2,7 +2,7 @@
 
 ReturnBy is an offline return desk: save a purchase, see what a retailer requires by which date, prepare your return trip, and follow the refund. Your orders and receipt photos stay in your browser.
 
-**[Download ReturnBy 0.12.0](https://github.com/Jacob-Met/returnby/releases/tag/v0.12.0)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
+**[Download ReturnBy 0.12.1](https://github.com/Jacob-Met/returnby/releases/tag/v0.12.1)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
 
 [Phone: receipt recovery](https://github.com/Jacob-Met/returnby/releases/download/v0.12.0/ReturnBy-v0.12.0-receipt-recovery-phone.png) · [Desktop: receipt review](https://github.com/Jacob-Met/returnby/releases/download/v0.12.0/ReturnBy-v0.12.0-receipt-review-desktop.png)
 
@@ -16,7 +16,7 @@ Other returns keep the simpler one-date options: **Return by**, **Drop off by**,
 
 Download the archive for your computer: Linux, macOS (Intel or Apple Silicon), Windows, or the Python-based local browser ZIP. The native packages include their runtime and the offline English receipt reader. Open the included launcher, then use the app at **http://127.0.0.1:8769** in your normal browser. Keep the same browser profile and local address when upgrading to keep saved purchases and trips.
 
-You can add a purchase by typing its details, pasting a confirmation email, adding local confirmation files in a batch, or reading a receipt photo. For crumpled or tilted paper, choose **Outline paper**, move the four numbered corners, then straighten it before reading. Very faint print gets a local contrast-recovery pass and a brighter reviewer photo, with **Original view** available at any time. The saved paper photo remains untouched; all extracted fields require review. Review the proposed store, order date, confirmed return-clock start, duration, action and any second arrival date before saving. A delivery-based deadline can stay pending until you know the delivery date.
+You can add a purchase by typing its details, pasting a confirmation email, adding local confirmation files in a batch, or reading a receipt photo. For crumpled or tilted paper, choose **Outline paper**, move the four numbered corners, then straighten it before reading. Very faint print gets a local contrast-recovery pass. Small wrinkled receipts can receive a more focused local read of their printed store and final total, with **Original view** available at any time. The saved paper photo remains untouched; all extracted fields require review. Review the proposed store, order date, confirmed return-clock start, duration, action and any second arrival date before saving. A delivery-based deadline can stay pending until you know the delivery date.
 
 Saved purchases offer editing, a paper-receipt photo, return-document links, calendar reminder downloads, and a printable return-trip checklist. Finish a return to move it to History. Refund follow-up supports partial payments and future check dates.
 
