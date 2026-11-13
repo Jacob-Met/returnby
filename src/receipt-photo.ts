@@ -136,6 +136,21 @@ export function damagedReceiptSuggestions(text: string): ReceiptSuggestions {
     return amounts.length === 1 ? [amounts[0][0].replace(/\s/g, '')] : [];
   });
   const unique = [...new Set(totals)];
+  // Some thermal-print folds erase the initial T in TOTAL, leaving an
+  // otherwise legible amount. Only use the damaged label if the printed
+  // subtotal and single tax line independently sum to it.
+  const printedAmounts = (pattern: RegExp) => lines.flatMap(line => {
+    const hit = pattern.exec(line);
+    return hit ? [hit[1].replace(/[$€£,]/g, '')] : [];
+  });
+  const printedSubtotals = printedAmounts(/^sub[\s-]*total\s*:?\s*([$€£]?\s*\d[\d,]*\.\d{2})\s*$/i);
+  const printedTaxes = printedAmounts(/^(?:sales\s+)?tax\s*:?\s*([$€£]?\s*\d[\d,]*\.\d{2})\s*$/i);
+  const clippedTotals = printedAmounts(/^[‘’'|]?\s*otal\s*:?\s*([$€£]?\s*\d[\d,]*\.\d{2})\s*$/i);
+  const pennies = (amount: string) => Math.round(Number(amount) * 100);
+  const computedTotal = printedSubtotals.length === 1 && printedTaxes.length === 1 &&
+    clippedTotals.length === 1 &&
+    pennies(printedSubtotals[0]) + pennies(printedTaxes[0]) === pennies(clippedTotals[0])
+      ? clippedTotals[0] : '';
   // A creased restaurant receipt can keep the final balance on one line while
   // the adjacent TOTAL amount disappears. A separate TOTAL label anchors the
   // amount; a solitary Balance Due or a subtotal is insufficient.
@@ -155,12 +170,14 @@ export function damagedReceiptSuggestions(text: string): ReceiptSuggestions {
   const duplicateNumbers = new Set(duplicatePaid.map(hit => hit.amount));
   const agreedPrintedTotal = distinctLabels.has('total') && distinctLabels.has('total due') &&
     duplicateNumbers.size === 1 ? duplicatePaid[0].amount : '';
-  const finalAmounts = [...new Set([...unique, ...balances, ...(agreedPrintedTotal ? [agreedPrintedTotal] : [])].map(x => x.replace(/[$€£,]/g, '')))];
+  const finalAmounts = [...new Set([...unique, ...balances, ...(agreedPrintedTotal ? [agreedPrintedTotal] : []),
+    ...(computedTotal ? [computedTotal] : [])].map(x => x.replace(/[$€£,]/g, '')))];
   const disputed = finalAmounts.length > 1 || duplicateNumbers.size > 1;
   if (disputed)
     notes.push('Different printed totals appeared in the damaged photo. Enter the final amount from the receipt.');
   return { merchant, orderDate: '', orderNo: '',
-    total: !disputed && finalAmounts.length === 1 ? (unique[0] || balances[0] || agreedPrintedTotal) : '', notes };
+    total: !disputed && finalAmounts.length === 1
+      ? (unique[0] || balances[0] || agreedPrintedTotal || computedTotal) : '', notes };
 }
 
 export function receiptFileProblem(file: Pick<File, 'type' | 'size'>): string | null {
