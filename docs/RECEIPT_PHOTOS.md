@@ -1,10 +1,10 @@
 # Receipt photos in ReturnBy
 
-Choose **Read a receipt photo**, select a JPG, PNG or WebP, make the printed text upright, then choose **Read this receipt**. Use the source zoom to inspect small print. On a phone, switch between **Photo** and **Details**; reading opens Details with a visible review message.
+Choose **Read a receipt photo**, select a JPG, PNG or WebP, make the printed text upright, then choose **Read this receipt**. Use **Outline paper** to mark the four corners and straighten a tilted receipt before reading. Zoom helps inspect small print. On a phone, switch between **Photo** and **Details**; reading opens Details with a visible review message.
 
 The reader suggests a store, purchase date, receipt number and total. Check every field against the image. It can misread crumpled paper, faint printing, logos or complex layouts. Missing or ambiguous dates stay blank. Enter the return window you checked with the retailer; the reader never treats printed return language as a verified policy.
 
-No purchase is added to the tracker until **Save purchase to tracker**. Unfinished fields, including photo suggestions, recover after a reload in the same tab; they stay separate from saved purchases until you review and save them. The photo and raw recognized text are held only on the open page and are cleared after saving or reloading. Closing the dialog keeps the current draft and photo on that page; removing a photo keeps already entered details. **Discard unfinished purchase** clears its recovery copy. The existing email draft stays separate.
+No purchase is added to the tracker until **Save purchase to tracker**. Unfinished fields, including photo suggestions, recover after a reload in the same tab; they stay separate from saved purchases until you review and save them. Raw recognized text is cleared after saving or reloading; the original photo is stored with a saved purchase and included in JSON backups. Closing the dialog keeps the current draft and photo on that page; removing a photo keeps already entered details. **Discard unfinished purchase** clears its recovery copy. The existing email draft stays separate.
 
 ## Reading and recovery
 
@@ -14,7 +14,7 @@ No purchase is added to the tracker until **Save purchase to tracker**. Unfinish
 - Editing purchase fields while reading keeps those edits; the recognized text remains available for manual copying.
 - A missing reader, unsupported image or failed read leaves the form available for manual entry.
 - JPG, PNG and WebP images up to 20 MB are accepted. HEIC/PDF require conversion to one of those image formats.
-- The included model reads English printed text. Handwriting, line-item extraction, perspective correction and automatic policy verification are outside this feature.
+- The included model reads English printed text. Handwriting, line-item extraction and automatic policy verification are outside this feature. The paper outline can straighten a skewed photo; a creased-paper recovery pass can read some badly wrinkled printed store names and totals.
 
 ## Offline package and reproduction
 
@@ -38,6 +38,6 @@ The public photograph used for independent comparison is [Walmart Food Receipt 1
 
 ## Ranked gaps
 
-1. Reliable review of faint/crumpled or perspective-distorted paper: source zoom helps correction, but a cropped/straightened image could improve recognition.
+1. Not every heavily creased or partly missing line of thermal print is recoverable, even after outlining paper and focused local OCR.
 2. More languages and non-image receipts require deliberate support and separate real-input judgment.
-3. The original image is not retained with saved purchases; this is intake assistance, not a receipt archive or replacement proof of purchase.
+3. Keep backup copies: original photos are saved in this browser and exported in JSON backups, but a browser reset without backup loses the photos along with the purchase.

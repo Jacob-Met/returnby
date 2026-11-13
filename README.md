@@ -4,7 +4,7 @@ ReturnBy is an offline return desk: save a purchase, see what a retailer require
 
 **[Download ReturnBy 0.12.1](https://github.com/Jacob-Met/returnby/releases/tag/v0.12.1)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
 
-[Phone: receipt recovery](https://github.com/Jacob-Met/returnby/releases/download/v0.12.0/ReturnBy-v0.12.0-receipt-recovery-phone.png) · [Desktop: receipt review](https://github.com/Jacob-Met/returnby/releases/download/v0.12.0/ReturnBy-v0.12.0-receipt-review-desktop.png)
+[Phone: receipt recovery](https://github.com/Jacob-Met/returnby/releases/download/v0.12.1/ReturnBy-v0.12.1-receipt-review-phone.png) · [Desktop: receipt review](https://github.com/Jacob-Met/returnby/releases/download/v0.12.1/ReturnBy-v0.12.1-receipt-review-desktop.png)
 
 ## Know which deadline you have
 
