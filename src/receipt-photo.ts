@@ -57,6 +57,56 @@ export function receiptSuggestions(text: string): ReceiptSuggestions {
   return { merchant, orderDate, orderNo, total, notes };
 }
 
+/**
+ * A damaged-image pass fills only facts supported by specific printed anchors.
+ * A store name needs either the printed website or a two-line street/location
+ * address; an amount needs its own TOTAL label and currency mark.
+ */
+export function damagedReceiptSuggestions(text: string): ReceiptSuggestions {
+  const lines = text.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+  const notes: string[] = [];
+  const websiteAt = lines.findIndex(line => /\b(?:www|wwe)\s*\./i.test(line));
+  const website = lines.slice(Math.max(0, websiteAt)).join(' ');
+  const domain = /\b(?:www|wwe)\s*\.\s*([a-z][a-z0-9-]{4,50})\.(?:com|net|org|co\.[a-z]{2})\b/i.exec(website)?.[1]?.toLowerCase();
+  let merchant = '';
+  if (domain) {
+    const header = lines.slice(0, Math.min(16, websiteAt < 0 ? 16 : websiteAt));
+    for (const line of header) {
+      const words = line.match(/\b[A-Za-z]{4,24}\b/g) || [];
+      const match = words.find(word => domain.startsWith(word.toLowerCase()) &&
+        word.length >= domain.length * .45 &&
+        !/^(?:total|subtot|thanks|visit|order|store|date|paid|receipt)$/i.test(word));
+      if (match) { merchant = match[0]!.toUpperCase() + match.slice(1).toLowerCase(); break; }
+    }
+  }
+  if (!merchant) {
+    // A clearly printed brand immediately above a street address is stronger
+    // than a distorted website footer. Require a second address line with
+    // state/postal evidence so a lone crease artifact is never a store.
+    const street = lines.slice(0, 18).findIndex(line => /\b\d{1,6}\s+[A-Za-z]{4,}/.test(line));
+    const place = street >= 1 && lines.slice(street + 1, street + 4)
+      .some(line => /\b[A-Z]{2}\s+\d{4,5}\b/.test(line));
+    if (place) {
+      const brandLine = lines[street - 1] || '';
+      const titleWords = brandLine.match(/\b[A-Z][a-z]{3,24}\b/g) || [];
+      const candidate = titleWords.filter(word => !/^(?:Thank|Total|Street|Circle|Village|Please|Store|Receipt|Customer|Order)$/i.test(word));
+      if (candidate.length === 1) merchant = candidate[0]!;
+    }
+  }
+  const totals = lines.filter(line => !/\bsub[\s-]*total\b/i.test(line)).flatMap(line => {
+    const marker = /\b(?:grand\s+|order\s+)?total(?:\s+(?:paid|amount|purchase))?\b/i.exec(line);
+    if (!marker) return [];
+    const tail = line.slice(marker.index + marker[0].length, marker.index + marker[0].length + 28);
+    // A warped letter can look like a digit beside TOTAL; require a single
+    // explicit currency amount on that same printed line.
+    const amounts = [...tail.matchAll(/[$€£]\s*\d[\d,]*\.\d{2}(?!\d)/g)];
+    return amounts.length === 1 ? [amounts[0][0].replace(/\s/g, '')] : [];
+  });
+  const unique = [...new Set(totals)];
+  if (unique.length > 1) notes.push('Different printed totals appeared in the damaged photo. Enter the final amount from the receipt.');
+  return { merchant, orderDate: '', orderNo: '', total: unique.length === 1 ? unique[0] : '', notes };
+}
+
 export function receiptFileProblem(file: Pick<File, 'type' | 'size'>): string | null {
   if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type))
     return 'Choose a JPG, PNG or WebP receipt photo. For HEIC or PDF, export a JPG first, or enter the purchase manually.';

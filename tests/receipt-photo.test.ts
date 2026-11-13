@@ -76,3 +76,34 @@ describe('wrinkled real receipt safety', () => {
     expect(second.merchant).toBe('');
   });
 });
+
+
+describe('creased print recognition', () => {
+  it('finds a domain-corroborated printed brand and the labelled paid total', async () => {
+    const { damagedReceiptSuggestions } = await import('../src/receipt-photo');
+    const text = 'wT Lah Re wT WESTER\nrian WN EERE\n» Brixx SR\nRCP Village Circle\n' +
+      'SUB-TOTAL $13.45\n= TOTAL" § $14.46\nwww.brixxpizza.com';
+    expect(damagedReceiptSuggestions(text)).toMatchObject({merchant:'Brixx',total:'$14.46',orderDate:''});
+  });
+  it('recovers the real creased receipt brand from the header immediately above its address', async () => {
+    const { damagedReceiptSuggestions } = await import('../src/receipt-photo');
+    const text = 'NTN Brixx NK\n~ 501 Meadaumont Village Circle Ws\nLow Chace pty, NC 27517\n' +
+      'FRI NOVEMBER 16,2018\nSUB-TOTAL $13.45\nTOTAL 3 $14.46\nwih. br 1xxg12za.com';
+    expect(damagedReceiptSuggestions(text)).toMatchObject({merchant:'Brixx',total:'$14.46'});
+  });
+  it('does not infer a merchant from a stray titlecase token without two-line address', async () => {
+    const { damagedReceiptSuggestions } = await import('../src/receipt-photo');
+    expect(damagedReceiptSuggestions('NTN Brixx NK\n501 Village Circle\nTOTAL $14.46').merchant).toBe('');
+  });
+  it('does not turn uncorroborated noise, a web footer or a subtotal into purchase facts', async () => {
+    const { damagedReceiptSuggestions } = await import('../src/receipt-photo');
+    expect(damagedReceiptSuggestions('rian WN EERE\nSUB-TOTAL $13.45\nwww.brixxpizza.com'))
+      .toMatchObject({merchant:'',total:''});
+  });
+  it('does not decide between competing labelled paid totals', async () => {
+    const { damagedReceiptSuggestions } = await import('../src/receipt-photo');
+    const result = damagedReceiptSuggestions('Brixx\nTOTAL $14.46\nTOTAL $19.46\nwww.brixxpizza.com');
+    expect(result.total).toBe('');
+    expect(result.notes.join(' ')).toMatch(/Different printed totals/);
+  });
+});

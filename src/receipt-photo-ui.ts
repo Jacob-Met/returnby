@@ -1,4 +1,4 @@
-import { receiptFileProblem, receiptSuggestions, mergeReceiptSuggestions } from './receipt-photo';
+import { receiptFileProblem, receiptSuggestions, mergeReceiptSuggestions, damagedReceiptSuggestions } from './receipt-photo';
 import { readReceipt } from './receipt-ocr';
 import { straightenReceipt, validReceiptCorners, type ReceiptCorner } from './receipt-image';
 import './receipt-photo.css';
@@ -314,21 +314,24 @@ export function bindReceiptPhoto() {
     try {
       const recognized = await readReceipt(canvas, signal, (fraction, stage) => {
         if (token !== generation) return;
-        if (stage === 'recovering faint print') {
+        if (stage === 'recovering faint print' || stage === 'recovering wrinkled print' || stage === 'reading store header') {
           progress.value = 0;
-          setStatus('Trying to recover faint printed words on this device…');
+          setStatus(stage === 'recovering faint print' ? 'Trying to recover faint printed words on this device…' :
+            'Trying to read print distorted by paper creases on this device…');
         } else if (stage === 'recognizing text') {
           progress.value = fraction;
           setStatus('Reading receipt… ' + Math.round(fraction * 100) + '%');
         }
       });
       if (token !== generation) return;
-      if (!recognized.text.trim() && !recognized.recoveredText?.trim()) {
+      if (!recognized.text.trim() && !recognized.recoveredText?.trim() && !recognized.damagedText?.trim()) {
         setStatus('No readable text was found. Try outlining the paper corners or enter the details yourself.');
         return;
       }
       text.querySelector('pre')!.textContent = recognized.text +
-        (recognized.recoveredText ? '\n--- Faint-print recovery ---\n' + recognized.recoveredText : '');
+        (recognized.recoveredText ? '\n--- Faint-print recovery ---\n' + recognized.recoveredText : '') +
+        (recognized.damagedText ? '\n--- Creased-paper recovery ---\n' + recognized.damagedText : '') +
+        (recognized.headerText ? '\n--- Store-header recovery ---\n' + recognized.headerText : '');
       if (recognized.enhancedImage) {
         // The reviewer sees the same locally enhanced pixels the worker read.
         // The saved receipt is still the exact original file.
@@ -345,14 +348,19 @@ export function bindReceiptPhoto() {
       form.dispatchEvent(new Event('returnby:purchase-replaced'));
       const originalFields = receiptSuggestions(recognized.text);
       const recoveredFields = recognized.recoveredText ? receiptSuggestions(recognized.recoveredText) : undefined;
-      const result = mergeReceiptSuggestions(originalFields, recoveredFields);
+      const faded = mergeReceiptSuggestions(originalFields, recoveredFields);
+      const damaged = recognized.damagedText
+        ? damagedReceiptSuggestions((recognized.headerText ? recognized.headerText + '\n' : '') + recognized.damagedText)
+        : undefined;
+      const result = mergeReceiptSuggestions(faded, damaged);
+      const recoveredCount = faded.recoveredCount + result.recoveredCount;
       for (const name of ['merchant', 'orderDate', 'orderNo', 'total'] as const)
         field(name).value = result[name];
       field('windowDays').value = '';
       field('windowStartDate').value = '';
       form.dispatchEvent(new Event('input', { bubbles: true }));
       view('details');
-      setStatus('Text read.' + (result.recoveredCount ? ' Faint-print recovery suggested ' + result.recoveredCount + ' additional field(s).' : '') +
+      setStatus('Text read.' + (recoveredCount ? ' Photo recovery suggested ' + recoveredCount + ' additional field(s).' : '') +
         ' Check every suggestion against the photo' + (recognized.enhancedImage ? ' (Photo shows a brighter, enhanced view; Original view restores the source)' : '') + '. Enter the return window you confirmed with the store. ' +
         result.notes.join(' '));
       field(result.merchant ? (result.orderDate ? 'windowDays' : 'orderDate') : 'merchant').focus();
