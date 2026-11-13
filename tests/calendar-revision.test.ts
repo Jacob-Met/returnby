@@ -136,6 +136,37 @@ describe('old imported calendar entries remain actionable after revisions', () =
     expect(olderCalendarDates(cleared[0])).toEqual({primary:[],arrival:[]});
     expect(() => acknowledgeCalendarCleanup(cleared,restored[0])).toThrow(/changed/);
   });
+  test('cleans one obsolete date at a time and keeps every other old event and current reminder', () => {
+    let current = recordCalendarDownloads([initial], [
+      {id:initial.id,merchant:initial.merchant,due:'2026-10-11',merchantArrivalDeadline:'2026-10-18'},
+    ]);
+    let updated = planEdit(current,current[0],{...editDraft(current[0]),windowDays:'12'});
+    current = recordCalendarDownloads(updated.next, [
+      {id:initial.id,merchant:initial.merchant,due:'2026-10-13',merchantArrivalDeadline:'2026-10-18'},
+    ]);
+    updated = planEdit(current,current[0],{...editDraft(current[0]),windowDays:'13',merchantArrivalDeadline:''});
+    current = recordCalendarDownloads(updated.next, [
+      {id:initial.id,merchant:initial.merchant,due:'2026-10-14'},
+    ]);
+    const original = structuredClone(current);
+    const first = acknowledgeCalendarCleanup(current,current[0],{primary:['2026-10-11'],arrival:[]});
+    expect(olderCalendarDates(first[0])).toEqual({primary:['2026-10-13'],arrival:['2026-10-18']});
+    expect(first[0].calendarExportedDueDates).toEqual(['2026-10-13','2026-10-14']);
+    expect(first[0].calendarPreviousArrivalDate).toBe('2026-10-18');
+    expect(current).toEqual(original);
+    expect(() => acknowledgeCalendarCleanup(current,current[0],{primary:['2026-10-14'],arrival:[]})).toThrow(/changed/);
+    expect(() => acknowledgeCalendarCleanup(current,current[0],{primary:['2026-10-11','2026-10-11'],arrival:[]})).toThrow(/changed/);
+    expect(() => acknowledgeCalendarCleanup(first,current[0],{primary:['2026-10-13'],arrival:[]})).toThrow(/changed/);
+    const restored = parseBackup(exportBackup(first,time));
+    expect(olderCalendarDates(restored[0])).toEqual({primary:['2026-10-13'],arrival:['2026-10-18']});
+    const second = acknowledgeCalendarCleanup(restored,restored[0],{primary:[],arrival:['2026-10-18']});
+    expect(olderCalendarDates(second[0])).toEqual({primary:['2026-10-13'],arrival:[]});
+    expect(second[0].calendarPreviousArrivalDate).toBeUndefined();
+    const third = acknowledgeCalendarCleanup(second,second[0],{primary:['2026-10-13'],arrival:[]});
+    expect(olderCalendarDates(third[0])).toEqual({primary:[],arrival:[]});
+    expect(third[0].calendarExportedDueDates).toEqual(['2026-10-14']);
+    expect(planSingleCalendar(third,third[0],time).content).toContain('DTSTART;VALUE=DATE:20261014');
+  });
   test('legacy saved removal continues to warn about its old calendar date', () => {
     const old = { ...initial, calendarRevision:1, calendarPreviousArrivalDate:'2026-10-18', merchantArrivalDeadline:undefined };
     expect(olderCalendarDates(old)).toEqual({primary:[],arrival:['2026-10-18']});

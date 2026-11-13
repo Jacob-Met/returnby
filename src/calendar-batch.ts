@@ -191,22 +191,43 @@ export function olderCalendarDates(order: Order): { primary: string[]; arrival: 
   };
 }
 
-/** A shopper can clear warnings only after confirming older events are gone. */
-export function acknowledgeCalendarCleanup(current: readonly Order[], reviewed: Order): Order[] {
+export type CalendarCleanupSelection = { primary: readonly string[]; arrival: readonly string[] };
+
+/** Each date is acknowledged only after the shopper removes that event in
+ * their calendar app. Other stale dates and any current reminders stay visible.
+ */
+export function acknowledgeCalendarCleanup(
+  current: readonly Order[], reviewed: Order, removed?: CalendarCleanupSelection,
+): Order[] {
   const matches = current.filter(row => row.id === reviewed.id);
   if (matches.length !== 1 || JSON.stringify(matches[0]) !== JSON.stringify(reviewed)) {
     throw new CalendarBatchError('This return changed before calendar cleanup was confirmed. Refresh and review it.');
   }
-  return current.map(order => {
-    if (order.id !== reviewed.id) return order;
-    const remainingDue = isCompleted(order) ? [] : (order.calendarExportedDueDates ?? []).filter(date => date === returnDueDate(order));
-    const remainingArrival = isCompleted(order) ? [] : (order.calendarExportedArrivalDates ?? []).filter(date => date === order.merchantArrivalDeadline);
-    const next = { ...order };
-    if (remainingDue.length) next.calendarExportedDueDates = remainingDue;
+  const order = matches[0];
+  const pending = olderCalendarDates(order);
+  const chosen = removed ?? pending;
+  if (!chosen.primary.length && !chosen.arrival.length) {
+    throw new CalendarBatchError('Select an old calendar entry you have removed.');
+  }
+  for (const kind of ['primary', 'arrival'] as const) {
+    const selected = chosen[kind];
+    if (new Set(selected).size !== selected.length || selected.some(date => !pending[kind].includes(date))) {
+      throw new CalendarBatchError('An old calendar entry changed. Refresh and review the cleanup list.');
+    }
+  }
+  const dueRemoved = new Set(chosen.primary);
+  const arrivalRemoved = new Set(chosen.arrival);
+  return current.map(row => {
+    if (row.id !== reviewed.id) return row;
+    const next = { ...row };
+    const due = row.calendarExportedDueDates?.filter(date => !dueRemoved.has(date));
+    const arrival = row.calendarExportedArrivalDates?.filter(date => !arrivalRemoved.has(date));
+    if (due?.length) next.calendarExportedDueDates = due;
     else delete next.calendarExportedDueDates;
-    if (remainingArrival.length) next.calendarExportedArrivalDates = remainingArrival;
+    if (arrival?.length) next.calendarExportedArrivalDates = arrival;
     else delete next.calendarExportedArrivalDates;
-    if (!order.merchantArrivalDeadline) delete next.calendarPreviousArrivalDate;
+    if (!row.merchantArrivalDeadline && row.calendarPreviousArrivalDate &&
+        arrivalRemoved.has(row.calendarPreviousArrivalDate)) delete next.calendarPreviousArrivalDate;
     return next;
   });
 }
