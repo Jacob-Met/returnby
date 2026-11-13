@@ -30,6 +30,7 @@ export type TripPacking = {
 export type TripChecklist = Readonly<{
   packing?: Readonly<Record<string, TripPacking>>;
   receiptImages?: Readonly<Record<string, string>>;
+  merchantDocuments?: Readonly<Record<string, {data: string; name: string; type: string}>>;
   tripDate: string;
   preparedOn: string;
   orders: readonly TripOrder[];
@@ -171,11 +172,21 @@ export function renderChecklist(checklist: TripChecklist): string {
   const count = checklist.orders.length;
   const receipts = checklist.orders.filter(row =>
     /^data:image\/jpeg;base64,[A-Za-z0-9+/]+=*$/.test(checklist.receiptImages?.[row.order.id] || ''));
+  const documents=checklist.orders.filter(row=>{
+    const file=checklist.merchantDocuments?.[row.order.id];
+    if(!file)return false;
+    const prefix=file.type==='application/pdf' ? 'data:application/pdf;base64,'
+      : ['image/jpeg','image/png','image/webp'].includes(file.type) ? 'data:'+file.type+';base64,' : '';
+    return !!prefix && file.data.startsWith(prefix) &&
+      /^[A-Za-z0-9+/]+={0,2}$/.test(file.data.slice(prefix.length)) && file.data.length<=24*1024*1024;
+  });
+  const documentIds=new Set(documents.map(row=>row.order.id));
   return '<article class="trip-sheet" aria-label="Return-trip checklist preview">'
     + '<header class="sheet-heading"><p class="sheet-eyebrow">RETURNBY / TAKE IT WITH YOU</p><h2>Return-trip checklist</h2>'
     + '<div class="sheet-meta"><p><span>PLANNED TRIP</span><strong>' + escapeHtml(checklist.tripDate) + '</strong></p>'
     + '<p><span>SELECTED ORDERS</span><strong>' + count + '</strong></p><p><span>PREPARED ON</span><strong>' + escapeHtml(checklist.preparedOn) + '</strong></p></div></header>'
     + '<p class="sheet-guidance">Check each store’s current return instructions before setting out. These dates use your saved windows; this sheet does not confirm that a return is eligible.</p>'
+    + (documents.length ? '<p class="sheet-receipt-jump"><a href="#merchant-documents">View '+documents.length+' saved merchant return '+(documents.length===1?'document':'documents')+' offline</a></p>' : '')
     + (receipts.length ? '<p class="sheet-receipt-jump"><a href="#original-receipts">View ' + receipts.length + ' saved paper ' + (receipts.length === 1 ? 'receipt' : 'receipts') + ' in this offline file</a></p>' : '')
     + '<ol class="sheet-orders">' + checklist.orders.map(({ order, due, tripTiming: timing }, i) =>
       '<li class="sheet-order"><header><span class="sheet-number">' + String(i + 1).padStart(2, '0') + '</span><div><h3>' + saved(order.merchant) + '</h3><p class="sheet-order-ref">Order number: ' + saved(order.orderNo) + '</p></div></header>'
@@ -187,13 +198,22 @@ export function renderChecklist(checklist: TripChecklist): string {
       + '<div><dt>Saved window</dt><dd>' + (order.fixedDeadline ? 'Fixed retailer deadline · '+escapeHtml(order.fixedDeadline) : order.windowDays + ' days · ' + sourceLabel(order.windowSource)) + '</dd></div></dl>'
       + '<p class="sheet-timing">' + escapeHtml(timing) + '</p>'
       + '<p class="sheet-requirement">'+escapeHtml(deadlineCaution(order.deadlineRequirement))+'</p>'
-      + (order.returnEvidenceUrl ? '<p class="sheet-evidence"><strong>RETURN DOCUMENT</strong> <a rel="noopener noreferrer" target="_blank" href="'+escapeHtml(order.returnEvidenceUrl)+'">Open return label, QR or receipt</a><span class="sheet-evidence-url">'+escapeHtml(order.returnEvidenceUrl)+'</span></p>' : '<p class="sheet-evidence">No return document link saved — bring the receipt or merchant instructions.</p>')
+      + (documentIds.has(order.id) ? '<p class="sheet-evidence"><strong>MERCHANT RETURN DOCUMENT SAVED OFFLINE</strong>Attached below: '+escapeHtml(checklist.merchantDocuments![order.id].name)+'</p>' : '')
+      + (order.returnEvidenceUrl ? '<p class="sheet-evidence"><strong>RETURN DOCUMENT</strong> <a rel="noopener noreferrer" target="_blank" href="'+escapeHtml(order.returnEvidenceUrl)+'">Open return label, QR or receipt</a><span class="sheet-evidence-url">'+escapeHtml(order.returnEvidenceUrl)+'</span></p>' : (documentIds.has(order.id) ? '' : '<p class="sheet-evidence">No return document saved — bring the receipt or merchant instructions.</p>'))
       + '<ul class="packing-checks"><li>' + packingMark(checklist.packing?.[order.id]?.packed) + 'Item, tags and packaging ready</li>'
-      + '<li>' + packingMark(checklist.packing?.[order.id]?.receiptReady) + 'Receipt or order confirmation ready</li>'
+      + '<li>' + packingMark(checklist.packing?.[order.id]?.receiptReady) + 'Receipt, order confirmation or merchant return document ready</li>'
       + '<li>' + packingMark(checklist.packing?.[order.id]?.instructionsChecked) + 'Store instructions and return arrangement checked</li></ul>'
       + '<div class="sheet-notes"><span>MY NOTES / DROP-OFF DETAILS</span>'
       + (checklist.packing?.[order.id]?.notes ? '<p class="saved-trip-notes">' + escapeHtml(checklist.packing[order.id].notes) + '</p>' : '<div></div><div></div>') + '</div></li>'
     ).join('') + '</ol>'
+    + (documents.length ? '<section class="sheet-receipts sheet-merchant-documents" id="merchant-documents"><h2>Merchant return QR codes and labels</h2><p>Files saved from the merchant, available offline. Confirm each is valid before leaving.</p>'
+      + documents.map(row => {
+        const item=checklist.merchantDocuments![row.order.id];
+        const heading='<figcaption><strong>'+escapeHtml(row.order.merchant||'Store not recorded')+'</strong> · '+escapeHtml(item.name)+'</figcaption>';
+        return '<figure class="sheet-receipt">'+heading+(item.type==='application/pdf'
+          ? '<a download="'+escapeHtml(item.name)+'" href="'+escapeHtml(item.data)+'">Save merchant PDF label from this offline file</a><p>Open or print the PDF separately; printing this checklist does not print the PDF.</p>'
+          : '<img src="'+escapeHtml(item.data)+'" alt="Merchant-issued return authorization for '+escapeHtml(row.order.merchant||'this order')+'" loading="eager">')+'</figure>';
+      }).join('')+'</section>' : '')
     + (receipts.length ? '<section class="sheet-receipts" id="original-receipts"><h2>Saved paper receipts</h2><p>These private receipt photos came from this browser. Show the original at the counter; merchant acceptance still depends on its policy.</p>'
       + receipts.map(row => '<figure class="sheet-receipt"><figcaption><strong>' + escapeHtml(row.order.merchant || 'Store not recorded') + '</strong>' + (row.order.orderNo ? ' · #' + escapeHtml(row.order.orderNo) : '') + '</figcaption><img src="' + escapeHtml(checklist.receiptImages![row.order.id]) + '" alt="Saved original paper receipt photograph for ' + escapeHtml(row.order.merchant || 'this order') + '" loading="eager"></figure>').join('')
       + '</section>' : '')

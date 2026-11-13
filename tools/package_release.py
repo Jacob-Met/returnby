@@ -93,7 +93,7 @@ def main():
         "unencrypted; keep those files private.\n"
         "Original paper-receipt photos are stored in this browser.\n"
         "Private JSON backups now carry saved original photos to other devices.\n"
-        "Printed checklists never include photographs; keep your backup secure.\n"
+        "Offline trip sheets may include saved receipt and merchant label images.\nMerchant PDF labels are saved separately from the offline sheet.\nKeep these private files and JSON backups secure.\n"
         "Merchant rules are reference estimates, not verified current return policies.\n"
         "Calendar reminders are file exports, not live subscriptions.\n\n"
         "Source: https://github.com/Jacob-Met/returnby/commit/" + source + "\n"

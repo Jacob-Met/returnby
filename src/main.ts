@@ -1,5 +1,6 @@
 import { openReceiptProof } from './receipt-photo-archive-ui';
-import { pruneOriginalReceipts } from './receipt-photo-archive';
+import { openMerchantDocument } from './merchant-document-ui';
+import { pruneOriginalReceipts, pruneMerchantDocuments } from './receipt-photo-archive';
 import './receipt-policy.css';
 import { receiptPolicy, receiptWindow } from './receipt-policy';
 import {readPending,writePending,PENDING_KEY} from './pending-delivery';
@@ -366,7 +367,7 @@ function historyCard(o: Order): string {
     + (o.total ? '<p class="history-amount">Order total <strong>' + h(o.total) + '</strong></p>' : '')
     + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open saved return document</a></p>' : '')
     + calendarCleanupNotice(o)
-    + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-link" data-cancel-calendar="' + h(o.id) + '">Cancel imported deadline</button>'
+    + '<div class="order-actions"><button class="button button-link" data-merchant-document="' + h(o.id) + '">Return QR / label</button><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-link" data-cancel-calendar="' + h(o.id) + '">Cancel imported deadline</button>'
     + (o.merchantArrivalDeadline || o.calendarPreviousArrivalDate ? '<button class="button button-link" data-cancel-arrival="' + h(o.id) + '">Cancel imported arrival cutoff</button>' : '')
     + '<button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>'
     + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button>'
@@ -441,9 +442,9 @@ function render() {
       + '<div class="order-foot"><span class="return-by">' + h(deadlinePhrase(o.deadlineRequirement).toUpperCase()) + ' ' + h(due) + '</span><strong class="days-left">' + count + '</strong></div>'
       + (o.merchantArrivalDeadline ? '<div class="order-foot second-return-deadline"><span class="return-by">MERCHANT MUST RECEIVE BY ' + h(o.merchantArrivalDeadline) + '</span><strong class="days-left">' + (daysLeft(o.merchantArrivalDeadline, todayISO()) < 0 ? 'PAST DUE' : h(String(daysLeft(o.merchantArrivalDeadline, todayISO()))) + ' DAYS LEFT') + '</strong></div>' : '')
       + (o.deadlineRequirement ? '<p class="return-document return-document-caution">'+h(deadlineCaution(o.deadlineRequirement))+'</p>' : '')
-      + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open return label, QR or receipt</a></p>' : '<p class="return-document return-document-missing">No return document saved. Add one in Edit details before going to the store.</p>')
+      + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open return label, QR or receipt</a></p>' : '<p class="return-document return-document-missing">No return document link saved. Open Return QR / label to attach an original merchant file for offline use.</p>')
       + calendarCleanupNotice(o)
-      + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-primary" data-ics="' + h(o.id) + '">' + (o.calendarRevision ? 'Update calendar reminders' : 'Add calendar reminders') + '</button>'
+      + '<div class="order-actions"><button class="button button-link" data-merchant-document="' + h(o.id) + '">Return QR / label</button><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-primary" data-ics="' + h(o.id) + '">' + (o.calendarRevision ? 'Update calendar reminders' : 'Add calendar reminders') + '</button>'
       + (o.calendarPreviousArrivalDate && !o.merchantArrivalDeadline ? '<button class="button button-link" data-cancel-arrival="' + h(o.id) + '">Cancel old arrival cutoff</button>' : '')
       + '<button class="button button-link" data-finish="' + h(o.id) + '">Finish return</button>'
       + '<button class="button button-link" data-edit="' + h(o.id) + '">Edit details</button><button class="button button-link" data-del="' + h(o.id) + '">Remove</button>' + refundAction(o) + '</div></li>';
@@ -510,6 +511,11 @@ list.addEventListener('click', (e) => {
     if (changeCompletion(matches.length === 1 ? matches[0] : undefined, 'reopen')) $('#filter-all').focus();
   }
   if (t.dataset.edit !== undefined) orderEditor.open(t.dataset.edit);
+  if (t.dataset.merchantDocument !== undefined) {
+    const match = orders.filter(order => order.id === t.dataset.merchantDocument);
+    if (match.length === 1) void openMerchantDocument(match[0]);
+    return;
+  }
   if (t.dataset.receipt !== undefined) {
     const match = orders.filter(order => order.id === t.dataset.receipt);
     if (match.length === 1) void openReceiptProof(match[0]);
@@ -631,7 +637,7 @@ function clearAllTrackedOrders() {
     return;
   }
   // Reset remains available for a genuinely unreadable store, as before.
-  if (persistOrders([], true)) { render(); removalUndo.clear(); void pruneOriginalReceipts([]).catch(() => {}); }
+  if (persistOrders([], true)) { render(); removalUndo.clear(); void pruneOriginalReceipts([]).catch(() => {}); void pruneMerchantDocuments([]).catch(() => {}); }
 }
 $('#clear').addEventListener('click', clearAllTrackedOrders);
 storageRetry.addEventListener('click', reloadOrders);
@@ -656,7 +662,7 @@ const removalUndo = bindRemovalUndo({
 });
 bindRefunds({ commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
 bindTabSync({ refresh: reloadOrders });
-if (reloadOrders()) void pruneOriginalReceipts(orders).catch(() => {});
+if (reloadOrders()) { void pruneOriginalReceipts(orders).catch(() => {}); void pruneMerchantDocuments(orders).catch(() => {}); }
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRefresh(() => {
   // Preserve the currently focused saved-row action through midnight's
