@@ -1,8 +1,8 @@
 import type { Worker } from 'tesseract.js';
-import { enhanceFaintReceipt } from './receipt-image';
-import { receiptSuggestions } from './receipt-photo';
+import { enhanceFaintReceipt, enhanceWrinkledReceipt } from './receipt-image';
+import { receiptSuggestions, mergeReceiptSuggestions, damagedReceiptSuggestions } from './receipt-photo';
 
-export type ReceiptReading = { text: string; recoveredText?: string; enhancedImage?: HTMLCanvasElement };
+export type ReceiptReading = { text: string; recoveredText?: string; enhancedImage?: HTMLCanvasElement; damagedText?: string; headerText?: string };
 
 export async function readReceipt(
   image: HTMLCanvasElement,
@@ -45,7 +45,26 @@ export async function readReceipt(
     check();
     const recoveredText = (await worker.recognize(enhanced)).data.text;
     check();
-    return { text: original, recoveredText, enhancedImage: enhanced };
+    const combined = mergeReceiptSuggestions(fields, receiptSuggestions(recoveredText));
+    if (combined.merchant && combined.total) return { text: original, recoveredText, enhancedImage: enhanced };
+    progress(0, 'recovering wrinkled print');
+    const shadow = enhanceWrinkledReceipt(image);
+    check();
+    await worker.setParameters({ tessedit_pageseg_mode: PSM.SINGLE_BLOCK, preserve_interword_spaces: '1' });
+    const damagedText = (await worker.recognize(shadow)).data.text;
+    check();
+    let headerText: string | undefined;
+    if (!mergeReceiptSuggestions(combined, damagedReceiptSuggestions(damagedText)).merchant &&
+        image.width < 1300 && image.height < 2600) {
+      progress(0, 'reading store header');
+      const header = enhanceWrinkledReceipt(image, true);
+      check();
+      headerText = (await worker.recognize(header)).data.text;
+      check();
+    }
+    const damaged = damagedReceiptSuggestions((headerText ? headerText + '\n' : '') + damagedText);
+    return { text: original, recoveredText, damagedText, headerText,
+      enhancedImage: (damaged.merchant || damaged.total) ? shadow : enhanced };
   };
   try {
     return await Promise.race([work(), abort]);

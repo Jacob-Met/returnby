@@ -121,3 +121,63 @@ export function enhanceFaintReceipt(source: HTMLCanvasElement): HTMLCanvasElemen
   ctx.putImageData(frame, 0, 0);
   return canvas;
 }
+
+/** Recover print from small, creased paper without mistaking the crease shadows for ink. */
+export function enhanceWrinkledReceipt(source: HTMLCanvasElement, headerOnly = false): HTMLCanvasElement {
+  const down = Math.min(1, 1600 / source.width, 2200 / source.height,
+    Math.sqrt(2_800_000 / (source.width * source.height)));
+  const w = Math.max(1, Math.round(source.width * down));
+  const h = Math.max(1, Math.round(source.height * down));
+  const work = document.createElement('canvas');
+  work.width = w; work.height = h;
+  const ctx = work.getContext('2d', { willReadFrequently: true })!;
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, w, h);
+  ctx.drawImage(source, 0, 0, w, h);
+  const frame = ctx.getImageData(0, 0, w, h);
+  const pixels = frame.data, grays = new Uint8Array(w * h);
+  const stride = w + 1, integral = new Float64Array(stride * (h + 1));
+  for (let y = 0; y < h; y++) {
+    let row = 0;
+    for (let x = 0; x < w; x++) {
+      const i = y * w + x, j = i * 4;
+      const gray = Math.round(.299 * pixels[j] + .587 * pixels[j + 1] + .114 * pixels[j + 2]);
+      grays[i] = gray;
+      row += gray;
+      integral[(y + 1) * stride + x + 1] = integral[y * stride + x + 1] + row;
+    }
+  }
+  const radius = Math.max(12, Math.min(40, Math.round(Math.min(w, h) * (headerOnly ? .028 : .045))));
+  for (let y = 0; y < h; y++) {
+    const top = Math.max(0, y - radius), bottom = Math.min(h - 1, y + radius);
+    for (let x = 0; x < w; x++) {
+      const left = Math.max(0, x - radius), right = Math.min(w - 1, x + radius);
+      const mean = (integral[(bottom + 1) * stride + right + 1] -
+        integral[top * stride + right + 1] -
+        integral[(bottom + 1) * stride + left] + integral[top * stride + left]) /
+        ((right - left + 1) * (bottom - top + 1));
+      const value = Math.max(0, 255 - Math.max(0, mean - grays[y * w + x] - 1) * 5);
+      const j = (y * w + x) * 4;
+      pixels[j] = pixels[j + 1] = pixels[j + 2] = value;
+      pixels[j + 3] = 255;
+    }
+  }
+  ctx.putImageData(frame, 0, 0);
+  // A separate, top-of-paper read prevents distant line items and folds
+  // overwhelming the store name on a compressed phone photograph.
+  const sx = headerOnly ? Math.round(w * .06) : 0;
+  const sy = headerOnly ? Math.round(h * .06) : 0;
+  const cw = headerOnly ? Math.max(1, Math.round(w * .88)) : w;
+  const ch = headerOnly ? Math.max(1, Math.round(h * .24)) : h;
+  const scale = Math.min(headerOnly ? 3 : 2, 2200 / cw, 2800 / ch,
+    Math.sqrt(4_000_000 / (cw * ch)));
+  if (scale <= 1 && !headerOnly) return work;
+  const enlarged = document.createElement('canvas');
+  enlarged.width = Math.round(cw * Math.max(1, scale));
+  enlarged.height = Math.round(ch * Math.max(1, scale));
+  const out = enlarged.getContext('2d')!;
+  out.imageSmoothingEnabled = !headerOnly;
+  out.imageSmoothingQuality = 'high';
+  out.drawImage(work, sx, sy, cw, ch, 0, 0, enlarged.width, enlarged.height);
+  return enlarged;
+}
