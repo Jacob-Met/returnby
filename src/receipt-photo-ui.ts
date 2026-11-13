@@ -349,11 +349,18 @@ export function bindReceiptPhoto() {
       const originalFields = receiptSuggestions(recognized.text);
       const recoveredFields = recognized.recoveredText ? receiptSuggestions(recognized.recoveredText) : undefined;
       const faded = mergeReceiptSuggestions(originalFields, recoveredFields);
+      // A fold may cut off the tail of a store heading in the first read. The
+      // creased-paper OCR can complete that same heading without becoming an
+      // independent authority for a different shop, amount, or purchase date.
+      const shadowMerchant = recognized.damagedText ? receiptSuggestions(recognized.damagedText).merchant : '';
+      const withHeading = faded.merchant && shadowMerchant
+        ? mergeReceiptSuggestions(faded, { merchant: shadowMerchant, orderDate: '', orderNo: '', total: '', notes: [] })
+        : faded;
       const damaged = recognized.damagedText
         ? damagedReceiptSuggestions((recognized.headerText ? recognized.headerText + '\n' : '') + recognized.damagedText)
         : undefined;
-      const result = mergeReceiptSuggestions(faded, damaged);
-      const recoveredCount = faded.recoveredCount + result.recoveredCount;
+      const result = mergeReceiptSuggestions(withHeading, damaged);
+      const recoveredCount = faded.recoveredCount + withHeading.recoveredCount + result.recoveredCount;
       for (const name of ['merchant', 'orderDate', 'orderNo', 'total'] as const)
         field(name).value = result[name];
       field('windowDays').value = '';
