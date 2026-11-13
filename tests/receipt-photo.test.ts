@@ -204,3 +204,17 @@ describe('folded heading continuation and final balance', () => {
     expect(result.notes.join(' ')).toMatch(/Different printed totals/);
   });
 });
+
+describe('corroborating a partly erased TOTAL label', () => {
+  it('restores the amount when one subtotal and tax match an OCR-damaged total', () => {
+    expect(damagedReceiptSuggestions('Subtotal $62.85\nTax $6.91\n‘otal $69.76').total).toBe('69.76');
+    expect(damagedReceiptSuggestions('Subtotal 62.85\nTax 6.91\notal 69.76').total).toBe('69.76');
+  });
+  it('never suggests a partly erased total with a mismatched sum', () => {
+    expect(damagedReceiptSuggestions('Subtotal $62.85\nTax $6.91\n‘otal $79.76').total).toBe('');
+    expect(damagedReceiptSuggestions('Subtotal $62.85\nTax $6.91\n‘otal $69.75').total).toBe('');
+  });
+  it('does not infer a total from subtotals, tax and a generic amount', () => {
+    expect(damagedReceiptSuggestions('Subtotal $62.85\nTax $6.91\nCard 69.76').total).toBe('');
+  });
+});
