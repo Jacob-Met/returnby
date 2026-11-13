@@ -1,12 +1,12 @@
 # ReturnBy — current desk
 
-**[Download ReturnBy 0.15.0](https://github.com/Jacob-Met/returnby/releases/tag/v0.15.0)** · [Source](https://github.com/Jacob-Met/returnby/tree/main)
+**[Current source: 0.16.0](https://github.com/Jacob-Met/returnby/tree/v0.16.0)** · [Previous public download: 0.15.0](https://github.com/Jacob-Met/returnby/releases/tag/v0.15.0)
 
-[Phone — calendar cleanup](https://github.com/Jacob-Met/returnby/releases/download/v0.15.0/ReturnBy-v0.15.0-calendar-cleanup-phone.png) · [Desktop — calendar cleanup](https://github.com/Jacob-Met/returnby/releases/download/v0.15.0/ReturnBy-v0.15.0-calendar-cleanup-desktop.png)
+Offline browser and native Linux, macOS (Intel and Apple Silicon) and Windows packages are in the estate release store at r2-estate:estate-archive/releases/returnby/v0.16.0/. The same folder contains the current desktop and phone receipt-review screenshots.
 
-Saved returns show the current deadline beside every earlier imported date. A shopper can confirm obsolete calendar events one at a time, leaving other old dates visible and current reminders intact. The portable browser and native downloads also include improvements to creased-receipt recognition.
+The receipt-photo reader now recognizes more shop headings and paid totals through folds, instead of suggesting dish or server names as merchants. In 16 independent photographed restaurant receipts, correct merchants rose from 4 to 9, and correct paid totals from 5 to 8. A mismatched payment stays open for the shopper to check against the original. The app still needs a confirmed return rule supplied by its user.
 
 ## Top gaps
 
-1. **Other badly crumpled receipts can still hide their merchant or final amount.** One focused local recovery can read a real creased restaurant receipt, but lost ink and different folds still defeat the reader.
-2. **Some calendar apps still retain obsolete reminders.** The desk now lists each outdated event and lets shoppers check off only those removed, but a calendar app can ignore cancellation files and still require manual deletion there.
+1. **Severely distorted print can still defeat the local reader.** Lost letters, cut-off brand headings and warped totals on different folds still leave store names or paid amounts missing or wrong.
+2. **Some calendar apps retain obsolete reminders.** The desk lists outdated events and supports their cleanup, but external apps can ignore cancellation files and require manual removal.
