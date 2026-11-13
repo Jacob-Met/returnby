@@ -58,6 +58,7 @@ try {
     return content;
   }
   const first = await downloadDeadline();
+  assert.deepEqual((await page.evaluate(() => JSON.parse(localStorage.getItem('returnby.v1'))))[0].calendarExportedDueDates,['2026-11-16']);
   assert.match(first, /UID:winter-coat@returnby/);
   assert.match(first, /UID:winter-coat:merchant-arrival@returnby/);
   assert.match(first, /DTSTART;VALUE=DATE:20261116/);
@@ -70,6 +71,8 @@ try {
   assert.match(second, /SEQUENCE:1/);
   assert.match(second, /DTSTART;VALUE=DATE:20261118/);
   assert.match(second, /UID:winter-coat@returnby/);
+  assert.deepEqual((await page.evaluate(() => JSON.parse(localStorage.getItem('returnby.v1'))))[0].calendarExportedDueDates, ['2026-11-16','2026-11-18']);
+  assert.match(await page.locator('.calendar-cleanup').innerText(), /Return deadline 2026-11-16/);
 
   await page.locator('[data-edit="winter-coat"]').click();
   await page.locator('#edit-merchant-arrival-deadline').fill('');
@@ -78,6 +81,9 @@ try {
   const third = await downloadDeadline();
   assert.match(third, /SEQUENCE:2/);
   assert.doesNotMatch(third, /UID:winter-coat:merchant-arrival@returnby/);
+  const staleNotice = await page.locator('.calendar-cleanup').innerText();
+  assert.match(staleNotice, /2026-11-16/);
+  assert.match(staleNotice, /Merchant arrival 2026-11-28/);
   const secondaryCancel = await downloadOnClick('[data-cancel-arrival="winter-coat"]');
   assert.match(secondaryCancel, /METHOD:CANCEL/);
   assert.match(secondaryCancel, /UID:winter-coat:merchant-arrival@returnby/);
@@ -90,6 +96,7 @@ try {
   await page.locator('#finish-form [value=returned]').check();
   await page.locator('#finish-form button[type=submit]').click();
   await page.locator('#filter-completed').click();
+  assert.match(await page.locator('.calendar-cleanup').innerText(), /Return deadline 2026-11-18/);
   const primaryCancel = await downloadOnClick('[data-cancel-calendar="winter-coat"]');
   assert.match(primaryCancel, /METHOD:CANCEL/);
   assert.match(primaryCancel, /UID:winter-coat@returnby/);
@@ -100,12 +107,26 @@ try {
   assert.equal(stored[0].calendarRevision, 3);
   assert.equal(stored[0].calendarPreviousArrivalDate, '2026-11-28');
   assert.equal(stored[0].completionKind, 'returned');
+  assert.deepEqual(stored[0].calendarExportedDueDates,['2026-11-16','2026-11-18']);
+  assert.deepEqual(stored[0].calendarExportedArrivalDates,['2026-11-28']);
+  await mkdir(screenshots,{recursive:true});
+  await page.screenshot({path:resolve(screenshots,'calendar-cleanup-desktop.png'),fullPage:true});
+  await page.setViewportSize({ width:390, height:844 });
+  await page.screenshot({path:resolve(screenshots,'calendar-cleanup-phone.png'),fullPage:true});
+  assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Calendar cleanup must fit on a phone');
+  await page.setViewportSize({ width:1440, height:900 });
 
   await mkdir(screenshots, { recursive: true });
   await page.screenshot({ path: resolve(screenshots, 'history-desktop.png'), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.screenshot({ path: resolve(screenshots, 'history-phone.png'), fullPage: true });
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Phone history must not overflow');
+  page.once('dialog',dialog=>dialog.accept());
+  await page.locator('[data-ack-calendar="winter-coat"]').click();
+  assert.equal(await page.locator('.calendar-cleanup').count(),0);
+  const cleared = (await page.evaluate(() => JSON.parse(localStorage.getItem('returnby.v1'))))[0];
+  assert.equal(cleared.calendarExportedDueDates,undefined);
+  assert.equal(cleared.calendarExportedArrivalDates,undefined);
   await page.locator('[data-reopen="winter-coat"]').click();
   assert.equal((await page.evaluate(() => JSON.parse(localStorage.getItem('returnby.v1') || '[]')))[0].calendarRevision, 4);
   const fourth = await downloadDeadline();

@@ -28,3 +28,8 @@
 #calendar-form .calendar-help { color: #526052; font-size: 12px; line-height: 1.5; margin: 8px 0; }
 .calendar-alert-preview { display: block; line-height: 1.55; font-size: 13px; margin-top: 7px; }
 .calendar-alert-attention { color: #923d24; }
+
+.calendar-cleanup { margin: 14px 0 16px; padding: 14px 16px; border-left: 4px solid #a96c30; background: #f5ead6; color: #352c21; }
+.calendar-cleanup strong { display: block; font-weight: 700; font-size: 14px; }
+.calendar-cleanup p { margin: 6px 0 10px; line-height: 1.55; font-size: 13px; overflow-wrap: anywhere; }
+.calendar-cleanup button { text-align: left; font-weight: 700; color: #244b37; border: 1px solid #8b987f; background: #fffefa; }

@@ -11,6 +11,7 @@ export type Order = {
   id: string; merchant: string; orderNo?: string; total?: string; returnEvidenceUrl?: string; deadlineRequirement?: DeadlineRequirement;
   fixedDeadline?: string; merchantArrivalDeadline?: string;
   calendarRevision?: number; calendarPreviousArrivalDate?: string;
+  calendarExportedDueDates?: string[]; calendarExportedArrivalDates?: string[];
   orderDate: string; windowStartDate?: string; windowDays: number; windowSource: 'policy' | 'default' | 'user'; createdAt: string;
   completedAt?: string;
   completionKind?: 'returned' | 'kept';

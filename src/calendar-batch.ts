@@ -137,6 +137,80 @@ export function planSingleCalendar(current: readonly Order[], reviewed: Order, s
   return { ...plan, filename: `return-${(reviewed.merchant || 'order').replace(/\W+/g, '-')}.ics` };
 }
 
+/**
+ * Record the dates placed in downloaded files, not an assertion that a third
+ * party actually imported them. Preserve older dates for manual cleanup.
+ */
+export function recordCalendarDownloads(current: readonly Order[], reminders: readonly CalendarReminder[]): Order[] {
+  const byId = new Map<string, CalendarReminder>();
+  for (const reminder of reminders) {
+    if (byId.has(reminder.id)) throw new CalendarBatchError('A return cannot be included twice in a calendar download.');
+    byId.set(reminder.id, reminder);
+  }
+  const add = (dates: string[] | undefined, value: string | undefined) => {
+    const list = dates ? [...dates] : [];
+    if (value && !list.includes(value)) list.push(value);
+    if (list.length > 128) throw new CalendarBatchError('Calendar date history is full. First confirm old calendar events are removed, then clear the old dates from the tracker.');
+    return list.length ? list : undefined;
+  };
+  const seen = new Set<string>();
+  const next = current.map(order => {
+    const reminder = byId.get(order.id);
+    if (!reminder) return order;
+    if (seen.has(order.id) || isCompleted(order) || returnDueDate(order) !== reminder.due ||
+        order.merchantArrivalDeadline !== reminder.merchantArrivalDeadline) {
+      throw new CalendarBatchError('A selected return changed before its calendar history could be saved. Reload and try again.');
+    }
+    seen.add(order.id);
+    const arrival = add(order.calendarExportedArrivalDates, reminder.merchantArrivalDeadline);
+    return {
+      ...order,
+      calendarExportedDueDates: add(order.calendarExportedDueDates, reminder.due),
+      ...(arrival ? {calendarExportedArrivalDates: arrival} : {}),
+    };
+  });
+  if (seen.size !== byId.size) throw new CalendarBatchError('A selected return was removed before calendar export.');
+  return next;
+}
+
+/** Dates in prior calendar files that might still appear as obsolete events. */
+export function olderCalendarDates(order: Order): { primary: string[]; arrival: string[] } {
+  const completed = isCompleted(order);
+  const due = returnDueDate(order);
+  const arrival = (order.calendarExportedArrivalDates ?? []).filter(date =>
+    completed || date !== order.merchantArrivalDeadline);
+  // v0.12.x could remember one removed arrival date but not a download
+  // history. Keep that date actionable after upgrading.
+  if (!order.merchantArrivalDeadline && order.calendarPreviousArrivalDate &&
+      !arrival.includes(order.calendarPreviousArrivalDate)) {
+    arrival.push(order.calendarPreviousArrivalDate);
+  }
+  return {
+    primary: (order.calendarExportedDueDates ?? []).filter(date => completed || date !== due),
+    arrival,
+  };
+}
+
+/** A shopper can clear warnings only after confirming older events are gone. */
+export function acknowledgeCalendarCleanup(current: readonly Order[], reviewed: Order): Order[] {
+  const matches = current.filter(row => row.id === reviewed.id);
+  if (matches.length !== 1 || JSON.stringify(matches[0]) !== JSON.stringify(reviewed)) {
+    throw new CalendarBatchError('This return changed before calendar cleanup was confirmed. Refresh and review it.');
+  }
+  return current.map(order => {
+    if (order.id !== reviewed.id) return order;
+    const remainingDue = isCompleted(order) ? [] : (order.calendarExportedDueDates ?? []).filter(date => date === returnDueDate(order));
+    const remainingArrival = isCompleted(order) ? [] : (order.calendarExportedArrivalDates ?? []).filter(date => date === order.merchantArrivalDeadline);
+    const next = { ...order };
+    if (remainingDue.length) next.calendarExportedDueDates = remainingDue;
+    else delete next.calendarExportedDueDates;
+    if (remainingArrival.length) next.calendarExportedArrivalDates = remainingArrival;
+    else delete next.calendarExportedArrivalDates;
+    if (!order.merchantArrivalDeadline) delete next.calendarPreviousArrivalDate;
+    return next;
+  });
+}
+
 /** A one-event cancellation file for an imported deadline, without changing
  * the saved return. Active secondary deadlines cannot be canceled until they
  * are removed through Edit details or the return is completed.
@@ -157,14 +231,18 @@ export function planCalendarCancellation(
   if (kind === 'merchant-arrival' && (!arrival || !isCalendarDate(arrival))) {
     throw new CalendarBatchError('There is no earlier merchant-arrival reminder to cancel.');
   }
-  const event: CalendarReminder = kind === 'return' ? base : {
-    ...base, id: base.id + ':merchant-arrival', due: arrival!,
+  const lastDownloaded = kind === 'return'
+    ? saved.calendarExportedDueDates?.at(-1)
+    : saved.calendarExportedArrivalDates?.at(-1);
+  const event: CalendarReminder = kind === 'return' ? { ...base, due: lastDownloaded || base.due } : {
+    ...base, id: base.id + ':merchant-arrival', due: lastDownloaded || arrival!,
     deadlineRequirement: 'arrive-by',
   };
   const content = buildCancelledIcs(event, stamp);
   if (encoder.encode(content).byteLength > MAX_CALENDAR_BYTES) throw sizeError();
   return {
     content,
+    due: event.due,
     filename: `return-${(saved.merchant || 'order').replace(/\W+/g, '-')}-${kind}-cancel.ics`,
   };
 }
