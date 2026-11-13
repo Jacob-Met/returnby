@@ -54,8 +54,10 @@ export async function readReceipt(
     const damagedText = (await worker.recognize(shadow)).data.text;
     check();
     let headerText: string | undefined;
-    if (!mergeReceiptSuggestions(combined, damagedReceiptSuggestions(damagedText)).merchant &&
-        image.width < 1300 && image.height < 2600) {
+    // The header enhancer caps both its work image and OCR crop. Large
+    // phone photos need this focused read too: source dimensions are not
+    // evidence that a creased store name was successfully recognized.
+    if (!mergeReceiptSuggestions(combined, damagedReceiptSuggestions(damagedText)).merchant) {
       progress(0, 'reading store header');
       const header = enhanceWrinkledReceipt(image, true);
       check();
