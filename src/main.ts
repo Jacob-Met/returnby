@@ -5,7 +5,7 @@ import './receipt-policy.css';
 import { receiptPolicy, receiptWindow } from './receipt-policy';
 import {readPending,writePending,PENDING_KEY} from './pending-delivery';
 import {validReturnEvidenceUrl} from './return-evidence';
-import {deadlineOptions,deadlinePhrase,deadlineCaution,validDeadlineRequirement,validMerchantArrivalDeadline} from './deadline-requirement';
+import {deadlineOptions,deadlinePhrase,deadlineCalendarTitle,deadlineCaution,validDeadlineRequirement,validMerchantArrivalDeadline} from './deadline-requirement';
 import { deliveryReview } from './delivery-review';
 import { bindKnownDeadlines } from './known-deadline';
 import './known-deadline.css';
@@ -345,16 +345,27 @@ function refundAction(o: Order): string {
 
 function calendarCleanupNotice(o: Order): string {
   const dates = olderCalendarDates(o);
-  const stale = [
-    ...dates.primary.map(date => 'Return deadline ' + date),
-    ...dates.arrival.map(date => 'Merchant arrival ' + date),
-  ];
-  if (!stale.length) return '';
-  return '<div class="calendar-cleanup"><strong>Old reminders may still be in your calendar</strong>' +
-    '<p>Earlier downloaded dates: ' + stale.map(h).join(' · ') +
-    '. Remove the old events from your calendar app, even if you imported a replacement or cancellation.</p>' +
+  if (!dates.primary.length && !dates.arrival.length) return '';
+  const active = isCompleted(o)
+    ? 'This return is finished; no active deadline remains.'
+    : 'Current: ' + deadlinePhrase(o.deadlineRequirement) + ' ' + returnDueDate(o) +
+      (o.merchantArrivalDeadline ? ' · Merchant receives by ' + o.merchantArrivalDeadline : '');
+  const choices = [
+    ...dates.primary.map(date => '<label class="calendar-cleanup-choice"><input type="checkbox" data-stale-kind="primary" value="' +
+      h(date) + '"><span><strong>' + h(deadlineCalendarTitle(o.deadlineRequirement)) + '</strong><time datetime="' + h(date) + '">' + h(date) + '</time></span></label>'),
+    ...dates.arrival.map(date => '<label class="calendar-cleanup-choice"><input type="checkbox" data-stale-kind="arrival" value="' +
+      h(date) + '"><span><strong>Merchant receipt deadline</strong><time datetime="' + h(date) + '">' + h(date) + '</time></span></label>'),
+  ].join('');
+  return '<section class="calendar-cleanup" aria-label="Old imported calendar reminders">' +
+    '<strong>Calendar cleanup · ' + (dates.primary.length + dates.arrival.length) + ' old ' +
+      (dates.primary.length + dates.arrival.length === 1 ? 'date' : 'dates') + '</strong>' +
+    '<p class="calendar-cleanup-current">' + h(active) + '</p>' +
+    '<p>Search your calendar for ' + h(o.merchant || 'this store') +
+      (o.orderNo ? ' #' + h(o.orderNo) : '') +
+      ' and these old dates. Delete each outdated event there, then check it off here. ReturnBy cannot delete calendar events itself.</p>' +
+    '<div class="calendar-cleanup-list">' + choices + '</div>' +
     '<button type="button" class="button button-link" data-ack-calendar="' + h(o.id) +
-    '">I removed those calendar events</button></div>';
+    '" disabled>Confirm selected events removed</button></section>';
 }
 
 function historyCard(o: Order): string {
@@ -503,6 +514,13 @@ $('#finish-dialog').addEventListener('close', () => {
   button?.focus();
   completionReviewed = undefined;
 });
+list.addEventListener('change', (event) => {
+  const input = event.target as HTMLInputElement;
+  if (!input.matches('input[data-stale-kind]')) return;
+  const card = input.closest('li[data-order-id]');
+  const confirm = card?.querySelector<HTMLButtonElement>('button[data-ack-calendar]');
+  if (confirm) confirm.disabled = !card?.querySelector('input[data-stale-kind]:checked');
+});
 list.addEventListener('click', (e) => {
   const t = e.target as HTMLElement;
   if (t.dataset.finish) openCompletion(t.dataset.finish);
@@ -526,18 +544,28 @@ list.addEventListener('click', (e) => {
     const id = t.dataset.ackCalendar;
     const shown = orders.filter(order => order.id === id);
     if (shown.length !== 1) { showStorageError('This calendar cleanup could not be selected uniquely. Reload saved returns.'); return; }
-    const dates = olderCalendarDates(shown[0]);
-    const count = dates.primary.length + dates.arrival.length;
+    const card = t.closest('li[data-order-id]');
+    if (!card || card.getAttribute('data-order-id') !== id) return;
+    const chosen = { primary: [] as string[], arrival: [] as string[] };
+    for (const input of Array.from(card.querySelectorAll<HTMLInputElement>('input[data-stale-kind]:checked'))) {
+      if (input.dataset.staleKind === 'primary') chosen.primary.push(input.value);
+      if (input.dataset.staleKind === 'arrival') chosen.arrival.push(input.value);
+    }
+    const count = chosen.primary.length + chosen.arrival.length;
     if (!count) return;
-    if (!window.confirm('Have you removed all ' + count + ' old calendar ' + (count === 1 ? 'entry' : 'entries') +
-      ' for ' + shown[0].merchant + '? Only confirm after checking your calendar app.')) return;
+    if (!window.confirm('Have you deleted these ' + count + ' old calendar ' + (count === 1 ? 'entry' : 'entries') +
+      ' from your calendar app? Confirm only those you have removed.')) return;
     const current = readCurrentOrders();
     if (!current) return;
     try {
-      const next = acknowledgeCalendarCleanup(current, shown[0]);
+      const next = acknowledgeCalendarCleanup(current, shown[0], chosen);
       if (!persistOrders(next)) return;
       render();
-      $('#completion-feedback').textContent = 'Calendar cleanup confirmed for ' + shown[0].merchant + '.';
+      const updatedCard = Array.from(list.querySelectorAll<HTMLElement>('li[data-order-id]'))
+        .find(row => row.dataset.orderId === id);
+      updatedCard?.focus();
+      $('#completion-feedback').textContent = count + ' calendar ' + (count === 1 ? 'entry' : 'entries') +
+        ' cleared from the ReturnBy reminder list for ' + shown[0].merchant + '.';
       clearStorageError();
     } catch (error) {
       orders = current;
