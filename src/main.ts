@@ -27,7 +27,7 @@ import { dueDate, returnDueDate, daysLeft, status, todayISO } from './deadline';
 import { startDayRefresh } from './day-refresh';
 import { bindTabSync } from './tab-sync';
 import { bindIntakeDeadline } from './intake-deadline';
-import { planSingleCalendar, planCalendarCancellation } from './calendar-batch';
+import { planSingleCalendar, planCalendarCancellation, olderCalendarDates, acknowledgeCalendarCleanup } from './calendar-batch';
 import { isSupportedDate } from './trip-checklist';
 import { load, read, save, type Order } from './store';
 import { bindManualPurchase } from './manual-purchase';
@@ -342,6 +342,20 @@ function refundAction(o: Order): string {
   return '<button class="button button-link" data-refund="' + h(o.id) + '">' + (o.refundState ? 'Review refund' : 'Track a refund') + '</button>';
 }
 
+function calendarCleanupNotice(o: Order): string {
+  const dates = olderCalendarDates(o);
+  const stale = [
+    ...dates.primary.map(date => 'Return deadline ' + date),
+    ...dates.arrival.map(date => 'Merchant arrival ' + date),
+  ];
+  if (!stale.length) return '';
+  return '<div class="calendar-cleanup"><strong>Old reminders may still be in your calendar</strong>' +
+    '<p>Earlier downloaded dates: ' + stale.map(h).join(' · ') +
+    '. Remove the old events from your calendar app, even if you imported a replacement or cancellation.</p>' +
+    '<button type="button" class="button button-link" data-ack-calendar="' + h(o.id) +
+    '">I removed those calendar events</button></div>';
+}
+
 function historyCard(o: Order): string {
   const recorded = new Date(o.completedAt!).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
   return '<li class="card completed" data-order-id="' + h(o.id) + '" tabindex="-1"><div class="order-head"><div><strong>' + h(o.merchant || 'Unknown store') + '</strong>'
@@ -351,6 +365,7 @@ function historyCard(o: Order): string {
     + '<div class="window-meta"><span>ORDER ' + h(o.orderDate) + '</span><span>Original ' + h(deadlinePhrase(o.deadlineRequirement).toLowerCase()) + ' ' + h(returnDueDate(o)) + '</span>' + (o.merchantArrivalDeadline ? '<span>Merchant received by ' + h(o.merchantArrivalDeadline) + '</span>' : '') + '</div>'
     + (o.total ? '<p class="history-amount">Order total <strong>' + h(o.total) + '</strong></p>' : '')
     + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open saved return document</a></p>' : '')
+    + calendarCleanupNotice(o)
     + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-link" data-cancel-calendar="' + h(o.id) + '">Cancel imported deadline</button>'
     + (o.merchantArrivalDeadline || o.calendarPreviousArrivalDate ? '<button class="button button-link" data-cancel-arrival="' + h(o.id) + '">Cancel imported arrival cutoff</button>' : '')
     + '<button class="button button-link" data-reopen="' + h(o.id) + '">Reopen return</button>'
@@ -427,6 +442,7 @@ function render() {
       + (o.merchantArrivalDeadline ? '<div class="order-foot second-return-deadline"><span class="return-by">MERCHANT MUST RECEIVE BY ' + h(o.merchantArrivalDeadline) + '</span><strong class="days-left">' + (daysLeft(o.merchantArrivalDeadline, todayISO()) < 0 ? 'PAST DUE' : h(String(daysLeft(o.merchantArrivalDeadline, todayISO()))) + ' DAYS LEFT') + '</strong></div>' : '')
       + (o.deadlineRequirement ? '<p class="return-document return-document-caution">'+h(deadlineCaution(o.deadlineRequirement))+'</p>' : '')
       + (o.returnEvidenceUrl ? '<p class="return-document"><a target="_blank" rel="noopener noreferrer" href="'+h(o.returnEvidenceUrl)+'">Open return label, QR or receipt</a></p>' : '<p class="return-document return-document-missing">No return document saved. Add one in Edit details before going to the store.</p>')
+      + calendarCleanupNotice(o)
       + '<div class="order-actions"><button class="button button-link" data-receipt="' + h(o.id) + '">Paper receipt</button><button class="button button-primary" data-ics="' + h(o.id) + '">' + (o.calendarRevision ? 'Update calendar reminders' : 'Add calendar reminders') + '</button>'
       + (o.calendarPreviousArrivalDate && !o.merchantArrivalDeadline ? '<button class="button button-link" data-cancel-arrival="' + h(o.id) + '">Cancel old arrival cutoff</button>' : '')
       + '<button class="button button-link" data-finish="' + h(o.id) + '">Finish return</button>'
@@ -500,6 +516,30 @@ list.addEventListener('click', (e) => {
     else showStorageError('This purchase cannot be selected uniquely. Refresh saved returns first.');
   }
   if (t.dataset.del) removeOrder(t.dataset.del);
+  if (t.dataset.ackCalendar !== undefined) {
+    const id = t.dataset.ackCalendar;
+    const shown = orders.filter(order => order.id === id);
+    if (shown.length !== 1) { showStorageError('This calendar cleanup could not be selected uniquely. Reload saved returns.'); return; }
+    const dates = olderCalendarDates(shown[0]);
+    const count = dates.primary.length + dates.arrival.length;
+    if (!count) return;
+    if (!window.confirm('Have you removed all ' + count + ' old calendar ' + (count === 1 ? 'entry' : 'entries') +
+      ' for ' + shown[0].merchant + '? Only confirm after checking your calendar app.')) return;
+    const current = readCurrentOrders();
+    if (!current) return;
+    try {
+      const next = acknowledgeCalendarCleanup(current, shown[0]);
+      if (!persistOrders(next)) return;
+      render();
+      $('#completion-feedback').textContent = 'Calendar cleanup confirmed for ' + shown[0].merchant + '.';
+      clearStorageError();
+    } catch (error) {
+      orders = current;
+      render();
+      showStorageError(error instanceof Error ? error.message : 'Calendar cleanup could not be saved.');
+    }
+    return;
+  }
   if (t.dataset.cancelCalendar !== undefined || t.dataset.cancelArrival !== undefined) {
     const kind = t.dataset.cancelArrival !== undefined ? 'merchant-arrival' : 'return';
     const id = t.dataset.cancelArrival ?? t.dataset.cancelCalendar!;
@@ -511,7 +551,7 @@ list.addEventListener('click', (e) => {
       const plan = planCalendarCancellation(current, shown[0], kind);
       downloadCalendar(plan.content, plan.filename);
       $('#edit-feedback').textContent = '';
-      $('#completion-feedback').textContent = 'Cancellation downloaded. Import it into your calendar, then check the old event is gone. If it remains, delete it there.';
+      $('#completion-feedback').textContent = 'Cancellation for ' + plan.due + ' downloaded. Import it into your calendar, then check that the event on ' + plan.due + ' is gone. If it remains, delete it manually there.';
       clearStorageError();
     } catch (error) {
       orders = current;
@@ -603,7 +643,11 @@ const orderEditor = bindOrderEditor({
   refresh: reloadOrders,
 });
 bindManualPurchase({ read: readCurrentOrders, commit: next => { if (!persistOrders(next)) return false; render(); return true; }, onSaved: revealSavedOrder });
-const calendarExporter = bindCalendarBatch({ read: load, filter: () => filterMode });
+const calendarExporter = bindCalendarBatch({
+  read: load,
+  commit: next => { if (!persistOrders(next)) return false; render(); return true; },
+  filter: () => filterMode,
+});
 const removalUndo = bindRemovalUndo({
   read: readCurrentOrders,
   commit: next => { if (!persistOrders(next)) return false; render(); return true; },

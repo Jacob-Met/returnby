@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { editDraft, planEdit } from '../src/edit';
 import { planCompletion } from '../src/completion';
-import { planCalendarCancellation, planSingleCalendar } from '../src/calendar-batch';
+import { planCalendarCancellation, planSingleCalendar, recordCalendarDownloads, olderCalendarDates, acknowledgeCalendarCleanup } from '../src/calendar-batch';
 import { exportBackup, parseBackup, planImport } from '../src/backup';
 import type { Order } from '../src/store';
 
@@ -104,5 +104,71 @@ describe('return calendar identity through correction and cancellation', () => {
       expect(() => exportBackup([{ ...initial, calendarRevision }], time)).toThrow();
     }
     expect(() => exportBackup([{ ...initial, calendarRevision: 1, calendarPreviousArrivalDate: '2026-02-30' }], time)).toThrow();
+  });
+});
+
+
+describe('old imported calendar entries remain actionable after revisions', () => {
+  test('tracks downloaded primary and secondary dates, including old dates after several edits', () => {
+    let current = recordCalendarDownloads([initial], [{id:initial.id, merchant:initial.merchant, due:'2026-10-11', merchantArrivalDeadline:'2026-10-18'}]);
+    expect(current[0].calendarExportedDueDates).toEqual(['2026-10-11']);
+    expect(current[0].calendarExportedArrivalDates).toEqual(['2026-10-18']);
+    let edited = planEdit(current, current[0], {...editDraft(current[0]),windowDays:'12'});
+    current = recordCalendarDownloads(edited.next, [{id:initial.id,merchant:initial.merchant,due:'2026-10-13',merchantArrivalDeadline:'2026-10-18'}]);
+    edited = planEdit(current, current[0], {...editDraft(current[0]),windowDays:'13',merchantArrivalDeadline:''});
+    current = recordCalendarDownloads(edited.next, [{id:initial.id,merchant:initial.merchant,due:'2026-10-14'}]);
+    expect(olderCalendarDates(current[0])).toEqual({
+      primary:['2026-10-11','2026-10-13'],arrival:['2026-10-18'],
+    });
+    const backup = exportBackup(current,time);
+    expect(JSON.parse(backup).version).toBe(12);
+    const restored = parseBackup(backup);
+    expect(restored).toEqual(current);
+    expect(olderCalendarDates(restored[0])).toEqual(olderCalendarDates(current[0]));
+    expect(planImport([initial],restored).rows[0].changedFields).toContain('calendarExportedDueDates');
+    const cancel = planCalendarCancellation(restored,restored[0],'merchant-arrival',time);
+    expect(cancel.due).toBe('2026-10-18');
+    expect(event(cancel.content)).toContain('DTSTART;VALUE=DATE:20261018');
+    const cleared = acknowledgeCalendarCleanup(restored,restored[0]);
+    expect(cleared[0].calendarExportedDueDates).toEqual(['2026-10-14']);
+    expect(cleared[0].calendarExportedArrivalDates).toBeUndefined();
+    expect(cleared[0].calendarPreviousArrivalDate).toBeUndefined();
+    expect(olderCalendarDates(cleared[0])).toEqual({primary:[],arrival:[]});
+    expect(() => acknowledgeCalendarCleanup(cleared,restored[0])).toThrow(/changed/);
+  });
+  test('legacy saved removal continues to warn about its old calendar date', () => {
+    const old = { ...initial, calendarRevision:1, calendarPreviousArrivalDate:'2026-10-18', merchantArrivalDeadline:undefined };
+    expect(olderCalendarDates(old)).toEqual({primary:[],arrival:['2026-10-18']});
+    const cleared = acknowledgeCalendarCleanup([old],old)[0];
+    expect(olderCalendarDates(cleared)).toEqual({primary:[],arrival:[]});
+    expect(cleared.calendarPreviousArrivalDate).toBeUndefined();
+  });
+  test('completed returns identify their last downloaded event date for cancellation', () => {
+    const old = recordCalendarDownloads([initial],[{id:initial.id,merchant:initial.merchant,due:'2026-10-11',merchantArrivalDeadline:'2026-10-18'}]);
+    const edited = planEdit(old,old[0],{...editDraft(old[0]),windowDays:'13'});
+    const completed = planCompletion(edited.next,edited.order,'kept',time);
+    expect(olderCalendarDates(completed.order)).toEqual({primary:['2026-10-11'],arrival:['2026-10-18']});
+    const cancellation=planCalendarCancellation(completed.next,completed.order,'return',time);
+    expect(cancellation.due).toBe('2026-10-11');
+    expect(event(cancellation.content)).toContain('DTSTART;VALUE=DATE:20261011');
+    expect(olderCalendarDates(acknowledgeCalendarCleanup(completed.next,completed.order)[0]))
+      .toEqual({primary:[],arrival:[]});
+  });
+  test('calendar downloads do not record stale, duplicate or impossible dates', () => {
+    expect(() => recordCalendarDownloads([initial],[{id:initial.id,merchant:initial.merchant,due:'2026-10-13'}]))
+      .toThrow(/changed/);
+    expect(() => recordCalendarDownloads([initial,initial],[{id:initial.id,merchant:initial.merchant,due:'2026-10-11',merchantArrivalDeadline:'2026-10-18'}]))
+      .toThrow(/changed/);
+    expect(() => recordCalendarDownloads([initial],[{id:'unknown',merchant:initial.merchant,due:'2026-10-11'}]))
+      .toThrow(/removed/);
+  });
+  test('rejects malformed date histories and refuses downgrading their backup version', () => {
+    const withHistory = recordCalendarDownloads([initial],[{id:initial.id,merchant:initial.merchant,due:'2026-10-11',merchantArrivalDeadline:'2026-10-18'}]);
+    const backup=JSON.parse(exportBackup(withHistory,time));
+    backup.version=11;
+    expect(() => parseBackup(JSON.stringify(backup))).toThrow(/unsupported/);
+    for(const dates of [['2026-02-30'], ['2026-10-11','2026-10-11'], [], ['bogus'], Array(129).fill('2026-10-11')]){
+      expect(() => exportBackup([{...initial,calendarExportedDueDates:dates}],time)).toThrow();
+    }
   });
 });

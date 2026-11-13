@@ -1,10 +1,11 @@
-import { CalendarBatchError, CalendarAlertExpiredError, calendarRows, initialCalendarSelection, planCalendarBatch, type CalendarFilter, type CalendarRow } from './calendar-batch';
+import { CalendarBatchError, CalendarAlertExpiredError, calendarRows, initialCalendarSelection, planCalendarBatch, recordCalendarDownloads, olderCalendarDates, type CalendarFilter, type CalendarRow } from './calendar-batch';
 import { deadlinePhrase } from './deadline-requirement';
 import { DEFAULT_ALERT_SETTINGS, describeCalendarAlert, localCalendarDate, planCalendarAlert, type CalendarAlertSettings } from './calendar-alert';
 import type { Order } from './store';
 
 type CalendarOptions = {
   read(): Order[];
+  commit(next: Order[]): boolean;
   filter(): CalendarFilter;
   download?(content: string, filename: string): void;
 };
@@ -129,7 +130,13 @@ export function bindCalendarBatch(options: CalendarOptions) {
       reviewedAt = new Date();
       renderChoices();
       const invalid = rows.filter(row => row.problem).length;
-      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates and alert times.' : singleId ? 'Review this deadline and its alert before downloading.' : 'Choose the returns to add to your calendar.'} Completed returns are excluded.${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}`;
+      const older = next.filter(row => !row.problem).flatMap(row => {
+        const dates = olderCalendarDates(row.order);
+        return [...dates.primary.map(date => row.order.merchant + ' ' + date),
+          ...dates.arrival.map(date => row.order.merchant + ' arrival ' + date)];
+      });
+      get('calendar-note').textContent = `${keepSelection ? 'Saved returns reloaded. Review the current dates and alert times.' : singleId ? 'Review this deadline and its alert before downloading.' : 'Choose the returns to add to your calendar.'} Completed returns are excluded.${invalid ? ` ${invalid} ${invalid === 1 ? 'return needs' : 'returns need'} correction and cannot be selected.` : ''}` +
+        (older.length ? ' Earlier downloaded calendar dates may still be present: ' + older.join(', ') + '. Remove obsolete entries from your calendar app.' : '');
       showMessage('');
     } catch (error) {
       loaded = false;
@@ -175,9 +182,23 @@ export function bindCalendarBatch(options: CalendarOptions) {
       if (localCalendarDate(now) !== localCalendarDate(reviewedAt)) throw new CalendarAlertExpiredError();
       const plan = planCalendarBatch(current, rows, [...selected], now, settings(), reviewedAt);
       const filename = singleId ? `return-${(rows[0].order.merchant || 'order').replace(/\W+/g, '-')}.ics` : plan.filename;
+      // Store the dates whose files the shopper requested before issuing the
+      // browser download. A blocked storage write must not lose cleanup context.
+      const tracked = recordCalendarDownloads(current, plan.reminders);
+      if (!options.commit(tracked)) {
+        showMessage('Calendar dates could not be saved to this browser. No download started; free browser storage and try again.', true);
+        return;
+      }
       (options.download ?? downloadCalendar)(plan.content, filename);
       const alertCount = plan.reminders.reduce((count,row) => count + (row.alertAt ? 1 : 0) + (row.merchantArrivalAlertAt ? 1 : 0), 0);
-      feedback.textContent = `Calendar file prepared with ${plan.count} ${plan.count === 1 ? 'deadline' : 'deadlines'} and ${alertCount} ${alertCount === 1 ? 'alert' : 'alerts'}. ${alertCount ? 'Import the downloaded .ics file before the alert time. If correcting an earlier import, check the old date was replaced. ReturnBy does not send notifications.' : 'Import the downloaded .ics file to add or update the deadline entries. No alerts were requested.'}`;
+      const older = plan.reminders.flatMap(reminder => {
+        const row = tracked.find(order => order.id === reminder.id)!;
+        const dates = olderCalendarDates(row);
+        return [...dates.primary.map(date => row.merchant + ' ' + date),
+          ...dates.arrival.map(date => row.merchant + ' arrival ' + date)];
+      });
+      feedback.textContent = `Calendar file prepared with ${plan.count} ${plan.count === 1 ? 'deadline' : 'deadlines'} and ${alertCount} ${alertCount === 1 ? 'alert' : 'alerts'}. ${alertCount ? 'Import the downloaded .ics file before the alert time. If correcting an earlier import, check the old date was replaced. ReturnBy does not send notifications.' : 'Import the downloaded .ics file to add or update the deadline entries. No alerts were requested.'}` +
+        (older.length ? ' Earlier downloaded deadlines may still appear in your calendar: ' + older.join(', ') + '. Remove their old entries in the calendar app, then confirm cleanup in the ReturnBy tracker.' : '');
       dialog.close();
     } catch (error) {
       if (error instanceof CalendarAlertExpiredError) refreshAlerts();
