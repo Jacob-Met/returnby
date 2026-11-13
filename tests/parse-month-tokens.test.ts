@@ -18,6 +18,15 @@ describe('exact English month tokens', () => {
     }
   });
 
+  it('reads a printed month with a comma before the day, including a creased photo OCR line', () => {
+    for (const text of ['November, 16, 2018', 'NOVEMBER, 16, 2018', 'Nov., 16, 2018', 'Sep, 9, 2026']) {
+      const expected = text.toLowerCase().includes('sep') ? '2026-09-09' : '2018-11-16';
+      expect(findDates(text), text).toEqual([{date: expected, index: 0}]);
+    }
+    expect(findDates('NOVEMB, 16, 2018')).toEqual([]);
+    expect(findDates('NOVEMBER, 99, 2018')).toEqual([]);
+  });
+
   it('retains Sep, Sept, optional periods, whitespace and month-first ordinals', () => {
     for (const text of ['Sept 9, 2026', '9 Sept. 2026', 'September. 9th, 2026', 'sEp.\t9th\n2026']) {
       expect(findDates(text), text).toEqual([{ date: '2026-09-09', index: 0 }]);
