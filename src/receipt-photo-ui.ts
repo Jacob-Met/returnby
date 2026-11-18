@@ -359,8 +359,19 @@ export function bindReceiptPhoto() {
       const damaged = recognized.damagedText
         ? damagedReceiptSuggestions((recognized.headerText ? recognized.headerText + '\n' : '') + recognized.damagedText)
         : undefined;
-      const result = mergeReceiptSuggestions(withHeading, damaged);
-      const recoveredCount = faded.recoveredCount + withHeading.recoveredCount + result.recoveredCount;
+      const crease = mergeReceiptSuggestions(withHeading, damaged);
+      const printed = recognized.printedFields;
+      const result = mergeReceiptSuggestions(crease, printed ? {
+        merchant: crease.merchant ? '' : printed.merchant,
+        total: crease.total ? '' : printed.total,
+        orderDate: '', orderNo: '', notes: [],
+      } : undefined);
+      const recoveredCount = faded.recoveredCount + withHeading.recoveredCount + crease.recoveredCount + result.recoveredCount;
+      if (result.recoveredCount && printed) {
+        const additions = [!crease.merchant && result.merchant && 'Store: ' + result.merchant,
+          !crease.total && result.total && 'Total: ' + result.total].filter(Boolean);
+        text.querySelector('pre')!.textContent += '\n--- Matching printed rows ---\n' + additions.join('\n');
+      }
       for (const name of ['merchant', 'orderDate', 'orderNo', 'total'] as const)
         field(name).value = result[name];
       field('windowDays').value = '';
