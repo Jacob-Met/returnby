@@ -1,6 +1,6 @@
 // A different tab can change the same local tracker. Notify instead of silently
 // replacing cards beneath an Edit/Remove gesture or overwriting an unsaved draft.
-export function bindTabSync(options: { refresh: () => boolean; onExternalChange: () => void }): void {
+export function bindTabSync(options: { refresh: () => boolean; onExternalChange: () => void; onReviewed: () => void }): void {
   const notice = document.querySelector<HTMLElement>('#tab-sync')!;
   const message = document.querySelector<HTMLElement>('#tab-sync-message')!;
   const review = document.querySelector<HTMLButtonElement>('#tab-sync-review')!;
@@ -23,6 +23,7 @@ export function bindTabSync(options: { refresh: () => boolean; onExternalChange:
       message.textContent = "The updated tracker couldn't be loaded. Your unsaved confirmation is still here; retry when browser storage is available.";
       return;
     }
+    options.onReviewed();
     message.textContent = 'Tracker updated from the other tab.';
     review.hidden = true;
     // The focused Review button just disappeared. Put focus on a durable
