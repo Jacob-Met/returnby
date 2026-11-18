@@ -167,7 +167,17 @@ export function bindCalendarBatch(options: CalendarOptions) {
   });
   get('calendar-reload').addEventListener('click', () => loadSelection(loaded || rows.length > 0));
   get('calendar-cancel').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('close', () => (returnFocus?.isConnected ? returnFocus : get('calendar-open')).focus());
+  dialog.addEventListener('close', () => {
+    if (returnFocus?.isConnected) {
+      returnFocus.focus();
+      return;
+    }
+    // Recording a download redraws the cards, including the original button.
+    const matches = singleId === null ? [] : Array.from(
+      document.querySelectorAll<HTMLButtonElement>('[data-ics]'),
+    ).filter(button => button.dataset.ics === singleId);
+    (matches.length === 1 ? matches[0] : get('calendar-open')).focus();
+  });
   get('calendar-form').addEventListener('submit', event => {
     event.preventDefault();
     if (!loaded || !selected.size) return;
