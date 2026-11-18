@@ -1,6 +1,6 @@
 import { returnDueDate } from './deadline';
 import { deadlinePhrase } from './deadline-requirement';
-import { editDraft, EditConflict, EditError, planEdit, previewEdit, sourceDescription, type EditDraft } from './edit';
+import { editDraft, EditConflict, EditError, planEdit, previewEdit, reviewedOrder, sourceDescription, type EditDraft } from './edit';
 import type { Order } from './store';
 
 type EditorOptions = {
@@ -14,6 +14,7 @@ export function bindOrderEditor(options: EditorOptions) {
   const get = <T extends HTMLElement>(id: string) => document.querySelector<T>(`#${id}`)!;
   const dialog = get<HTMLDialogElement>('edit-dialog');
   const form = get<HTMLFormElement>('edit-form');
+  const remoteNotice = get<HTMLParagraphElement>('edit-remote-notice');
   const message = get<HTMLParagraphElement>('edit-message');
   const proposed = get<HTMLOutputElement>('edit-proposed-deadline');
   const source = get<HTMLParagraphElement>('edit-source');
@@ -82,11 +83,23 @@ export function bindOrderEditor(options: EditorOptions) {
   dialog.addEventListener('close', () => {
     const id = original?.id;
     original = null;
+    remoteNotice.textContent = '';
     const button = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-edit]')).find(button => button.dataset.edit === id);
     (button ?? get('filter-all')).focus();
   });
 
   return {
+    notifyExternalChange() {
+      if (!original || !dialog.open) return;
+      try {
+        reviewedOrder(options.read(), original);
+        remoteNotice.textContent = '';
+      } catch (error) {
+        remoteNotice.textContent = error instanceof EditConflict
+          ? 'This return changed or was removed in another tab. Your draft is still here. Cancel and choose Review latest returns to see the saved tracker.'
+          : 'Another tab changed the tracker. The saved return could not be read. Your draft is still here.';
+      }
+    },
     open(id: string) {
       const matches = options.getOrders().filter(order => order.id === id);
       if (matches.length !== 1) {

@@ -142,3 +142,34 @@ describe('saved-order editor handlers', () => {
     expect(app.get('edit-message').textContent).toContain('valid order date');
   });
 });
+
+it('reports external edits to the open order without writing or clearing its draft', () => {
+  const app = setup();
+  const notice = app.get('edit-remote-notice');
+  app.editor.open('saved-1');
+  app.input('edit-total', '$25.00');
+  app.state.current = [app.original, { ...app.other, merchant: 'Another shop' }];
+  app.editor.notifyExternalChange();
+  expect(notice.textContent).toBe('');
+  app.state.current = [{ ...app.original, total: '$30.00' }, app.other];
+  app.editor.notifyExternalChange();
+  expect(notice.textContent).toContain('another tab');
+  app.input('edit-order-no', 'DRAFT');
+  expect(notice.textContent).toContain('another tab');
+  expect(app.get('edit-total').value).toBe('$25.00');
+  app.state.refuseRead = true;
+  app.editor.notifyExternalChange();
+  expect(notice.textContent).toContain('could not be read');
+  app.state.refuseRead = false;
+  app.state.current = [app.original, app.other];
+  app.editor.notifyExternalChange();
+  expect(notice.textContent).toBe('');
+  app.state.current = [app.other];
+  app.editor.notifyExternalChange();
+  expect(notice.textContent).toContain('removed');
+  app.cancel();
+  app.editor.notifyExternalChange();
+  expect(notice.textContent).toBe('');
+  expect(app.state.writes).toEqual([]);
+  expect(app.state.refreshes).toBe(0);
+});

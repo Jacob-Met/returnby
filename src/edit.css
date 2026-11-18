@@ -13,6 +13,7 @@
 .edit-dates dd { margin: 7px 0 0; overflow-wrap: anywhere; font: 17px var(--mono); }
 .edit-dates div:last-child dd { color: var(--green); }
 .edit-message { padding: 10px; background: #fff1df; color: #8f4c19; font-size: 12px; line-height: 1.6; }
+#edit-remote-notice:empty { margin: 0; padding: 0; }
 .edit-dialog .button { min-height: 44px; }
 .edit-dialog .button:disabled { opacity: .5; cursor: not-allowed; }
 .edit-feedback { color: #f0b084; font-size: 12px; line-height: 1.6; }
