@@ -112,24 +112,30 @@ export function previewEdit(original: Order, draft: EditDraft): { order: Order; 
   return { order, due };
 }
 
-/** Replace exactly the reviewed record in a freshly read tracker. */
-export function planEdit(current: Order[], original: Order, draft: EditDraft) {
+/** Check the selected record against the snapshot the editor opened. */
+export function reviewedOrder(current: Order[], original: Order): Order {
   const matches = current.filter(order => order.id === original.id);
   if (matches.length === 0) throw new EditConflict('This return was removed while you were editing. Your draft is still here; cancel to return to the tracker.');
   if (matches.length !== 1) throw new EditConflict('More than one saved return has this ID. Nothing was changed.');
   if (JSON.stringify(matches[0]) !== JSON.stringify(original)) {
     throw new EditConflict('This saved return changed while you were editing. Your draft is still here; cancel and reopen Edit details to review the saved version.');
   }
-  const preview = previewEdit(matches[0], draft);
-  if (eventDetailsChanged(matches[0], preview.order)) {
-    preview.order.calendarRevision = nextCalendarRevision(matches[0]);
-    if (matches[0].merchantArrivalDeadline && !preview.order.merchantArrivalDeadline) {
-      preview.order.calendarPreviousArrivalDate = matches[0].merchantArrivalDeadline;
+  return matches[0];
+}
+
+/** Replace exactly the reviewed record in a freshly read tracker. */
+export function planEdit(current: Order[], original: Order, draft: EditDraft) {
+  const reviewed = reviewedOrder(current, original);
+  const preview = previewEdit(reviewed, draft);
+  if (eventDetailsChanged(reviewed, preview.order)) {
+    preview.order.calendarRevision = nextCalendarRevision(reviewed);
+    if (reviewed.merchantArrivalDeadline && !preview.order.merchantArrivalDeadline) {
+      preview.order.calendarPreviousArrivalDate = reviewed.merchantArrivalDeadline;
     } else if (preview.order.merchantArrivalDeadline) {
       delete preview.order.calendarPreviousArrivalDate;
     }
   }
-  const changed = JSON.stringify(preview.order) !== JSON.stringify(matches[0]);
+  const changed = JSON.stringify(preview.order) !== JSON.stringify(reviewed);
   return {
     ...preview,
     changed,

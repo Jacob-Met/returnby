@@ -1,6 +1,6 @@
 // A different tab can change the same local tracker. Notify instead of silently
 // replacing cards beneath an Edit/Remove gesture or overwriting an unsaved draft.
-export function bindTabSync(options: { refresh: () => boolean }): void {
+export function bindTabSync(options: { refresh: () => boolean; onExternalChange: () => void }): void {
   const notice = document.querySelector<HTMLElement>('#tab-sync')!;
   const message = document.querySelector<HTMLElement>('#tab-sync-message')!;
   const review = document.querySelector<HTMLButtonElement>('#tab-sync-review')!;
@@ -10,6 +10,7 @@ export function bindTabSync(options: { refresh: () => boolean }): void {
     // Unrelated keys must not interrupt a return the user is reviewing.
     if (event.storageArea !== window.localStorage ||
         (event.key !== 'returnby.v1' && event.key !== null)) return;
+    options.onExternalChange();
     notice.hidden = false;
     review.hidden = false;
     message.textContent = 'Saved returns changed in another tab. Review the latest tracker before acting on older deadlines.';

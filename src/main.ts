@@ -689,7 +689,7 @@ const removalUndo = bindRemovalUndo({
   focusTracker: () => $('#filter-' + filterMode).focus(),
 });
 bindRefunds({ commit: next => { if (!persistOrders(next)) return false; render(); return true; } });
-bindTabSync({ refresh: reloadOrders });
+bindTabSync({ refresh: reloadOrders, onExternalChange: orderEditor.notifyExternalChange });
 if (reloadOrders()) { void pruneOriginalReceipts(orders).catch(() => {}); void pruneMerchantDocuments(orders).catch(() => {}); }
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') startDayRefresh(() => {
