@@ -1,8 +1,9 @@
 import type { Worker } from 'tesseract.js';
+import { agreedPrintedFields, readPrintedFields, type PrintedFields } from './receipt-layout';
 import { enhanceFaintReceipt, enhanceWrinkledReceipt } from './receipt-image';
 import { receiptSuggestions, mergeReceiptSuggestions, damagedReceiptSuggestions } from './receipt-photo';
 
-export type ReceiptReading = { text: string; recoveredText?: string; enhancedImage?: HTMLCanvasElement; damagedText?: string; headerText?: string };
+export type ReceiptReading = { text: string; recoveredText?: string; enhancedImage?: HTMLCanvasElement; damagedText?: string; headerText?: string; printedFields?: PrintedFields };
 
 export async function readReceipt(
   image: HTMLCanvasElement,
@@ -34,7 +35,8 @@ export async function readReceipt(
     if (signal.aborted) { await worker.terminate(); throw stopped; }
     await worker.setParameters({ tessedit_pageseg_mode: PSM.AUTO, preserve_interword_spaces: '1' });
     check();
-    const original = (await worker.recognize(image)).data.text;
+    const originalPage = (await worker.recognize(image, {}, { text: true, blocks: true })).data;
+    const original = originalPage.text;
     check();
     const fields = receiptSuggestions(original);
     if (fields.merchant && fields.orderDate && fields.total) return { text: original };
@@ -43,7 +45,8 @@ export async function readReceipt(
     // independently visible suggestion, never an undisclosed replacement.
     const enhanced = enhanceFaintReceipt(image);
     check();
-    const recoveredText = (await worker.recognize(enhanced)).data.text;
+    const enhancedPage = (await worker.recognize(enhanced, {}, { text: true, blocks: true })).data;
+    const recoveredText = enhancedPage.text;
     check();
     const combined = mergeReceiptSuggestions(fields, receiptSuggestions(recoveredText));
     if (combined.merchant && combined.total) return { text: original, recoveredText, enhancedImage: enhanced };
@@ -65,7 +68,29 @@ export async function readReceipt(
       check();
     }
     const damaged = damagedReceiptSuggestions((headerText ? headerText + '\n' : '') + damagedText);
-    return { text: original, recoveredText, damagedText, headerText,
+    let printedFields: PrintedFields | undefined;
+    const interpreted = mergeReceiptSuggestions(combined, damaged);
+    if ((!interpreted.merchant || !interpreted.total) && originalPage.blocks?.length) {
+      const views = [readPrintedFields(originalPage.blocks), readPrintedFields(enhancedPage.blocks)];
+      const agreed = agreedPrintedFields(views);
+      if ((!interpreted.merchant && !agreed.merchant) || (!interpreted.total && !agreed.total)) {
+        const scale = Math.min(3, 1700 / image.width, 2600 / image.height,
+          Math.sqrt(4_000_000 / (image.width * image.height)));
+        const enlarged = document.createElement('canvas');
+        enlarged.width = Math.max(1, Math.round(image.width * scale));
+        enlarged.height = Math.max(1, Math.round(image.height * scale));
+        const context = enlarged.getContext('2d')!;
+        context.imageSmoothingQuality = 'high';
+        context.drawImage(image, 0, 0, enlarged.width, enlarged.height);
+        await worker.setParameters({ tessedit_pageseg_mode: PSM.SPARSE_TEXT, preserve_interword_spaces: '1' });
+        check();
+        const spaced = (await worker.recognize(enlarged, {}, { text: true, blocks: true })).data;
+        check();
+        views.push(readPrintedFields(spaced.blocks));
+      }
+      printedFields = agreedPrintedFields(views);
+    }
+    return { text: original, recoveredText, damagedText, headerText, printedFields,
       enhancedImage: (damaged.merchant || damaged.total) ? shadow : enhanced };
   };
   try {
