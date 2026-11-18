@@ -44,7 +44,7 @@ function expectedCalendar(due, end) {
     'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
     'BEGIN:VEVENT', 'UID:frozen-id@returnby', 'DTSTAMP:20261008T123456Z',
     `DTSTART;VALUE=DATE:${due.replace(/-/g, '')}`, `DTEND;VALUE=DATE:${end}`,
-    'SUMMARY:Return deadline: Fixture Shop #12345',
+    'SUMMARY:Return deadline: Fixture Shop #12345', 'TRANSP:TRANSPARENT',
     'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Return deadline: Fixture Shop #12345',
     'TRIGGER:-P3D', 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR', '',
   ].join('\r\n');
