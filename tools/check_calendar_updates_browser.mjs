@@ -55,6 +55,7 @@ try {
     await page.locator('#calendar-alert-days').selectOption('none');
     const content = await downloadOnClick('#calendar-download');
     assert(!(await page.locator('#calendar-dialog').isVisible()));
+    await page.waitForFunction(() => document.activeElement?.getAttribute('data-ics') === 'winter-coat');
     return content;
   }
   const first = await downloadDeadline();
