@@ -23,13 +23,13 @@ function expectPortableLines(value: string) {
 }
 
 describe('calendar text serialization', () => {
-  it('keeps a simple reminder byte-for-byte compatible', () => {
+  it('writes the exact all-day reminder with free availability', () => {
     const calendar = buildIcs({ id: 'order-1', merchant: 'Fixture Store', due: '2026-11-02' }, stamp);
     expect(calendar).toBe([
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnBy//EN', 'CALSCALE:GREGORIAN',
       'BEGIN:VEVENT', 'UID:order-1@returnby', 'DTSTAMP:20261008T123456Z',
       'DTSTART;VALUE=DATE:20261102', 'DTEND;VALUE=DATE:20261103',
-      'SUMMARY:Return deadline: Fixture Store',
+      'SUMMARY:Return deadline: Fixture Store', 'TRANSP:TRANSPARENT',
       'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Return deadline: Fixture Store',
       'TRIGGER:-P3D', 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR', '',
     ].join('\r\n'));
@@ -82,4 +82,19 @@ describe('calendar text serialization', () => {
     expectPortableLines(calendar);
     expect(textValue(calendar, 'SUMMARY')).toBe('Return deadline: Unit\ufffdFour\ufffdBranch\ufffd\tShop');
   });
+});
+
+it('marks both the handoff and merchant-arrival deadline as free even without alerts', () => {
+  const result = unfold(buildIcs({
+    id: 'split', merchant: 'Example Shop', due: '2026-10-09', deadlineRequirement: 'ship-by',
+    merchantArrivalDeadline: '2026-10-13', alertAt: null, merchantArrivalAlertAt: null,
+  }, stamp));
+  const events = [...result.matchAll(/BEGIN:VEVENT\r\n([\s\S]*?)END:VEVENT/g)].map(match => match[1]);
+  expect(events).toHaveLength(2);
+  expect(events[0]).toContain('UID:split@returnby\r\n');
+  expect(events[1]).toContain('UID:split:merchant-arrival@returnby\r\n');
+  for (const event of events) {
+    expect(event.split('\r\n').filter(line => line.startsWith('TRANSP:'))).toEqual(['TRANSP:TRANSPARENT']);
+    expect(event).not.toContain('BEGIN:VALARM');
+  }
 });

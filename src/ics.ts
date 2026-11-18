@@ -45,6 +45,7 @@ function eventLines(o: CalendarReminder, ts: string): string[] {
     'BEGIN:VEVENT', `UID:${esc(o.id)}@returnby`, `DTSTAMP:${ts}`,
     ...(o.calendarRevision ? [`SEQUENCE:${o.calendarRevision}`] : []),
     `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${e}`, `SUMMARY:${title}`,
+    'TRANSP:TRANSPARENT',
     ...(o.deadlineRequirement ? ['DESCRIPTION:' + esc(deadlinePhrase(o.deadlineRequirement)+' '+o.due+'. Shopper selected this requirement; retailer policy not verified.'+(o.deadlineRequirement==='arrive-by'?' Allow transit time.':'')+(o.fixedDeadline?' Fixed date confirmed by you.':o.confirmedStartDate?' Return clock starts '+o.confirmedStartDate+' (confirmed by you).':''))] : o.fixedDeadline ? [`DESCRIPTION:${esc('Fixed return-by date '+o.fixedDeadline+' (confirmed by you; retailer policy not verified).')}`] : o.confirmedStartDate ? [`DESCRIPTION:${esc('Return clock starts ' + o.confirmedStartDate + ' (user-confirmed; retailer policy not verified).')}`] : []),
     ...(o.alertAt === null ? [] : ['BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`,
       o.alertAt ? `TRIGGER;VALUE=DATE-TIME:${timestamp(new Date(o.alertAt))}` : 'TRIGGER:-P3D', 'END:VALARM']),
